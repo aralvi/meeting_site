@@ -65,6 +65,9 @@
 .borderRadius-5px{
          border-radius: 5px;
 }
+.borderRadius-12px{
+  border-radius: 12px;
+}
 input{
   outline: none !important;
 }
@@ -86,3 +89,13 @@ input{
 .f-21{
   font-size: 	1.3125rem;
 }
+.cl-616161{
+ color:  #616161;
+}
+.f-18{
+  font-size: 1.125rem;
+}
+.bg_gradient_card_footer{
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / 52%), rgb(0 0 0 / 64%));
+}
+

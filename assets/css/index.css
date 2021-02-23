@@ -9,6 +9,28 @@
 .w-42{
     width: 42%;
   }
-  .main_title{
-      
-  }
+  .card-img-overlay {
+    position: absolute;
+    top: auto !important;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;  
+   
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 28.4px;
+    height: 44.21px;
+}
+.carousel-control-prev-icon {
+background-image: url('../images/left.png');
+}
+.carousel-control-next-icon {
+    background-image: url('../images/right.png');
+}
+.carousel-control-next {
+    right: -11%;
+}
+.carousel-control-prev {
+    left: -11%;
+}
