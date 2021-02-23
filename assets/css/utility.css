@@ -20,16 +20,16 @@
     src: url('../fonts/Roboto-Regular.ttf');
   }
   .robotoBold{
-    font-family: robotoBold;
+    font-family: robotoBold !important;
   }
   .robotoLight{
-      font-family: robotoLight;
+      font-family: robotoLight !important;
   }
   .robotoMedium{
-    font-family: robotoMedium;
+    font-family: robotoMedium !important;
 }
 .robotoRegular{
-    font-family: robotoRegular;
+    font-family: robotoRegular !important;
 }
 .main_padding{
     padding-left: 158px;
@@ -38,9 +38,51 @@
 .cl-ffffff{
     color: #FFFFFF;
 }
+.bg-ffffff{
+  background-color: #FFFFFF;
+}
 .bg-3ac574{
     background-color: #3AC574;
 }
 .login_button:hover{
     background-color: #3AC574;
+}
+.f-26{
+  font-size: 1.525rem;
+}
+.bg-000000{
+  background-color: #000000;
+}
+.cl-000000{
+  color: #000000;
+}
+.bg-0000006b{
+  background-color: #0000006b;
+}
+.f-21{
+  font-size: 	1.3125rem;
+}
+.borderRadius-5px{
+         border-radius: 5px;
+}
+input{
+  outline: none !important;
+}
+.listStyle-none{
+  list-style: none !important;
+}
+.cl-3b3b3b3{
+  color: #3B3B3B;
+}
+.f-18{
+  font-size: 1.125rem;
+}
+.f-34{
+  font-size: 2.125rem;
+}
+.fw-600{
+  font-weight: 600;
+}
+.f-21{
+  font-size: 	1.3125rem;
 }
