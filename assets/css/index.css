@@ -1,0 +1,8 @@
+.nav-bg-img{
+    background-image: linear-gradient(to bottom, rgb(0 0 0 / 52%), rgb(0 0 0 / 44%)), url('../images/pexels-jessica-lewis-593324.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 502px;
+    width: 100%;
+}
