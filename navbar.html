@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+    <link rel="stylesheet" href="./assets/css/utility.css" />
+  </head>
+  <body>
+    <section class="main_padding nav-bg-img">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#"
+          ><img
+            src="./assets/images/navlogo.png"
+            alt="navbar logo"
+            class="img-fluid"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="form-inline my-2 my-lg-0 bg-transparent border rounded">
+            <input
+              class="form-control mr-sm-2 w-18 bg-transparent text-white border-0"
+              type="search"
+              value="what are you looking for ?"
+              aria-label="Search"
+            />
+            <img
+              src="./assets/images/search2.png"
+              alt=""
+              class="img-fluid p-2 search-img"
+            />
+          </form>
+          <ul class="navbar-nav ml-auto d-flex align-self-center">
+            <li class="nav-item col-md-2">
+              <a class="nav-link cl-white" href="#"
+                >Blog <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item col-md-3">
+              <a class="nav-link cl-white" href="#">About us</a>
+            </li>
+            <li class="nav-item dropdown col-md-3 p-0">
+              <a
+                class="nav-link cl-white"
+                href="#"
+                id="navbarDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded=""
+              >
+                Message
+                <span class="green-dot mt-1 ml-2"></span>
+              </a>
+              <div class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+                <nav>
+                  <div class="nav nav-tabs row m-0" id="nav-tab" role="tablist">
+                      <a
+                        class="nav-item nav-link  col-md-6 text-center"
+                        id="nav-profile-tab"
+                        data-toggle="tab"
+                        href="#nav-profile"
+                        role="tab"
+                        aria-controls="nav-profile"
+                        aria-selected="false"
+                        > Notifications</a
+                      >
+                    <a
+                      class="nav-item nav-link active col-md-6 text-center"
+                      id="nav-home-tab"
+                      data-toggle="tab"
+                      href="#nav-home"
+                      role="tab"
+                      aria-controls="nav-home"
+                      aria-selected="true"
+                      >Inbox</a
+                    >
+                  </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <div
+                    class="tab-pane fade"
+                    id="nav-profile"
+                    role="tabpanel"
+                    aria-labelledby="nav-profile-tab"
+                  >
+                    ...
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                  <div
+                    class="tab-pane fade show active"
+                    id="nav-home"
+                    role="tabpanel"
+                    aria-labelledby="nav-home-tab"
+                  >
+                    <a class="dropdown-item d-flex row m-0 pt-2" href="#">
+                      <div class="col-md-2 p-0">
+                        <img
+                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          alt=""
+                          class="img-fluid"
+                        />
+                        <span class="green-dot ml--1 mt-1"></span>
+                      </div>
+                      <div class="col-md-6 pl-2 pt-1 p-0">
+                        <div class="row m-0">
+                          <div class="dropdown-heading">Heading is here</div>
+                        </div>
+                        <div class="row m-0">
+                          <div class="dropdown-contnt">
+                            there is some text below heading
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="green-dot-nmbr">3</span>
+                        </div>
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="dropdown-contnt">3:34 pm</span>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex row m-0 pt-2" href="#">
+                      <div class="col-md-2 p-0">
+                        <img
+                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          alt=""
+                          class="img-fluid"
+                        />
+                        <span class="green-dot ml--1 mt-1"></span>
+                      </div>
+                      <div class="col-md-6 pl-2 pt-1 p-0">
+                        <div class="row m-0">
+                          <div class="dropdown-heading">Heading is here</div>
+                        </div>
+                        <div class="row m-0">
+                          <div class="dropdown-contnt">
+                            there is some text below heading
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="green-dot-nmbr">3</span>
+                        </div>
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="dropdown-contnt">3:34 pm</span>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex row m-0 pt-2" href="#">
+                      <div class="col-md-2 p-0">
+                        <img
+                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          alt=""
+                          class="img-fluid"
+                        />
+                        <span class="green-dot ml--1 mt-1"></span>
+                      </div>
+                      <div class="col-md-6 pl-2 pt-1 p-0">
+                        <div class="row m-0">
+                          <div class="dropdown-heading">Heading is here</div>
+                        </div>
+                        <div class="row m-0">
+                          <div class="dropdown-contnt">
+                            there is some text below heading
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="green-dot-nmbr">3</span>
+                        </div>
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="dropdown-contnt">3:34 pm</span>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex row m-0 pt-2" href="#">
+                      <div class="col-md-2 p-0">
+                        <img
+                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          alt=""
+                          class="img-fluid"
+                        />
+                        <span class="green-dot ml--1 mt-1"></span>
+                      </div>
+                      <div class="col-md-6 pl-2 pt-1 p-0">
+                        <div class="row m-0">
+                          <div class="dropdown-heading">Heading is here</div>
+                        </div>
+                        <div class="row m-0">
+                          <div class="dropdown-contnt">
+                            there is some text below heading
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 p-0">
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="green-dot-nmbr">3</span>
+                        </div>
+                        <div class="row m-0 justify-content-end mt-1">
+                          <span class="dropdown-contnt">3:34 pm</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="dropdown-footer mt-5">
+                    <div class="bg-success row m-0 pt-2 pb-2">
+                      <div class="col-md-6 d-flex p-0 pl-4">
+                          <div><i class="fa fa-cog text-white" aria-hidden="true"></i></div>
+                        <div><i class="fa fa-volume-up text-white pl-2" aria-hidden="true"></i></div>
+                      </div>
+                      <div class="col-md-6 p-0 pr-3 text-white text-right">
+                          <h6>See all in inbox</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item col-md-2">
+              <a class="nav-link cl-white" href="#">Spa</a>
+            </li>
+            <li class="nav-item col-md-2">
+              <a class="nav-link" href="#"
+                ><img
+                  src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                  alt=""
+                  class="img-fluid w-75"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <div class="pt-4 main_padding d-flex justify-content-between">
+      <div class="col-md-1 p-0"></div>
+      <div class="">Barbershop</div>
+      <div class="">Web developer</div>
+      <div class="">Banker</div>
+      <div class="">Engineer</div>
+      <div class="">Massag</div>
+      <div class="">Skincare</div>
+      <div class="">Hairstyle</div>
+      <div class="col-md-2"></div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
