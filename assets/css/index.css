@@ -34,3 +34,33 @@ background-image: url('../images/left.png');
 .carousel-control-prev {
     left: -11%;
 }
+.h-599{
+    height: 599px;
+}
+.card_circle{
+    width: 94px;
+    height: 94px;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 75px;
+    right: 44px;
+}
+.banner-content{
+    
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: -22%;
+    left: 0px;
+}
+.h-106{
+    height: 106px;
+}
+.h-413{
+    
+    height: 413px;
+
+}
+.bg-linear-gradient {
+    background-image: linear-gradient(to right, #000 -94%, #000 9%);
+}
