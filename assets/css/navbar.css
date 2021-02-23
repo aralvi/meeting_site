@@ -1,0 +1,62 @@
+.nav-bg-img {
+  background-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 52%),
+      rgb(0 0 0 / 0.85)
+    ),
+    url("../images/pexels-jessica-lewis-593324.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  width: 100%;
+}
+.w-18 {
+  width: 18rem !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0 !important;
+}
+.cl-white {
+  color: white !important;
+}
+.green-dot {
+  position: absolute;
+  padding: 4px;
+  height: 3px;
+  width: 3px;
+  border-radius: 25px;
+  background-color: green;
+}
+.green-dot-nmbr {
+  padding: 4px 6px;
+  border-radius: 100%;
+  text-align: center;
+  background-color: green;
+  color: white;
+  font-size: 10px;
+}
+.dropdown-menu {
+  min-width: 20rem;
+}
+.ml--1 {
+  margin-left: -8px;
+}
+.dropdown-heading {
+  font-size: 12px;
+  font-weight: bolder;
+}
+.dropdown-contnt {
+  font-size: 10px;
+  color: #666666;
+}
+
+@media (max-width: 1500px) and (min-width: 1200px) {
+  .w-18 {
+    width: 12rem !important;
+  }
+  .search-img {
+    width: 30px;
+  }
+}
