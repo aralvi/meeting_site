@@ -5,10 +5,10 @@
   padding-bottom: 14rem;
 }
 .padding-left-reg {
-  padding-left: 6.2rem;
+  padding-left: 8rem;
 }
 .padding-right-reg {
-  padding-right: 6.2rem;
+  padding-right: 8rem;
 }
 .box-shadow-reg {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, -0.8), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
@@ -67,4 +67,7 @@ background-color: #3AC574;
 }
 .cl-3AC574{
   color: #3AC574;
+}
+.border-3AC574{
+  border :1px solid #3AC574 !important; 
 }
