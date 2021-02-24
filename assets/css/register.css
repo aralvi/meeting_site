@@ -1,33 +1,52 @@
-.form-radius{
+.padding-top-reg {
+  padding-top: 6.2rem;
+}
+.padding-bottom-reg {
+  padding-bottom: 14rem;
+}
+.padding-left-reg {
+  padding-left: 6.2rem;
+}
+.padding-right-reg {
+  padding-right: 6.2rem;
+}
+.box-shadow-reg {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, -0.8), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.inner-padding {
+  padding-top: 5.2rem;
+}
+/* .form-radius {
   border-radius: 15px;
+} */
+.bg-register-img {
+  background-image: url("../images/register-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height:100%;
+ 
 }
-.bg-register-img{
-background-image: url('../images/register-bg.png');
-background-position: fixed;
-background-repeat: no-repeat;
-background-size: cover;
-width: 100%;
-height: 100%;
-top: -30px;
-}
-.bg-register-img2{
-background-image: url('../images/register-img.png');
-background-position: fixed;
-background-repeat: no-repeat;
-background-size: cover;
-width: 100%;
-height: 100%;
+.bg-register-img2 {
+  background-image: url("../images/register-img.png");
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom-left-radius: 25px;
+  width: 100%;
+  height: 100%;
 }
 /* .bg-3AC574{
 background-color: #3AC574;
 } */
-.font-600{
+.font-600 {
   font-weight: 600 !important;
 }
-.rounded-right-reg{
-border-radius: 25px;
+.rounded-right-reg {
+  border-radius: 25px;
 }
-.border-input{
+.border-input {
   border: 0;
   border-radius: 0px;
   border-bottom: 1px solid gray;
@@ -35,5 +54,17 @@ border-radius: 25px;
 .form-control:focus {
   box-shadow: 0 0 0 0 !important;
   border-bottom: 1px solid gray;
-
+}
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(196, 193, 193);
+}
+.cl-gray{
+  color: gray;
+}
+.bg-3AC574{
+  background-color: #3AC574;
+}
+.cl-3AC574{
+  color: #3AC574;
 }
