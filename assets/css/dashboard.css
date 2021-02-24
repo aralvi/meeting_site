@@ -1,0 +1,14 @@
+.dashboard_id{
+  width:  10.25vw;
+border-radius: 50px;
+  
+}
+.smallCircleActive{
+  width: 21px;
+  height: 21px;
+  background-color: #3AC574;
+  border-radius: 50px; 
+     position: absolute;
+  top: 12px;
+  right: 141px;
+}

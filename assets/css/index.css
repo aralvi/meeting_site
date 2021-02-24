@@ -50,7 +50,7 @@ background-image: url('../images/left.png');
     position: absolute;
     top: 0px;
     bottom: 0px;
-    right: -22%;
+    right: 0px;
     left: 0px;
 }
 .h-106{
@@ -63,4 +63,7 @@ background-image: url('../images/left.png');
 }
 .bg-linear-gradient {
     background-image: linear-gradient(to right, #000 -94%, #000 9%);
+}
+.border-bcbcbc{
+    border: 1px solid #bcbcbcbc; 
 }
