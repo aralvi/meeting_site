@@ -75,6 +75,9 @@
 .borderRadius-12px{
   border-radius: 12px;
 }
+.borderRadius-10px{
+  border-radius: 10px;
+}
 input{
   outline: none !important;
 }
@@ -159,4 +162,34 @@ a:hover{
 }
 .cl-616161{
   color: #616161;
+}
+.cl-515151{
+  color: #515151;
+}
+.f-13{
+  font-size: 0.8125rem;
+}
+.f-12{
+  font-size: 0.75rem;
+}
+.f-8{
+  font-size: 0.5rem;
+}
+.f-45{
+  font-size: 2.8125rem;
+}
+.f-24{
+  font-size: 1.5rem;
+}
+.cl-9c9c9c{
+  color: #9C9C9C;
+}
+.bg-bbbbbb{
+  background-color: #BBBBBB;
+}
+.buttonBoxShadow{
+  box-shadow: 8px 8px 2px 1px rgb(0 0 0 / 5%);
+}
+.opacity-1{
+  opacity: 1 !important;
 }
