@@ -137,4 +137,26 @@ font-size:2.75rem;
 a:hover{
   color:#3AC574 !important;
   text-decoration: none !important;
+  transition: 0.7s;
+}
+.pt-70{
+  padding-top: 70px;
+}
+.mt-70{
+  margin-top: 70px;
+}
+.f-20{
+  font-size: 1.25rem;
+}
+.f-27{
+  font-size: 1.6875rem;
+}
+.cl-5757575{
+  color: #575757;
+}
+.cl-a8a8a8a{
+  color: #A8A8A8;
+}
+.cl-616161{
+  color: #616161;
 }
