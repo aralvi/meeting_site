@@ -198,3 +198,14 @@ a:hover{
 .f-1rem{
   font-size: 1rem !important;
 }
+@media screen and (max-width: 1300px){
+  .main_padding{
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.pl-0{
+  padding-left: 0px !important;
+}
+
+
+}

@@ -69,7 +69,7 @@ background-image: url('../images/left.png');
 }
 
 
-@media screen and (max-width: 1650px) {
+@media screen and (max-width: 1650px) and (min-width:1245px) {
     .index_para{
       font-size: 1.3rem !important;
     }
@@ -86,3 +86,10 @@ background-image: url('../images/left.png');
         font-size: 16px !important;
     }
     }
+
+@media screen and (max-width: 1300px){
+    .f-16{
+        font-size: 16px !important;
+    }
+    
+}

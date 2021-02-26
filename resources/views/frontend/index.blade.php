@@ -250,30 +250,30 @@
                                   </div> -->
                                   <img src="{{ asset('assets/frontend/images/pexels-anastasia-shuraeva-4210037.png') }}" class="img-fluid" alt="" srcset="">
                               </div>
-                              <div class="col-lg-6 col-md-6 col-sm-12 pl-5">
-                                <div>  <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte">A whole world of freelance 
+                              <div class="col-lg-6 col-md-6 col-sm-12 pl-5 pl-0">
+                                <div>  <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">A whole world of freelance 
                                     talent at your fingertips</p>
                                     <div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle">The best for every budget</div></div>
-                                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara">Find high-quality services at every price point. No hourly 
+                                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">The best for every budget</div></div>
+                                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Find high-quality services at every price point. No hourly 
                                         rates, just project-based pricing</p>
                                         <!-- 2 -->
                                         <div class="pt-2"><div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle">Quality work done quickly</div></div>
-                                        <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara">Find the right freelancer to begin working on your 
+                                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Quality work done quickly</div></div>
+                                        <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Find the right freelancer to begin working on your 
                                             project within minutes.
                                             rates, just project-based pricing</p></div>
                                             <!-- 3 -->
                                             <div class="pt-2"><div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                            <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle" >Protected payments, every time</div></div>
-                                            <p class="m-0 cl-707070 robotoRegular f-21 pt-3 sixColumnMiniPara">
+                                            <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16" >Protected payments, every time</div></div>
+                                            <p class="m-0 cl-707070 robotoRegular f-21 pt-3 sixColumnMiniPara f-16">
                                                 Always know what you'll pay upfront. Your payment isn't released 
                                                 until you approve the work.
                                             </p></div>
                                                 <!-- 4 -->
                                                 <div class="pt-2"><div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                                <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle">24/7 support</div></div>
-                                                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara">
+                                                <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">24/7 support</div></div>
+                                                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
                                                     Questions? Our round-the-clock support team is
                                                     available to help anytime, anywhere.
                                                 </p></div>
