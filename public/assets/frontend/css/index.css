@@ -1,5 +1,5 @@
 .nav-bg-img{
-    background-image: linear-gradient(to bottom, rgb(0 0 0 / 52%), rgb(0 0 0 / 44%)), url('../images/pexels-jessica-lewis-593324.png');
+    background-image: linear-gradient(to bottom, rgb(0 0 0 / 52%), rgb(33 34 34 / 80%)), url('../images/pexels-jessica-lewis-593324.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -29,10 +29,10 @@ background-image: url('../images/left.png');
     background-image: url('../images/right.png');
 }
 .carousel-control-next {
-    right: -11%;
+    right: -4%;
 }
 .carousel-control-prev {
-    left: -11%;
+    left: -4%;
 }
 .h-599{
     height: 599px;
@@ -67,7 +67,9 @@ background-image: url('../images/left.png');
 .border-bcbcbc{
     border: 1px solid #bcbcbcbc; 
 }
-
+.carousel-control-next, .carousel-control-prev {
+    width: 2% !important;
+}
 
 @media screen and (max-width: 1650px) and (min-width:1245px) {
     .index_para{
