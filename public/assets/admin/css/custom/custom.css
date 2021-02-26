@@ -1,0 +1,36 @@
+.custom-btn{ background: linear-gradient(45deg, #3117B9, #6208AC) !important;padding: 0 .5rem !important; }
+.custom-btn-design{
+	outline: none;
+    border: none;
+    background: none !important;
+    text-transform: capitalize;
+    color: red !important;
+}
+
+.custom-radio-inline{ display: inline !important; }
+[type='radio']:checked + span:after { background-color: #3117B9 !important; border: 2px solid #3117B9 !important; }
+[type='checkbox'].filled-in:checked + span:not(.lever):after {
+   background-color: #3117B9 !important; border: 2px solid #3117B9 !important;}
+.swal-button--confirm {
+    background:linear-gradient(45deg, #3117B9, #6208AC) !important;
+    border: 2px solid #3117B9 !important;
+}
+
+.materialize-tags input[type], .materialize-tags textarea.materialize-textarea{ 
+	margin: 0 0 0 0 !important;
+ }
+
+ .materialize-tags.active{
+	box-shadow: 0 1px 0 0 #ff4081 !important;
+	border-bottom-color: #ff4081 !important;
+ }
+ label.my-custom-active{
+     -webkit-transform: translateY(-15px) scale(.8);
+ }
+ label.infocus.active{ color: #ff4081 !important; }
+.section.section-404 .error-code {
+    font-size: 2rem !important;
+}
+.custom-textarea-height{ min-height: 130px !important; border-radius: 3px 3px !important; padding: 10px; }
+.modal{ width: 80% !important; max-height: 80% !important; }
+/* .sidenav li.active{ background: linear-gradient(45deg, #3117B9, #6208AC) !important;  } */
