@@ -16,6 +16,10 @@
 // });
 Route::get('/', function () {
     return view('frontend.index');
+    
+});
+Route::get('frontend', function () {
+    return view('frontend.appoinment');
 });
 Auth::routes();
 

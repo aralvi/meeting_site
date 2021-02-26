@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar</title>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="./assets/css/navbar.css" />
-    <link rel="stylesheet" href="./assets/css/utility.css" />
-    <link rel="stylesheet" href="./assets/css/dashboard.css">
-  </head>
-  <body>
-    <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
+@extends('layouts.frontend.app')
+@section('title','index')
+{{-- head start --}}
+	
+	@section('extra-css')
+
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/utility.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}">
+
+	@endsection
+{{-- head end --}}
+
+
+{{-- content section start --}}
+
+	@section('content')
+		
+  <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
       <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#"
           ><img
-            src="./assets/images/navlogo.png"
+            src="{{ asset('assets/frontend/images/navlogo.png') }}"
             alt="navbar logo"
             class="img-fluid"
         /></a>
@@ -50,7 +45,7 @@
               aria-label="Search"
             />
             <img
-              src="./assets/images/search2.png"
+              src="{{ asset('assets/frontend/images/search2.png') }}"
               alt=""
               class="img-fluid p-2 search-img"
             />
@@ -128,7 +123,7 @@
                     <a class="dropdown-item d-flex row m-0 pt-2" href="#">
                       <div class="col-md-2 p-0">
                         <img
-                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          src="{{ asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}"
                           alt=""
                           class="img-fluid"
                         />
@@ -156,7 +151,7 @@
                     <a class="dropdown-item d-flex row m-0 pt-2" href="#">
                       <div class="col-md-2 p-0">
                         <img
-                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          src="{{ asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}"
                           alt=""
                           class="img-fluid"
                         />
@@ -184,7 +179,7 @@
                     <a class="dropdown-item d-flex row m-0 pt-2" href="#">
                       <div class="col-md-2 p-0">
                         <img
-                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          src="{{ asset('assets/frontend/images/navlogo.png') }}"
                           alt=""
                           class="img-fluid"
                         />
@@ -212,7 +207,7 @@
                     <a class="dropdown-item d-flex row m-0 pt-2" href="#">
                       <div class="col-md-2 p-0">
                         <img
-                          src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                          src="{{ asset('assets/frontend/images/navlogo.png') }}"
                           alt=""
                           class="img-fluid"
                         />
@@ -259,7 +254,7 @@
             <li class="nav-item col-md-2">
               <a class="nav-link" href="#"
                 ><img
-                  src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png"
+                  src="{{ asset('assets/frontend/images/navlogo.png') }}"
                   alt=""
                   class="img-fluid w-75"
               /></a>
@@ -290,7 +285,7 @@
                           <div class="col-md-3 col-lg-3 col-sm-12 p-0 box_shadow1 borderRadius-12px pt-5 pb-5">
                            <div class="d-flex align-items-center flex-column">
                             <div class="dashboard_id text-center">
-                              <img src="./assets/images/GettyImages-1136599956-hair-stylist-1200x630-min.png" alt="">
+                              <img src="{{ asset('assets/frontend/images/navlogo.png') }}" alt="">
                               <div class="smallCircleActive"></div>
                             </div>
 
@@ -520,8 +515,111 @@
     </div>
   </div> 
  </div> 
+
+	@endsection
+
+{{-- content section end --}}
+
+{{-- footer section start --}}
+
+
+	@section('extra-script')
+
+	@endsection
+
+{{-- footer section end --}}
+
+
+
+
+
+
+<!-- <!doctype html>
+<html lang="en">
+  <head> -->
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/utility.css">
+    <title>Learnmelive</title>
+  </head>
+  <body> -->
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+hahahahahah -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    Bootstrap CSS -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+    <link rel="stylesheet" href="./assets/css/utility.css" />
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+  </head>
+  <body> -->
+  
                   
-                     <br><br><br>
+                   
                     
                      <!-- <script>
                        function myFunction() {
@@ -531,7 +629,7 @@
                      </script> -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
+    <!-- <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
@@ -548,4 +646,4 @@
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
-</html>
+</html> -->
