@@ -1,5 +1,5 @@
-@extends('layouts.auth.app')
-@section('title','Login')
+@extends('layouts.frontend.app')
+@section('title','index')
 {{-- head start --}}
 	
 	@section('extra-css')
