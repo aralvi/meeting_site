@@ -67,3 +67,29 @@ background-image: url('../images/left.png');
 .border-bcbcbc{
     border: 1px solid #bcbcbcbc; 
 }
+
+
+@media screen and (max-width: 1650px) and (min-width:1245px) {
+    .index_para{
+      font-size: 1.3rem !important;
+    }
+    .sixColumnTilte{
+      font-size: 28px !important;
+    }
+    .sixColumnMiniTitle{
+        font-size: 24px !important;
+    }
+    .sixColumnMiniPara{
+        font-size: 19px !important;
+    }
+    .footerUl>li>a{
+        font-size: 16px !important;
+    }
+    }
+
+@media screen and (max-width: 1300px){
+    .f-16{
+        font-size: 16px !important;
+    }
+    
+}

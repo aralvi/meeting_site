@@ -30,7 +30,7 @@
         </div>
       </nav>
       <div class="text-center"><img src="{{ asset('assets/frontend/images/nav_2.png') }}" class="img-fluid" alt=""></div>
-        <div class="text-center pt-4"><p class="m-0 cl-ffffff robotoLight f-26">Discover and book beauty & wellness Professionals near you</p></div>
+        <div class="text-center pt-4"><p class="m-0 cl-ffffff robotoLight f-26 index_para">Discover and book beauty & wellness Professionals near you</p></div>
         <div class="text-center pt-4 pb-4"><img src="{{ asset('assets/frontend/images/curve.png') }}" alt=""></div>
         <div class=" container  ">
             <div class="row m-0 pt-4 pb-4 bg-0000006b d-flex justify-content-center align-items-cente">
@@ -248,32 +248,32 @@
                               
                                       </video>
                                   </div> -->
-                                  <img src="{{ asset('assets/frontend/images/pexels-anastasia-shuraeva-4210037.png') }}" alt="" srcset="">
+                                  <img src="{{ asset('assets/frontend/images/pexels-anastasia-shuraeva-4210037.png') }}" class="img-fluid" alt="" srcset="">
                               </div>
-                              <div class="col-lg-6 col-md-6 col-sm-12 pl-5">
-                                <div>  <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 ">A whole world of freelance 
+                              <div class="col-lg-6 col-md-6 col-sm-12 pl-5 pl-0">
+                                <div>  <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">A whole world of freelance 
                                     talent at your fingertips</p>
                                     <div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium">The best for every budget</div></div>
-                                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1">Find high-quality services at every price point. No hourly 
+                                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">The best for every budget</div></div>
+                                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Find high-quality services at every price point. No hourly 
                                         rates, just project-based pricing</p>
                                         <!-- 2 -->
                                         <div class="pt-2"><div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium">Quality work done quickly</div></div>
-                                        <p class="m-0 cl-707070 robotoRegular f-21 pt-1">Find the right freelancer to begin working on your 
+                                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Quality work done quickly</div></div>
+                                        <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Find the right freelancer to begin working on your 
                                             project within minutes.
                                             rates, just project-based pricing</p></div>
                                             <!-- 3 -->
                                             <div class="pt-2"><div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                            <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium">Protected payments, every time</div></div>
-                                            <p class="m-0 cl-707070 robotoRegular f-21 pt-3">
+                                            <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16" >Protected payments, every time</div></div>
+                                            <p class="m-0 cl-707070 robotoRegular f-21 pt-3 sixColumnMiniPara f-16">
                                                 Always know what you'll pay upfront. Your payment isn't released 
                                                 until you approve the work.
                                             </p></div>
                                                 <!-- 4 -->
                                                 <div class="pt-2"><div class="d-flex"><div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                                                <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium">24/7 support</div></div>
-                                                <p class="m-0 cl-707070 robotoRegular f-21 pt-1">
+                                                <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">24/7 support</div></div>
+                                                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
                                                     Questions? Our round-the-clock support team is
                                                     available to help anytime, anywhere.
                                                 </p></div>
@@ -533,7 +533,7 @@
                                     <div class="row m-0 justify-content-between">
                                         <div>
                                           <h4 class="m-0 cl-000000 robotoMedium f-26">Categories</h4>
-                                          <ul class="p-0 robotoRegular">
+                                          <ul class="p-0 robotoRegular footerUl">
                                             <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Graphics & Design</a></li>
                                             <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Digital Marketing</a></li>
                                             <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Business</a></li>
@@ -543,8 +543,8 @@
                                           </ul>
 
                                         </div>
-                                        <div>  <h4 class="m-0 cl-000000 robotoMedium f-26">About</h4>
-                                          <ul class="p-0 robotoRegular">
+                                        <div>  <h4 class="m-0 cl-000000 robotoMedium  f-26">About</h4>
+                                          <ul class="p-0 robotoRegular footerUl">
                                             <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Careers</a></li>
                                             <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Partnerships</a></li>
                                             <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Privacy Policy</a></li>
@@ -553,7 +553,7 @@
                                             
                                           </ul></div>
                                           <div>  <h4 class="m-0 cl-000000 robotoMedium f-26">Support</h4>
-                                            <ul class="p-0 robotoRegular">
+                                            <ul class="p-0 robotoRegular footerUl">
                                               <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Help & Support</a></li>
                                               <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Trust & Safety</a></li>
                                               <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Selling</a></li>
@@ -562,7 +562,7 @@
                                               
                                             </ul></div>
                                             <div>  <h4 class="m-0 cl-000000 robotoMedium f-26">Community</h4>
-                                              <ul class="p-0 robotoRegular">
+                                              <ul class="p-0 robotoRegular footerUl">
                                                 <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Events</a></li>
                                                 <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Blog</a></li>
                                                 <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Forum</a></li>
@@ -580,7 +580,7 @@
                                         </div>
                                         <div class="pt-3"><button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 w-100 rounded" type="submit">Submit</button></div>
 
-                                        <div class="f-26 cl-bcbcbc pt-3">Follow us On</div>
+                                        <div class="f-26 cl-bcbcbc pt-3 footerUl">Follow us On</div>
                                         <div class="d-flex pt-3">
                                           <div><a href=""><img src="{{ asset('assets/frontend/images/fb.png') }}" class="img-fluid"></a></div>
                                           <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/insta.png') }}" alt="" srcset=""></a></div>
