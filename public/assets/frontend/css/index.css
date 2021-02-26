@@ -27,10 +27,10 @@ color: #fff !important;
     height: 44.21px;
 }
 .carousel-control-prev-icon {
-background-image: url('../images/left.png');
+background-image: url('../images/left.png') !important;
 }
 .carousel-control-next-icon {
-    background-image: url('../images/right.png');
+    background-image: url('../images/right.png') !important;
 }
 .carousel-control-next {
     right: -4%;
