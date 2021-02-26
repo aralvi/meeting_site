@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('frontend.index');
     
 });
-Route::get('frontend', function () {
+Route::get('appointment', function () {
     return view('frontend.appoinment');
 });
 Auth::routes();
