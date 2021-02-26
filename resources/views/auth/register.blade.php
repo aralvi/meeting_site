@@ -3,7 +3,6 @@
 {{-- head start --}}
 
 	@section('extra-css')
-
 		<link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/pages/register.css') }}">
 	@endsection
 {{-- head end --}}
