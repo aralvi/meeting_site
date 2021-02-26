@@ -24,8 +24,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
      
           <form class="form-inline my-2 my-lg-0 ml-auto cl-ffffff robotoRegular">
-            <button class="btn btn-outline-success border-0 my-2 my-sm-0 cl-ffffff  login_button" type="submit">Log In</button>
-            <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3" type="submit">Sign up</button><span>Business?</span>
+            <a href="{{route('login')}}"class="btn btn-outline-success border-0 my-2 my-sm-0 pt-2 pb-2 cl-ffffff  login_button" type="submit">Log In</a>
+            <a href="{{route('register')}}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3 login_button" type="submit">Sign up</a><span>Business?</span>
           </form>
         </div>
       </nav>
@@ -425,9 +425,9 @@
                                             <div class="row m-0">
                                                 <div class="col-md-3 col-lg-3 col-sm-12">
                                                  <div class="card border-0 box_shadow">
-                                                     <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}" class="card-img-top" alt="...">
+                                                     <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}" class="card-img-top" alt="...">
                                                      <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                         <img src="./assets/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png" alt="" srcset="">
+                                                         <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}" alt="" srcset="">
                                                        </div>
                                                      <div class="card-footer  bg-ffffff pt-4 pb-4">
                                                        <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
@@ -617,30 +617,3 @@
 
 
 
-
-<!-- <!doctype html>
-<html lang="en">
-  <head> -->
-    <!-- Required meta tags -->
-    <!-- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/css/index.css">
-  <link rel="stylesheet" href="./assets/css/utility.css">
-    <title>Learnmelive</title>
-  </head>
-  <body> -->
-
-
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>  -->

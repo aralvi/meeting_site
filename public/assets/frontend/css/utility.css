@@ -198,6 +198,14 @@ a:hover{
 .f-1rem{
   font-size: 1rem !important;
 }
+@media screen and (max-width: 1700px) and (min-width:1245px) {
+  .footerUl>li>a{
+      font-size: 16px !important;
+  }
+  /* .carousel-control-next-icon, .carousel-control-prev-icon {
+    height: 26.21px !important;
+} */
+  }
 @media screen and (max-width: 1300px){
   .main_padding{
     padding-left: 15px !important;
