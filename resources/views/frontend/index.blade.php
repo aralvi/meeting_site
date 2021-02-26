@@ -425,9 +425,9 @@
                                             <div class="row m-0">
                                                 <div class="col-md-3 col-lg-3 col-sm-12">
                                                  <div class="card border-0 box_shadow">
-                                                     <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}" class="card-img-top" alt="...">
+                                                     <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}" class="card-img-top" alt="...">
                                                      <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                         <img src="./assets/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png" alt="" srcset="">
+                                                         <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}" alt="" srcset="">
                                                        </div>
                                                      <div class="card-footer  bg-ffffff pt-4 pb-4">
                                                        <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
