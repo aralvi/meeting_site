@@ -17,6 +17,10 @@
     left: 0px;  
    
 }
+.login_button:hover{
+color: #fff !important;
+
+}
 .carousel-control-next-icon, .carousel-control-prev-icon {
     display: inline-block;
     width: 28.4px;

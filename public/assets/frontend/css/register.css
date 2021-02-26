@@ -116,3 +116,27 @@ background-color: #3AC574;
 .progress-bar{
   transition: none !important;
 }
+@media screen and (max-width: 1750px){
+  .padding-bottom-reg-1 {
+
+     padding-bottom: 165px !important;
+  }
+  .display-2 {
+    font-size: 3rem !important;
+
+  }
+  .join_Now{
+    margin-top: 15px !important;
+  }
+
+
+
+}
+@media screen and (max-width: 1300px){
+  .main_padding {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+
+}

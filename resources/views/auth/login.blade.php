@@ -18,7 +18,7 @@
           <div class="col-md-5 bg-register-img2 p-0">
             
               
-              <div class="text-center padding-bottom-reg-1 inner-padding">
+              <div class="text-center padding-bottom-reg-1  inner-padding">
                 <img
                   src="{{ asset('assets/frontend/images/register_logo.png') }}"
                   alt=""
@@ -42,9 +42,9 @@
               <div >
                   <div class="row pt-3">
                       <div class="col-md-12 text-center">
-                          <img src="{{ asset('assets/frontend/images/fb-icon.png') }}" alt="" class="img-fluid">
-                          <img src="{{ asset('assets/frontend/images/google.png') }}" alt="" class="img-fluid">
-                          <img src="{{ asset('assets/frontend/images/apple.png') }}" alt="" class="img-fluid">
+                     <a href="http://" target="_blank"><img src="{{ asset('assets/frontend/images/fb-icon.png') }}" alt="" class="img-fluid"></a>
+                        <a href="http://">  <img src="{{ asset('assets/frontend/images/google.png') }}" alt="" class="img-fluid"></a>
+                  <a href="http://">         <img src="{{ asset('assets/frontend/images/apple.png') }}" alt="" class="img-fluid"></a>
                       </div>
                   </div>
                   <div class="row pt-3">
@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class="text-center">
-                <h6 class="m-0 mt-4 cl-gray">
+                <h6 class="m-0 mt-4 cl-gray join_Now">
                   Not a member yet? 
                   <span class="cl-3AC574"> Join now</span>
                 </h6>

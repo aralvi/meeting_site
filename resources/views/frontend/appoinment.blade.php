@@ -56,7 +56,7 @@
                 >Blog <span class="sr-only">(current)</span></a
               >
             </li>
-            <li class="nav-item col-md-3">
+            <li class="nav-item col-md-3 p-0">
               <a class="nav-link cl-white" href="#">About us</a>
             </li>
             <li class="nav-item dropdown col-md-3 p-0">
@@ -249,9 +249,9 @@
               </div>
             </li>
             <li class="nav-item col-md-2">
-              <a class="nav-link cl-white" href="#">Spa</a>
+              <a class="nav-link cl-white " href="#">Spa</a>
             </li>
-            <li class="nav-item col-md-2">
+            <li class="nav-item col-md-2 ">
               <a class="nav-link" href="#"
                 ><img
                   src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"
