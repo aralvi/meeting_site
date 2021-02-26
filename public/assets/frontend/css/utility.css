@@ -6,6 +6,7 @@
 @font-face {
     font-family: robotoBold;
     src: url('../fonts/Roboto-Bold.ttf');
+    /* src: url('../fonts/Roboto-Bold.ttf'); */
   }
   @font-face {
     font-family: robotoLight;
@@ -18,6 +19,7 @@
   @font-face {
     font-family: robotoRegular;
     src: url('../fonts/Roboto-Regular.ttf');
+ 
   }
   .robotoBold{
     font-family: robotoBold !important;
