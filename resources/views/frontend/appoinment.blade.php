@@ -254,7 +254,7 @@
             <li class="nav-item col-md-2">
               <a class="nav-link" href="#"
                 ><img
-                  src="{{ asset('assets/frontend/images/navlogo.png') }}"
+                  src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"
                   alt=""
                   class="img-fluid w-75"
               /></a>
@@ -285,7 +285,7 @@
                           <div class="col-md-3 col-lg-3 col-sm-12 p-0 box_shadow1 borderRadius-12px pt-5 pb-5">
                            <div class="d-flex align-items-center flex-column">
                             <div class="dashboard_id text-center">
-                              <img src="{{ asset('assets/frontend/images/navlogo.png') }}" alt="">
+                              <img src="{{ asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}" alt="">
                               <div class="smallCircleActive"></div>
                             </div>
 
