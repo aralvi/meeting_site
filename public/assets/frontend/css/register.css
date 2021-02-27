@@ -7,9 +7,9 @@
             .w-24{
               width: 24px;
             }
-            .height-bottm {
+            /* .height-bottm {
                 height: 140px;
-            }
+            } */
             .join_Now{
               padding-bottom: 60px;
             }
@@ -18,12 +18,12 @@
             }
             
              .padding-top-reg {
-                padding-top: 30px;
+                padding-top: 35px;
             }
             
-            .padding-bottom-reg {
+            /* .padding-bottom-reg {
                 padding-bottom: 11.6rem;
-            }
+            } */
             
      .padding-bottom-reg-1 {
                 padding-bottom: 12rem;
@@ -68,7 +68,7 @@
                 background-size: cover;
                 border-bottom-left-radius: 25px;
                 width: 100%;
-                height: auto !important;
+                height: 44rem !important;
             }
             /* .bg-3AC574{
 background-color: #3AC574;
@@ -180,6 +180,9 @@ background-color: #3AC574;
               .display-2 {
                 font-size: 3rem !important;
                 font-family: robotoMedium !important;
+              }
+              .height-bottm{
+                font-size: 22px !important;
               }
 
             }
