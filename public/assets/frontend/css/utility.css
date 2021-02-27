@@ -3,6 +3,10 @@
     margin: 0px;
     box-sizing: border-box;
 }
+body{
+  width: 100%;
+  height: 100%;
+}
 @font-face {
     font-family: robotoBold;
     src: url('../fonts/Roboto-Bold.ttf');

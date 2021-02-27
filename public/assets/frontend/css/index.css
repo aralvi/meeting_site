@@ -24,7 +24,7 @@ color: #fff !important;
 .carousel-control-next-icon, .carousel-control-prev-icon {
     display: inline-block;
     width: 28.4px;
-    height: 44.21px;
+    height: 35.21px;
 }
 .carousel-control-prev-icon {
 background-image: url('../images/left.png') !important;
@@ -33,10 +33,10 @@ background-image: url('../images/left.png') !important;
     background-image: url('../images/right.png') !important;
 }
 .carousel-control-next {
-    right: -4%;
+    right: -3%;
 }
 .carousel-control-prev {
-    left: -4%;
+    left: -3%;
 }
 .h-599{
     height: 599px;
