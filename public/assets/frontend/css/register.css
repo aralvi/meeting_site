@@ -156,6 +156,15 @@ background-color: #3AC574;
                 transition: none !important
             }
             
+            @media (min-width:1800px) and (max-width: 2150px) {
+                .padding-top-reg {
+                    padding-top: 90px !important;
+                }
+                .bg-register-img2 {
+                    height: 47rem !important;
+                }
+
+            }
             @media screen and (max-width: 1750px) {
                 /* .padding-bottom-reg-1 {
                     padding-bottom: 165px !important;
@@ -192,9 +201,7 @@ background-color: #3AC574;
               .height-bottm{
                 font-size: 22px !important;
               }
-              .
-              element.style {
-              }
+            
               .dot-50 {
                 left: 146px !important;
               }

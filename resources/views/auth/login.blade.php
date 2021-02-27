@@ -93,13 +93,13 @@
                 </div>
                 <div class="col-md-6 text-right">
 
-                    <h6 class="cl-3AC574">Forgotten password</h6>
+                    <h6 class="cl-3AC574">  <a href="#" class="cl-3AC574" >Forgotten password</a></h6>
                 </div>
               </div>
               <div class="text-center">
                 <h6 class="m-0 mt-4 cl-gray join_Now">
                   Not a member yet? 
-                  <span class="cl-3AC574"> Join now</span>
+                  <span> <a href="{{route('register')}}" class="cl-3AC574" >Join now</a></span>
                 </h6>
               </div>
             </div>
