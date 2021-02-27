@@ -81,7 +81,7 @@
 
                                     <div class="input-group mb-3 border-input pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="confirmed_password" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
+                                        <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
 
                                     <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />

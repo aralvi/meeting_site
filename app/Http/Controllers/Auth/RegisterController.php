@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Specialist;
 
 class RegisterController extends Controller
 {
@@ -50,11 +51,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
-
+            'payment_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'payment_password' => ['required'],
+            'payment_method' => ['required'],
+            'business_name' => ['required', 'string'],
+            'business_phone' => ['required', 'string'],
+            'business_location' => ['required', 'string'],
         ]);
     }
 
@@ -66,12 +71,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'user_type' => 'customer',
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+        $user = User::create([
+            'user_type' => 'specialist',
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'payment_password' => $data['password'],
+            'payment_email'=>$data['payment_email'],
+            'payment_method'=>$data['payment_method'],
+            'status'=>'inactive'
         ]);
+
+        $specialist = new Specialist();
+        $specialist->user_id = $user->id;
+        $specialist->category_id = 1;
+        $specialist->sub_category_id = json_encode([1,2]);
+        $specialist->business_phone = $data['business_phone'];
+        $specialist->business_name = $data['business_name'];
+        $specialist->business_location = $data['business_location'];
+        $specialist->opening_hours = 123456789;
+        $specialist->save();
+        return $user;
     }
 }
