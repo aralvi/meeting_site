@@ -49,20 +49,20 @@
                                     <div class="">Already Login?</div>
                                     <div class="pr-4 h5"><a href="#" class="cl-3AC574">Login</a></div>
                                 </div>
-                                <div class="h1 text-center cl-3AC574 pt-2">Register</div>
+                                <div class="h1 text-center cl-3AC574 pt-0">Register</div>
                                 <div class="pl-5 pr-5">
-                                    <div class="input-group mb-3 border-input pt-5">
-										<span><img src="{{ asset('assets/frontend/images/shoping cart-8.png') }}" alt="" /></span>
+                                    <div class="input-group  border-input pt-1">
+										<span><img src="{{ asset('assets/frontend/images/shoping cart-8.png') }}" class="w-24" alt="" /></span>
                                         <span class="w-75">
                                             <input type="text" class="form-control border-0" placeholder="What is the name of your business?" id="business_name" aria-label="" aria-describedby="basic-addon1"/>
                                         </span>
                                     </div>
-                                    <label class="cl-3AC574 m-0">
-                                        <span><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></span>
+                                    <label class="cl-3AC574 ml-0 mr-0 mt-3">
+                                        <span><img src="{{ asset('assets/frontend/images/Path 122.png') }}" class="w-24" alt="" /></span>
                                         <span class="pl-1 cl-3AC574 h6">Link to your Public Profile</span>
                                     </label>
                                     <div class="input-group mb-3 border-input pt-0 pl-3">
-                                        <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" aria-label="" aria-describedby="basic-addon1" />
+                                        <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" aria-label="" aria-describedby="basic-addon1" required />
                                     </div>
                                     <div class="input-group mb-3 border-input pt-4">
                                         <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
@@ -86,19 +86,21 @@
 
                                     <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step1" value="Continue Creating Account" />
                                     <div class="pt-4 cl-gray">
-                                        <p>
+                                    <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2 mb-3 text-white btnstep" value="Continue Creating Account" />
+                                    <div class="pt-1 f-13 cl-gray">
+                                        <p class="mb-1">
                                             By Sigining up I agree the
                                             <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
                                             <span ><a href="#" class="cl-3AC574">privacy policy </a> </span>
                                         </p>
                                     </div>
                                     <div class="text-center">
-                                        <h6 class="m-0 mb-5 pr-4 pb-2 border-bottom cl-gray">
+                                        <h6 class="m-0  pr-4   cl-gray f-10 pb-5">
                                             Message & Data Rates may Apply
                                         </h6>
                                     </div>
                                 </div>
-                                <span data-page="1" id="" class="inputBtn next action-button" onclick="btnClicK('dot-50','width-50','Enter contact Detail <br> for your business')"></span>
+                                <span data-page="1" id="" class="inputBtn next action-button " onclick="btnClicK('dot-50','width-50','Enter contact Detail <br> for your business')"></span>
                             </fieldset>
 
                             <fieldset>
@@ -146,6 +148,10 @@
                                     <div class="">Already Login?</div>
                                     <div class="pr-4 cl-3AC574 h5">Login</div>
                                 </div>
+                                <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
+                    <div class="pl-5 pr-5">
+                        <div class="row pt-4">
+                            <div class="col-md-12 d-flex justify-content-center">
                                 <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
                                 <div class="pl-5 pr-5">
                                     <div class="row pt-4">

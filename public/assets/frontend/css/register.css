@@ -4,22 +4,30 @@
                 background-repeat: no-repeat;
                 background-size: cover;
             }
-            
+            .w-24{
+              width: 24px;
+            }
             .height-bottm {
                 height: 140px;
             }
+            .join_Now{
+              padding-bottom: 60px;
+            }
+            .pt-30{
+              
+            }
             
-            .padding-top-reg {
-                padding-top: 5rem;
+             .padding-top-reg {
+                padding-top: 30px;
             }
             
             .padding-bottom-reg {
                 padding-bottom: 11.6rem;
             }
             
-            .padding-bottom-reg-1 {
-                padding-bottom: 18.3rem;
-            }
+     .padding-bottom-reg-1 {
+                padding-bottom: 12rem;
+            }  
             
             .padding-left-reg {
                 padding-left: 8rem !important;
@@ -32,10 +40,14 @@
             .box-shadow-reg {
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, -0.8), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
             }
-            
-            .inner-padding {
-                padding-top: 5.2rem;
+            .display-2 {
+              font-size: 5rem;
+              font-family: robotoMedium !important;
             }
+            
+            /* .inner-padding {
+                padding-top: 5.2rem;
+            } */
             /* .form-radius {
   border-radius: 15px;
 } */
@@ -45,6 +57,9 @@
   background-repeat: no-repeat;
   background-size: initial; 
 } */
+               .inner-padding{
+                 padding-top: 45px;
+               }
             
             .bg-register-img2 {
                 background-image: url("../images/register-img.png");
@@ -53,15 +68,15 @@
                 background-size: cover;
                 border-bottom-left-radius: 25px;
                 width: 100%;
-                height: 100%;
+                height: auto !important;
             }
             /* .bg-3AC574{
 background-color: #3AC574;
 } */
             
-            .font-600 {
+            /* .font-600 {
                 font-weight: 600 !important;
-            }
+            } */
             
             .rounded-right-reg {
                 border-radius: 25px;
@@ -121,9 +136,8 @@ background-color: #3AC574;
                 width: 50%;
                 background-color: white !important;
             }
-            
             .dot-50 {
-                left: 165px;
+                left: 180px !important;
             }
             
             .width-100 {
@@ -132,7 +146,7 @@ background-color: #3AC574;
             }
             
             .dot-100 {
-                left: 332px;
+                left: 340px !important;
             }
             
             .progress-bar {
@@ -140,15 +154,15 @@ background-color: #3AC574;
             }
             
             @media screen and (max-width: 1750px) {
-                .padding-bottom-reg-1 {
+                /* .padding-bottom-reg-1 {
                     padding-bottom: 165px !important;
-                }
-                .display-2 {
+                } */
+                /* .display-2 {
                     font-size: 3rem !important;
                 }
                 .join_Now {
                     margin-top: 15px !important;
-                }
+                } */
             }
             
             @media screen and (max-width: 1300px) {
@@ -156,4 +170,16 @@ background-color: #3AC574;
                     padding-left: 15px !important;
                     padding-right: 15px !important;
                 }
+                .display-2 {
+                  font-size: 3rem;
+                  font-family: robotoMedium !important;
+                }
+            }
+            @media screen and (max-width: 1750px) {
+
+              .display-2 {
+                font-size: 3rem !important;
+                font-family: robotoMedium !important;
+              }
+
             }
