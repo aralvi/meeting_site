@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-2">Register</div>
                                 <div class="pl-5 pr-5">
-                                    <div class="input-group mb-3 border-input pt-5">
+                                    <div class="input-group mb-3 border-input pt-2">
 										<span><img src="{{ asset('assets/frontend/images/shoping cart-8.png') }}" alt="" /></span>
                                         <span class="w-75">
                                             <input type="text" class="form-control border-0" placeholder="What is the name of your business?" name="business_name" id="business_name" aria-label="" aria-describedby="basic-addon1"/>
@@ -64,36 +64,36 @@
                                     <div class="input-group mb-3 border-input pt-0 pl-3">
                                         <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" name="website" aria-label="" aria-describedby="basic-addon1" />
                                     </div>
-                                    <div class="input-group mb-3 border-input pt-4">
+                                    <div class="input-group mb-3 border-input pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
                                         <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
 
-                                    <div class="input-group mb-3 border-input pt-4">
+                                    <div class="input-group mb-3 border-input pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
                                         <span class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></span>
                                     </div>
 
-                                    <div class="input-group mb-3 border-input pt-4 mb-4">
+                                    <div class="input-group mb-3 border-input pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
                                         <span class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
 
-                                    <div class="input-group mb-3 border-input pt-4 mb-4">
+                                    <div class="input-group mb-3 border-input pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
                                         <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="confirmed_password" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
 
-                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step1" value="Continue Creating Account" />
-                                    <div class="pt-4 cl-gray">
-                                        <p>
+                                    <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
+                                    <div class="pt-2 f-14 cl-gray">
+                                        <p class="mb-1">
                                             By Sigining up I agree the
                                             <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
                                             <span ><a href="#" class="cl-3AC574">privacy policy </a> </span>
                                         </p>
                                     </div>
                                     <div class="text-center">
-                                        <h6 class="m-0 mb-5 pr-4 pb-2 border-bottom cl-gray">
+                                        <h6 class="m-0 mb-5 pr-4 pb-2 cl-gray f-14">
                                             Message & Data Rates may Apply
                                         </h6>
                                     </div>
