@@ -16,8 +16,9 @@ class CreateSpecialistsTable extends Migration
         Schema::create('specialists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
+            $table->string('business_name')->nullable();
             $table->string('business_phone')->nullable();
-            $table->string('bussiness_location')->nullable();
+            $table->string('business_location')->nullable();
             $table->string('opening_hours');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
