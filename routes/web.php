@@ -21,5 +21,10 @@ Route::get('/', function () {
 Route::get('appointment', function () {
     return view('frontend.appoinment');
 })->name('appointment');
+
+Route::get('portfolio', function () {
+    return view('frontend.portfolio');
+    
+})->name('index');
 Auth::routes();
 

@@ -13,7 +13,7 @@
 	@section('content')
 		
 	<div class="bg-register-img">
-      <div class="padding-top-reg main_padding">
+      <div class="padding-top-reg main_padding pt-30">
         <div class="row m-0 box-shadow-reg form-radius rounded-right-reg">
           <div class="col-md-5 bg-register-img2 p-0">
             

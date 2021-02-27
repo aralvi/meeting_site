@@ -3,7 +3,12 @@
 {{-- head start --}}
 
 	@section('extra-css')
-	
+	   <style type="text/css">
+            .placeholder-color-change::-webkit-input-placeholder {
+                color: #e91e63;
+             }
+
+       </style>
 	@endsection
 {{-- head end --}}
 
@@ -37,7 +42,8 @@
                         </div>
                     </div>
                     <div class="col-md-7 padding-right-reg padding-left-reg bg-white rounded-right-reg">
-                        <form class="steps" action="form_value.php" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
+                        <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
+                            @csrf
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Login?</div>
@@ -45,10 +51,10 @@
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-2">Register</div>
                                 <div class="pl-5 pr-5">
-                                    <div class="input-group mb-3 border-input pt-5">
+                                    <div class="input-group mb-3 border-input pt-2">
 										<span><img src="{{ asset('assets/frontend/images/shoping cart-8.png') }}" alt="" /></span>
                                         <span class="w-75">
-                                            <input type="text" class="form-control border-0" placeholder="What is the name of your business?" aria-label="" aria-describedby="basic-addon1"/>
+                                            <input type="text" class="form-control border-0" placeholder="What is the name of your business?" name="business_name" id="business_name" aria-label="" aria-describedby="basic-addon1"/>
                                         </span>
                                     </div>
                                     <label class="cl-3AC574 m-0">
@@ -56,37 +62,45 @@
                                         <span class="pl-1 cl-3AC574 h6">Link to your Public Profile</span>
                                     </label>
                                     <div class="input-group mb-3 border-input pt-0 pl-3">
-                                        <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" aria-label="" aria-describedby="basic-addon1" />
+                                        <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" name="website" aria-label="" aria-describedby="basic-addon1" />
                                     </div>
-                                    <div class="input-group mb-3 border-input pt-4">
+                                    <div class="input-group mb-3 border-input pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" aria-label="" aria-describedby="basic-addon1" /></span>
-                                    </div>
-                                    <div class="input-group mb-3 border-input pt-4">
-                                        <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your email" aria-label="" aria-describedby="basic-addon1" /></span>
-                                    </div>
-                                    <div class="input-group mb-3 border-input pt-4 mb-4">
-                                        <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your password" aria-label="" aria-describedby="basic-addon1" /></span>
+                                        <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
 
-                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep" value="Continue Creating Account" />
-                                    <div class="pt-4 cl-gray">
-                                        <p>
+                                    <div class="input-group mb-3 border-input pt-3">
+                                        <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                                        <span class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></span>
+                                    </div>
+
+                                    <div class="input-group mb-3 border-input pt-3">
+                                        <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                                        <span class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></span>
+                                    </div>
+
+                                    <div class="input-group mb-3 border-input pt-3">
+                                        <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                                        <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="confirmed_password" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
+                                    </div>
+
+                                    <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
+                                    <div class="pt-2 f-14 cl-gray">
+                                        <p class="mb-1">
                                             By Sigining up I agree the
                                             <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
                                             <span ><a href="#" class="cl-3AC574">privacy policy </a> </span>
                                         </p>
                                     </div>
                                     <div class="text-center">
-                                        <h6 class="m-0 mb-5 pr-4 pb-2 border-bottom cl-gray">
+                                        <h6 class="m-0 mb-5 pr-4 pb-2 cl-gray f-14">
                                             Message & Data Rates may Apply
                                         </h6>
                                     </div>
                                 </div>
                                 <span data-page="1" id="" class="inputBtn next action-button" onclick="btnClicK('dot-50','width-50','Enter contact Detail <br> for your business')"></span>
                             </fieldset>
+
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Login?</div>
@@ -96,12 +110,12 @@
                                 <div class="pl-5 pr-5">
                                     <div class="input-group mb-3 border-input pt-5">
                                         <span><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></span>
-                                        <span class="w-75"> <input type="text" class="form-control border-0" placeholder="What is your business phone number" aria-label="" aria-describedby="basic-addon1" /></span>
+                                        <span class="w-75"> <input type="text" class="form-control border-0" placeholder="What is your business phone number" name="business_phone" id="business_phone" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
 
                                     <div class="input-group mb-3 border-input pt-4">
                                         <span><img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="text ml-4" class="form-control border-0" placeholder="Enter your business location" aria-label="" aria-describedby="basic-addon1" /></span>
+                                        <span class="w-75"><input type="text ml-4" class="form-control border-0" placeholder="Enter your business location" name="business_location" id="business_location" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
                                     <div class="input-group mb-3 border-input pt-4" >
                                         <span><img src="{{ asset('assets/frontend/images/selection-8 (1).png') }}" alt="" /></span>
@@ -122,52 +136,53 @@
                                             data-target="#exampleModalLong"
                                         />
                                     </div>
-                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep" value="Continue" />
+                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step2" value="Continue" />
                                 </div>
                                 <span data-page="2" id="" class="inputBtn next action-button" onclick="btnClicK('dot-100','width-100','Please enter your Banking<br>information in order to <br> receive payouts.')"></span>
                             </fieldset>
+
                             <fieldset>
-                            <div class="text-right pt-4">
-                        <div class="">Already Login?</div>
-                        <div class="pr-4 cl-3AC574 h5">Login</div>
-                    </div>
-                    <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
-                    <div class="pl-5 pr-5">
-                        <div class="row pt-4">
-                            <div class="col-md-12 d-flex justify-content-center">
-
-                                <div class="bg-success ml-2 mr-2 pl-3 pr-3 active rounded border w-25">
-                                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" onclick="radio(this)">
-                                    <label class="btn text-white pl-0" for="option1">
-                                    Stripe  
-                                      </label>
+                                <div class="text-right pt-4">
+                                    <div class="">Already Login?</div>
+                                    <div class="pr-4 cl-3AC574 h5">Login</div>
                                 </div>
-                                <div class=" ml-4 mr-4 pl-2 pr-2 rounded border">
-                                    <input type="radio" name="options" id="option2" autocomplete="off" onclick="radio(this)">
-                                    <label class="btn " for="option2">Paypal</label>
+                                <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
+                                <div class="pl-5 pr-5">
+                                    <div class="row pt-4">
+                                        <div class="col-md-12 d-flex justify-content-center">
 
+                                            <div class="bg-success ml-2 mr-2 pl-2 pr-2 active rounded border">
+                                                <input type="radio" class="btn-check" name="payment_method" id="option1" autocomplete="off" checked onclick="radio(this)" value="stripe">
+                                                <label class="btn text-white" for="option1">
+                                                Stripe  
+                                                  </label>
+                                            </div>
+                                            <div class=" ml-4 mr-4 pl-2 pr-2 rounded border">
+                                                <input type="radio" class="btn-check" name="payment_method" id="option2" autocomplete="off" onclick="radio(this)"  value="paypal">
+                                                <label class="btn " for="option2">Paypal</label>
+
+                                            </div>
+                                            <div class=" ml-2 mr-2 pl-2 pr-2 rounded border">
+                                                <input type="radio" class="btn-check" name="payment_method" id="option4" autocomplete="off" onclick="radio(this)" value="payoneer">
+                                                <label class="btn " for="option4">Payoneer</label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="input-group mb-3 border-input pt-4 mb-4 mt-5">
+                                        <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                                        <span><input type="email" id="payment_email" class="form-control border-0" placeholder="Enter your email" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></span>
+                                    </div>
+                                    <div class="input-group mb-3 border-input pt-4 mb-4">
+                                        <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                                        <span><input type="password" class="form-control border-0" placeholder="Enter your password" id="payment_password" aria-label="" aria-describedby="basic-addon1" name="payment_password" /></span>
+                                    </div>
+                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step3" value="Continue" />
+                                   
                                 </div>
-                                <div class=" ml-2 mr-2 pl-2 pr-2 rounded border">
-                                    <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off" onclick="radio(this)">
-                                    <label class="btn " for="option4">Payoneer</label>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="input-group mb-3 border-input pt-4 mb-4 mt-5">
-                            <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                            <span><input type="text" class="form-control border-0" placeholder="Enter your password" aria-label="" aria-describedby="basic-addon1" /></span>
-                        </div>
-                        <div class="input-group mb-3 border-input pt-4 mb-4">
-                            <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                            <span><input type="text" class="form-control border-0" placeholder="Enter your password" aria-label="" aria-describedby="basic-addon1" /></span>
-                        </div>
-                        <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep" value="Continue" />
-                       
-                    </div>
-                    <span data-page="3" id="" class="inputBtn next action-button"></span>
+                                <span data-page="3" id="" class="inputBtn next action-button"></span>
                             </fieldset>
                         </form>
                     </div>
@@ -292,8 +307,6 @@
           <button type="button" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
         </div>
     </div>
-</div>
-</div>
 <!-- Modal 1st code end-->
 <!-- Modal 2nd code start-->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -511,33 +524,48 @@
 
 	@section('extra-script')
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-	<script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
-	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
-    <script>
-    const radio = (ele) => {
+    	<script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+    	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
+    	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+        <script>
+            const radio = (ele) => {
 
-        $(ele).parent().addClass('bg-success');
-        $(ele).parent().siblings().removeClass('bg-success');
-        $(ele).parent().siblings().find('label').removeClass('text-white');
-        // $(ele).siblings().removeClass('text-white');
-        $(ele).siblings().addClass('text-white');
+                $(ele).parent().addClass('bg-success');
+                $(ele).parent().siblings().removeClass('bg-success');
+                $(ele).parent().siblings().find('label').removeClass('text-white');
+                // $(ele).siblings().removeClass('text-white');
+                $(ele).siblings().addClass('text-white');
 
-    }
-   
-</script>
-	<script>
-            const btnClicK =(className,parentClass ,txtLeft)=>{
-              let v =  $('.white-dot')
-             $('.left-text').html(txtLeft);
-              v.addClass(className);
-              v.siblings().addClass(parentClass);
             }
+           
+            function inptFieldValidate(id)
+            {
+                if($(id).val() =='')
+                {
+                    $(id).addClass('placeholder-color-change');
+                    $(id).parent('span').parent('div').removeClass('border-input');
+                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    return false;
+                }
+                $(id).removeClass('placeholder-color-change');
+                $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                return true;
+            }
+
+        </script>
+
+    	<script>
+                const btnClicK =(className,parentClass ,txtLeft)=>{
+                  let v =  $('.white-dot')
+                 $('.left-text').html(txtLeft);
+                  v.addClass(className);
+                  v.siblings().addClass(parentClass);
+                }
         </script>
         <script>
             var testObject = [];
@@ -943,9 +971,26 @@
                 }
             }
         </script>
+
         <script>
-            $(document.body).on("click", "input.btnstep", function () {
-                let v = $(this).parent("div").siblings("span.inputBtn").click();
+           
+            $(document.body).on("click", "input.step1", function () {
+
+                if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && inptFieldValidate($('#password')))
+                {$(this).parent("div").siblings("span.inputBtn").click();}
+            });
+
+            $(document.body).on("click", "input.step2", function () {
+                if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')))
+                {$(this).parent("div").siblings("span.inputBtn").click();}
+            });
+
+            $(document.body).on("click", "input.step3", function () {
+                if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
+                {
+                    $('#registerForm').submit();
+                }
+                // let v = $(this).parent("div").siblings("span.inputBtn").click();
             });
         </script>
 		
