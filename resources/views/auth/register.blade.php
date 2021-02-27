@@ -136,9 +136,9 @@
                         <div class="row pt-4">
                             <div class="col-md-12 d-flex justify-content-center">
 
-                                <div class="bg-success ml-2 mr-2 pl-2 pr-2 active rounded border">
+                                <div class="bg-success ml-2 mr-2 pl-3 pr-3 active rounded border w-25">
                                     <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" onclick="radio(this)">
-                                    <label class="btn text-white" for="option1">
+                                    <label class="btn text-white pl-0" for="option1">
                                     Stripe  
                                       </label>
                                 </div>

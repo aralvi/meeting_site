@@ -121,9 +121,8 @@ background-color: #3AC574;
                 width: 50%;
                 background-color: white !important;
             }
-            
             .dot-50 {
-                left: 165px;
+                left: 180px !important;
             }
             
             .width-100 {
@@ -132,7 +131,7 @@ background-color: #3AC574;
             }
             
             .dot-100 {
-                left: 332px;
+                left: 340px !important;
             }
             
             .progress-bar {

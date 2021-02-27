@@ -40,9 +40,9 @@
     display: inline-block; */
     }
     
-    .steps input[type=radio] {
-    width: 60px !important;
-    }
+    /* .steps input[type=radio] {
+    width: 50px !important;
+    } */
     
     .steps input,
     .steps textarea {
