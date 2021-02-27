@@ -1,118 +1,159 @@
-body {    
-  background-image: url('../images/register-bg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
-
-  .height-bottm {
-height: 140px;
-  }
-.padding-top-reg {
-  padding-top: 5rem;
-}
-.padding-bottom-reg {
-  padding-bottom: 11.6rem;
-}
-.padding-bottom-reg-1 {
-  padding-bottom: 18.3rem;
-}
-.padding-left-reg {
-  padding-left: 8rem !important;
-}
-.padding-right-reg {
-  padding-right: 8rem !important;
-}
-.box-shadow-reg {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, -0.8), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.inner-padding {
-  padding-top: 5.2rem;
-}
-/* .form-radius {
+            body {
+                background-image: url('../images/register-bg.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            .height-bottm {
+                height: 140px;
+            }
+            
+            .padding-top-reg {
+                padding-top: 5rem;
+            }
+            
+            .padding-bottom-reg {
+                padding-bottom: 11.6rem;
+            }
+            
+            .padding-bottom-reg-1 {
+                padding-bottom: 18.3rem;
+            }
+            
+            .padding-left-reg {
+                padding-left: 8rem !important;
+            }
+            
+            .padding-right-reg {
+                padding-right: 8rem !important;
+            }
+            
+            .box-shadow-reg {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, -0.8), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            
+            .inner-padding {
+                padding-top: 5.2rem;
+            }
+            /* .form-radius {
   border-radius: 15px;
 } */
-/* .bg-register-img {
+            /* .bg-register-img {
   background-image: url("../images/register-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: initial; 
 } */
-.bg-register-img2 {
-  background-image: url("../images/register-img.png");
-  background-position: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-bottom-left-radius: 25px;
-  width: 100%;
-  height: 100%;
-}
-/* .bg-3AC574{
+            
+            .bg-register-img2 {
+                background-image: url("../images/register-img.png");
+                background-position: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-bottom-left-radius: 25px;
+                width: 100%;
+                height: 100%;
+            }
+            /* .bg-3AC574{
 background-color: #3AC574;
 } */
-.font-600 {
-  font-weight: 600 !important;
-}
-.rounded-right-reg {
-  border-radius: 25px;
-}
-.border-input {
-  border: 0;
-  border-radius: 0px;
-  border-bottom: 1px solid lightgray !important;
-}
-.form-control:focus {
-  box-shadow: 0 0 0 0 !important;
-  border-bottom: 1px solid gray;
-}
-.form-control::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgb(196, 193, 193);
-}
-.cl-gray{
-  color: gray !important;
-}
-.bg-gray{
-  background-color:#b9b9b9 !important;
-}
-.bg-3AC574{
-  background-color: #3AC574 !important;
-}
-.cl-3AC574{
-  color: #3AC574 !important;
-}
-.border-3AC574{
-  border :1px solid #3AC574 !important; 
-}
-.progress-height{
-  height: 6px !important;
-}
-.white-dot{
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  background-color:#fff;
-  z-index: 11;
-  position: absolute;
-  margin-top: -5px;
-}
-.width-50{
-  width: 50%;
-  background-color: white !important;
-}
-.dot-50{
-  left: 165px;
-  
-}
-.width-100{
-  width: 100%;
-  background-color: white !important;
-  
-}
-.dot-100{
-  left: 322px;
-  
-}
-.progress-bar{
-  transition: none !important;
-}
+            
+            .font-600 {
+                font-weight: 600 !important;
+            }
+            
+            .rounded-right-reg {
+                border-radius: 25px;
+            }
+            
+            .border-input {
+                border: 0;
+                border-radius: 0px;
+                border-bottom: 1px solid lightgray !important;
+            }
+            
+            .form-control:focus {
+                box-shadow: 0 0 0 0 !important;
+                border-bottom: 1px solid gray;
+            }
+            
+            .form-control::placeholder {
+                /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: rgb(196, 193, 193);
+            }
+            
+            .cl-gray {
+                color: gray !important;
+            }
+            
+            .bg-gray {
+                background-color: #b9b9b9 !important;
+            }
+            
+            .bg-3AC574 {
+                background-color: #3AC574 !important;
+            }
+            
+            .cl-3AC574 {
+                color: #3AC574 !important;
+            }
+            
+            .border-3AC574 {
+                border: 1px solid #3AC574 !important;
+            }
+            
+            .progress-height {
+                height: 6px !important;
+            }
+            
+            .white-dot {
+                width: 15px;
+                height: 15px;
+                border-radius: 100%;
+                background-color: #fff;
+                z-index: 11;
+                position: absolute;
+                margin-top: -5px;
+            }
+            
+            .width-50 {
+                width: 50%;
+                background-color: white !important;
+            }
+            
+            .dot-50 {
+                left: 165px;
+            }
+            
+            .width-100 {
+                width: 100%;
+                background-color: white !important;
+            }
+            
+            .dot-100 {
+                left: 332px;
+            }
+            
+            .progress-bar {
+                transition: none !important
+            }
+            
+            @media screen and (max-width: 1750px) {
+                .padding-bottom-reg-1 {
+                    padding-bottom: 165px !important;
+                }
+                .display-2 {
+                    font-size: 3rem !important;
+                }
+                .join_Now {
+                    margin-top: 15px !important;
+                }
+            }
+            
+            @media screen and (max-width: 1300px) {
+                .main_padding {
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                }
+            }

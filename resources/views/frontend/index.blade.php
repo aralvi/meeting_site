@@ -24,8 +24,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
      
           <form class="form-inline my-2 my-lg-0 ml-auto cl-ffffff robotoRegular">
-            <button class="btn btn-outline-success border-0 my-2 my-sm-0 cl-ffffff  login_button" type="submit">Log In</button>
-            <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3" type="submit">Sign up</button><span>Business?</span>
+            <a href="{{route('login')}}"class="btn btn-outline-success border-0 my-2 my-sm-0 pt-2 pb-2 cl-ffffff  login_button" type="submit">Log In</a>
+            <a href="{{route('register')}}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3 login_button" type="submit">Sign up</a><span>Business?</span>
           </form>
         </div>
       </nav>
