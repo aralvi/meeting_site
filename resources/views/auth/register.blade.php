@@ -184,6 +184,247 @@
                                 </div>
                                 <span data-page="3" id="" class="inputBtn next action-button"></span>
                             </fieldset>
+
+                            <!-- Modal 1st code start-->
+                            <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog border-1" role="document">
+                                    <div class="modal-content pt-4">
+                                        <div class="modal-header border-0 pl-5 pr-5 ">
+                                          <h2 class="modal-title cl-gray" id="exampleModalLabel">Main Category</h2>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body pl-5 pr-5 pt-0">
+                                            <select class="custom-select" name="category_id">
+                                                <option value="1">It Service</option>
+                                            </select>
+                                        </div>
+                                            <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">Business Category</h2>
+                                            <div class="border overflow-scroll-reg pl-5 mt-2">
+                                                <div class="custom-control custom-checkbox">
+                                                  <input type="checkbox" class="custom-control-input" name="sub_category_id[]" id="customCheck1" value="1">
+                                                  <label class="custom-control-label" for="customCheck1">Web Development</label>
+                                                </div>
+                                            </div>
+
+                                        <div class="modal-footer m-auto border-0">
+                                          <button type="button" onclick="$('.close').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal 1st code end-->
+
+                            <!-- Modal 2nd code start-->
+                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog border-1" role="document">
+                                    <div class="modal-content pt-4">
+                                        <div class="modal-header  border-0 pl-5 pr-5 ">
+                                          <h1 class="modal-title cl-gray" id="exampleModalLabel">Opening hours</h1>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="pl-4 mt-2">
+                                            <div class="border-bottom custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck101">
+                                            <label class="custom-control-label mr-5" for="customCheck101">Monday</label>
+
+                                            <select class="custom-select-reg ml-5 mr-2">
+                                                  <option value="1">1:00 AM</option>
+                                                  <option value="2">2:00 AM</option>
+                                                  <option value="3">3:00 AM</option>
+                                                  <option value="4">4:00 AM</option>
+                                                  <option value="5">5:00 AM</option>
+                                                  <option value="6">6:00 AM</option>
+                                                  <option value="7">7:00 AM</option>
+                                                  <option value="8">8:00 AM</option>
+                                                  <option value="9">9:00 AM</option>
+                                                  <option selected>10:00 AM</option>
+                                                  <option value="10">11:00 AM</option>
+                                                  <option value="11">12:00 AM</option>
+                                            </select>
+                                            -
+                                            <select class="custom-select-reg ml-2">
+                                                <option value="1">1:00 PM</option>
+                                                <option value="2">2:00 PM</option>
+                                                <option value="3">3:00 PM</option>
+                                                <option value="4">4:00 PM</option>
+                                                <option value="5">5:00 PM</option>
+                                                <option value="6">6:00 PM</option>
+                                                <option selected>7:00 PM</option>
+                                                <option value="7">8:00 PM</option>
+                                                <option value="8">9:00 PM</option>
+                                                <option value="9">10:00 PM</option>
+                                                <option value="10">11:00 PM</option>
+                                                <option value="11">12:00 PM</option>
+                                            </select>
+                                            <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                                            </div>
+                                            <div class="border-bottom custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="customCheck102">
+                                              <label class="custom-control-label mr-5" for="customCheck102">Tuesday</label>
+
+                                                <select class="custom-select-reg ml-5 mr-2">
+                                                  <option value="1">1:00 AM</option>
+                                                  <option value="2">2:00 AM</option>
+                                                  <option value="3">3:00 AM</option>
+                                                  <option value="4">4:00 AM</option>
+                                                  <option value="5">5:00 AM</option>
+                                                  <option value="6">6:00 AM</option>
+                                                  <option value="7">7:00 AM</option>
+                                                  <option value="8">8:00 AM</option>
+                                                  <option value="9">9:00 AM</option>
+                                                  <option selected>10:00 AM</option>
+                                                  <option value="10">11:00 AM</option>
+                                                  <option value="11">12:00 AM</option>
+                                                </select>
+                                                -
+                                                <select class="custom-select-reg ml-2">
+                                                    <option value="1">1:00 PM</option>
+                                                    <option value="2">2:00 PM</option>
+                                                    <option value="3">3:00 PM</option>
+                                                    <option value="4">4:00 PM</option>
+                                                    <option value="5">5:00 PM</option>
+                                                    <option value="6">6:00 PM</option>
+                                                    <option selected>7:00 PM</option>
+                                                    <option value="7">8:00 PM</option>
+                                                    <option value="8">9:00 PM</option>
+                                                    <option value="9">10:00 PM</option>
+                                                    <option value="10">11:00 PM</option>
+                                                    <option value="11">12:00 PM</option>
+                                                </select>
+                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                                            </div>
+
+                                            <div class="border-bottom custom-control custom-checkbox">
+                                               <input type="checkbox" class="custom-control-input" id="customCheck103">
+                                               <label class="custom-control-label mr-2" for="customCheck103">Wednessday</label>
+                                              
+                                                <select class="custom-select-reg ml-5 mr-2">
+                                                  <option value="1">1:00 AM</option>
+                                                  <option value="2">2:00 AM</option>
+                                                  <option value="3">3:00 AM</option>
+                                                  <option value="4">4:00 AM</option>
+                                                  <option value="5">5:00 AM</option>
+                                                  <option value="6">6:00 AM</option>
+                                                  <option value="7">7:00 AM</option>
+                                                  <option value="8">8:00 AM</option>
+                                                  <option value="9">9:00 AM</option>
+                                                  <option selected>10:00 AM</option>
+                                                  <option value="10">11:00 AM</option>
+                                                  <option value="11">12:00 AM</option>
+                                                </select>
+                                                -
+                                                <select class="custom-select-reg ml-2">
+                                                    <option value="1">1:00 PM</option>
+                                                    <option value="2">2:00 PM</option>
+                                                    <option value="3">3:00 PM</option>
+                                                    <option value="4">4:00 PM</option>
+                                                    <option value="5">5:00 PM</option>
+                                                    <option value="6">6:00 PM</option>
+                                                    <option selected>7:00 PM</option>
+                                                    <option value="7">8:00 PM</option>
+                                                    <option value="8">9:00 PM</option>
+                                                    <option value="9">10:00 PM</option>
+                                                    <option value="10">11:00 PM</option>
+                                                    <option value="11">12:00 PM</option>
+                                                </select>
+                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                                            </div>
+                                            <div class="border-bottom custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck104">
+                                                <label class="custom-control-label mr-4 pr-3" for="customCheck104">Thursday</label>
+                                              
+                                                <select class="custom-select-reg ml-5 mr-2">
+                                                  <option value="1">1:00 AM</option>
+                                                  <option value="2">2:00 AM</option>
+                                                  <option value="3">3:00 AM</option>
+                                                  <option value="4">4:00 AM</option>
+                                                  <option value="5">5:00 AM</option>
+                                                  <option value="6">6:00 AM</option>
+                                                  <option value="7">7:00 AM</option>
+                                                  <option value="8">8:00 AM</option>
+                                                  <option value="9">9:00 AM</option>
+                                                  <option selected>10:00 AM</option>
+                                                  <option value="10">11:00 AM</option>
+                                                  <option value="11">12:00 AM</option>
+                                                </select>
+                                                -
+                                                <select class="custom-select-reg ml-2">
+                                                    <option value="1">1:00 PM</option>
+                                                    <option value="2">2:00 PM</option>
+                                                    <option value="3">3:00 PM</option>
+                                                    <option value="4">4:00 PM</option>
+                                                    <option value="5">5:00 PM</option>
+                                                    <option value="6">6:00 PM</option>
+                                                    <option selected>7:00 PM</option>
+                                                    <option value="7">8:00 PM</option>
+                                                    <option value="8">9:00 PM</option>
+                                                    <option value="9">10:00 PM</option>
+                                                    <option value="10">11:00 PM</option>
+                                                    <option value="11">12:00 PM</option>
+                                                </select>
+                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                                            </div>
+                                            <div class="border-bottom custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck105">
+                                               <label class="custom-control-label mr-5 pr-3" for="customCheck105">Friday</label>
+                                              
+                                                <select class="custom-select-reg ml-5 mr-2">
+                                                    <option value="1">1:00 AM</option>
+                                                    <option value="2">2:00 AM</option>
+                                                    <option value="3">3:00 AM</option>
+                                                    <option value="4">4:00 AM</option>
+                                                    <option value="5">5:00 AM</option>
+                                                    <option value="6">6:00 AM</option>
+                                                    <option value="7">7:00 AM</option>
+                                                    <option value="8">8:00 AM</option>
+                                                    <option value="9">9:00 AM</option>
+                                                    <option selected>10:00 AM</option>
+                                                    <option value="10">11:00 AM</option>
+                                                    <option value="11">12:00 AM</option>
+                                                </select>
+                                                -
+                                                <select class="custom-select-reg ml-2">
+                                                    <option value="1">1:00 PM</option>
+                                                    <option value="2">2:00 PM</option>
+                                                    <option value="3">3:00 PM</option>
+                                                    <option value="4">4:00 PM</option>
+                                                    <option value="5">5:00 PM</option>
+                                                    <option value="6">6:00 PM</option>
+                                                    <option selected>7:00 PM</option>
+                                                    <option value="7">8:00 PM</option>
+                                                    <option value="8">9:00 PM</option>
+                                                    <option value="9">10:00 PM</option>
+                                                    <option value="10">11:00 PM</option>
+                                                    <option value="11">12:00 PM</option>
+                                                </select>
+                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                                            </div>
+                                            <div class="border-bottom custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck106">
+                                                <label class="custom-control-label mr-5" for="customCheck106">Saturday</label>
+                                                <span class="ml-5 pr-3 cl-gray">Closed</span>
+                                            </div>
+
+                                            <div class="border-bottom custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck107">
+                                                <label class="custom-control-label mr-5 pr-3" for="customCheck107">Sunday</label>
+                                                
+                                                <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                             
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer m-auto border-0">
+                                          <button type="button" onclick="$('.close').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal 2nd code end-->
+
                         </form>
                     </div>
                 </div>
@@ -193,327 +434,245 @@
 
 
   
-  <!-- Modal 1st code start-->
-  <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog border-1" role="document">
-          <div class="modal-content pt-4">
-              <div class="modal-header border-0 pl-5 pr-5 ">
+    <!-- Modal 1st code start-->
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog border-1" role="document">
+            <div class="modal-content pt-4">
+                <div class="modal-header border-0 pl-5 pr-5 ">
                   <h2 class="modal-title cl-gray" id="exampleModalLabel">Main Category</h2>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body pl-5 pr-5 pt-0">
-                    <select class="custom-select">
-                        <option selected>Eyebrows & Lashes</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">four</option>
-                        <option value="5">five</option>
-                        <option value="6">Six</option>
-                        <option value="7">Seven</option>
-                        <option value="8">Eight</option>
-                        <option value="9">Nine</option>
+                    <select class="custom-select" name="category_id">
+                        <option value="1">It Service</option>
                     </select>
                 </div>
                     <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">Business Category</h2>
                     <div class="border overflow-scroll-reg pl-5 mt-2">
-                    <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck1">
-  <label class="custom-control-label" for="customCheck1">Hair Salon</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck2">
-  <label class="custom-control-label" for="customCheck2">Barbershop</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck3">
-  <label class="custom-control-label" for="customCheck3">Nail Salon</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck4">
-  <label class="custom-control-label" for="customCheck4">Beauty Salon</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck5">
-  <label class="custom-control-label" for="customCheck5">Eyrbrows & Lashes</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck6">
-  <label class="custom-control-label" for="customCheck6">Meni Cure/Pedi Cure</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck6">
-  <label class="custom-control-label" for="customCheck6">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck7">
-  <label class="custom-control-label" for="customCheck7">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck8">
-  <label class="custom-control-label" for="customCheck8">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck9">
-  <label class="custom-control-label" for="customCheck9">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck10">
-  <label class="custom-control-label" for="customCheck10">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck11">
-  <label class="custom-control-label" for="customCheck11">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck12">
-  <label class="custom-control-label" for="customCheck12">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck13">
-  <label class="custom-control-label" for="customCheck13">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck14">
-  <label class="custom-control-label" for="customCheck14">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck15">
-  <label class="custom-control-label" for="customCheck15">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck16">
-  <label class="custom-control-label" for="customCheck16">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck17">
-  <label class="custom-control-label" for="customCheck17">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck18">
-  <label class="custom-control-label" for="customCheck18">Check this custom checkbox</label>
-</div>
-<div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck19">
-  <label class="custom-control-label" for="customCheck19">Check this custom checkbox</label>
-</div>
-                    
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" name="sub_category_id[]" id="customCheck1" value="1">
+                          <label class="custom-control-label" for="customCheck1">Web Development</label>
+                        </div>
+                    </div>
 
-</div>
-
-        <div class="modal-footer m-auto border-0">
-          <button type="button" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                <div class="modal-footer m-auto border-0">
+                  <button type="button" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                </div>
+            </div>
         </div>
     </div>
-<!-- Modal 1st code end-->
-<!-- Modal 2nd code start-->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog border-1" role="document">
-      <div class="modal-content pt-4">
-        <div class="modal-header  border-0 pl-5 pr-5 ">
-          <h1 class="modal-title cl-gray" id="exampleModalLabel">Opening hours</h1>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-            </button>
+    <!-- Modal 1st code end-->
+
+    <!-- Modal 2nd code start-->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog border-1" role="document">
+            <div class="modal-content pt-4">
+                <div class="modal-header  border-0 pl-5 pr-5 ">
+                  <h1 class="modal-title cl-gray" id="exampleModalLabel">Opening hours</h1>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="pl-4 mt-2">
+                    <div class="border-bottom custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck101">
+                    <label class="custom-control-label mr-5" for="customCheck101">Monday</label>
+
+                    <select class="custom-select-reg ml-5 mr-2">
+                          <option value="1">1:00 AM</option>
+                          <option value="2">2:00 AM</option>
+                          <option value="3">3:00 AM</option>
+                          <option value="4">4:00 AM</option>
+                          <option value="5">5:00 AM</option>
+                          <option value="6">6:00 AM</option>
+                          <option value="7">7:00 AM</option>
+                          <option value="8">8:00 AM</option>
+                          <option value="9">9:00 AM</option>
+                          <option selected>10:00 AM</option>
+                          <option value="10">11:00 AM</option>
+                          <option value="11">12:00 AM</option>
+                    </select>
+                    -
+                    <select class="custom-select-reg ml-2">
+                        <option value="1">1:00 PM</option>
+                        <option value="2">2:00 PM</option>
+                        <option value="3">3:00 PM</option>
+                        <option value="4">4:00 PM</option>
+                        <option value="5">5:00 PM</option>
+                        <option value="6">6:00 PM</option>
+                        <option selected>7:00 PM</option>
+                        <option value="7">8:00 PM</option>
+                        <option value="8">9:00 PM</option>
+                        <option value="9">10:00 PM</option>
+                        <option value="10">11:00 PM</option>
+                        <option value="11">12:00 PM</option>
+                    </select>
+                    <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                    </div>
+                    <div class="border-bottom custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck102">
+                      <label class="custom-control-label mr-5" for="customCheck102">Tuesday</label>
+
+                        <select class="custom-select-reg ml-5 mr-2">
+                          <option value="1">1:00 AM</option>
+                          <option value="2">2:00 AM</option>
+                          <option value="3">3:00 AM</option>
+                          <option value="4">4:00 AM</option>
+                          <option value="5">5:00 AM</option>
+                          <option value="6">6:00 AM</option>
+                          <option value="7">7:00 AM</option>
+                          <option value="8">8:00 AM</option>
+                          <option value="9">9:00 AM</option>
+                          <option selected>10:00 AM</option>
+                          <option value="10">11:00 AM</option>
+                          <option value="11">12:00 AM</option>
+                        </select>
+                        -
+                        <select class="custom-select-reg ml-2">
+                            <option value="1">1:00 PM</option>
+                            <option value="2">2:00 PM</option>
+                            <option value="3">3:00 PM</option>
+                            <option value="4">4:00 PM</option>
+                            <option value="5">5:00 PM</option>
+                            <option value="6">6:00 PM</option>
+                            <option selected>7:00 PM</option>
+                            <option value="7">8:00 PM</option>
+                            <option value="8">9:00 PM</option>
+                            <option value="9">10:00 PM</option>
+                            <option value="10">11:00 PM</option>
+                            <option value="11">12:00 PM</option>
+                        </select>
+                        <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                    </div>
+
+                    <div class="border-bottom custom-control custom-checkbox">
+                       <input type="checkbox" class="custom-control-input" id="customCheck103">
+                       <label class="custom-control-label mr-2" for="customCheck103">Wednessday</label>
+                      
+                        <select class="custom-select-reg ml-5 mr-2">
+                          <option value="1">1:00 AM</option>
+                          <option value="2">2:00 AM</option>
+                          <option value="3">3:00 AM</option>
+                          <option value="4">4:00 AM</option>
+                          <option value="5">5:00 AM</option>
+                          <option value="6">6:00 AM</option>
+                          <option value="7">7:00 AM</option>
+                          <option value="8">8:00 AM</option>
+                          <option value="9">9:00 AM</option>
+                          <option selected>10:00 AM</option>
+                          <option value="10">11:00 AM</option>
+                          <option value="11">12:00 AM</option>
+                        </select>
+                        -
+                        <select class="custom-select-reg ml-2">
+                            <option value="1">1:00 PM</option>
+                            <option value="2">2:00 PM</option>
+                            <option value="3">3:00 PM</option>
+                            <option value="4">4:00 PM</option>
+                            <option value="5">5:00 PM</option>
+                            <option value="6">6:00 PM</option>
+                            <option selected>7:00 PM</option>
+                            <option value="7">8:00 PM</option>
+                            <option value="8">9:00 PM</option>
+                            <option value="9">10:00 PM</option>
+                            <option value="10">11:00 PM</option>
+                            <option value="11">12:00 PM</option>
+                        </select>
+                        <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                    </div>
+                    <div class="border-bottom custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck104">
+                        <label class="custom-control-label mr-4 pr-3" for="customCheck104">Thursday</label>
+                      
+                        <select class="custom-select-reg ml-5 mr-2">
+                          <option value="1">1:00 AM</option>
+                          <option value="2">2:00 AM</option>
+                          <option value="3">3:00 AM</option>
+                          <option value="4">4:00 AM</option>
+                          <option value="5">5:00 AM</option>
+                          <option value="6">6:00 AM</option>
+                          <option value="7">7:00 AM</option>
+                          <option value="8">8:00 AM</option>
+                          <option value="9">9:00 AM</option>
+                          <option selected>10:00 AM</option>
+                          <option value="10">11:00 AM</option>
+                          <option value="11">12:00 AM</option>
+                        </select>
+                        -
+                        <select class="custom-select-reg ml-2">
+                            <option value="1">1:00 PM</option>
+                            <option value="2">2:00 PM</option>
+                            <option value="3">3:00 PM</option>
+                            <option value="4">4:00 PM</option>
+                            <option value="5">5:00 PM</option>
+                            <option value="6">6:00 PM</option>
+                            <option selected>7:00 PM</option>
+                            <option value="7">8:00 PM</option>
+                            <option value="8">9:00 PM</option>
+                            <option value="9">10:00 PM</option>
+                            <option value="10">11:00 PM</option>
+                            <option value="11">12:00 PM</option>
+                        </select>
+                        <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                    </div>
+                    <div class="border-bottom custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck105">
+                       <label class="custom-control-label mr-5 pr-3" for="customCheck105">Friday</label>
+                      
+                        <select class="custom-select-reg ml-5 mr-2">
+                            <option value="1">1:00 AM</option>
+                            <option value="2">2:00 AM</option>
+                            <option value="3">3:00 AM</option>
+                            <option value="4">4:00 AM</option>
+                            <option value="5">5:00 AM</option>
+                            <option value="6">6:00 AM</option>
+                            <option value="7">7:00 AM</option>
+                            <option value="8">8:00 AM</option>
+                            <option value="9">9:00 AM</option>
+                            <option selected>10:00 AM</option>
+                            <option value="10">11:00 AM</option>
+                            <option value="11">12:00 AM</option>
+                        </select>
+                        -
+                        <select class="custom-select-reg ml-2">
+                            <option value="1">1:00 PM</option>
+                            <option value="2">2:00 PM</option>
+                            <option value="3">3:00 PM</option>
+                            <option value="4">4:00 PM</option>
+                            <option value="5">5:00 PM</option>
+                            <option value="6">6:00 PM</option>
+                            <option selected>7:00 PM</option>
+                            <option value="7">8:00 PM</option>
+                            <option value="8">9:00 PM</option>
+                            <option value="9">10:00 PM</option>
+                            <option value="10">11:00 PM</option>
+                            <option value="11">12:00 PM</option>
+                        </select>
+                        <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                    </div>
+                    <div class="border-bottom custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck106">
+                        <label class="custom-control-label mr-5" for="customCheck106">Saturday</label>
+                        <span class="ml-5 pr-3 cl-gray">Closed</span>
+                    </div>
+
+                    <div class="border-bottom custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck107">
+                        <label class="custom-control-label mr-5 pr-3" for="customCheck107">Sunday</label>
+                        
+                        <span class="ml-5 pr-4 cl-gray">Closed</span>
+                     
+                    </div>
+                </div>
+                <div class="modal-footer m-auto border-0">
+                  <button type="button" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                </div>
+            </div>
         </div>
-        <div class="pl-4 mt-2">
-                    <div class="border-bottom custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck101">
-  <label class="custom-control-label mr-5" for="customCheck101">Monday</label>
-  
-  <select class="custom-select-reg ml-5 mr-2">
-      <option value="1">1:00 AM</option>
-      <option value="2">2:00 AM</option>
-      <option value="3">3:00 AM</option>
-      <option value="4">4:00 AM</option>
-      <option value="5">5:00 AM</option>
-      <option value="6">6:00 AM</option>
-      <option value="7">7:00 AM</option>
-      <option value="8">8:00 AM</option>
-      <option value="9">9:00 AM</option>
-      <option selected>10:00 AM</option>
-      <option value="10">11:00 AM</option>
-      <option value="11">12:00 AM</option>
-                    </select>
-                    -
-                    <select class="custom-select-reg ml-2">
-                        <option value="1">1:00 PM</option>
-                        <option value="2">2:00 PM</option>
-                        <option value="3">3:00 PM</option>
-                        <option value="4">4:00 PM</option>
-                        <option value="5">5:00 PM</option>
-                        <option value="6">6:00 PM</option>
-                        <option selected>7:00 PM</option>
-                        <option value="7">8:00 PM</option>
-                        <option value="8">9:00 PM</option>
-                        <option value="9">10:00 PM</option>
-                        <option value="10">11:00 PM</option>
-                        <option value="11">12:00 PM</option>
-                    </select>
-                    <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
-</div>
-                    <div class="border-bottom custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck102">
-  <label class="custom-control-label mr-5" for="customCheck102">Tuesday</label>
-  
-  <select class="custom-select-reg ml-5 mr-2">
-      <option value="1">1:00 AM</option>
-      <option value="2">2:00 AM</option>
-      <option value="3">3:00 AM</option>
-      <option value="4">4:00 AM</option>
-      <option value="5">5:00 AM</option>
-      <option value="6">6:00 AM</option>
-      <option value="7">7:00 AM</option>
-      <option value="8">8:00 AM</option>
-      <option value="9">9:00 AM</option>
-      <option selected>10:00 AM</option>
-      <option value="10">11:00 AM</option>
-      <option value="11">12:00 AM</option>
-                    </select>
-                    -
-                    <select class="custom-select-reg ml-2">
-                        <option value="1">1:00 PM</option>
-                        <option value="2">2:00 PM</option>
-                        <option value="3">3:00 PM</option>
-                        <option value="4">4:00 PM</option>
-                        <option value="5">5:00 PM</option>
-                        <option value="6">6:00 PM</option>
-                        <option selected>7:00 PM</option>
-                        <option value="7">8:00 PM</option>
-                        <option value="8">9:00 PM</option>
-                        <option value="9">10:00 PM</option>
-                        <option value="10">11:00 PM</option>
-                        <option value="11">12:00 PM</option>
-                    </select>
-                    <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
-</div>
-                    <div class="border-bottom custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck103">
-  <label class="custom-control-label mr-2" for="customCheck103">Wednessday</label>
-  
-  <select class="custom-select-reg ml-5 mr-2">
-      <option value="1">1:00 AM</option>
-      <option value="2">2:00 AM</option>
-      <option value="3">3:00 AM</option>
-      <option value="4">4:00 AM</option>
-      <option value="5">5:00 AM</option>
-      <option value="6">6:00 AM</option>
-      <option value="7">7:00 AM</option>
-      <option value="8">8:00 AM</option>
-      <option value="9">9:00 AM</option>
-      <option selected>10:00 AM</option>
-      <option value="10">11:00 AM</option>
-      <option value="11">12:00 AM</option>
-                    </select>
-                    -
-                    <select class="custom-select-reg ml-2">
-                        <option value="1">1:00 PM</option>
-                        <option value="2">2:00 PM</option>
-                        <option value="3">3:00 PM</option>
-                        <option value="4">4:00 PM</option>
-                        <option value="5">5:00 PM</option>
-                        <option value="6">6:00 PM</option>
-                        <option selected>7:00 PM</option>
-                        <option value="7">8:00 PM</option>
-                        <option value="8">9:00 PM</option>
-                        <option value="9">10:00 PM</option>
-                        <option value="10">11:00 PM</option>
-                        <option value="11">12:00 PM</option>
-                    </select>
-                    <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
-</div>
-                    <div class="border-bottom custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck104">
-  <label class="custom-control-label mr-4 pr-3" for="customCheck104">Thursday</label>
-  
-  <select class="custom-select-reg ml-5 mr-2">
-      <option value="1">1:00 AM</option>
-      <option value="2">2:00 AM</option>
-      <option value="3">3:00 AM</option>
-      <option value="4">4:00 AM</option>
-      <option value="5">5:00 AM</option>
-      <option value="6">6:00 AM</option>
-      <option value="7">7:00 AM</option>
-      <option value="8">8:00 AM</option>
-      <option value="9">9:00 AM</option>
-      <option selected>10:00 AM</option>
-      <option value="10">11:00 AM</option>
-      <option value="11">12:00 AM</option>
-                    </select>
-                    -
-                    <select class="custom-select-reg ml-2">
-                        <option value="1">1:00 PM</option>
-                        <option value="2">2:00 PM</option>
-                        <option value="3">3:00 PM</option>
-                        <option value="4">4:00 PM</option>
-                        <option value="5">5:00 PM</option>
-                        <option value="6">6:00 PM</option>
-                        <option selected>7:00 PM</option>
-                        <option value="7">8:00 PM</option>
-                        <option value="8">9:00 PM</option>
-                        <option value="9">10:00 PM</option>
-                        <option value="10">11:00 PM</option>
-                        <option value="11">12:00 PM</option>
-                    </select>
-                    <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
-</div>
-                    <div class="border-bottom custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck105">
-  <label class="custom-control-label mr-5 pr-3" for="customCheck105">Friday</label>
-  
-  <select class="custom-select-reg ml-5 mr-2">
-      <option value="1">1:00 AM</option>
-      <option value="2">2:00 AM</option>
-      <option value="3">3:00 AM</option>
-      <option value="4">4:00 AM</option>
-      <option value="5">5:00 AM</option>
-      <option value="6">6:00 AM</option>
-      <option value="7">7:00 AM</option>
-      <option value="8">8:00 AM</option>
-      <option value="9">9:00 AM</option>
-      <option selected>10:00 AM</option>
-      <option value="10">11:00 AM</option>
-      <option value="11">12:00 AM</option>
-                    </select>
-                    -
-                    <select class="custom-select-reg ml-2">
-                        <option value="1">1:00 PM</option>
-                        <option value="2">2:00 PM</option>
-                        <option value="3">3:00 PM</option>
-                        <option value="4">4:00 PM</option>
-                        <option value="5">5:00 PM</option>
-                        <option value="6">6:00 PM</option>
-                        <option selected>7:00 PM</option>
-                        <option value="7">8:00 PM</option>
-                        <option value="8">9:00 PM</option>
-                        <option value="9">10:00 PM</option>
-                        <option value="10">11:00 PM</option>
-                        <option value="11">12:00 PM</option>
-                    </select>
-                    <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
-</div>
-                    <div class="border-bottom custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck106">
-  <label class="custom-control-label mr-5" for="customCheck106">Saturday</label>
-  <span class="ml-5 pr-3 cl-gray">Closed</span>
-</div>
-<div class="border-bottom custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="customCheck107">
-    <label class="custom-control-label mr-5 pr-3" for="customCheck107">Sunday</label>
-    
-    <span class="ml-5 pr-4 cl-gray">Closed</span>
- 
-</div>
-        </div>
-        <div class="modal-footer m-auto border-0">
-          <button type="button" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
-        </div>
-      </div>
     </div>
-  </div>
-<!-- Modal 2nd code end-->
+    <!-- Modal 2nd code end-->
 
 	@endsection
 

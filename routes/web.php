@@ -26,5 +26,6 @@ Route::get('portfolio', function () {
     return view('frontend.portfolio');
     
 })->name('index');
+
 Auth::routes();
 

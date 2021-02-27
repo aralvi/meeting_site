@@ -39,34 +39,6 @@ class LoginController extends Controller
     }
 
     public function redirectTo(){
-        
-    // User role
-    $role = Auth::user()->user_type; 
-    
-        // Check user role
-        // switch ($role) {
-        //     case 'superadmin':
-        //             return '/admin';
-        //         break;
-        //     case 'owner':
-        //             return '/stores/dashboard';
-        //         break; 
-        //     case 'new_user':
-        //             return '/admin';
-        //         break;
-        //     default:
-        //             return '/home'; 
-        //         break;
-        // }
-        if(Auth::user()->user_type =='superadmin'){
-            return '/admin';
-        } elseif (Auth::user()->user_type =='owner'){
-            return '/stores/dashboard';
-        }  elseif (Auth::user()->user_type =='user'){
-            return '/admin';
-        }
-         else {
-            return '/home'; 
-        }
+        return '/';
     } 
 }

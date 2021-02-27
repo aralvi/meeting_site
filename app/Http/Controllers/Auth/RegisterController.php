@@ -84,8 +84,8 @@ class RegisterController extends Controller
 
         $specialist = new Specialist();
         $specialist->user_id = $user->id;
-        $specialist->category_id = 1;
-        $specialist->sub_category_id = json_encode([1,2]);
+        $specialist->category_id = $data['category_id'];
+        $specialist->sub_category_id = json_encode($data['sub_category_id']);
         $specialist->business_phone = $data['business_phone'];
         $specialist->business_name = $data['business_name'];
         $specialist->business_location = $data['business_location'];
