@@ -206,6 +206,23 @@
                                                   <input type="checkbox" class="custom-control-input" name="sub_category_id[]" id="customCheck1" value="1">
                                                   <label class="custom-control-label" for="customCheck1">Web Development</label>
                                                 </div>
+
+                                                <div class="custom-control custom-checkbox">
+                                                  <input type="checkbox" class="custom-control-input" name="sub_category_id[]" id="customCheck1" value="2">
+                                                  <label class="custom-control-label" for="customCheck1">Software Development</label>
+                                                </div>
+
+
+                                                <div class="custom-control custom-checkbox">
+                                                  <input type="checkbox" class="custom-control-input" name="sub_category_id[]" id="customCheck1" value="3">
+                                                  <label class="custom-control-label" for="customCheck1">Web Designing</label>
+                                                </div>
+
+
+                                                <div class="custom-control custom-checkbox">
+                                                  <input type="checkbox" class="custom-control-input" name="sub_category_id[]" id="customCheck1" value="4">
+                                                  <label class="custom-control-label" for="customCheck1">Android Development</label>
+                                                </div>
                                             </div>
 
                                         <div class="modal-footer m-auto border-0">
