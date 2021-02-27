@@ -47,7 +47,7 @@
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Login?</div>
-                                    <div class="pr-4 h5"><a href="#" class="cl-3AC574">Login</a></div>
+                                    <div class="pr-4 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-2">Register</div>
                                 <div class="pl-5 pr-5">
@@ -85,7 +85,7 @@
                                     </div>
 
                                     <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
-                                    <div class="pt-2 f-14 cl-gray">
+                                    <div class="pt-4 f-14 cl-gray text-center">
                                         <p class="mb-1">
                                             By Sigining up I agree the
                                             <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
@@ -93,7 +93,7 @@
                                         </p>
                                     </div>
                                     <div class="text-center">
-                                        <h6 class="m-0 mb-5 pr-4 pb-2 cl-gray f-14">
+                                        <h6 class="border-bottom m-0 mb-5 pr-4 pb-2 cl-gray f-14">
                                             Message & Data Rates may Apply
                                         </h6>
                                     </div>
@@ -104,7 +104,7 @@
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Login?</div>
-                                    <div class="pr-4 h5"><a href="#" class="cl-3AC574">Login</a></div>
+                                    <div class="pr-4 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-4">Help Clients find You.</div>
                                 <div class="pl-5 pr-5">
@@ -144,25 +144,25 @@
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Login?</div>
-                                    <div class="pr-4 cl-3AC574 h5">Login</div>
+                                    <div class="pr-4 cl-3AC574 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
                                 <div class="pl-5 pr-5">
                                     <div class="row pt-4">
                                         <div class="col-md-12 d-flex justify-content-center">
 
-                                            <div class="bg-success ml-2 mr-2 pl-2 pr-2 active rounded border">
+                                            <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option1" autocomplete="off" checked onclick="radio(this)" value="stripe">
                                                 <label class="btn text-white" for="option1">
                                                 Stripe  
                                                   </label>
                                             </div>
-                                            <div class=" ml-4 mr-4 pl-2 pr-2 rounded border">
+                                            <div class=" ml-4 mr-4 pl-4 pr-4 rounded border">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option2" autocomplete="off" onclick="radio(this)"  value="paypal">
                                                 <label class="btn " for="option2">Paypal</label>
 
                                             </div>
-                                            <div class=" ml-2 mr-2 pl-2 pr-2 rounded border">
+                                            <div class=" ml-2 mr-2 pl-3 pr-3 rounded border">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option4" autocomplete="off" onclick="radio(this)" value="payoneer">
                                                 <label class="btn " for="option4">Payoneer</label>
 
@@ -694,8 +694,8 @@
         <script>
             const radio = (ele) => {
 
-                $(ele).parent().addClass('bg-success');
-                $(ele).parent().siblings().removeClass('bg-success');
+                $(ele).parent().addClass('bg-3AC574');
+                $(ele).parent().siblings().removeClass('bg-3AC574');
                 $(ele).parent().siblings().find('label').removeClass('text-white');
                 // $(ele).siblings().removeClass('text-white');
                 $(ele).siblings().addClass('text-white');
