@@ -167,7 +167,12 @@ background-color: #3AC574;
                     margin-top: 15px !important;
                 } */
             }
-            
+            input {
+              appearance: menulist-button;
+              background-color: none !important;
+              background-image: none !important;
+              
+          }
             @media screen and (max-width: 1300px) {
                 .main_padding {
                     padding-left: 15px !important;

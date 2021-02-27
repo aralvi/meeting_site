@@ -294,13 +294,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
+    <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
+    <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
