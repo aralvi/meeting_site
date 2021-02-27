@@ -3,7 +3,37 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 502px;
+  height: 750px;
   width: 100%;
   border-radius: 8px;
+}
+/* .carousel-control-next {
+  right: -23px !important;
+}
+.carousel-control-next {
+  left: -23px !important;
+} */
+/* .carousel-control-next {
+  left: -23px !important;
+} */
+.carousel-indicators {
+  bottom: 57px !important;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+ 
+  height: 34px !important;
+}
+.carousel-control-next-icon {
+  background-image: url('../images/rightwhite.png') !important;
+}
+.carousel-control-prev-icon {
+  background-image: url('../images/leftwhite.png') !important;
+}
+.border-bottom{
+  border-bottom: 1px solid #FFFFFF;
+}
+.table_scroll{
+  height: 247px;
+  /* overflow: hidden; */
+  overflow-y: scroll;
 }

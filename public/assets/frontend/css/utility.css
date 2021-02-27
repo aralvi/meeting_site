@@ -157,6 +157,9 @@ a:hover{
   text-decoration: none !important;
   transition: 0.7s;
 }
+.carousel-control-next, .carousel-control-prev {
+  width: fit-content !important;
+}
 .pt-70{
   padding-top: 70px;
 }
@@ -210,6 +213,9 @@ a:hover{
 }
 .f-1rem{
   font-size: 1rem !important;
+}
+.border-left{
+  border-left: 1px solid #ffffff;
 }
 @media screen and (max-width: 1700px) and (min-width:1245px) {
   .footerUl>li>a{
