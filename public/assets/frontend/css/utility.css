@@ -157,6 +157,9 @@ a:hover{
   text-decoration: none !important;
   transition: 0.7s;
 }
+.carousel-control-next, .carousel-control-prev {
+  width: fit-content !important;
+}
 .pt-70{
   padding-top: 70px;
 }
