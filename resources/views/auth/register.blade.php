@@ -139,9 +139,13 @@
                                             data-target="#exampleModalLong"
                                         />
                                     </div>
-                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step2" value="Continue" />
+                                    <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step2 float-right" value="Continue" />
+                                    <input type="button" data-page="4" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
+                                    
                                 </div>
                                 <span data-page="2" id="" class="inputBtn next action-button" onclick="btnClicK('dot-100','width-100','Please enter your Banking<br>information in order to <br> receive payouts.')"></span>
+                                <span data-page="1" id="" class="previous action-button btn-step-back"  onclick="btnClicKBack('dot-50','width-50','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')"></span>
+                                
                             </fieldset>
 
                             <fieldset>
@@ -183,7 +187,8 @@
                                         <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
                                         <span><input type="password" class="form-control border-0" placeholder="Enter your password" id="payment_password" aria-label="" aria-describedby="basic-addon1" name="payment_password" /></span>
                                     </div>
-                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step3" value="Continue" />
+                                    <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step3 float-right" value="Continue" />
+                                    <input type="button" data-page="2" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
                                     <div class="row">
                                         <div class="col-md-12 pt-4 alerMsg" style="display: none;">
                                             <div class="alert alert-success">You have registered successfully</div>
@@ -192,6 +197,7 @@
                                    
                                 </div>
                                 <span data-page="3" id="" class="inputBtn next action-button"></span>
+                                <span data-page="1" id="" class="previous action-button btn-step-back"  onclick="btnClicKBack('dot-100','width-100','dot-50','width-50','Enter contact Detail <br> for your business')"></span>
                             </fieldset>
 
                             <!-- Modal 1st code start-->
@@ -460,6 +466,13 @@
                   v.addClass(className);
                   v.siblings().addClass(parentClass);
                 }
+            const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
+                  let v =  $('.white-dot')
+                 $('.left-text').html(txtLeft);
+                  v.removeClass(removeClass);
+                  v.siblings().removeClass(removeParentClass);
+                  v.addClass(className);
+                }
         </script>
         <script>
             var testObject = [];
@@ -676,6 +689,10 @@
                 
                 if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
                 {$(this).parent("div").siblings("span.inputBtn").click();}
+            });
+            $(document.body).on("click", "input.backstep2", function () {
+                
+                $(this).parent("div").siblings("span.previous").click();
             });
 
             $(document.body).on("click", "input.step3", function () {
