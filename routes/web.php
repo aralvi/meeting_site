@@ -27,5 +27,6 @@ Route::get('portfolio', function () {
     
 })->name('index');
 
+Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 Auth::routes();
 

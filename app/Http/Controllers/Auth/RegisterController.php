@@ -52,6 +52,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -84,6 +85,21 @@ class RegisterController extends Controller
             'status'=>'inactive'
         ]);
 
+        if(count(explode(',',$data['days'])) >0)
+        {
+            foreach (explode(',',$data['days']) as $key => $value)
+            {
+                if($value =="saturday" || $value=='sunday')
+                {
+                    $arr[$value] = ['closed'];
+                }
+                else
+                {
+                    $arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
+                }
+               
+            }
+        }
         $specialist = new Specialist();
         $specialist->user_id = $user->id;
         $specialist->category_id = $data['category_id'];
@@ -91,7 +107,7 @@ class RegisterController extends Controller
         $specialist->business_phone = $data['business_phone'];
         $specialist->business_name = $data['business_name'];
         $specialist->business_location = $data['business_location'];
-        $specialist->opening_hours = 123456789;
+        $specialist->opening_hours = json_encode($arr);
         $specialist->save();
         return $user;
     }

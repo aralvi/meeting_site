@@ -82,4 +82,10 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function getSubCategories(Request $request)
+    {
+        $sub_categories = Category::where('id',$request->id)->first()->subcategories;
+        return view('partials.frontend.category_sub_categories',compact('sub_categories'))->render();
+    }
 }
