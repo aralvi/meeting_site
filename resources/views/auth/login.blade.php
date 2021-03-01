@@ -53,35 +53,37 @@
                       </div>
                   </div>
               </div>
-             
-              <div class="input-group mb-3 border-input pt-4">
-                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                <span
-                  ><input
-                    type="text"
-                    class="form-control border-0"
-                    placeholder="Email / Username"
-                    aria-label=""
-                    aria-describedby="basic-addon1"
-                /></span>
-              </div>
-              <div class="input-group border-input pt-4 mb-5">
-                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                <span
-                  ><input
-                    type="text"
-                    class="form-control border-0 "
-                    placeholder="Enter your password"
-                    aria-label=""
-                    aria-describedby="basic-addon1"
-                /></span>
-              </div>
-              <button
-                type="button"
-                class="btn bg-3AC574 w-100 mt-2 pt-2 pb-2 mb-3 text-white"
-              >
-                Sign in
-              </button>
+             <form action="{{ route('login') }}" method="post">
+              @csrf
+                <div class="input-group mb-3 border-input pt-4">
+                  <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
+                  {{-- <span> --}}
+                    <input type="email" class="form-control border-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email / Username" aria-label=""  aria-describedby="basic-addon1" required />
+                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                  {{-- </span> --}}
+                </div>
+                <div class="input-group border-input pt-4 mb-5">
+                  <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                  {{-- <span> --}}
+                    <input type="password" class="form-control border-0 @error('password') is-invalid @enderror" name="password" placeholder="Enter your password" aria-label=""  aria-describedby="basic-addon1" required />
+                  @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                  {{-- </span> --}}
+                </div>
+                <button
+                  type="submit"
+                  class="btn bg-3AC574 w-100 mt-2 pt-2 pb-2 mb-3 text-white"
+                >
+                  Sign in
+                </button>
+              </form>
               <div class="row pt-4 pb-4 cl-gray p-0 m-0 border-bottom">
                <div class="col-md-6 text-left">
                     <div class="form-check pl-0">
