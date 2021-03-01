@@ -4,8 +4,24 @@
 
 @section('extra-css')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/index.css') }}">
+    <style type="text/css">
+        .dropdown-toggle::after{display: none;}
+        /* .dropdown-menu::before{
 
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: .255em;
+            vertical-align: .255em;
+            content: "";
+            border-top: .3em solid;
+            border-right: .3em solid transparent;
+            border-bottom: 0;
+            border-left: .3em solid transparent;
+
+        } */
+    </style>
 @endsection
 {{-- head end --}}
 
@@ -15,7 +31,7 @@
 @section('content')
 
 <section class=" main_padding bg-navbar nav-bg-img">
-  @include('includes.frontend.navbar')
+    @include('includes.frontend.navbar')
     {{-- <nav class="navbar navbar-expand-lg navbar-light pt-3 pl-0 pr-0">
         <a class="navbar-brand" href="#"><img src="{{ asset('assets/frontend/images/navlogo.png') }}" class="img-fluid"
                 alt=""></a>
