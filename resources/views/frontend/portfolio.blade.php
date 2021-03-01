@@ -18,7 +18,7 @@
 	@section('content')
 		
   <section class="main_padding pt-2 pb-3 nav-bg-img robotoRegular">
-      <nav class="navbar navbar-expand-lg navbar-light p-0">
+      {{-- <nav class="navbar navbar-expand-lg navbar-light p-0">
         <a class="navbar-brand" href="#"
           ><img
             src="{{ asset('assets/frontend/images/navlogo.png') }}"
@@ -262,7 +262,8 @@
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> --}}
+       @include('includes.frontend.navbar')
     </section>
 
     <div class="pt-4 main_padding d-flex f-20 cl-3b3b3b3 justify-content-between robotoRegular">
@@ -451,40 +452,3 @@ local barber</div>
 	@endsection
 
 {{-- footer section end --}}
-
-
-
-
-
-
-
-
-  </body>
-</html> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

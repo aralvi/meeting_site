@@ -25,7 +25,7 @@ Route::get('appointment', function () {
 Route::get('portfolio', function () {
     return view('frontend.portfolio');
     
-})->name('index');
+})->name('portfolio');
 
 Auth::routes();
 
