@@ -7,7 +7,9 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/utility.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}">
-
+  <style type="text/css">
+    .dropdown-toggle::after{display: none;}    
+  </style>
 	@endsection
 {{-- head end --}}
 

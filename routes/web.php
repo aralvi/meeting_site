@@ -16,15 +16,14 @@
 // });
 Route::get('/', function () {
     return view('frontend.index');
-    
 })->name('index');
+
 Route::get('appointment', function () {
     return view('frontend.appoinment');
 })->name('appointment');
 
 Route::get('portfolio', function () {
     return view('frontend.portfolio');
-    
 })->name('portfolio');
 
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
