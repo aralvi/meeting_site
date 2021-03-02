@@ -125,7 +125,7 @@
 
                             <fieldset>
                                 <div class="text-right pt-4">
-                                    <div class="">Already Login?</div>
+                                    <div class="">Already Registerd?</div>
                                     <div class="pr-4 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-4">Help Clients find You.</div>
@@ -172,7 +172,7 @@
 
                             <fieldset>
                                 <div class="text-right pt-4">
-                                    <div class="">Already Login?</div>
+                                    <div class="">Already Registerd?</div>
                                     <div class="pr-4 cl-3AC574 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
 
