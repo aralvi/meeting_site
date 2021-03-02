@@ -34,6 +34,10 @@
                             <tr class="text-uppercase">
                                 <th scope="col">#</th>
                                 <th scope="col">Specialist</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col">Payment Email</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -43,6 +47,18 @@
                             <tr id="target_{{ $specialist->id }}">
                                 <td>{{ $key +1 }}</td>
                                 <td>{{ $specialist->User->name }}</td>
+                                <td>{{ $specialist->User->email }}</td>
+                                <td>{{ $specialist->User->payment_method }}</td>
+                                <td>{{ $specialist->User->payment_email }}</td>
+                                <td>
+                                    @if ($specialist->User->status == 'inactive')
+                                        <span class="badge badge-sm badge-danger">{{ $specialist->User->status }}</span>
+                                        @else
+                                        <span class="badge badge-sm badge-success">{{ $specialist->User->status }}</span>
+                                        
+                                        @endif
+                                    
+                                </td>
                                 
                                 <td style="min-width: 135px !important;" class="d-flex">
                                     <form action="{{ route('specialists.update',$specialist->User->id) }}" method="post">

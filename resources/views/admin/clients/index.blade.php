@@ -38,8 +38,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($clients as $client)
-                            <tr id="target_">
+                            @foreach ($clients as $key => $client)
+                            <tr id="target_{{ $client->id }}">
+                                <td>{{ $key +1 }}</td>
                                 <td>{{ $client->User->name }}</td>
                                 
                                 <td style="min-width: 135px !important;">
