@@ -226,6 +226,12 @@ a:hover{
 .cl-a2a2a2{
   color: #A2A2A2;
 }
+.w-43{
+  width: 43% !important;
+}
+.w-81{
+  width: 81%!important;
+}
 /* Change the white to any color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

@@ -73,6 +73,7 @@ background-image: url('../images/left.png') !important;
 }
 
 
+
 @media screen and (max-width: 1650px) and (min-width:1245px) {
     .index_para{
       font-size: 1.3rem !important;

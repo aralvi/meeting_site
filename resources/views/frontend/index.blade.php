@@ -63,9 +63,9 @@
         </p>
     </div>
     <div class="text-center pt-4 pb-4"><img src="{{ asset('assets/frontend/images/curve.png') }}" alt=""></div>
-    <div class=" container  ">
-        <div class="row m-0 pt-4 pb-4 bg-0000006b d-flex justify-content-center align-items-cente">
-            <div class="d-flex bg-ffffff w-42  pt-3 pb-3 borderRadius-5px pl-3">
+    <div class="d-flex justify-content-center">
+        <div class="row m-0 pt-3 pb-3 bg-0000006b d-flex w-43 justify-content-center align-items-cente">
+            <div class="d-flex bg-ffffff w-81  pt-3 pb-3 borderRadius-5px pl-3">
                 <div><img src="{{ asset('assets/frontend/images/search.png') }}" class="img-fluid" alt=""></div>
 
                 <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
@@ -78,7 +78,7 @@
         <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
                 placeholder="Near?"></div>
     </div> --}}
-    <div class=""> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-3 pb-3 pl-3 pr-3"
+    <div class="pl-3"> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-3 pb-3 pl-3 pr-3"
             type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt=""></button></div>
 
     </div>
@@ -630,7 +630,7 @@
             <div class="main_Div">
                 <div class="d-flex justify-content-center">
                     <div><img src="{{ asset('assets/frontend/images/Webp.net-resizeimage (1).png') }}" alt=""></div>
-                    <div class="f-21 cl-ffffff robotoRegular pl-3 d-flex align-items-center">learnmelive . IOS, Android
+                    <div class="f-21 cl-ffffff robotoRegular pl-3 d-flex align-items-center"><div class="d-flex"><div>learnmelive</div> <div class="pl-4 pr-0"><ul class="p-0"><li></li></ul></div><div class="">IOS, Android</div> </div>
                     </div>
                 </div>
                 <div class="robotoMedium cl-ffffff f-35 pt-2">Download our app to book you next</div>
@@ -727,18 +727,20 @@
                     type="submit">Submit</button></div> --}}
 
             <div>
-                <h4 class="m-0 cl-000000 robotoMedium f-26">Join Us On</h4>
+                <h4 class="m-0 cl-000000 robotoMedium f-26">Apps</h4>
+
             </div>
-            <div class="pt-4"> 
-                <a href="javascript:void(0)">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <img src="{{ asset('assets/frontend/images/apple-1.png') }}" alt="" height="20px" width="20px">
-                        <div class="d-flex flex-column">
-                            <h3><small>Available on the</small> App Store</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
+         
+            <div class="pt-3"><img
+            src="{{ asset('assets/frontend/images/appstore_2x.png') }}"
+            alt="" srcset=""></div>
+            <div class="pt-3"><img
+            src="{{ asset('assets/frontend/images/playstore_2x.png') }}"
+            alt="" srcset=""></div>
+         
+         
+            
+          
             <div class="f-26 cl-bcbcbc pt-3 footerUl">Follow us On</div>
             <div class="d-flex pt-3">
                 <div><a href=""><img src="{{ asset('assets/frontend/images/fb.png') }}" class="img-fluid"></a></div>
@@ -748,6 +750,7 @@
                             srcset=""></a></div>
                 <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/linkdin.png') }}" alt=""
                             srcset=""></a></div>
+            </div>
             </div>
         </div>
 </section>
