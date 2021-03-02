@@ -35,6 +35,9 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Specialist</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Business Name</th>
+                                <th scope="col">Business Phone</th>
+                                <th scope="col">Business Location</th>
                                 <th scope="col">Payment Method</th>
                                 <th scope="col">Payment Email</th>
                                 <th scope="col">Status</th>
@@ -48,6 +51,9 @@
                                 <td>{{ $key +1 }}</td>
                                 <td>{{ $specialist->User->name }}</td>
                                 <td>{{ $specialist->User->email }}</td>
+                                <td>{{ $specialist->business_name }}</td>
+                                <td>{{ $specialist->business_phone }}</td>
+                                <td>{{ $specialist->business_phone }}</td>
                                 <td>{{ $specialist->User->payment_method }}</td>
                                 <td>{{ $specialist->User->payment_email }}</td>
                                 <td>
