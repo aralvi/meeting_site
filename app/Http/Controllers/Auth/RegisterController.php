@@ -132,6 +132,7 @@ class RegisterController extends Controller
             {
                 $specialist->payment_name = $data['payment_name'];
                 $specialist->payment_birth_date = $data['payment_birth_date'];
+                $specialist->payment_ssn = $data['payment_ssn'];
                 $specialist->payment_phone = $data['payment_phone'];
 
             }
@@ -140,7 +141,6 @@ class RegisterController extends Controller
                 $specialist->payment_email = $data['payment_email'];
             }
             $specialist->opening_hours = json_encode($hours_arr);
-            $specialist->payment_ssn = $data['payment_ssn'];
 
             $specialist->save();
         }
