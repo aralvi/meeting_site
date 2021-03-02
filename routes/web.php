@@ -29,3 +29,6 @@ Route::get('portfolio', function () {
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 Auth::routes();
 
+Route::view('test','layouts.admin.admin');
+Route::resource('clients', 'ClientController');
+Route::resource('specialists', 'SpecialistController');

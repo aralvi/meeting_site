@@ -13,7 +13,8 @@ class SpecialistController extends Controller
      */
     public function index()
     {
-        //
+        $specialists = Specialist::all();
+        return view('admin.specialists.index',compact('specialists'));
     }
 
     /**
