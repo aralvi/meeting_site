@@ -4,10 +4,13 @@
 
 @section('extra-css')
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/index.css') }}">
-    <style type="text/css">
-        .dropdown-toggle::after{display: none;}
-        /* .dropdown-menu::before{
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/index.css') }}">
+<style type="text/css">
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    /* .dropdown-menu::before{
 
             display: inline-block;
             width: 0;
@@ -21,7 +24,8 @@
             border-left: .3em solid transparent;
 
         } */
-    </style>
+
+</style>
 @endsection
 {{-- head end --}}
 
@@ -34,27 +38,28 @@
     @include('includes.frontend.navbar')
     {{-- <nav class="navbar navbar-expand-lg navbar-light pt-3 pl-0 pr-0">
         <a class="navbar-brand" href="#"><img src="{{ asset('assets/frontend/images/navlogo.png') }}" class="img-fluid"
-                alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="form-inline my-2 my-lg-0 ml-auto cl-ffffff robotoRegular">
-                <a href="{{route('login')}}"
-                    class="btn btn-outline-success border-0 my-2 my-sm-0 pt-2 pb-2 cl-ffffff  login_button"
-                    type="submit">Log In</a>
-                <a href="{{route('register')}}"
-                    class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3 login_button"
-                    type="submit">Sign up</a><span>Business?</span>
-            </form>
-        </div>
+        <form class="form-inline my-2 my-lg-0 ml-auto cl-ffffff robotoRegular">
+            <a href="{{route('login')}}"
+                class="btn btn-outline-success border-0 my-2 my-sm-0 pt-2 pb-2 cl-ffffff  login_button"
+                type="submit">Log In</a>
+            <a href="{{route('register')}}"
+                class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3 login_button"
+                type="submit">Sign up</a><span>Business?</span>
+        </form>
+    </div>
     </nav> --}}
     <div class="text-center"><img src="{{ asset('assets/frontend/images/nav_2.png') }}" class="img-fluid" alt=""></div>
     <div class="text-center pt-4">
-        <p class="m-0 cl-ffffff robotoLight f-26 index_para">Book a virtual appointment with service professionals worldwide
+        <p class="m-0 cl-ffffff robotoLight f-26 index_para">Book a virtual appointment with service professionals
+            worldwide
         </p>
     </div>
     <div class="text-center pt-4 pb-4"><img src="{{ asset('assets/frontend/images/curve.png') }}" alt=""></div>
@@ -67,15 +72,16 @@
                         placeholder="Book your services..."></div>
             </div>
             {{-- <div class="d-flex bg-ffffff w-42  pt-3 pb-3 borderRadius-5px pl-3 ml-3 mr-3">
-                <div><img src="{{ asset('assets/frontend/images/location.png') }}" class="img-fluid" alt=""></div>
-
-                <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
-                        placeholder="Near?"></div>
-            </div> --}}
-            <div class=""> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-3 pb-3 pl-3 pr-3"
-                    type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt=""></button></div>
-
+                <div><img src="{{ asset('assets/frontend/images/location.png') }}" class="img-fluid" alt="">
         </div>
+
+        <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
+                placeholder="Near?"></div>
+    </div> --}}
+    <div class=""> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-3 pb-3 pl-3 pr-3"
+            type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt=""></button></div>
+
+    </div>
     </div>
 </section>
 
@@ -316,31 +322,39 @@
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 pl-5 pl-0">
             <div>
-                <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">Engage with a network of global independent specialists right at your fingertips. </p>
+                <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">Engage with a network of global
+                    independent specialists right at your fingertips. </p>
                 <div class="d-flex">
                     <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                             src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Post a Job hire a specialist</div>
+                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Post a Job hire a
+                        specialist</div>
                 </div>
-                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Simply post a virtual job you need completed within specific date/times and receive competitive bids from specialists. </p>
+                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Simply post a virtual job you
+                    need completed within specific date/times and receive competitive bids from specialists. </p>
                 <!-- 2 -->
                 <div class="pt-2">
                     <div class="d-flex">
                         <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                                 src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Hire expert specialists without breaking the bank</div>
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Hire expert
+                            specialists without breaking the bank</div>
                     </div>
-                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Keep within your budget with our bidding features. By naming your own price, our premium specialist marketplace will assist in orchestrating your need on your terms.</p>
+                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Keep within your budget with
+                        our bidding features. By naming your own price, our premium specialist marketplace will assist
+                        in orchestrating your need on your terms.</p>
                 </div>
                 <!-- 3 -->
                 <div class="pt-2">
                     <div class="d-flex">
                         <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                                 src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Pay Safely and Securely</div>
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Pay Safely and
+                            Securely</div>
                     </div>
                     <p class="m-0 cl-707070 robotoRegular f-21 pt-3 sixColumnMiniPara f-16">
-                        You'll always know what you'll pay upfront. Your payment isn't released until your appointment is completed. 
+                        You'll always know what you'll pay upfront. Your payment isn't released until your appointment
+                        is completed.
                     </p>
                 </div>
                 <!-- 4 -->
@@ -348,7 +362,8 @@
                     <div class="d-flex">
                         <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                                 src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Contact us anytime
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Contact us
+                            anytime
                         </div>
                     </div>
                     <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
@@ -702,15 +717,28 @@
         </div>
 
         <div class="col-md-2 p-0">
-            <div>
+            {{-- <div>
                 <h4 class="m-0 cl-000000 robotoMedium f-26">Join Us On</h4>
             </div>
             <div class="pt-4"> <input type="email" placeholder="Enter your email..."
                     class="robotoRegular cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
             </div>
             <div class="pt-3"><button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 w-100 rounded"
-                    type="submit">Submit</button></div>
+                    type="submit">Submit</button></div> --}}
 
+            <div>
+                <h4 class="m-0 cl-000000 robotoMedium f-26">Join Us On</h4>
+            </div>
+            <div class="pt-4"> 
+                <a href="javascript:void(0)">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <img src="{{ asset('assets/frontend/images/apple-1.png') }}" alt="" height="20px" width="20px">
+                        <div class="d-flex flex-column">
+                            <h3><small>Available on the</small> App Store</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
             <div class="f-26 cl-bcbcbc pt-3 footerUl">Follow us On</div>
             <div class="d-flex pt-3">
                 <div><a href=""><img src="{{ asset('assets/frontend/images/fb.png') }}" class="img-fluid"></a></div>
