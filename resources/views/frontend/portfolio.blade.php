@@ -368,10 +368,10 @@ local barber</div>
       </div>
 
              <!-- T A B L E -->
-             <div class="table-responsive table_scroll mt-5 border">
-  <table class="table">
-    <tr class="">
-  <thead class="sticky-top">
+             <div class="table-responsive tableFixHead table_scroll mt-5 border">
+  <table id="boxes-list" class="table header-fixed">
+    <tr class="bg-white robotoRegular ">
+  <thead class="sticky-top bg-white cl-3ac754 ">
       <th scope="col">Sr</th>
       <th scope="col">Popular Services</th>
       <th scope="col">Popular Services</th>
@@ -382,6 +382,30 @@ local barber</div>
   </thead>
   <tbody class="table_scroll">
     <tr class="border-bottom">
+      <th scope="row">1</th>
+      <td>Basic hair cut no beard</td>
+      <td>Basic hair cut no beard</td>   
+      <td>$25.00</td>
+      <td>Kids cut (12 & under)</td>
+      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
+    </tr>
+    <tr class="border-bottom">
+      <th scope="row">2</th>
+      <td>Basic hair cut no beard</td>
+      <td>Basic hair cut no beard</td>   
+      <td>$25.00</td>
+      <td>Kids cut (12 & under)</td>
+      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
+    </tr>
+    <tr class="border-bottom">
+      <th scope="row">3</th>
+      <td>Basic hair cut no beard</td>
+      <td>Basic hair cut no beard</td>   
+      <td>$25.00</td>
+      <td>Kids cut (12 & under)</td>
+      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
+    </tr>
+    <tr>
       <th scope="row">4</th>
       <td>Basic hair cut no beard</td>
       <td>Basic hair cut no beard</td>   
@@ -389,16 +413,8 @@ local barber</div>
       <td>Kids cut (12 & under)</td>
       <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
     </tr>
-    <tr class="border-bottom">
-      <th scope="row">2</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr class="border-bottom">
-      <th scope="row">2</th>
+    <tr>
+      <th scope="row">5</th>
       <td>Basic hair cut no beard</td>
       <td>Basic hair cut no beard</td>   
       <td>$25.00</td>
@@ -406,23 +422,7 @@ local barber</div>
       <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
     </tr>
     <tr>
-      <th scope="row">3</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
+      <th scope="row">6</th>
       <td>Basic hair cut no beard</td>
       <td>Basic hair cut no beard</td>   
       <td>$25.00</td>
@@ -434,7 +434,25 @@ local barber</div>
   </table>
 </div>
     </section>
-   
+    <section class=" main_padding pt-70 text-center">
+                               <p class="main_title RobotoMedium f-34 cl-000000  m-0 ">Portfolio</p>
+                               <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">The best and highly skilled Performance done previously</p>
+                               <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
+                               </section>
+
+                               <section class=" main_padding pt-70 ">
+                                <div class="row m-0">
+                                  <div class="col-lg-7 col-md-7 col-sm-12 pl-0 bg_img_8">
+                                    <div class="f-34 robotoMedium cl-ffffff">
+                                    / 01
+                                    </div>
+
+
+
+                                  </div>
+                                  <div class="col-lg-5 col-md-5 col-sm-12 pr-0"></div>
+                                </div>
+                               </section>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
    
