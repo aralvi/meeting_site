@@ -54,7 +54,7 @@
     </nav> --}}
     <div class="text-center"><img src="{{ asset('assets/frontend/images/nav_2.png') }}" class="img-fluid" alt=""></div>
     <div class="text-center pt-4">
-        <p class="m-0 cl-ffffff robotoLight f-26 index_para">Discover and book beauty & wellness Professionals near you
+        <p class="m-0 cl-ffffff robotoLight f-26 index_para">Book a virtual appointment with service professionals worldwide
         </p>
     </div>
     <div class="text-center pt-4 pb-4"><img src="{{ asset('assets/frontend/images/curve.png') }}" alt=""></div>
@@ -66,12 +66,12 @@
                 <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
                         placeholder="Book your services..."></div>
             </div>
-            <div class="d-flex bg-ffffff w-42  pt-3 pb-3 borderRadius-5px pl-3 ml-3 mr-3">
+            {{-- <div class="d-flex bg-ffffff w-42  pt-3 pb-3 borderRadius-5px pl-3 ml-3 mr-3">
                 <div><img src="{{ asset('assets/frontend/images/location.png') }}" class="img-fluid" alt=""></div>
 
                 <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
                         placeholder="Near?"></div>
-            </div>
+            </div> --}}
             <div class=""> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-3 pb-3 pl-3 pr-3"
                     type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt=""></button></div>
 
@@ -108,7 +108,7 @@
 
 <section class=" main_padding pt-70 text-center">
     <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Popular Services</p>
-    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover the best things to do, See why it is one of the best.</p>
+    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover the best services that are offered virtually.</p>
     <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
 </section>
 
@@ -316,41 +316,31 @@
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 pl-5 pl-0">
             <div>
-                <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">A whole world of freelance
-                    talent at your fingertips</p>
+                <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">Engage with a network of global independent specialists right at your fingertips. </p>
                 <div class="d-flex">
                     <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                             src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">The best for every
-                        budget</div>
+                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Post a Job hire a specialist</div>
                 </div>
-                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Find high-quality services at
-                    every price point. No hourly
-                    rates, just project-based pricing</p>
+                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Simply post a virtual job you need completed within specific date/times and receive competitive bids from specialists. </p>
                 <!-- 2 -->
                 <div class="pt-2">
                     <div class="d-flex">
                         <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                                 src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Quality work
-                            done quickly</div>
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Hire expert specialists without breaking the bank</div>
                     </div>
-                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Find the right freelancer to
-                        begin working on your
-                        project within minutes.
-                        rates, just project-based pricing</p>
+                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Keep within your budget with our bidding features. By naming your own price, our premium specialist marketplace will assist in orchestrating your need on your terms.</p>
                 </div>
                 <!-- 3 -->
                 <div class="pt-2">
                     <div class="d-flex">
                         <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                                 src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Protected
-                            payments, every time</div>
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Pay Safely and Securely</div>
                     </div>
                     <p class="m-0 cl-707070 robotoRegular f-21 pt-3 sixColumnMiniPara f-16">
-                        Always know what you'll pay upfront. Your payment isn't released
-                        until you approve the work.
+                        You'll always know what you'll pay upfront. Your payment isn't released until your appointment is completed. 
                     </p>
                 </div>
                 <!-- 4 -->
@@ -358,12 +348,11 @@
                     <div class="d-flex">
                         <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
                                 src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">24/7 support
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Contact us anytime
                         </div>
                     </div>
                     <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
-                        Questions? Our round-the-clock support team is
-                        available to help anytime, anywhere.
+                        Our 24/7 support team is available to assist anytime.
                     </p>
                 </div>
 
@@ -377,8 +366,8 @@
 
 
 <section class=" main_padding pt-70  text-center">
-    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Popular Services</p>
-    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover the best things to do, See why it is one of the best.</p>
+    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Check Out These Specialists</p>
+    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover some of most talented specialists around the globe.</p>
     <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
 </section>
 

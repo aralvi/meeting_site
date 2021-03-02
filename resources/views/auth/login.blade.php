@@ -8,14 +8,13 @@
                     <img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" />
                     <div class="display-2 font-600 text-white pt-5">Welcome Back!</div>
 
-                    <div class="h3 m-0 text-white pt-3">
-                        To keep connected with us please <br />
-                        login with your personal info
+                    <div class="h3 m-0 text-white pt-3 px-2">
+                        To connect with us please login with your registered info.
                     </div>
                 </div>
             </div>
             <div class="col-md-7 padding-right-reg padding-left-reg bg-white rounded-right-reg">
-                <div class="h1 text-center cl-3AC574 padding-top-reg">Signin to Learnmelive</div>
+                <div class="h1 text-center cl-3AC574 padding-top-reg">Sign in to learnme live</div>
                 <div class="pl-5 pr-5">
                     <div>
                         <div class="row pt-3">
