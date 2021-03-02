@@ -445,17 +445,126 @@ local barber</div>
 
                                <section class=" main_padding pt-70 ">
                                 <div class="row m-0">
-                                  <div class="col-lg-7 col-md-7 col-sm-12 pl-0 bg_img_8">
-                                    <div class="f-34 robotoMedium cl-ffffff">
+                                  <div class="col-lg-7 col-md-7 col-sm-12 pl-0 pr-0 bg_img_8 d-flex flex-column  justify-content-end">
+                                 
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
                                     / 01
+                                    </div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="w-100 bg-000000a6 borderRadius-10px ">
+                                      <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
+                                        <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
+                                        <div class="pl-3"><img src="{{ asset('assets/frontend/images/Path 104.png') }}" alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">10</span></div>
+
+                                      </div>
                                     </div>
 
 
 
+
                                   </div>
-                                  <div class="col-lg-5 col-md-5 col-sm-12 pr-0"></div>
+                                  <div class="col-lg-5 col-md-5 col-sm-12 pr-0">
+                                    <div class="bg_imgcol-5 d-flex flex-column  justify-content-end">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    / 01
+                                    </div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="w-100 bg-000000a6 borderRadius-10px ">
+                                      <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
+                                        <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
+                                        <div class="pl-3"><img src="{{ asset('assets/frontend/images/Path 104.png') }}" alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">10</span></div>
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                            <!-- 2nd -->
+                                            <div class="bg_imgcol-5_two d-flex flex-column  justify-content-end ">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    / 01
+                                    </div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="w-100 bg-000000a6 borderRadius-10px ">
+                                      <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
+                                        <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
+                                        <div class="pl-3"><img src="{{ asset('assets/frontend/images/Path 104.png') }}" alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">10</span></div>
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+
+
+                                            <!-- end -->
+                                </div>
                                 </div>
                                </section>
+                               <section class=" main_padding pt-5 text-center">
+                               <button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 " type="submit">See all</button>
+                               </section>
+
+
+
+                               <section class=" main_padding pt-5">
+                               <div class="row m-0">
+                                 <div class="col-md-8 col-lg-8 pl-0">
+                                   <div class="d-flex">
+                                     <div class="f-34 cl-000000 robotoMedium">Reviews</div>
+                                     <div class="d-flex align-items-center pl-4">
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                     
+
+
+                                     </div>
+                                   </div>
+                                   <div class="w-75 f-21 RobotoRegular cl-616161">Reviews are no joke! Booksy values authentic reviews and only verifies them 
+if we know the reviewer has visited this business.</div>
+
+                                               <!-- COMMENTS SECTION START -->
+                              <div class="d-flex pt-5">
+                                <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}" alt="" srcset=""></div>
+                                <div class="content_commentSection pl-4">
+                                 <div class="d-flex">
+                                 <div class="d-flex align-items-center pr-3">
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                     
+
+
+                                     </div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 </div>
+                                </div>
+                              </div>
+                                              
+
+
+                                 </div>
+                                 <div class="col-md-4 col-lg-4"></div>
+                               </div>
+                               </section>
+
+
+
+
+
+
+
+
+
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
    
