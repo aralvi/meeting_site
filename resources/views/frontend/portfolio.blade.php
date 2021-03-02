@@ -532,7 +532,8 @@ if we know the reviewer has visited this business.</div>
                               <div class="d-flex pt-5">
                                 <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}" alt="" srcset=""></div>
                                 <div class="content_commentSection pl-4">
-                                 <div class="d-flex">
+                              <div>
+                              <div class="d-flex">
                                  <div class="d-flex align-items-center pr-3">
                                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
                                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
@@ -546,9 +547,74 @@ if we know the reviewer has visited this business.</div>
                                  <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
                                  <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
                                  </div>
+                              </div>
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+art as welll!!!! I would give him 10 stars...</div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                </div>
                                 </div>
                               </div>
-                                              
+                                               <!-- 2 -->
+                                               <div class="d-flex pt-5">
+                                <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}" alt="" srcset=""></div>
+                                <div class="content_commentSection pl-4">
+                              <div>
+                              <div class="d-flex">
+                                 <div class="d-flex align-items-center pr-3">
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                     
+
+
+                                     </div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 </div>
+                              </div>
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+art as welll!!!! I would give him 10 stars...</div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                </div>
+                                </div>
+                              </div>
+
+                                               <!-- end -->
+                                               <!-- 3 -->
+                                               <div class="d-flex pt-5">
+                                <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}" alt="" srcset=""></div>
+                                <div class="content_commentSection pl-4">
+                              <div>
+                              <div class="d-flex">
+                                 <div class="d-flex align-items-center pr-3">
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                     
+
+
+                                     </div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 </div>
+                              </div>
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+art as welll!!!! I would give him 10 stars...</div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                </div>
+                                </div>
+                              </div>
+                                               <!-- end -->
 
 
                                  </div>

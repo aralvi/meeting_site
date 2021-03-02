@@ -19,7 +19,8 @@
                                 type="submit">Log In</a>
                             <a href="{{route('register')}}"
                                 class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3 login_button"
-                                type="submit">Sign up</a><span>Business?</span>
+                                type="submit">Sign up</a>
+                                {{-- <span>Business?</span> --}}
                         </form>
                     </div>
                 </li>
