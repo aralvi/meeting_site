@@ -47,7 +47,7 @@
                             
                             <fieldset>
                                 <div class="text-right pt-4">
-                                    <div class="">Already Login?</div>
+                                    <div class="">Already Registerd?</div>
                                     <div class="pr-4 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-2">Register</div>
@@ -76,7 +76,7 @@
                                     <div class="input-group mb-3 border-input pt-2">
 										<span><img src="{{ asset('assets/frontend/images/shoping cart-8.png') }}" alt="" /></span>
                                         <span class="w-75">
-                                            <input type="text" class="form-control border-0" placeholder="What is the name of your business?" name="business_name" id="business_name" aria-label="" aria-describedby="basic-addon1"/>
+                                            <input type="text" class="form-control border-0" placeholder="Create a username" name="business_name" id="business_name" aria-label="" aria-describedby="basic-addon1"/>
                                         </span>
                                     </div>
                                     <label class="cl-3AC574 m-0">
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="input-group mb-3 border-input pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
+                                        <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
 
                                     <div class="input-group mb-3 border-input pt-3">
