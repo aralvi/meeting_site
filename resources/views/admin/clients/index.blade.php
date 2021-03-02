@@ -38,8 +38,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($clients as $client)
                             <tr id="target_">
-                                <td></td>
+                                <td>{{ $client->User->name }}</td>
                                 
                                 <td style="min-width: 135px !important;">
                                     <button title="Click to Update Category" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-catid=""><i class="fe fe-pencil"></i> Edit</button>
@@ -47,6 +48,8 @@
                                     <button title="Click to Delete Category" type="button" class="btn btn-danger btn-sm catDelete" id="catDelete" data-catid=""><i class="fe fe-trash"></i> Delete</button>
                                 </td>
                             </tr>
+                                
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

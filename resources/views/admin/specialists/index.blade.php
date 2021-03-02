@@ -42,7 +42,7 @@
                                 
                             <tr id="target_{{ $specialist->id }}">
                                 <td>{{ $key +1 }}</td>
-                                <td>{{ $specialist->name }}</td>
+                                <td>{{ $specialist->User->name }}</td>
                                 
                                 <td style="min-width: 135px !important;">
                                     <button title="Click to Update Category" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-catid=""><i class="fe fe-pencil"></i> Edit</button>
