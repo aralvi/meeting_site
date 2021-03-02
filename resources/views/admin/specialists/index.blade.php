@@ -44,10 +44,21 @@
                                 <td>{{ $key +1 }}</td>
                                 <td>{{ $specialist->User->name }}</td>
                                 
-                                <td style="min-width: 135px !important;">
-                                    <button title="Click to Update Category" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-catid=""><i class="fe fe-pencil"></i> Edit</button>
+                                <td style="min-width: 135px !important;" class="d-flex">
+                                    <form action="{{ route('specialists.update',$specialist->User->id) }}" method="post">
+                                        @csrf
+                                        @method('put')
+                                        @if ($specialist->User->status == 'inactive')
+                                        <input type="hidden" name="status" value="active">
+                                        <button type="submit" class="btn btn-sm btn-success">Activate</button>
+                                        @else
+                                        <input type="hidden" name="status" value="inactive">
+                                        <button type="submit" class="btn btn-sm btn-danger">Block</button>
+                                        
+                                        @endif
+                                    </form>
 
-                                    <button title="Click to Delete Category" type="button" class="btn btn-danger btn-sm catDelete" id="catDelete" data-catid=""><i class="fe fe-trash"></i> Delete</button>
+                                    <button title="Click to Delete Category" type="button" class="btn btn-danger btn-sm catDelete ml-2" id="catDelete" data-catid=""><i class="fe fe-trash"></i> Delete</button>
                                 </td>
                             </tr>
                             @endforeach
