@@ -22,7 +22,6 @@
         <link rel="stylesheet" href="{{ asset('assets/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
-        <link rel="stylesheet" href="{{asset('asset/site_css/product_create.css')}}" /> 
     </head>
         <style>
             .sidebar-menu {
@@ -165,7 +164,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-img" data-toggle="dropdown" href="#">
                             {{-- @if (Auth::user()->avatar != '') --}} {{-- <img src="{{asset('uploads/images/user/avatars/'.Auth::user()->avatar)}}" class="avatar-img rounded-circle" alt="..." /> --}} {{-- @else --}}
-                            <img src="{{asset('asset/admin/dist/img/avatar.png')}}" class="avatar-img rounded-circle" alt="profile" width="40" />
+                            <img src="{{asset('assets/admin/dist/img/avatar.png')}}" class="avatar-img rounded-circle" alt="profile" width="40" />
 
                             {{-- @endif --}}
                         </a>
@@ -191,7 +190,7 @@
             <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-222d32">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
-                    <img src="{{ asset('asset/admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8;" />
+                    <img src="{{ asset('assets/admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8;" />
 
                     <span class="brand-text font-weight-light">EWD Tech</span>
                 </a>
@@ -201,7 +200,7 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="{{ asset('asset/admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" />
+                            <img src="{{ asset('assets/admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" />
                         </div>
                         <div class="info">
                             {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
@@ -229,51 +228,22 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
-                            <li class="treeview {{ request()->is('admin/categories*')? 'active': '' }}">
-                                <a href="" class="nav-link {{ request()->is('admin/categories*')? 'active': '' }}">
+                            <li class="treeview {{ request()->is('clients*')? 'active': '' }}">
+                                <a href="" class="nav-link {{ request()->is('clients*')? 'active': '' }}">
                                     <i class="fa fa-pie-chart"></i>
-                                    <span>Site Types</span>
+                                    <span>Users</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li class="{{ request()->is('admin/categories*')? 'active': '' }}">
-                                        <a href="{{ url('admin/categories') }}" class="{{ request()->is('admin/categories*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Categories</a>
+                                    <li class="{{ request()->is('clients*')? 'active': '' }}">
+                                        <a href="{{ url('clients') }}" class="{{ request()->is('clients*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Clients</a>
                                     </li>
-                                    <li class="{{ request()->is('admin/subcategories*')? 'active': '' }}">
-                                        <a href="{{ url('admin/subcategories') }}" class="{{ request()->is('admin/subcategories*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Sub Categories</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="treeview {{ request()->is('admin/sizes*')? 'active': '' }} || {{ request()->is('admin/colors*')? 'active': '' }}">
-                                <a href="" class="nav-link ">
-                                    <i class="fa fa-pie-chart"></i>
-                                    <span>Variations</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="{{ request()->is('admin/colors*')? 'active': '' }}">
-                                        <a href="{{ url('admin/colors') }}" class="{{ request()->is('admin/colors*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Colors</a>
-                                    </li>
-                                    <li class="{{ request()->is('admin/sizes*')? 'active': '' }}">
-                                        <a href="{{ url('admin/sizes') }}" class="{{ request()->is('admin/sizes*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Sizes</a>
+                                    <li class="{{ request()->is('specialists*')? 'active': '' }}">
+                                        <a href="{{ url('specialists') }}" class="{{ request()->is('specialists*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Specialists</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="treeview {{ request()->is('admin/products*')? 'active': '' }} ">
-                                <a href="#" class="nav-link {{ request()->is('admin/products')? 'active': '' }}">
-                                    <i class="fa fa-pie-chart"></i>
-                                    <span>Products</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu ">
-                                    <li class="{{ request()->is('admin/products')? 'active': '' }}">
-                                        <a href="{{ url('admin/products') }}" class="{{ request()->is('admin/products')? 'active': '' }}"><i class="fa fa-circle-o"></i> All Products</a>
-                                    </li>
-                                    <li class="{{ request()->is('admin/products/create')? 'active': '' }}">
-                                        <a href="{{ url('admin/products/create') }}" class="{{ request()->is('admin/products/create')? 'active': '' }}"><i class="fa fa-circle-o"></i> Add Product</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                             
                         </ul>
                     </nav>
@@ -344,24 +314,24 @@
 
             $.sidebarMenu($(".sidebar-menu"));
         </script>
-        <script src="{{ asset('asset/admin/plugins/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('asset/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('asset/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
         <!-- Select2 -->
-        <script src="{{ asset('asset/admin/plugins/select2/js/select2.full.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
         <!-- Summernote -->
-        <script src="{{ asset('asset/admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
-        <script src="{{ asset('asset/admin/dist/js/adminlte.js') }}"></script>
-        <script src="{{ asset('asset/admin/dist/js/custome.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/dist/js/adminlte.js') }}"></script>
+        <script src="{{ asset('assets/admin/dist/js/custome.js') }}"></script>
         <script>
             $(function () {
                  $(".select2").select2();
