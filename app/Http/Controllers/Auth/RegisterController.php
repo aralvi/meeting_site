@@ -71,7 +71,7 @@ class RegisterController extends Controller
             $arr['client_phone'] =['required', 'string'];
         }
 
-        if($data['payment_method']=='stripe')
+        if($data['payment_method']=='stripe' && $data['user_type'] !='client')
         {
             $arr['payment_name'] = ['required', 'string'];
             $arr['payment_birth_date'] = ['required'];
