@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light p-0">
+<link rel="stylesheet" href="{{ asset('assets/frontend/css/navbar.css') }}">
+<nav class="navbar navbar-expand-lg navbar-light pl-0 pr-0 pt-4">
             <a class="navbar-brand" href="#"><img src="{{ asset('assets/frontend/images/navlogo.png') }}"
                     alt="navbar logo" class="img-fluid" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -26,22 +27,29 @@
                 @else
                 </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="form-inline my-2 my-lg-0 bg-transparent border rounded">
-                    <input class="form-control mr-sm-2 w-18 bg-transparent text-white border-0" type="search"
-                        value="what are you looking for ?" aria-label="Search" />
-                    <img src="{{ asset('assets/frontend/images/search2.png') }}" alt=""
-                        class="img-fluid p-2 search-img" />
-                </form>
-                <ul class="navbar-nav ml-auto d-flex align-self-center f-20">
+                <div class="pt-2 pb-2 border-ffffff w-25 d-flex pl-3 pr-3 rounded">
+                    <div class="w-100 cl-ffffff"><input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " value="what are you looking for ?"></div>
+                    
+                    <div>   <img src="{{ asset('assets/frontend/images/search2.png') }}" class="ml-auto" alt=""
+                        class="img-fluid p-2 search-img" /></div>
 
-                    <li class="nav-item col-md-2">
-                        <a class="nav-link cl-white" href="#">Blog <span class="sr-only">(current)</span></a>
+                </div>
+                <!-- <form class="form-inline d-flex my-lg-0 bg-transparent border rounded w-25">
+                    <input class="form-control mr-sm-0 pr-0 w-100 robotoRegular bg-transparent text-white border-0 pt-2 pb-2" type="search"
+                        value="what are you looking for ?" aria-label="Search" />
+                    <img src="{{ asset('assets/frontend/images/search2.png') }}" class="ml-auto" alt=""
+                        class="img-fluid p-2 search-img" />
+                </form> -->
+                <ul class="navbar-nav ml-auto d-flex justify-content-center align-items-center f-20 ">
+
+                    <li class="nav-item  robotoRegular">
+                        <a class="nav-link cl-ffffff" href="#">Blog <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item col-md-3 p-0">
-                        <a class="nav-link cl-white" href="#">About us</a>
+                    <li class="nav-item  p-0 robotoRegular pl-4 cl-ffffff">
+                        <a class="nav-link cl-ffffff" href="#">About us</a>
                     </li>
-                    <li class="nav-item dropdown col-md-3 p-0">
-                        <a class="nav-link cl-white" href="#" id="navbarDropdown" data-toggle="dropdown"
+                    <li class="nav-item dropdown  pl-4 robotoRegular">
+                        <a class="nav-link cl-ffffff cl-ffffff" href="#" id="navbarDropdown" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="">
                             Messages
                             <span class="green-dot mt-1 ml-2"></span>
@@ -190,11 +198,11 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item col-md-2">
-                        <a class="nav-link cl-white" href="#">Spa</a>
+                    <li class="nav-item  robotoRegular pl-4 cl-ffffff">
+                        <a class="nav-link cl-ffffff" href="#">Spa</a>
                     </li>
-                    <li class="nav-item col-md-2">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                    <li class="nav-item  pl-4">
+                        <a class="nav-link dropdown-toggle p-0" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
                                 src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"
                                 alt="" class="img-fluid w-75" /></a>
 
