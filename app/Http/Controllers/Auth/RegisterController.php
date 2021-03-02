@@ -128,7 +128,7 @@ class RegisterController extends Controller
             $specialist->business_name = $data['business_name'];
             $specialist->business_location = $data['business_location'];
             $specialist->payment_method = $data['payment_method'];
-            if($data['payment_method']=='stripe')
+            if($data['payment_method']=='stripe' && $data['user_type'] !='client')
             {
                 $specialist->payment_name = $data['payment_name'];
                 $specialist->payment_birth_date = $data['payment_birth_date'];
