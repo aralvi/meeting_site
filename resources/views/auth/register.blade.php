@@ -44,13 +44,35 @@
                     <div class="col-md-7 padding-right-reg padding-left-reg bg-white rounded-right-reg">
                         <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
                             @csrf
+                            
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Login?</div>
                                     <div class="pr-4 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-2">Register</div>
-                                <div class="pl-5 pr-5">
+
+                                <div class="row pt-4">
+                                    
+                                    <div class="col-md-12 d-flex justify-content-center">
+
+                                        <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border">
+                                            <input type="radio" class="btn-check" name="user_type" id="specialist" autocomplete="off" checked onclick="radio(this)" value="specialist">
+                                            <label class="btn text-white" for="specialist">
+                                            Specialist
+                                              </label>
+                                        </div>
+                                        <div class=" ml-4 mr-4 pl-4 pr-4 rounded border">
+                                            <input type="radio" class="btn-check" name="user_type" id="client" autocomplete="off" onclick="radio(this)"  value="client">
+                                            <label class="btn " for="client">Client</label>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="pl-5 pr-5 first-step-html-change">
                                     <div class="input-group mb-3 border-input pt-2">
 										<span><img src="{{ asset('assets/frontend/images/shoping cart-8.png') }}" alt="" /></span>
                                         <span class="w-75">
@@ -328,7 +350,105 @@
                 </div>
             </div>
         </div>
-      
+    
+        <div id="specialist-html" style="display: none;">
+            <div class="input-group mb-3 border-input pt-2">
+                <span><img src="{{ asset('assets/frontend/images/shoping cart-8.png') }}" alt="" /></span>
+                <span class="w-75">
+                    <input type="text" class="form-control border-0" placeholder="What is the name of your business?" name="business_name" id="business_name" aria-label="" aria-describedby="basic-addon1"/>
+                </span>
+            </div>
+            <label class="cl-3AC574 m-0">
+                <span><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></span>
+                <span class="pl-1 cl-3AC574 h6">Link to your Public Profile</span>
+            </label>
+            <div class="input-group mb-3 border-input pt-0 pl-3">
+                <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" name="website" aria-label="" aria-describedby="basic-addon1" />
+            </div>
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
+                <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                <span class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
+            </div>
+
+            <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
+            <div class="pt-4 f-14 cl-gray text-center">
+                <p class="mb-1">
+                    By Sigining up I agree the
+                    <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
+                    <span ><a href="#" class="cl-3AC574">privacy policy </a> </span>
+                </p>
+            </div>
+            <div class="text-center">
+                <h6 class="border-bottom m-0 mb-5 pr-4 pb-2 cl-gray f-14">
+                    Message & Data Rates may Apply
+                </h6>
+            </div>
+
+        </div>
+
+        <div id="client-html" style="display: none;">
+            
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
+                <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="client-name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                <span class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="client-email" aria-label="" aria-describedby="basic-addon1" name="email" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></span>
+                <span class="w-75"> <input type="text" class="form-control border-0" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="client-password" aria-label="" aria-describedby="basic-addon1" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
+            </div>
+
+            <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-step1" value="Creating Account" />
+            <div class="row">
+                <div class="col-md-12 pt-4 alerMsg" style="display: none;">
+                    <div class="alert alert-success">You have registered successfully</div>
+                </div>
+            </div>
+            <div class="pt-4 f-14 cl-gray text-center">
+                <p class="mb-1">
+                    By Sigining up I agree the
+                    <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
+                    <span ><a href="#" class="cl-3AC574">privacy policy </a> </span>
+                </p>
+            </div>
+            <div class="text-center">
+                <h6 class="border-bottom m-0 mb-5 pr-4 pb-2 cl-gray f-14">
+                    Message & Data Rates may Apply
+                </h6>
+            </div>
+
+        </div>
+
 	@endsection
 
 {{-- content section end --}}
@@ -348,6 +468,20 @@
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
         <script>
 
+            const btnClicK =(className,parentClass ,txtLeft)=>{
+                  let v =  $('.white-dot')
+                 $('.left-text').html(txtLeft);
+                  v.addClass(className);
+                  v.siblings().addClass(parentClass);
+                }
+            const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
+                  let v =  $('.white-dot')
+                 $('.left-text').html(txtLeft);
+                  v.removeClass(removeClass);
+                  v.siblings().removeClass(removeParentClass);
+                  v.addClass(className);
+                }
+
             const radio = (ele) => {
 
                 $(ele).parent().addClass('bg-3AC574');
@@ -355,6 +489,16 @@
                 $(ele).parent().siblings().find('label').removeClass('text-white');
                 // $(ele).siblings().removeClass('text-white');
                 $(ele).siblings().addClass('text-white');
+                if($(ele).val()=='client')
+                {
+                    btnClicK('dot-100','width-100','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.');
+                    $('.first-step-html-change').html(document.getElementById('client-html').innerHTML);
+
+                }else if($(ele).val()=='specialist')
+                {
+                    btnClicKBack('dot-100','width-100','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')
+                    $('.first-step-html-change').html(document.getElementById('specialist-html').innerHTML);
+                }
 
             }
            
@@ -411,7 +555,7 @@
                 return chk;
             }
 
-            function passwordFieldValidate(id)
+            function passwordFieldValidate(id,confirmID)
             {
                 if($(id).val() =='')
                 {
@@ -428,14 +572,14 @@
                     return false;
                 }
 
-                else if($(id).val() !='' && $(id).val() != $('#confirm_password').val())
+                else if($(id).val() !='' && $(id).val() != $(confirmID).val())
                 {
                     $(id).addClass('placeholder-color-change');
                     $(id).parent('span').parent('div').removeClass('border-input');
                     $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
                     return false;
                 }
-                else if($(id).val() !='' && $(id).val() == $('#confirm_password').val() && $(id).val().length >=8)
+                else if($(id).val() !='' && $(id).val() == $(confirmID).val() && $(id).val().length >=8)
                 {
                     $(id).removeClass('placeholder-color-change');
                     $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
@@ -457,23 +601,32 @@
                     }
                 });
             }
+
+            function ajaxCommonCode(fd)
+            {
+                $.ajax({
+                    url:"{{ route('register') }}",
+                    type:"post",
+                    processData: false, 
+                    contentType: false,
+                    // data: $('#add-client-form').serialize(),
+                    data: fd,
+                    success:function(data)
+                    {
+                        $('.alerMsg').show();
+                        setInterval(function(){
+                            window.location = '{{ route('index') }}';
+                        },2000);
+
+                    },
+                    error:function(request,status,error)
+                    {
+                        console.log(request.responseText);
+                    }
+                });
+            }
         </script>
 
-    	<script>
-            const btnClicK =(className,parentClass ,txtLeft)=>{
-                  let v =  $('.white-dot')
-                 $('.left-text').html(txtLeft);
-                  v.addClass(className);
-                  v.siblings().addClass(parentClass);
-                }
-            const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
-                  let v =  $('.white-dot')
-                 $('.left-text').html(txtLeft);
-                  v.removeClass(removeClass);
-                  v.siblings().removeClass(removeParentClass);
-                  v.addClass(className);
-                }
-        </script>
         <script>
             var testObject = [];
             const button = document.getElementById("submit");
@@ -679,9 +832,21 @@
 
         <script>
            
+           $(document.body).on("click", "input.client-step1", function () {
+                // $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
+                {
+                    // $('#registerForm').submit();
+                    var myform = document.getElementById("registerForm");
+                    var fd = new FormData(myform);
+                    fd.append("_token","{{ csrf_token() }}");
+                    ajaxCommonCode(fd);
+                }
+            });
+
             $(document.body).on("click", "input.step1", function () {
                 // $(this).parent("div").siblings("span.inputBtn").click();
-                if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password')))
+                if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
                 {$(this).parent("div").siblings("span.inputBtn").click();}
             });
 
@@ -712,27 +877,7 @@
                     fd.append('days',days);
                     // fd.append('from',from);
                     // fd.append('to',to);
-                    $.ajax({
-                        url:"{{ route('register') }}",
-                        type:"post",
-                        processData: false, 
-                        contentType: false,
-                        // data: $('#add-client-form').serialize(),
-                        data: fd,
-                        success:function(data)
-                        {
-                            $('.alerMsg').show();
-                            setInterval(function(){
-                                window.location = '{{ route('index') }}';
-                            },2000);
-
-                        },
-                        error:function(request,status,error)
-                        {
-                            console.log(request.responseText);
-                        }
-                    });
-
+                    ajaxCommonCode(fd);
                 }
                 // let v = $(this).parent("div").siblings("span.inputBtn").click();
             });
