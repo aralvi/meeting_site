@@ -78,7 +78,7 @@ class RegisterController extends Controller
             $arr['payment_phone'] = ['required'];
 
         }
-        else
+        else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
         {
             $arr['payment_email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
         }
@@ -136,7 +136,7 @@ class RegisterController extends Controller
                 $specialist->payment_phone = $data['payment_phone'];
 
             }
-            else
+            else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
             {
                 $specialist->payment_email = $data['payment_email'];
             }
