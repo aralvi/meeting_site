@@ -30,7 +30,7 @@
 
 @section('content')
 
-<section class=" main_padding bg-navbar nav-bg-img">
+<section class=" main_padding bg-navbar nav-bg-img pb-5">
     @include('includes.frontend.navbar')
     {{-- <nav class="navbar navbar-expand-lg navbar-light pt-3 pl-0 pr-0">
         <a class="navbar-brand" href="#"><img src="{{ asset('assets/frontend/images/navlogo.png') }}" class="img-fluid"

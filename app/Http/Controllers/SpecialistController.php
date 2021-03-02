@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Specialist;
+use App\User;
+
 class SpecialistController extends Controller
 {
     /**
@@ -69,7 +71,16 @@ class SpecialistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $specialist = User::findOrFail($id);
+        $specialist->status = $request->status;
+        $specialist->save();
+        if($request->status == 'active'){
+
+            return back()->with('success','Specialist has been activated successfully');
+        }else{
+
+            return back()->with('success','Specialist has been blocked successfully');
+        }
     }
 
     /**
