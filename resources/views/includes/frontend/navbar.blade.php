@@ -203,21 +203,25 @@
                         <a class="nav-link cl-ffffff" href="#">Spa</a>
                     </li>
                     <li class="nav-item  pl-4">
-                        <a class="nav-link dropdown-toggle p-0" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"
-                                alt="" class="img-fluid w-75" /></a>
-
-                        {{-- <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
-                          </a> --}}
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                        <a class="nav-img" data-toggle="dropdown" href="#">
+                            <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"  class="img-fluid w-75" alt="profile" width="40" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a
+                                class="dropdown-item"
+                                href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();"
+                            >
+                                {{ __('Logout') }}
+                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-
                         </div>
+                        
+
+                      
 
                     </li>
                     @endguest
