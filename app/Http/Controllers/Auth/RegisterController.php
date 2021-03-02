@@ -53,29 +53,36 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $arr = [
+                'name' => ['required', 'string'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ];
+
         if ($data['user_type']=='specialist')
         {
-            $arr = [
-                    'name' => ['required', 'string'],
-                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                    'payment_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                    'password' => ['required', 'string', 'min:8', 'confirmed'],
-                    'payment_password' => ['required'],
-                    'payment_method' => ['required'],
-                    'business_name' => ['required', 'string'],
-                    'business_phone' => ['required', 'string'],
-                    'business_location' => ['required', 'string'],
-                ];
+            $arr['payment_method'] = ['required'];
+            $arr['business_name'] = ['required', 'string'];
+            $arr['business_phone'] = ['required', 'string'];
+            $arr['business_location'] = ['required', 'string'];
         }
         else if($data['user_type']=='client')
         {
-            $arr =[
-                    'name' => ['required', 'string'],
-                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                    'password' => ['required', 'string', 'min:8', 'confirmed'],
-                    'client_phone' => ['required', 'string'],
-                ];
+            $arr['client_phone'] =['required', 'string'];
         }
+
+        if($data['payment_method']=='stripe')
+        {
+            $arr['payment_name'] = ['required', 'string'];
+            $arr['payment_birth_date'] = ['required'];
+            $arr['payment_phone'] = ['required'];
+
+        }
+        else
+        {
+            $arr['payment_email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
+        }
+
         return Validator::make($data, $arr);
     }
 
@@ -92,9 +99,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'payment_password' => $data['password'],
-            'payment_email'=>$data['payment_email'],
-            'payment_method'=>$data['payment_method'],
             'status'=>'inactive'
         ]);
 
@@ -106,11 +110,11 @@ class RegisterController extends Controller
                 {
                     if($value =="saturday" || $value=='sunday')
                     {
-                        $arr[$value] = ['closed'];
+                        $hours_arr[$value] = ['closed'];
                     }
                     else
                     {
-                        $arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
+                        $hours_arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
                     }
                    
                 }
@@ -123,7 +127,21 @@ class RegisterController extends Controller
             $specialist->business_phone = $data['business_phone'];
             $specialist->business_name = $data['business_name'];
             $specialist->business_location = $data['business_location'];
-            $specialist->opening_hours = json_encode($arr);
+            $specialist->payment_method = $data['payment_method'];
+            if($data['payment_method']=='stripe')
+            {
+                $specialist->payment_name = $data['payment_name'];
+                $specialist->payment_birth_date = $data['payment_birth_date'];
+                $specialist->payment_phone = $data['payment_phone'];
+
+            }
+            else
+            {
+                $specialist->payment_email = $data['payment_email'];
+            }
+            $specialist->opening_hours = json_encode($hours_arr);
+            $specialist->payment_ssn = $data['payment_ssn'];
+
             $specialist->save();
         }
         else if($data['user_type'] =='client')

@@ -182,18 +182,18 @@
                                         <div class="col-md-12 d-flex justify-content-center">
 
                                             <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border">
-                                                <input type="radio" class="btn-check" name="payment_method" id="option1" autocomplete="off" checked onclick="radio(this)" value="stripe">
+                                                <input type="radio" class="btn-check" name="payment_method" id="option1" autocomplete="off" checked onclick="paymentRadio(this)" value="stripe">
                                                 <label class="btn text-white" for="option1">
                                                 Stripe  
                                                   </label>
                                             </div>
                                             <div class=" ml-4 mr-4 pl-4 pr-4 rounded border">
-                                                <input type="radio" class="btn-check" name="payment_method" id="option2" autocomplete="off" onclick="radio(this)"  value="paypal">
+                                                <input type="radio" class="btn-check" name="payment_method" id="option2" autocomplete="off" onclick="paymentRadio(this)"  value="paypal">
                                                 <label class="btn " for="option2">Paypal</label>
 
                                             </div>
                                             <div class=" ml-2 mr-2 pl-3 pr-3 rounded border">
-                                                <input type="radio" class="btn-check" name="payment_method" id="option4" autocomplete="off" onclick="radio(this)" value="payoneer">
+                                                <input type="radio" class="btn-check" name="payment_method" id="option4" autocomplete="off" onclick="paymentRadio(this)" value="payoneer">
                                                 <label class="btn " for="option4">Payoneer</label>
 
                                             </div>
@@ -201,14 +201,31 @@
                                         </div>
 
                                     </div>
-                                    <div class="input-group mb-3 border-input pt-4 mb-4 mt-5">
-                                        <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                                        <span><input type="email" id="payment_email" class="form-control border-0" placeholder="Enter your email" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></span>
+
+                                    <div id="payment_selection_html">
+                                        
+                                        <div class="input-group mb-3 border-input pt-3 mt-3">
+                                            <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                                            <span><input type="text" id="payment_name" class="form-control border-0" placeholder="Enter your name" aria-label="" aria-describedby="basic-addon1" name="payment_name" /></span>
+                                        </div>
+
+                                        <div class="input-group mb-3 border-input pt-3">
+                                            <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                                            <span><input type="text" id="payment_phone" class="form-control border-0" placeholder="Enter your phone" aria-label="" aria-describedby="basic-addon1" name="payment_phone" /></span>
+                                        </div>
+
+                                        <div class="input-group mb-3 border-input pt-3">
+                                            <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                                            <span><input type="date" id="payment_date_birth" class="form-control border-0" placeholder="" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></span>
+                                        </div>
+
+                                        <div class="input-group mb-3 border-input pt-3">
+                                            <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                                            <span><input type="number" class="form-control border-0" placeholder="Last 4 Digits of SSN (for US only)" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></span>
+                                        </div>
+
                                     </div>
-                                    <div class="input-group mb-3 border-input pt-4 mb-4">
-                                        <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                                        <span><input type="password" class="form-control border-0" placeholder="Enter your password" id="payment_password" aria-label="" aria-describedby="basic-addon1" name="payment_password" /></span>
-                                    </div>
+                                    
                                     <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step3 float-right" value="Continue" />
                                     <input type="button" data-page="2" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
                                     <div class="row">
@@ -449,6 +466,35 @@
 
         </div>
 
+        <div id="stripe-html" style="display:none;">
+            <div class="input-group mb-3 border-input pt-3 mt-3">
+                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                <span><input type="text" id="payment_name" class="form-control border-0" placeholder="Enter your name" aria-label="" aria-describedby="basic-addon1" name="payment_name" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                <span><input type="text" id="payment_phone" class="form-control border-0" placeholder="Enter your phone" aria-label="" aria-describedby="basic-addon1" name="payment_phone" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                <span><input type="date" id="payment_date_birth" class="form-control border-0" placeholder="" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></span>
+            </div>
+
+            <div class="input-group mb-3 border-input pt-3">
+                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
+                <span><input type="number" class="form-control border-0" placeholder="Last 4 Digits of SSN (for US only)" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></span>
+            </div>
+        </div>
+
+        <div id="other-html" style="display:none;">
+            <div class="input-group mb-3 border-input pt-4 mb-4 mt-5">
+                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
+                <span><input type="email" id="payment_email" class="form-control border-0" placeholder="Enter your payment method email" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></span>
+            </div>                        
+        </div>
+
 	@endsection
 
 {{-- content section end --}}
@@ -498,6 +544,26 @@
                 {
                     btnClicKBack('dot-100','width-100','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')
                     $('.first-step-html-change').html(document.getElementById('specialist-html').innerHTML);
+                }
+
+            }
+
+            const paymentRadio = (ele) => {
+
+                $(ele).parent().addClass('bg-3AC574');
+                $(ele).parent().siblings().removeClass('bg-3AC574');
+                $(ele).parent().siblings().find('label').removeClass('text-white');
+                // $(ele).siblings().removeClass('text-white');
+                $(ele).siblings().addClass('text-white');
+
+                if($(ele).val()=='stripe')
+                {
+                    $('#payment_selection_html').html(document.getElementById('stripe-html').innerHTML);
+
+                }else
+                {
+                    
+                    $('#payment_selection_html').html(document.getElementById('other-html').innerHTML);
                 }
 
             }
@@ -832,7 +898,7 @@
 
         <script>
            
-           $(document.body).on("click", "input.client-step1", function () {
+            $(document.body).on("click", "input.client-step1", function () {
                 // $(this).parent("div").siblings("span.inputBtn").click();
                 if(inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
                 {
@@ -845,24 +911,25 @@
             });
 
             $(document.body).on("click", "input.step1", function () {
-                // $(this).parent("div").siblings("span.inputBtn").click();
-                if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
-                {$(this).parent("div").siblings("span.inputBtn").click();}
+                $(this).parent("div").siblings("span.inputBtn").click();
+                // if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
+                // {$(this).parent("div").siblings("span.inputBtn").click();}
             });
 
             $(document.body).on("click", "input.step2", function () {
-                
-                if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
-                {$(this).parent("div").siblings("span.inputBtn").click();}
+                $(this).parent("div").siblings("span.inputBtn").click();
+                // if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
+                // {$(this).parent("div").siblings("span.inputBtn").click();}
             });
+
             $(document.body).on("click", "input.backstep2", function () {
                 
                 $(this).parent("div").siblings("span.previous").click();
             });
 
             $(document.body).on("click", "input.step3", function () {
-                if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
-                {
+                // if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
+                // {
                     // $('#registerForm').submit();
                     var myform = document.getElementById("registerForm");
                     var fd = new FormData(myform);
@@ -878,7 +945,7 @@
                     // fd.append('from',from);
                     // fd.append('to',to);
                     ajaxCommonCode(fd);
-                }
+                // }
                 // let v = $(this).parent("div").siblings("span.inputBtn").click();
             });
         </script>

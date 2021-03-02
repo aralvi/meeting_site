@@ -20,9 +20,10 @@ Route::get('/', function () {
 
 
 Auth::routes();
+Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 
 Route::group(['middleware'=>['auth']],function(){
-    Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
+    
     Route::get('appointment', function () {
         return view('frontend.appoinment');
     })->name('appointment');
