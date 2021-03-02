@@ -4,20 +4,21 @@
                 background-repeat: no-repeat;
                 background-size: cover;
             }
-            .w-24{
-              width: 24px;
+            
+            .w-24 {
+                width: 24px;
             }
             /* .height-bottm {
                 height: 140px;
             } */
-            .join_Now{
-              padding-bottom: 60px;
-            }
-            .pt-30{
-              
+            
+            .join_Now {
+                padding-bottom: 60px;
             }
             
-             .padding-top-reg {
+            .pt-30 {}
+            
+            .padding-top-reg {
                 padding-top: 35px;
             }
             
@@ -25,9 +26,9 @@
                 padding-bottom: 11.6rem;
             }
             
-     .padding-bottom-reg-1 {
+            .padding-bottom-reg-1 {
                 padding-bottom: 12rem;
-            }  
+            }
             
             .padding-left-reg {
                 padding-left: 8rem !important;
@@ -40,11 +41,11 @@
             .box-shadow-reg {
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, -0.8), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
             }
-            .display-2 {
-              font-size: 5rem;
-              font-family: robotoMedium !important;
-            }
             
+            .display-2 {
+                font-size: 5rem;
+                font-family: robotoMedium !important;
+            }
             /* .inner-padding {
                 padding-top: 5.2rem;
             } */
@@ -57,9 +58,10 @@
   background-repeat: no-repeat;
   background-size: initial; 
 } */
-               .inner-padding{
-                 padding-top: 45px;
-               }
+            
+            .inner-padding {
+                padding-top: 45px;
+            }
             
             .bg-register-img2 {
                 background-image: url("../images/register-img.png");
@@ -73,7 +75,6 @@
             /* .bg-3AC574{
 background-color: #3AC574;
 } */
-            
             /* .font-600 {
                 font-weight: 600 !important;
             } */
@@ -81,8 +82,9 @@ background-color: #3AC574;
             .rounded-right-reg {
                 border-radius: 25px;
             }
-            .f-14{
-              font-size: 14px;
+            
+            .f-14 {
+                font-size: 14px;
             }
             
             .border-input {
@@ -139,11 +141,21 @@ background-color: #3AC574;
                 width: 50%;
                 background-color: white !important;
             }
+            
             .dot-50 {
                 left: 180px !important;
             }
             
             .width-100 {
+                width: 100%;
+                background-color: white !important;
+            }
+            
+            .dot-0 {
+                left: 0px !important;
+            }
+            
+            .width-0 {
                 width: 100%;
                 background-color: white !important;
             }
@@ -163,8 +175,8 @@ background-color: #3AC574;
                 .bg-register-img2 {
                     height: 47rem !important;
                 }
-
             }
+            
             @media screen and (max-width: 1750px) {
                 /* .padding-bottom-reg-1 {
                     padding-bottom: 165px !important;
@@ -176,37 +188,36 @@ background-color: #3AC574;
                     margin-top: 15px !important;
                 } */
             }
+            
             input {
-              appearance: menulist-button;
-              background-color: none !important;
-              background-image: none !important;
-              
-          }
+                appearance: menulist-button;
+                background-color: none !important;
+                background-image: none !important;
+            }
+            
             @media screen and (max-width: 1300px) {
                 .main_padding {
                     padding-left: 15px !important;
                     padding-right: 15px !important;
                 }
                 .display-2 {
-                  font-size: 3rem;
-                  font-family: robotoMedium !important;
+                    font-size: 3rem;
+                    font-family: robotoMedium !important;
                 }
             }
-            @media screen and (max-width: 1750px) {
-
-              .display-2 {
-                font-size: 3rem !important;
-                font-family: robotoMedium !important;
-              }
-              .height-bottm{
-                font-size: 22px !important;
-              }
             
-              .dot-50 {
-                left: 146px !important;
-              }
-              .dot-100 {
-                left: 265px !important;
-            }
-
+            @media screen and (max-width: 1750px) {
+                .display-2 {
+                    font-size: 3rem !important;
+                    font-family: robotoMedium !important;
+                }
+                .height-bottm {
+                    font-size: 22px !important;
+                }
+                .dot-50 {
+                    left: 146px !important;
+                }
+                .dot-100 {
+                    left: 265px !important;
+                }
             }

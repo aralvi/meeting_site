@@ -1,5 +1,5 @@
 @extends('layouts.frontend.app')
-@section('title','index')
+@section('title','Appointments')
 {{-- head start --}}
 	
 	@section('extra-css')
@@ -7,7 +7,9 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/utility.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}">
-
+  <style type="text/css">
+    .dropdown-toggle::after{display: none;}    
+  </style>
 	@endsection
 {{-- head end --}}
 
@@ -17,7 +19,7 @@
 	@section('content')
 		
   <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      {{-- <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#"
           ><img
             src="{{ asset('assets/frontend/images/navlogo.png') }}"
@@ -261,7 +263,8 @@
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> --}}
+       @include('includes.frontend.navbar')
     </section>
 
     <div class="pt-4 main_padding d-flex f-20 cl-3b3b3b3 justify-content-between robotoRegular">

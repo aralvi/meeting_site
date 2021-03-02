@@ -23,9 +23,9 @@ class RedirectIfAuthenticated
         // }
 
         // return $next($request);
-        if (Auth::guard($guard)->check()) {
-            return redirect()->route('admin.dashboard');
-        }
+        // if (Auth::guard($guard)->check()) {
+        //     return redirect()->route('admin.dashboard');
+        // }
 
         return $next($request);
     }

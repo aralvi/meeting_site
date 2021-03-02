@@ -117,10 +117,12 @@
                                         <span><img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /></span>
                                         <span class="w-75"><input type="text ml-4" class="form-control border-0" placeholder="Enter your business location" name="business_location" id="business_location" aria-label="" aria-describedby="basic-addon1" /></span>
                                     </div>
+
                                     <div class="input-group mb-3 border-input pt-4" >
                                         <span><img src="{{ asset('assets/frontend/images/selection-8 (1).png') }}" alt="" /></span>
-                                        <span><input type="text" class="form-control border-0" placeholder="Select Category" aria-label="" aria-describedby="basic-addon1" data-toggle="modal" data-target="#exampleModal" /></span>
+                                        <span><input type="text" class="form-control border-0" placeholder="Select Category" id="select_category" aria-label="" aria-describedby="basic-addon1" data-toggle="modal" data-target="#exampleModal" /></span>
                                     </div>
+
                                     <label class="cl-gray m-0 pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/clock-8.png') }}" alt="" /></span>
                                         <span class="pl-1 h6">Opening hours</span>
@@ -129,16 +131,21 @@
                                         <input
                                             type="text"
                                             class="form-control border-0 pl-4 pt-0"
-                                            placeholder="Monday-Friday                                                   10:00AM - 7:00 PM"
+                                            placeholder="Select Opening Hours"
+                                            id="select_opening_hours"
                                             aria-label=""
                                             aria-describedby="basic-addon1"
                                             data-toggle="modal" 
                                             data-target="#exampleModalLong"
                                         />
                                     </div>
-                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step2" value="Continue" />
+                                    <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step2 float-right" value="Continue" />
+                                    <input type="button" data-page="4" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
+                                    
                                 </div>
                                 <span data-page="2" id="" class="inputBtn next action-button" onclick="btnClicK('dot-100','width-100','Please enter your Banking<br>information in order to <br> receive payouts.')"></span>
+                                <span data-page="1" id="" class="previous action-button btn-step-back"  onclick="btnClicKBack('dot-50','width-50','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')"></span>
+                                
                             </fieldset>
 
                             <fieldset>
@@ -146,6 +153,7 @@
                                     <div class="">Already Login?</div>
                                     <div class="pr-4 cl-3AC574 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
+
                                 <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
                                 <div class="pl-5 pr-5">
                                     <div class="row pt-4">
@@ -179,10 +187,17 @@
                                         <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
                                         <span><input type="password" class="form-control border-0" placeholder="Enter your password" id="payment_password" aria-label="" aria-describedby="basic-addon1" name="payment_password" /></span>
                                     </div>
-                                    <input type="button" class="btn bg-3AC574 w-100 mt-5 pt-2 pb-2 mb-3 text-white btnstep step3" value="Continue" />
+                                    <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step3 float-right" value="Continue" />
+                                    <input type="button" data-page="2" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
+                                    <div class="row">
+                                        <div class="col-md-12 pt-4 alerMsg" style="display: none;">
+                                            <div class="alert alert-success">You have registered successfully</div>
+                                        </div>
+                                    </div>
                                    
                                 </div>
                                 <span data-page="3" id="" class="inputBtn next action-button"></span>
+                                <span data-page="1" id="" class="previous action-button btn-step-back"  onclick="btnClicKBack('dot-100','width-100','dot-50','width-50','Enter contact Detail <br> for your business')"></span>
                             </fieldset>
 
                             <!-- Modal 1st code start-->
@@ -191,25 +206,28 @@
                                     <div class="modal-content pt-4">
                                         <div class="modal-header border-0 pl-5 pr-5 ">
                                           <h2 class="modal-title cl-gray" id="exampleModalLabel">Main Category</h2>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
                                               <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body pl-5 pr-5 pt-0">
-                                            <select class="custom-select" name="category_id">
-                                                <option value="1">It Service</option>
+                                            <select class="custom-select main-category" name="category_id" onchange="getSubCategories(this);">
+                                                @if(App\Category::all()->count() >0)
+                                                    <option value ="Select Main Category" selected="" disabled="">Select Main Category</option>
+                                                    @foreach(App\Category::all() as $category)
+                                                        <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
+                                                    @endforeach
+                                                @endif
+                                                
                                             </select>
                                         </div>
-                                            <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">Business Category</h2>
-                                            <div class="border overflow-scroll-reg pl-5 mt-2">
-                                                <div class="custom-control custom-checkbox">
-                                                  <input type="checkbox" class="custom-control-input" name="sub_category_id[]" id="customCheck1" value="1">
-                                                  <label class="custom-control-label" for="customCheck1">Web Development</label>
-                                                </div>
-                                            </div>
+
+                                        <div id="sub_categories">
+                                            
+                                        </div>
 
                                         <div class="modal-footer m-auto border-0">
-                                          <button type="button" onclick="$('.close').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                                          <button type="button" onclick="$('.close1').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
                                         </div>
                                     </div>
                                 </div>
@@ -222,71 +240,74 @@
                                     <div class="modal-content pt-4">
                                         <div class="modal-header  border-0 pl-5 pr-5 ">
                                           <h1 class="modal-title cl-gray" id="exampleModalLabel">Opening hours</h1>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <button type="button" class="close close2" data-dismiss="modal" aria-label="Close">
                                                       <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="pl-4 mt-2 ">
                                             <div class="border-bottom custom-control custom-checkbox ">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck101">
-                                            <label class="custom-control-label mr-5" for="customCheck101">Monday</label>
-                                            <!-- Time select code -->
-                                            <input type="time" class="custom-select-reg ml-5 mr-2">
-                                            -
-                                            <input type="time" class="custom-select-reg ml-2">
-                                            <!-- Time select code -->
-                                            <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
-                                            </div>
-                                            <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                              <input type="checkbox" class="custom-control-input" id="customCheck102">
-                                              <label class="custom-control-label mr-5" for="customCheck102">Tuesday</label>
-                                            <!-- Time select code -->
-                                            <input type="time" class="custom-select-reg ml-5 mr-2">
-                                            -
-                                            <input type="time" class="custom-select-reg ml-2">
-                                            <!-- Time select code -->
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck101" name="days[]" value="monday">
+                                                <label class="custom-control-label mr-5" for="customCheck101">Monday</label>
+                                                <input type="time" class="custom-select-reg ml-5 mr-2 monday_from" name="monday_from">
+                                                -
+                                                <input type="time" class="custom-select-reg ml-2 monday_to" name="monday_to">
+                                                <!-- Time select code -->
                                                 <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
                                             </div>
 
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                               <input type="checkbox" class="custom-control-input" id="customCheck103">
-                                               <label class="custom-control-label mr-2" for="customCheck103">Wednessday</label>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck102" name="days[]" value="tuesday">
+                                                <label class="custom-control-label mr-5" for="customCheck102">Tuesday</label>
                                                 <!-- Time select code -->
-                                            <input type="time" class="custom-select-reg ml-5 mr-2">
-                                            -
-                                            <input type="time" class="custom-select-reg ml-2">
-                                            <!-- Time select code -->
+                                                <input type="time" class="custom-select-reg ml-5 mr-2 tuesday_tfrom" name="tuesday_from">
+                                                -
+                                                <input type="time" class="custom-select-reg ml-2 tuesday_to" name="tuesday_to">
+                                                <!-- Time select code -->
                                                 <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
                                             </div>
+
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck104">
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck103" name="days[]" value="wednesday">
+                                                <label class="custom-control-label mr-2" for="customCheck103">Wednessday</label>
+                                                <!-- Time select code -->
+                                                <input type="time" class="custom-select-reg ml-5 mr-2 wednesday_from" name="wednesday_from">
+                                                -
+                                                <input type="time" class="custom-select-reg ml-2 wednesday_to" name="wednesday_to">
+                                                <!-- Time select code -->
+                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                                            </div>
+
+                                            <div class="border-bottom mt-3 custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck104" name="days[]" value="thursday">
                                                 <label class="custom-control-label mr-4 pr-3" for="customCheck104">Thursday</label>
                                                 <!-- Time select code -->
-                                            <input type="time" class="custom-select-reg ml-5 mr-2">
-                                            -
-                                            <input type="time" class="custom-select-reg ml-2">
-                                            <!-- Time select code -->
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
-                                            </div>
-                                            <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck105">
-                                               <label class="custom-control-label mr-5 pr-3" for="customCheck105">Friday</label>
+                                                <input type="time" class="custom-select-reg ml-5 mr-2 thursday_from" name="thursday_from">
+                                                -
+                                                <input type="time" class="custom-select-reg ml-2 thursday_to" name="thursday_to">
                                                 <!-- Time select code -->
-                                            <input type="time" class="custom-select-reg ml-5 mr-2">
-                                            -
-                                            <input type="time" class="custom-select-reg ml-2">
-                                            <!-- Time select code -->
                                                 <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
                                             </div>
+
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck106">
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck105" name="days[]" value="friday">
+                                                <label class="custom-control-label mr-5 pr-3" for="customCheck105">Friday</label>
+                                                <!-- Time select code -->
+                                                <input type="time" class="custom-select-reg ml-5 mr-2 friday_from" name="friday_from">
+                                                -
+                                                <input type="time" class="custom-select-reg ml-2 friday_to" name="friday_to">
+                                                <!-- Time select code -->
+                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
+                                            </div>
+
+                                            <div class="border-bottom mt-3 custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck106" name="days[]" value="saturday">
                                                 <label class="custom-control-label mr-5" for="customCheck106">Saturday</label>
                                                 <span class="ml-5 pr-3 cl-gray">Closed</span>
                                                 <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).parent('div').remove();"><span aria-hidden="true">&times;</span></button> 
                                             </div>
                                             
                                             <div class="border-bottom custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck107">
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck107" name="days[]" value="sunday">
                                                 <label class="custom-control-label mr-5 pr-3" for="customCheck107">Sunday</label>
                                                 
                                                 <span class="ml-5 pr-4 cl-gray">Closed</span>
@@ -295,7 +316,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer m-auto border-0">
-                                          <button type="button" onclick="$('.close').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                                          <button type="button" onclick="$('.close2').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
                                         </div>
                                     </div>
                                 </div>
@@ -351,6 +372,45 @@
                 return true;
             }
 
+            function selectFieldValidate(id)
+            {
+                if($(id).val() ==null)
+                {
+                    $('#select_category').addClass('placeholder-color-change');
+                    $('#select_category').parent('span').parent('div').removeClass('border-input');
+                    $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    return false;
+                }
+                $('#select_category').removeClass('placeholder-color-change');
+                $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                return true;
+            }
+
+            function checkboxFieldValidate(id)
+            {
+                let chk = false;
+                $.each(id,function(){
+                    if($(this).is(':checked'))
+                    {
+                        chk = true;
+                    }
+                });
+
+                if(!chk)
+                {
+                    $('#select_opening_hours').addClass('placeholder-color-change');
+                    $('#select_opening_hours').parent('div').removeClass('border-input');
+                    $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ," #e91e63");
+                    return chk;
+                }
+
+                $('#select_opening_hours').removeClass('placeholder-color-change');
+                $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ,"gray");
+                return chk;
+            }
+
             function passwordFieldValidate(id)
             {
                 if($(id).val() =='')
@@ -383,14 +443,35 @@
                 }
             }
 
+            function getSubCategories(ele)
+            {
+                let id = $(ele).val();
+                $.ajax({
+                    url:"{{ route('get.sub_categories') }}",
+                    type:"get",
+                    data:{id:id},
+                    success:function(data)
+                    {
+                        $('#sub_categories').html(data);
+
+                    }
+                });
+            }
         </script>
 
     	<script>
-                const btnClicK =(className,parentClass ,txtLeft)=>{
+            const btnClicK =(className,parentClass ,txtLeft)=>{
                   let v =  $('.white-dot')
                  $('.left-text').html(txtLeft);
                   v.addClass(className);
                   v.siblings().addClass(parentClass);
+                }
+            const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
+                  let v =  $('.white-dot')
+                 $('.left-text').html(txtLeft);
+                  v.removeClass(removeClass);
+                  v.siblings().removeClass(removeParentClass);
+                  v.addClass(className);
                 }
         </script>
         <script>
@@ -446,6 +527,7 @@
                         $(element).next("span").hide();
                     },
                 });
+
                 $(".next").click(function () {
                     $(".steps").validate({
                         errorClass: "invalid",
@@ -497,6 +579,7 @@
                         }
                     );
                 });
+
                 $(".submit").click(function () {
                     $(".white-dot").css({"right": "170px" });
                     $(".steps").validate({
@@ -555,6 +638,7 @@
                         }
                     );
                 });
+
                 $(".previous").click(function () {
                     if (animating) return false;
                     animating = true;
@@ -589,232 +673,66 @@
                     );
                 });
             });
-            jQuery(document).ready(function () {
-                jQuery(
-                    "#edit-submitted-acquisition-amount-1,#edit-submitted-acquisition-amount-2,#edit-submitted-cultivation-amount-1,#edit-submitted-cultivation-amount-2,#edit-submitted-cultivation-amount-3,#edit-submitted-cultivation-amount-4,#edit-submitted-retention-amount-1,#edit-submitted-retention-amount-2,#edit-submitted-constituent-base-total-constituents"
-                ).keyup(function () {
-                    calcTotal();
-                });
-            });
+            
 
-            function calcTotal() {
-                var grade = 0;
-                var donorTotal = Number(jQuery("#edit-submitted-constituent-base-total-constituents").val().replace(/,/g, ""));
-                if (donorTotal) {
-                    donorTotal = parseFloat(donorTotal);
-                } else {
-                    donorTotal = 0;
-                }
-                grade += getBonusDonorPoints(donorTotal);
-                var acqAmount1 = Number(jQuery("#edit-submitted-acquisition-amount-1").val().replace(/,/g, ""));
-                var acqAmount2 = Number(jQuery("#edit-submitted-acquisition-amount-2").val().replace(/,/g, ""));
-                var acqTotal = 0;
-                if (acqAmount1) {
-                    acqAmount1 = parseFloat(acqAmount1);
-                } else {
-                    acqAmount1 = 0;
-                }
-                if (acqAmount2) {
-                    acqAmount2 = parseFloat(acqAmount2);
-                } else {
-                    acqAmount2 = 0;
-                }
-                if (acqAmount1 > 0 && acqAmount2 > 0) {
-                    acqTotal = (((acqAmount2 - acqAmount1) / acqAmount1) * 100).toFixed(2);
-                } else {
-                    acqTotal = 0;
-                }
-                jQuery("#edit-submitted-acquisition-percent-change").val(acqTotal + "%");
-                grade += getAcquisitionPoints(acqTotal);
-                console.log(grade);
-                var cultAmount1 = Number(jQuery("#edit-submitted-cultivation-amount-1").val().replace(/,/g, ""));
-                var cultAmount2 = Number(jQuery("#edit-submitted-cultivation-amount-2").val().replace(/,/g, ""));
-                var cultTotal = 0;
-                if (cultAmount1) {
-                    cultAmount1 = parseFloat(cultAmount1);
-                } else {
-                    cultAmount1 = 0;
-                }
-                if (cultAmount2) {
-                    cultAmount2 = parseFloat(cultAmount2);
-                } else {
-                    cultAmount2 = 0;
-                }
-                if (cultAmount1 > 0 && cultAmount2 > 0) {
-                    cultTotal = (((cultAmount2 - cultAmount1) / cultAmount1) * 100).toFixed(2);
-                } else {
-                    cultTotal = 0;
-                }
-                jQuery("#edit-submitted-cultivation-percent-change1").val(cultTotal + "%");
-                grade += getAcquisitionPoints(cultTotal);
-                var cultAmount3 = Number(jQuery("#edit-submitted-cultivation-amount-3").val().replace(/,/g, ""));
-                var cultAmount4 = Number(jQuery("#edit-submitted-cultivation-amount-4").val().replace(/,/g, ""));
-                if (cultAmount3) {
-                    cultAmount3 = parseFloat(cultAmount3);
-                } else {
-                    cultAmount3 = 0;
-                }
-                if (cultAmount4) {
-                    cultAmount4 = parseFloat(cultAmount4);
-                } else {
-                    cultAmount4 = 0;
-                }
-                if (cultAmount3 > 0 && cultAmount4 > 0) {
-                    cultTotal2 = (((cultAmount4 - cultAmount3) / cultAmount3) * 100).toFixed(2);
-                } else {
-                    cultTotal2 = 0;
-                }
-                jQuery("#edit-submitted-cultivation-percent-change2").val(cultTotal2 + "%");
-                grade += getAcquisitionPoints(cultTotal2);
-                var retAmount1 = Number(jQuery("#edit-submitted-retention-amount-1").val().replace(/,/g, ""));
-                var retAmount2 = Number(jQuery("#edit-submitted-retention-amount-2").val().replace(/,/g, ""));
-                var retTotal = 0;
-                if (retAmount1) {
-                    retAmount1 = parseFloat(retAmount1);
-                } else {
-                    retAmount1 = 0;
-                }
-                if (retAmount2) {
-                    retAmount2 = parseFloat(retAmount2);
-                } else {
-                    retAmount2 = 0;
-                }
-                if (retAmount1 > 0 && retAmount2 > 0) {
-                    retTotal = ((retAmount2 / retAmount1) * 100).toFixed(2);
-                } else {
-                    retTotal = 0;
-                }
-                jQuery("#edit-submitted-retention-percent-change").val(retTotal + "%");
-                grade += getAcquisitionPoints(retTotal);
-                jQuery("#edit-submitted-final-grade-grade").val(grade + " / 400");
-            }
-
-            function getAcquisitionPoints(val) {
-                if (val < 1) {
-                    return 0;
-                } else if (val >= 1 && val < 6) {
-                    return 50;
-                } else if (val >= 6 && val < 11) {
-                    return 60;
-                } else if (val >= 11 && val < 16) {
-                    return 70;
-                } else if (val >= 16 && val < 21) {
-                    return 75;
-                } else if (val >= 21 && val < 26) {
-                    return 80;
-                } else if (val >= 26 && val < 31) {
-                    return 85;
-                } else if (val >= 31 && val < 36) {
-                    return 90;
-                } else if (val >= 36 && val < 41) {
-                    return 95;
-                } else if (val >= 41) {
-                    return 100;
-                }
-            }
-
-            function getCultivationGiftPoints(val) {
-                if (val < 1) {
-                    return 0;
-                } else if (val >= 1 && val < 4) {
-                    return 50;
-                } else if (val >= 4 && val < 7) {
-                    return 60;
-                } else if (val >= 7 && val < 10) {
-                    return 70;
-                } else if (val >= 10 && val < 13) {
-                    return 75;
-                } else if (val >= 13 && val < 16) {
-                    return 80;
-                } else if (val >= 16 && val < 21) {
-                    return 85;
-                } else if (val >= 21 && val < 26) {
-                    return 90;
-                } else if (val >= 26 && val < 51) {
-                    return 95;
-                } else if (val >= 51) {
-                    return 100;
-                }
-            }
-
-            function getCultivationDonationPoints(val) {
-                if (val < 1) {
-                    return 0;
-                } else if (val >= 1 && val < 6) {
-                    return 50;
-                } else if (val >= 6 && val < 11) {
-                    return 60;
-                } else if (val >= 11 && val < 16) {
-                    return 70;
-                } else if (val >= 16 && val < 21) {
-                    return 75;
-                } else if (val >= 21 && val < 26) {
-                    return 80;
-                } else if (val >= 26 && val < 31) {
-                    return 85;
-                } else if (val >= 31 && val < 36) {
-                    return 90;
-                } else if (val >= 36 && val < 41) {
-                    return 95;
-                } else if (val >= 41) {
-                    return 100;
-                }
-            }
-
-            function getRetentionPoints(val) {
-                if (val < 1) {
-                    return 0;
-                } else if (val >= 1 && val < 51) {
-                    return 50;
-                } else if (val >= 51 && val < 56) {
-                    return 60;
-                } else if (val >= 56 && val < 61) {
-                    return 70;
-                } else if (val >= 61 && val < 66) {
-                    return 75;
-                } else if (val >= 66 && val < 71) {
-                    return 80;
-                } else if (val >= 71 && val < 76) {
-                    return 85;
-                } else if (val >= 76 && val < 81) {
-                    return 90;
-                } else if (val >= 81 && val < 91) {
-                    return 95;
-                } else if (val >= 91) {
-                    return 100;
-                }
-            }
-
-            function getBonusDonorPoints(val) {
-                if (val < 10001) {
-                    return 0;
-                } else if (val >= 10001 && val < 25001) {
-                    return 10;
-                } else if (val >= 25001 && val < 50000) {
-                    return 15;
-                } else if (val >= 50000) {
-                    return 20;
-                }
-            }
         </script>
 
         <script>
            
             $(document.body).on("click", "input.step1", function () {
-
+                // $(this).parent("div").siblings("span.inputBtn").click();
                 if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password')))
                 {$(this).parent("div").siblings("span.inputBtn").click();}
             });
 
             $(document.body).on("click", "input.step2", function () {
-                if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')))
+                
+                if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
                 {$(this).parent("div").siblings("span.inputBtn").click();}
+            });
+            $(document.body).on("click", "input.backstep2", function () {
+                
+                $(this).parent("div").siblings("span.previous").click();
             });
 
             $(document.body).on("click", "input.step3", function () {
                 if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
                 {
-                    $('#registerForm').submit();
+                    // $('#registerForm').submit();
+                    var myform = document.getElementById("registerForm");
+                    var fd = new FormData(myform);
+                    fd.append("_token","{{ csrf_token() }}");
+                    let days = $(".days:checked").map(function(){return $(this).val();}).get();
+                    // let from = $(".from_time").map(function(){return $(this).val();}).get();
+                    // let to = $(".to_time").map(function(){return $(this).val();}).get();
+                    // $.each(days,function(i,v){
+                    //     console.log(v);
+                    // });
+                    // return false;
+                    fd.append('days',days);
+                    // fd.append('from',from);
+                    // fd.append('to',to);
+                    $.ajax({
+                        url:"{{ route('register') }}",
+                        type:"post",
+                        processData: false, 
+                        contentType: false,
+                        // data: $('#add-client-form').serialize(),
+                        data: fd,
+                        success:function(data)
+                        {
+                            $('.alerMsg').show();
+                            setInterval(function(){
+                                window.location = '{{ route('index') }}';
+                            },2000);
+
+                        },
+                        error:function(request,status,error)
+                        {
+                            console.log(request.responseText);
+                        }
+                    });
+
                 }
                 // let v = $(this).parent("div").siblings("span.inputBtn").click();
             });
