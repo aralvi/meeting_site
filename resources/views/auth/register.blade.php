@@ -911,15 +911,15 @@
             });
 
             $(document.body).on("click", "input.step1", function () {
-                $(this).parent("div").siblings("span.inputBtn").click();
-                // if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
-                // {$(this).parent("div").siblings("span.inputBtn").click();}
+                // $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#business_name')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
+                {$(this).parent("div").siblings("span.inputBtn").click();}
             });
 
             $(document.body).on("click", "input.step2", function () {
-                $(this).parent("div").siblings("span.inputBtn").click();
-                // if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
-                // {$(this).parent("div").siblings("span.inputBtn").click();}
+                // $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
+                {$(this).parent("div").siblings("span.inputBtn").click();}
             });
 
             $(document.body).on("click", "input.backstep2", function () {
@@ -928,23 +928,47 @@
             });
 
             $(document.body).on("click", "input.step3", function () {
-                // if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
-                // {
-                    // $('#registerForm').submit();
+                console.log($('input[name="payment_method"]').val());
+                let method_chk = false;
+                if($('input[name="payment_method"]:checked').val()=='stripe')
+                {
+                    if(inptFieldValidate($('#payment_name')) && inptFieldValidate($('#payment_phone')) && inptFieldValidate($('#payment_birth_date')))
+                    {
+                        method_chk = true;
+                    }
+                }
+                else{
+                    if(inptFieldValidate($('#payment_email')))
+                    {
+                        method_chk = true;
+                    }
+                }
+                if(method_chk)
+                {
                     var myform = document.getElementById("registerForm");
                     var fd = new FormData(myform);
                     fd.append("_token","{{ csrf_token() }}");
                     let days = $(".days:checked").map(function(){return $(this).val();}).get();
+                    fd.append('days',days);
+                    ajaxCommonCode(fd);
+                }
+                // if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
+                // {
+                    // $('#registerForm').submit();
+                    // var myform = document.getElementById("registerForm");
+                    // var fd = new FormData(myform);
+                    // fd.append("_token","{{ csrf_token() }}");
+                    // let days = $(".days:checked").map(function(){return $(this).val();}).get();
                     // let from = $(".from_time").map(function(){return $(this).val();}).get();
                     // let to = $(".to_time").map(function(){return $(this).val();}).get();
                     // $.each(days,function(i,v){
                     //     console.log(v);
                     // });
                     // return false;
-                    fd.append('days',days);
+                    // fd.append('days',days);
                     // fd.append('from',from);
                     // fd.append('to',to);
-                    ajaxCommonCode(fd);
+                    // ajaxCommonCode(fd);
                 // }
                 // let v = $(this).parent("div").siblings("span.inputBtn").click();
             });
