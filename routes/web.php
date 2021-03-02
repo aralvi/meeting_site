@@ -30,3 +30,5 @@ Route::get('category/sub_categories','CategoryController@getSubCategories')->nam
 Auth::routes();
 
 Route::view('test','layouts.admin.admin');
+Route::resource('clients', 'ClientController');
+Route::resource('specialists', 'SpecialistController');
