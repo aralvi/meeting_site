@@ -1184,7 +1184,7 @@
                     <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                 </div>
             </div>
-            
+
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                 <div class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="client-name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
@@ -2040,7 +2040,7 @@
      
       $(document.body).on("click", "input.client-step1", function () {
           // $(this).parent("div").siblings("span.inputBtn").click();
-          if(inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
+          if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
           {
               // $('#registerForm').submit();
               var myform = document.getElementById("registerForm");
