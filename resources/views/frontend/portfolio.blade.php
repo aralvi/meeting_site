@@ -371,7 +371,7 @@ local barber</div>
       </div>
 
              <!-- T A B L E -->
-             <div class="table-responsive tableFixHead table_scroll mt-5 border">
+             <div class="table-responsive tableFixHead table_scroll mt-5 border robotoRegular">
   <table id="boxes-list" class="table header-fixed">
     <tr class="bg-white robotoRegular ">
   <thead class="sticky-top bg-white cl-3ac754 ">
@@ -438,7 +438,7 @@ local barber</div>
 </div>
     </section>
     <section class=" main_padding pt-70 text-center">
-                               <p class="main_title RobotoMedium f-34 cl-000000  m-0 ">Portfolio</p>
+                               <p class="main_title RobotoMedium f-34 cl-000000  m-0">Portfolio</p>
                                <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">The best and highly skilled Performance done previously</p>
                                <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
                                </section>
@@ -447,11 +447,11 @@ local barber</div>
                                 <div class="row m-0">
                                   <div class="col-lg-7 col-md-7 col-sm-12 pl-0 pr-0 bg_img_8 d-flex flex-column  justify-content-end">
                                  
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
                                     / 01
                                     </div>
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
-                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
                                     <div class="w-100 bg-000000a6 borderRadius-10px ">
                                       <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
                                         <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
@@ -466,11 +466,11 @@ local barber</div>
                                   </div>
                                   <div class="col-lg-5 col-md-5 col-sm-12 pr-0">
                                     <div class="bg_imgcol-5 d-flex flex-column  justify-content-end">
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
                                     / 01
                                     </div>
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
-                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
                                     <div class="w-100 bg-000000a6 borderRadius-10px ">
                                       <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
                                         <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
@@ -482,11 +482,11 @@ local barber</div>
                                   </div>
                                             <!-- 2nd -->
                                             <div class="bg_imgcol-5_two d-flex flex-column  justify-content-end ">
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
                                     / 01
                                     </div>
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
-                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
                                     <div class="w-100 bg-000000a6 borderRadius-10px ">
                                       <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
                                         <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>

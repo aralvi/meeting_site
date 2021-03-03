@@ -120,3 +120,29 @@
   box-shadow: rgb(0 0 0 / 22%) 1px 4px 12px;
 
 }
+@media screen and (max-width: 1650px){
+  .bg_img_8 {
+    height: 560px;
+  }
+  .bg_imgcol-5 {
+    height: 260px;
+  }
+  .bg_imgcol-5_two {
+    height: 260px;
+  }
+  .porfolio_images_title{
+    font-size: 1.7rem !important;
+  }
+  .porfolio_images_subtitle{
+    font-size: 1.5rem !important;
+  }
+  .comment_SectionName{
+  
+}
+.comment_SectionDate{
+  
+}
+.Comment{
+  
+}
+}
