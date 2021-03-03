@@ -618,7 +618,80 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
                                  </div>
-                                 <div class="col-md-4 col-lg-4"></div>
+                                 <div class="col-md-4 p-0">
+                                 <section>
+                                   <div class="row m-0 pt-2 card_boxShadow pt-4 pb-3">
+                                        <div class="col-md-5 text-center">
+                                       <div class="f-41 cl-616161 robotoRegular">5.0<span class="robotoRegular f-16 cl-979797">/5</span></div> 
+                                       <div class="d-flex align-items-center justify-content-center">
+                                       <div><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                       <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                     
+
+
+                                     </div>
+                                     <div class="f-19 robotoRegular cl-a2a2a2 pt-3">150 reviews</div>
+                                        </div>
+                                      
+                                        <div class="progressBarmainDiv robotoRegular cl-a2a2a2 col-md-7 pl-0">
+                                          <div class="d-flex align-items-center">
+                                            <div class="f-16 pr-2">5</div>
+                                            <div class="progress w-261 h-6px" >
+  <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+      
+
+                                                      
+                                            <div class="pl-2">85%</div>
+                                          </div>
+                                          <div class="d-flex align-items-center pt-2">
+                                            <div class="f-16 pr-2">4</div>
+                                            <div class="progress w-261 h-6px" >
+  <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+      
+
+                                                      
+                                            <div class="pl-2">40%</div>
+                                          </div>
+                                          <div class="d-flex align-items-center pt-2">
+                                            <div class="f-16 pr-2">3</div>
+                                            <div class="progress w-261 h-6px" >
+  <div class=" borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+      
+
+                                                      
+                                            <div class="pl-2">0</div>
+                                          </div>
+                                          <div class="d-flex align-items-center pt-2">
+                                            <div class="f-16 pr-2">2</div>
+                                            <div class="progress w-261 h-6px" >
+  <div class=" borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+      
+
+                                                      
+                                            <div class="pl-2">0</div>
+                                          </div>
+                                          <div class="d-flex align-items-center pt-2">
+                                            <div class="f-16 pr-2">1</div>
+                                            <div class="progress w-261 h-6px" >
+  <div class=" borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+      
+
+                                                      
+                                            <div class="pl-2">0</div>
+                                          </div>
+
+                                        </div>
+                                   </div>
+                                 </section>
+                                 </div>
                                </div>
                                </section>
 
@@ -631,8 +704,6 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
    
 
 	@endsection
