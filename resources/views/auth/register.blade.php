@@ -398,7 +398,7 @@
 
                                     <label class="cl-gray m-0 pt-3">
                                         <span><img src="{{ asset('assets/frontend/images/clock-8.png') }}" alt="" /></span>
-                                        <span class="pl-1 h6">Opening hours</span>
+                                        <span class="pl-1 h6">Days & Hours of Availability </span>
                                     </label>
                                     <div class="input-group mb-3 border-input pt-0 pl-3">
                                         <input
@@ -410,6 +410,7 @@
                                             aria-describedby="basic-addon1"
                                             data-toggle="modal" 
                                             data-target="#exampleModalLong"
+                                            readonly
                                         />
                                     </div>
                                     <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step2 float-right" value="Continue" />
@@ -1537,6 +1538,33 @@
     	<script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+
+
+<script>
+setInterval(() => {
+    let meCheck = false;
+    $.each($('.days'),function(){
+        if($(this).is(':checked'))
+        {
+            meCheck=true;
+        }
+    });
+    if(meCheck){
+        let allChecked = document.getElementById('select_opening_hours');
+            allChecked.placeholder = "Completed";
+    }
+    else{
+        let notChecked = document.getElementById('select_opening_hours');
+            notChecked.placeholder = "Not Completed";
+    }
+
+}, 1000);
+
+
+</script>
+
+
+
         <script>
 
             const usernamePublicProfile = (ele)=>{
@@ -2019,15 +2047,18 @@
             });
 
              $(document.body).on("click", "input.step1", function () {
-                $(this).parent("div").siblings("span.inputBtn").click();
-                // if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
-                // {$(this).parent("div").siblings("span.inputBtn").click();}
+                // $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
+                {$(this).parent("div").siblings("span.inputBtn").click();}
             });
 
             $(document.body).on("click", "input.step2", function () {
+                let stepSecond = false;
                 // $(this).parent("div").siblings("span.inputBtn").click();
+
                 if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
                 {$(this).parent("div").siblings("span.inputBtn").click();}
+
             });
 
             $(document.body).on("click", "input.backstep2", function () {
