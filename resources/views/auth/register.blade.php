@@ -1744,11 +1744,11 @@ setInterval(() => {
                     data: fd,
                     success:function(data)
                     {
-                      console.log(data);
-                        // $('.alerMsg').show();
-                        // setInterval(function(){
-                        //     window.location = '{{ route('index') }}';
-                        // }data,2000);
+                      
+                        $('.alerMsg').show();
+                        setInterval(function(){
+                            window.location = '{{ route('index') }}';
+                        }data,2000);
 
                     },
                     error:function(request,status,error)
