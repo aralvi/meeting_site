@@ -19,7 +19,7 @@
 
 	@section('content')
 		
-  <section class="main_padding pt-2 pb-3 nav-bg-img robotoRegular">
+  <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
       {{-- <nav class="navbar navbar-expand-lg navbar-light p-0">
         <a class="navbar-brand" href="#"
           ><img
@@ -696,7 +696,11 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 
-
+                               <section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
+    <div class="d-flex justify-content-center  align-items-center"><img
+            src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}"
+            alt="" srcset=""></div>
+</section>
 
 
 
