@@ -208,6 +208,10 @@ background-color: #3AC574;
                     font-size: 3rem;
                     font-family: robotoMedium !important;
                 }
+                    .bg-register-img2 {
+                        height: 59.5rem !important;
+                     
+                }
             }
             
             @media screen and (max-width: 1750px) {
