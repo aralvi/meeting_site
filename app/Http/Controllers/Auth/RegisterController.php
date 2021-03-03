@@ -54,17 +54,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $arr = [
+                'username' => ['required'],
                 'name' => ['required', 'string'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'country' => ['required'],
             ];
 
         if ($data['user_type']=='specialist')
         {
             $arr['payment_method'] = ['required'];
-            $arr['business_name'] = ['required', 'string'];
             $arr['business_phone'] = ['required', 'string'];
-            $arr['business_location'] = ['required', 'string'];
         }
         else if($data['user_type']=='client')
         {
@@ -73,9 +73,11 @@ class RegisterController extends Controller
 
         if($data['payment_method']=='stripe' && $data['user_type'] !='client')
         {
-            $arr['payment_name'] = ['required', 'string'];
+            $arr['payment_first_name'] = ['required', 'string'];
+            $arr['payment_last_name'] = ['required', 'string'];
+            $arr['account_number'] = ['required'];
             $arr['payment_birth_date'] = ['required'];
-            $arr['payment_phone'] = ['required'];
+            $arr['routing_number'] = ['required'];
 
         }
         else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
@@ -96,8 +98,10 @@ class RegisterController extends Controller
     {
         $user = User::create([
             'user_type' => $data['user_type'],
+            'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
+            'country' => $data['country'],
             'password' => Hash::make($data['password']),
             'status'=>'inactive'
         ]);
@@ -125,15 +129,16 @@ class RegisterController extends Controller
             $specialist->category_id = $data['category_id'];
             $specialist->sub_category_id = json_encode($data['sub_category_id']);
             $specialist->business_phone = $data['business_phone'];
-            $specialist->business_name = $data['business_name'];
-            $specialist->business_location = $data['business_location'];
+            $specialist->public_profile = $data['public_profile'];
             $specialist->payment_method = $data['payment_method'];
             if($data['payment_method']=='stripe' && $data['user_type'] !='client')
             {
-                $specialist->payment_name = $data['payment_name'];
+                $specialist->payment_first_name = $data['payment_first_name'];
+                $specialist->payment_last_name = $data['payment_last_name'];
                 $specialist->payment_birth_date = $data['payment_birth_date'];
                 $specialist->payment_ssn = $data['payment_ssn'];
-                $specialist->payment_phone = $data['payment_phone'];
+                $specialist->account_number = $data['account_number'];
+                $specialist->routing_number = $data['routing_number'];
 
             }
             else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
