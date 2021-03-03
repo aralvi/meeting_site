@@ -1748,7 +1748,7 @@ setInterval(() => {
                         $('.alerMsg').show();
                         setInterval(function(){
                             window.location = '{{ route('index') }}';
-                        }data,2000);
+                        },2000);
 
                     },
                     error:function(request,status,error)
