@@ -40,7 +40,7 @@
 }
 .tableFixHead thead th {
   position: sticky;
-  top: 0;
+  top: -1px;
   background: #ffffff;
 }
 .table-responsive::-webkit-scrollbar {
@@ -137,12 +137,18 @@
     font-size: 1.5rem !important;
   }
   .comment_SectionName{
+    font-size: 22px !important;
   
 }
 .comment_SectionDate{
+  font-size: 22px !important;
   
 }
 .Comment{
+  font-size: 20px !important;
+}
+.comment_SectionLRD{
+  font-size: 18px !important;
   
 }
 }

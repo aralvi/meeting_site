@@ -372,7 +372,7 @@ local barber</div>
 
              <!-- T A B L E -->
              <div class="table-responsive tableFixHead table_scroll mt-5 border robotoRegular">
-  <table id="boxes-list" class="table header-fixed">
+  <table id="boxes-list" class="table m-0 header-fixed">
     <tr class="bg-white robotoRegular ">
   <thead class="sticky-top bg-white cl-3ac754 ">
       <th scope="col">Sr</th>
@@ -525,7 +525,7 @@ local barber</div>
 
                                      </div>
                                    </div>
-                                   <div class="w-75 f-21 RobotoRegular cl-616161">Reviews are no joke! Booksy values authentic reviews and only verifies them 
+                                   <div class="w-75 f-21 RobotoRegular cl-616161 text-justify">Reviews are no joke! Booksy values authentic reviews and only verifies them 
 if we know the reviewer has visited this business.</div>
 
                                                <!-- COMMENTS SECTION START -->
@@ -544,15 +544,15 @@ if we know the reviewer has visited this business.</div>
 
 
                                      </div>
-                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
-                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
                                  </div>
                               </div>
-                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of 
 art as welll!!!! I would give him 10 stars...</div>
-                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
                                                 </div>
                                 </div>
                               </div>
@@ -572,19 +572,18 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
                                      </div>
-                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
-                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
                                  </div>
                               </div>
-                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of 
 art as welll!!!! I would give him 10 stars...</div>
-                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
                                                 </div>
                                 </div>
                               </div>
-
                                                <!-- end -->
                                                <!-- 3 -->
                                                <div class="d-flex pt-5">
@@ -602,15 +601,15 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
                                      </div>
-                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
-                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
                                  </div>
                               </div>
-                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of 
 art as welll!!!! I would give him 10 stars...</div>
-                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
                                                 </div>
                                 </div>
                               </div>
