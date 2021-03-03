@@ -19,7 +19,7 @@
 
 	@section('content')
 		
-  <section class="main_padding pt-2 pb-3 nav-bg-img robotoRegular">
+  <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
       {{-- <nav class="navbar navbar-expand-lg navbar-light p-0">
         <a class="navbar-brand" href="#"
           ><img
@@ -365,14 +365,14 @@ local barber</div>
       <div class="row m-0 p-0">
         <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Bookings:</div>
         <div class="col-md-3 ml-auto p-0">
-      <div class="d-flex m-0">  <div class="pt-4 w-100"> <input type="email" placeholder="Search for services" class="robotoRegular cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded"></div>
+      <div class="d-flex m-0">  <div class="pt-4 w-100"> <input type="email" placeholder="Search for services" class="robotoRegular h-44 cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded"></div>
         <div class="pt-4 pl-2"> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2" type="submit"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button></div>
         </div>
       </div>
 
              <!-- T A B L E -->
-             <div class="table-responsive tableFixHead table_scroll mt-5 border">
-  <table id="boxes-list" class="table header-fixed">
+             <div class="table-responsive tableFixHead table_scroll mt-5 border robotoRegular">
+  <table id="boxes-list" class="table m-0 header-fixed">
     <tr class="bg-white robotoRegular ">
   <thead class="sticky-top bg-white cl-3ac754 ">
       <th scope="col">Sr</th>
@@ -438,7 +438,7 @@ local barber</div>
 </div>
     </section>
     <section class=" main_padding pt-70 text-center">
-                               <p class="main_title RobotoMedium f-34 cl-000000  m-0 ">Portfolio</p>
+                               <p class="main_title RobotoMedium f-34 cl-000000  m-0">Portfolio</p>
                                <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">The best and highly skilled Performance done previously</p>
                                <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
                                </section>
@@ -447,11 +447,11 @@ local barber</div>
                                 <div class="row m-0">
                                   <div class="col-lg-7 col-md-7 col-sm-12 pl-0 pr-0 bg_img_8 d-flex flex-column  justify-content-end">
                                  
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
                                     / 01
                                     </div>
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
-                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
                                     <div class="w-100 bg-000000a6 borderRadius-10px ">
                                       <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
                                         <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
@@ -466,11 +466,11 @@ local barber</div>
                                   </div>
                                   <div class="col-lg-5 col-md-5 col-sm-12 pr-0">
                                     <div class="bg_imgcol-5 d-flex flex-column  justify-content-end">
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
                                     / 01
                                     </div>
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
-                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
                                     <div class="w-100 bg-000000a6 borderRadius-10px ">
                                       <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
                                         <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
@@ -482,11 +482,11 @@ local barber</div>
                                   </div>
                                             <!-- 2nd -->
                                             <div class="bg_imgcol-5_two d-flex flex-column  justify-content-end ">
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
                                     / 01
                                     </div>
-                                    <div class="f-34 robotoMedium cl-ffffff pl-4">From Fashion To better look</div>
-                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3">Fashion in Demand</div>
+                                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
+                                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
                                     <div class="w-100 bg-000000a6 borderRadius-10px ">
                                       <div class="d-flex pt-3 pb-3 justify-content-end pr-4 ">
                                         <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}"alt="" srcset=""><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
@@ -525,7 +525,7 @@ local barber</div>
 
                                      </div>
                                    </div>
-                                   <div class="w-75 f-21 RobotoRegular cl-616161">Reviews are no joke! Booksy values authentic reviews and only verifies them 
+                                   <div class="w-75 f-21 RobotoRegular cl-616161 text-justify">Reviews are no joke! Booksy values authentic reviews and only verifies them 
 if we know the reviewer has visited this business.</div>
 
                                                <!-- COMMENTS SECTION START -->
@@ -544,15 +544,15 @@ if we know the reviewer has visited this business.</div>
 
 
                                      </div>
-                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
-                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
                                  </div>
                               </div>
-                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of 
 art as welll!!!! I would give him 10 stars...</div>
-                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
                                                 </div>
                                 </div>
                               </div>
@@ -572,19 +572,18 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
                                      </div>
-                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
-                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
                                  </div>
                               </div>
-                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of 
 art as welll!!!! I would give him 10 stars...</div>
-                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
                                                 </div>
                                 </div>
                               </div>
-
                                                <!-- end -->
                                                <!-- 3 -->
                                                <div class="d-flex pt-5">
@@ -602,15 +601,15 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
                                      </div>
-                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3">Gisella P.</div>
-                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3">Dec 20, 2020</div>
+                                 <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
+                                 <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
                                  </div>
                               </div>
-                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3">This barber is the best in town!!!! My son enjoys his work of 
+                              <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of 
 art as welll!!!! I would give him 10 stars...</div>
-                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2" href="##">Like</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Dislike</a></div>
-                                                  <div class="pl-4"><a class="cl-a2a2a2" href="##">Reply</a></div>
+                                                  <div class="d-flex f-21 robotoMedium pt-3">  <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
+                                                  <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
                                                 </div>
                                 </div>
                               </div>
@@ -697,7 +696,11 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 
-
+                               <section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
+    <div class="d-flex justify-content-center  align-items-center"><img
+            src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}"
+            alt="" srcset=""></div>
+</section>
 
 
 

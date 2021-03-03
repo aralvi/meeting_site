@@ -40,11 +40,14 @@
 }
 .tableFixHead thead th {
   position: sticky;
-  top: 0;
+  top: -1px;
   background: #ffffff;
 }
 .table-responsive::-webkit-scrollbar {
   -webkit-appearance: none;
+}
+.h-44{
+  height: 44px;
 }
 
 .table-responsive::-webkit-scrollbar:vertical {
@@ -119,4 +122,36 @@
   
   box-shadow: rgb(0 0 0 / 22%) 1px 4px 12px;
 
+}
+@media screen and (max-width: 1650px){
+  .bg_img_8 {
+    height: 560px;
+  }
+  .bg_imgcol-5 {
+    height: 260px;
+  }
+  .bg_imgcol-5_two {
+    height: 260px;
+  }
+  .porfolio_images_title{
+    font-size: 1.7rem !important;
+  }
+  .porfolio_images_subtitle{
+    font-size: 1.5rem !important;
+  }
+  .comment_SectionName{
+    font-size: 22px !important;
+  
+}
+.comment_SectionDate{
+  font-size: 22px !important;
+  
+}
+.Comment{
+  font-size: 20px !important;
+}
+.comment_SectionLRD{
+  font-size: 18px !important;
+  
+}
 }
