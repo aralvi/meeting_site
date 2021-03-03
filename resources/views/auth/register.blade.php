@@ -74,11 +74,11 @@
                                 </div>
 
                                 <div class="pl-5 pr-5 first-step-html-change">
-                                    <div class="input-group mb-3 border-input pt-4">
-										<span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                                        <span class="w-75">
-                                            <input type="text" class="form-control border-0" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
-                                        </span>
+                                    <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+										<div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                                        <div class="w-100">
+                                            <input type="text" class="w-100 form-control border-0" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
+                                        </div>
                                     </div>
                                     <label class="cl-3AC574 m-0">
                                         <span><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></span>
@@ -87,25 +87,25 @@
                                     <div class="input-group mb-3 border-input pt-0 pl-3">
                                         <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" name="public_profile" id="public_profile" aria-label="" aria-describedby="basic-addon1" readonly="" />
                                     </div>
-                                    <div class="input-group mb-3 border-input pt-3">
-                                        <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
+                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                        <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                                        <div class="w-100"><input type="text" class="w-100 form-control border-0" placeholder="Enter your full name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
 
-                                    <div class="input-group mb-3 border-input pt-3">
-                                        <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></span>
+                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                        <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                        <div class="w-100"><input type="email" class="form-control border-0 w-100" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
                                     </div>
 
-                                    <div class="input-group mb-3 border-input pt-3">
-                                        <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></span>
+                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                        <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                                        <div class="w-100"><input type="password" class="w-100 form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
                                     <p class="text-danger d-none" id="password-error"></p>
 
-                                    <div class="input-group mb-3 border-input pt-3">
-                                        <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                                        <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
+                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                        <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                                        <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
 
                                     <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
@@ -132,15 +132,15 @@
                                 </div>
                                 <div class="h1 text-center cl-3AC574 pt-4">Help Clients find You.</div>
                                 <div class="pl-5 pr-5">
-                                    <div class="input-group mb-3 border-input pt-5">
-                                        <span><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></span>
-                                        <span class="w-75"> <input type="text" class="form-control border-0" placeholder="What is your business phone number" name="business_phone" id="business_phone" aria-label="" aria-describedby="basic-addon1" /></span>
+                                    <div class="input-group mb-3 border-input pt-5 d-flex flex-nowrap">
+                                        <div><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></div>
+                                        <div class="w-100"> <input type="text" class="form-control border-0" placeholder="What is your business phone number" name="business_phone" id="business_phone" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
 
-                                    <div class="input-group mb-3 border-input pt-4">
-                                        <span><img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /></span>
-                                        <span class="w-75">
-                                            <select id="country" name="country" class="form-control country-select" >
+                                    <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                                        <div><img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /></div>
+                                        <div class="w-100">
+                                            <select id="country" name="country" class="form-control country-select w-100" >
                                                <option value="Afganistan">Afghanistan</option>
                                                <option value="Albania">Albania</option>
                                                <option value="Algeria">Algeria</option>
@@ -388,12 +388,12 @@
                                                <option value="Zambia">Zambia</option>
                                                <option value="Zimbabwe">Zimbabwe</option>
                                             </select>
-                                        </span>
+                                        </div>
                                     </div>
 
-                                    <div class="input-group mb-3 border-input pt-4" >
-                                        <span><img src="{{ asset('assets/frontend/images/selection-8 (1).png') }}" alt="" /></span>
-                                        <span><input type="text" class="form-control border-0" placeholder="Select Category" id="select_category" aria-label="" aria-describedby="basic-addon1" data-toggle="modal" data-target="#exampleModal" /></span>
+                                    <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap" >
+                                        <div><img src="{{ asset('assets/frontend/images/selection-8 (1).png') }}" alt="" /></div>
+                                        <div><input type="text" class="form-control border-0" placeholder="Select Category" id="select_category" aria-label="" aria-describedby="basic-addon1" data-toggle="modal" data-target="#exampleModal" /></div>
                                     </div>
 
                                     <label class="cl-gray m-0 pt-3">
@@ -430,7 +430,7 @@
                                 <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
                                 <div class="">
                                     <div class="row pt-2">
-                                        <div class="col-md-12 d-flex">
+                                        <div class="col-md-12 d-flex text-center pl-5">
                                             <p class="text-warning">Note: Stripe is only for US users.</p>
                                         </div>
 
@@ -461,34 +461,34 @@
 
                                     <div id="payment_selection_html">
                                         <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
-                                        <div class="input-group mb-3 border-input pt-3 mt-3">
-                                            <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                                            <span><input type="text" id="payment_last_name" class="form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></span>
+                                        <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
+                                            <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                                            <div class="w-100"><input type="text" id="payment_last_name" class="w-100 form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
                                         </div>
 
-                                        <div class="input-group mb-3 border-input pt-3 mt-3">
-                                            <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                                            <span><input type="text" id="payment_last_name" class="form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></span>
+                                        <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
+                                            <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                                            <div><input type="text" id="payment_last_name" class="form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
                                         </div>
 
-                                        <div class="input-group mb-3 border-input pt-3">
-                                            <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                                            <span><input type="number" id="account_number" class="form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></span>
+                                        <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                            <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                            <div><input type="number" id="account_number" class="form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></div>
                                         </div>
 
-                                        <div class="input-group mb-3 border-input pt-3">
-                                            <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                                            <span><input type="number" id="routing_number" class="form-control border-0" placeholder="Enter your routing number" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></span>
+                                        <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                            <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                            <div class="w-100"><input type="number" id="routing_number" class="w-100 form-control border-0" placeholder="Enter your routing number" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></div>
                                         </div>
 
-                                        <div class="input-group mb-3 border-input pt-3">
-                                            <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                                            <span><input type="text" id="payment_birth_date" class="form-control border-0" placeholder="Date of Birth" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></span>
+                                        <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                            <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                            <div><input type="text" id="payment_birth_date" class="form-control border-0" placeholder="Date of Birth" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></div>
                                         </div>
 
-                                        <div class="input-group mb-3 border-input pt-3">
-                                            <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                                            <span><input type="number" class="form-control border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></span>
+                                        <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                            <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                                            <div class="w-100"><input type="number" class="w-100 form-control border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></div>
                                         </div>
 
                                     </div>
@@ -1126,38 +1126,38 @@
         </div>
     
         <div id="specialist-html" style="display: none;">
-            <div class="input-group mb-3 border-input pt-4">
-                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                <span class="w-75">
-                    <input type="text" class="form-control border-0" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
-                </span>
+            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div class="w-100">
+                    <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
+                </div>
             </div>
-            <label class="cl-3AC574 m-0">
-                <span><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></span>
-                <span class="pl-1 cl-3AC574 h6">Link to your Public Profile</span>
+            <label class="cl-3AC574 m-0 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></div>
+                <div class="pl-1 cl-3AC574 h6">Link to your Public Profile</div>
             </label>
             <div class="input-group mb-3 border-input pt-0 pl-3">
                 <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" name="public_profile" id="public_profile" aria-label="" aria-describedby="basic-addon1" readonly="" />
             </div>
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                <span class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
             <p class="text-danger d-none" id="password-error"></p>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="password" class="w-100 form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
@@ -1178,20 +1178,21 @@
 
         <div id="client-html" style="display: none;">
             
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                <span class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="client-name" name="name" aria-label="" aria-describedby="basic-addon1" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="client-name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                <span class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="client-email" aria-label="" aria-describedby="basic-addon1" name="email" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="email" class="form-control border-0 w-100" placeholder="Enter your email" id="client-email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                <span class="w-75">
-                    <select id="country" name="country" class="form-control country-select" >
+            <div class="input-group mb-3 border-input pt-3  d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div class="w-100"
+                >
+                    <select id="country" name="country" class="form-control country-select w-100"  >
                        <option value="Afganistan">Afghanistan</option>
                        <option value="Albania">Albania</option>
                        <option value="Algeria">Algeria</option>
@@ -1439,23 +1440,23 @@
                        <option value="Zambia">Zambia</option>
                        <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                </span>
+                </div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></span>
-                <span class="w-75"> <input type="text" class="form-control border-0" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></div>
+                <div class="w-100"> <input type="text" class="w-100 form-control border-0" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="client-password" aria-label="" aria-describedby="basic-addon1" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Enter your password" name="password" id="client-password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
             <p class="text-danger d-none" id="password-error"></p>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                <span class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-step1" value="Create Account" />
@@ -1481,32 +1482,32 @@
 
         <div id="stripe-html" style="display:none;">
             <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
-            <div class="input-group mb-3 border-input pt-3 mt-3">
-                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                <span><input type="text" id="payment_last_name" class="form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></span>
+            <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div class="w-100"><input type="text" id="payment_last_name" class="form-control border-0 w-100" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 mt-3">
-                <span><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></span>
-                <span><input type="text" id="payment_last_name" class="form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></span>
+            <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div class="w-100"><input type="text" id="payment_last_name" class="w-100 form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                <span><input type="number" id="account_number" class="form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="number" id="account_number" class="w-100 form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
-                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                <span><input type="number" id="routing_number" class="form-control border-0" placeholder="Enter your routing number" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></span>
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div  class="w-100"><input type="number" id="routing_number" class="form-control w-100 border-0" placeholder="Enter your routing number" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                 <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
                 <span><input type="text" id="payment_birth_date" class="form-control border-0" placeholder="Date of Birth" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></span>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3">
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                 <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
                 <span><input type="number" class="form-control border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></span>
             </div>
