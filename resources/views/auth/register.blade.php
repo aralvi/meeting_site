@@ -467,7 +467,7 @@
         </div>
 
         <div id="stripe-html" style="display:none;">
-             <div><img src="{{ asset('assets/frontend/images/Artboard2.png') }}"></div>
+             <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
             <div class="input-group mb-3 border-input pt-3 mt-3">
                 <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
                 <span><input type="text" id="payment_name" class="form-control border-0" placeholder="Enter your name" aria-label="" aria-describedby="basic-addon1" name="payment_name" /></span>

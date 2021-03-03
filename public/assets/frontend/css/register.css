@@ -11,7 +11,9 @@
             /* .height-bottm {
                 height: 140px;
             } */
-            
+            .w-116{
+                width: 116px;
+            }
             .join_Now {
                 padding-bottom: 60px;
             }
@@ -78,6 +80,7 @@ background-color: #3AC574;
             /* .font-600 {
                 font-weight: 600 !important;
             } */
+         
             
             .rounded-right-reg {
                 border-radius: 25px;
