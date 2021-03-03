@@ -352,7 +352,7 @@
                         <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Pay Safely and
                             Securely</div>
                     </div>
-                    <p class="m-0 cl-707070 robotoRegular f-21 pt-3 sixColumnMiniPara f-16">
+                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
                         You'll always know what you'll pay upfront. Your payment isn't released until your appointment
                         is completed.
                     </p>
