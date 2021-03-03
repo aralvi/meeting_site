@@ -80,7 +80,7 @@
                                             <input type="text" class="w-100 form-control border-0" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                                         </div>
                                     </div>
-                                    <label class="cl-3AC574 m-0">
+                                    <label class="cl-3AC574 m-0 pt-3 pb-1">
                                         <span><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></span>
                                         <span class="pl-1 cl-3AC574 h6">Link to your Public Profile</span>
                                     </label>
@@ -469,12 +469,12 @@
 
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                                             <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
-                                            <div><input type="text" id="payment_last_name" class="form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
+                                            <div class="w-100"><input type="text" id="payment_last_name" class="w-100 form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                                             <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
-                                            <div><input type="number" id="account_number" class="form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></div>
+                                            <div class="w-100"><input type="number" id="account_number" class="w-100 form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></div>
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
@@ -1133,7 +1133,7 @@
                     <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                 </div>
             </div>
-            <label class="cl-3AC574 m-0 d-flex flex-nowrap">
+            <label class="cl-3AC574 m-0 d-flex flex-nowrap pt-3">
                 <div><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></div>
                 <div class="pl-1 cl-3AC574 h6">Link to your Public Profile</div>
             </label>
@@ -1504,20 +1504,20 @@
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                <span><input type="text" id="payment_birth_date" class="form-control border-0" placeholder="Date of Birth" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></span>
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="text" id="payment_birth_date" class="w-100 form-control border-0" placeholder="Date of Birth" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <span><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></span>
-                <span><input type="number" class="form-control border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></span>
+                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="number" class="form-control w-100 border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></div>
             </div>
         </div>
 
         <div id="other-html" style="display:none;">
-            <div class="input-group mb-3 border-input pt-4 mb-4 mt-5">
-                <span><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></span>
-                <span><input type="email" id="payment_email" class="form-control border-0" placeholder="Enter your payment method email" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></span>
+            <div class="input-group mb-3 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap ">
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="email" id="payment_email" class="w-100 form-control border-0" placeholder="Enter your payment method email" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></div>
             </div>                        
         </div>
 
