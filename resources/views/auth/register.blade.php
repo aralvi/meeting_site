@@ -1747,11 +1747,11 @@
               data: fd,
               success:function(data)
               {
-                  console.log(data);
-                  // $('.alerMsg').show();
-                  // setInterval(function(){
-                  //     window.location = '{{ route('index') }}';
-                  // },2000);
+                  // console.log(data);
+                  $('.alerMsg').show();
+                  setInterval(function(){
+                      window.location = '{{ route('index') }}';
+                  },2000);
 
               },
               error:function(request,status,error)
