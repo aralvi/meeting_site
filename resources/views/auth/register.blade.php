@@ -1540,579 +1540,576 @@
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
 
 
-<script>
-setInterval(() => {
-    let meCheck = false;
-    $.each($('.days'),function(){
-        if($(this).is(':checked'))
-        {
-            meCheck=true;
+  <script>
+    setInterval(() => {
+        let meCheck = false;
+        $.each($('.days'),function(){
+            if($(this).is(':checked'))
+            {
+                meCheck=true;
+            }
+        });
+        if(meCheck){
+            let allChecked = document.getElementById('select_opening_hours');
+                allChecked.placeholder = "Completed";
         }
-    });
-    if(meCheck){
-        let allChecked = document.getElementById('select_opening_hours');
-            allChecked.placeholder = "Completed";
-    }
-    else{
-        let notChecked = document.getElementById('select_opening_hours');
-            notChecked.placeholder = "Not Completed";
-    }
+        else{
+            let notChecked = document.getElementById('select_opening_hours');
+                notChecked.placeholder = "Not Completed";
+        }
 
-}, 1000);
+    }, 1000);
 
+  </script>
 
-</script>
+  <script>
 
+      const usernamePublicProfile = (ele)=>{
+          let val = $(ele).val();
+          val = val.split(" ").join("-");
+          $(ele).val(val);
+          $('#public_profile').val(val+'.learnme.live');
+      }
 
+      const btnClicK =(className,parentClass ,txtLeft)=>{
+            let v =  $('.white-dot')
+           $('.left-text').html(txtLeft);
+            v.addClass(className);
+            v.siblings().addClass(parentClass);
+          }
+      const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
+            let v =  $('.white-dot')
+           $('.left-text').html(txtLeft);
+            v.removeClass(removeClass);
+            v.siblings().removeClass(removeParentClass);
+            v.addClass(className);
+          }
 
-        <script>
+      const radio = (ele) => {
 
-            const usernamePublicProfile = (ele)=>{
-                let val = $(ele).val();
-                val = val.split(" ").join("-");
-                $(ele).val(val);
-                $('#public_profile').val(val+'.learnme.live');
-            }
+          $(ele).parent().addClass('bg-3AC574');
+          $(ele).parent().siblings().removeClass('bg-3AC574');
+          $(ele).parent().siblings().find('label').removeClass('text-white');
+          // $(ele).siblings().removeClass('text-white');
+          $(ele).siblings().addClass('text-white');
+          if($(ele).val()=='client')
+          {
+              btnClicK('dot-100','width-100','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.');
+              $('.first-step-html-change').html(document.getElementById('client-html').innerHTML);
 
-            const btnClicK =(className,parentClass ,txtLeft)=>{
-                  let v =  $('.white-dot')
-                 $('.left-text').html(txtLeft);
-                  v.addClass(className);
-                  v.siblings().addClass(parentClass);
-                }
-            const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
-                  let v =  $('.white-dot')
-                 $('.left-text').html(txtLeft);
-                  v.removeClass(removeClass);
-                  v.siblings().removeClass(removeParentClass);
-                  v.addClass(className);
-                }
+          }else if($(ele).val()=='specialist')
+          {
+              btnClicKBack('dot-100','width-100','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')
+              $('.first-step-html-change').html(document.getElementById('specialist-html').innerHTML);
+          }
 
-            const radio = (ele) => {
+      }
 
-                $(ele).parent().addClass('bg-3AC574');
-                $(ele).parent().siblings().removeClass('bg-3AC574');
-                $(ele).parent().siblings().find('label').removeClass('text-white');
-                // $(ele).siblings().removeClass('text-white');
-                $(ele).siblings().addClass('text-white');
-                if($(ele).val()=='client')
-                {
-                    btnClicK('dot-100','width-100','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.');
-                    $('.first-step-html-change').html(document.getElementById('client-html').innerHTML);
+      const paymentRadio = (ele) => {
 
-                }else if($(ele).val()=='specialist')
-                {
-                    btnClicKBack('dot-100','width-100','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')
-                    $('.first-step-html-change').html(document.getElementById('specialist-html').innerHTML);
-                }
+          $(ele).parent().addClass('bg-3AC574');
+          $(ele).parent().siblings().removeClass('bg-3AC574');
+          $(ele).parent().siblings().find('label').removeClass('text-white');
+          // $(ele).siblings().removeClass('text-white');
+          $(ele).siblings().addClass('text-white');
 
-            }
+          if($(ele).val()=='stripe')
+          {
+              $('#payment_selection_html').html(document.getElementById('stripe-html').innerHTML);
 
-            const paymentRadio = (ele) => {
+          }else
+          {
+              
+              $('#payment_selection_html').html(document.getElementById('other-html').innerHTML);
+          }
 
-                $(ele).parent().addClass('bg-3AC574');
-                $(ele).parent().siblings().removeClass('bg-3AC574');
-                $(ele).parent().siblings().find('label').removeClass('text-white');
-                // $(ele).siblings().removeClass('text-white');
-                $(ele).siblings().addClass('text-white');
+      }
+     
+      function inptFieldValidate(id)
+      {
+          if($(id).val() =='')
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              return false;
+          }
+          $(id).removeClass('placeholder-color-change');
+          $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+          return true;
+      }
 
-                if($(ele).val()=='stripe')
-                {
-                    $('#payment_selection_html').html(document.getElementById('stripe-html').innerHTML);
+      function selectFieldValidate(id)
+      {
+          if($(id).val() ==null)
+          {
+              $('#select_category').addClass('placeholder-color-change');
+              $('#select_category').parent('span').parent('div').removeClass('border-input');
+              $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              return false;
+          }
+          $('#select_category').removeClass('placeholder-color-change');
+          $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
+          return true;
+      }
 
-                }else
-                {
-                    
-                    $('#payment_selection_html').html(document.getElementById('other-html').innerHTML);
-                }
+      function checkboxFieldValidate(id)
+      {
+          let chk = false;
+          $.each(id,function(){
+              if($(this).is(':checked'))
+              {
+                  chk = true;
+              }
+          });
 
-            }
-           
-            function inptFieldValidate(id)
-            {
-                if($(id).val() =='')
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    return false;
-                }
-                $(id).removeClass('placeholder-color-change');
-                $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
-                return true;
-            }
+          if(!chk)
+          {
+              $('#select_opening_hours').addClass('placeholder-color-change');
+              $('#select_opening_hours').parent('div').removeClass('border-input');
+              $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ," #e91e63");
+              return chk;
+          }
 
-            function selectFieldValidate(id)
-            {
-                if($(id).val() ==null)
-                {
-                    $('#select_category').addClass('placeholder-color-change');
-                    $('#select_category').parent('span').parent('div').removeClass('border-input');
-                    $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    return false;
-                }
-                $('#select_category').removeClass('placeholder-color-change');
-                $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
-                return true;
-            }
+          $('#select_opening_hours').removeClass('placeholder-color-change');
+          $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #3ac574");
+          $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ,"gray");
+          return chk;
+      }
 
-            function checkboxFieldValidate(id)
-            {
-                let chk = false;
-                $.each(id,function(){
-                    if($(this).is(':checked'))
-                    {
-                        chk = true;
-                    }
-                });
+      function passwordFieldValidate(id,confirmID)
+      {
+          if($(id).val() =='')
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              return false;
+          }
+          else if($(id).val() !='' && $(id).val().length <6)
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              $('#password-error').removeClass('d-none').text('Please allow at least 6 characters');
+              return false;
+          }
 
-                if(!chk)
-                {
-                    $('#select_opening_hours').addClass('placeholder-color-change');
-                    $('#select_opening_hours').parent('div').removeClass('border-input');
-                    $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ," #e91e63");
-                    return chk;
-                }
+          else if($(id).val() !='' && $(id).val() != $(confirmID).val())
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              $('#password-error').removeClass('d-none').text('Password doesn’t match');
+              return false;
+          }
+          else if($(id).val() !='' && $(id).val() == $(confirmID).val() && $(id).val().length >=6)
+          {
+              $(id).removeClass('placeholder-color-change');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+              $('#password-error').addClass('d-none');
+              return true;
+          }
+      }
 
-                $('#select_opening_hours').removeClass('placeholder-color-change');
-                $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #3ac574");
-                $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ,"gray");
-                return chk;
-            }
+      function getSubCategories(ele)
+      {
+          let id = $(ele).val();
+          $('#select_category').val($(ele).find('option[value='+id+']').text());
+          $.ajax({
+              url:"{{ route('get.sub_categories') }}",
+              type:"get",
+              data:{id:id},
+              success:function(data)
+              {
+                  $('#sub_categories').html(data);
 
-            function passwordFieldValidate(id,confirmID)
-            {
-                if($(id).val() =='')
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    return false;
-                }
-                else if($(id).val() !='' && $(id).val().length <6)
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    $('#password-error').removeClass('d-none').text('Please allow at least 6 characters');
-                    return false;
-                }
+              }
+          });
+      }
 
-                else if($(id).val() !='' && $(id).val() != $(confirmID).val())
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    $('#password-error').removeClass('d-none').text('Password doesn’t match');
-                    return false;
-                }
-                else if($(id).val() !='' && $(id).val() == $(confirmID).val() && $(id).val().length >=6)
-                {
-                    $(id).removeClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
-                    $('#password-error').addClass('d-none');
-                    return true;
-                }
-            }
+      function ajaxCommonCode(fd)
+      {
 
-            function getSubCategories(ele)
-            {
-                let id = $(ele).val();
-                $('#select_category').val($(ele).find('option[value='+id+']').text());
-                $.ajax({
-                    url:"{{ route('get.sub_categories') }}",
-                    type:"get",
-                    data:{id:id},
-                    success:function(data)
-                    {
-                        $('#sub_categories').html(data);
+          $.ajax({
+              url:"{{ route('register') }}",
+              type:"post",
+              processData: false, 
+              contentType: false,
+              // data: $('#add-client-form').serialize(),
+              data: fd,
+              success:function(data)
+              {
+                
+                  $('.alerMsg').show();
+                  setInterval(function(){
+                      window.location = '{{ route('index') }}';
+                  },2000);
 
-                    }
-                });
-            }
-
-            function ajaxCommonCode(fd)
-            {
-
-                $.ajax({
-                    url:"{{ route('register') }}",
-                    type:"post",
-                    processData: false, 
-                    contentType: false,
-                    // data: $('#add-client-form').serialize(),
-                    data: fd,
-                    success:function(data)
-                    {
-                      
-                        $('.alerMsg').show();
-                        setInterval(function(){
-                            window.location = '{{ route('index') }}';
-                        },2000);
-
-                    },
-                    error:function(request,status,error)
-                    {
-                        console.log(request.responseText);
-                    }
-                });
-            }
+              },
+              error:function(request,status,error)
+              {
+                  console.log(request.responseText);
+              }
+          });
+      }
 
 
-            function dateFieldValidate(id)
-            { 
-                console.log($(id).val());
-                if($(id).val() =='')
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    return false;
-                }
-                else if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test($(id).val()))
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    return false;
-                }
-                $(id).removeClass('placeholder-color-change');
-                $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
-                return true;
+      function dateFieldValidate(id)
+      { 
+          console.log($(id).val());
+          if($(id).val() =='')
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              return false;
+          }
+          else if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test($(id).val()))
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              return false;
+          }
+          $(id).removeClass('placeholder-color-change');
+          $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+          return true;
 
-                // First check for the pattern
-                // if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
-                // {
-                //     return false;
-                // }
+          // First check for the pattern
+          // if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+          // {
+          //     return false;
+          // }
 
 
-                // Parse the date parts to integers
-                // var parts = dateString.split("/");
-                // var day = parseInt(parts[1], 10);
-                // var month = parseInt(parts[0], 10);
-                // var year = parseInt(parts[2], 10);
+          // Parse the date parts to integers
+          // var parts = dateString.split("/");
+          // var day = parseInt(parts[1], 10);
+          // var month = parseInt(parts[0], 10);
+          // var year = parseInt(parts[2], 10);
 
-                // Check the ranges of month and year
-                // if(year < 1000 || year > 3000 || month == 0 || month > 12)
-                //     return false;
+          // Check the ranges of month and year
+          // if(year < 1000 || year > 3000 || month == 0 || month > 12)
+          //     return false;
 
-                // var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+          // var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
-                // Adjust for leap years
-                // if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-                //     monthLength[1] = 29;
+          // Adjust for leap years
+          // if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+          //     monthLength[1] = 29;
 
-                // Check the range of the day
-                // return day > 0 && day <= monthLength[month - 1];
-            }
+          // Check the range of the day
+          // return day > 0 && day <= monthLength[month - 1];
+      }
 
-            function ssnFieldValidate(id)
-            {
-                if($(id).val() =='')
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    return false;
-                }
-                else if($(id).val() !='' && ($(id).val().length <4 || $(id).val().length >4))
-                {
-                    $(id).addClass('placeholder-color-change');
-                    $(id).parent('span').parent('div').removeClass('border-input');
-                    $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-                    return false;
-                }
-                $(id).removeClass('placeholder-color-change');
-                $(id).parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
-                return true;
-            }
+      function ssnFieldValidate(id)
+      {
+          if($(id).val() =='')
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              return false;
+          }
+          else if($(id).val() !='' && ($(id).val().length <4 || $(id).val().length >4))
+          {
+              $(id).addClass('placeholder-color-change');
+              $(id).parent('div').parent('div').removeClass('border-input');
+              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+              return false;
+          }
+          $(id).removeClass('placeholder-color-change');
+          $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+          return true;
+      }
 
-        </script>
+  </script>
 
-        <script>
-            var testObject = [];
-            const button = document.getElementById("submit");
+  <script>
+      var testObject = [];
+      const button = document.getElementById("submit");
 
-            const name = document.getElementById("legaNmae");
-            const DBA = document.getElementById("DBA");
-            const business = document.getElementById("business");
-            const city = document.getElementById("city");
+      const name = document.getElementById("legaNmae");
+      const DBA = document.getElementById("DBA");
+      const business = document.getElementById("business");
+      const city = document.getElementById("city");
 
-            function handleClick() {
-                testObject.push({
-                    name: name.value,
-                    DBA: DBA.value,
-                    business: business.value,
-                    city: city.value,
-                });
-                localStorage.setItem("FormData", JSON.stringify(testObject));
-                console.log(testObject);
-            }
-            // button.addEventListener("click", function() {
+      function handleClick() {
+          testObject.push({
+              name: name.value,
+              DBA: DBA.value,
+              business: business.value,
+              city: city.value,
+          });
+          localStorage.setItem("FormData", JSON.stringify(testObject));
+          console.log(testObject);
+      }
+      // button.addEventListener("click", function() {
 
-            // })
-            // function handleClick(){
-            //     let a = document.getElementById("DBA").value
-            //     let b = document.getElementById("address").value
-            //     let c = document.getElementById("city").value
-            //     console.log(a,b,c)
-            // }
-            /* Fundraising Grader
-             *
-             * Generic Copyright, yadda yadd yadda
-             *
-             * Plug-ins: jQuery Validate, jQuery
-             * Easing
-             */
+      // })
+      // function handleClick(){
+      //     let a = document.getElementById("DBA").value
+      //     let b = document.getElementById("address").value
+      //     let c = document.getElementById("city").value
+      //     console.log(a,b,c)
+      // }
+      /* Fundraising Grader
+       *
+       * Generic Copyright, yadda yadd yadda
+       *
+       * Plug-ins: jQuery Validate, jQuery
+       * Easing
+       */
 
-            $(document).ready(function () {
-                var current_fs, next_fs, previous_fs;
-                var left, opacity, scale;
-                var animating;
-                $(".steps").validate({
-                    errorClass: "invalid",
-                    errorElement: "span",
-                    errorPlacement: function (error, element) {
-                        error.insertAfter(element.next("span").children());
-                    },
-                    highlight: function (element) {
-                        $(element).next("span").show();
-                    },
-                    unhighlight: function (element) {
-                        $(element).next("span").hide();
-                    },
-                });
+      $(document).ready(function () {
+          var current_fs, next_fs, previous_fs;
+          var left, opacity, scale;
+          var animating;
+          $(".steps").validate({
+              errorClass: "invalid",
+              errorElement: "span",
+              errorPlacement: function (error, element) {
+                  error.insertAfter(element.next("span").children());
+              },
+              highlight: function (element) {
+                  $(element).next("span").show();
+              },
+              unhighlight: function (element) {
+                  $(element).next("span").hide();
+              },
+          });
 
-                $(".next").click(function () {
-                    $(".steps").validate({
-                        errorClass: "invalid",
-                        errorElement: "span",
-                        errorPlacement: function (error, element) {
-                            error.insertAfter(element.next("span").children());
-                        },
-                        highlight: function (element) {
-                            $(element).next("span").show();
-                        },
-                        unhighlight: function (element) {
-                            $(element).next("span").hide();
-                        },
-                    });
-                    if (!$(".steps").valid()) {
-                        return true;
-                    }
-                    if (animating) return false;
-                    animating = false;
-                    current_fs = $(this).parent();
-                    next_fs = $(this).parent().next();
-                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-                    
+          $(".next").click(function () {
+              $(".steps").validate({
+                  errorClass: "invalid",
+                  errorElement: "span",
+                  errorPlacement: function (error, element) {
+                      error.insertAfter(element.next("span").children());
+                  },
+                  highlight: function (element) {
+                      $(element).next("span").show();
+                  },
+                  unhighlight: function (element) {
+                      $(element).next("span").hide();
+                  },
+              });
+              if (!$(".steps").valid()) {
+                  return true;
+              }
+              if (animating) return false;
+              animating = false;
+              current_fs = $(this).parent();
+              next_fs = $(this).parent().next();
+              $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+              
 
-                    next_fs.show();
-                    current_fs.animate(
-                        {
-                            opacity: 0,
-                        },
-                        {
-                            step: function (now, mx) {
-                                scale = 1 - (1 - now) * 0.2;
-                                // left = now * 50 + "%";
-                                opacity = 1 - now;
-                                current_fs.css({
-                                    transform: "scale(" + scale + ")",
-                                });
-                                next_fs.css({
-                                    //   left: left,
-                                    opacity: opacity,
-                                });
-                            },
-                            duration: 800,
-                            complete: function () {
-                                current_fs.hide();
-                                animating = false;
-                            },
-                            easing: "easeInOutExpo",
-                        }
-                    );
-                });
+              next_fs.show();
+              current_fs.animate(
+                  {
+                      opacity: 0,
+                  },
+                  {
+                      step: function (now, mx) {
+                          scale = 1 - (1 - now) * 0.2;
+                          // left = now * 50 + "%";
+                          opacity = 1 - now;
+                          current_fs.css({
+                              transform: "scale(" + scale + ")",
+                          });
+                          next_fs.css({
+                              //   left: left,
+                              opacity: opacity,
+                          });
+                      },
+                      duration: 800,
+                      complete: function () {
+                          current_fs.hide();
+                          animating = false;
+                      },
+                      easing: "easeInOutExpo",
+                  }
+              );
+          });
 
-                $(".submit").click(function () {
-                    $(".white-dot").css({"right": "170px" });
-                    $(".steps").validate({
-                        errorClass: "invalid",
-                        errorElement: "span",
-                        errorPlacement: function (error, element) {
-                            error.insertAfter(element.next("span").children());
-                        },
-                        highlight: function (element) {
-                            $(element).next("span").show();
-                        },
-                        unhighlight: function (element) {
-                            $(element).next("span").hide();
-                        },
-                    });
-                    if (!$(".steps").valid()) {
-                        return false;
-                    }
-                    if (animating) return false;
-                    animating = true;
-                    current_fs = $(this).parent();
-                    next_fs = $(this).parent().next();
-                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-                  
-
-                    next_fs.show();
-                    current_fs.animate(
-                        {
-                            opacity: 0,
-                        },
-                        {
-                            step: function (now, mx) {
-                                scale = 1 - (1 - now) * 0.2;
-                                // left = now * 50 + "%";
-                                
-                                opacity = 1 - now;
-                                current_fs.css({
-                                    transform: "scale(" + scale + ")",
-                                });
-                                next_fs.css({
-                                    //   left: left,
-                                    
-                                    opacity: opacity,
-                                });
-                                white-dot.css({
-                                    left: "30px",
-
-                                });
-                            },
-                            duration: 800,
-                            complete: function () {
-                                current_fs.hide();
-                                animating = false;
-                            },
-                            easing: "easeInOutExpo",
-                        }
-                    );
-                });
-
-                $(".previous").click(function () {
-                    if (animating) return false;
-                    animating = true;
-                    current_fs = $(this).parent();
-                    previous_fs = $(this).parent().prev();
-                    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-                    previous_fs.show();
-                    current_fs.animate(
-                        {
-                            opacity: 0,
-                        },
-                        {
-                            step: function (now, mx) {
-                                scale = 0.8 + (1 - now) * 0.2;
-                                // left = (1 - now) * 50 + "%";
-                                opacity = 1 - now;
-                                current_fs.css({
-                                    //   left: left,
-                                });
-                                previous_fs.css({
-                                    transform: "scale(" + scale + ")",
-                                    opacity: opacity,
-                                });
-                            },
-                            //   duration: 800,
-                            complete: function () {
-                                current_fs.hide();
-                                animating = false;
-                            },
-                            easing: "easeInOutExpo",
-                        }
-                    );
-                });
-            });
+          $(".submit").click(function () {
+              $(".white-dot").css({"right": "170px" });
+              $(".steps").validate({
+                  errorClass: "invalid",
+                  errorElement: "span",
+                  errorPlacement: function (error, element) {
+                      error.insertAfter(element.next("span").children());
+                  },
+                  highlight: function (element) {
+                      $(element).next("span").show();
+                  },
+                  unhighlight: function (element) {
+                      $(element).next("span").hide();
+                  },
+              });
+              if (!$(".steps").valid()) {
+                  return false;
+              }
+              if (animating) return false;
+              animating = true;
+              current_fs = $(this).parent();
+              next_fs = $(this).parent().next();
+              $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
             
 
-        </script>
+              next_fs.show();
+              current_fs.animate(
+                  {
+                      opacity: 0,
+                  },
+                  {
+                      step: function (now, mx) {
+                          scale = 1 - (1 - now) * 0.2;
+                          // left = now * 50 + "%";
+                          
+                          opacity = 1 - now;
+                          current_fs.css({
+                              transform: "scale(" + scale + ")",
+                          });
+                          next_fs.css({
+                              //   left: left,
+                              
+                              opacity: opacity,
+                          });
+                          white-dot.css({
+                              left: "30px",
 
-        <script>
-           
-            $(document.body).on("click", "input.client-step1", function () {
-                // $(this).parent("div").siblings("span.inputBtn").click();
-                if(inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
-                {
-                    // $('#registerForm').submit();
-                    var myform = document.getElementById("registerForm");
-                    var fd = new FormData(myform);
-                    fd.append("_token","{{ csrf_token() }}");
-                    ajaxCommonCode(fd);
-                }
-            });
+                          });
+                      },
+                      duration: 800,
+                      complete: function () {
+                          current_fs.hide();
+                          animating = false;
+                      },
+                      easing: "easeInOutExpo",
+                  }
+              );
+          });
 
-             $(document.body).on("click", "input.step1", function () {
-                // $(this).parent("div").siblings("span.inputBtn").click();
-                if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
-                {$(this).parent("div").siblings("span.inputBtn").click();}
-            });
+          $(".previous").click(function () {
+              if (animating) return false;
+              animating = true;
+              current_fs = $(this).parent();
+              previous_fs = $(this).parent().prev();
+              $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+              previous_fs.show();
+              current_fs.animate(
+                  {
+                      opacity: 0,
+                  },
+                  {
+                      step: function (now, mx) {
+                          scale = 0.8 + (1 - now) * 0.2;
+                          // left = (1 - now) * 50 + "%";
+                          opacity = 1 - now;
+                          current_fs.css({
+                              //   left: left,
+                          });
+                          previous_fs.css({
+                              transform: "scale(" + scale + ")",
+                              opacity: opacity,
+                          });
+                      },
+                      //   duration: 800,
+                      complete: function () {
+                          current_fs.hide();
+                          animating = false;
+                      },
+                      easing: "easeInOutExpo",
+                  }
+              );
+          });
+      });
+      
 
-            $(document.body).on("click", "input.step2", function () {
-                let stepSecond = false;
-                // $(this).parent("div").siblings("span.inputBtn").click();
+  </script>
 
-                if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
-                {$(this).parent("div").siblings("span.inputBtn").click();}
+  <script>
+     
+      $(document.body).on("click", "input.client-step1", function () {
+          // $(this).parent("div").siblings("span.inputBtn").click();
+          if(inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
+          {
+              // $('#registerForm').submit();
+              var myform = document.getElementById("registerForm");
+              var fd = new FormData(myform);
+              fd.append("_token","{{ csrf_token() }}");
+              ajaxCommonCode(fd);
+          }
+      });
 
-            });
+       $(document.body).on("click", "input.step1", function () {
+          // $(this).parent("div").siblings("span.inputBtn").click();
+          if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
+          {$(this).parent("div").siblings("span.inputBtn").click();}
+      });
 
-            $(document.body).on("click", "input.backstep2", function () {
-                
-                $(this).parent("div").siblings("span.previous").click();
-            });
+      $(document.body).on("click", "input.step2", function () {
+          let stepSecond = false;
+          // $(this).parent("div").siblings("span.inputBtn").click();
 
-            $(document.body).on("click", "input.step3", function () {
-                // console.log($('input[name="payment_method"]').val());
-                let method_chk = false;
-                if($('input[name="payment_method"]:checked').val()=='stripe')
-                {
-                    if(inptFieldValidate($('#payment_first_name')) && inptFieldValidate($('#payment_last_name')) && inptFieldValidate($('#account_number')) && inptFieldValidate($('#routing_number')) && dateFieldValidate($('#payment_birth_date')) && ssnFieldValidate($('#payment_ssn')))
-                    {
-                        method_chk = true;
-                    }
-                }
-                else{
-                    if(inptFieldValidate($('#payment_email')))
-                    {
-                        method_chk = true;
-                    }
-                }
-                if(method_chk)
-                {
-                    var myform = document.getElementById("registerForm");
-                    var fd = new FormData(myform);
-                    fd.append("_token","{{ csrf_token() }}");
-                    let days = $(".days:checked").map(function(){return $(this).val();}).get();
-                    fd.append('days',days);
-                    ajaxCommonCode(fd);
-                }
-                // if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
-                // {
-                    // $('#registerForm').submit();
-                    // var myform = document.getElementById("registerForm");
-                    // var fd = new FormData(myform);
-                    // fd.append("_token","{{ csrf_token() }}");
-                    // let days = $(".days:checked").map(function(){return $(this).val();}).get();
-                    // let from = $(".from_time").map(function(){return $(this).val();}).get();
-                    // let to = $(".to_time").map(function(){return $(this).val();}).get();
-                    // $.each(days,function(i,v){
-                    //     console.log(v);
-                    // });
-                    // return false;
-                    // fd.append('days',days);
-                    // fd.append('from',from);
-                    // fd.append('to',to);
-                    // ajaxCommonCode(fd);
-                // }
-                // let v = $(this).parent("div").siblings("span.inputBtn").click();
-            });
-        </script>
+          if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
+          {$(this).parent("div").siblings("span.inputBtn").click();}
+
+      });
+
+      $(document.body).on("click", "input.backstep2", function () {
+          
+          $(this).parent("div").siblings("span.previous").click();
+      });
+
+      $(document.body).on("click", "input.step3", function () {
+          // console.log($('input[name="payment_method"]').val());
+          let method_chk = false;
+          if($('input[name="payment_method"]:checked').val()=='stripe')
+          {
+              if(inptFieldValidate($('#payment_first_name')) && inptFieldValidate($('#payment_last_name')) && inptFieldValidate($('#account_number')) && inptFieldValidate($('#routing_number')) && dateFieldValidate($('#payment_birth_date')) && ssnFieldValidate($('#payment_ssn')))
+              {
+                  method_chk = true;
+              }
+          }
+          else{
+              if(inptFieldValidate($('#payment_email')))
+              {
+                  method_chk = true;
+              }
+          }
+          if(method_chk)
+          {
+              var myform = document.getElementById("registerForm");
+              var fd = new FormData(myform);
+              fd.append("_token","{{ csrf_token() }}");
+              let days = $(".days:checked").map(function(){return $(this).val();}).get();
+              fd.append('days',days);
+              ajaxCommonCode(fd);
+          }
+          // if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
+          // {
+              // $('#registerForm').submit();
+              // var myform = document.getElementById("registerForm");
+              // var fd = new FormData(myform);
+              // fd.append("_token","{{ csrf_token() }}");
+              // let days = $(".days:checked").map(function(){return $(this).val();}).get();
+              // let from = $(".from_time").map(function(){return $(this).val();}).get();
+              // let to = $(".to_time").map(function(){return $(this).val();}).get();
+              // $.each(days,function(i,v){
+              //     console.log(v);
+              // });
+              // return false;
+              // fd.append('days',days);
+              // fd.append('from',from);
+              // fd.append('to',to);
+              // ajaxCommonCode(fd);
+          // }
+          // let v = $(this).parent("div").siblings("span.inputBtn").click();
+      });
+  </script>
 		
 
 	@endsection
