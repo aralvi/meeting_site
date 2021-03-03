@@ -1178,6 +1178,12 @@
         </div>
 
         <div id="client-html" style="display: none;">
+            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div class="w-100">
+                    <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
+                </div>
+            </div>
             
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
@@ -1741,11 +1747,11 @@
               data: fd,
               success:function(data)
               {
-                
-                  $('.alerMsg').show();
-                  setInterval(function(){
-                      window.location = '{{ route('index') }}';
-                  },2000);
+                  console.log(data);
+                  // $('.alerMsg').show();
+                  // setInterval(function(){
+                  //     window.location = '{{ route('index') }}';
+                  // },2000);
 
               },
               error:function(request,status,error)
