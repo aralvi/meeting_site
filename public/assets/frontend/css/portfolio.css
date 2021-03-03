@@ -46,6 +46,9 @@
 .table-responsive::-webkit-scrollbar {
   -webkit-appearance: none;
 }
+.h-44{
+  height: 44px;
+}
 
 .table-responsive::-webkit-scrollbar:vertical {
   width: 8px;

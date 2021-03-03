@@ -19,7 +19,7 @@
 
 	@section('content')
 		
-  <section class="main_padding pt-2 pb-3 nav-bg-img robotoRegular">
+  <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
       {{-- <nav class="navbar navbar-expand-lg navbar-light p-0">
         <a class="navbar-brand" href="#"
           ><img
@@ -365,7 +365,7 @@ local barber</div>
       <div class="row m-0 p-0">
         <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Bookings:</div>
         <div class="col-md-3 ml-auto p-0">
-      <div class="d-flex m-0">  <div class="pt-4 w-100"> <input type="email" placeholder="Search for services" class="robotoRegular cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded"></div>
+      <div class="d-flex m-0">  <div class="pt-4 w-100"> <input type="email" placeholder="Search for services" class="robotoRegular h-44 cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded"></div>
         <div class="pt-4 pl-2"> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2" type="submit"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button></div>
         </div>
       </div>
@@ -696,7 +696,11 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 
-
+                               <section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
+    <div class="d-flex justify-content-center  align-items-center"><img
+            src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}"
+            alt="" srcset=""></div>
+</section>
 
 
 
