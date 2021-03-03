@@ -34,4 +34,6 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::resource('clients', 'ClientController');
     Route::resource('specialists', 'SpecialistController');
+    Route::view('specialist/dashboard','specialist.index');
+    Route::view('client/dashboard','client.index');
 });
