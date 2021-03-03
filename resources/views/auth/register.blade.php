@@ -464,7 +464,7 @@
                                         <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                                             <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
-                                            <div class="w-100"><input type="text" id="payment_last_name" class="w-100 form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
+                                            <div class="w-100"><input type="text" id="payment_first_name" class="w-100 form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
@@ -1485,7 +1485,7 @@
             <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
             <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
-                <div class="w-100"><input type="text" id="payment_last_name" class="form-control border-0 w-100" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
+                <div class="w-100"><input type="text" id="payment_last_name" class="form-control border-0 w-100" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
