@@ -151,17 +151,27 @@
                   <th scope="col">Timing</th>
                   <th scope="col">Rate</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody class="table_scroll">
-                <tr class="border-bottom">
-                  <th scope="row">1</th>
-                  <td>Basic hair cut no beard</td>
-                  <td>Basic hair cut no beard</td>   
-                  <td>$25.00</td>
-                  <td>Kids cut (12 & under)</td>
-                  <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-                </tr>
+                @foreach($specialist->services as $key=>$service)
+                  <tr class="border-bottom">
+                    <th scope="row">{{ ++$key }}</th>
+                    <td>{{ ucwords($service->name) }}</td>
+                    <td>{{ ucwords($service->category->name) }}</td>
+                    @php
+                      $subcategories = App\SubCategory::whereIn('id',json_decode($service->sub_categories))->get()->pluck('name')->toArray();
+                    @endphp 
+                    <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
+                    <td>{{ $service->timing }} Minutes</td>
+                    <td>$ {{ $service->rate }}</td>
+                    <td>{{ $service->status }}</td>
+                    <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
+                  </tr>
+
+                @endforeach
+                
               </tbody>
             </table>
           </div>
