@@ -93,4 +93,11 @@ class SpecialistController extends Controller
     {
         //
     }
+
+    // get the single specialist detail
+    public function getSpecialistDetail($id)
+    {
+        $specialist = Specialist::where('id',decrypt($id))->first();
+        return view('frontend.specialist_detail',compact('specialist'));
+    }
 }
