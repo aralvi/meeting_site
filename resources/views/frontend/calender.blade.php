@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/utility.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/portfolio.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/app.css') }}">
   <style type="text/css">
     .dropdown-toggle::after{display: none;}    
   </style>
@@ -286,80 +287,63 @@
     </div>
            
     <section class="main_padding pt-70">
-      <section class="bg_portfolioImg ">
-    <div class="row m-0 pl-0 pr-0 pt-4 pb-4">
-      <div class="col-md-6 col-lg-6">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-    <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-    <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-      </div>
-      <div class="col-md-5 col-lg-6 cl-ffffff pl-5 pr-5">
-        <div class=" f-44 robotoMedium">Caroline Johnson</div>
-        <div class="d-flex border-bottom pb-3">
-          <div class="pr-3 robotoMedium">Hair Stylist</div>
-          <div class="border-left"></div>
-          <div class="pl-3 robotoRegular">6656 us 301, Riverview, 33578</div>
+          <div class="row m-0">
+            <div class="col-lg-3 col-md-3 light mw-33">
+            <div class="calendar robotoRegular calender_Shadow pl-2 pr-2 pt-3 pb-3">
+        <div class="calendar-header border-bottom">
+            <span class="month-picker" id="month-picker">February</span>
+            <div class="year-picker">
+                <span class="year-change" id="prev-year">
+                    <pre><</pre>
+                </span>
+                <span id="year">2021</span>
+                <span class="year-change" id="next-year">
+                    <pre>></pre>
+                </span>
+            </div>
         </div>
-     <div class="border-bottom pb-3">
-     <div class="robotoMedium f-18 pt-3">About Us</div>
-        <div class="robotoRegular f-18 text-justify pt-3">Hello my name is Caroline  the barber I’ve been 
-cutting for over 15 years I specialize in all styles 
-feel free to come get a great experience with your
-local barber</div>
-     </div>
-     <div class="border-bottom pb-3  f-18">
-     <div class="robotoMedium pt-3">Specifications:</div>
-     <div class="robotoRegular pt-3">Confirmed Appointment</div>
-     <div class="robotoRegular pt-3">Timings Decided</div>
-   
-     </div>
-     <div class="border-bottom pb-3 f-18">
-     <div class="robotoMedium pt-3">Languages</div>
-     <div class="d-flex pt-3  robotoRegular">
-       <div><div>English</div>   <div class="pt-3">French</div> <div class="pt-3">Portuguese</div></div>
-       <div class="pl-5"><div>Primary</div><div class="pt-3">Secondary</div><div class="pt-3">Secondary</div></div>
-     
-
-      </div>
-    
-   
+        <div class="calendar-body">
+            <div class="calendar-week-day">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-days cl-878787"></div>
+        </div>
+      
+        <div class="month-list"></div>
     </div>
-    <div class=" pb-3 robotoMedium f-18">
-      <div class="pt-3">Share:</div>
-      <div class="d-flex pt-3">
-        <div><img src="{{ asset('assets/frontend/images/Subtraction 1.png') }}" alt="" srcset=""></div>
-        <div class="pl-3"><img src="{{ asset('assets/frontend/images/Group 1.png') }}" alt="" srcset=""></div>
-        <div class="pl-3"><img src="{{ asset('assets/frontend/images/Group 2.png') }}" alt="" srcset=""></div>
-        <div class="pl-3"> <img src="{{ asset('assets/frontend/images/Group 3.png') }}" alt="" srcset=""></div>
-        
-     <div class="f-13 robotoMedium pl-3">www.learnme.live/specialist_name</div>
-      </div>
-      </div>
 
-      </section>
+
+
+            </div>
+            <div class="col-lg-9 col-md-9 mw-67">
+                      <div class="row m-0 pt-4">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ">
+                            <div><img
+                  src="{{ asset('assets/frontend/images/Group198.png') }}"
+                  alt=""
+                  class="img-fluid w-75"
+              /></div>
+                            <div class="f-21 robotoRegular cl-000000 pl-3">Morning + Afternoond
+                              <div class="f-16 cl-878787">9:00 AM to 2:00 PM</div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 robotoRegular"><button type="button" class="close cl-3ac754" aria-label="Close">
+                        <span class="ml-auto cl-3ac754">close</span>  <span class="pt-2" aria-hidden="true">&times;</span>
+</button></div>
+                        
+                      </div>
+
+            </div>
+          </div>
     </section>
     <section class="main_padding pt-5">
       <div class="row m-0 p-0">
@@ -717,6 +701,7 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 	@section('extra-script')
+  <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
 
 	@endsection
 
