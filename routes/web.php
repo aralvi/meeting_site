@@ -28,9 +28,14 @@ Route::group(['middleware'=>['auth']],function(){
         return view('frontend.appoinment');
     })->name('appointment');
     
+    Route::get('specialist-detail/{id}', 'SpecialistController@getSpecialistDetail')->name('specialist_detail');
+
     Route::get('portfolio', function () {
         return view('frontend.portfolio');
     })->name('portfolio');
+    Route::get('clientRequest', function () {
+        return view('frontend.client_request');
+    })->name('client_request');
     Route::get('calender', function () {
         return view('frontend.calender');
     })->name('calender');
@@ -38,6 +43,8 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::resource('clients', 'ClientController');
     Route::resource('specialists', 'SpecialistController');
+    Route::resource('specialist/services', 'Specialist\ServiceController');
+    Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
     Route::view('specialist/dashboard','specialist.index');
     Route::view('client/dashboard','client.index');
 });

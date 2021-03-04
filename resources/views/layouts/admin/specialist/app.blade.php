@@ -228,6 +228,12 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
+                            <li class="treeview {{ request()->is('specialist/services')? 'active': '' }}">
+                                <a href="{{ url('specialist/services') }}" class="nav-link {{ request()->is('specialist/services')? 'active': '' }}">
+                                    <i class="fa fa-dashboard"></i>
+                                    <p>Services</p>
+                                </a>
+                            </li>
                             {{-- <li class="treeview {{ request()->is('clients*')? 'active': '' }}">
                                 <a href="" class="nav-link {{ request()->is('clients*')? 'active': '' }}">
                                     <i class="fa fa-pie-chart"></i>

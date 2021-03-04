@@ -49,28 +49,28 @@
                                 
                             <tr id="target_{{ $specialist->id }}">
                                 <td>{{ $key +1 }}</td>
-                                <td>{{ $specialist->User->name }}</td>
+                                <td>{{ $specialist->user->name }}</td>
                                 {{-- <td>{{ $specialist->User->email }}</td> --}}
                                 <td>{{ $specialist->business_name }}</td>
                                 <td>{{ $specialist->business_phone }}</td>
                                 <td>{{ $specialist->business_phone }}</td>
-                                <td>{{ $specialist->User->payment_method }}</td>
-                                <td>{{ $specialist->User->payment_email }}</td>
+                                <td>{{ $specialist->payment_method }}</td>
+                                <td>{{ $specialist->payment_email }}</td>
                                 <td>
-                                    @if ($specialist->User->status == 'inactive')
-                                        <span class="badge badge-sm badge-danger">{{ $specialist->User->status }}</span>
+                                    @if ($specialist->user->status == 'inactive')
+                                        <span class="badge badge-sm badge-danger">{{ $specialist->user->status }}</span>
                                         @else
-                                        <span class="badge badge-sm badge-success">{{ $specialist->User->status }}</span>
+                                        <span class="badge badge-sm badge-success">{{ $specialist->user->status }}</span>
                                         
                                         @endif
                                     
                                 </td>
                                 
                                 <td style="min-width: 135px !important;" class="d-flex">
-                                    <form action="{{ route('specialists.update',$specialist->User->id) }}" method="post">
+                                    <form action="{{ route('specialists.update',$specialist->user->id) }}" method="post">
                                         @csrf
                                         @method('put')
-                                        @if ($specialist->User->status == 'inactive')
+                                        @if ($specialist->user->status == 'inactive')
                                         <input type="hidden" name="status" value="active">
                                         <button type="submit" class="btn btn-sm btn-success">Activate</button>
                                         @else

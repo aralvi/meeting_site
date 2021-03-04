@@ -77,8 +77,11 @@ opacity: 1 !important;
 .bg-0000006b{
   background-color: #0000006b;
 }
-.f-21{
+/* .f-21{
   font-size: 	1.3125rem;
+} */
+.f-21{
+  font-size:  1rem !important;
 }
 .borderRadius-5px{
          border-radius: 5px;

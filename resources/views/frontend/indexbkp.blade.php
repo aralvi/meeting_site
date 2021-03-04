@@ -393,41 +393,237 @@
 
 <section class="main_padding pt-70">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-        
-        <div class="carousel-inner h-413">
 
-            @foreach(App\Specialist::all()->chunk(4) as $specialistsCollections)
-
+         <div class="carousel-inner row w-100 mx-auto">
+            @foreach($products->chunk(7) as $productCollections)
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    <section class="d-block w-100">
-                        <div class="row m-0">
-                            @foreach($specialistsCollections as $specialist)
-                                <div class="col-md-3 col-lg-3 col-sm-12">
-                                    <a href="{{route('specialist_detail',encrypt($specialist->id))}}" target="_blank">
-                                        <div class="card border-0 box_shadow">
-                                            <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
-                                                class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}"
-                                                    alt="" srcset="">
-                                            </div>
-                                            <div class="card-footer  bg-ffffff pt-4 pb-4">
-                                                <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
-                                                <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By {{ $specialist->user->name }}
-                                                </p>
-                                            </div>
 
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </section>
+                    <div class="row">
+                        @foreach($productCollections as $product)
+                         <div class="col mx-1 my-5">
+                            <img class="img-fluid" width="200" heibght="350" src="{{ asset('uploads/product/' . $product->image) }}" alt="{{ $product->name }}">
+                         </div>
+                        @endforeach
+                    </div>
 
                 </div>
-
             @endforeach
+        </div>
 
+        <div class="carousel-inner h-413">
+            <div class="carousel-item active">
+                <section class="d-block w-100">
+                    <div class="row m-0">
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/tumblr_inline_pirp24H8TJ1u6e51h_1280.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/gotprint-custom-t-shirt-ideas_5.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/article_full@1x.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/ipad.png') }}" class="card-img-top"
+                                    alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/gotprint-custom-t-shirt-ideas_5.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="carousel-item">
+                <section class="d-block w-100">
+                    <div class="row m-0">
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="carousel-item">
+                <section class="d-block w-100">
+                    <div class="row m-0">
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset('assets/frontend/images/upload9223368955665502610.png') }}"
+                                        alt="" srcset="">
+                                </div>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Illustration</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">By graphics colors
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
