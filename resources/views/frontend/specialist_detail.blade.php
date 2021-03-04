@@ -131,10 +131,10 @@
           <div class="col-md-3 ml-auto p-0">
             <div class="d-flex m-0">  
               <div class="pt-4 w-100"> 
-                <input type="email" placeholder="Search for services" class="robotoRegular h-44 cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
+                <input type="text" placeholder="Search for services" class="service_inpt robotoRegular h-44 cl-6b6b6b bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
               </div>
               <div class="pt-4 pl-2"> 
-                <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2" type="submit"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button>
+                <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2 service_inpt_btn" type="button" onclick="inputSearchServices();"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button>
               </div>
             </div>
           </div>
@@ -167,7 +167,7 @@
                     <td>{{ $service->timing }} Minutes</td>
                     <td>$ {{ $service->rate }}</td>
                     <td>{{ $service->status }}</td>
-                    <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
+                    <td><a href="{{ route('appointment_request',encrypt($service->id)) }}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" target="_blank">Book</a></td>
                   </tr>
 
                 @endforeach
@@ -461,7 +461,20 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 	@section('extra-script')
+    <script type="text/javascript">
+      function inputSearchServices()
+      {
+        let val = $('service_inpt').val();
+        console.log(val);
+      }
 
+      $("#full_day").keydown(function(e)
+      {
+        if(e.which === 13){
+          inputSearchServices();
+        }
+      });
+    </script>
 	@endsection
 
 {{-- footer section end --}}
