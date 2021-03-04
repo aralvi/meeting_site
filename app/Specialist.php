@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Specialists\Service;
 use Illuminate\Database\Eloquent\Model;
 
 class Specialist extends Model
@@ -13,4 +14,9 @@ class Specialist extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+    
 }
