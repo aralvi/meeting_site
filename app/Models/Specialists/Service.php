@@ -3,6 +3,7 @@
 namespace App\Models\Specialists;
 
 use App\Category;
+use App\Models\Appointment;
 use App\Specialist;
 use App\SubCategory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,10 @@ class Service extends Model
     public function specialist()
     {
         return $this->belongsTo(Specialist::class);
+    }
+    public function appointment()
+    {
+        return $this->hasOne(Appointment::class);
     }
     public function getStatusAttribute($attribute)
     {

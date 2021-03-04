@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Appointment;
 use App\Models\Specialists\Service;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,5 +25,9 @@ class Specialist extends Model
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
     }
 }
