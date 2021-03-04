@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/utility.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/portfolio.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/app.css') }}">
   <style type="text/css">
     .dropdown-toggle::after{display: none;}    
   </style>
@@ -287,8 +288,61 @@
            
     <section class="main_padding pt-70">
           <div class="row m-0">
-            <div class="col-lg-3 col-md-3"></div>
-            <div class="col-lg-9 col-md-9"></div>
+            <div class="col-lg-3 col-md-3 light mw-33">
+            <div class="calendar robotoRegular calender_Shadow pl-2 pr-2 pt-3 pb-3">
+        <div class="calendar-header border-bottom">
+            <span class="month-picker" id="month-picker">February</span>
+            <div class="year-picker">
+                <span class="year-change" id="prev-year">
+                    <pre><</pre>
+                </span>
+                <span id="year">2021</span>
+                <span class="year-change" id="next-year">
+                    <pre>></pre>
+                </span>
+            </div>
+        </div>
+        <div class="calendar-body">
+            <div class="calendar-week-day">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-days cl-878787"></div>
+        </div>
+      
+        <div class="month-list"></div>
+    </div>
+
+
+
+            </div>
+            <div class="col-lg-9 col-md-9 mw-67">
+                      <div class="row m-0 pt-4">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ">
+                            <div><img
+                  src="{{ asset('assets/frontend/images/Group198.png') }}"
+                  alt=""
+                  class="img-fluid w-75"
+              /></div>
+                            <div class="f-21 robotoRegular cl-000000 pl-3">Morning + Afternoond
+                              <div class="f-16 cl-878787">9:00 AM to 2:00 PM</div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 robotoRegular"><button type="button" class="close cl-3ac754" aria-label="Close">
+                        <span class="ml-auto cl-3ac754">close</span>  <span class="pt-2" aria-hidden="true">&times;</span>
+</button></div>
+                        
+                      </div>
+
+            </div>
           </div>
     </section>
     <section class="main_padding pt-5">
@@ -647,6 +701,7 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 	@section('extra-script')
+  <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
 
 	@endsection
 

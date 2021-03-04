@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: auto;
+  height: 750px;
   width: 100%;
   border-radius: 8px;
 }
@@ -33,7 +33,7 @@
   border-bottom: 1px solid #FFFFFF;
 }
 .table_scroll{
-  height: 303px;
+  height: 503px;
   /* overflow: hidden; */
   overflow-y: scroll;
   background-color: #ffffff;
@@ -153,11 +153,5 @@
 .comment_SectionLRD{
   font-size: 18px !important;
   
-}
-.mw-33{
-  max-width: 33% !important;
-}
-.mw-67{
-  max-width: 67% !important;
 }
 }

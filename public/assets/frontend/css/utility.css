@@ -60,6 +60,11 @@ body{
 .f-26{
   font-size: 1.525rem;
 }
+.close {
+opacity: 1 !important;
+
+
+}
 .cl-707070{
   color: #707070;
 }
@@ -246,6 +251,9 @@ a:hover{
 }
 .w-81{
   width: 81%!important;
+}
+.cl-878787{
+  color: #878787;
 }
 /* Change the white to any color */
 input:-webkit-autofill,
