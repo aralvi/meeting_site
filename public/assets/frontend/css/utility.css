@@ -42,7 +42,7 @@ body{
     padding-right: 158px;
 }
 .cl-ffffff{
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 .bg-ffffff{
   background-color: #FFFFFF;
@@ -127,6 +127,12 @@ input{
   
 font-size:2.75rem;
 }
+.f-41{
+  font-size:2.5625rem;
+}
+.f-16{
+  font-size: 1rem;
+}
 .cl-6b6b6b{
   color: #6B6B6B;
 }
@@ -135,6 +141,12 @@ font-size:2.75rem;
 }
 .f-35{
   font-size: 	2.25rem;
+}
+.f-19{
+  font-size: 	1.1875rem;
+}
+.cl-979797{
+  color: #979797;
 }
 .cl-acacac{
   color: #ACACAC;
@@ -213,6 +225,24 @@ a:hover{
 }
 .f-1rem{
   font-size: 1rem !important;
+}
+.cl-8b8b8b{
+  color:#8B8B8B;
+}
+.bg-000000a6{
+  background-color: #000000b5;
+}
+.borderLeft{
+  border-left: 1px solid #707070;
+}
+.cl-a2a2a2{
+  color: #A2A2A2;
+}
+.w-43{
+  width: 43% !important;
+}
+.w-81{
+  width: 81%!important;
 }
 /* Change the white to any color */
 input:-webkit-autofill,

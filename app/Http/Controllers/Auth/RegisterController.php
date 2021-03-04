@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Specialist;
+use App\Client;
 
 class RegisterController extends Controller
 {
@@ -52,18 +53,39 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $arr = [
+                'username' => ['required'],
+                'name' => ['required', 'string'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'country' => ['required'],
+            ];
 
-        return Validator::make($data, [
-            'name' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'payment_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'payment_password' => ['required'],
-            'payment_method' => ['required'],
-            'business_name' => ['required', 'string'],
-            'business_phone' => ['required', 'string'],
-            'business_location' => ['required', 'string'],
-        ]);
+        if ($data['user_type']=='specialist')
+        {
+            $arr['payment_method'] = ['required'];
+            $arr['business_phone'] = ['required', 'string'];
+        }
+        else if($data['user_type']=='client')
+        {
+            $arr['client_phone'] =['required', 'string'];
+        }
+
+        if($data['payment_method']=='stripe' && $data['user_type'] !='client')
+        {
+            $arr['payment_first_name'] = ['required', 'string'];
+            $arr['payment_last_name'] = ['required', 'string'];
+            $arr['account_number'] = ['required'];
+            $arr['payment_birth_date'] = ['required'];
+            $arr['routing_number'] = ['required'];
+
+        }
+        else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
+        {
+            $arr['payment_email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
+        }
+
+        return Validator::make($data, $arr);
     }
 
     /**
@@ -75,40 +97,66 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'user_type' => 'specialist',
+            'user_type' => $data['user_type'],
+            'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
+            'country' => $data['country'],
             'password' => Hash::make($data['password']),
-            'payment_password' => $data['password'],
-            'payment_email'=>$data['payment_email'],
-            'payment_method'=>$data['payment_method'],
             'status'=>'inactive'
         ]);
 
-        if(count(explode(',',$data['days'])) >0)
+        if($data['user_type'] =='specialist')
         {
-            foreach (explode(',',$data['days']) as $key => $value)
+            if(count(explode(',',$data['days'])) >0)
             {
-                if($value =="saturday" || $value=='sunday')
+                foreach (explode(',',$data['days']) as $key => $value)
                 {
-                    $arr[$value] = ['closed'];
+                    if($value =="saturday" || $value=='sunday')
+                    {
+                        $hours_arr[$value] = ['closed'];
+                    }
+                    else
+                    {
+                        $hours_arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
+                    }
+                   
                 }
-                else
-                {
-                    $arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
-                }
-               
             }
+
+            $specialist = new Specialist();
+            $specialist->user_id = $user->id;
+            $specialist->category_id = $data['category_id'];
+            $specialist->sub_category_id = json_encode($data['sub_category_id']);
+            $specialist->business_phone = $data['business_phone'];
+            $specialist->public_profile = $data['public_profile'];
+            $specialist->payment_method = $data['payment_method'];
+            if($data['payment_method']=='stripe' && $data['user_type'] !='client')
+            {
+                $specialist->payment_first_name = $data['payment_first_name'];
+                $specialist->payment_last_name = $data['payment_last_name'];
+                $specialist->payment_birth_date = $data['payment_birth_date'];
+                $specialist->payment_ssn = $data['payment_ssn'];
+                $specialist->account_number = $data['account_number'];
+                $specialist->routing_number = $data['routing_number'];
+
+            }
+            else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
+            {
+                $specialist->payment_email = $data['payment_email'];
+            }
+            $specialist->opening_hours = json_encode($hours_arr);
+
+            $specialist->save();
         }
-        $specialist = new Specialist();
-        $specialist->user_id = $user->id;
-        $specialist->category_id = $data['category_id'];
-        $specialist->sub_category_id = json_encode($data['sub_category_id']);
-        $specialist->business_phone = $data['business_phone'];
-        $specialist->business_name = $data['business_name'];
-        $specialist->business_location = $data['business_location'];
-        $specialist->opening_hours = json_encode($arr);
-        $specialist->save();
+        else if($data['user_type'] =='client')
+        {
+            $client = new Client();
+            $client->user_id = $user->id;
+            $client->business_phone = $data['client_phone'];
+            $client->save();
+        }
+        
         return $user;
     }
 }

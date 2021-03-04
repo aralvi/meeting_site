@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,21 +14,30 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
     return view('frontend.index');
 })->name('index');
 
-Route::get('appointment', function () {
-    return view('frontend.appoinment');
-})->name('appointment');
 
-Route::get('portfolio', function () {
-    return view('frontend.portfolio');
-})->name('portfolio');
-
-Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 Auth::routes();
+Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 
+Route::group(['middleware'=>['auth']],function(){
+    
+    Route::get('appointment', function () {
+        return view('frontend.appoinment');
+    })->name('appointment');
+    
+    Route::get('portfolio', function () {
+        return view('frontend.portfolio');
+    })->name('portfolio');
+    Route::get('calender', function () {
+        return view('frontend.calender');
+    })->name('calender');
+
+
+    Route::resource('clients', 'ClientController');
+    Route::resource('specialists', 'SpecialistController');
+    Route::view('specialist/dashboard','specialist.index');
+    Route::view('client/dashboard','client.index');
+});
