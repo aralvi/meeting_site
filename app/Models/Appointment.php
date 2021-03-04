@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Client;
 use App\Models\Specialists\Service;
 use App\Specialist;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
@@ -20,6 +21,10 @@ class Appointment extends Model
     public function specialist()
     {
         return $this->belongsTo(Specialist::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
     public function getStatusAttribute($attribute)
     {

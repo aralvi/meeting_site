@@ -17,8 +17,8 @@ class CreateAppointmentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('specialist_id')->nullable();
             $table->foreign('specialist_id')->references('id')->on('specialists')->onDelete('cascade');
-            $table->unsignedBigInteger('client_id')->nullable();
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('service_id')->nullable();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->string('date');

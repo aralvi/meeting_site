@@ -40,6 +40,7 @@ Route::group(['middleware'=>['auth']],function(){
 
 
     Route::resource('clients', 'ClientController');
+    Route::resource('appointments', 'AppointmentController');
     Route::resource('specialists', 'SpecialistController');
     Route::resource('specialist/services', 'Specialist\ServiceController');
     Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
