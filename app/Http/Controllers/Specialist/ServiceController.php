@@ -113,9 +113,16 @@ class ServiceController extends Controller
     {
         $service = Service::findOrFail($id)->delete();
     }
+
     public function getSubCategories(Request $request)
     {
         $subcategories = Category::where('id', $request->id)->first()->subcategories;
         return view('specialist/services/get_subcategories', compact('subcategories'))->render();
+    }
+
+    public function getQueryServices(Request $request)
+    {
+        $services = Service::where('title', 'like', '%' . $request->val . '%')->get();
+        return view('partials.frontend.get_search_services', compact('services'))->render();
     }
 }

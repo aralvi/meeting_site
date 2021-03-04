@@ -38,6 +38,7 @@ Route::group(['middleware'=>['auth']],function(){
     })->name('client_request');
     Route::get('appointment-request/{id}','AppointmentController@create')->name('appointment_request');
 
+    Route::get('getQueryServices','Specialist\ServiceController@getQueryServices')->name('getQueryServices');
 
     Route::resource('clients', 'ClientController');
     Route::resource('appointments', 'AppointmentController');
