@@ -154,4 +154,10 @@
   font-size: 18px !important;
   
 }
+.mw-33{
+  max-width: 33% !important;
+}
+.mw-67{
+  max-width: 67% !important;
+}
 }
