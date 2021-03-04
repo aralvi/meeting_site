@@ -36,7 +36,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('clientRequest', function () {
         return view('frontend.client_request');
     })->name('client_request');
-    Route::get('appointment-request/{id}','AppointmentController@appointmentRequest')->name('appointment_request');
+    Route::get('appointment-request/{id}','AppointmentController@create')->name('appointment_request');
 
 
     Route::resource('clients', 'ClientController');
