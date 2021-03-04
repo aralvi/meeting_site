@@ -31,9 +31,11 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('portfolio', function () {
         return view('frontend.portfolio');
     })->name('portfolio');
-
+    
     Route::resource('clients', 'ClientController');
     Route::resource('specialists', 'SpecialistController');
+    Route::resource('specialist/services', 'Specialist\ServiceController');
+    Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
     Route::view('specialist/dashboard','specialist.index');
     Route::view('client/dashboard','client.index');
 });
