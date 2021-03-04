@@ -10,9 +10,9 @@
             </div>
             <!-- /.col -->
 
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <button title="Click to Add appointment" data-toggle="modal" data-target="#addappointmentModal" class="btn btn-primary btn-sm" style="float: right;"><i class="fas fa-plus"></i> Add appointment</button>
-            </div>
+            </div> --}}
             <!-- /.col -->
         </div>
         <!-- /.row -->
