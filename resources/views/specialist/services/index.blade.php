@@ -34,6 +34,9 @@
                             <tr class="text-uppercase">
                                 <th scope="col">#</th>
                                 <th scope="col">service</th>
+                                <th scope="col">Timing</th>
+                                <th scope="col">Rate</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -42,6 +45,18 @@
                             <tr id="target_{{ $service->id }}">
                                 <td>{{ $key +1 }}</td>
                                 <td>{{ $service->title }}</td>
+                                <td>{{ $service->timing }} Minutes</td>
+                                <td>${{ $service->rate }}</td>
+                                <td>
+                                    @if ($service->status == "Active")
+                                        
+                                    <span class="badge badge-sm badge-success">{{ $service->status }}</span>
+                                    @else
+                                        
+                                    <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
+                                    @endif
+                                    
+                                </td>
                                 
                                 <td style="min-width: 135px !important;">
                                     <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-Serviceid="{{ $service->id }}"><i class="fe fe-pencil"></i> Edit</button>
