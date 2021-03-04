@@ -276,7 +276,8 @@
    <div class="col-md-2"></div>
 </div>
 <section class="main_padding pt-70">
-   <div class="row m-0">
+  <form action="">
+  <div class="row m-0">
       <div class="col-lg-3 col-md-3 light mw-33 pl-0">
          <div class="calendar robotoRegular calender_Shadow pl-2 pr-2 pt-3 pb-3">
             <div class="calendar-header border-bottom">
@@ -499,6 +500,7 @@
          <div class="cl-000000 f-18 robotoRegular pt-4">Standard buzz cut or 1 length even line up</div>
       </div>
    </div>
+  </form>
 </section>
 <section class="main_padding pt-5">
    <div class="row m-0 p-0">
