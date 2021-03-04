@@ -51,7 +51,7 @@ class AppointmentController extends Controller
         $appointment->rate = $request->rate;
         $appointment->time = $request->time;
         $appointment->save();
-        return back();
+        return back()->with('success','Appointment Created Successfuly!');
 
     }
 
@@ -86,7 +86,19 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $appointment = Appointment::findOrFail($id);
+        if($request->status == '1'){
+            $appointment->status = $request->status;
+        }
+        if($request->status == '2'){
+            $appointment->status = $request->status;
+            
+        }
+        if($request->status == '3'){
+            $appointment->status = $request->status;
+        }
+        $appointment->save();
+        return back()->with('success', 'Appointment updated Successfuly!');
     }
 
     /**

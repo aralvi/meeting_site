@@ -122,7 +122,6 @@ let dark_mode_toggle = document.querySelector('.dark-mode-switch')
 
 $(document.body).on("click", "input.btnclass", function() {
 
-    alert($(this).val())
     $('.btnclass').removeClass('bg-3ac574');
     $('.btnclass').children('.get_check').show();
     $('.btnclass').children('.hide_arrow').hide();

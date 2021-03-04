@@ -261,6 +261,7 @@
    --}}
    @include('includes.frontend.navbar')
 </section>
+@include('common.messages')
 <div class="pt-4 main_padding d-flex f-20 cl-3b3b3b3 justify-content-between robotoRegular">
    <div class="col-md-1 p-0"></div>
    <ul class="listStyle-none p-0 col-md-10 d-flex justify-content-between robotoRegular f-18 ul_main_tabs m-0">

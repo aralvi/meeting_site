@@ -266,6 +266,7 @@
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
+                @include('common.messages')
                 @yield('content')
             </div>
             <!-- /.content-wrapper -->

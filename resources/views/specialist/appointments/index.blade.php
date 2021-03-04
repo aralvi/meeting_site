@@ -53,13 +53,47 @@
                                     <span class="badge badge-sm badge-warning">{{ $appointment->status }}</span>
                                     
                                     @endif
+                                    @if ($appointment->status == "Approved")
+                                        
+                                    <span class="badge badge-sm badge-info">{{ $appointment->status }}</span>
+                                    
+                                    @endif
+                                    @if ($appointment->status == "Cancelled")
+                                        
+                                    <span class="badge badge-sm badge-danger">{{ $appointment->status }}</span>
+                                    
+                                    @endif
+                                    @if ($appointment->status == "Completed")
+                                        
+                                    <span class="badge badge-sm badge-success">{{ $appointment->status }}</span>
+                                    
+                                    @endif
                                     
                                 </td>
                                 
-                                <td style="min-width: 135px !important;">
-                                    <button title="Click to Update appointment" class="btn btn-warning btn-sm editappointmentBtn" id="editappointmentBtn" data-appointmentid="{{ $appointment->id }}"><i class="fe fe-pencil"></i> Edit</button>
+                                <td style="min-width: 135px !important; " class="d-flex">
+                                    @if ($appointment->status != "Completed")
+                                        
+                                    <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                        @csrf
+                                        @method('put')
+                                        
+                                        <input type="hidden" name="status" value="{{ ($appointment->status == 'Pending')? '1':'3' }}">
+                                        <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Pending')? 'Approve':'completed' }}</button>
+                                    </form>
+                                    @if ($appointment->status != "Cancelled")
+                                        
+                                    <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                        @csrf
+                                        @method('put')
+                                        <input type="hidden" name="status" value="2">
+                                        <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+                                    </form>
+                                    @endif
+                                    @endif
+                                    {{-- <button title="Click to Update appointment" class="btn btn-warning btn-sm editappointmentBtn" id="editappointmentBtn" data-appointmentid="{{ $appointment->id }}"><i class="fe fe-pencil"></i> Edit</button>
 
-                                    <button title="Click to Delete appointment" type="button" class="btn btn-danger btn-sm appointmentDelete" id="appointmentDelete" data-appointmentid="{{ $appointment->id }}"><i class="fe fe-trash"></i> Delete</button>
+                                    <button title="Click to Delete appointment" type="button" class="btn btn-danger btn-sm appointmentDelete" id="appointmentDelete" data-appointmentid="{{ $appointment->id }}"><i class="fe fe-trash"></i> Delete</button> --}}
                                 </td>
                             </tr>
                                 
