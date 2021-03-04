@@ -31,6 +31,10 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('portfolio', function () {
         return view('frontend.portfolio');
     })->name('portfolio');
+    Route::get('calender', function () {
+        return view('frontend.calender');
+    })->name('calender');
+
 
     Route::resource('clients', 'ClientController');
     Route::resource('specialists', 'SpecialistController');
