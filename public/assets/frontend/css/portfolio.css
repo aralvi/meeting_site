@@ -33,7 +33,8 @@
   border-bottom: 1px solid #FFFFFF;
 }
 .table_scroll{
-  height: 303px;
+  /* height: 303px; */
+  height: auto;
   /* overflow: hidden; */
   overflow-y: scroll;
   background-color: #ffffff;

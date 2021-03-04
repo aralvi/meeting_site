@@ -123,82 +123,54 @@
         </div>
       </section>
     </section>
-    <section class="main_padding pt-5">
-      <div class="row m-0 p-0">
-        <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Bookings:</div>
-        <div class="col-md-3 ml-auto p-0">
-      <div class="d-flex m-0">  <div class="pt-4 w-100"> <input type="email" placeholder="Search for services" class="robotoRegular h-44 cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded"></div>
-        <div class="pt-4 pl-2"> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2" type="submit"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button></div>
-        </div>
-      </div>
 
-             <!-- T A B L E -->
-             <div class="table-responsive tableFixHead table_scroll mt-5 border robotoRegular">
-  <table id="boxes-list" class="table m-0 header-fixed">
-    <tr class="bg-white robotoRegular ">
-  <thead class="sticky-top bg-white cl-3ac754 ">
-      <th scope="col">Sr</th>
-      <th scope="col">Popular Services</th>
-      <th scope="col">Popular Services</th>
-      <th scope="col">Timing</th>
-      <th scope="col">Rate</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody class="table_scroll">
-    <tr class="border-bottom">
-      <th scope="row">1</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr class="border-bottom">
-      <th scope="row">2</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr class="border-bottom">
-      <th scope="row">3</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Basic hair cut no beard</td>
-      <td>Basic hair cut no beard</td>   
-      <td>$25.00</td>
-      <td>Kids cut (12 & under)</td>
-      <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
-    </tr>
-  </tbody>
-  </div>
-  </table>
-</div>
-    </section>
+    @if($specialist->services->count() > 0)
+      <section class="main_padding pt-5">
+        <div class="row m-0 p-0">
+          <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Bookings:</div>
+          <div class="col-md-3 ml-auto p-0">
+            <div class="d-flex m-0">  
+              <div class="pt-4 w-100"> 
+                <input type="email" placeholder="Search for services" class="robotoRegular h-44 cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
+              </div>
+              <div class="pt-4 pl-2"> 
+                <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2" type="submit"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive tableFixHead table_scroll mt-5 border robotoRegular">
+            <table id="boxes-list" class="table m-0 header-fixed">
+              
+              <thead class="sticky-top bg-white cl-3ac754 ">
+                <tr class="bg-white robotoRegular ">
+                  <th scope="col">Sr</th>
+                  <th scope="col">Service</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Sub Category</th>
+                  <th scope="col">Timing</th>
+                  <th scope="col">Rate</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody class="table_scroll">
+                <tr class="border-bottom">
+                  <th scope="row">1</th>
+                  <td>Basic hair cut no beard</td>
+                  <td>Basic hair cut no beard</td>   
+                  <td>$25.00</td>
+                  <td>Kids cut (12 & under)</td>
+                  <td><button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">Book</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+                
+        </div>
+      </section>
+    @endif
+    
+
     <section class=" main_padding pt-70 text-center">
                                <p class="main_title robotoMedium  f-34 cl-000000  m-0">Portfolio</p>
                                <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">The best and highly skilled Performance done previously</p>
