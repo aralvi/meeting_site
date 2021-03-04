@@ -498,6 +498,10 @@
             </div>
          </div>
          <div class="cl-000000 f-18 robotoRegular pt-4">Standard buzz cut or 1 length even line up</div>
+         <div class="row m-0">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 ml-auto"><form action=""><button href="" type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" type="submit">submit</button></form></div>
+         </div>
       </div>
    </div>
   </form>
