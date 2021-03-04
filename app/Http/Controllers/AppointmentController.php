@@ -26,7 +26,7 @@ class AppointmentController extends Controller
     {
        $id =  decrypt($id);
        $service = Service::findOrFail($id);
-       return view('')
+       return view('frontend.appointments',compact('service'));
     }
 
     /**

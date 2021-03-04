@@ -3,7 +3,7 @@ let calendar = document.querySelector('.calendar')
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 isLeapYear = (year) => {
-    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
+    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0)
 }
 
 getFebDays = (year) => {
@@ -28,7 +28,7 @@ generateCalendar = (month, year) => {
     calendar_header_year.innerHTML = year
 
     // get first day of month
-    
+
     let first_day = new Date(year, month, 1)
 
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
@@ -69,8 +69,8 @@ month_picker.onclick = () => {
 
 let currDate = new Date()
 
-let curr_month = {value: currDate.getMonth()}
-let curr_year = {value: currDate.getFullYear()}
+let curr_month = { value: currDate.getMonth() }
+let curr_year = { value: currDate.getFullYear() }
 
 generateCalendar(curr_month.value, curr_year.value)
 
@@ -107,9 +107,9 @@ let dark_mode_toggle = document.querySelector('.dark-mode-switch')
 //         showarrow.classList.add("arowhide")
 //         showbtnDiv.classList.remove("btnclassshow") 
 //         showbtnDiv.classList.add("btnclass")
-        
+
 //     }else{
-        
+
 //         hideDiv.style.display = "none"
 //         showDiv.style.display = "block"
 //         showarrow.classList.add("arowshow") 
@@ -117,26 +117,28 @@ let dark_mode_toggle = document.querySelector('.dark-mode-switch')
 //         showbtnDiv.classList.add("btnclassshow") 
 //         showbtnDiv.classList.remove("btnclass")
 //     }
- 
+
 // }
 
-$(document.body).on("click", "button.btnclass", function () {
+$(document.body).on("click", "input.btnclass", function() {
+
+    alert($(this).val())
     $('.btnclass').removeClass('bg-3ac574');
     $('.btnclass').children('.get_check').show();
     $('.btnclass').children('.hide_arrow').hide();
     $(this).addClass('bg-success');
     $(this).children('.get_check').hide();
     $(this).children('.hide_arrow').show();
-   
-// if($(this).siblings('span.hide_Arrow').hasClass('arowshow')){
 
-//     $(this)
-//     .siblings('span.hide_Arrow').removeClass("arowshow").css({})
-// }else{
-//     $(this).siblings('span.hide_Arrow').removeClass("arowhide")
-//     $(this).siblings('span.hide_Arrow').addClass("arowshow")
-// }
-    
-    
-    
-    });
+    // if($(this).siblings('span.hide_Arrow').hasClass('arowshow')){
+
+    //     $(this)
+    //     .siblings('span.hide_Arrow').removeClass("arowshow").css({})
+    // }else{
+    //     $(this).siblings('span.hide_Arrow').removeClass("arowhide")
+    //     $(this).siblings('span.hide_Arrow').addClass("arowshow")
+    // }
+
+
+
+});
