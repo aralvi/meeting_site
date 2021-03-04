@@ -27,7 +27,7 @@ class Appointment extends Model
             '0' => 'Pending',
             '1' => 'Approved',
             '2' => 'Cancelled',
-            '3' => 'Cancelled'
+            '3' => 'Completed'
         ][$attribute];
     }
 }
