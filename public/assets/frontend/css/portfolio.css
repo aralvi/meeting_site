@@ -123,6 +123,55 @@
   box-shadow: rgb(0 0 0 / 22%) 1px 4px 12px;
 
 }
+.border-button{
+  border: 1px solid #878787;
+  cursor: pointer;
+}
+
+  .hide_Arrow {
+    position: absolute;
+    left: 36px;
+    top: 12px;
+    
+}
+.arowhide{
+  display: none;
+}
+.arowshow{
+  display: block;
+  position: absolute;
+    left: 19px;
+    top: 13px;
+   
+}
+.btnclassborder{
+  border: 1px solid #878787;
+  /* background-color: green !important; */
+}
+.btnclassshow{
+  /* background-color: green; */
+   background-color: green !important; 
+}
+/* .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+} */
+
+/* On mouse-over, add a grey background color */
+.checkmark::after{
+  background-color: red !important;
+}
+
+
+
+
+
+
 @media screen and (max-width: 1650px){
   .bg_img_8 {
     height: 560px;
