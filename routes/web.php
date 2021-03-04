@@ -31,6 +31,9 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('portfolio', function () {
         return view('frontend.portfolio');
     })->name('portfolio');
+    Route::get('clientRequest', function () {
+        return view('frontend.client_request');
+    })->name('client_request');
     Route::get('calender', function () {
         return view('frontend.calender');
     })->name('calender');
