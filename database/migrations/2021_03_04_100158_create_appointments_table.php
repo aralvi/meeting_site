@@ -24,7 +24,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('date');
             $table->string('time');
             $table->string('rate');
-            $table->enum('status',['0','1','2'])->default(0);
+            $table->enum('status',['0','1','2','3'])->default(0);
             $table->timestamps();
         });
     }
