@@ -10,4 +10,9 @@ class Category extends Model
     {
     	return $this->hasMany(SubCategory::class);
     }
+
+    public function specialist()
+    {
+    	return $this->hasOne(Specialist::class);
+    }
 }

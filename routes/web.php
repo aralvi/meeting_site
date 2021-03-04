@@ -28,6 +28,8 @@ Route::group(['middleware'=>['auth']],function(){
         return view('frontend.appoinment');
     })->name('appointment');
     
+    Route::get('specialist-detail/{id}', 'SpecialistController@getSpecialistDetail')->name('specialist_detail');
+
     Route::get('portfolio', function () {
         return view('frontend.portfolio');
     })->name('portfolio');
