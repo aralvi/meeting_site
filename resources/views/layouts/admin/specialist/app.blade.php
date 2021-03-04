@@ -234,6 +234,12 @@
                                     <p>Services</p>
                                 </a>
                             </li>
+                            <li class="treeview {{ request()->is('appointments*')? 'active': '' }}">
+                                <a href="{{ route('appointments.index') }}" class="nav-link {{ request()->is('appointments*')? 'active': '' }}">
+                                    <i class="fa fa-dashboard"></i>
+                                    <p>Appointments</p>
+                                </a>
+                            </li>
                             {{-- <li class="treeview {{ request()->is('clients*')? 'active': '' }}">
                                 <a href="" class="nav-link {{ request()->is('clients*')? 'active': '' }}">
                                     <i class="fa fa-pie-chart"></i>
