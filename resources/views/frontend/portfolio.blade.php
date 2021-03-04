@@ -721,3 +721,6 @@ art as welll!!!! I would give him 10 stars...</div>
 	@endsection
 
 {{-- footer section end --}}
+<script>
+  
+</script>

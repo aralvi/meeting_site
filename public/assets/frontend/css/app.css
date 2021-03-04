@@ -76,6 +76,17 @@
     color: #3ac574;
     opacity: 1 !important;
 }
+.calendar-days>div:hover{
+    background-color: #3ac574 !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50px !important;
+    color: #fff;
+}
+.bg-success{
+    background-color: #3ac574 !important;
+
+}
 
 .calendar-days div:hover span {
     transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
