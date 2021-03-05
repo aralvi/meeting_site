@@ -112,14 +112,15 @@ class RegisterController extends Controller
             {
                 foreach (explode(',',$data['days']) as $key => $value)
                 {
-                    if($value =="saturday" || $value=='sunday')
-                    {
-                        $hours_arr[$value] = ['closed'];
-                    }
-                    else
-                    {
-                        $hours_arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
-                    }
+                    $hours_arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
+                    // if($value =="saturday" || $value=='sunday')
+                    // {
+                    //     $hours_arr[$value] = ['closed'];
+                    // }
+                    // else
+                    // {
+                    //     $hours_arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
+                    // }
                    
                 }
             }
