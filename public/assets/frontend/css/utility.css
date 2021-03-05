@@ -77,8 +77,11 @@ opacity: 1 !important;
 .bg-0000006b{
   background-color: #0000006b;
 }
-.f-21{
+/* .f-21{
   font-size: 	1.3125rem;
+} */
+.f-21{
+  font-size:  1rem !important;
 }
 .borderRadius-5px{
          border-radius: 5px;
@@ -235,7 +238,7 @@ a:hover{
   color:#8B8B8B;
 }
 .bg-000000a6{
-  background-color: #000000b5;
+  background-color: #00000094;
 }
 .borderLeft{
   border-left: 1px solid #707070;

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Appointment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,6 +55,10 @@ class User extends Authenticatable
     public function admin()
     {
         return $this->hasOne(Admin::class);
+    }
+    public function appointment()
+    {
+        return $this->hasOne(Appointment::class);
     }
      
 }

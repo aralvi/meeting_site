@@ -228,6 +228,18 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
+                            <li class="treeview {{ request()->is('specialist/services')? 'active': '' }}">
+                                <a href="{{ url('specialist/services') }}" class="nav-link {{ request()->is('specialist/services')? 'active': '' }}">
+                                    <i class="fa fa-dashboard"></i>
+                                    <p>Services</p>
+                                </a>
+                            </li>
+                            <li class="treeview {{ request()->is('appointments*')? 'active': '' }}">
+                                <a href="{{ route('appointments.index') }}" class="nav-link {{ request()->is('appointments*')? 'active': '' }}">
+                                    <i class="fa fa-dashboard"></i>
+                                    <p>Appointments</p>
+                                </a>
+                            </li>
                             {{-- <li class="treeview {{ request()->is('clients*')? 'active': '' }}">
                                 <a href="" class="nav-link {{ request()->is('clients*')? 'active': '' }}">
                                     <i class="fa fa-pie-chart"></i>
@@ -254,6 +266,7 @@
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
+                @include('common.messages')
                 @yield('content')
             </div>
             <!-- /.content-wrapper -->
