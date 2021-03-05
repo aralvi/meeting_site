@@ -1,144 +1,153 @@
-let calendar = document.querySelector('.calendar')
-
-const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
-isLeapYear = (year) => {
-    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0)
-}
-
-getFebDays = (year) => {
-    return isLeapYear(year) ? 29 : 28
-}
-
-generateCalendar = (month, year) => {
-
-    let calendar_days = calendar.querySelector('.calendar-days')
-    let calendar_header_year = calendar.querySelector('#year')
-
-    let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
-    calendar_days.innerHTML = ''
-
-    let currDate = new Date()
-    if (!month) month = currDate.getMonth()
-    if (!year) year = currDate.getFullYear()
-
-    let curr_month = `${month_names[month]}`
-    month_picker.innerHTML = curr_month
-    calendar_header_year.innerHTML = year
-
-    // get first day of month
-
-    let first_day = new Date(year, month, 1)
-
-    for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
-        let day = document.createElement('div')
-        if (i >= first_day.getDay()) {
-            day.classList.add('calendar-day-hover')
-            day.innerHTML = i - first_day.getDay() + 1
-            day.innerHTML += `<span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>`
-            if (i - first_day.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
-                day.classList.add('curr-date')
-            }
+class Calendar {
+    constructor() {
+      this.monthDiv = document.querySelector(".cal-month__current");
+      this.headDivs = document.querySelectorAll(".cal-head__day");
+      this.bodyDivs = document.querySelectorAll(".cal-body__day");
+      this.nextDiv = document.querySelector(".cal-month__next");
+      this.prevDiv = document.querySelector(".cal-month__previous");
+    }
+  
+    init() {
+      moment.locale(window.navigator.userLanguage || window.navigator.language);
+  
+      this.month = moment();
+      this.today = this.selected = this.month.clone();
+      this.weekDays = moment.weekdaysShort(true);
+  
+      this.headDivs.forEach((day, index) => {
+        day.innerText = this.weekDays[index];
+      });
+  
+      this.nextDiv.addEventListener("click", (_) => {
+        this.addMonth();
+      });
+      this.prevDiv.addEventListener("click", (_) => {
+        this.removeMonth();
+      });
+  
+      this.bodyDivs.forEach((day) => {
+        day.addEventListener("click", (e) => {
+          const date =
+            +e.target.innerHTML < 10
+              ? `0${e.target.innerHTML}`
+              : e.target.innerHTML;
+  
+          if (e.target.classList.contains("cal-day__month--next")) {
+            this.selected = moment(
+              `${this.month.add(1, "month").format("YYYY-MM")}-${date}`
+            );
+          } else if (e.target.classList.contains("cal-day__month--previous")) {
+            this.selected = moment(
+              `${this.month.subtract(1, "month").format("YYYY-MM")}-${date}`
+            );
+          } else {
+            this.selected = moment(`${this.month.format("YYYY-MM")}-${date}`);
+          }
+  
+          this.update();
+        });
+      });
+  
+      this.update();
+    }
+  
+    update() {
+      this.calendarDays = {
+        first: this.month.clone().startOf("month").startOf("week").date(),
+        last: this.month.clone().endOf("month").date()
+      };
+  
+      this.monthDays = {
+        lastPrevious: this.month
+          .clone()
+          .subtract(1, "months")
+          .endOf("month")
+          .date(),
+        lastCurrent: this.month.clone().endOf("month").date()
+      };
+  
+      this.monthString = this.month.clone().format("MMMM YYYY");
+  
+      this.draw();
+    }
+  
+    addMonth() {
+      this.month.add(1, "month");
+  
+      this.update();
+    }
+  
+    removeMonth() {
+      this.month.subtract(1, "month");
+  
+      this.update();
+    }
+  
+    draw() {
+      this.monthDiv.innerText = this.monthString;
+  
+      let index = 0;
+  
+      if (this.calendarDays.first > 1) {
+        for (
+          let day = this.calendarDays.first;
+          day <= this.monthDays.lastPrevious;
+          index++
+        ) {
+          this.bodyDivs[index].innerText = day++;
+  
+          this.cleanCssClasses(false, index);
+  
+          this.bodyDivs[index].classList.add("cal-day__month--previous");
         }
-        calendar_days.appendChild(day)
+      }
+  
+      let isNextMonth = false;
+      for (let day = 1; index <= this.bodyDivs.length - 1; index++) {
+        if (day > this.monthDays.lastCurrent) {
+          day = 1;
+          isNextMonth = true;
+        }
+  
+        this.cleanCssClasses(true, index);
+  
+        if (!isNextMonth) {
+          if (day === this.today.date() && this.today.isSame(this.month, "day")) {
+            this.bodyDivs[index].classList.add("cal-day__day--today");
+          }
+  
+          if (
+            day === this.selected.date() &&
+            this.selected.isSame(this.month, "month")
+          ) {
+            this.bodyDivs[index].classList.add("cal-day__day--selected");
+          }
+  
+          this.bodyDivs[index].classList.add("cal-day__month--current");
+        } else {
+          this.bodyDivs[index].classList.add("cal-day__month--next");
+        }
+  
+        this.bodyDivs[index].innerText = day++;
+      }
     }
-}
-
-let month_list = calendar.querySelector('.month-list')
-
-month_names.forEach((e, index) => {
-    let month = document.createElement('div')
-    month.innerHTML = `<div data-month="${index}">${e}</div>`
-    month.querySelector('div').onclick = () => {
-        month_list.classList.remove('show')
-        curr_month.value = index
-        generateCalendar(index, curr_year.value)
+  
+    cleanCssClasses(selected, index) {
+      this.bodyDivs[index].classList.contains("cal-day__month--next") &&
+        this.bodyDivs[index].classList.remove("cal-day__month--next");
+      this.bodyDivs[index].classList.contains("cal-day__month--previous") &&
+        this.bodyDivs[index].classList.remove("cal-day__month--previous");
+      this.bodyDivs[index].classList.contains("cal-day__month--current") &&
+        this.bodyDivs[index].classList.remove("cal-day__month--current");
+      this.bodyDivs[index].classList.contains("cal-day__day--today") &&
+        this.bodyDivs[index].classList.remove("cal-day__day--today");
+      if (selected) {
+        this.bodyDivs[index].classList.contains("cal-day__day--selected") &&
+          this.bodyDivs[index].classList.remove("cal-day__day--selected");
+      }
     }
-    month_list.appendChild(month)
-})
-
-let month_picker = calendar.querySelector('#month-picker')
-
-month_picker.onclick = () => {
-    month_list.classList.add('show')
-}
-
-let currDate = new Date()
-
-let curr_month = { value: currDate.getMonth() }
-let curr_year = { value: currDate.getFullYear() }
-
-generateCalendar(curr_month.value, curr_year.value)
-
-document.querySelector('#prev-year').onclick = () => {
-    --curr_year.value
-    generateCalendar(curr_month.value, curr_year.value)
-}
-
-document.querySelector('#next-year').onclick = () => {
-    ++curr_year.value
-    generateCalendar(curr_month.value, curr_year.value)
-}
-
-let dark_mode_toggle = document.querySelector('.dark-mode-switch')
-
-// dark_mode_toggle.onclick = () => {
-//     document.querySelector('body').classList.toggle('light')
-//     document.querySelector('body').classList.toggle('dark')
-// }
-
-
-// const myfunction = () => {
-//     let hideDiv = document.getElementById('hide');
-//     let showDiv = document.getElementById('show');
-//     let showarrow = document.getElementsByClassName('arowhide')[0] ||  document.getElementsByClassName('arowhide');
-//     let showbtnDiv =  document.getElementsByClassName('btnclass')[0] || document.getElementsByClassName('btnclass');
-//     console.log(showarrow)
-//     console.log(showbtnDiv)
-//     if(!hideDiv && !showarrow && !showDiv && !showbtnDiv)
-//     {
-//         hideDiv.style.display = "block"
-//         showDiv.style.display = "none"
-//         showarrow.classList.remove("arowshow") 
-//         showarrow.classList.add("arowhide")
-//         showbtnDiv.classList.remove("btnclassshow") 
-//         showbtnDiv.classList.add("btnclass")
-
-//     }else{
-
-//         hideDiv.style.display = "none"
-//         showDiv.style.display = "block"
-//         showarrow.classList.add("arowshow") 
-//         showarrow.classList.remove("arowhide")
-//         showbtnDiv.classList.add("btnclassshow") 
-//         showbtnDiv.classList.remove("btnclass")
-//     }
-
-// }
-
-$(document.body).on("click", "input.btnclass", function() {
-
-    alert($(this).val())
-    $('.btnclass').removeClass('bg-3ac574');
-    $('.btnclass').children('.get_check').show();
-    $('.btnclass').children('.hide_arrow').hide();
-    $(this).addClass('bg-success');
-    $(this).children('.get_check').hide();
-    $(this).children('.hide_arrow').show();
-
-    // if($(this).siblings('span.hide_Arrow').hasClass('arowshow')){
-
-    //     $(this)
-    //     .siblings('span.hide_Arrow').removeClass("arowshow").css({})
-    // }else{
-    //     $(this).siblings('span.hide_Arrow').removeClass("arowhide")
-    //     $(this).siblings('span.hide_Arrow').addClass("arowshow")
-    // }
-
-
-
-});
+  }
+  
+  const cal = new Calendar();
+  cal.init();
+  
