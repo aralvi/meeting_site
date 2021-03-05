@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
+use App\Models\Appointment;
 use App\Models\Specialists\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -14,7 +17,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $appointments = Appointment::all();
+        return view('specialist.appointments.index',compact('appointments'));
     }
 
     /**
@@ -37,7 +41,18 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+       
+        $appointment = new Appointment();
+        $appointment->user_id = Auth::user()->id;
+        $appointment->service_id = $request->service_id;
+        $appointment->specialist_id = $request->specialist_id;
+        $appointment->date = $request->date;
+        $appointment->rate = $request->rate;
+        $appointment->time = $request->time;
+        $appointment->save();
+        return back()->with('success','Appointment Created Successfuly!');
+
     }
 
     /**
@@ -71,7 +86,19 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $appointment = Appointment::findOrFail($id);
+        if($request->status == '1'){
+            $appointment->status = $request->status;
+        }
+        if($request->status == '2'){
+            $appointment->status = $request->status;
+            
+        }
+        if($request->status == '3'){
+            $appointment->status = $request->status;
+        }
+        $appointment->save();
+        return back()->with('success', 'Appointment updated Successfuly!');
     }
 
     /**

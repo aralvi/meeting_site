@@ -38,8 +38,10 @@ Route::group(['middleware'=>['auth']],function(){
     })->name('client_request');
     Route::get('appointment-request/{id}','AppointmentController@create')->name('appointment_request');
 
+    Route::get('getQueryServices','Specialist\ServiceController@getQueryServices')->name('getQueryServices');
 
     Route::resource('clients', 'ClientController');
+    Route::resource('appointments', 'AppointmentController');
     Route::resource('specialists', 'SpecialistController');
     Route::resource('specialist/services', 'Specialist\ServiceController');
     Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');

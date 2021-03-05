@@ -262,6 +262,7 @@
    --}}
    @include('includes.frontend.navbar')
 </section>
+@include('common.messages')
 <div class="pt-4 main_padding d-flex f-20 cl-3b3b3b3 justify-content-between robotoRegular">
    <div class="col-md-1 p-0"></div>
    <ul class="listStyle-none p-0 col-md-10 d-flex justify-content-between robotoRegular f-18 ul_main_tabs m-0">
@@ -408,36 +409,36 @@
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
-  <input type="radio"  name="radio" class="bg-success btnclass"  value="9:00 AM">
-  <span class="checkmark pl-2">9:00 AM</span>
+  <input type="radio"  name="time" class="bg-success btnclass"  value="9:00 AM">
+  <span class="checkmark">9:00 AM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" value="9:20 AM">
-<span class="Time pl-2">9:20 AM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="9:20 AM">
+<span class="Time">9:20 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" >
-<span class="Time pl-2">9:40 AM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="9:40 AM" >
+<span class="Time">9:40 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" >
-<span class="Time pl-2">10:00 AM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="10:00 AM" >
+<span class="Time">10:00 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" >
-<span class="Time pl-2">10:20 AM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="10:20 AM" >
+<span class="Time">10:20 AM</span>
 </label>  
              </div>
             </div>
@@ -447,36 +448,36 @@
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
-  <input type="radio"  name="radio" class="bg-success btnclass" >
-  <span class="checkmark pl-2">10:50 AM</span>
+  <input type="radio"  name="time" class="bg-success btnclass" value="10:50 AM">
+  <span class="checkmark">10:50 AM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" >
-<span class="Time pl-2">11:30 AM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="11:30 AM">
+<span class="Time">11:30 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" >
-<span class="Time pl-2">11:45 AM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="11:45 AM">
+<span class="Time">11:45 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" >
-<span class="Time pl-2">12:15 PM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="12:15 PM">
+<span class="Time">12:15 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark btnclass" >
-<span class="Time pl-2">1:00 PM</span>
+<input type="radio" name="time" class="bg-success checkmark btnclass" value="1:00 PM">
+<span class="Time">1:00 PM</span>
 </label>  
              </div>
             </div>
@@ -500,36 +501,36 @@
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
-  <input type="radio"  name="radio" class="bg-success" >
+  <input type="radio"  name="time" class="bg-success"  value="5:00 PM">
   <span class="checkmark">5:00 PM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">5:20 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="5:20 PM">
+<span class="Time">5:20 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">5:40 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="5:40 PM">
+<span class="Time">5:40 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">6:00 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="6:00 PM">
+<span class="Time">6:00 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">6:20 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="6:20 PM">
+<span class="Time">6:20 PM</span>
 </label>  
              </div>
             </div>
@@ -539,36 +540,36 @@
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
-  <input type="radio"  name="radio" class="bg-success" >
-  <span class="checkmark pl-2">6:50 PM</span>
+  <input type="radio"  name="time" class="bg-success" value="6:50 PM">
+  <span class="checkmark">6:50 PM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">7:30 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="7:30 PM">
+<span class="Time">7:30 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">7:40 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="7:40 PM">
+<span class="Time">7:40 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">8:15 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="8:15 PM">
+<span class="Time">8:15 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
-<input type="radio" name="radio" class="bg-success checkmark" >
-<span class="Time pl-2">8:20 PM</span>
+<input type="radio" name="time" class="bg-success checkmark" value="8:20 PM">
+<span class="Time">8:20 PM</span>
 </label>  
              </div>
             </div>
@@ -898,5 +899,17 @@
 
 <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
 
+
+{{-- footer section end --}}
+<script>
+
+$('.login_button').on('click',function(){
+   var year = $('#year').text();
+   var month = $('#month-picker').text();
+   var day =  $('.curr-date').text();
+   $('#date').val(year+"-"+month+"-"+day);
+})
+
+</script>
 @endsection
 {{-- footer section end --}}

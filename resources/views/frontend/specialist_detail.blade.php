@@ -154,11 +154,11 @@
                   <th scope="col">Action</th>
                 </tr>
               </thead>
-              <tbody class="table_scroll">
+              <tbody class="table_scroll services-table-body">
                 @foreach($specialist->services as $key=>$service)
                   <tr class="border-bottom">
                     <th scope="row">{{ ++$key }}</th>
-                    <td>{{ ucwords($service->name) }}</td>
+                    <td>{{ ucwords($service->title) }}</td>
                     <td>{{ ucwords($service->category->name) }}</td>
                     @php
                       $subcategories = App\SubCategory::whereIn('id',json_decode($service->sub_categories))->get()->pluck('name')->toArray();
@@ -461,14 +461,26 @@ art as welll!!!! I would give him 10 stars...</div>
 
 
 	@section('extra-script')
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script type="text/javascript">
       function inputSearchServices()
       {
-        let val = $('service_inpt').val();
-        console.log(val);
+        let val = $('.service_inpt').val();
+        if(val !='')
+        {
+          $.ajax({
+            url:"{{ route('getQueryServices') }}",
+            type:"get",
+            data:{val:val},
+            success:function(data)
+            {
+              $('.services-table-body').html(data);
+            }
+          });
+        }
       }
 
-      $("#full_day").keydown(function(e)
+      $(document).keydown(function(e)
       {
         if(e.which === 13){
           inputSearchServices();

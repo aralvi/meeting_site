@@ -23,6 +23,7 @@
     width: 30px;
     height: 30px;
     text-align: center;
+    
   }
   .cal-month__previous:hover,
   .cal-month__next:hover {
@@ -92,4 +93,7 @@
     box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.75);
     border-radius: 50%;
     color: #ffffff;
+  }
+  .cal-day__month--next,.cal-day__month--previous{
+      color: lightgray;
   }
