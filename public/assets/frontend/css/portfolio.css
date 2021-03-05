@@ -210,7 +210,7 @@ content: '';
 display: inline-block;
 visibility: visible;
 border: 2px solid white;
-
+cursor: pointer;
 }
 .dropdown-toggle-btn::after {
   display: inline-block;
@@ -225,7 +225,10 @@ border: 2px solid white;
   border-left: .3em solid transparent;
 }
 /* / radio Color css / */
-
+/* .styLing_border{
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+} */
 
 
 

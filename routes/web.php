@@ -33,6 +33,9 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('portfolio', function () {
         return view('frontend.portfolio');
     })->name('portfolio');
+    Route::get('carousels', function () {
+        return view('frontend.carousels');
+    })->name('carousels');
     Route::get('clientRequest', function () {
         return view('frontend.client_request');
     })->name('client_request');
