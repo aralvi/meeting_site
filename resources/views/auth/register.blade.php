@@ -28,7 +28,7 @@
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6 padding-bottom-reg inner-padding pr-0">
-                                <img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" />
+                                <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" /></a>
                                 <div class="display-2 font-600 text-white pt-5">Register</div>
                                 <div class="progress progress-height mt-5 bg-gray">
                                     <span class="white-dot "></span>
@@ -417,7 +417,7 @@
                                     <input type="button" data-page="4" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
                                     
                                 </div>
-                                <span data-page="2" id="" class="inputBtn next action-button" onclick="btnClicK('dot-100','width-100','Please enter your Banking<br>information in order to <br> receive payouts.')"></span>
+                                <span data-page="2" id="" class="inputBtn next action-button" onclick="btnClicK('dot-100','width-100','Please choose how you want to receive payouts.')"></span>
                                 <span data-page="1" id="" class="previous action-button btn-step-back"  onclick="btnClicKBack('dot-50','width-50','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')"></span>
                                 
                             </fieldset>
@@ -434,8 +434,8 @@
                                         <div class="col-md-12 d-flex text-center pl-5">
                                             <p class="text-warning">Note: Stripe is only for US users.</p>
                                         </div>
-
                                     </div>
+
                                     <div class="row pt-2">
                                         <div class="col-md-12 d-flex justify-content-center">
 
@@ -551,12 +551,18 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
+                                        <div class="row pt-2">
+                                            <div class="col-md-12 d-flex text-center pl-5">
+                                                <p class="text-warning">Note: All days are closed if you want to open then check the respective day</p>
+                                            </div>
+                                        </div>
+
                                         <div class="pl-4 mt-2 ">
                                             <div class="border-bottom custom-control custom-checkbox ">
-                                                <input type="checkbox" class="custom-control-input checkbxCheck days " id="customCheck101" name="days[]" value="monday" checked>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days " onchange="dayOpened(this);"  id="customCheck101" name="days[]" value="monday">
                                                 <label class="custom-control-label mr-5" for="customCheck101">Monday</label> 
                                                 <!-- Time select code -->
-                                                <select class="custom-select-reg ml-5 mr-2" name="monday_from">
+                                                <select class="custom-select-reg d-done ml-5 mr-2"  style="display:none" name="monday_from">
                                                      <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -605,67 +611,68 @@
                                                      <option value="11:30 AM">11:30 PM</option>
                                                      <option value="12:00 AM">12:00 PM</option>
                                                      <option value="12:30 AM">12:30 PM</option>
-                                             </select>
+                                                </select>
                                                     -
-                                            <select class="custom-select-reg ml-2" name="monday_to">
-                                                     <option value="1:00 AM">1:00 AM</option>
-                                                     <option value="1:30 AM">1:30 AM</option>
-                                                     <option value="2:00 AM">2:00 AM</option>
-                                                     <option value="2:30 AM">2:30 AM</option>
-                                                     <option value="3:00 AM">3:00 AM</option>
-                                                     <option value="3:30 AM">3:30 AM</option>
-                                                     <option value="4:00 AM">4:00 AM</option>
-                                                     <option value="4:30 AM">4:30 AM</option>
-                                                     <option value="5:00 AM">5:00 AM</option>
-                                                     <option value="5:30 AM">5:30 AM</option>
-                                                     <option value="6:00 AM">6:00 AM</option>
-                                                     <option value="6:30 AM">6:30 AM</option>
-                                                     <option value="7:00 AM">7:00 AM</option>
-                                                     <option value="7:30 AM">7:30 AM</option>
-                                                     <option value="8:00 AM">8:00 AM</option>
-                                                     <option value="8:30 AM">8:30 AM</option>
-                                                     <option value="9:00 AM">9:00 AM</option>
-                                                     <option value="9:30 AM">9:30 AM</option>
-                                                     <option value="10:00 AM" >10:00 AM</option>
-                                                     <option value="10:30 AM">10:30 AM</option>
-                                                     <option value="11:00 AM">11:00 AM</option>
-                                                     <option value="11:30 AM">11:30 AM</option>
-                                                     <option value="12:00 AM">12:00 AM</option>
-                                                     <option value="12:30 AM">12:30 AM</option>
-                                                     <option value="1:00 AM">1:00 PM</option>
-                                                     <option value="1:30 AM">1:30 PM</option>
-                                                     <option value="2:00 AM">2:00 PM</option>
-                                                     <option value="2:30 AM">2:30 PM</option>
-                                                     <option value="3:00 AM">3:00 PM</option>
-                                                     <option value="3:30 AM">3:30 PM</option>
-                                                     <option value="4:00 AM">4:00 PM</option>
-                                                     <option value="4:30 AM">4:30 PM</option>
-                                                     <option value="5:00 AM">5:00 PM</option>
-                                                     <option value="5:30 AM">5:50 PM</option>
-                                                     <option value="6:00 AM">6:00 PM</option>
-                                                     <option value="6:30 AM">6:30 PM</option>
-                                                     <option value="7:00 AM">7:00 PM</option>
-                                                     <option value="7:30 AM" selected>7:30 PM</option>
-                                                     <option value="8:00 AM">8:00 PM</option>
-                                                     <option value="8:30 AM">8:30 PM</option>
-                                                     <option value="9:00 AM">9:00 PM</option>
-                                                     <option value="9:30 AM">9:30 PM</option>
-                                                     <option value="10:00 AM">10:00 PM</option>
-                                                     <option value="10:30 AM">10:30 PM</option>
-                                                     <option value="11:00 AM">11:00 PM</option>
-                                                     <option value="11:30 AM">11:30 PM</option>
-                                                     <option value="12:00 AM">12:00 PM</option>
-                                                     <option value="12:30 AM">12:30 PM</option>
-                                            </select>
+                                                <select class="custom-select-reg d-done ml-2"  style="display:none" name="monday_to">
+                                                        <option value="1:00 AM">1:00 AM</option>
+                                                        <option value="1:30 AM">1:30 AM</option>
+                                                        <option value="2:00 AM">2:00 AM</option>
+                                                        <option value="2:30 AM">2:30 AM</option>
+                                                        <option value="3:00 AM">3:00 AM</option>
+                                                        <option value="3:30 AM">3:30 AM</option>
+                                                        <option value="4:00 AM">4:00 AM</option>
+                                                        <option value="4:30 AM">4:30 AM</option>
+                                                        <option value="5:00 AM">5:00 AM</option>
+                                                        <option value="5:30 AM">5:30 AM</option>
+                                                        <option value="6:00 AM">6:00 AM</option>
+                                                        <option value="6:30 AM">6:30 AM</option>
+                                                        <option value="7:00 AM">7:00 AM</option>
+                                                        <option value="7:30 AM">7:30 AM</option>
+                                                        <option value="8:00 AM">8:00 AM</option>
+                                                        <option value="8:30 AM">8:30 AM</option>
+                                                        <option value="9:00 AM">9:00 AM</option>
+                                                        <option value="9:30 AM">9:30 AM</option>
+                                                        <option value="10:00 AM" >10:00 AM</option>
+                                                        <option value="10:30 AM">10:30 AM</option>
+                                                        <option value="11:00 AM">11:00 AM</option>
+                                                        <option value="11:30 AM">11:30 AM</option>
+                                                        <option value="12:00 AM">12:00 AM</option>
+                                                        <option value="12:30 AM">12:30 AM</option>
+                                                        <option value="1:00 AM">1:00 PM</option>
+                                                        <option value="1:30 AM">1:30 PM</option>
+                                                        <option value="2:00 AM">2:00 PM</option>
+                                                        <option value="2:30 AM">2:30 PM</option>
+                                                        <option value="3:00 AM">3:00 PM</option>
+                                                        <option value="3:30 AM">3:30 PM</option>
+                                                        <option value="4:00 AM">4:00 PM</option>
+                                                        <option value="4:30 AM">4:30 PM</option>
+                                                        <option value="5:00 AM">5:00 PM</option>
+                                                        <option value="5:30 AM">5:50 PM</option>
+                                                        <option value="6:00 AM">6:00 PM</option>
+                                                        <option value="6:30 AM">6:30 PM</option>
+                                                        <option value="7:00 AM">7:00 PM</option>
+                                                        <option value="7:30 AM" selected>7:30 PM</option>
+                                                        <option value="8:00 AM">8:00 PM</option>
+                                                        <option value="8:30 AM">8:30 PM</option>
+                                                        <option value="9:00 AM">9:00 PM</option>
+                                                        <option value="9:30 AM">9:30 PM</option>
+                                                        <option value="10:00 AM">10:00 PM</option>
+                                                        <option value="10:30 AM">10:30 PM</option>
+                                                        <option value="11:00 AM">11:00 PM</option>
+                                                        <option value="11:30 AM">11:30 PM</option>
+                                                        <option value="12:00 AM">12:00 PM</option>
+                                                        <option value="12:30 AM">12:30 PM</option>
+                                                </select>
                                                 <!-- Time select code -->
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).siblings('input').removeAttr('checked');"><span aria-hidden="true">&times;</span></button> 
+                                               <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                                <button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button> 
                                             </div>
 
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck102" name="days[]" value="tuesday" checked>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck102" name="days[]" value="tuesday">
                                                 <label class="custom-control-label mr-5" for="customCheck102">Tuesday</label>
                                                 <!-- Time select code -->
-                                                <select class="custom-select-reg ml-5 mr-2" name="tuesday_from">
+                                                <select class="custom-select-reg d-done ml-5 mr-2"  style="display:none" name="tuesday_from">
                                                      <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -716,7 +723,7 @@
                                                      <option value="12:30 AM">12:30 PM</option>
                                              </select>
                                                     -
-                                            <select class="custom-select-reg ml-2" name="tuesday_to">
+                                            <select class="custom-select-reg d-done ml-2"  style="display:none" name="tuesday_to">
                                             <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -767,14 +774,15 @@
                                                      <option value="12:30 AM">12:30 PM</option>
                                             </select>
                                                 <!-- Time select code -->
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).siblings('input').removeAttr('checked');"><span aria-hidden="true">&times;</span></button> 
+                                               <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                                <button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button> 
                                             </div>
 
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck103" name="days[]" value="wednesday" checked>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck103" name="days[]" value="wednesday">
                                                 <label class="custom-control-label mr-3" for="customCheck103">Wednesday</label>
                                                 <!-- Time select code -->
-                                               <select class="custom-select-reg ml-5 mr-2" name="wednesday_from">
+                                               <select class="custom-select-reg d-done ml-5 mr-2"  style="display:none" name="wednesday_from">
                                                      <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -825,7 +833,7 @@
                                                      <option value="12:30 AM">12:30 PM</option>
                                              </select>
                                                     -
-                                            <select class="custom-select-reg ml-2" name="wednesday_to">
+                                            <select class="custom-select-reg d-done ml-2"  style="display:none" name="wednesday_to">
                                                      <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM" selected>1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -876,14 +884,15 @@
                                                      <option value="12:30 AM">12:30 PM</option>
                                             </select>
                                                 <!-- Time select code -->
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).siblings('input').removeAttr('checked');"><span aria-hidden="true">&times;</span></button> 
+                                               <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                                <button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button> 
                                             </div>
 
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck104" name="days[]" value="thursday" checked>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck104" name="days[]" value="thursday">
                                                 <label class="custom-control-label mr-4 pr-3" for="customCheck104">Thursday</label>
                                                 <!-- Time select code -->                                             
-                                                <select class="custom-select-reg ml-5 mr-2" name="thursday_from">
+                                                <select class="custom-select-reg d-done ml-5 mr-2"  style="display:none" name="thursday_from">
                                                 <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -934,7 +943,7 @@
                                                      <option value="12:30 AM">12:30 PM</option>
                                              </select>
                                                     -
-                                            <select class="custom-select-reg ml-2" name="thursday_to">
+                                            <select class="custom-select-reg d-done ml-2"  style="display:none" name="thursday_to">
                                             <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -985,14 +994,15 @@
                                                      <option value="12:30 AM">12:30 PM</option>
                                             </select>
                                                 <!-- Time select code -->
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).siblings('input').removeAttr('checked');"><span aria-hidden="true">&times;</span></button> 
+                                               <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                                <button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button> 
                                             </div>
 
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck105" name="days[]" value="friday" checked>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck105" name="days[]" value="friday">
                                                 <label class="custom-control-label mr-5 pr-3" for="customCheck105">Friday</label>
                                                 <!-- Time select code -->
-                                                <select class="custom-select-reg ml-5 mr-2" name="friday_from">
+                                                <select class="custom-select-reg d-done ml-5 mr-2"  style="display:none" name="friday_from">
                                                 <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -1043,7 +1053,7 @@
                                                      <option value="12:30 AM">12:30 PM</option>
                                              </select>
                                                     -
-                                            <select class="custom-select-reg ml-2" name="friday_to">
+                                            <select class="custom-select-reg d-done ml-2"  style="display:none" name="friday_to">
                                             <option value="1:00 AM">1:00 AM</option>
                                                      <option value="1:30 AM">1:30 AM</option>
                                                      <option value="2:00 AM">2:00 AM</option>
@@ -1093,24 +1103,230 @@
                                                      <option value="12:00 AM">12:00 PM</option>
                                                      <option value="12:30 AM">12:30 PM</option>
                                             </select>
-                                                <!-- Time select code -->
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).siblings('input').removeAttr('checked');"><span aria-hidden="true">&times;</span></button> 
+                                               
+                                               <!-- Time select code -->
+                                               <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                                <button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button> 
                                             </div>
 
                                             <div class="border-bottom mt-3 custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck106" name="days[]" value="saturday" checked>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck106" name="days[]" value="saturday">
                                                 <label class="custom-control-label mr-5" for="customCheck106">Saturday</label>
-                                                <span class="ml-5 pr-3 cl-gray">Closed</span>
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).siblings('input').removeAttr('checked');"><span aria-hidden="true">&times;</span></button> 
+                                                <!-- Time select code -->
+                                                <select class="custom-select-reg d-done ml-5 mr-2"  style="display:none" name="saturday_from">
+                                                    <option value="1:00 AM">1:00 AM</option>
+                                                    <option value="1:30 AM">1:30 AM</option>
+                                                    <option value="2:00 AM">2:00 AM</option>
+                                                    <option value="2:30 AM">2:30 AM</option>
+                                                    <option value="3:00 AM">3:00 AM</option>
+                                                    <option value="3:30 AM">3:30 AM</option>
+                                                    <option value="4:00 AM">4:00 AM</option>
+                                                    <option value="4:30 AM">4:30 AM</option>
+                                                    <option value="5:00 AM">5:00 AM</option>
+                                                    <option value="5:30 AM">5:30 AM</option>
+                                                    <option value="6:00 AM">6:00 AM</option>
+                                                    <option value="6:30 AM">6:30 AM</option>
+                                                    <option value="7:00 AM">7:00 AM</option>
+                                                    <option value="7:30 AM">7:30 AM</option>
+                                                    <option value="8:00 AM">8:00 AM</option>
+                                                    <option value="8:30 AM">8:30 AM</option>
+                                                    <option value="9:00 AM">9:00 AM</option>
+                                                    <option value="9:30 AM">9:30 AM</option>
+                                                    <option value="10:00 AM" >10:00 AM</option>
+                                                    <option value="10:30 AM">10:30 AM</option>
+                                                    <option value="11:00 AM">11:00 AM</option>
+                                                    <option value="11:30 AM">11:30 AM</option>
+                                                    <option value="12:00 AM">12:00 AM</option>
+                                                    <option value="12:30 AM">12:30 AM</option>
+                                                    <option value="1:00 AM">1:00 PM</option>
+                                                    <option value="1:30 AM">1:30 PM</option>
+                                                    <option value="2:00 AM">2:00 PM</option>
+                                                    <option value="2:30 AM">2:30 PM</option>
+                                                    <option value="3:00 AM">3:00 PM</option>
+                                                    <option value="3:30 AM" selected>3:30 PM</option>
+                                                    <option value="4:00 AM">4:00 PM</option>
+                                                    <option value="4:30 AM">4:30 PM</option>
+                                                    <option value="5:00 AM">5:00 PM</option>
+                                                    <option value="5:30 AM">5:50 PM</option>
+                                                    <option value="6:00 AM">6:00 PM</option>
+                                                    <option value="6:30 AM">6:30 PM</option>
+                                                    <option value="7:00 AM">7:00 PM</option>
+                                                    <option value="7:30 AM">7:30 PM</option>
+                                                    <option value="8:00 AM">8:00 PM</option>
+                                                    <option value="8:30 AM">8:30 PM</option>
+                                                    <option value="9:00 AM">9:00 PM</option>
+                                                    <option value="9:30 AM">9:30 PM</option>
+                                                    <option value="10:00 AM">10:00 PM</option>
+                                                    <option value="10:30 AM">10:30 PM</option>
+                                                    <option value="11:00 AM">11:00 PM</option>
+                                                    <option value="11:30 AM">11:30 PM</option>
+                                                    <option value="12:00 AM">12:00 PM</option>
+                                                    <option value="12:30 AM">12:30 PM</option>
+                                               </select>
+                                                   -
+                                               <select class="custom-select-reg d-done ml-2"  style="display:none" name="saturday_to">
+                                                       <option value="1:00 AM">1:00 AM</option>
+                                                       <option value="1:30 AM">1:30 AM</option>
+                                                       <option value="2:00 AM">2:00 AM</option>
+                                                       <option value="2:30 AM">2:30 AM</option>
+                                                       <option value="3:00 AM">3:00 AM</option>
+                                                       <option value="3:30 AM">3:30 AM</option>
+                                                       <option value="4:00 AM">4:00 AM</option>
+                                                       <option value="4:30 AM">4:30 AM</option>
+                                                       <option value="5:00 AM">5:00 AM</option>
+                                                       <option value="5:30 AM">5:30 AM</option>
+                                                       <option value="6:00 AM">6:00 AM</option>
+                                                       <option value="6:30 AM">6:30 AM</option>
+                                                       <option value="7:00 AM">7:00 AM</option>
+                                                       <option value="7:30 AM">7:30 AM</option>
+                                                       <option value="8:00 AM">8:00 AM</option>
+                                                       <option value="8:30 AM">8:30 AM</option>
+                                                       <option value="9:00 AM">9:00 AM</option>
+                                                       <option value="9:30 AM">9:30 AM</option>
+                                                       <option value="10:00 AM" >10:00 AM</option>
+                                                       <option value="10:30 AM">10:30 AM</option>
+                                                       <option value="11:00 AM">11:00 AM</option>
+                                                       <option value="11:30 AM">11:30 AM</option>
+                                                       <option value="12:00 AM">12:00 AM</option>
+                                                       <option value="12:30 AM">12:30 AM</option>
+                                                       <option value="1:00 AM">1:00 PM</option>
+                                                       <option value="1:30 AM">1:30 PM</option>
+                                                       <option value="2:00 AM">2:00 PM</option>
+                                                       <option value="2:30 AM">2:30 PM</option>
+                                                       <option value="3:00 AM">3:00 PM</option>
+                                                       <option value="3:30 AM">3:30 PM</option>
+                                                       <option value="4:00 AM">4:00 PM</option>
+                                                       <option value="4:30 AM">4:30 PM</option>
+                                                       <option value="5:00 AM">5:00 PM</option>
+                                                       <option value="5:30 AM">5:50 PM</option>
+                                                       <option value="6:00 AM">6:00 PM</option>
+                                                       <option value="6:30 AM">6:30 PM</option>
+                                                       <option value="7:00 AM">7:00 PM</option>
+                                                       <option value="7:30 AM" selected>7:30 PM</option>
+                                                       <option value="8:00 AM">8:00 PM</option>
+                                                       <option value="8:30 AM">8:30 PM</option>
+                                                       <option value="9:00 AM">9:00 PM</option>
+                                                       <option value="9:30 AM">9:30 PM</option>
+                                                       <option value="10:00 AM">10:00 PM</option>
+                                                       <option value="10:30 AM">10:30 PM</option>
+                                                       <option value="11:00 AM">11:00 PM</option>
+                                                       <option value="11:30 AM">11:30 PM</option>
+                                                       <option value="12:00 AM">12:00 PM</option>
+                                                       <option value="12:30 AM">12:30 PM</option>
+                                               </select>
+                                               <!-- Time select code -->
+                                               <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                               <button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button> 
                                             </div>
                                             
                                             <div class="border-bottom custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input checkbxCheck days" id="customCheck107" name="days[]" value="sunday" checked>
+                                                <input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck107" name="days[]" value="sunday">
                                                 <label class="custom-control-label mr-5 pr-3" for="customCheck107">Sunday</label>
-                                                
-                                                <span class="ml-5 pr-4 cl-gray">Closed</span>
-                                                
-                                                <button type="button" class="close close-reg" aria-label="Close" onclick="$(this).siblings('input').removeAttr('checked');"><span aria-hidden="true">&times;</span></button> 
+                                                <!-- Time select code -->
+                                                <select class="custom-select-reg d-done ml-5 mr-2"  style="display:none" name="sunday_from">
+                                                    <option value="1:00 AM">1:00 AM</option>
+                                                    <option value="1:30 AM">1:30 AM</option>
+                                                    <option value="2:00 AM">2:00 AM</option>
+                                                    <option value="2:30 AM">2:30 AM</option>
+                                                    <option value="3:00 AM">3:00 AM</option>
+                                                    <option value="3:30 AM">3:30 AM</option>
+                                                    <option value="4:00 AM">4:00 AM</option>
+                                                    <option value="4:30 AM">4:30 AM</option>
+                                                    <option value="5:00 AM">5:00 AM</option>
+                                                    <option value="5:30 AM">5:30 AM</option>
+                                                    <option value="6:00 AM">6:00 AM</option>
+                                                    <option value="6:30 AM">6:30 AM</option>
+                                                    <option value="7:00 AM">7:00 AM</option>
+                                                    <option value="7:30 AM">7:30 AM</option>
+                                                    <option value="8:00 AM">8:00 AM</option>
+                                                    <option value="8:30 AM">8:30 AM</option>
+                                                    <option value="9:00 AM">9:00 AM</option>
+                                                    <option value="9:30 AM">9:30 AM</option>
+                                                    <option value="10:00 AM" >10:00 AM</option>
+                                                    <option value="10:30 AM">10:30 AM</option>
+                                                    <option value="11:00 AM">11:00 AM</option>
+                                                    <option value="11:30 AM">11:30 AM</option>
+                                                    <option value="12:00 AM">12:00 AM</option>
+                                                    <option value="12:30 AM">12:30 AM</option>
+                                                    <option value="1:00 AM">1:00 PM</option>
+                                                    <option value="1:30 AM">1:30 PM</option>
+                                                    <option value="2:00 AM">2:00 PM</option>
+                                                    <option value="2:30 AM">2:30 PM</option>
+                                                    <option value="3:00 AM">3:00 PM</option>
+                                                    <option value="3:30 AM" selected>3:30 PM</option>
+                                                    <option value="4:00 AM">4:00 PM</option>
+                                                    <option value="4:30 AM">4:30 PM</option>
+                                                    <option value="5:00 AM">5:00 PM</option>
+                                                    <option value="5:30 AM">5:50 PM</option>
+                                                    <option value="6:00 AM">6:00 PM</option>
+                                                    <option value="6:30 AM">6:30 PM</option>
+                                                    <option value="7:00 AM">7:00 PM</option>
+                                                    <option value="7:30 AM">7:30 PM</option>
+                                                    <option value="8:00 AM">8:00 PM</option>
+                                                    <option value="8:30 AM">8:30 PM</option>
+                                                    <option value="9:00 AM">9:00 PM</option>
+                                                    <option value="9:30 AM">9:30 PM</option>
+                                                    <option value="10:00 AM">10:00 PM</option>
+                                                    <option value="10:30 AM">10:30 PM</option>
+                                                    <option value="11:00 AM">11:00 PM</option>
+                                                    <option value="11:30 AM">11:30 PM</option>
+                                                    <option value="12:00 AM">12:00 PM</option>
+                                                    <option value="12:30 AM">12:30 PM</option>
+                                               </select>
+                                                   -
+                                                <select class="custom-select-reg d-done ml-2"  style="display:none" name="sunday_to">
+                                                       <option value="1:00 AM">1:00 AM</option>
+                                                       <option value="1:30 AM">1:30 AM</option>
+                                                       <option value="2:00 AM">2:00 AM</option>
+                                                       <option value="2:30 AM">2:30 AM</option>
+                                                       <option value="3:00 AM">3:00 AM</option>
+                                                       <option value="3:30 AM">3:30 AM</option>
+                                                       <option value="4:00 AM">4:00 AM</option>
+                                                       <option value="4:30 AM">4:30 AM</option>
+                                                       <option value="5:00 AM">5:00 AM</option>
+                                                       <option value="5:30 AM">5:30 AM</option>
+                                                       <option value="6:00 AM">6:00 AM</option>
+                                                       <option value="6:30 AM">6:30 AM</option>
+                                                       <option value="7:00 AM">7:00 AM</option>
+                                                       <option value="7:30 AM">7:30 AM</option>
+                                                       <option value="8:00 AM">8:00 AM</option>
+                                                       <option value="8:30 AM">8:30 AM</option>
+                                                       <option value="9:00 AM">9:00 AM</option>
+                                                       <option value="9:30 AM">9:30 AM</option>
+                                                       <option value="10:00 AM" >10:00 AM</option>
+                                                       <option value="10:30 AM">10:30 AM</option>
+                                                       <option value="11:00 AM">11:00 AM</option>
+                                                       <option value="11:30 AM">11:30 AM</option>
+                                                       <option value="12:00 AM">12:00 AM</option>
+                                                       <option value="12:30 AM">12:30 AM</option>
+                                                       <option value="1:00 AM">1:00 PM</option>
+                                                       <option value="1:30 AM">1:30 PM</option>
+                                                       <option value="2:00 AM">2:00 PM</option>
+                                                       <option value="2:30 AM">2:30 PM</option>
+                                                       <option value="3:00 AM">3:00 PM</option>
+                                                       <option value="3:30 AM">3:30 PM</option>
+                                                       <option value="4:00 AM">4:00 PM</option>
+                                                       <option value="4:30 AM">4:30 PM</option>
+                                                       <option value="5:00 AM">5:00 PM</option>
+                                                       <option value="5:30 AM">5:50 PM</option>
+                                                       <option value="6:00 AM">6:00 PM</option>
+                                                       <option value="6:30 AM">6:30 PM</option>
+                                                       <option value="7:00 AM">7:00 PM</option>
+                                                       <option value="7:30 AM" selected>7:30 PM</option>
+                                                       <option value="8:00 AM">8:00 PM</option>
+                                                       <option value="8:30 AM">8:30 PM</option>
+                                                       <option value="9:00 AM">9:00 PM</option>
+                                                       <option value="9:30 AM">9:30 PM</option>
+                                                       <option value="10:00 AM">10:00 PM</option>
+                                                       <option value="10:30 AM">10:30 PM</option>
+                                                       <option value="11:00 AM">11:00 PM</option>
+                                                       <option value="11:30 AM">11:30 PM</option>
+                                                       <option value="12:00 AM">12:00 PM</option>
+                                                       <option value="12:30 AM">12:30 PM</option>
+                                               </select>
+                                               <!-- Time select code -->
+                                               <span class="ml-5 pr-4 cl-gray">Closed</span>
+                                               <button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button> 
                                             </div>
                                         </div>
                                         <div class="modal-footer m-auto border-0">
@@ -1511,7 +1727,7 @@
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
-                <div class="w-100"><input type="text" id="payment_birth_date" class="w-100 form-control border-0" placeholder="Date of Birth" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></div>
+                <div class="w-100"><input type="text" id="payment_birth_date" class="w-100 form-control border-0" placeholder="Date of Birth (dd/mm/yyyy)" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
@@ -1520,10 +1736,16 @@
             </div>
         </div>
 
-        <div id="other-html" style="display:none;">
+        <div id="paypal-html" style="display:none;">
             <div class="input-group mb-3 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap ">
                 <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
-                <div class="w-100"><input type="email" id="payment_email" class="w-100 form-control border-0" placeholder="Enter your payment method email" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></div>
+                <div class="w-100"><input type="email" id="payment_email" class="w-100 form-control border-0" placeholder="Enter your PayPal email address" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></div>
+            </div>                        
+        </div>
+        <div id="payoneer-html" style="display:none;">
+            <div class="input-group mb-3 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap ">
+                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div class="w-100"><input type="email" id="payment_email" class="w-100 form-control border-0" placeholder="Enter you Payoneer email address" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></div>
             </div>                        
         </div>
 
@@ -1536,37 +1758,58 @@
 
 	@section('extra-script')
 
-	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+    <script>
+        function dayClosed(ele)
+        {
+            $(ele).siblings('input').removeAttr('checked');
+            $(ele).siblings('select').addClass('d-none');
+            $(ele).addClass('d-none');
+            $(ele).siblings('span').removeClass('d-none');
+        }
 
-
-  <script>
-    setInterval(() => {
-        let meCheck = false;
-        $.each($('.days'),function(){
-            if($(this).is(':checked'))
+        function dayOpened(ele)
+        {
+            if($(ele).is(":checked"))
             {
-                meCheck=true;
+                $(ele).siblings('select').removeClass('d-none').show();
+                $(ele).siblings('button').removeClass('d-none');
+                $(ele).siblings('span').addClass('d-none');
             }
-        });
-        if(meCheck){
-            let allChecked = document.getElementById('select_opening_hours');
-                allChecked.placeholder = "Completed";
+            else
+            {
+                $(ele).siblings('select').addClass('d-none');
+                $(ele).siblings('button').addClass('d-none');
+                $(ele).siblings('span').removeClass('d-none');
+            }
+            
         }
-        else{
-            let notChecked = document.getElementById('select_opening_hours');
-                notChecked.placeholder = "Not Completed";
-        }
+        setInterval(() => {
+            let meCheck = false;
+            $.each($('.days'),function(){
+                if($(this).is(':checked'))
+                {
+                    meCheck=true;
+                }
+            });
 
-    }, 1000);
+            if(meCheck){
+                let allChecked = document.getElementById('select_opening_hours');
+                    allChecked.placeholder = "Completed";
+            }
+            else{
+                let notChecked = document.getElementById('select_opening_hours');
+                    notChecked.placeholder = "Not Completed";
+            }
 
-  </script>
+        }, 1000);
+
+    </script>
 
   <script>
 
@@ -1622,11 +1865,14 @@
           if($(ele).val()=='stripe')
           {
               $('#payment_selection_html').html(document.getElementById('stripe-html').innerHTML);
-
-          }else
+          }
+          if($(ele).val()=='paypal')
           {
-              
-              $('#payment_selection_html').html(document.getElementById('other-html').innerHTML);
+            $('#payment_selection_html').html(document.getElementById('paypal-html').innerHTML);
+          }
+          if($(ele).val()=='payoneer')
+          {
+              $('#payment_selection_html').html(document.getElementById('payoneer-html').innerHTML);
           }
 
       }
@@ -1761,6 +2007,27 @@
           });
       }
 
+      function checkboxSubCategory()
+      {
+        meCheckSubCategory=false;
+        $.each($('input[name="sub_category_id[]"]'),function(){
+            if($(this).is(':checked'))
+            {
+                meCheckSubCategory=true;
+            }
+        });
+
+        if(!meCheckSubCategory){
+            $('#select_category').val('');
+            $('#select_category').addClass('placeholder-color-change');
+            $('#select_category').parent('span').parent('div').removeClass('border-input');
+            $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
+        }
+        else{
+            $('#select_category').val($('select[name="category_id"] option:selected').text());
+        }
+        return meCheckSubCategory
+      }
 
       function dateFieldValidate(id)
       { 
@@ -2051,7 +2318,7 @@
       });
 
        $(document.body).on("click", "input.step1", function () {
-          // $(this).parent("div").siblings("span.inputBtn").click();
+        //   $(this).parent("div").siblings("span.inputBtn").click();
           if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
           {$(this).parent("div").siblings("span.inputBtn").click();}
       });
@@ -2059,9 +2326,9 @@
       $(document.body).on("click", "input.step2", function () {
           let stepSecond = false;
           // $(this).parent("div").siblings("span.inputBtn").click();
-
-          if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxFieldValidate($('.checkbxCheck')))
-          {$(this).parent("div").siblings("span.inputBtn").click();}
+            
+            if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($('.checkbxCheck')))
+            {$(this).parent("div").siblings("span.inputBtn").click();}
 
       });
 
