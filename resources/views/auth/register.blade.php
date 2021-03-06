@@ -34,6 +34,7 @@
                 100%{height:10px;transform:translateY(0);background:#e50926}
             }
        </style>
+       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	@endsection
 {{-- head end --}}
 
@@ -121,36 +122,54 @@
 
                                 <div class="pl-5 pr-5 first-step-html-change">
                                     <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
-										<div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+										<div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                                            <em class="fa fa-user"></em>
+                                        </div>
                                         <div class="w-100">
                                             <input type="text" class="w-100 form-control border-0" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                                         </div>
                                     </div>
                                     <label class="cl-3AC574 m-0 pt-3 pb-1">
-                                        <span><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></span>
+                                        <span>
+                                            {{-- <img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /> --}}
+                                            <em class="fa fa-globe"></em>
+                                        </span>
                                         <span class="pl-1 cl-3AC574 h6">Link to your Public Profile</span>
                                     </label>
                                     <div class="input-group mb-3 border-input pt-0 pl-3">
                                         <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" name="public_profile" id="public_profile" aria-label="" aria-describedby="basic-addon1" readonly="" />
                                     </div>
                                     <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                        <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                                            <em class="fa fa-user"></em>
+                                        </div>
                                         <div class="w-100"><input type="text" class="w-100 form-control border-0" placeholder="Enter your full name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
 
                                     <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                        <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                                            <em class="fa fa-envelope"></em>
+                                        </div>
                                         <div class="w-100"><input type="email" class="form-control border-0 w-100" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
                                     </div>
 
                                     <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                        <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                                            <em class="fa fa-key"></em>
+                                        </div>
                                         <div class="w-100"><input type="password" class="w-100 form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
                                     <p class="text-danger d-none" id="password-error"></p>
 
                                     <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                        <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                                            <em class="fa fa-key"></em>
+                                        </div>
                                         <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
 
@@ -179,12 +198,18 @@
                                 <div class="h1 text-center cl-3AC574 pt-4">Help Clients find You.</div>
                                 <div class="pl-5 pr-5">
                                     <div class="input-group mb-3 border-input pt-5 d-flex flex-nowrap">
-                                        <div><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></div>
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
+                                            <em class="fa fa-phone"></em>
+                                        </div>
                                         <div class="w-100"> <input type="text" class="form-control border-0" placeholder="What is your business phone number" name="business_phone" id="business_phone" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
 
                                     <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
-                                        <div><img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /></div>
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /> --}}
+                                            <em class="fa fa-map-marker"></em>
+                                        </div>
                                         <div class="w-100">
                                             <select id="country" name="country" class="form-control country-select w-100" >
                                                <option value="Afganistan">Afghanistan</option>
@@ -438,12 +463,18 @@
                                     </div>
 
                                     <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap" >
-                                        <div><img src="{{ asset('assets/frontend/images/selection-8 (1).png') }}" alt="" /></div>
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/selection-8 (1).png') }}" alt="" /> --}}
+                                        <em class="fa fa-bars"></em>
+                                        </div>
                                         <div><input type="text" class="form-control border-0" placeholder="Select Category" id="select_category" aria-label="" aria-describedby="basic-addon1" data-toggle="modal" data-target="#exampleModal" /></div>
                                     </div>
 
                                     <label class="cl-gray m-0 pt-3">
-                                        <span><img src="{{ asset('assets/frontend/images/clock-8.png') }}" alt="" /></span>
+                                        <span>
+                                            {{-- <img src="{{ asset('assets/frontend/images/clock-8.png') }}" alt="" /> --}}
+                                            <em class="fa fa-calender"></em>
+                                        </span>
                                         <span class="pl-1 h6">Days & Hours of Availability </span>
                                     </label>
                                     <div class="input-group mb-3 border-input pt-0 pl-3">
@@ -511,17 +542,27 @@
 
                                     </div>
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
-                                            <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                                            <div>
+                                                {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                                                <em class="fa fa-user"></em>
+                                            </div>
                                             <div class="w-100"><input type="text" id="payment_first_name" class="w-100 form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
-                                            <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                                            <div>
+                                                {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                                                <em class="fa fa-user"></em>
+                                            </div>
                                             <div class="w-100"><input type="text" id="payment_last_name" class="w-100 form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                            <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                            <div>
+                                                {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                                                <em class="fa fa-money-check"></em>
+                                                
+                                            </div>
                                             <div class="w-100"><input type="number" id="account_number" class="w-100 form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></div>
                                         </div>
 
@@ -531,12 +572,18 @@
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                            <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                            <div>
+                                                {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                                                <em class="fa fa-calendar"></em>
+                                            </div>
                                             <div><input type="text" id="payment_birth_date" class="form-control border-0" placeholder="Date of Birth" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></div>
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                            <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                                            <div>
+                                                {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                                                <em class="fa fa-key"></em>
+                                            </div>
                                             <div class="w-100"><input type="number" class="w-100 form-control border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></div>
                                         </div>
 
