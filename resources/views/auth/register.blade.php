@@ -2338,6 +2338,7 @@
       });
 
       $(document.body).on("click", "input.step3", function () {
+          $(this).attr('disabled', 'disabled');
           // console.log($('input[name="payment_method"]').val());
           let method_chk = false;
           if($('input[name="payment_method"]:checked').val()=='stripe')
