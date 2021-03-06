@@ -129,4 +129,17 @@ class UserController extends Controller
     {
         return decrypt($id);
     }
+
+    public function usernameCheck(Request $request)
+    {
+        $user = User::where('username',$request->username)->first();
+        if($user !=null)
+        {
+            return response()->json(['status'=>false]);
+        }
+        else
+        {
+            return response()->json(['status'=>true]);
+        }
+    }
 }

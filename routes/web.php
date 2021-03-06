@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.index');
 })->name('index');
-
+Route::get('userNameCheck','UserController@usernameCheck')->name('usernameCheck');
 
 Auth::routes();
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
