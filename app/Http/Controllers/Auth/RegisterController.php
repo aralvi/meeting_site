@@ -57,7 +57,7 @@ class RegisterController extends Controller
                 'username' => ['bail','required', 'unique:users'],
                 'name' => ['bail','required', 'string'],
                 'email' => ['bail','required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['bail','required', 'string', 'min:8', 'confirmed'],
+                'password' => ['bail','required', 'string', 'min:6', 'confirmed'],
                 'country' => ['bail','required'],
             ];
 

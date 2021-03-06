@@ -124,4 +124,9 @@ class UserController extends Controller
             return redirect()->route('users.index')->withMessage('User has been deleted successfully');
         }
     }
+
+    public function userApproved($id)
+    {
+        return decrypt($id);
+    }
 }

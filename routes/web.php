@@ -22,6 +22,22 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 
+Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
+   Route::get('/','AdminController@index');
+   Route::get('users','AdminController@users');
+   Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
+});
+
+// usercheck
+Route::group(['middleware'=>['auth','specialistcheck']],function(){
+    Route::resource('appointments', 'AppointmentController');
+    Route::resource('specialists', 'SpecialistController');
+    Route::resource('specialist/services', 'Specialist\ServiceController');
+    Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
+    Route::view('specialist/dashboard','specialist.index');
+});
+
+
 Route::group(['middleware'=>['auth']],function(){
     
     Route::get('appointment', function () {
@@ -44,10 +60,5 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('getQueryServices','Specialist\ServiceController@getQueryServices')->name('getQueryServices');
 
     Route::resource('clients', 'ClientController');
-    Route::resource('appointments', 'AppointmentController');
-    Route::resource('specialists', 'SpecialistController');
-    Route::resource('specialist/services', 'Specialist\ServiceController');
-    Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
-    Route::view('specialist/dashboard','specialist.index');
     Route::view('client/dashboard','client.index');
 });

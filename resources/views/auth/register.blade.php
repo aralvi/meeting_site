@@ -2024,10 +2024,11 @@
                     var wrapper = document.createElement('div');
                     var err = '';
                     $.each(data.errors, function (i, e) {
-                        if(i=='email' || i=='username')
-                        {
-                            err += '<p>' + e + '</p>';
-                        }
+                        err += '<p>' + e + '</p>';
+                        // if(i=='email' || i=='username')
+                        // {
+                        //     err += '<p>' + e + '</p>';
+                        // }
                     })
 
                     wrapper.innerHTML = err;
