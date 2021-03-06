@@ -3,12 +3,36 @@
 {{-- head start --}}
 
 	@section('extra-css')
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}">
 	   <style type="text/css">
             .placeholder-color-change::-webkit-input-placeholder {
                 color: #e91e63;
             }
             .country-select{ border: none!important;  }
-
+            .swal-button{ background-color:#3AC574 !important; }
+            .mt-rem-15{margin-top:7rem !important;}
+            .loader11{width:100px;height:70px;margin:50px auto;position:relative}
+            .loader11 span{display:block;width:5px;height:10px;background:#e43632;position:absolute;bottom:0;animation:loading-11 2.25s infinite ease-in-out}
+            .loader11 span:nth-child(2){left:11px;animation-delay:.2s}
+            .loader11 span:nth-child(3){left:22px;animation-delay:.4s}
+            .loader11 span:nth-child(4){left:33px;animation-delay:.6s}
+            .loader11 span:nth-child(5){left:44px;animation-delay:.8s}
+            .loader11 span:nth-child(6){left:55px;animation-delay:1s}
+            .loader11 span:nth-child(7){left:66px;animation-delay:1.2s}
+            .loader11 span:nth-child(8){left:77px;animation-delay:1.4s}
+            .loader11 span:nth-child(9){left:88px;animation-delay:1.6s}
+            @-webkit-keyframes loading-11{
+                0%{height:10px;transform:translateY(0);background:#ff4d80}
+                25%{height:60px;transform:translateY(15px);background:#3423a6}
+                50%{height:10px;transform:translateY(-10px);background:#e29013}
+                100%{height:10px;transform:translateY(0);background:#e50926}
+            }
+            @keyframes loading-11{
+                0%{height:10px;transform:translateY(0);background:#ff4d80}
+                25%{height:60px;transform:translateY(15px);background:#3423a6}
+                50%{height:10px;transform:translateY(-10px);background:#e29013}
+                100%{height:10px;transform:translateY(0);background:#e50926}
+            }
        </style>
 	@endsection
 {{-- head end --}}
@@ -26,9 +50,9 @@
                 <div class="row m-0 box-shadow-reg form-radius rounded-right-reg">
                     <div class="col-md-5 bg-register-img2 p-0">
                         <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6 padding-bottom-reg inner-padding pr-0">
-                                <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" /></a>
+                            <div class="col-md-3 col-3-Width"></div>
+                            <div class="col-md-6 col-6-Width padding-bottom-reg inner-padding pr-0">
+                            <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" /></a>
                                 <div class="display-2 font-600 text-white pt-5">Register</div>
                                 <div class="progress progress-height mt-5 bg-gray">
                                     <span class="white-dot "></span>
@@ -39,10 +63,32 @@
                                <br> It takes only 2 minutes.
                             </div>
                             </div>
-                            <div class="col-md-3"></div>
+                            <div class="col-md-3 col-3-Width"></div>
                         </div>
                     </div>
                     <div class="col-md-7 padding-right-reg padding-left-reg bg-white rounded-right-reg">
+                        <div class="row">
+                            <div class="col-md-12 pt-4 alerMsg mt-rem-15"  style="display: none;">
+                                <div class="alert alert-success">Thanks! You have registered successfully and you will be redirected in few seconds if you are not redirected then <a href="{{ route('index') }}">Click Here</a></div>
+                            </div>
+                        </div>
+                        <div class="row afterRegisterLoader" style="display: none;">
+                            <div class="col-md-12">
+                                <div class="loader11">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
                             @csrf
                             
@@ -51,19 +97,19 @@
                                     <div class="">Already Registered?</div>
                                     <div class="pr-4 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
-                                <div class="h1 text-center cl-3AC574 pt-2">Register</div>
+                                <div class="h1 text-center cl-3AC574 ">Register</div>
 
-                                <div class="row pt-4">
+                                <div class="row pt-2">
                                     
                                     <div class="col-md-12 d-flex justify-content-center">
 
-                                        <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border">
+                                        <div class="bg-3AC574 ml-2 mr-2  active rounded border radio_Selection">
                                             <input type="radio" class="btn-check" name="user_type" id="specialist" autocomplete="off" checked onclick="radio(this)" value="specialist">
                                             <label class="btn text-white" for="specialist">
                                             Specialist
                                               </label>
                                         </div>
-                                        <div class=" ml-4 mr-4 pl-4 pr-4 rounded border">
+                                        <div class=" ml-4 mr-4  rounded border radio_Selection">
                                             <input type="radio" class="btn-check" name="user_type" id="client" autocomplete="off" onclick="radio(this)"  value="client">
                                             <label class="btn " for="client">Client</label>
 
@@ -439,18 +485,18 @@
                                     <div class="row pt-2">
                                         <div class="col-md-12 d-flex justify-content-center">
 
-                                            <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border">
+                                            <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border radio_Selection_sub">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option1" autocomplete="off" checked onclick="paymentRadio(this)" value="stripe">
                                                 <label class="btn text-white" for="option1">
                                                 Stripe  
                                                   </label>
                                             </div>
-                                            <div class=" ml-4 mr-4 pl-4 pr-4 rounded border">
+                                            <div class=" ml-4 mr-4 pl-4 pr-4 rounded border radio_Selection_sub">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option2" autocomplete="off" onclick="paymentRadio(this)"  value="paypal">
                                                 <label class="btn " for="option2">Paypal</label>
 
                                             </div>
-                                            <div class=" ml-2 mr-2 pl-3 pr-3 rounded border">
+                                            <div class=" ml-2 mr-2 pl-3 pr-3 rounded border radio_Selection_sub">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option4" autocomplete="off" onclick="paymentRadio(this)" value="payoneer">
                                                 <label class="btn " for="option4">Payoneer</label>
 
@@ -461,7 +507,13 @@
                                     </div>
 
                                     <div id="payment_selection_html">
-                                        <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+                                    <div class="row pt-2">
+                                        <div class="col-md-12 d-flex pl-5 justify-content-between">
+                                            <p class="text-warning">Note: Stripe is only for US users.</p>
+                                            <div class="  text-right"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+                                        </div>
+
+                                    </div>
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                                             <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                                             <div class="w-100"><input type="text" id="payment_first_name" class="w-100 form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
@@ -1401,24 +1453,24 @@
         </div>
 
         <div id="client-html" style="display: none;">
-            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-4 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                 <div class="w-100">
                     <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                 </div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                 <div class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="client-name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
                 <div class="w-100"><input type="email" class="form-control border-0 w-100" placeholder="Enter your email" id="client-email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3  d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3  d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
                 <div class="w-100"
                 >
@@ -1673,18 +1725,18 @@
                 </div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></div>
                 <div class="w-100"> <input type="text" class="w-100 form-control border-0" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
                 <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Enter your password" name="password" id="client-password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
             <p class="text-danger d-none" id="password-error"></p>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-4 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
                 <div class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
@@ -1696,14 +1748,7 @@
                     <div class="alert alert-success">You have registered successfully</div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12 pt-4 warningAlert" style="display: none;">
-                    <div class="alert alert-warning warningAlertContent"></div>
-                </div>
-            </div>
-
-            <div class="pt-4 f-14 cl-gray text-center">
+            <div class="pt-3 f-14 cl-gray text-center">
                 <p class="mb-1">
                     By Sigining up I agree the
                     <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
@@ -1719,7 +1764,14 @@
         </div>
 
         <div id="stripe-html" style="display:none;">
-            <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+        <div class="row pt-2">
+            <div class="col-md-12 d-flex pl-5 justify-content-between">
+                <p class="text-warning">Note: Stripe is only for US users.</p>
+                <div class="  text-right"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+            </div>
+
+        </div>
+       
             <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                 <div class="w-100"><input type="text" id="payment_last_name" class="form-control border-0 w-100" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
@@ -1779,6 +1831,7 @@
     	<script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+    	<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
     <script>
         function dayClosed(ele)
         {
@@ -2008,12 +2061,13 @@
               data: fd,
               success:function(data)
               {
-                  // console.log(data);
-                  $('.warningAlert').hide();
-                  $('.alerMsg').show();
-                  setInterval(function(){
-                      window.location = '{{ route('index') }}';
-                  },2000);
+                $('#registerForm').hide();
+                window.scrollTo(0, 200);
+                $('.alerMsg').show();
+                $('.afterRegisterLoader').show();
+                setInterval(function(){
+                    window.location = '{{ route('index') }}';
+                },5000);
 
               },
               error:function(request,status,error)
@@ -2359,7 +2413,6 @@
       $(document.body).on("click", "input.step2", function () {
           let stepSecond = false;
           // $(this).parent("div").siblings("span.inputBtn").click();
-            
             if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($('.checkbxCheck')))
             {$(this).parent("div").siblings("span.inputBtn").click();}
 

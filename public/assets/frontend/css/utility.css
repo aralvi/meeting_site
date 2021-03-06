@@ -282,6 +282,7 @@ input:-webkit-autofill:active
  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
+
 @media screen and (max-width: 1700px) and (min-width:1245px) {
   .footerUl>li>a{
       font-size: 16px !important;
