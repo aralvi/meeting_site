@@ -496,12 +496,19 @@
                                     
                                     <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step3 float-right" value="Continue" />
                                     <input type="button" data-page="2" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
+                                    
                                     <div class="row">
                                         <div class="col-md-12 pt-4 alerMsg" style="display: none;">
                                             <div class="alert alert-success">You have registered successfully</div>
                                         </div>
                                     </div>
-                                   
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 pt-4 warningAlert" style="display: none;">
+                                            <div class="alert alert-warning warningAlertContent"></div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <span data-page="3" id="" class="inputBtn next action-button"></span>
                                 <span data-page="1" id="" class="previous action-button btn-step-back"  onclick="btnClicKBack('dot-100','width-100','dot-50','width-50','Enter contact Detail <br> for your business')"></span>
@@ -1683,11 +1690,19 @@
             </div>
 
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-step1" value="Create Account" />
+            
             <div class="row">
                 <div class="col-md-12 pt-4 alerMsg" style="display: none;">
                     <div class="alert alert-success">You have registered successfully</div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-12 pt-4 warningAlert" style="display: none;">
+                    <div class="alert alert-warning warningAlertContent"></div>
+                </div>
+            </div>
+
             <div class="pt-4 f-14 cl-gray text-center">
                 <p class="mb-1">
                     By Sigining up I agree the
@@ -1994,6 +2009,7 @@
               success:function(data)
               {
                   // console.log(data);
+                  $('.warningAlert').hide();
                   $('.alerMsg').show();
                   setInterval(function(){
                       window.location = '{{ route('index') }}';
@@ -2002,7 +2018,22 @@
               },
               error:function(request,status,error)
               {
-                  console.log(request.responseText);
+                let data = JSON.parse(request.responseText);
+                if(data.hasOwnProperty('errors'))
+                {
+                    var wrapper = document.createElement('div');
+                    var err = '';
+                    $.each(data.errors, function (i, e) {
+                        if(i=='email' || i=='username')
+                        {
+                            err += '<p>' + e + '</p>';
+                        }
+                    })
+
+                    wrapper.innerHTML = err;
+                    $('.warningAlert').show();
+                    $('.warningAlertContent').html(wrapper);
+                }
               }
           });
       }
@@ -2310,7 +2341,7 @@
           if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
           {
               // $('#registerForm').submit();
-              $(this).attr('disabled', 'disabled');
+            //   $(this).attr('disabled', 'disabled');
               var myform = document.getElementById("registerForm");
               var fd = new FormData(myform);
               fd.append("_token","{{ csrf_token() }}");
@@ -2357,7 +2388,7 @@
           }
           if(method_chk)
           {
-              $(this).attr('disabled', 'disabled');
+            //   $(this).attr('disabled', 'disabled');
               var myform = document.getElementById("registerForm");
               var fd = new FormData(myform);
               fd.append("_token","{{ csrf_token() }}");

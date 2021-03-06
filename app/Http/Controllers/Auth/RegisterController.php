@@ -54,35 +54,35 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $arr = [
-                'username' => ['required'],
-                'name' => ['required', 'string'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'country' => ['required'],
+                'username' => ['bail','required', 'unique:users'],
+                'name' => ['bail','required', 'string'],
+                'email' => ['bail','required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['bail','required', 'string', 'min:8', 'confirmed'],
+                'country' => ['bail','required'],
             ];
 
         if ($data['user_type']=='specialist')
         {
-            $arr['payment_method'] = ['required'];
-            $arr['business_phone'] = ['required', 'string'];
+            $arr['payment_method'] = ['bail','required'];
+            $arr['business_phone'] = ['bail','required', 'string'];
         }
         else if($data['user_type']=='client')
         {
-            $arr['client_phone'] =['required', 'string'];
+            $arr['client_phone'] =['bail','required', 'string'];
         }
 
         if($data['payment_method']=='stripe' && $data['user_type'] !='client')
         {
-            $arr['payment_first_name'] = ['required', 'string'];
-            $arr['payment_last_name'] = ['required', 'string'];
-            $arr['account_number'] = ['required'];
-            $arr['payment_birth_date'] = ['required'];
-            $arr['routing_number'] = ['required'];
+            $arr['payment_first_name'] = ['bail','required', 'string'];
+            $arr['payment_last_name'] = ['bail','required', 'string'];
+            $arr['account_number'] = ['bail','required'];
+            $arr['payment_birth_date'] = ['bail','required'];
+            $arr['routing_number'] = ['bail','required'];
 
         }
         else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
         {
-            $arr['payment_email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
+            $arr['payment_email'] = ['bail','required', 'string', 'email', 'max:255', 'unique:users'];
         }
 
         return Validator::make($data, $arr);
