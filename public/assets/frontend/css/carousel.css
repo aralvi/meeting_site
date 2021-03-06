@@ -41,3 +41,25 @@
 padding-left: 125px;
 padding-right: 125px;
 }
+.carousel-3-prev-bg {
+  background-image: url('../images/back.png') !important;
+  width: 28px !important;
+  height: 44px !important;
+}
+.carousel-3-next-bg {
+  background-image: url('../images/next.png') !important;
+  width: 28px !important;
+  height: 44px !important;
+}
+.carousel-3-prev {
+  left: -20px !important;
+}
+.carousel-3-next{
+  right: -20px !important;
+
+}
+
+.name_Sep{
+  position: absolute;
+  bottom: 106px;
+}
