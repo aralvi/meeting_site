@@ -90,7 +90,13 @@ opacity: 1 !important;
   border-radius: 12px;
 }
 .borderRadius-10px{
-  border-radius: 10px;
+  border-radius: 10px !important;
+}
+.bblr{
+  border-bottom-left-radius: 10px !important;
+}
+.bbrr{
+  border-bottom-right-radius: 10px !important;
 }
 .cl-a20101{
   color: #A20101;
