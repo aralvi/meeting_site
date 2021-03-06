@@ -67,6 +67,28 @@
                         </div>
                     </div>
                     <div class="col-md-7 padding-right-reg padding-left-reg bg-white rounded-right-reg">
+                        <div class="row">
+                            <div class="col-md-12 pt-4 alerMsg mt-rem-15"  style="display: none;">
+                                <div class="alert alert-success">Thanks! You have registered successfully and you will be redirected in few seconds if you are not redirected then <a href="{{ route('index') }}">Click Here</a></div>
+                            </div>
+                        </div>
+                        <div class="row afterRegisterLoader" style="display: none;">
+                            <div class="col-md-12">
+                                <div class="loader11">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
                             @csrf
                             
