@@ -2499,21 +2499,71 @@
      
       $(document.body).on("click", "input.client-step1", function () {
           // $(this).parent("div").siblings("span.inputBtn").click();
-          if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
-          {
+            if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
+            {
               // $('#registerForm').submit();
             //   $(this).attr('disabled', 'disabled');
-              var myform = document.getElementById("registerForm");
-              var fd = new FormData(myform);
-              fd.append("_token","{{ csrf_token() }}");
-              ajaxCommonCode(fd);
-          }
+            //   var myform = document.getElementById("registerForm");
+            //   var fd = new FormData(myform);
+            //   fd.append("_token","{{ csrf_token() }}");
+            //   ajaxCommonCode(fd);
+
+                $.ajax({
+                    url:"{{ route('usernameCheck') }}",
+                    type:"get",
+                    data:{username:$('#username').val()},
+                    success:function(data)
+                    {
+                            if(data.status==false)
+                            {
+                                console.log("fiie");
+                                swal({
+                                    icon: "error",
+                                    text: $('#username').val()+" has been already taken",
+                                    type: 'error'
+                                });
+                                txt(data.status);
+                            }
+                            else
+                            {
+                                var myform = document.getElementById("registerForm");
+                                var fd = new FormData(myform);
+                                fd.append("_token","{{ csrf_token() }}");
+                                ajaxCommonCode(fd);
+                            }
+
+                    }
+                });
+           }
       });
 
        $(document.body).on("click", "input.step1", function () {
         //   $(this).parent("div").siblings("span.inputBtn").click();
-          if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
-          {$(this).parent("div").siblings("span.inputBtn").click();}
+            if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
+           {
+                $.ajax({
+                    url:"{{ route('usernameCheck') }}",
+                    type:"get",
+                    data:{username:$('#username').val()},
+                    success:function(data)
+                    {
+                            if(data.status==false)
+                            {
+                                console.log("fiie");
+                                swal({
+                                    icon: "error",
+                                    text: $('#username').val()+" has been already taken",
+                                    type: 'error'
+                                });
+                            }
+                            else
+                            {
+                                $('input.step1').parent("div").siblings("span.inputBtn").click();
+                            }
+
+                    }
+                });
+            }
       });
 
       $(document.body).on("click", "input.step2", function () {
