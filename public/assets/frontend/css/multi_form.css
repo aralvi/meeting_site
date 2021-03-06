@@ -44,7 +44,7 @@
     width: 50px !important;
     } */
     
-    .steps input,
+    /* .steps input,
     .steps textarea {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -61,16 +61,16 @@
     -ms-transition: all 0.3s linear 0s;
     -o-transition: all 0.3s linear 0s;
     transition: all 0.3s linear 0s;
-    }
+    } */
     
-    .steps input:focus,
+    /* .steps input:focus,
     .steps textarea:focus {
     color: #333333;
     border: 1px solid #7B1FA2;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    }
+    } */
     
     .error1 {
     -moz-border-radius: 3px;
@@ -372,12 +372,12 @@
     
     @media (max-width:1000px) {
     /*brings inputs down in size */
-    .steps input,
+    /* .steps input,
     .steps textarea {
     outline: none;
     display: block;
     width: 100% !important;
-    }
+    } */
     /*brings errors in */
     .error1 {
     left: 345px;
@@ -387,11 +387,11 @@
     
     @media (max-width:675px) {
     /*mobile phone: uncollapse all fields: remove progress bar*/
-    .steps {
+    /* .steps {
     width: 100%;
     margin: 50px auto;
     position: relative;
-    }
+    } */
     #progressbar {
     display: none;
     }

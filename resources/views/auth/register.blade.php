@@ -26,9 +26,9 @@
                 <div class="row m-0 box-shadow-reg form-radius rounded-right-reg">
                     <div class="col-md-5 bg-register-img2 p-0">
                         <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6 padding-bottom-reg inner-padding pr-0">
-                                <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" /></a>
+                            <div class="col-md-3 col-3-Width"></div>
+                            <div class="col-md-6 col-6-Width padding-bottom-reg inner-padding pr-0">
+                            <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" /></a>
                                 <div class="display-2 font-600 text-white pt-5">Register</div>
                                 <div class="progress progress-height mt-5 bg-gray">
                                     <span class="white-dot "></span>
@@ -39,7 +39,7 @@
                                <br> It takes only 2 minutes.
                             </div>
                             </div>
-                            <div class="col-md-3"></div>
+                            <div class="col-md-3 col-3-Width"></div>
                         </div>
                     </div>
                     <div class="col-md-7 padding-right-reg padding-left-reg bg-white rounded-right-reg">
@@ -51,19 +51,19 @@
                                     <div class="">Already Registered?</div>
                                     <div class="pr-4 h5"><a href="{{route('login')}}" class="cl-3AC574">Login</a></div>
                                 </div>
-                                <div class="h1 text-center cl-3AC574 pt-2">Register</div>
+                                <div class="h1 text-center cl-3AC574 ">Register</div>
 
-                                <div class="row pt-4">
+                                <div class="row pt-2">
                                     
                                     <div class="col-md-12 d-flex justify-content-center">
 
-                                        <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border">
+                                        <div class="bg-3AC574 ml-2 mr-2  active rounded border radio_Selection">
                                             <input type="radio" class="btn-check" name="user_type" id="specialist" autocomplete="off" checked onclick="radio(this)" value="specialist">
                                             <label class="btn text-white" for="specialist">
                                             Specialist
                                               </label>
                                         </div>
-                                        <div class=" ml-4 mr-4 pl-4 pr-4 rounded border">
+                                        <div class=" ml-4 mr-4  rounded border radio_Selection">
                                             <input type="radio" class="btn-check" name="user_type" id="client" autocomplete="off" onclick="radio(this)"  value="client">
                                             <label class="btn " for="client">Client</label>
 
@@ -439,18 +439,18 @@
                                     <div class="row pt-2">
                                         <div class="col-md-12 d-flex justify-content-center">
 
-                                            <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border">
+                                            <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border radio_Selection_sub">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option1" autocomplete="off" checked onclick="paymentRadio(this)" value="stripe">
                                                 <label class="btn text-white" for="option1">
                                                 Stripe  
                                                   </label>
                                             </div>
-                                            <div class=" ml-4 mr-4 pl-4 pr-4 rounded border">
+                                            <div class=" ml-4 mr-4 pl-4 pr-4 rounded border radio_Selection_sub">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option2" autocomplete="off" onclick="paymentRadio(this)"  value="paypal">
                                                 <label class="btn " for="option2">Paypal</label>
 
                                             </div>
-                                            <div class=" ml-2 mr-2 pl-3 pr-3 rounded border">
+                                            <div class=" ml-2 mr-2 pl-3 pr-3 rounded border radio_Selection_sub">
                                                 <input type="radio" class="btn-check" name="payment_method" id="option4" autocomplete="off" onclick="paymentRadio(this)" value="payoneer">
                                                 <label class="btn " for="option4">Payoneer</label>
 
@@ -461,7 +461,13 @@
                                     </div>
 
                                     <div id="payment_selection_html">
-                                        <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+                                    <div class="row pt-2">
+                                        <div class="col-md-12 d-flex pl-5 justify-content-between">
+                                            <p class="text-warning">Note: Stripe is only for US users.</p>
+                                            <div class="  text-right"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+                                        </div>
+
+                                    </div>
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                                             <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                                             <div class="w-100"><input type="text" id="payment_first_name" class="w-100 form-control border-0" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
@@ -1401,24 +1407,24 @@
         </div>
 
         <div id="client-html" style="display: none;">
-            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-4 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                 <div class="w-100">
                     <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                 </div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                 <div class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="client-name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
                 <div class="w-100"><input type="email" class="form-control border-0 w-100" placeholder="Enter your email" id="client-email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3  d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3  d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
                 <div class="w-100"
                 >
@@ -1673,18 +1679,18 @@
                 </div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></div>
                 <div class="w-100"> <input type="text" class="w-100 form-control border-0" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
                 <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Enter your password" name="password" id="client-password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
             <p class="text-danger d-none" id="password-error"></p>
 
-            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+            <div class="input-group mb-4 border-input pt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
                 <div class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
@@ -1696,14 +1702,7 @@
                     <div class="alert alert-success">You have registered successfully</div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12 pt-4 warningAlert" style="display: none;">
-                    <div class="alert alert-warning warningAlertContent"></div>
-                </div>
-            </div>
-
-            <div class="pt-4 f-14 cl-gray text-center">
+            <div class="pt-3 f-14 cl-gray text-center">
                 <p class="mb-1">
                     By Sigining up I agree the
                     <span ><a href="#" class="cl-3AC574">terms and conditions </a> </span> and
@@ -1719,7 +1718,14 @@
         </div>
 
         <div id="stripe-html" style="display:none;">
-            <div class="pt-3  text-center"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+        <div class="row pt-2">
+            <div class="col-md-12 d-flex pl-5 justify-content-between">
+                <p class="text-warning">Note: Stripe is only for US users.</p>
+                <div class="  text-right"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+            </div>
+
+        </div>
+       
             <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                 <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
                 <div class="w-100"><input type="text" id="payment_last_name" class="form-control border-0 w-100" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
@@ -2359,7 +2365,6 @@
       $(document.body).on("click", "input.step2", function () {
           let stepSecond = false;
           // $(this).parent("div").siblings("span.inputBtn").click();
-            
             if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($('.checkbxCheck')))
             {$(this).parent("div").siblings("span.inputBtn").click();}
 
