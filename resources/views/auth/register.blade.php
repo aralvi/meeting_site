@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
                             @csrf
                             
@@ -2072,18 +2072,23 @@
                 if(data.hasOwnProperty('errors'))
                 {
                     var wrapper = document.createElement('div');
-                    var err = '';
-                    $.each(data.errors, function (i, e) {
-                        err += '<p>' + e + '</p>';
-                        // if(i=='email' || i=='username')
-                        // {
-                        //     err += '<p>' + e + '</p>';
-                        // }
-                    })
-
-                    wrapper.innerHTML = err;
-                    $('.warningAlert').show();
-                    $('.warningAlertContent').html(wrapper);
+                    if(data.hasOwnProperty('errors'))
+                    {
+                        var wrapper = document.createElement('div');
+                        var err = '';
+                        $.each(data.errors, function (i, e) {
+                            err += '<p>' + e + '</p>';
+                        });
+                        wrapper.innerHTML = err;
+                        swal({
+                            icon: "error",
+                            text: "{{ __('Please fix following error!') }}",
+                            content: wrapper,
+                            type: 'error'
+                        });
+                        // $('.warningAlert').show();
+                        // $('.warningAlertContent').html(wrapper);
+                    }
                 }
               }
           });
