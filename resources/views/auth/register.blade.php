@@ -3,12 +3,36 @@
 {{-- head start --}}
 
 	@section('extra-css')
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}">
 	   <style type="text/css">
             .placeholder-color-change::-webkit-input-placeholder {
                 color: #e91e63;
             }
             .country-select{ border: none!important;  }
-
+            .swal-button{ background-color:#3AC574 !important; }
+            .mt-rem-15{margin-top:7rem !important;}
+            .loader11{width:100px;height:70px;margin:50px auto;position:relative}
+            .loader11 span{display:block;width:5px;height:10px;background:#e43632;position:absolute;bottom:0;animation:loading-11 2.25s infinite ease-in-out}
+            .loader11 span:nth-child(2){left:11px;animation-delay:.2s}
+            .loader11 span:nth-child(3){left:22px;animation-delay:.4s}
+            .loader11 span:nth-child(4){left:33px;animation-delay:.6s}
+            .loader11 span:nth-child(5){left:44px;animation-delay:.8s}
+            .loader11 span:nth-child(6){left:55px;animation-delay:1s}
+            .loader11 span:nth-child(7){left:66px;animation-delay:1.2s}
+            .loader11 span:nth-child(8){left:77px;animation-delay:1.4s}
+            .loader11 span:nth-child(9){left:88px;animation-delay:1.6s}
+            @-webkit-keyframes loading-11{
+                0%{height:10px;transform:translateY(0);background:#ff4d80}
+                25%{height:60px;transform:translateY(15px);background:#3423a6}
+                50%{height:10px;transform:translateY(-10px);background:#e29013}
+                100%{height:10px;transform:translateY(0);background:#e50926}
+            }
+            @keyframes loading-11{
+                0%{height:10px;transform:translateY(0);background:#ff4d80}
+                25%{height:60px;transform:translateY(15px);background:#3423a6}
+                50%{height:10px;transform:translateY(-10px);background:#e29013}
+                100%{height:10px;transform:translateY(0);background:#e50926}
+            }
        </style>
 	@endsection
 {{-- head end --}}
@@ -43,6 +67,28 @@
                         </div>
                     </div>
                     <div class="col-md-7 padding-right-reg padding-left-reg bg-white rounded-right-reg">
+                        <div class="row">
+                            <div class="col-md-12 pt-4 alerMsg mt-rem-15"  style="display: none;">
+                                <div class="alert alert-success">Thanks! You have registered successfully and you will be redirected in few seconds if you are not redirected then <a href="{{ route('index') }}">Click Here</a></div>
+                            </div>
+                        </div>
+                        <div class="row afterRegisterLoader" style="display: none;">
+                            <div class="col-md-12">
+                                <div class="loader11">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
                             @csrf
                             
@@ -1781,6 +1827,7 @@
     	<script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+    	<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
     <script>
         function dayClosed(ele)
         {
@@ -2010,12 +2057,13 @@
               data: fd,
               success:function(data)
               {
-                  // console.log(data);
-                  $('.warningAlert').hide();
-                  $('.alerMsg').show();
-                  setInterval(function(){
-                      window.location = '{{ route('index') }}';
-                  },2000);
+                $('#registerForm').hide();
+                window.scrollTo(0, 200);
+                $('.alerMsg').show();
+                $('.afterRegisterLoader').show();
+                setInterval(function(){
+                    window.location = '{{ route('index') }}';
+                },5000);
 
               },
               error:function(request,status,error)
