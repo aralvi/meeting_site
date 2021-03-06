@@ -41,7 +41,6 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
        
         $appointment = new Appointment();
         $appointment->user_id = Auth::user()->id;
