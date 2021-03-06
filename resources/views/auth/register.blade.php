@@ -473,7 +473,7 @@
                                     <label class="cl-gray m-0 pt-3">
                                         <span>
                                             {{-- <img src="{{ asset('assets/frontend/images/clock-8.png') }}" alt="" /> --}}
-                                            <em class="fa fa-calender"></em>
+                                            <em class="fa fa-calendar"></em>
                                         </span>
                                         <span class="pl-1 h6">Days & Hours of Availability </span>
                                     </label>
@@ -560,14 +560,17 @@
                                         <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                                             <div>
                                                 {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
-                                                <em class="fa fa-money-check"></em>
+                                                <em class="fa fa-university"></em>
                                                 
                                             </div>
                                             <div class="w-100"><input type="number" id="account_number" class="w-100 form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></div>
                                         </div>
 
                                         <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                            <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                                            <div>
+                                                {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                                                <em class="fa fa-university"></em>
+                                            </div>
                                             <div class="w-100"><input type="number" id="routing_number" class="w-100 form-control border-0" placeholder="Enter your routing number" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></div>
                                         </div>
 
