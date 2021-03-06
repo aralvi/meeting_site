@@ -430,11 +430,7 @@
 
                                 <div class="h1 text-center cl-3AC574 pt-2">Enter Banking Information</div>
                                 <div class="">
-                                    <div class="row pt-2">
-                                        <div class="col-md-12 d-flex text-center pl-5">
-                                            <p class="text-warning">Note: Stripe is only for US users.</p>
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="row pt-2">
                                         <div class="col-md-12 d-flex justify-content-center">
