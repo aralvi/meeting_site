@@ -2310,6 +2310,7 @@
           if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
           {
               // $('#registerForm').submit();
+              $(this).attr('disabled', 'disabled');
               var myform = document.getElementById("registerForm");
               var fd = new FormData(myform);
               fd.append("_token","{{ csrf_token() }}");
