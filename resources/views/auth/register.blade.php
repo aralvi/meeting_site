@@ -589,7 +589,7 @@
                                         </div>
 
                                         <div class="modal-footer m-auto border-0">
-                                          <button type="button" onclick="$('.close1').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                                          <button type="button" onclick="categorySubcategoryCheck();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
                                         </div>
                                     </div>
                                 </div>
@@ -1385,7 +1385,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer m-auto border-0">
-                                          <button type="button" onclick="$('.close2').click();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
+                                          <button type="button" onclick="dayCheckValidation();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
                                         </div>
                                     </div>
                                 </div>
@@ -2094,6 +2094,61 @@
           });
       }
 
+      function dayCheckValidation()
+      {
+        let meCheck = false;
+        $.each($('.days'),function(){
+            if($(this).is(':checked'))
+            {
+                meCheck=true;
+            }
+        });
+        if(!meCheck)
+        {
+            swal({
+                icon: "error",
+                text: "{{ __('Please Check Your Available Day!') }}",
+                type: 'error'
+            });
+        }
+        else
+        {
+            $('.close2').click();
+        }
+      }
+
+      function categorySubcategoryCheck()
+      {
+          if($('select[name="category_id"]').val() ==null)
+          {
+            swal({
+                    icon: "error",
+                    text: "{{ __('Please Select Category!') }}",
+                    type: 'error'
+                });
+          }
+          else{
+            meCheckSubCategory=false;
+            $.each($('input[name="sub_category_id[]"]'),function(){
+                if($(this).is(':checked'))
+                {
+                    meCheckSubCategory=true;
+                }
+            });
+            if(!meCheckSubCategory)
+            {
+                swal({
+                    icon: "error",
+                    text: "{{ __('Please Select Sub Category!') }}",
+                    type: 'error'
+                });
+            }
+            else{
+                $('.close1').click();
+            }
+          }
+        
+      }
       function checkboxSubCategory()
       {
         meCheckSubCategory=false;
