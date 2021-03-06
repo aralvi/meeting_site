@@ -64,7 +64,7 @@
     </div>
     <div class="text-center pt-4 pb-4"><img src="{{ asset('assets/frontend/images/curve.png') }}" alt=""></div>
     <div class="d-flex justify-content-center">
-        <div class="row m-0 pt-3 pb-3 bg-0000006b d-flex w-43 justify-content-center align-items-cente">
+        <div class="row m-0 pt-3 pb-3 bg-0000006b d-flex w-43 justify-content-center align-items-center">
             <div class="d-flex bg-ffffff w-81  pt-3 pb-3 borderRadius-5px pl-3">
                 <div><img src="{{ asset('assets/frontend/images/search.png') }}" class="img-fluid" alt=""></div>
 

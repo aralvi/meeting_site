@@ -164,11 +164,71 @@
 } */
 
 /* On mouse-over, add a grey background color */
-.checkmark::after{
+/* .checkmark::after{
   background-color: red !important;
+} */
+.calender_Shadow{
+  box-shadow: rgb(50 50 93 / 25%) 0px 6px 24px -5px, rgb(0 0 0 / 0%) 0px 3px 1px -15px;
+}
+.close:focus{
+    outline: none !important;
+    color: #3ac574;
+    opacity: 1 !important;
+}
+.bg-success{
+  background-color: #3ac574 !important;
+
+}
+.border-bottom{
+  border-bottom: 1px solid #D8D8D8;
+}
+/* / radio Color css / */
+input[type='radio']:after {
+width: 20px;
+height: 20px;
+border-radius: 15px;
+top: -4px;
+left: -1px;
+position: relative;
+background-color: #d1d3d1;
+content: '';
+display: inline-block;
+visibility: visible;
+border: 2px solid white;
+
 }
 
-
+input[type='radio']:checked:after {
+width: 20px;
+height: 20px;
+border-radius: 15px;
+top: -4px;
+left: -1px;
+position: relative;
+background-color: #3AC574;
+content: '';
+display: inline-block;
+visibility: visible;
+border: 2px solid white;
+cursor: pointer;
+}
+.dropdown-toggle-btn::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .255em;
+  vertical-align: .255em;
+  content: "";
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+}
+/* / radio Color css / */
+/* .styLing_border{
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+} */
 
 
 
@@ -208,6 +268,6 @@
   max-width: 33% !important;
 }
 .mw-67{
-  max-width: 67% !important;
+  max-width: 70% !important;
 }
 }

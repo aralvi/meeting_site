@@ -4,11 +4,13 @@
 	@include('includes.admin.head')
 	@yield('extra-css')
 </head>
-<body >
-		
-	@include('includes.admin.header')
-
-	@yield('content')
+<body  class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		@include('includes.admin.header')
+		<div class="content-wrapper">
+            @yield('content')
+		</div>
+    </div>
 	
 	@yield('footer')
 

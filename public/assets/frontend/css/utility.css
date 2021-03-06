@@ -80,9 +80,9 @@ opacity: 1 !important;
 /* .f-21{
   font-size: 	1.3125rem;
 } */
-.f-21{
+/* .f-21{
   font-size:  1rem !important;
-}
+} */
 .borderRadius-5px{
          border-radius: 5px;
 }
@@ -90,7 +90,22 @@ opacity: 1 !important;
   border-radius: 12px;
 }
 .borderRadius-10px{
-  border-radius: 10px;
+  border-radius: 10px !important;
+}
+.bblr{
+  border-bottom-left-radius: 10px !important;
+}
+.bbrr{
+  border-bottom-right-radius: 10px !important;
+}
+.cl-a20101{
+  color: #A20101;
+}
+.border_Left{
+  border-left: 1px solid #707070; 
+}
+.cl-0eaf39{
+  color: #0EAF39;
 }
 .f-13{
   font-size: 13px;
@@ -115,6 +130,9 @@ input{
 }
 .fw-600{
   font-weight: 600;
+}
+.f-32{
+  font-size: 	2rem;
 }
 .f-21{
   font-size: 	1.3125rem;

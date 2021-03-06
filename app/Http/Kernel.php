@@ -39,16 +39,12 @@ class Kernel extends HttpKernel
         'userstatus'=>[
             \App\Http\Middleware\UserStatus::class,
         ],
-        'storeuserauth'=>[
-            \App\Http\Middleware\StoreUserAuth::class,
-        ],
 
-        'dashboarduserauth'=>[
-            \App\Http\Middleware\DashboardUserAuth::class,
+        'admincheck'=>[
+            \App\Http\Middleware\AdminCheck::class,
         ],
-
-        'singlestoreauth'=>[
-            \App\Http\Middleware\SingleStoreAuth::class,
+        'specialistcheck'=>[
+            \App\Http\Middleware\SpecialistCheck::class,
         ],
 
         'api' => [

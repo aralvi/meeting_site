@@ -5,7 +5,7 @@
         <div class="row m-0 box-shadow-reg form-radius rounded-right-reg">
             <div class="col-md-5 bg-register-img2 p-0">
                 <div class="text-center padding-bottom-reg-1 inner-padding">
-                    <img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" />
+                    <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" /></a>
                     <div class="display-2 font-600 text-white pt-5">Welcome Back!</div>
 
                     <div class="h3 m-0 text-white pt-3 px-2">

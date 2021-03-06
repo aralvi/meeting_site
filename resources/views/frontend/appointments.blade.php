@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/portfolio.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/app.css') }}">
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 <style type="text/css">
    .dropdown-toggle::after{display: none;}    
 </style>
@@ -277,15 +278,84 @@
    <div class="col-md-2"></div>
 </div>
 <section class="main_padding pt-70">
-  <form action="{{ route('appointments.store') }}" method="POST">
-   @csrf
-   <input type="hidden" name="date" id="date" value="">
-   <input type="hidden" name="service_id"  value="{{ $service->id }}">
-   <input type="hidden" name="rate"  value="{{ $service->rate }}">
-   <input type="hidden" name="specialist_id"  value="{{ $service->specialist_id }}">
-  <div class="row m-0">
-      <div class="col-lg-3 col-md-3 light mw-33 pl-0">
-         <div class="calendar robotoRegular calender_Shadow pl-2 pr-2 pt-3 pb-3">
+   <!-- <div class="bg-dark pt-2 pb-2 styLing_border"></div> -->
+  <form action="">
+  <div class="row m-0 justify-content-between flex-nowrap">
+      <div class="col-lg-3 col-md-3 light mw-33 p-0">
+      <div class="calendar robotoRegular calender_Shadow pl-2 pr-2 pt-3 pb-3">
+  <div class="calendar__month">
+    <div class="cal-month__previous"><</div>
+    <div class="cal-month__current"></div>
+    <div class="cal-month__next">></div>
+  </div>
+  <div class="calendar__head border-bottom">
+    <div class="cal-head__day"></div>
+    <div class="cal-head__day"></div>
+    <div class="cal-head__day"></div>
+    <div class="cal-head__day"></div>
+    <div class="cal-head__day"></div>
+    <div class="cal-head__day"></div>
+    <div class="cal-head__day"></div>
+  </div>
+  <div class="calendar__body pt-3">
+    <div class="cal-body__week">
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+    </div>
+    <div class="cal-body__week">
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+    </div>
+    <div class="cal-body__week">
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+    </div>
+    <div class="cal-body__week">
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+    </div>
+    <div class="cal-body__week">
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+    </div>
+    <div class="cal-body__week">
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+      <div class="cal-body__day"></div>
+    </div>
+  </div>
+</div>
+
+         <!-- <div class="calendar robotoRegular calender_Shadow pl-2 pr-2 pt-3 pb-3">
             <div class="calendar-header border-bottom">
                <span class="month-picker" id="month-picker">February</span>
                <div class="year-picker">
@@ -311,11 +381,13 @@
                <div class="calendar-days cl-878787"></div>
             </div>
             <div class="month-list"></div>
-         </div>
+         </div> -->
       </div>
-      <div class="col-lg-9 col-md-9 mw-67 pr-0">
+
+     
+      <div class="col-lg-9 col-md-9 mw-67 pl-3 pb-4 pr-3 calender_Shadow borderRadius-12px">
          <div class="row m-0 pt-4">
-            <div class="col-md-6 col-lg-6">
+            <div class="col-md-6 col-lg-6 p-0">
                <div class="d-flex ">
                   <div><img
                      src="{{ asset('assets/frontend/images/Group198.png') }}"
@@ -324,11 +396,11 @@
                      /></div>
                   <div class="f-21 robotoRegular cl-000000 pl-3">
                      Morning + Afternoond
-                     <div class="f-16 cl-878787">9:00 AM to 2:00 PM</div>
+                     <div class="f-16 cl-878787 ">9:00 AM to 2:00 PM</div>
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-6 robotoRegular"><button type="button" class="close cl-3ac754" aria-label="Close">
+            <div class="col-md-6 col-lg-6 p-0 robotoRegular"><button type="button" class="close cl-3ac754" aria-label="Close">
                <span class="ml-auto cl-3ac754">close</span>  <span class="pt-2" aria-hidden="true">&times;</span>
                </button>
             </div>
@@ -339,35 +411,35 @@
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
   <input type="radio"  name="time" class="bg-success btnclass"  value="9:00 AM">
-  <span class="checkmark">9:00 AM</span>
+  <span class="checkmark pl-2">9:00 AM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="9:20 AM">
-<span class="Time">9:20 AM</span>
+<span class="Time pl-2">9:20 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="9:40 AM" >
-<span class="Time">9:40 AM</span>
+<span class="Time pl-2">9:40 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="10:00 AM" >
-<span class="Time">10:00 AM</span>
+<span class="Time pl-2">10:00 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="10:20 AM" >
-<span class="Time">10:20 AM</span>
+<span class="Time pl-2">10:20 AM</span>
 </label>  
              </div>
             </div>
@@ -378,41 +450,41 @@
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
   <input type="radio"  name="time" class="bg-success btnclass" value="10:50 AM">
-  <span class="checkmark">10:50 AM</span>
+  <span class="checkmark pl-2">10:50 AM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="11:30 AM">
-<span class="Time">11:30 AM</span>
+<span class="Time pl-2">11:30 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="11:45 AM">
-<span class="Time">11:45 AM</span>
+<span class="Time pl-2">11:45 AM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="12:15 PM">
-<span class="Time">12:15 PM</span>
+<span class="Time pl-2">12:15 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark btnclass" value="1:00 PM">
-<span class="Time">1:00 PM</span>
+<span class="Time pl-2">1:00 PM</span>
 </label>  
              </div>
             </div>
          </div>
-         <div class="border w-100 mt-3"></div>
-         <section class="pt-3">
+         <div class="border w-100 mt-5"></div>
+         <section class="pt-4">
          <div class="d-flex ">
                   <div><img
                      src="{{ asset('assets/frontend/images/Group198.png') }}"
@@ -431,35 +503,35 @@
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
   <input type="radio"  name="time" class="bg-success"  value="5:00 PM">
-  <span class="checkmark">5:00 PM</span>
+  <span class="checkmark pl-2">5:00 PM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark" value="5:20 PM">
-<span class="Time">5:20 PM</span>
+<span class="Time pl-2">5:20 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark" value="5:40 PM">
-<span class="Time">5:40 PM</span>
+<span class="Time pl-2">5:40 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark" value="6:00 PM">
-<span class="Time">6:00 PM</span>
+<span class="Time pl-2">6:00 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark" value="6:20 PM">
-<span class="Time">6:20 PM</span>
+<span class="Time pl-2">6:20 PM</span>
 </label>  
              </div>
             </div>
@@ -470,48 +542,63 @@
                
                  <label class="border pt-2 rounded w-100 pb-2  ">
   <input type="radio"  name="time" class="bg-success" value="6:50 PM">
-  <span class="checkmark">6:50 PM</span>
+  <span class="checkmark pl-2">6:50 PM</span>
 </label>  
                </div>
                <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark" value="7:30 PM">
-<span class="Time">7:30 PM</span>
+<span class="Time pl-2">7:30 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2  ">
 <input type="radio" name="time" class="bg-success checkmark" value="7:40 PM">
-<span class="Time">7:40 PM</span>
+<span class="Time pl-2">7:40 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark" value="8:15 PM">
-<span class="Time">8:15 PM</span>
+<span class="Time pl-2">8:15 PM</span>
 </label>  
              </div>
              <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
                
                <label class="border container1 pt-2 rounded w-100 pb-2 ">
 <input type="radio" name="time" class="bg-success checkmark" value="8:20 PM">
-<span class="Time">8:20 PM</span>
+<span class="Time pl-2">8:20 PM</span>
 </label>  
              </div>
             </div>
          </div>
-         <div class="cl-000000 f-18 robotoRegular pt-4">Standard buzz cut or 1 length even line up</div>
-         <div class="row m-0">
-            <div class="col-md-6"></div>
-            <div class="col-md-6 ml-auto">
-                  <button  type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" >submit</button>
+         <div class="row pt-4 m-0 robotoRegular">
+         <div class="cl-000000 f-18  col-md-6  pl-0 pr-0"><div>Standard buzz cut or 1 length even line up</div></div>
+         <div class="col-md-6  cl-000000 d-flex justify-content-end"><div class="f-21 ">$40.00</div></div>
+         </div>
+         <div class="row m-0 pt-3">
+            <div class="col-md-6 p-0">
+            <div class="btn-group w-50 h-44">
+  <button type="button" class="btn btn-outline-success bg-3ac574 cl-ffffff dropdown-toggle-btn w-100 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Any staff Member
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
             </div>
+            <div class="col-md-6 pl-0 ml-auto text-end pr-0"><form action=""><button href="" type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button ml-auto" type="submit">submit</button></form></div>
          </div>
       </div>
    </div>
+  
   </form>
 </section>
 <section class="main_padding pt-5">
@@ -810,7 +897,11 @@
 {{-- content section end --}}
 {{-- footer section start --}}
 @section('extra-script')
+
 <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
+
+
+{{-- footer section end --}}
 <script>
 
 $('.login_button').on('click',function(){
