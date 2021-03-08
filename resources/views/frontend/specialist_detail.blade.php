@@ -75,15 +75,15 @@
           <div class=" f-44 robotoMedium">{{ ucwords($specialist->user->name) }}</div>
           <div class="d-flex border-bottom pb-3">
             <div class="pr-3 robotoMedium">{{ ucwords($specialist->category->name) }}</div>
-            @if($specialist->address !=null)
+            {{-- @if($specialist->address !=null) --}}
               <div class="border-left"></div>
-              <div class="pl-3 robotoRegular">{{ ucfirst($specialist->address) }}</div>
-            @endif
+              <div class="pl-3 robotoRegular">{{ ucfirst($specialist->user->country) }}</div>
+            {{-- @endif --}}
             
           </div>
           @if($specialist->description !=null)
             <div class="border-bottom pb-3">
-              <div class="robotoMedium f-18 pt-3">About Us</div>
+              <div class="robotoMedium f-18 pt-3">About Me</div>
                 <div class="robotoRegular f-18 text-justify pt-3">{{$specialist->description}}
                 </div>
             </div>
@@ -127,7 +127,7 @@
     @if($specialist->services->count() > 0)
       <section class="main_padding pt-5">
         <div class="row m-0 p-0">
-          <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Bookings:</div>
+          <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Services:</div>
           <div class="col-md-3 ml-auto p-0">
             <div class="d-flex m-0">  
               <div class="pt-4 w-100"> 
@@ -144,10 +144,10 @@
               
               <thead class="sticky-top bg-white cl-3ac754 ">
                 <tr class="bg-white robotoRegular ">
-                  <th scope="col">Sr</th>
+                  <th scope="col">No</th>
                   <th scope="col">Service</th>
                   <th scope="col">Category</th>
-                  <th scope="col">Sub Category</th>
+                  <th scope="col">Subcategory</th>
                   <th scope="col">Timing</th>
                   <th scope="col">Rate</th>
                   <th scope="col">Status</th>
@@ -165,7 +165,7 @@
                     @endphp 
                     <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
                     <td>{{ $service->timing }} Minutes</td>
-                    <td>$ {{ $service->rate }}</td>
+                    <td> {{ $service->rate }} USD</td>
                     <td>{{ $service->status }}</td>
                     <td><a href="{{ route('appointment_request',encrypt($service->id)) }}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" target="_blank">Book</a></td>
                   </tr>

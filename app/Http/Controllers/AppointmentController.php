@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Models\Appointment;
 use App\Models\Specialists\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,11 @@ class AppointmentController extends Controller
     {
        $id =  decrypt($id);
        $service = Service::findOrFail($id);
-       return view('frontend.appointments',compact('service'));
+       $services = Service::where('specialist_id',$service->specialist_id)->get();
+        $today = Carbon::today();
+        $tomorrow = Carbon::tomorrow();
+       $appointments = Appointment::where('service_id',$id)->where('status','1')->whereBetween('created_at', [$today, $tomorrow])->get();
+       return view('frontend.appointments',compact('service', 'appointments', 'services'));
     }
 
     /**
