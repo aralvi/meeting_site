@@ -636,7 +636,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/kitty-kat-wax-men-services.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" class="img-fluid"  alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" class="img-fluid"  alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -653,7 +653,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/8.png') }}" class="img-fluid" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -670,7 +670,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/songe-dave-barbershop.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/8.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -687,7 +687,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/d6a1d878-3804-439a-a684-0625544321d1-LastDayOut13.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" class="img-fluid" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
                                             
@@ -715,7 +715,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/kitty-kat-wax-men-services.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" class="img-fluid"  alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -732,7 +732,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/siskas-hc1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -749,7 +749,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/songe-dave-barbershop.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/songe-dave-barbershop1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/8.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -766,7 +766,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/d6a1d878-3804-439a-a684-0625544321d1-LastDayOut13.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
                                             
@@ -792,7 +792,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/kitty-kat-wax-men-services.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" class="img-fluid"  alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -809,7 +809,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/siskas-hc1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -826,7 +826,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/songe-dave-barbershop.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/songe-dave-barbershop1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/8.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -843,7 +843,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/d6a1d878-3804-439a-a684-0625544321d1-LastDayOut13.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
                                             
@@ -894,7 +894,7 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -911,9 +911,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/unnamed.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}"  class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Jessica</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -928,9 +928,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/Dr_Bernstein_Active-FX_Male_Face_New_York_NYC_14875-scaled.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/4.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Mr.Edward</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -945,9 +945,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/3.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Cary Sam</div>
                                             
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
@@ -973,7 +973,7 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -990,9 +990,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/unnamed.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}"  class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Jessica</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1007,9 +1007,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/Dr_Bernstein_Active-FX_Male_Face_New_York_NYC_14875-scaled.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/4.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Mr.Edward</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1024,9 +1024,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/3.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Cary Sam</div>
                                             
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
@@ -1050,7 +1050,7 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -1067,9 +1067,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/unnamed.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}"  class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Jessica</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1084,9 +1084,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/Dr_Bernstein_Active-FX_Male_Face_New_York_NYC_14875-scaled.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/4.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Mr.Edward</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1101,9 +1101,9 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/3.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Cary Sam</div>
                                             
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
@@ -1153,7 +1153,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/unnamed (2).png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/unnamed (1).png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/9.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -1168,11 +1168,11 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/4.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/7.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1187,9 +1187,9 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/769_iStock-538204903.jpg_1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt=""  class="img-fluid" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Jimie paul</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1202,9 +1202,9 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/5.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/8.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}"  class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
                                             
@@ -1232,7 +1232,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/unnamed (2).png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/unnamed (1).png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/9.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -1247,11 +1247,11 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/4.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/7.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1266,9 +1266,9 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/769_iStock-538204903.jpg_1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt=""  class="img-fluid" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Jimie paul</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1281,9 +1281,9 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/5.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/8.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}"  class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
                                             
@@ -1309,7 +1309,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/unnamed (2).png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/unnamed (1).png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/9.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -1324,11 +1324,11 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/4.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/7.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1343,9 +1343,9 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/769_iStock-538204903.jpg_1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt=""  class="img-fluid" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
+                                            <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Jimie paul</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
                                             <div class="d-flex justify-content-between pt-3"> <div>   <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">Join us for some shine</h5></div>
                                               <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-21 ">40 reviews
@@ -1358,9 +1358,9 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/5.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/8.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}"  class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
                                             
@@ -1413,7 +1413,7 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1439,9 +1439,37 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/unnamed.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
+                                            </div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
+                                            <div class="d-flex justify-content-between pt-1"> 
+                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
+                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
+                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
+                                                </p></div><div class="d-flex justify-content-center">
+                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
+                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
+                                            
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-sm-12 ">
+                                    <a href="##" target="_blank">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
+                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1467,39 +1495,11 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/Dr_Bernstein_Active-FX_Male_Face_New_York_NYC_14875-scaled.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">John samy</div>
-                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
-                                            <div class="d-flex justify-content-between pt-1"> 
-                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
-                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
-                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
-                                                </p></div><div class="d-flex justify-content-center">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
-                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
-                                            
-                                            </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-sm-12 ">
-                                    <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure1.png') }}" alt="" srcset="">
-                                            </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
                                             <div class="d-flex justify-content-between pt-1"> 
@@ -1536,7 +1536,7 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1562,9 +1562,37 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/unnamed.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
+                                            </div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
+                                            <div class="d-flex justify-content-between pt-1"> 
+                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
+                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
+                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
+                                                </p></div><div class="d-flex justify-content-center">
+                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
+                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
+                                            
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-sm-12 ">
+                                    <a href="##" target="_blank">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
+                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1590,39 +1618,11 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/Dr_Bernstein_Active-FX_Male_Face_New_York_NYC_14875-scaled.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">John samy</div>
-                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
-                                            <div class="d-flex justify-content-between pt-1"> 
-                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
-                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
-                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
-                                                </p></div><div class="d-flex justify-content-center">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
-                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
-                                            
-                                            </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-sm-12 ">
-                                    <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure1.png') }}" alt="" srcset="">
-                                            </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
                                             <div class="d-flex justify-content-between pt-1"> 
@@ -1657,9 +1657,8 @@
                                         <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                           
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
                                             <div class="d-flex justify-content-between pt-1"> 
@@ -1684,9 +1683,37 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/unnamed.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
+                                            </div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
+                                            <div class="d-flex justify-content-between pt-1"> 
+                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
+                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
+                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
+                                                </p></div><div class="d-flex justify-content-center">
+                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
+                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
+                                            
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-sm-12 ">
+                                    <a href="##" target="_blank">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
+                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1712,39 +1739,11 @@
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
                                         <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/Dr_Bernstein_Active-FX_Male_Face_New_York_NYC_14875-scaled.png') }}" class="card-img-top" alt="...">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/2.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">John samy</div>
-                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
-                                            <div class="d-flex justify-content-between pt-1"> 
-                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
-                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
-                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
-                                                </p></div><div class="d-flex justify-content-center">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
-                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
-                                            
-                                            </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-sm-12 ">
-                                    <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px box_shadow ">
-                                            <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/Dr Oyer Clinic Procedure1.png') }}" alt="" srcset="">
-                                            </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
                                             <div class="d-flex justify-content-between pt-1"> 
@@ -1801,10 +1800,10 @@
   <div class="row m-0">
 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
                                             <img src="{{ asset('assets/frontend/images/unnamed (2).png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/new1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/9.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1829,10 +1828,38 @@
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/4.png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/7.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
+                                            </div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
+                                            <div class="d-flex justify-content-between pt-1"> 
+                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
+                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
+                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
+                                                </p></div><div class="d-flex justify-content-center">
+                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
+                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
+                                            
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-sm-12 ">
+                                    <a href="##" target="_blank">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
+                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1857,40 +1884,12 @@
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/769_iStock-538204903.jpg_1.png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">John samy</div>
-                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
-                                            <div class="d-flex justify-content-between pt-1"> 
-                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
-                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
-                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
-                                                </p></div><div class="d-flex justify-content-center">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
-                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
-                                            
-                                            </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-sm-12 ">
-                                    <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/5.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/8.png') }}" alt="" srcset="">
-                                            </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
                                             <div class="d-flex justify-content-between pt-1"> 
@@ -1924,10 +1923,10 @@
 <div class="row m-0">
 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/unnamed (2).png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/unnamed (1).png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1952,10 +1951,38 @@
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/4.png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/7.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
+                                            </div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
+                                            <div class="d-flex justify-content-between pt-1"> 
+                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
+                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
+                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
+                                                </p></div><div class="d-flex justify-content-center">
+                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
+                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
+                                            
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-sm-12 ">
+                                    <a href="##" target="_blank">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
+                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -1980,40 +2007,12 @@
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/769_iStock-538204903.jpg_1.png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">John samy</div>
-                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
-                                            <div class="d-flex justify-content-between pt-1"> 
-                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
-                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
-                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
-                                                </p></div><div class="d-flex justify-content-center">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
-                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
-                                            
-                                            </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-sm-12 ">
-                                    <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/5.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/8.png') }}" alt="" srcset="">
-                                            </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
                                             <div class="d-flex justify-content-between pt-1"> 
@@ -2045,10 +2044,10 @@
   <div class="row m-0">
 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/unnamed (2).png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/skin-care-doctors-1.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/unnamed (1).png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/7.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -2073,10 +2072,38 @@
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/4.png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/0c458911da2b596bcdbf8350cf3b753b5a-08-male-hairdresser.2x.h473.w710.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/7.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
+                                            </div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
+                                            <div class="d-flex justify-content-between pt-1"> 
+                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
+                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
+                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
+                                                </p></div><div class="d-flex justify-content-center">
+                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
+                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
+                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
+                                            
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-sm-12 ">
+                                    <a href="##" target="_blank">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
+                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                                <img src="{{ asset('assets/frontend/images/6.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
@@ -2101,40 +2128,12 @@
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-12 ">
                                     <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/769_iStock-538204903.jpg_1.png') }}" class="card-img-top" alt="...">
+                                        <div class="card border-0  borderRadius-10px box_shadow ">
+                                            <img src="{{ asset('assets/frontend/images/10.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/5.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">John samy</div>
-                                            <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
-                                            <div class="d-flex justify-content-between pt-1"> 
-                                         <div class="col-md-8 p-0">   <div>   <h5 class="card-title m-0 RobotoMedium f-13 cl-3ac754">Skin Specialists</h5></div><div class="f-13 RobotoRegular w-75 cl-6b6b6b">We help you to invent your 
-                                            professional look.</div><div class="f-14 cl-888888 pt-2">Working hours: 8 hrs</div></div>
-                                             <div class="col-md-4 p-0 text-center"> <div>  <p class="card-text m-0 robotoRegular cl-6 cl-3ac754 f-14 mt-4 borderRadius-50px pt-1 text-center pr-1 border-Green">40 reviews
-                                                </p></div><div class="d-flex justify-content-center">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div>
-                                                <div class="pl-1"><img src="{{ asset('assets/frontend/images/Path89.png') }}" alt=""></div></div>
-                                                <div class="robotoRegular cl-888888 text-center">$40 / hr</div>
-                                            
-                                            </div>
-                                            </div>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-sm-12 ">
-                                    <a href="##" target="_blank">
-                                        <div class="card border-0  borderRadius-10px ">
-                                            <img src="{{ asset('assets/frontend/images/5.png') }}" class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/8.png') }}" alt="" srcset="">
-                                            </div>
-                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
+                                            <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Anna Jones</div>
                                             
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">
                                             <div class="d-flex justify-content-between pt-1"> 
