@@ -46,9 +46,10 @@ background-image: url('../images/left.png') !important;
     height: 94px;
     border-radius: 50px;
     position: absolute;
-    bottom: 75px;
+    bottom: 92px;
     right: 44px;
 }
+
 .banner-content{
     
     position: absolute;

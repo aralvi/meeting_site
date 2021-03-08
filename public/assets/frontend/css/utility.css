@@ -180,10 +180,16 @@ font-size:2.75rem;
 .border-ffffff{
   border: 1px solid #FFFFFF; 
 }
+.cl-888888{
+  color: #888888;
+}
 .footer_input{
   border: 1px solid #bcbcbc;
 
 }
+.border-Green{
+  border: 1px solid #3ac754;
+} 
 .cl-bcbcbc{
   color: #BCBCBC;
 }
