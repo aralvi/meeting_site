@@ -636,7 +636,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/kitty-kat-wax-men-services.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" class="img-fluid"  alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -653,7 +653,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/siskas-hc.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/siskas-hc1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/8.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Silvester</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -670,7 +670,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/songe-dave-barbershop.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/songe-dave-barbershop1.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/1.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">John samy</div>
                                             <div class="card-footer robotoRegular bblr bbrr  bg-ffffff pt-4 pb-4">
@@ -687,7 +687,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/d6a1d878-3804-439a-a684-0625544321d1-LastDayOut13.png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}" class="img-fluid" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep cl-ffffff f-26 robotoMedium pl-3">Andy James</div>
                                             
@@ -1804,7 +1804,7 @@
                                         <div class="card border-0  borderRadius-10px ">
                                             <img src="{{ asset('assets/frontend/images/unnamed (2).png') }}" class="card-img-top" alt="...">
                                             <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset('assets/frontend/images/unnamed (1).png') }}" alt="" srcset="">
+                                                <img src="{{ asset('assets/frontend/images/new1.png') }}" alt="" srcset="">
                                             </div>
                                             <div class="border-0 name_Sep_1 cl-ffffff f-26 robotoMedium pl-3">Dino Allen</div>
                                             <div class="card-footer border-0 robotoRegular robotoRegular bblr bbrr  bg-ffffff pt-4 ">

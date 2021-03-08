@@ -131,7 +131,7 @@
                 <div class="row m-0 pt-4">
                     <div class="col-md-12 p-0 justify-content-between d-flex">
                         <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
-                            <label class="border pt-2 rounded w-100 pb-2">
+                            <label class="border pt-2 rounded w-100 pb-2" >
                                 <input type="radio" name="time" class="bg-success btnclass" @foreach ($appointments as $appointment)
                                     @if ($appointment->time == '9:00 AM')
                                         disabled

@@ -212,6 +212,18 @@ visibility: visible;
 border: 2px solid white;
 cursor: pointer;
 }
+/* input:disabled:after {
+
+  /* background-color: #d1d3d1 !important; */
+  /* background-color:  orangered !important;  */
+input:disabled:after {
+  background-color:  orangered !important; 
+}
+
+input:disabled+label{
+  background-color:  orangered !important; 
+}
+
 .dropdown-toggle-btn::after {
   display: inline-block;
   width: 0;
