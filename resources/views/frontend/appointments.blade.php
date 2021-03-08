@@ -644,6 +644,11 @@
 {{-- footer section end --}}
 <script>
     $(".login_button").on("click", function () {
+        
+        if($("input[name='time']:checked").val() == null){
+            alert('Please select any time slot for appointment');
+            return false
+        }
         var month_year = $(".cal-month__current").text();
         var day = $(".cal-day__day--selected").text();
         $("#date").val(day + " " + month_year);
