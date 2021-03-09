@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,15 @@ Route::get('/', function () {
 Route::get('userNameCheck','UserController@usernameCheck')->name('usernameCheck');
 
 Auth::routes();
+
+// Social logins
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.facebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
+
+
+
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 
 Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
