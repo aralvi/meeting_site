@@ -10,6 +10,215 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/portfolio.css') }}">
   <style type="text/css">
     .dropdown-toggle::after{display: none;}    
+
+
+ 
+
+
+
+#clock.light .digits div span{
+	background-color:#fff;
+	border-color:#fff;	
+}
+
+#clock.light .digits div.dots:before,
+#clock.light .digits div.dots:after{
+	background-color:#fff;
+}
+
+
+
+#clock .digits div{
+	text-align:left;
+	position:relative;
+	width: 28px;
+	height:50px;
+	display:inline-block;
+	/* margin:0 4px; */
+}
+
+#clock .digits div span{
+	opacity:0;
+	position:absolute;
+
+	-webkit-transition:0.25s;
+	-moz-transition:0.25s;
+	transition:0.25s;
+}
+
+#clock .digits div span:before,
+#clock .digits div span:after{
+	content:'';
+	position:absolute;
+	width:0;
+	height:0;
+	border:5px solid transparent;
+}
+
+#clock .digits .d1{			height:5px;width:5px;top:0;left:16px;}
+#clock .digits .d1:before{	border-width:0 5px 5px 0;border-right-color:inherit;left:-5px;}
+#clock .digits .d1:after{	border-width:0 0 5px 5px;border-left-color:inherit;right:-5px;}
+
+#clock .digits .d2{			height:5px;width:5px;top:15px;left:16px;}
+#clock .digits .d2:before{	border-width:3px 4px 2px;border-right-color:inherit;left:-8px;}
+#clock .digits .d2:after{	border-width:3px 4px 2px;border-left-color:inherit;right:-8px;}
+
+#clock .digits .d3{			height:5px;width:5px;top:30px;left:16px;}
+#clock .digits .d3:before{	border-width:5px 5px 0 0;border-right-color:inherit;left:-5px;}
+#clock .digits .d3:after{	border-width:5px 0 0 5px;border-left-color:inherit;right:-5px;}
+
+#clock .digits .d4{			width:5px;height:5px;top:7px;left:10px;}
+#clock .digits .d4:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d4:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
+
+#clock .digits .d5{			width:5px;height:5px;top:7px;right:0;}
+#clock .digits .d5:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d5:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
+
+#clock .digits .d6{			width:5px;height:5px;top:23px;left:10px;}
+#clock .digits .d6:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d6:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
+
+#clock .digits .d7{			width:5px;height:5px;top:23px;right:0;}
+#clock .digits .d7:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d7:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
+
+
+/* 1 */
+
+#clock .digits div.one .d5,
+#clock .digits div.one .d7{
+	opacity:1;
+}
+
+/* 2 */
+
+#clock .digits div.two .d1,
+#clock .digits div.two .d5,
+#clock .digits div.two .d2,
+#clock .digits div.two .d6,
+#clock .digits div.two .d3{
+	opacity:1;
+}
+
+/* 3 */
+
+#clock .digits div.three .d1,
+#clock .digits div.three .d5,
+#clock .digits div.three .d2,
+#clock .digits div.three .d7,
+#clock .digits div.three .d3{
+	opacity:1;
+}
+
+/* 4 */
+
+#clock .digits div.four .d5,
+#clock .digits div.four .d2,
+#clock .digits div.four .d4,
+#clock .digits div.four .d7{
+	opacity:1;
+}
+
+/* 5 */
+
+#clock .digits div.five .d1,
+#clock .digits div.five .d2,
+#clock .digits div.five .d4,
+#clock .digits div.five .d3,
+#clock .digits div.five .d7{
+	opacity:1;
+}
+
+/* 6 */
+
+#clock .digits div.six .d1,
+#clock .digits div.six .d2,
+#clock .digits div.six .d4,
+#clock .digits div.six .d3,
+#clock .digits div.six .d6,
+#clock .digits div.six .d7{
+	opacity:1;
+}
+
+
+/* 7 */
+
+#clock .digits div.seven .d1,
+#clock .digits div.seven .d5,
+#clock .digits div.seven .d7{
+	opacity:1;
+}
+
+/* 8 */
+
+#clock .digits div.eight .d1,
+#clock .digits div.eight .d2,
+#clock .digits div.eight .d3,
+#clock .digits div.eight .d4,
+#clock .digits div.eight .d5,
+#clock .digits div.eight .d6,
+#clock .digits div.eight .d7{
+	opacity:1;
+}
+
+/* 9 */
+
+#clock .digits div.nine .d1,
+#clock .digits div.nine .d2,
+#clock .digits div.nine .d3,
+#clock .digits div.nine .d4,
+#clock .digits div.nine .d5,
+#clock .digits div.nine .d7{
+	opacity:1;
+}
+
+/* 0 */
+
+#clock .digits div.zero .d1,
+#clock .digits div.zero .d3,
+#clock .digits div.zero .d4,
+#clock .digits div.zero .d5,
+#clock .digits div.zero .d6,
+#clock .digits div.zero .d7{
+	opacity:1;
+}
+
+
+/* The dots */
+
+#clock .digits div.dots{
+	width:5px;
+}
+
+#clock .digits div.dots:before,
+#clock .digits div.dots:after{
+	width:5px;
+	height:5px;
+	content:'';
+	position:absolute;
+	left:5px;
+	top:5px;
+}
+
+#clock .digits div.dots:after{
+	top:25px;
+}
+
+
+
+
+
+
+/* #clock .ampm{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+	font-size:12px;
+} */
+
+
+
   </style>
 	@endsection
 {{-- head end --}}
@@ -74,7 +283,15 @@
         <div class="col-md-5 col-lg-6 cl-ffffff pl-5 pr-5">
           <div class="d-flex justify-content-between align-items-center">
             <div class=" f-44 robotoMedium">{{ ucwords($specialist->user->name) }}</div>
-                <div class="digital-clock">00:00:00</div>
+                {{-- <div class="digital-clock">00:00:00</div> --}}
+                <div id="clock" class="light">
+			<div class="display">
+				
+				<div class="ampm"></div>
+				<div class="alarm"></div>
+				<div class="digits"></div>
+			</div>
+		</div>
           </div>
           <div class="d-flex border-bottom pb-3">
             <div class="pr-3 robotoMedium">{{ ucwords($specialist->category->name) }}</div>
@@ -465,6 +682,9 @@ art as welll!!!! I would give him 10 stars...</div>
 
 	@section('extra-script')
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- JavaScript Includes -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
     <script type="text/javascript">
       function inputSearchServices()
       {
@@ -493,38 +713,147 @@ art as welll!!!! I would give him 10 stars...</div>
      
 
 
-$(document).ready(function() {
-  clockUpdate();
-  setInterval(clockUpdate, 1000);
-})
+// $(document).ready(function() {
+//   clockUpdate();
+//   setInterval(clockUpdate, 1000);
+// })
 
-function clockUpdate() {
-  var date = new Date();
-  $('.digital-clock').css({'color': '#fff', 'text-shadow': '0 0 6px #ff0'});
-  function addZero(x) {
-    if (x < 10) {
-      return x = '0' + x;
-    } else {
-      return x;
-    }
-  }
+// function clockUpdate() {
+//   var date = new Date();
+//   $('.digital-clock').css({'color': '#fff', 'text-shadow': '0 0 6px #ff0'});
+//   function addZero(x) {
+//     if (x < 10) {
+//       return x = '0' + x;
+//     } else {
+//       return x;
+//     }
+//   }
 
-  function twelveHour(x) {
-    if (x > 12) {
-      return x = x - 12;
-    } else if (x == 0) {
-      return x = 12;
-    } else {
-      return x;
-    }
-  }
+//   function twelveHour(x) {
+//     if (x > 12) {
+//       return x = x - 12;
+//     } else if (x == 0) {
+//       return x = 12;
+//     } else {
+//       return x;
+//     }
+//   }
 
-  var h = addZero(twelveHour(date.getHours()));
-  var m = addZero(date.getMinutes());
-  var s = addZero(date.getSeconds());
+//   var h = addZero(twelveHour(date.getHours()));
+//   var m = addZero(date.getMinutes());
+//   var s = addZero(date.getSeconds());
 
-  $('.digital-clock').text(h + ':' + m + ':' + s)
-}
+//   $('.digital-clock').text(h + ':' + m + ':' + s)
+// }
+
+
+
+$(function(){
+
+    // Cache some selectors
+
+    var clock = $('#clock'),
+        alarm = clock.find('.alarm'),
+        ampm = clock.find('.ampm');
+
+    // Map digits to their names (this will be an array)
+    var digit_to_name = 'zero one two three four five six seven eight nine'.split(' ');
+
+    // This object will hold the digit elements
+    var digits = {};
+
+    // Positions for the hours, minutes, and seconds
+    var positions = [
+        'h1', 'h2', ':', 'm1', 'm2', ':', 's1', 's2'
+    ];
+
+    // Generate the digits with the needed markup,
+    // and add them to the clock
+
+    var digit_holder = clock.find('.digits');
+
+    $.each(positions, function(){
+
+        if(this == ':'){
+            digit_holder.append('<div class="dots">');
+        }
+        else{
+
+            var pos = $('<div>');
+
+            for(var i=1; i<8; i++){
+                pos.append('<span class="d' + i + '">');
+            }
+
+            // Set the digits as key:value pairs in the digits object
+            digits[this] = pos;
+
+            // Add the digit elements to the page
+            digit_holder.append(pos);
+        }
+
+    });
+
+    // Add the weekday names
+
+    var weekday_names = 'MON TUE WED THU FRI SAT SUN'.split(' '),
+        weekday_holder = clock.find('.weekdays');
+
+    $.each(weekday_names, function(){
+        weekday_holder.append('<span>' + this + '</span>');
+    });
+
+    var weekdays = clock.find('.weekdays span');
+
+    // Run a timer every second and update the clock
+
+    (function update_time(){
+
+        // Use moment.js to output the current time as a string
+        // hh is for the hours in 12-hour format,
+        // mm - minutes, ss-seconds (all with leading zeroes),
+        // d is for day of week and A is for AM/PM
+
+        var now = moment().format("hhmmssdA");
+
+        digits.h1.attr('class', digit_to_name[now[0]]);
+        digits.h2.attr('class', digit_to_name[now[1]]);
+        digits.m1.attr('class', digit_to_name[now[2]]);
+        digits.m2.attr('class', digit_to_name[now[3]]);
+        digits.s1.attr('class', digit_to_name[now[4]]);
+        digits.s2.attr('class', digit_to_name[now[5]]);
+
+        // The library returns Sunday as the first day of the week.
+        // Stupid, I know. Lets shift all the days one position down, 
+        // and make Sunday last
+
+        var dow = now[6];
+        dow--;
+
+        // Sunday!
+        if(dow < 0){
+            // Make it last
+            dow = 6;
+        }
+
+        // Mark the active day of the week
+        weekdays.removeClass('active').eq(dow).addClass('active');
+
+        // Set the am/pm text:
+        ampm.text(now[7]+now[8]);
+
+        // Schedule this function to be run again in 1 sec
+        setTimeout(update_time, 1000);
+
+    })();
+
+    // Switch the theme
+
+    $('a.button').click(function(){
+        clock.toggleClass('light dark');
+    });
+
+});
     </script>
 	@endsection
 
