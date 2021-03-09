@@ -132,10 +132,17 @@ class UserController extends Controller
 
     public function usernameCheck(Request $request)
     {
-        $user = User::where('username',$request->username)->first();
-        if($user !=null)
+        if(User::where('username',$request->username)->where('email',$request->email)->first() !=null)
         {
-            return response()->json(['status'=>false]);
+            return response()->json(['status'=>false,'errors'=>['Username'=>$request->username,'Email'=>$request->email]]);
+        }
+        else if(User::where('username',$request->username)->first() !=null)
+        {
+            return response()->json(['status'=>false,'errors'=>['Username'=>$request->username]]);
+        }
+        else if(User::where('email',$request->email)->first() !=null)
+        {
+            return response()->json(['status'=>false,'errors'=>['Email'=>$request->email]]);
         }
         else
         {
