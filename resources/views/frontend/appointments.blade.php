@@ -356,7 +356,7 @@
                 </div>
                 <div class="row pt-4 m-0 robotoRegular">
                     <div class="cl-000000 f-18 col-md-6 pl-0 pr-0"><div>Standard buzz cut or 1 length even line up</div></div>
-                    <div class="col-md-6 cl-000000 d-flex justify-content-end"><div class="f-21">${{ $service->rate }}</div></div>
+                    <div class="col-md-6 cl-000000 d-flex justify-content-end"><div class="f-21">${{ number_format($service->rate) }}</div></div>
                 </div>
                 <div class="row m-0 pt-3">
                     <div class="col-md-6 p-0">
@@ -402,7 +402,7 @@
                   <th scope="col">Service</th>
                   <th scope="col">Category</th>
                   <th scope="col">Subcategory</th>
-                  <th scope="col">Timing</th>
+                  <th scope="col">Duration</th>
                   <th scope="col">Rate</th>
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
@@ -419,7 +419,7 @@
                     @endphp 
                     <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
                     <td>{{ $service->timing }} Minutes</td>
-                    <td> {{ $service->rate }} USD</td>
+                    <td> ${{ number_format($service->rate) }} (USD)</td>
                     <td>{{ $service->status }}</td>
                     <td><a href="{{ route('appointment_request',encrypt($service->id)) }}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" target="_blank">Book</a></td>
                   </tr>
