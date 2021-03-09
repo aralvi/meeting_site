@@ -23,7 +23,7 @@
 
                                 <a href="{{ route('login.google') }}"> <img src="{{ asset('assets/frontend/images/google.png') }}" alt="" class="img-fluid" /></a>
 
-                                <a href="http://"> <img src="{{ asset('assets/frontend/images/apple.png') }}" alt="" class="img-fluid" /></a>
+                                {{-- <a href="http://"> <img src="{{ asset('assets/frontend/images/apple.png') }}" alt="" class="img-fluid" /></a> --}}
                             </div>
                         </div>
                         <div class="row pt-3">
