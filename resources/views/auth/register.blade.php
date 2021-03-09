@@ -105,13 +105,13 @@
                                     <div class="col-md-12 d-flex justify-content-center">
 
                                         <div class="bg-3AC574 ml-2 mr-2  active rounded border radio_Selection">
-                                            <input type="radio" class="btn-check" name="user_type" id="specialist" autocomplete="off" checked onclick="radio(this)" value="specialist">
+                                            <input type="radio" class="btn-check d-none" name="user_type" id="specialist" autocomplete="off" checked onclick="radio(this)" value="specialist">
                                             <label class="btn text-white" for="specialist">
                                             Specialist
                                               </label>
                                         </div>
                                         <div class=" ml-4 mr-4  rounded border radio_Selection">
-                                            <input type="radio" class="btn-check" name="user_type" id="client" autocomplete="off" onclick="radio(this)"  value="client">
+                                            <input type="radio" class="btn-check d-none" name="user_type" id="client" autocomplete="off" onclick="radio(this)"  value="client">
                                             <label class="btn " for="client">Client</label>
 
                                         </div>
@@ -513,18 +513,18 @@
                                         <div class="col-md-12 d-flex justify-content-center">
 
                                             <div class="bg-3AC574 ml-2 mr-2 pl-4 pr-4 active rounded border radio_Selection_sub">
-                                                <input type="radio" class="btn-check" name="payment_method" id="option1" autocomplete="off" checked onclick="paymentRadio(this)" value="stripe">
+                                                <input type="radio" class="btn-check" style="display: none;" name="payment_method" id="option1" autocomplete="off" checked onclick="paymentRadio(this)" value="stripe">
                                                 <label class="btn text-white" for="option1">
                                                 Stripe  
                                                   </label>
                                             </div>
                                             <div class=" ml-4 mr-4 pl-4 pr-4 rounded border radio_Selection_sub">
-                                                <input type="radio" class="btn-check" name="payment_method" id="option2" autocomplete="off" onclick="paymentRadio(this)"  value="paypal">
+                                                <input type="radio" class="btn-check" style="display: none;" name="payment_method" id="option2" autocomplete="off" onclick="paymentRadio(this)"  value="paypal">
                                                 <label class="btn " for="option2">Paypal</label>
 
                                             </div>
                                             <div class=" ml-2 mr-2 pl-3 pr-3 rounded border radio_Selection_sub">
-                                                <input type="radio" class="btn-check" name="payment_method" id="option4" autocomplete="off" onclick="paymentRadio(this)" value="payoneer">
+                                                <input type="radio" class="btn-check" style="display: none;" name="payment_method" id="option4" autocomplete="off" onclick="paymentRadio(this)" value="payoneer">
                                                 <label class="btn " for="option4">Payoneer</label>
 
                                             </div>
@@ -534,13 +534,13 @@
                                     </div>
 
                                     <div id="payment_selection_html">
-                                    <div class="row pt-2">
-                                        <div class="col-md-12 d-flex pl-5 justify-content-between">
-                                            <p class="text-warning">Note: Stripe is only for US users.</p>
-                                            <div class="  text-right"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
-                                        </div>
+                                        <div class="row pt-2">
+                                            <div class="col-md-12 d-flex pl-5 justify-content-between">
+                                                <p class="text-warning">Note: Stripe is only for US users.</p>
+                                                <div class="  text-right"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
+                                            </div>
 
-                                    </div>
+                                        </div>
                                         <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
                                             <div>
                                                 {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
@@ -1449,36 +1449,56 @@
     
         <div id="specialist-html" style="display: none;">
             <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                    <em class="fa fa-user"></em>
+                </div>
                 <div class="w-100">
                     <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                 </div>
             </div>
             <label class="cl-3AC574 m-0 d-flex flex-nowrap pt-3">
-                <div><img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/Path 122.png') }}" alt="" /> --}}
+                    <em class="fa fa-globe"></em>
+                </div>
                 <div class="pl-1 cl-3AC574 h6">Link to your Public Profile</div>
             </label>
+
             <div class="input-group mb-3 border-input pt-0 pl-3">
                 <input type="text" class="form-control border-0 pl-4 pt-0" placeholder="Link.public.profile" name="public_profile" id="public_profile" aria-label="" aria-describedby="basic-addon1" readonly="" />
             </div>
+
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                    <em class="fa fa-user"></em>
+                </div>
                 <div class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your name" id="name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-envelope"></em>
+                </div>
                 <div class="w-75"><input type="email" class="form-control border-0" placeholder="Enter your email" id="email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                    <em class="fa fa-key"></em>
+                </div>
                 <div class="w-75"><input type="password" class="form-control border-0" placeholder="Enter your password" name="password" id="password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
             <p class="text-danger d-none" id="password-error"></p>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                    <em class="fa fa-key"></em>
+                </div>
                 <div class="w-100"><input type="password" class="w-100 form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
@@ -1500,24 +1520,36 @@
 
         <div id="client-html" style="display: none;">
             <div class="input-group mb-2 border-input pt-4 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                    <em class="fa fa-user"></em>
+                </div>
                 <div class="w-100">
                     <input type="text" class="form-control border-0 w-100" placeholder="Enter username" name="username" id="username" onkeyup="usernamePublicProfile(this);" aria-label="" aria-describedby="basic-addon1"/>
                 </div>
             </div>
 
             <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                    <em class="fa fa-user"></em>
+                </div>
                 <div class="w-75"><input type="text" class="form-control border-0" placeholder="Enter your full name" id="client-name" name="name" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-envelope"></em>
+                </div>
                 <div class="w-100"><input type="email" class="form-control border-0 w-100" placeholder="Enter your email" id="client-email" aria-label="" aria-describedby="basic-addon1" name="email" /></div>
             </div>
 
             <div class="input-group mb-2 border-input pt-3  d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-map-marker"></em>
+                </div>
                 <div class="w-100"
                 >
                     <select id="country" name="country" class="form-control country-select w-100"  >
@@ -1772,18 +1804,27 @@
             </div>
 
             <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
+                    <em class="fa fa-phone"></em>
+                </div>
                 <div class="w-100"> <input type="text" class="w-100 form-control border-0" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                    <em class="fa fa-key"></em>
+                </div>
                 <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Enter your password" name="password" id="client-password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
             <p class="text-danger d-none" id="password-error"></p>
 
             <div class="input-group mb-4 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                    <em class="fa fa-key"></em>
+                </div>
                 <div class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
@@ -1810,54 +1851,81 @@
         </div>
 
         <div id="stripe-html" style="display:none;">
-        <div class="row pt-2">
-            <div class="col-md-12 d-flex pl-5 justify-content-between">
-                <p class="text-warning">Note: Stripe is only for US users.</p>
-                <div class="  text-right"><img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116"></div>
-            </div>
+            <div class="row pt-2">
+                <div class="col-md-12 d-flex pl-5 justify-content-between">
+                    <p class="text-warning">Note: Stripe is only for US users.</p>
+                    <div class="  text-right">
+                        <img src="{{ asset('assets/frontend/images/Artboard2.png') }}" class="w-116">
+                    </div>
+                </div>
 
-        </div>
+            </div>
        
             <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
-                <div class="w-100"><input type="text" id="payment_last_name" class="form-control border-0 w-100" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                    <em class="fa fa-user"></em>
+                </div>
+                <div class="w-100"><input type="text" id="payment_first_name" class="form-control border-0 w-100" placeholder="Enter your first name" aria-label="" aria-describedby="basic-addon1" name="payment_first_name" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 mt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/men-8 (1).png') }}" alt="" /> --}}
+                    <em class="fa fa-user"></em>
+                </div>
                 <div class="w-100"><input type="text" id="payment_last_name" class="w-100 form-control border-0" placeholder="Enter your last name" aria-label="" aria-describedby="basic-addon1" name="payment_last_name" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-university"></em>
+                </div>
                 <div class="w-100"><input type="number" id="account_number" class="w-100 form-control border-0" placeholder="Enter your account number" aria-label="" aria-describedby="basic-addon1" name="account_number" /></div>
             </div>
-
+            
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
-                <div  class="w-100"><input type="number" id="routing_number" class="form-control w-100 border-0" placeholder="Enter your routing number" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-university"></em>
+                </div>
+                <div class="w-100"><input type="number" id="routing_number" class="w-100 form-control border-0" placeholder="Enter your routing number" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-calendar"></em>
+                </div>
                 <div class="w-100"><input type="text" id="payment_birth_date" class="w-100 form-control border-0" placeholder="Date of Birth (dd/mm/yyyy)" aria-label="" aria-describedby="basic-addon1" name="payment_birth_date" /></div>
             </div>
 
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                <div><img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
+                    <em class="fa fa-key"></em>
+                </div>
                 <div class="w-100"><input type="number" class="form-control w-100 border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></div>
             </div>
         </div>
 
         <div id="paypal-html" style="display:none;">
             <div class="input-group mb-3 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap ">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-envelope"></em>
+
+                </div>
                 <div class="w-100"><input type="email" id="payment_email" class="w-100 form-control border-0" placeholder="Enter your PayPal email address" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></div>
             </div>                        
         </div>
         <div id="payoneer-html" style="display:none;">
             <div class="input-group mb-3 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap ">
-                <div><img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /></div>
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-envelope"></em>
+                </div>
                 <div class="w-100"><input type="email" id="payment_email" class="w-100 form-control border-0" placeholder="Enter you Payoneer email address" aria-label="" aria-describedby="basic-addon1" name="payment_email" /></div>
             </div>                        
         </div>
@@ -1878,757 +1946,775 @@
     	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
     	<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
-    <script>
-        function dayClosed(ele)
-        {
-            $(ele).siblings('input').removeAttr('checked');
-            $(ele).siblings('select').addClass('d-none');
-            $(ele).addClass('d-none');
-            $(ele).siblings('span').removeClass('d-none');
-        }
-
-        function dayOpened(ele)
-        {
-            if($(ele).is(":checked"))
+        <script>
+            function dayClosed(ele)
             {
-                $(ele).siblings('select').removeClass('d-none').show();
-                $(ele).siblings('button').removeClass('d-none');
-                $(ele).siblings('span').addClass('d-none');
-            }
-            else
-            {
+                $(ele).siblings('input').removeAttr('checked');
                 $(ele).siblings('select').addClass('d-none');
-                $(ele).siblings('button').addClass('d-none');
+                $(ele).addClass('d-none');
                 $(ele).siblings('span').removeClass('d-none');
             }
-            
-        }
-        setInterval(() => {
-            let meCheck = false;
-            $.each($('.days'),function(){
-                if($(this).is(':checked'))
+
+            function dayOpened(ele)
+            {
+                if($(ele).is(":checked"))
                 {
-                    meCheck=true;
+                    $(ele).siblings('select').removeClass('d-none').show();
+                    $(ele).siblings('button').removeClass('d-none');
+                    $(ele).siblings('span').addClass('d-none');
                 }
-            });
-
-            if(meCheck){
-                let allChecked = document.getElementById('select_opening_hours');
-                    allChecked.placeholder = "Completed";
-            }
-            else{
-                let notChecked = document.getElementById('select_opening_hours');
-                    notChecked.placeholder = "Not Completed";
-            }
-
-        }, 1000);
-
-    </script>
-
-  <script>
-
-      const usernamePublicProfile = (ele)=>{
-          let val = $(ele).val();
-          val = val.split(" ").join("-");
-          $(ele).val(val);
-          $('#public_profile').val(val+'.learnme.live');
-      }
-
-      const btnClicK =(className,parentClass ,txtLeft)=>{
-            let v =  $('.white-dot')
-           $('.left-text').html(txtLeft);
-            v.addClass(className);
-            v.siblings().addClass(parentClass);
-          }
-      const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
-            let v =  $('.white-dot')
-           $('.left-text').html(txtLeft);
-            v.removeClass(removeClass);
-            v.siblings().removeClass(removeParentClass);
-            v.addClass(className);
-          }
-
-      const radio = (ele) => {
-
-          $(ele).parent().addClass('bg-3AC574');
-          $(ele).parent().siblings().removeClass('bg-3AC574');
-          $(ele).parent().siblings().find('label').removeClass('text-white');
-          // $(ele).siblings().removeClass('text-white');
-          $(ele).siblings().addClass('text-white');
-          if($(ele).val()=='client')
-          {
-              btnClicK('dot-100','width-100','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.');
-              $('.first-step-html-change').html(document.getElementById('client-html').innerHTML);
-
-          }else if($(ele).val()=='specialist')
-          {
-              btnClicKBack('dot-100','width-100','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')
-              $('.first-step-html-change').html(document.getElementById('specialist-html').innerHTML);
-          }
-
-      }
-
-      const paymentRadio = (ele) => {
-
-          $(ele).parent().addClass('bg-3AC574');
-          $(ele).parent().siblings().removeClass('bg-3AC574');
-          $(ele).parent().siblings().find('label').removeClass('text-white');
-          // $(ele).siblings().removeClass('text-white');
-          $(ele).siblings().addClass('text-white');
-
-          if($(ele).val()=='stripe')
-          {
-              $('#payment_selection_html').html(document.getElementById('stripe-html').innerHTML);
-          }
-          if($(ele).val()=='paypal')
-          {
-            $('#payment_selection_html').html(document.getElementById('paypal-html').innerHTML);
-          }
-          if($(ele).val()=='payoneer')
-          {
-              $('#payment_selection_html').html(document.getElementById('payoneer-html').innerHTML);
-          }
-
-      }
-     
-      function inptFieldValidate(id)
-      {
-          if($(id).val() =='')
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              return false;
-          }
-          $(id).removeClass('placeholder-color-change');
-          $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
-          return true;
-      }
-
-      function selectFieldValidate(id)
-      {
-          if($(id).val() ==null)
-          {
-              $('#select_category').addClass('placeholder-color-change');
-              $('#select_category').parent('span').parent('div').removeClass('border-input');
-              $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              return false;
-          }
-          $('#select_category').removeClass('placeholder-color-change');
-          $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #3ac574");
-          return true;
-      }
-
-      function checkboxFieldValidate(id)
-      {
-          let chk = false;
-          $.each(id,function(){
-              if($(this).is(':checked'))
-              {
-                  chk = true;
-              }
-          });
-
-          if(!chk)
-          {
-              $('#select_opening_hours').addClass('placeholder-color-change');
-              $('#select_opening_hours').parent('div').removeClass('border-input');
-              $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ," #e91e63");
-              return chk;
-          }
-
-          $('#select_opening_hours').removeClass('placeholder-color-change');
-          $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #3ac574");
-          $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ,"gray");
-          return chk;
-      }
-
-      function passwordFieldValidate(id,confirmID)
-      {
-          if($(id).val() =='')
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              return false;
-          }
-          else if($(id).val() !='' && $(id).val().length <6)
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              $('#password-error').removeClass('d-none').text('Please allow at least 6 characters');
-              return false;
-          }
-
-          else if($(id).val() !='' && $(id).val() != $(confirmID).val())
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              $('#password-error').removeClass('d-none').text('Password doesn’t match');
-              return false;
-          }
-          else if($(id).val() !='' && $(id).val() == $(confirmID).val() && $(id).val().length >=6)
-          {
-              $(id).removeClass('placeholder-color-change');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
-              $('#password-error').addClass('d-none');
-              return true;
-          }
-      }
-
-      function getSubCategories(ele)
-      {
-          let id = $(ele).val();
-          $('#select_category').val($(ele).find('option[value='+id+']').text());
-          $.ajax({
-              url:"{{ route('get.sub_categories') }}",
-              type:"get",
-              data:{id:id},
-              success:function(data)
-              {
-                  $('#sub_categories').html(data);
-
-              }
-          });
-      }
-
-      function ajaxCommonCode(fd)
-      {
-
-          $.ajax({
-              url:"{{ route('register') }}",
-              type:"post",
-              processData: false, 
-              contentType: false,
-              // data: $('#add-client-form').serialize(),
-              data: fd,
-              success:function(data)
-              {
-                $('#registerForm').hide();
-                window.scrollTo(0, 200);
-                $('.alerMsg').show();
-                $('.afterRegisterLoader').show();
-                setInterval(function(){
-                    window.location = '{{ route('index') }}';
-                },5000);
-
-              },
-              error:function(request,status,error)
-              {
-                let data = JSON.parse(request.responseText);
-                if(data.hasOwnProperty('errors'))
+                else
                 {
-                    var wrapper = document.createElement('div');
+                    $(ele).siblings('select').addClass('d-none');
+                    $(ele).siblings('button').addClass('d-none');
+                    $(ele).siblings('span').removeClass('d-none');
+                }
+                
+            }
+            setInterval(() => {
+                let meCheck = false;
+                $.each($('.days'),function(){
+                    if($(this).is(':checked'))
+                    {
+                        meCheck=true;
+                    }
+                });
+
+                if(meCheck){
+                    let allChecked = document.getElementById('select_opening_hours');
+                        allChecked.placeholder = "Completed";
+                }
+                else{
+                    let notChecked = document.getElementById('select_opening_hours');
+                        notChecked.placeholder = "Not Completed";
+                }
+
+            }, 1000);
+
+        </script>
+
+        <script>
+
+            const usernamePublicProfile = (ele)=>{
+                let val = $(ele).val();
+                val = val.split(" ").join("-");
+                $(ele).val(val);
+                $('#public_profile').val(val+'.learnme.live');
+            }
+
+            const btnClicK =(className,parentClass ,txtLeft)=>{
+                let v =  $('.white-dot')
+                $('.left-text').html(txtLeft);
+                v.addClass(className);
+                v.siblings().addClass(parentClass);
+            }
+            const btnClicKBack =(removeClass,removeParentClass,className,parentClass ,txtLeft)=>{
+                let v =  $('.white-dot')
+                $('.left-text').html(txtLeft);
+                v.removeClass(removeClass);
+                v.siblings().removeClass(removeParentClass);
+                v.addClass(className);
+            }
+
+            const radio = (ele) => {
+
+                $(ele).parent().addClass('bg-3AC574');
+                $(ele).parent().siblings().removeClass('bg-3AC574');
+                $(ele).parent().siblings().find('label').removeClass('text-white');
+                // $(ele).siblings().removeClass('text-white');
+                $(ele).siblings().addClass('text-white');
+                if($(ele).val()=='client')
+                {
+                    btnClicK('dot-100','width-100','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.');
+                    $('.first-step-html-change').html(document.getElementById('client-html').innerHTML);
+
+                }else if($(ele).val()=='specialist')
+                {
+                    btnClicKBack('dot-100','width-100','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')
+                    $('.first-step-html-change').html(document.getElementById('specialist-html').innerHTML);
+                }
+
+            }
+
+            const paymentRadio = (ele) => {
+
+                $(ele).parent().addClass('bg-3AC574');
+                $(ele).parent().siblings().removeClass('bg-3AC574');
+                $(ele).parent().siblings().find('label').removeClass('text-white');
+                // $(ele).siblings().removeClass('text-white');
+                $(ele).siblings().addClass('text-white');
+
+                if($(ele).val()=='stripe')
+                {
+                    $('#payment_selection_html').html(document.getElementById('stripe-html').innerHTML);
+                }
+                if($(ele).val()=='paypal')
+                {
+                    $('#payment_selection_html').html(document.getElementById('paypal-html').innerHTML);
+                }
+                if($(ele).val()=='payoneer')
+                {
+                    $('#payment_selection_html').html(document.getElementById('payoneer-html').innerHTML);
+                }
+
+            }
+        
+            function inptFieldValidate(id)
+            {
+                if($(id).val() =='')
+                {
+                    $(id).addClass('placeholder-color-change');
+                    $(id).parent('div').parent('div').removeClass('border-input');
+                    $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                    $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    return false;
+                }
+                $(id).removeClass('placeholder-color-change');
+                $(id).parent('div').siblings('div').children('em').css("color" ,"#3ac574");
+                $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                return true;
+            }
+
+            function selectFieldValidate(id)
+            {
+                if($(id).val() ==null)
+                {
+                    $('#select_category').addClass('placeholder-color-change');
+                    $('#select_category').parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                    $('#select_category').parent('div').parent('div').removeClass('border-input');
+                    $('#select_category').parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    return false;
+                }
+                $('#select_category').parent('div').siblings('div').children('em').css("color" ,"#3ac574");
+                $('#select_category').removeClass('placeholder-color-change');
+                $('#select_category').parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                return true;
+            }
+
+            function checkboxFieldValidate(id)
+            {
+                let chk = false;
+                $.each(id,function(){
+                    if($(this).is(':checked'))
+                    {
+                        chk = true;
+                    }
+                });
+
+                if(!chk)
+                {
+                    $('#select_opening_hours').addClass('placeholder-color-change');
+                    $('#select_opening_hours').parent('div').removeClass('border-input');
+                    $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    $('#select_opening_hours').parent('div').siblings('label').children('span').children('em').css("color" ," #e91e63");
+                    $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ," #e91e63");
+                    return chk;
+                }
+
+                $('#select_opening_hours').removeClass('placeholder-color-change');
+                $('#select_opening_hours').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                $('#select_opening_hours').parent('div').siblings('label').children('span').children('em').css("color" ," #3ac574");
+                $('#select_opening_hours').parent('div').siblings('label').children('span').css("color" ,"gray");
+                return chk;
+            }
+
+            function passwordFieldValidate(id,confirmID)
+            {
+                if($(id).val() =='')
+                {
+                    $(id).addClass('placeholder-color-change');
+                    $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                    $(id).parent('div').parent('div').removeClass('border-input');
+                    $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    return false;
+                }
+                else if($(id).val() !='' && $(id).val().length <6)
+                {
+                    $(id).addClass('placeholder-color-change');
+                    $(id).parent('div').parent('div').removeClass('border-input');                
+                    $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                    $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    $('#password-error').removeClass('d-none').text('Please allow at least 6 characters');
+                    return false;
+                }
+
+                else if($(id).val() !='' && $(id).val() != $(confirmID).val())
+                {
+                    $(id).addClass('placeholder-color-change');
+                    $(id).parent('div').parent('div').removeClass('border-input');                
+                    $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                    $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    $('#password-error').removeClass('d-none').text('Password doesn’t match');
+                    return false;
+                }
+                else if($(id).val() !='' && $(id).val() == $(confirmID).val() && $(id).val().length >=6)
+                {
+                    $(id).removeClass('placeholder-color-change');
+                    $(id).parent('div').siblings('div').children('em').css("color" ,"#3ac574");
+                    $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                    $('#password-error').addClass('d-none');
+                    return true;
+                }
+            }
+
+            function getSubCategories(ele)
+            {
+                let id = $(ele).val();
+                $('#select_category').val($(ele).find('option[value='+id+']').text());
+                $.ajax({
+                    url:"{{ route('get.sub_categories') }}",
+                    type:"get",
+                    data:{id:id},
+                    success:function(data)
+                    {
+                        $('#sub_categories').html(data);
+
+                    }
+                });
+            }
+
+            function ajaxCommonCode(fd)
+            {
+                $.ajax({
+                url:"{{ route('register') }}",
+                type:"post",
+                processData: false, 
+                contentType: false,
+                // data: $('#add-client-form').serialize(),
+                data: fd,
+                success:function(data)
+                {
+                    $('#registerForm').hide();
+                    window.scrollTo(0, 200);
+                    $('.alerMsg').show();
+                    $('.afterRegisterLoader').show();
+                    setInterval(function(){
+                        window.location = '{{ route('index') }}';
+                    },5000);
+
+                },
+                error:function(request,status,error)
+                {
+                    let data = JSON.parse(request.responseText);
                     if(data.hasOwnProperty('errors'))
                     {
                         var wrapper = document.createElement('div');
-                        var err = '';
-                        $.each(data.errors, function (i, e) {
-                            err += '<p>' + e + '</p>';
-                        });
-                        wrapper.innerHTML = err;
+                        if(data.hasOwnProperty('errors'))
+                        {
+                            var wrapper = document.createElement('div');
+                            var err = '';
+                            $.each(data.errors, function (i, e) {
+                                err += '<p>' + e + '</p>';
+                            });
+                            wrapper.innerHTML = err;
+                            swal({
+                                icon: "error",
+                                text: "{{ __('Please fix following error!') }}",
+                                content: wrapper,
+                                type: 'error'
+                            });
+                            // $('.warningAlert').show();
+                            // $('.warningAlertContent').html(wrapper);
+                        }
+                    }
+                }
+                });
+            }
+
+            function dayCheckValidation()
+            {
+                let meCheck = false;
+                $.each($('.days'),function(){
+                    if($(this).is(':checked'))
+                    {
+                        meCheck=true;
+                    }
+                });
+                if(!meCheck)
+                {
+                    swal({
+                        icon: "error",
+                        text: "{{ __('Please Check Your Available Day!') }}",
+                        type: 'error'
+                    });
+                }
+                else
+                {
+                    $('.close2').click();
+                }
+            }
+
+            function categorySubcategoryCheck()
+            {
+                if($('select[name="category_id"]').val() ==null)
+                {
+                swal({
+                        icon: "error",
+                        text: "{{ __('Please Select Category!') }}",
+                        type: 'error'
+                    });
+                }
+                else
+                {
+                    meCheckSubCategory=false;
+                    $.each($('input[name="sub_category_id[]"]'),function(){
+                        if($(this).is(':checked'))
+                        {
+                            meCheckSubCategory=true;
+                        }
+                    });
+                    if(!meCheckSubCategory)
+                    {
                         swal({
                             icon: "error",
-                            text: "{{ __('Please fix following error!') }}",
-                            content: wrapper,
+                            text: "{{ __('Please Select Business Category!') }}",
                             type: 'error'
                         });
-                        // $('.warningAlert').show();
-                        // $('.warningAlertContent').html(wrapper);
+                    }
+                    else{
+                        $('.close1').click();
                     }
                 }
-              }
-          });
-      }
-
-      function dayCheckValidation()
-      {
-        let meCheck = false;
-        $.each($('.days'),function(){
-            if($(this).is(':checked'))
-            {
-                meCheck=true;
             }
-        });
-        if(!meCheck)
-        {
-            swal({
-                icon: "error",
-                text: "{{ __('Please Check Your Available Day!') }}",
-                type: 'error'
-            });
-        }
-        else
-        {
-            $('.close2').click();
-        }
-      }
 
-      function categorySubcategoryCheck()
-      {
-          if($('select[name="category_id"]').val() ==null)
-          {
-            swal({
-                    icon: "error",
-                    text: "{{ __('Please Select Category!') }}",
-                    type: 'error'
+            function checkboxSubCategory()
+            {
+                meCheckSubCategory=false;
+                $.each($('input[name="sub_category_id[]"]'),function(){
+                    if($(this).is(':checked'))
+                    {
+                        meCheckSubCategory=true;
+                    }
                 });
-          }
-          else{
-            meCheckSubCategory=false;
-            $.each($('input[name="sub_category_id[]"]'),function(){
-                if($(this).is(':checked'))
+
+                if(!meCheckSubCategory){
+                    $('#select_category').val('');
+                    $('#select_category').addClass('placeholder-color-change');
+                    $('#select_category').parent('div').parent('div').removeClass('border-input');
+                    $('#select_category').parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    $('#select_category').parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                }
+                else{
+                    $('#select_category').val($('select[name="category_id"] option:selected').text());
+                }
+                return meCheckSubCategory
+        }
+
+            function dateFieldValidate(id)
+            { 
+                if($(id).val() =='')
                 {
-                    meCheckSubCategory=true;
+                    $(id).addClass('placeholder-color-change');
+                    $(id).parent('div').parent('div').removeClass('border-input');
+                    $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                    return false;
+                }
+                else if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test($(id).val()))
+                {
+                    $(id).addClass('placeholder-color-change');
+                    $(id).parent('div').parent('div').removeClass('border-input');
+                    $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                    $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                    return false;
+                }
+                $(id).removeClass('placeholder-color-change');
+                $(id).parent('div').siblings('div').children('em').css("color" ,"#3ac574");
+                $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                return true;
+
+            // First check for the pattern
+            // if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+            // {
+            //     return false;
+            // }
+
+
+            // Parse the date parts to integers
+            // var parts = dateString.split("/");
+            // var day = parseInt(parts[1], 10);
+            // var month = parseInt(parts[0], 10);
+            // var year = parseInt(parts[2], 10);
+
+            // Check the ranges of month and year
+            // if(year < 1000 || year > 3000 || month == 0 || month > 12)
+            //     return false;
+
+            // var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+            // Adjust for leap years
+            // if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+            //     monthLength[1] = 29;
+
+            // Check the range of the day
+            // return day > 0 && day <= monthLength[month - 1];
+            }
+
+            function ssnFieldValidate(id)
+            {
+                if($(id).val() =='')
+                {
+                $(id).addClass('placeholder-color-change');
+                $(id).parent('div').parent('div').removeClass('border-input');
+                $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+                return false;
+                }
+                else if($(id).val() !='' && ($(id).val().length <4 || $(id).val().length >4))
+                {
+                $(id).addClass('placeholder-color-change');
+                $(id).parent('div').parent('div').removeClass('border-input');
+                $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
+                $(id).parent('div').siblings('div').children('em').css("color" ,"#e91e63");
+
+                return false;
+                }
+                $(id).removeClass('placeholder-color-change');
+                $(id).parent('div').siblings('div').children('em').css("color" ,"#3ac574");
+                $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
+                return true;
+            }
+
+        </script>
+
+        <script>
+            var testObject = [];
+            const button = document.getElementById("submit");
+
+            const name = document.getElementById("legaNmae");
+            const DBA = document.getElementById("DBA");
+            const business = document.getElementById("business");
+            const city = document.getElementById("city");
+
+            function handleClick() {
+                testObject.push({
+                    name: name.value,
+                    DBA: DBA.value,
+                    business: business.value,
+                    city: city.value,
+                });
+                localStorage.setItem("FormData", JSON.stringify(testObject));
+                console.log(testObject);
+        }
+        // button.addEventListener("click", function() {
+
+        // })
+        // function handleClick(){
+        //     let a = document.getElementById("DBA").value
+        //     let b = document.getElementById("address").value
+        //     let c = document.getElementById("city").value
+        //     console.log(a,b,c)
+        // }
+        /* Fundraising Grader
+        *
+        * Generic Copyright, yadda yadd yadda
+        *
+        * Plug-ins: jQuery Validate, jQuery
+        * Easing
+        */
+
+        $(document).ready(function () {
+            var current_fs, next_fs, previous_fs;
+            var left, opacity, scale;
+            var animating;
+            $(".steps").validate({
+                errorClass: "invalid",
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.next("span").children());
+                },
+                highlight: function (element) {
+                    $(element).next("span").show();
+                },
+                unhighlight: function (element) {
+                    $(element).next("span").hide();
+                },
+            });
+
+            $(".next").click(function () {
+                $(".steps").validate({
+                    errorClass: "invalid",
+                    errorElement: "span",
+                    errorPlacement: function (error, element) {
+                        error.insertAfter(element.next("span").children());
+                    },
+                    highlight: function (element) {
+                        $(element).next("span").show();
+                    },
+                    unhighlight: function (element) {
+                        $(element).next("span").hide();
+                    },
+                });
+                if (!$(".steps").valid()) {
+                    return true;
+                }
+                if (animating) return false;
+                animating = false;
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                
+
+                next_fs.show();
+                current_fs.animate(
+                    {
+                        opacity: 0,
+                    },
+                    {
+                        step: function (now, mx) {
+                            scale = 1 - (1 - now) * 0.2;
+                            // left = now * 50 + "%";
+                            opacity = 1 - now;
+                            current_fs.css({
+                                transform: "scale(" + scale + ")",
+                            });
+                            next_fs.css({
+                                //   left: left,
+                                opacity: opacity,
+                            });
+                        },
+                        duration: 800,
+                        complete: function () {
+                            current_fs.hide();
+                            animating = false;
+                        },
+                        easing: "easeInOutExpo",
+                    }
+                );
+            });
+
+            $(".submit").click(function () {
+                $(".white-dot").css({"right": "170px" });
+                $(".steps").validate({
+                    errorClass: "invalid",
+                    errorElement: "span",
+                    errorPlacement: function (error, element) {
+                        error.insertAfter(element.next("span").children());
+                    },
+                    highlight: function (element) {
+                        $(element).next("span").show();
+                    },
+                    unhighlight: function (element) {
+                        $(element).next("span").hide();
+                    },
+                });
+                if (!$(".steps").valid()) {
+                    return false;
+                }
+                if (animating) return false;
+                animating = true;
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                
+
+                next_fs.show();
+                current_fs.animate(
+                    {
+                        opacity: 0,
+                    },
+                    {
+                        step: function (now, mx) {
+                            scale = 1 - (1 - now) * 0.2;
+                            // left = now * 50 + "%";
+                            
+                            opacity = 1 - now;
+                            current_fs.css({
+                                transform: "scale(" + scale + ")",
+                            });
+                            next_fs.css({
+                                //   left: left,
+                                
+                                opacity: opacity,
+                            });
+                            white-dot.css({
+                                left: "30px",
+
+                            });
+                        },
+                        duration: 800,
+                        complete: function () {
+                            current_fs.hide();
+                            animating = false;
+                        },
+                        easing: "easeInOutExpo",
+                    }
+                );
+            });
+
+            $(".previous").click(function () {
+                if (animating) return false;
+                animating = true;
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                previous_fs.show();
+                current_fs.animate(
+                    {
+                        opacity: 0,
+                    },
+                    {
+                        step: function (now, mx) {
+                            scale = 0.8 + (1 - now) * 0.2;
+                            // left = (1 - now) * 50 + "%";
+                            opacity = 1 - now;
+                            current_fs.css({
+                                //   left: left,
+                            });
+                            previous_fs.css({
+                                transform: "scale(" + scale + ")",
+                                opacity: opacity,
+                            });
+                        },
+                        //   duration: 800,
+                        complete: function () {
+                            current_fs.hide();
+                            animating = false;
+                        },
+                        easing: "easeInOutExpo",
+                    }
+                );
+            });
+        });
+        
+
+        </script>
+
+        <script>
+        
+            $(document.body).on("click", "input.client-step1", function () {
+            // $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
+                {
+                    $.ajax({
+                        url:"{{ route('usernameCheck') }}",
+                        type:"get",
+                        data:{username:$('#username').val(),email:$('#client-email').val()},
+                        success:function(data)
+                        {
+                                if(data.status==false)
+                                {
+                                    var wrapper = document.createElement('div');
+                                    var err = '';
+                                    $.each(data.errors, function (i, e) {
+                                        err += '<p>'+ i+' '+ e +' has been already taken.'+ '</p>';
+                                    });
+                                    wrapper.innerHTML = err;
+                                    swal({
+                                        icon: "error",
+                                        text: "{{ __('Please fix following error!') }}",
+                                        content: wrapper,
+                                        type: 'error'
+                                    });
+                                }
+                                else
+                                {
+                                    var myform = document.getElementById("registerForm");
+                                    var fd = new FormData(myform);
+                                    fd.append("_token","{{ csrf_token() }}");
+                                    ajaxCommonCode(fd);
+                                }
+
+                        }
+                    });
+            }
+            });
+
+            $(document.body).on("click", "input.step1", function () 
+            {
+            //   $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
+                {
+                    $.ajax({
+                        url:"{{ route('usernameCheck') }}",
+                        type:"get",
+                        data:{username:$('#username').val(),email:$('#email').val()},
+                        success:function(data)
+                        {
+                                if(data.status==false)
+                                {
+                                    var wrapper = document.createElement('div');
+                                    var err = '';
+                                    $.each(data.errors, function (i, e) {
+                                        err += '<p>'+ i+' '+ e +' has been already taken.'+ '</p>';
+                                    });
+                                    wrapper.innerHTML = err;
+                                    swal({
+                                        icon: "error",
+                                        text: "{{ __('Please fix following error!') }}",
+                                        content: wrapper,
+                                        type: 'error'
+                                    });
+                                }
+                                else
+                                {
+                                    $('input.step1').parent("div").siblings("span.inputBtn").click();
+                                }
+
+                        }
+                    });
                 }
             });
-            if(!meCheckSubCategory)
-            {
-                swal({
-                    icon: "error",
-                    text: "{{ __('Please Select Sub Category!') }}",
-                    type: 'error'
-                });
-            }
-            else{
-                $('.close1').click();
-            }
-          }
-        
-      }
-      function checkboxSubCategory()
-      {
-        meCheckSubCategory=false;
-        $.each($('input[name="sub_category_id[]"]'),function(){
-            if($(this).is(':checked'))
-            {
-                meCheckSubCategory=true;
-            }
-        });
 
-        if(!meCheckSubCategory){
-            $('#select_category').val('');
-            $('#select_category').addClass('placeholder-color-change');
-            $('#select_category').parent('span').parent('div').removeClass('border-input');
-            $('#select_category').parent('span').parent('div').css("border-bottom" ,"1px solid #e91e63");
-        }
-        else{
-            $('#select_category').val($('select[name="category_id"] option:selected').text());
-        }
-        return meCheckSubCategory
-      }
+            $(document.body).on("click", "input.step2", function () {
+                let stepSecond = false;
+                // $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($('.checkbxCheck')))
+                {$(this).parent("div").siblings("span.inputBtn").click();}
+            });
 
-      function dateFieldValidate(id)
-      { 
-          console.log($(id).val());
-          if($(id).val() =='')
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              return false;
-          }
-          else if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test($(id).val()))
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              return false;
-          }
-          $(id).removeClass('placeholder-color-change');
-          $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
-          return true;
+            $(document.body).on("click", "input.backstep2", function () {
+                $(this).parent("div").siblings("span.previous").click();
+            });
 
-          // First check for the pattern
-          // if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
-          // {
-          //     return false;
-          // }
-
-
-          // Parse the date parts to integers
-          // var parts = dateString.split("/");
-          // var day = parseInt(parts[1], 10);
-          // var month = parseInt(parts[0], 10);
-          // var year = parseInt(parts[2], 10);
-
-          // Check the ranges of month and year
-          // if(year < 1000 || year > 3000 || month == 0 || month > 12)
-          //     return false;
-
-          // var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-
-          // Adjust for leap years
-          // if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-          //     monthLength[1] = 29;
-
-          // Check the range of the day
-          // return day > 0 && day <= monthLength[month - 1];
-      }
-
-      function ssnFieldValidate(id)
-      {
-          if($(id).val() =='')
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              return false;
-          }
-          else if($(id).val() !='' && ($(id).val().length <4 || $(id).val().length >4))
-          {
-              $(id).addClass('placeholder-color-change');
-              $(id).parent('div').parent('div').removeClass('border-input');
-              $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #e91e63");
-              return false;
-          }
-          $(id).removeClass('placeholder-color-change');
-          $(id).parent('div').parent('div').css("border-bottom" ,"1px solid #3ac574");
-          return true;
-      }
-
-  </script>
-
-  <script>
-      var testObject = [];
-      const button = document.getElementById("submit");
-
-      const name = document.getElementById("legaNmae");
-      const DBA = document.getElementById("DBA");
-      const business = document.getElementById("business");
-      const city = document.getElementById("city");
-
-      function handleClick() {
-          testObject.push({
-              name: name.value,
-              DBA: DBA.value,
-              business: business.value,
-              city: city.value,
-          });
-          localStorage.setItem("FormData", JSON.stringify(testObject));
-          console.log(testObject);
-      }
-      // button.addEventListener("click", function() {
-
-      // })
-      // function handleClick(){
-      //     let a = document.getElementById("DBA").value
-      //     let b = document.getElementById("address").value
-      //     let c = document.getElementById("city").value
-      //     console.log(a,b,c)
-      // }
-      /* Fundraising Grader
-       *
-       * Generic Copyright, yadda yadd yadda
-       *
-       * Plug-ins: jQuery Validate, jQuery
-       * Easing
-       */
-
-      $(document).ready(function () {
-          var current_fs, next_fs, previous_fs;
-          var left, opacity, scale;
-          var animating;
-          $(".steps").validate({
-              errorClass: "invalid",
-              errorElement: "span",
-              errorPlacement: function (error, element) {
-                  error.insertAfter(element.next("span").children());
-              },
-              highlight: function (element) {
-                  $(element).next("span").show();
-              },
-              unhighlight: function (element) {
-                  $(element).next("span").hide();
-              },
-          });
-
-          $(".next").click(function () {
-              $(".steps").validate({
-                  errorClass: "invalid",
-                  errorElement: "span",
-                  errorPlacement: function (error, element) {
-                      error.insertAfter(element.next("span").children());
-                  },
-                  highlight: function (element) {
-                      $(element).next("span").show();
-                  },
-                  unhighlight: function (element) {
-                      $(element).next("span").hide();
-                  },
-              });
-              if (!$(".steps").valid()) {
-                  return true;
-              }
-              if (animating) return false;
-              animating = false;
-              current_fs = $(this).parent();
-              next_fs = $(this).parent().next();
-              $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-              
-
-              next_fs.show();
-              current_fs.animate(
-                  {
-                      opacity: 0,
-                  },
-                  {
-                      step: function (now, mx) {
-                          scale = 1 - (1 - now) * 0.2;
-                          // left = now * 50 + "%";
-                          opacity = 1 - now;
-                          current_fs.css({
-                              transform: "scale(" + scale + ")",
-                          });
-                          next_fs.css({
-                              //   left: left,
-                              opacity: opacity,
-                          });
-                      },
-                      duration: 800,
-                      complete: function () {
-                          current_fs.hide();
-                          animating = false;
-                      },
-                      easing: "easeInOutExpo",
-                  }
-              );
-          });
-
-          $(".submit").click(function () {
-              $(".white-dot").css({"right": "170px" });
-              $(".steps").validate({
-                  errorClass: "invalid",
-                  errorElement: "span",
-                  errorPlacement: function (error, element) {
-                      error.insertAfter(element.next("span").children());
-                  },
-                  highlight: function (element) {
-                      $(element).next("span").show();
-                  },
-                  unhighlight: function (element) {
-                      $(element).next("span").hide();
-                  },
-              });
-              if (!$(".steps").valid()) {
-                  return false;
-              }
-              if (animating) return false;
-              animating = true;
-              current_fs = $(this).parent();
-              next_fs = $(this).parent().next();
-              $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            $(document.body).on("click", "input.step3", function () {
             
-
-              next_fs.show();
-              current_fs.animate(
-                  {
-                      opacity: 0,
-                  },
-                  {
-                      step: function (now, mx) {
-                          scale = 1 - (1 - now) * 0.2;
-                          // left = now * 50 + "%";
-                          
-                          opacity = 1 - now;
-                          current_fs.css({
-                              transform: "scale(" + scale + ")",
-                          });
-                          next_fs.css({
-                              //   left: left,
-                              
-                              opacity: opacity,
-                          });
-                          white-dot.css({
-                              left: "30px",
-
-                          });
-                      },
-                      duration: 800,
-                      complete: function () {
-                          current_fs.hide();
-                          animating = false;
-                      },
-                      easing: "easeInOutExpo",
-                  }
-              );
-          });
-
-          $(".previous").click(function () {
-              if (animating) return false;
-              animating = true;
-              current_fs = $(this).parent();
-              previous_fs = $(this).parent().prev();
-              $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-              previous_fs.show();
-              current_fs.animate(
-                  {
-                      opacity: 0,
-                  },
-                  {
-                      step: function (now, mx) {
-                          scale = 0.8 + (1 - now) * 0.2;
-                          // left = (1 - now) * 50 + "%";
-                          opacity = 1 - now;
-                          current_fs.css({
-                              //   left: left,
-                          });
-                          previous_fs.css({
-                              transform: "scale(" + scale + ")",
-                              opacity: opacity,
-                          });
-                      },
-                      //   duration: 800,
-                      complete: function () {
-                          current_fs.hide();
-                          animating = false;
-                      },
-                      easing: "easeInOutExpo",
-                  }
-              );
-          });
-      });
-      
-
-  </script>
-
-  <script>
-     
-      $(document.body).on("click", "input.client-step1", function () {
-          // $(this).parent("div").siblings("span.inputBtn").click();
-            if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
-            {
-              // $('#registerForm').submit();
-            //   $(this).attr('disabled', 'disabled');
-            //   var myform = document.getElementById("registerForm");
-            //   var fd = new FormData(myform);
-            //   fd.append("_token","{{ csrf_token() }}");
-            //   ajaxCommonCode(fd);
-
-                $.ajax({
-                    url:"{{ route('usernameCheck') }}",
-                    type:"get",
-                    data:{username:$('#username').val()},
-                    success:function(data)
+                // console.log($('input[name="payment_method"]').val());
+                let method_chk = false;
+                if($('input[name="payment_method"]:checked').val()=='stripe')
+                {
+                    if(inptFieldValidate($('#payment_first_name')) && inptFieldValidate($('#payment_last_name')) && inptFieldValidate($('#account_number')) && inptFieldValidate($('#routing_number')) && dateFieldValidate($('#payment_birth_date')) && ssnFieldValidate($('#payment_ssn')))
                     {
-                            if(data.status==false)
-                            {
-                                console.log("fiie");
-                                swal({
-                                    icon: "error",
-                                    text: $('#username').val()+" has been already taken",
-                                    type: 'error'
-                                });
-                                txt(data.status);
-                            }
-                            else
-                            {
-                                var myform = document.getElementById("registerForm");
-                                var fd = new FormData(myform);
-                                fd.append("_token","{{ csrf_token() }}");
-                                ajaxCommonCode(fd);
-                            }
-
+                        method_chk = true;
                     }
-                });
-           }
-      });
-
-       $(document.body).on("click", "input.step1", function () {
-        //   $(this).parent("div").siblings("span.inputBtn").click();
-            if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
-           {
-                $.ajax({
-                    url:"{{ route('usernameCheck') }}",
-                    type:"get",
-                    data:{username:$('#username').val()},
-                    success:function(data)
+                }
+                else{
+                    if(inptFieldValidate($('#payment_email')))
                     {
-                            if(data.status==false)
-                            {
-                                console.log("fiie");
-                                swal({
-                                    icon: "error",
-                                    text: $('#username').val()+" has been already taken",
-                                    type: 'error'
-                                });
-                            }
-                            else
-                            {
-                                $('input.step1').parent("div").siblings("span.inputBtn").click();
-                            }
-
+                        method_chk = true;
                     }
-                });
-            }
-      });
-
-      $(document.body).on("click", "input.step2", function () {
-          let stepSecond = false;
-          // $(this).parent("div").siblings("span.inputBtn").click();
-            if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($('.checkbxCheck')))
-            {$(this).parent("div").siblings("span.inputBtn").click();}
-
-      });
-
-      $(document.body).on("click", "input.backstep2", function () {
-          
-          $(this).parent("div").siblings("span.previous").click();
-      });
-
-      $(document.body).on("click", "input.step3", function () {
-         
-          // console.log($('input[name="payment_method"]').val());
-          let method_chk = false;
-          if($('input[name="payment_method"]:checked').val()=='stripe')
-          {
-              if(inptFieldValidate($('#payment_first_name')) && inptFieldValidate($('#payment_last_name')) && inptFieldValidate($('#account_number')) && inptFieldValidate($('#routing_number')) && dateFieldValidate($('#payment_birth_date')) && ssnFieldValidate($('#payment_ssn')))
-              {
-                  method_chk = true;
-              }
-          }
-          else{
-              if(inptFieldValidate($('#payment_email')))
-              {
-                  method_chk = true;
-              }
-          }
-          if(method_chk)
-          {
-            //   $(this).attr('disabled', 'disabled');
-              var myform = document.getElementById("registerForm");
-              var fd = new FormData(myform);
-              fd.append("_token","{{ csrf_token() }}");
-              let days = $(".days:checked").map(function(){return $(this).val();}).get();
-              fd.append('days',days);
-              ajaxCommonCode(fd);
-          }
-          // if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
-          // {
-              // $('#registerForm').submit();
-              // var myform = document.getElementById("registerForm");
-              // var fd = new FormData(myform);
-              // fd.append("_token","{{ csrf_token() }}");
-              // let days = $(".days:checked").map(function(){return $(this).val();}).get();
-              // let from = $(".from_time").map(function(){return $(this).val();}).get();
-              // let to = $(".to_time").map(function(){return $(this).val();}).get();
-              // $.each(days,function(i,v){
-              //     console.log(v);
-              // });
-              // return false;
-              // fd.append('days',days);
-              // fd.append('from',from);
-              // fd.append('to',to);
-              // ajaxCommonCode(fd);
-          // }
-          // let v = $(this).parent("div").siblings("span.inputBtn").click();
-      });
-  </script>
-		
-
+                }
+                if(method_chk)
+                {
+                    //   $(this).attr('disabled', 'disabled');
+                    var myform = document.getElementById("registerForm");
+                    var fd = new FormData(myform);
+                    fd.append("_token","{{ csrf_token() }}");
+                    let days = $(".days:checked").map(function(){return $(this).val();}).get();
+                    fd.append('days',days);
+                    ajaxCommonCode(fd);
+                }
+            // if(inptFieldValidate($('#payment_email')) && inptFieldValidate($('#payment_password')))
+            // {
+                // $('#registerForm').submit();
+                // var myform = document.getElementById("registerForm");
+                // var fd = new FormData(myform);
+                // fd.append("_token","{{ csrf_token() }}");
+                // let days = $(".days:checked").map(function(){return $(this).val();}).get();
+                // let from = $(".from_time").map(function(){return $(this).val();}).get();
+                // let to = $(".to_time").map(function(){return $(this).val();}).get();
+                // $.each(days,function(i,v){
+                //     console.log(v);
+                // });
+                // return false;
+                // fd.append('days',days);
+                // fd.append('from',from);
+                // fd.append('to',to);
+                // ajaxCommonCode(fd);
+            // }
+            // let v = $(this).parent("div").siblings("span.inputBtn").click();
+            });
+        </script>
 	@endsection
 
 {{-- footer section end --}}
