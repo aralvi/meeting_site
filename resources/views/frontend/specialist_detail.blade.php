@@ -72,7 +72,10 @@
             </div>
           </div>
         <div class="col-md-5 col-lg-6 cl-ffffff pl-5 pr-5">
-          <div class=" f-44 robotoMedium">{{ ucwords($specialist->user->name) }}</div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class=" f-44 robotoMedium">{{ ucwords($specialist->user->name) }}</div>
+                <div class="digital-clock">00:00:00</div>
+          </div>
           <div class="d-flex border-bottom pb-3">
             <div class="pr-3 robotoMedium">{{ ucwords($specialist->category->name) }}</div>
             {{-- @if($specialist->address !=null) --}}
@@ -148,7 +151,7 @@
                   <th scope="col">Service</th>
                   <th scope="col">Category</th>
                   <th scope="col">Subcategory</th>
-                  <th scope="col">Timing</th>
+                  <th scope="col">Duration</th>
                   <th scope="col">Rate</th>
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
@@ -165,7 +168,7 @@
                     @endphp 
                     <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
                     <td>{{ $service->timing }} Minutes</td>
-                    <td> {{ $service->rate }} USD</td>
+                    <td> ${{ number_format($service->rate) }} (USD)</td>
                     <td>{{ $service->status }}</td>
                     <td><a href="{{ route('appointment_request',encrypt($service->id)) }}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" target="_blank">Book</a></td>
                   </tr>
@@ -486,6 +489,42 @@ art as welll!!!! I would give him 10 stars...</div>
           inputSearchServices();
         }
       });
+
+     
+
+
+$(document).ready(function() {
+  clockUpdate();
+  setInterval(clockUpdate, 1000);
+})
+
+function clockUpdate() {
+  var date = new Date();
+  $('.digital-clock').css({'color': '#fff', 'text-shadow': '0 0 6px #ff0'});
+  function addZero(x) {
+    if (x < 10) {
+      return x = '0' + x;
+    } else {
+      return x;
+    }
+  }
+
+  function twelveHour(x) {
+    if (x > 12) {
+      return x = x - 12;
+    } else if (x == 0) {
+      return x = 12;
+    } else {
+      return x;
+    }
+  }
+
+  var h = addZero(twelveHour(date.getHours()));
+  var m = addZero(date.getMinutes());
+  var s = addZero(date.getSeconds());
+
+  $('.digital-clock').text(h + ':' + m + ':' + s)
+}
     </script>
 	@endsection
 
