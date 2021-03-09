@@ -1,9 +1,5 @@
 @extends('layouts.frontend.app') @section('title','Portfolio') {{-- head start --}} @section('extra-css')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/utility.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/portfolio.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/app.css') }}" />
-<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+
 <style type="text/css">
     .dropdown-toggle::after {
         display: none;
@@ -124,9 +120,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 p-0 robotoRegular">
+                    {{-- <div class="col-md-6 col-lg-6 p-0 robotoRegular">
                         <button type="button" class="close cl-3ac754" aria-label="Close"><span class="ml-auto cl-3ac754">close</span> <span class="pt-2" aria-hidden="true">&times;</span></button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row m-0 pt-4">
                     <div class="col-md-12 p-0 justify-content-between d-flex">
@@ -640,7 +636,6 @@
 </section>
 @endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
 
-<script src="{{ asset('assets/frontend/js/app.js') }}"></script>
 
 {{-- footer section end --}}
 <script>
@@ -648,11 +643,10 @@
         
         if($("input[name='time']:checked").val() == null){
             swal({
-                                    icon: "error",
-                                    text: " Please select any time slot for appointment",
-                                    type: 'error'
-                                });
-            alert('Please select any time slot for appointment');
+                    icon: "error",
+                    text: " Please select any time slot for appointment",
+                    type: 'error'
+                });
             return false
         }
         var month_year = $(".cal-month__current").text();
