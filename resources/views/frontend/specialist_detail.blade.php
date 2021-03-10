@@ -270,7 +270,7 @@
           </div>
         <div class="col-md-5 col-lg-6 cl-ffffff pl-5 pr-5">
           <div class="d-flex justify-content-between align-items-center">
-            <div class=" f-44 robotoMedium">{{ ucwords($specialist->user->name) }}</div>
+            <div class=" f-44 robotoMedium">{{ ucwords($specialist->user->username) }}</div>
                 <div id="time"></div>
 
                 {{-- <div id="clock" class="light">
@@ -282,10 +282,15 @@
           </div>
           <div class="d-flex border-bottom pb-3">
             <div class="pr-3 robotoMedium">{{ ucwords($specialist->category->name) }}</div>
-            {{-- @if($specialist->address !=null) --}}
+            @if($specialist->user->country)
               <div class="border-left"></div>
               <div class="pl-3 robotoRegular">{{ ucfirst($specialist->user->country) }}</div>
-            {{-- @endif --}}
+            @endif
+
+            @if($specialist->address !=null)
+              <div class="border-left"></div>
+              <div class="pl-3 robotoRegular">{{ ucfirst($specialist->address) }}</div>
+            @endif
             
           </div>
           @if($specialist->description !=null)
@@ -695,18 +700,15 @@ art as welll!!!! I would give him 10 stars...</div>
       function inputSearchServices()
       {
         let val = $('.service_inpt').val();
-        if(val !='')
-        {
-          $.ajax({
-            url:"{{ route('getQueryServices') }}",
-            type:"get",
-            data:{val:val},
-            success:function(data)
-            {
-              $('.services-table-body').html(data);
-            }
-          });
-        }
+        $.ajax({
+          url:"{{ route('getQueryServices') }}",
+          type:"get",
+          data:{val:val,id:{{ $specialist->id }}},
+          success:function(data)
+          {
+            $('.services-table-body').html(data);
+          }
+        });
       }
 
       $(document).keydown(function(e)
