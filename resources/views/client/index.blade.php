@@ -1,3 +1,3 @@
-@extends('layouts.admin.specialist.app') @section('title','Specialists |Dashboard ') @section('content')
+@extends('layouts.admin.client.app') @section('title','Client | Dashboard ') @section('content')
 
 @endsection

@@ -18,7 +18,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::all();
+        $appointments = Appointment::where('specialist_id',Auth::user()->specialist->id)->get();
         return view('specialist.appointments.index',compact('appointments'));
     }
 
@@ -47,7 +47,6 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-       
         $appointment = new Appointment();
         $appointment->user_id = Auth::user()->id;
         $appointment->service_id = $request->service_id;
@@ -60,6 +59,19 @@ class AppointmentController extends Controller
 
     }
 
+    public function storeAppointment(Request $request)
+    {
+        $appointment = new Appointment();
+        $appointment->user_id = Auth::user()->id;
+        $appointment->service_id = $request->service_id;
+        $appointment->specialist_id = $request->specialist_id;
+        $appointment->date = $request->date;
+        $appointment->rate = $request->rate;
+        $appointment->time = $request->time;
+        $appointment->save();
+        return back()->with('success','Appointment Created Successfuly!');
+
+    }
     /**
      * Display the specified resource.
      *
