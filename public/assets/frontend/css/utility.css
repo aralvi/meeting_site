@@ -150,9 +150,11 @@ input{
   background-image: linear-gradient(to bottom, rgb(0 0 0 / 52%), rgb(0 0 0 / 64%));
 }
 .f-44{
-  
-font-size:2.75rem;
+  font-size:2rem;
 }
+/* .f-44{
+  font-size:2.75rem;
+} */
 .f-41{
   font-size:2.5625rem;
 }
