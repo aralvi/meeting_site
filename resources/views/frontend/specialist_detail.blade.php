@@ -348,7 +348,7 @@
             <div class="pl-3"><img src="{{ asset('assets/frontend/images/Group 1.png') }}" alt="" srcset=""></div>
             <div class="pl-3"><img src="{{ asset('assets/frontend/images/Group 2.png') }}" alt="" srcset=""></div>
             <div class="pl-3"> <img src="{{ asset('assets/frontend/images/Group 3.png') }}" alt="" srcset=""></div>
-            <div class="f-13 robotoMedium pl-3">www.learnme.live/specialist_name</div>
+            <div class="f-13 robotoMedium pl-3">www.learnme.live/{{ $specialist->user->username }}</div>
             </div>
           </div>
         </div>
