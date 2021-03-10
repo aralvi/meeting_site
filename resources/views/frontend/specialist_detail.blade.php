@@ -284,7 +284,7 @@
             <div class="pr-3 robotoMedium">{{ ucwords($specialist->category->name) }}</div>
             @if($specialist->user->country)
               <div class="border-left"></div>
-              <div class="pl-3 robotoRegular">{{ ucfirst($specialist->user->country) }}</div>
+              <div class="pl-3 pr-3 robotoRegular">{{ ucfirst($specialist->user->country) }}</div>
             @endif
 
             @if($specialist->address !=null)
