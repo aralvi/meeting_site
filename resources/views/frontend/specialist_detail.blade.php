@@ -32,7 +32,7 @@
 	text-align:left;
 	position:relative;
 	width: 28px;
-	height:50px;
+	height:25px;
 	display:inline-block;
 	/* margin:0 4px; */
 }
@@ -55,31 +55,31 @@
 	border:5px solid transparent;
 }
 
-#clock .digits .d1{			height:5px;width:5px;top:0;left:16px;}
+#clock .digits .d1{			height:5px;width:2px;top:0;left:20px;}
 #clock .digits .d1:before{	border-width:0 5px 5px 0;border-right-color:inherit;left:-5px;}
 #clock .digits .d1:after{	border-width:0 0 5px 5px;border-left-color:inherit;right:-5px;}
 
-#clock .digits .d2{			height:5px;width:5px;top:15px;left:16px;}
+#clock .digits .d2{			height:5px;width:2px;top:12px;left:20px;}
 #clock .digits .d2:before{	border-width:3px 4px 2px;border-right-color:inherit;left:-8px;}
 #clock .digits .d2:after{	border-width:3px 4px 2px;border-left-color:inherit;right:-8px;}
 
-#clock .digits .d3{			height:5px;width:5px;top:30px;left:16px;}
+#clock .digits .d3{			height:5px;width:2px;top:24px;left:20px;}
 #clock .digits .d3:before{	border-width:5px 5px 0 0;border-right-color:inherit;left:-5px;}
 #clock .digits .d3:after{	border-width:5px 0 0 5px;border-left-color:inherit;right:-5px;}
 
-#clock .digits .d4{			width:5px;height:5px;top:7px;left:10px;}
+#clock .digits .d4{			width:5px;height:2px;top:7px;left:14px;}
 #clock .digits .d4:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
 #clock .digits .d4:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
 
-#clock .digits .d5{			width:5px;height:5px;top:7px;right:0;}
+#clock .digits .d5{			width:5px;height:2px;top:7px;right:0;}
 #clock .digits .d5:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
 #clock .digits .d5:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
 
-#clock .digits .d6{			width:5px;height:5px;top:23px;left:10px;}
+#clock .digits .d6{			width:5px;height:2px;top:20px;left:14px;}
 #clock .digits .d6:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
 #clock .digits .d6:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
 
-#clock .digits .d7{			width:5px;height:5px;top:23px;right:0;}
+#clock .digits .d7{			width:5px;height:2px;top:20px;right:0;}
 #clock .digits .d7:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
 #clock .digits .d7:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
 
@@ -202,20 +202,8 @@
 }
 
 #clock .digits div.dots:after{
-	top:25px;
+	top:18px;
 }
-
-
-
-
-
-
-/* #clock .ampm{
-	position:absolute;
-	bottom:20px;
-	right:20px;
-	font-size:12px;
-} */
 
 
 
@@ -283,15 +271,14 @@
         <div class="col-md-5 col-lg-6 cl-ffffff pl-5 pr-5">
           <div class="d-flex justify-content-between align-items-center">
             <div class=" f-44 robotoMedium">{{ ucwords($specialist->user->name) }}</div>
-                {{-- <div class="digital-clock">00:00:00</div> --}}
-                <div id="clock" class="light">
-			<div class="display">
-				
-				<div class="ampm"></div>
-				<div class="alarm"></div>
-				<div class="digits"></div>
-			</div>
-		</div>
+                <div id="time"></div>
+
+                {{-- <div id="clock" class="light">
+                  <div class="display d-flex align-items-baseline">
+                    <div class="digits"></div>
+                    <div class="ampm ml-2"></div>
+                  </div>
+                </div> --}}
           </div>
           <div class="d-flex border-bottom pb-3">
             <div class="pr-3 robotoMedium">{{ ucwords($specialist->category->name) }}</div>
@@ -783,7 +770,7 @@ $(function(){
 
     // Positions for the hours, minutes, and seconds
     var positions = [
-        'h1', 'h2', ':', 'm1', 'm2', ':', 's1', 's2'
+        'h1', 'h2', ':', 'm1', 'm2'
     ];
 
     // Generate the digits with the needed markup,
@@ -839,8 +826,8 @@ $(function(){
         digits.h2.attr('class', digit_to_name[now[1]]);
         digits.m1.attr('class', digit_to_name[now[2]]);
         digits.m2.attr('class', digit_to_name[now[3]]);
-        digits.s1.attr('class', digit_to_name[now[4]]);
-        digits.s2.attr('class', digit_to_name[now[5]]);
+        // digits.s1.attr('class', digit_to_name[now[4]]);
+        // digits.s2.attr('class', digit_to_name[now[5]]);
 
         // The library returns Sunday as the first day of the week.
         // Stupid, I know. Lets shift all the days one position down, 
@@ -873,6 +860,48 @@ $(function(){
     });
 
 });
+
+
+ window.onload = function() {
+  clock();  
+    function clock() {
+    var now = new Date();
+      var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+var n = month[now.getMonth()+1];
+    var TwentyFourHour = now.getHours();
+    var hour = now.getHours();
+    var min = now.getMinutes();
+    var sec = now.getSeconds();
+    var current_date = now.getDate();
+    var mid = 'PM';
+    if (min < 10) {
+      min = "0" + min;
+    }
+    if (hour > 12) {
+      hour = hour - 12;
+    }    
+    if(hour==0){ 
+      hour=12;
+    }
+    if(TwentyFourHour < 12) {
+       mid = 'AM';
+    }     
+  document.getElementById('time').innerHTML =   n + " "+current_date+", "+ hour+':'+min+' '+mid;
+    setTimeout(clock, 1000);
+    }
+}
     </script>
 	@endsection
 
