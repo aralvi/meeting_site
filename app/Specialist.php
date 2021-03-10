@@ -30,4 +30,5 @@ class Specialist extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+
 }

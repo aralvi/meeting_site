@@ -309,6 +309,25 @@
             </div>
           @endif
           
+          @if(json_decode($specialist->opening_hours))
+            <div class="border-bottom pb-3  f-18">
+              <div class="robotoMedium f-18 pt-3">Days & Hours of Availability</div>
+              @foreach(json_decode($specialist->opening_hours) as $key=>$value)
+                
+                <div class="row ml-3">
+                  <div class="col-md-3 text-left ">{{ ucfirst($key) }}</div>
+                  <div class="col-md-3 text-center">{{ getTimeZoneTime($specialist->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[0]) }}</div>
+                  <div class="col-md-3 text-center"> - </div>
+                  <div class="col-md-3 text-center">{{ getTimeZoneTime($specialist->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[1]) }}</div> 
+                </div>
+                
+              @endforeach
+              {{-- <div class="robotoMedium pt-3">Specifications:</div>
+              <div class="robotoRegular pt-3">Confirmed Appointment</div>
+              <div class="robotoRegular pt-3">Timings Decided</div> --}}
+         
+            </div>
+          @endif
 
           @if($specialist->specifications !=null)
             <div class="border-bottom pb-3  f-18">
