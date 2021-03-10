@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app') @section('title','Portfolio') {{-- head start --}} @section('extra-css')
+@extends('layouts.frontend.app') @section('title','Appointment Request') {{-- head start --}} @section('extra-css')
 
 <style type="text/css">
     .dropdown-toggle::after {
@@ -115,7 +115,7 @@
                         <div class="d-flex">
                             <div><img src="{{ asset('assets/frontend/images/Group198.png') }}" alt="" class="img-fluid w-75" /></div>
                             <div class="f-21 robotoRegular cl-000000 pl-3">
-                                Morning + Afternoond
+                                Morning + Afternoon
                                 <div class="f-16 cl-878787">9:00 AM to 2:00 PM</div>
                             </div>
                         </div>
@@ -350,13 +350,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row pt-4 m-0 robotoRegular">
+                {{-- <div class="row pt-4 m-0 robotoRegular">
                     <div class="cl-000000 f-18 col-md-6 pl-0 pr-0"><div>Standard buzz cut or 1 length even line up</div></div>
                     <div class="col-md-6 cl-000000 d-flex justify-content-end"><div class="f-21">${{ number_format($service->rate) }}</div></div>
-                </div>
+                </div> --}}
                 <div class="row m-0 pt-3">
                     <div class="col-md-6 p-0">
-                        <div class="btn-group w-50 h-44">
+                        {{-- <div class="btn-group w-50 h-44">
                             <button type="button" class="btn btn-outline-success bg-3ac574 cl-ffffff dropdown-toggle-btn w-100 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Any staff Member
                             </button>
@@ -367,29 +367,33 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Separated link</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-md-6 pl-0 ml-auto text-end pr-0">
-                        <button href="" type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button ml-auto" type="submit">submit</button>
+                        <button href="" type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button ml-auto" type="submit">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
 </section>
-<section class="main_padding pt-5">
-    <div class="row m-0 p-0">
-        <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Services:</div>
-        <div class="col-md-3 ml-auto p-0">
-            <div class="d-flex m-0">
-                <div class="pt-4 w-100"><input type="email" placeholder="Search for services" class="robotoRegular h-44 cl-6b6b6b bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded" /></div>
-                <div class="pt-4 pl-2">
-                    <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 pt-2 pb-2 pl-2 pr-2" type="submit"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt="" /></button>
-                </div>
+
+@if($services->count() > 0)
+      <section class="main_padding pt-5">
+        <div class="row m-0 p-0">
+          <div class="robotoMedium cl-000000 f-34 pt-2 d-flex align-items-end">Services:</div>
+          <div class="col-md-3 ml-auto p-0">
+            <div class="d-flex m-0">  
+              <div class="pt-4 w-100"> 
+                <input type="text" placeholder="Search for services" class="service_inpt robotoRegular h-44 cl-6b6b6b bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
+              </div>
+              <div class="pt-4 pl-2"> 
+                <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2 service_inpt_btn" type="button" onclick="inputSearchServices();"><img src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button>
+              </div>
             </div>
-        </div>
-        <!-- T A B L E -->
-        <div class="table-responsive tableFixHead table_scroll mt-5 border robotoRegular">
+          </div>
+
+          <div class="table-responsive tableFixHead table_scroll mt-5 border robotoRegular">
             <table id="boxes-list" class="table m-0 header-fixed">
               
               <thead class="sticky-top bg-white cl-3ac754 ">
@@ -425,8 +429,11 @@
               </tbody>
             </table>
           </div>
-    </div>
-</section>
+                
+        </div>
+      </section>
+    @endif
+
 <section class="main_padding pt-70 text-center">
     <p class="main_title robotoMedium f-34 cl-000000 m-0">Portfolio</p>
     <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">The best and highly skilled Performance done previously</p>
@@ -634,24 +641,48 @@
 <section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
     <div class="d-flex justify-content-center align-items-center"><img src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}" alt="" srcset="" /></div>
 </section>
-@endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
+@endsection {{-- content section end --}} {{-- footer section start --}} 
 
+@section('extra-script')
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+    <script>
 
-{{-- footer section end --}}
-<script>
-    $(".login_button").on("click", function () {
-        
-        if($("input[name='time']:checked").val() == null){
-            swal({
-                    icon: "error",
-                    text: " Please select any time slot for appointment",
-                    type: 'error'
-                });
-            return false
+        function inputSearchServices()
+        {
+            let val = $('.service_inpt').val();
+            $.ajax({
+                url:"{{ route('getQueryServices') }}",
+                type:"get",
+                data:{val:val,service_id:{{ $service->id }},id:{{ $service->specialist_id }}},
+                success:function(data)
+                {
+                $('.services-table-body').html(data);
+                }
+            });
         }
-        var month_year = $(".cal-month__current").text();
-        var day = $(".cal-day__day--selected").text();
-        $("#date").val(day + " " + month_year);
-    });
-</script>
-@endsection {{-- footer section end --}}
+
+        $(document).keydown(function(e)
+        {
+            if(e.which === 13){
+            inputSearchServices();
+            }
+        });
+
+        $(".login_button").on("click", function () {
+            
+            if($("input[name='time']:checked").val() == null){
+                swal({
+                        icon: "error",
+                        text: " Please select any time slot for appointment",
+                        type: 'error'
+                    });
+                return false
+            }
+            var month_year = $(".cal-month__current").text();
+            var day = $(".cal-day__day--selected").text();
+            $("#date").val(day + " " + month_year);
+        });
+    </script>
+@endsection 

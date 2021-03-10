@@ -123,7 +123,26 @@ class ServiceController extends Controller
 
     public function getQueryServices(Request $request)
     {
-        $services = Service::where('title', 'like', '%' . $request->val . '%')->get();
+        if($request->val =='')
+        {
+            if($request->has('service_id'))
+            {
+                $services = Service::where('specialist_id',$request->id)->where('id', '!=', $request->service_id)->get();
+            }
+            else{
+                $services = Service::where('specialist_id',$request->id)->get();
+            }
+        }
+        else
+        {
+            if($request->has('service_id'))
+            {
+                $services = Service::where('id', '!=', $request->service_id)->where('specialist_id',$request->id)->where('title', 'like', '%' . $request->val . '%')->get();
+            }
+            else{
+                $services = Service::where('specialist_id',$request->id)->where('title', 'like', '%' . $request->val . '%')->get();
+            }
+        }
         return view('partials.frontend.get_search_services', compact('services'))->render();
     }
 }

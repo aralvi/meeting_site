@@ -29,13 +29,14 @@ class AppointmentController extends Controller
      */
     public function create($id)
     {
-       $id =  decrypt($id);
-       $service = Service::findOrFail($id);
-       $services = Service::where('specialist_id',$service->specialist_id)->get();
+        $id =  decrypt($id);
+        $service = Service::findOrFail($id);
+        $services = Service::where('specialist_id',$service->specialist_id)->where('id',
+        '!=',$id)->get();
         $today = Carbon::today();
         $tomorrow = Carbon::tomorrow();
-       $appointments = Appointment::where('service_id',$id)->where('status','1')->whereBetween('created_at', [$today, $tomorrow])->get();
-       return view('frontend.appointments',compact('service', 'appointments', 'services'));
+        $appointments = Appointment::where('service_id',$id)->where('status','1')->whereBetween('created_at', [$today, $tomorrow])->get();
+        return view('frontend.appointments',compact('service', 'appointments', 'services'));
     }
 
     /**

@@ -7,7 +7,7 @@ if(!function_exists('getTime'))
         $datetime = new DateTime($time);
         $la_time = new DateTimeZone(getCurrentUserTimeZone());
         $datetime->setTimezone($la_time);
-        return $datetime->format('H:i A');
+        return date("g:i A", strtotime($datetime->format('H:i')));
     }
 }
 
