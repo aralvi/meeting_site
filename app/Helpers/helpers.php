@@ -14,8 +14,9 @@ if(!function_exists('getTime'))
 if(!function_exists('getCurrentUserTimeZone'))
 {
     function getCurrentUserTimeZone(){
-  
-        $ip = file_get_contents("http://ipecho.net/plain");
+
+        // $ip = file_get_contents("http://ipecho.net/plain");
+        $ip = \Request::getClientIp(true);
         $url = 'http://ip-api.com/json/'.$ip;
         $tz = file_get_contents($url);
         $tz = json_decode($tz,true)['timezone'];
