@@ -14,7 +14,7 @@ use Laravel\Socialite\Facades\Socialite;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::view('check','check');
 Route::get('/', function () {
     return view('frontend.index');
 })->name('index');
