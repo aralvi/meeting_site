@@ -67,8 +67,17 @@ body {
     background-color: #3AC574;
 }
 
+.reviews {
+    border: 1px solid #3AC574;
+    border-radius: 50px;
+}
+
 .cl-3ac754 {
     color: #3AC574;
+}
+
+.white-spaces {
+    white-space: nowrap;
 }
 
 .f-26 {

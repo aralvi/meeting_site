@@ -21,7 +21,7 @@
 <div class="container-fluid">
 
     <div class="row  mt-5 justify-content-around">
-        <div class="col-md-6 borderRadius-10px p-0  box_shadow1 border-top-green-10">
+        <div class="col-md-6 borderRadius-10px pl-0 pr-0   box_shadow1 border-top-green-10">
             <div class=" px-5 py-3">
                 <div class="cl-3ac754 f-34">
                     Today's Appointments <span class="text-muted cl-6A6A6A">(4)</span>
@@ -126,22 +126,181 @@
     </div>
 
 <div class="row justify-content-around mt-5">
-    <div class="col-md-8 px-2 borderRadius-10px box_shadow1">
-        <div class="">
-            <div class="d-flex justify-content-between cl-3ac754 px-5">
-                <p class="f-24 mb-0">Job Description</p>
-                <p class="f-24 mb-0">Amount</p>
-            </div>
-            <hr>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
+    <div class="col-md-8 pb-5  borderRadius-10px box_shadow1 pl-5 pr-5 p-0">
+      <div class="d-flex mt-3 justify-content-between ">
+          <div class="cl-3ac754 robotoMedium f-24">Job Description</div>
+          <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
+      </div>
+      <div class="mt-2 border w-100"></div>
+      <div class="d-flex mt-4 justify-content-between ">
+          <div><div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
+          <div class="w-75 f-18 robotoRegular cl-6b6b6b ">It is a long established fact that a reader will be distracted by the readable content of a page 
+when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.</div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt=""></div>
+        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted </div><div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">7 minutes ago</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt=""></div>
+        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">Skin specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2 pl-4"><div><div class="d-flex"><div class="d-flex">
+        <div>  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+        <div class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">110 reviews</div>
+    
+    </div></div>
+        <div></div></div>
         </div>
+       <div class="robotoMedium text-center">    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div><div class="f-21 cl-6b6b6b">USD</div></div>
+      </div>
+      <div class="mt-3 border w-100"></div>
+      <div class="d-flex mt-4 justify-content-between ">
+          <div><div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
+          <div class="w-75 f-18 robotoRegular cl-6b6b6b ">It is a long established fact that a reader will be distracted by the readable content of a page 
+when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.</div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt=""></div>
+        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted </div><div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">7 minutes ago</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt=""></div>
+        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">Skin specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2 pl-4"><div><div class="d-flex"><div class="d-flex">
+        <div>  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+        <div class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">110 reviews</div>
+    
+    </div></div>
+        <div></div></div>
+        </div>
+       <div class="robotoMedium text-center">    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div><div class="f-21 cl-6b6b6b">USD</div></div>
+      </div>
+      <div class="mt-3 border w-100"></div>
+      <div class="d-flex mt-4 justify-content-between ">
+          <div><div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
+          <div class="w-75 f-18 robotoRegular cl-6b6b6b ">It is a long established fact that a reader will be distracted by the readable content of a page 
+when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.</div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt=""></div>
+        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted </div><div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">7 minutes ago</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt=""></div>
+        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">Skin specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2 pl-4"><div><div class="d-flex"><div class="d-flex">
+        <div>  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+        <div class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">110 reviews</div>
+    
+    </div></div>
+        <div></div></div>
+        </div>
+       <div class="robotoMedium text-center">    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div><div class="f-21 cl-6b6b6b">USD</div></div>
+      </div>
+      <div class="mt-3 border w-100"></div>
+      <div class="d-flex mt-4 justify-content-between ">
+          <div><div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
+          <div class="w-75 f-18 robotoRegular cl-6b6b6b ">It is a long established fact that a reader will be distracted by the readable content of a page 
+when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.</div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt=""></div>
+        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted </div><div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">7 minutes ago</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2"><div><div class="d-flex"><div>  <img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt=""></div>
+        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center ">Skin specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
+    
+    </div></div>
+        <div></div></div>
+        <div class="d-flex pt-2 pl-4"><div><div class="d-flex"><div class="d-flex">
+        <div>  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+        <div class="pl-2">  <img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt=""></div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+        <div class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">110 reviews</div>
+    
+    </div></div>
+        <div></div></div>
+        </div>
+       <div class="robotoMedium text-center">    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div><div class="f-21 cl-6b6b6b">USD</div></div>
+      </div>
+      <div class="mt-3 border w-100"></div>
+
     </div>
     <div class="col-md-3   borderRadius-10px box_shadow1">
         <div class="card text-center">
@@ -162,7 +321,7 @@
 </div>
 
 
-
+<br><br><br><br><br><br><br>
 
 
 @endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script') @endsection
