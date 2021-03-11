@@ -207,6 +207,10 @@
                             <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"  class="img-fluid w-75" alt="profile" width="40" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
+                            @if (Auth::user()->user_type == 'client')
+                            <a href="{{ route('client.index') }}" class="dropdown-item">Dashboard</a>
+                                
+                            @endif
                             <a
                                 class="dropdown-item"
                                 href="{{ route('logout') }}"

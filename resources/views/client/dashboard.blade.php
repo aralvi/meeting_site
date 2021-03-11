@@ -239,230 +239,69 @@
                 <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
             </div>
             <div class="mt-2 border w-100"></div>
-            <div class="d-flex mt-4 justify-content-between px-5">
-                <div>
-                    <div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
-                    <div class="w-75 f-18 robotoRegular cl-6b6b6b">
-                        It is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.
-                    </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">7 minutes ago
-                                </div>
-                            </div>
+            @foreach ($services as $service)
+                @php  $tags= json_decode($service->tags);  @endphp
+                <a href="{{  route('appointment_request',encrypt($service->id)) }}">
+                <div class="d-flex mt-4 justify-content-between px-5">
+                    <div>
+                        <div class="cl-000000 robotoMedium f-24">{{ $service->title }}</div>
+                        <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
+                            {{$service->description}}
                         </div>
-                        <div></div>
-                    </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">Skin
-                                    specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
-                            </div>
-                        </div>
-                        <div></div>
-                    </div>
-                    <div class="d-flex pt-2 pl-4">
-                        <div>
-                            <div class="d-flex">
+                        <div class="d-flex pt-2">
+                            <div>
                                 <div class="d-flex">
-                                    <div><img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                </div>
-                                <div
-                                    class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">
-                                    110 reviews</div>
-                            </div>
-                        </div>
-                        <div></div>
-                    </div>
-                </div>
-                <div class="robotoMedium text-center">
-                    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div>
-                    <div class="f-21 cl-6b6b6b">USD</div>
-                </div>
-            </div>
-            <div class="mt-3 border w-100"></div>
-            <div class="d-flex mt-4 justify-content-between px-5">
-                <div>
-                    <div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
-                    <div class="w-75 f-18 robotoRegular cl-6b6b6b">
-                        It is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.
-                    </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">7 minutes ago
+                                    <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
+                                    <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
+                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
+                                    </div>
                                 </div>
                             </div>
+                            <div></div>
                         </div>
-                        <div></div>
-                    </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">Skin
-                                    specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
-                            </div>
-                        </div>
-                        <div></div>
-                    </div>
-                    <div class="d-flex pt-2 pl-4">
-                        <div>
-                            <div class="d-flex">
+                        <div class="d-flex pt-2">
+                            <div>
                                 <div class="d-flex">
-                                    <div><img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                </div>
-                                <div
-                                    class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">
-                                    110 reviews</div>
-                            </div>
-                        </div>
-                        <div></div>
-                    </div>
-                </div>
-                <div class="robotoMedium text-center">
-                    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div>
-                    <div class="f-21 cl-6b6b6b">USD</div>
-                </div>
-            </div>
-            <div class="mt-3 border w-100"></div>
-            <div class="d-flex mt-4 justify-content-between px-5">
-                <div>
-                    <div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
-                    <div class="w-75 f-18 robotoRegular cl-6b6b6b">
-                        It is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.
-                    </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">7 minutes ago
+                                    <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
+                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
+                                        {{ implode(',',array_map('ucwords',$tags)) }}
+                                        </div>
                                 </div>
                             </div>
+                            <div></div>
                         </div>
-                        <div></div>
-                    </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">Skin
-                                    specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
-                            </div>
-                        </div>
-                        <div></div>
-                    </div>
-                    <div class="d-flex pt-2 pl-4">
-                        <div>
-                            <div class="d-flex">
+                        <div class="d-flex pt-2 pl-4">
+                            <div>
                                 <div class="d-flex">
-                                    <div><img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                </div>
-                                <div
-                                    class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">
-                                    110 reviews</div>
-                            </div>
-                        </div>
-                        <div></div>
-                    </div>
-                </div>
-                <div class="robotoMedium text-center">
-                    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div>
-                    <div class="f-21 cl-6b6b6b">USD</div>
-                </div>
-            </div>
-            <div class="mt-3 border w-100"></div>
-            <div class="d-flex mt-4 justify-content-between px-5">
-                <div>
-                    <div class="cl-000000 robotoMedium f-24">Skin Specialists</div>
-                    <div class="w-75 f-18 robotoRegular cl-6b6b6b">
-                        It is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.
-                    </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">7 minutes ago
+                                    <div class="d-flex">
+                                        <div><img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt="" /></div>
+                                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
+                                                alt="" /></div>
+                                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
+                                                alt="" /></div>
+                                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
+                                                alt="" /></div>
+                                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
+                                                alt="" /></div>
+                                    </div>
+                                    <div
+                                        class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">
+                                        110 reviews</div>
                                 </div>
                             </div>
+                            <div></div>
                         </div>
-                        <div></div>
                     </div>
-                    <div class="d-flex pt-2">
-                        <div>
-                            <div class="d-flex">
-                                <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
-                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">Skin
-                                    specialist, Skin Care, Black marks specialist, Skin caring Facilities</div>
-                            </div>
-                        </div>
-                        <div></div>
-                    </div>
-                    <div class="d-flex pt-2 pl-4">
-                        <div>
-                            <div class="d-flex">
-                                <div class="d-flex">
-                                    <div><img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                            alt="" /></div>
-                                </div>
-                                <div
-                                    class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">
-                                    110 reviews</div>
-                            </div>
-                        </div>
-                        <div></div>
+                    <div class="robotoMedium text-center">
+                        <div class="f-24 cl-000000 white-spaces robotoMedium">${{ $service->rate }}</div>
+                        <div class="f-21 cl-6b6b6b">USD</div>
                     </div>
                 </div>
-                <div class="robotoMedium text-center">
-                    <div class="f-24 cl-000000 white-spaces robotoMedium">$40 - $80</div>
-                    <div class="f-21 cl-6b6b6b">USD</div>
-                </div>
-            </div>
-            <div class="mt-3 border w-100"></div>
+                </a>
+                <div class="mt-3 border w-100"></div>
+                
+            @endforeach
+            
         </div>
         <div class="col-md-3 borderRadius-10px box_shadow1 p-0">
             <div class="f-24 cl-3ac754 robotoMedium mt-3 px-3">
