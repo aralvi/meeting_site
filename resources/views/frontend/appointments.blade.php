@@ -358,7 +358,7 @@
                             </div> --}}
                         </div>
                         <div class="col-md-6 pl-0 ml-auto text-end pr-0">
-                            <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button ml-auto" type="submit">Submit</button>
+                            <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button appointment-btn ml-auto" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -659,7 +659,7 @@
             }
         });
 
-        $(".login_button").on("click", function () {
+        $(".appointment-btn").on("click", function () {
             
             if($("input[name='time']:checked").val() == null){
                 swal({
