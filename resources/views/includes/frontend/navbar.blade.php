@@ -211,6 +211,10 @@
                             <a href="{{ route('client.index') }}" class="dropdown-item">Dashboard</a>
                                 
                             @endif
+                            @if (Auth::user()->user_type == 'specialist')
+                            <a href="{{ url('specialist/dashboard') }}" class="dropdown-item">Dashboard</a>
+                                
+                            @endif
                             <a
                                 class="dropdown-item"
                                 href="{{ route('logout') }}"

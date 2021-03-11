@@ -51,6 +51,9 @@ class ServiceController extends Controller
         $service->title =  $request->title;
         $service->timing =  $request->timing;
         $service->rate =  $request->rate;
+        $tags = explode(' ',$request->tags);
+        $service->tags = json_encode($tags);
+        $service->description = $request->description;
         $service->status =  isset($request->status) ? '1' : '0';
         $service->save();
         return back()->with('success','Service added Successfuly!');
@@ -79,7 +82,10 @@ class ServiceController extends Controller
         $categories = Category::all();
         $subcategories = SubCategory::all();
         $service_subcategories = json_decode($service->sub_categories);
-        return view('specialist/services/edit', compact('service', 'categories', 'subcategories', 'service_subcategories'));
+        $tags = json_decode($service->tags);
+        
+
+        return view('specialist/services/edit', compact('service', 'categories', 'subcategories', 'service_subcategories','tags'));
     }
 
     /**
@@ -99,6 +105,9 @@ class ServiceController extends Controller
         $service->title =  $request->title;
         $service->timing =  $request->timing;
         $service->rate =  $request->rate;
+        $tags = explode(' ', $request->tags);
+        $service->tags = json_encode($tags);
+        $service->description = $request->description;
         $service->status =  isset($request->status)?'1':'0';
         $service->save();
         return back()->with('success', 'Service added Successfuly!');

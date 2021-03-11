@@ -112,6 +112,14 @@
                                 <input id="rate" type="number" class="form-control text-capitalize" name="rate" value="{{ old('rate') }}" autocomplete="rate" placeholder="Enter Service Rate" />
                             </div>
                             <div class="form-group">
+                                <label for="description">Description*</label>
+                               <textarea id="description" class="form-control summernote" name="description" required> </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">tags*</label>
+                               <input type="text" name="tags" class="form-control" placeholder="laravel php" required>
+                            </div>
+                            <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                 <input type="checkbox" name="status" class="custom-control-input" checked id="customSwitch3">
                                 <label class="custom-control-label" for="customSwitch3">Inactive/Active</label>
