@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/navbar.css') }}">
 <nav class="navbar navbar-expand-lg navbar-light pl-0 pr-0 pt-2">
-            <a class="navbar-brand" href="#"><img src="{{ asset('assets/frontend/images/navlogo.png') }}"
+            <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/navlogo.png') }}"
                     alt="navbar logo" class="img-fluid" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -10,7 +10,8 @@
         display: none;
     }
 
-    /* .dropdown-menu::before{
+    /* .dropdown-menu::befor
+    {
 
             display: inline-block;
             width: 0;
@@ -23,7 +24,7 @@
             border-bottom: 0;
             border-left: .3em solid transparent;
 
-        } */
+    } */
 
 </style>
 @endsection
@@ -87,23 +88,17 @@
 
 
 <!-- 2 N D S E C T I O N -->
-
-<section class=" main_padding pt-5">
-    <div>
-        <ul class="listStyle-none p-0  d-flex justify-content-between robotoRegular f-18 ul_main_tabs m-0">
-            <li> <a href="##" class="cl-3b3b3b3">Hair Salon</a></li>
-            <li> <a href="##" class="cl-3b3b3b3">Barbershop</a></li>
-            <li> <a href="" class="cl-3b3b3b3">Nail Salon</a></li>
-            <li> <a href="" class="cl-3b3b3b3">Beauty Salon</a></li>
-            <li> <a href="" class="cl-3b3b3b3">Eyebrows & Lashes</a></li>
-            <li> <a href="" class="cl-3b3b3b3">Massage</a></li>
-            <li> <a href="" class="cl-3b3b3b3">Makeup Artist</a></li>
-            <li> <a href="" class="cl-3b3b3b3">Day Spa</a></li>
-            <li> <a href="" class="cl-3b3b3b3">More..</a></li>
-
-        </ul>
-    </div>
-</section>
+@if(count(categories()) > 0)
+    <section class=" main_padding pt-5">
+        <div>
+            <ul class="listStyle-none p-0  d-flex robotoRegular f-18 ul_main_tabs m-0">
+                @foreach (categories() as $category)
+                    <li class="pl-3"> <a href="#" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+    </section>
+@endif
 
 
 
