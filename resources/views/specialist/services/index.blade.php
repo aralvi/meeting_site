@@ -117,7 +117,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">tags*</label>
-                               <input type="text" name="tags" class="form-control" placeholder="laravel php" required>
+                               <input type="text" name="tags" class="form-control" placeholder="laravel,php" required>
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
