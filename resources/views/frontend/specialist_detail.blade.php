@@ -220,22 +220,7 @@
        @include('includes.frontend.navbar')
     </section>
 
-    <div class="pt-4 main_padding d-flex f-20 cl-3b3b3b3 justify-content-between robotoRegular">
-      <div class="col-md-1 p-0"></div>
-      <ul class="listStyle-none p-0 col-md-10 d-flex justify-content-between robotoRegular f-18 ul_main_tabs m-0">
-        <li>  <a href="##" class="cl-3b3b3b3">Barbershop</a></li>
-        <li>  <a href="##" class="cl-3b3b3b3">Web Developer</a></li>
-        <li>  <a href="" class="cl-3b3b3b3">Banker</a></li>
-        <li>  <a href="" class="cl-3b3b3b3">Engineer</a></li>
-        <li>  <a href="" class="cl-3b3b3b3">Massage</a></li>
-        <li>  <a href="" class="cl-3b3b3b3">Massage</a></li>
-        <li>  <a href="" class="cl-3b3b3b3">Skin Care</a></li>
-        <li>  <a href="" class="cl-3b3b3b3">Hair Stylist</a></li>
-        
- 
-      </ul>
-      <div class="col-md-2"></div>
-    </div>
+    @include('includes.frontend.navigations')
            
     <section class="main_padding pt-70">
       <section class="bg_portfolioImg ">
