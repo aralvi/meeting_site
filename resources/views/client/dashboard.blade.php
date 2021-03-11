@@ -122,49 +122,33 @@
     <div class="row mt-5 justify-content-around">
         <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
             <div class="px-5 py-3">
-                <div class="cl-3ac754 f-34">Today's Appointments <span class="text-muted cl-6A6A6A">(4)</span></div>
+                <div class="cl-3ac754 f-34">Today's Appointments <span class="text-muted cl-6A6A6A">({{ count($appointments) }})</span></div>
                 <div class="card-body px-0">
                     <div class="row m-0 p-0">
                         <div class="col-md-2 pl-0 py-0">
-                            <h1 class="h1 f-145">4</h1>
+                            <h1 class="h1 f-145">{{ count($appointments) }}</h1>
                         </div>
                         <div class="col-md-10 p-0 cl-6A6A6A">
+                            @foreach ($appointments as $appointment)
+                                
                             <div class="mt-3 d-flex justify-content-around align-items-center bg-F2F5FA box_shadow2">
                                 <div class="d-flex flex-column justify-content-between">
-                                    <p>Kevin Dawn</p>
-                                    <h3>Hair Style Consultation</h3>
+                                    <p>{{ $appointment->specialist->user->name }}</p>
+                                    <h3>{{ $appointment->service->title }}</h3>
                                 </div>
                                 <div class="d-flex flex-column justify-content-between">
                                     <p>Time</p>
-                                    <p>00:09 AM - 10:00 AM</p>
+                                    <p>{{ $appointment->time }}</p>
                                 </div>
                             </div>
-                            <div class="mt-3 d-flex justify-content-around align-items-center bg-F2F5FA box_shadow2">
-                                <div class="d-flex flex-column justify-content-between">
-                                    <p>Kevin Dawn</p>
-                                    <h3>Hair Style Consultation</h3>
-                                </div>
-                                <div class="d-flex flex-column justify-content-between">
-                                    <p>Time</p>
-                                    <p>00:09 AM - 10:00 AM</p>
-                                </div>
-                            </div>
-                            <div class="mt-3 d-flex justify-content-around align-items-center bg-F2F5FA box_shadow2">
-                                <div class="d-flex flex-column justify-content-between">
-                                    <p>Kevin Dawn</p>
-                                    <h3>Hair Style Consultation</h3>
-                                </div>
-                                <div class="d-flex flex-column justify-content-between">
-                                    <p>Time</p>
-                                    <p>00:09 AM - 10:00 AM</p>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
                     <button class="btn btn-md bg-3ac574 cl-ffffff">Update</button>
-                    <a href="javascript:void(0)" class="cl-3ac754">Previous Appointments >></a>
+                    <a href="{{ route('client.show',Auth::user()->id) }}" class="cl-3ac754">Previous Appointments >></a>
                 </div>
             </div>
         </div>

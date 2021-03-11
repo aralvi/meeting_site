@@ -398,7 +398,7 @@
                     <td>{{ $service->timing }} Minutes</td>
                     <td> ${{ number_format($service->rate) }} (USD)</td>
                     <td>{{ $service->status }}</td>
-                    <td><a href="{{ route('appointment_request',encrypt($service->id)) }}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" target="_blank">Book</a></td>
+                    <td><a href="{{ route('appointment_request',encrypt($service->id)) }}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 login_button" >Book</a></td>
                   </tr>
 
                 @endforeach

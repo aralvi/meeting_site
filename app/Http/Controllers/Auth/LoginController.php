@@ -105,7 +105,7 @@ class LoginController extends Controller
                 return '/specialist/dashboard';
                 break;
             case 'client':
-                return '/client/dashboard';
+                return '/client';
                 break;
             default:
                 return '/login';

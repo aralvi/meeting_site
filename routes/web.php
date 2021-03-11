@@ -50,25 +50,20 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
 
 Route::group(['middleware'=>['auth']],function(){
     
-    Route::get('appointment', function () {
-        return view('frontend.appoinment');
-    })->name('appointment');
+    // Route::get('appointment', function () {
+    //     return view('frontend.appoinment');
+    // })->name('appointment');
     
     Route::get('specialist-detail/{id}', 'SpecialistController@getSpecialistDetail')->name('specialist_detail');
 
-    Route::get('portfolio', function () {
-        return view('frontend.portfolio');
-    })->name('portfolio');
-    Route::get('carousels', function () {
-        return view('frontend.carousels');
-    })->name('carousels');
-    Route::get('clientRequest', function () {
-        return view('frontend.client_request');
-    })->name('client_request');
+    Route::get('portfolio', function () {  return view('frontend.portfolio'); })->name('portfolio');
+    Route::get('carousels', function () {  return view('frontend.carousels'); })->name('carousels');
+    Route::get('clientRequest', function () {return view('frontend.client_request'); })->name('client_request');
     Route::get('appointment-request/{id}','AppointmentController@create')->name('appointment_request');
     Route::post('store-appointment','AppointmentController@storeAppointment')->name('store.appointment');
     Route::get('getQueryServices','Specialist\ServiceController@getQueryServices')->name('getQueryServices');
 
     Route::resource('clients', 'ClientController');
+    Route::resource('client', 'Client\ClientController');
     Route::view('client/dashboard','client.index');
 });

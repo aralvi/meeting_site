@@ -403,7 +403,7 @@
                         <div class="row m-0">
                             @foreach($specialistsCollections as $specialist)
                                 <div class="col-md-3 col-lg-3 col-sm-12">
-                                    <a href="{{route('specialist_detail',encrypt($specialist->id))}}" target="_blank">
+                                    <a href="{{route('specialist_detail',encrypt($specialist->id))}}" >
                                         <div class="card border-0 box_shadow">
                                             <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
                                                 class="card-img-top" alt="...">
