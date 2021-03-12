@@ -206,7 +206,7 @@
                 <div class="f-24 cl-3ac754 robotoMedium"></div>
             </div>
             <div class="mt-2 border w-100"></div>
-            <form action="{{ route('requests.store') }}" method="post">
+            <form action="{{ route('servicerequests.store') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -242,6 +242,10 @@
                 <div class="form-group">
                     <label for="description">Description*</label>
                     <textarea id="description" class="form-control summernote" name="description" required rows="5"> </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description">tags*</label>
+                    <input type="text" name="tags" class="form-control" placeholder="laravel,php" required>
                 </div>
                 <div class=" pl-0 ml-auto text-end pr-0 my-3">
                      <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button appointment-btn ml-auto" type="submit">Submit</button>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\ServiceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class RequestController extends Controller
+class ServiceRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +36,18 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $service_request = new ServiceRequest();
+        $service_request->title = $request->title;
+        $service_request->category_id = $request->category;
+        $service_request->user_id = Auth::user()->id;
+        $service_request->description = $request->description;
+        $service_request->rate_to = $request->rate_to;
+        $service_request->rate_from = $request->rate_from;
+        $service_request->subcategories = json_encode($request->sub_categories);
+        $tags = explode(',', $request->tags);
+        $service_request->tags = json_encode($tags);
+        $service_request->save();
+        return back()->with('success','Request has been generated!');
     }
 
     /**
