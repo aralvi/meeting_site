@@ -232,19 +232,23 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-around mt-2 mb-5">
+    <div class="row px-3 ml-1 mt-2 mb-5">
         <div class="col-md-8  borderRadius-10px box_shadow1 p-0">
             <div class="d-flex mt-3 justify-content-between px-5">
                 <div class="cl-3ac754 robotoMedium f-24">Job Description</div>
                 <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
             </div>
             <div class="mt-2 border w-100"></div>
-            @foreach ($services as $service)
+            @foreach ($service_requests as $service)
                 @php  $tags= json_decode($service->tags);  @endphp
-                <a href="{{  route('appointment_request',encrypt($service->id)) }}">
+                <a href="javascript:void(0);" title="Click To bid this request" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <div class="d-flex mt-4 justify-content-between px-5">
                     <div>
                         <div class="cl-000000 robotoMedium f-24">{{ $service->title }}</div>
+                        <div class="d-flex">
+                            <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted</div>
+                            <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->name }} </div>
+                        </div>
                         <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
                             {{$service->description}}
                         </div>
@@ -293,7 +297,7 @@
                         </div>
                     </div>
                     <div class="robotoMedium text-center">
-                        <div class="f-24 cl-000000 white-spaces robotoMedium">${{ $service->rate }}</div>
+                        <div class="f-24 cl-000000 white-spaces robotoMedium">${{ $service->rate_from." - $". $service->rate_to}}</div>
                         <div class="f-21 cl-6b6b6b">USD</div>
                     </div>
                 </div>
@@ -303,7 +307,7 @@
             @endforeach
             
         </div>
-        <div class="col-md-3 borderRadius-10px box_shadow1 p-0">
+        {{-- <div class="col-md-3 borderRadius-10px box_shadow1 p-0">
             <div class="f-24 cl-3ac754 robotoMedium mt-3 px-3">
                 Projects
             </div>
@@ -382,8 +386,32 @@
                 </form>
             </div>
 
-        </div>
+        </div> --}}
     </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection {{-- content section end --}} {{-- footer section start --}}
  @section('extra-script') 

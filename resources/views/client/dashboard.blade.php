@@ -230,7 +230,7 @@
                     
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-4"> 
                         <label for="rate_from">From</label>
                         <input type="number" name="rate_from" id="rate_from" class="form-control" placeholder="$1">
                     </div>

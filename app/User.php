@@ -56,6 +56,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Admin::class);
     }
+    public function service_request()
+    {
+        return $this->hasOne(ServiceRequest::class);
+    }
     public function appointment()
     {
         return $this->hasOne(Appointment::class);

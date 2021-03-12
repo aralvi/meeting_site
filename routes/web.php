@@ -44,7 +44,7 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
     Route::resource('specialists', 'SpecialistController');
     Route::resource('specialist/services', 'Specialist\ServiceController');
     Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
-    Route::view('specialist/dashboard','specialist.index');
+    Route::resource('specialist', 'Specialist\DashboardController');
 });
 
 
