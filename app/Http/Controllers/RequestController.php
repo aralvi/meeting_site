@@ -1,15 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Controllers\Controller;
-use App\Models\Appointment;
-use App\Models\Specialists\Service;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ClientController extends Controller
+class RequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +13,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::where('user_id',Auth::user()->id)->where('status','1')->get();
-        $services = Service::all();
-        $categories = Category::all();
-        return view('client.dashboard',compact('appointments', 'services', 'categories'));
+        //
     }
 
     /**
@@ -42,7 +34,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -53,8 +45,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        $appointments = Appointment::where('user_id',Auth::user()->id)->get();
-        return view('client.appointment',compact('appointments'));
+        //
     }
 
     /**
@@ -89,10 +80,5 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function getSubCategories(Request $request)
-    {
-        $subcategories = Category::where('id', $request->id)->first()->subcategories;
-        return view('specialist/services/get_subcategories', compact('subcategories'))->render();
     }
 }

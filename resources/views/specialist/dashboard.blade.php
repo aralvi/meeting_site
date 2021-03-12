@@ -199,59 +199,7 @@
             </div>
         </div>
     </div>
-    <div class="row mt-2 mb-5 px-3 mx-1 ">
-        <div class="col-md-8 px-5 borderRadius-10px box_shadow1 p-0">
-            <div class="d-flex mt-3 justify-content-between ">
-                <div class="cl-3ac754 robotoMedium f-24">Post a Job</div>
-                <div class="f-24 cl-3ac754 robotoMedium"></div>
-            </div>
-            <div class="mt-2 border w-100"></div>
-            <form action="{{ route('requests.store') }}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="title">Category</label>
-                        <select class="form-control select2"  name="category" id="select_category" style="width: 100%;"  onchange="getSubCategories(this);">
-                                    <option selected="selected" disabled>Choose category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <div class="sub_categories">
-                                            
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-4">
-                        <label for="rate_from">From</label>
-                        <input type="number" name="rate_from" id="rate_from" class="form-control" placeholder="$1">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="rate_to">To</label>
-                        <input type="number" name="rate_to" id="rate_to" class="form-control" placeholder="$500">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description*</label>
-                    <textarea id="description" class="form-control summernote" name="description" required rows="5"> </textarea>
-                </div>
-                <div class=" pl-0 ml-auto text-end pr-0 my-3">
-                     <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button appointment-btn ml-auto" type="submit">Submit</button>
-                </div>
-            </form>
-            
-        </div>
-        
-    </div>
-    {{-- <div class="row mt-3 pl-5 ">
+    <div class="row mt-3 pl-5 ">
         <div class="col-md-8 p-0">
             <div class="row">
                 <div class="col-md-10 p-0">
@@ -435,7 +383,7 @@
             </div>
 
         </div>
-    </div> --}}
+    </div>
 </div>
 @endsection {{-- content section end --}} {{-- footer section start --}}
  @section('extra-script') 
@@ -446,22 +394,5 @@
     function getMinRange(e){
         document.getElementById('min').innerHTML = "$"+e.value;
     }
-
-      function getSubCategories(ele)
-      {
-
-          let id = $(ele).val();
-          $.ajax({
-              url:"{{ route('request.get_subcategories') }}",
-              type:"get",
-              data:{id:id},
-              success:function(data)
-              {
-                  $('.sub_categories').empty();
-                  $('.sub_categories').html(data);
-
-              }
-          });
-      }
 </script>
  @endsection

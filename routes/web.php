@@ -65,5 +65,7 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::resource('clients', 'ClientController');
     Route::resource('client', 'Client\ClientController');
+    Route::resource('requests', 'RequestController');
+    Route::get('sub_categories', 'Client\ClientController@getSubCategories')->name('request.get_subcategories');
     Route::view('client/dashboard','client.index');
 });

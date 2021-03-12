@@ -13,3 +13,4 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/app.css') }}" />
 <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}" />
