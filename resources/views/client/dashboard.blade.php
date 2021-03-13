@@ -213,6 +213,7 @@ span.prefix{
             </div>
         </div>
     </div>
+    @include('common.messages')
     <div class="row mt-2 mb-5 px-3 mx-1 ">
         <div class="col-md-8 px-5 borderRadius-10px box_shadow1 p-0">
             <div class="d-flex mt-3 justify-content-between ">

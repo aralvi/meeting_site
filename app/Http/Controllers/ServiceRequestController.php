@@ -36,6 +36,14 @@ class ServiceRequestController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'title' => 'required',
+            'category' => 'required',
+            'sub_categories' => 'required',
+            'budget' => 'required',
+            'description' => 'required',
+        ]);
         $service_request = new ServiceRequest();
         $service_request->title = $request->title;
         $service_request->category_id = $request->category;
