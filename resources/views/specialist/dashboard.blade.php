@@ -240,10 +240,10 @@
             </div>
             <div class="mt-2 border w-100"></div>
             @foreach ($service_requests as $service)
-                @php  $tags= json_decode($service->tags);  @endphp
+                
                 <a href="javascript:void(0);" title="Click To bid this request" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <div class="d-flex mt-4 justify-content-between px-5">
-                    <div>
+                <div class="d-flex mt-4 justify-content-between pr-5">
+                    <div class="col-md-10">
                         <div class="cl-000000 robotoMedium f-24">{{ $service->title }}</div>
                         <div class="d-flex">
                             <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted</div>
@@ -268,7 +268,10 @@
                                 <div class="d-flex">
                                     <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
                                     <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
-                                        {{ implode(',',array_map('ucwords',$tags)) }}
+                                        @php  if($service->tags !=null){
+                                            $tags= explode('uploads/files/',$service->tags);
+                                            }  @endphp
+                                        <a href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
                                         </div>
                                 </div>
                             </div>
@@ -297,7 +300,7 @@
                         </div>
                     </div>
                     <div class="robotoMedium text-center">
-                        <div class="f-24 cl-000000 white-spaces robotoMedium">${{ $service->rate_from." - $". $service->rate_to}}</div>
+                        <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
                         <div class="f-21 cl-6b6b6b">USD</div>
                     </div>
                 </div>

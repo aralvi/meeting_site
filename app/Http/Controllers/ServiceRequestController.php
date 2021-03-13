@@ -41,11 +41,16 @@ class ServiceRequestController extends Controller
         $service_request->category_id = $request->category;
         $service_request->user_id = Auth::user()->id;
         $service_request->description = $request->description;
-        $service_request->rate_to = $request->rate_to;
-        $service_request->rate_from = $request->rate_from;
+        $service_request->budget = $request->budget;
         $service_request->subcategories = json_encode($request->sub_categories);
-        $tags = explode(',', $request->tags);
-        $service_request->tags = json_encode($tags);
+        if($file= $request->file('tags')){
+            $file_original_name = $file->getClientOriginalName();
+            
+            $file->move('public/uploads/files/', $file_original_name);
+            $service_request->tags = 'uploads/files/' . $file_original_name;
+        }
+        // $tags = explode(',', $request->tags);
+        // $service_request->tags = json_encode($tags);
         $service_request->save();
         return back()->with('success','Request has been generated!');
     }
