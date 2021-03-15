@@ -241,8 +241,8 @@
             <div class="mt-2 border w-100"></div>
             @foreach ($service_requests as $service)
                 
-                <a href="javascript:void(0);" class="service_request" title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}">
-                <div class="d-flex mt-4 justify-content-between pr-5">
+                <a href="javascript:void(0);" class="service_request " title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}" tabindex="0" data-toggle="tooltip" title="Click To bid this request">
+                <div class="d-flex mt-4 justify-content-between pr-5" >
                     <div class="col-md-10 pl-5 pr-0">
                         <div class="cl-000000 robotoMedium f-24">{{ $service->title }}</div>
                         <div class="d-flex">
@@ -398,7 +398,7 @@
 <!-- Button trigger modal -->
 
 
-<
+
 <!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -451,7 +451,9 @@
 </div>
 @endsection {{-- content section end --}} {{-- footer section start --}}
  @section('extra-script') 
+ 
 <script>
+   
     function getMaxRange(e){
         document.getElementById('max').innerHTML = "$"+e.value;
     }

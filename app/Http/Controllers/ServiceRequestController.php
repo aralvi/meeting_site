@@ -53,9 +53,9 @@ class ServiceRequestController extends Controller
         $service_request->subcategories = json_encode($request->sub_categories);
         if($file= $request->file('tags')){
             $file_original_name = $file->getClientOriginalName();
-            
-            $file->move('public/uploads/files/', $file_original_name);
-            $service_request->tags = 'uploads/files/' . $file_original_name;
+            $image_changed_name = time() . '_' . str_replace('', '-', $file_original_name);
+            $file->move('public/uploads/files/', $image_changed_name);
+            $service_request->tags = 'uploads/files/' . $image_changed_name;
         }
         // $tags = explode(',', $request->tags);
         // $service_request->tags = json_encode($tags);

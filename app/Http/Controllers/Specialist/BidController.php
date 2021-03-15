@@ -44,9 +44,9 @@ class BidController extends Controller
         $bid_request->perposal = $request->perposal;
         if ($file = $request->file('attachment')) {
             $file_original_name = $file->getClientOriginalName();
-
-            $file->move('public/uploads/files/', $file_original_name);
-            $bid_request->attachment = 'uploads/files/' . $file_original_name;
+            $image_changed_name = time() . '_' . str_replace('', '-', $file_original_name);
+            $file->move('public/uploads/files/', $image_changed_name);
+            $bid_request->attachment = 'uploads/files/' . $image_changed_name;
         }
         $bid_request->save();
         return back()->with('success','Bid Created Successfuly!');
