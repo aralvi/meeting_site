@@ -155,7 +155,7 @@
         <div class="col-md-5 py-5 borderRadius-10px p-0 box_shadow1 border-top-green-10">
             <div class="row px-5 align-items-center">
                 <div class="col-md-8">
-                    <p class="cl-3ac754 f-34 mb-0">Available Banlance $</p>
+                    <p class="cl-3ac754 f-34 mb-0">Available Balance $</p>
                 </div>
                 <div class="col-md-4">
                     <p class="cl-6A6A6A f-18 mb-0">Available Funds</p>

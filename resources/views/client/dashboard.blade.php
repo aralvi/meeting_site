@@ -131,7 +131,30 @@ span.prefix{
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
     @include('includes.frontend.navbar')
 </section>
-
+@if(count($categories) > 0)
+    <section class=" main_padding pt-5">
+        <div>
+            <ul class="listStyle-none p-0  d-flex robotoRegular f-18 ul_main_tabs m-0 d-flex justify-content-around">
+                @foreach ($categories->take(8) as $category)
+                    <li class="pl-3"> <a href="#" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
+                @endforeach
+                <li>
+                    <!-- Example split danger button -->
+                <div class="btn-group">
+                <a href="" lass=" dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
+                <div class="dropdown-menu">
+                    @foreach ($categories->skip(8) as $category)
+                    <a class="dropdown-item" href="#">{{ ucwords($category->name) }}</a>
+                        
+                    @endforeach
+                    
+                </div>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+@endif
 <div class="container-fluid">
     <div class="row mt-5 justify-content-around">
         <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
@@ -169,7 +192,7 @@ span.prefix{
         <div class="col-md-5 py-5 borderRadius-10px p-0 box_shadow1 border-top-green-10">
             <div class="row px-5 align-items-center">
                 <div class="col-md-8">
-                    <p class="cl-3ac754 f-34 mb-0">Available Banlance $</p>
+                    <p class="cl-3ac754 f-34 mb-0">Available Balance $</p>
                 </div>
                 <div class="col-md-4">
                     <p class="cl-6A6A6A f-18 mb-0">Available Funds</p>
