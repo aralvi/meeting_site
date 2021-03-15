@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Specialist;
 
-use App\Category;
 use App\Http\Controllers\Controller;
-use App\Models\Appointment;
-use App\ServiceRequest;
+use App\Models\Bid;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class BidController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->where('status', '1')->get();
-        $service_requests = ServiceRequest::all();
-        $categories = Category::all();
-        return view('specialist.dashboard', compact('appointments', 'service_requests', 'categories'));
+        //
     }
 
     /**
@@ -42,7 +36,20 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bid_request = new Bid();
+        $bid_request->specialist_id = $request->specialist_id;
+        $bid_request->service_request_id = $request->service_request_id;
+        $bid_request->budget = $request->budget;
+        $bid_request->delivery = $request->delivery;
+        $bid_request->perposal = $request->perposal;
+        if ($file = $request->file('attachment')) {
+            $file_original_name = $file->getClientOriginalName();
+
+            $file->move('public/uploads/files/', $file_original_name);
+            $bid_request->attachment = 'uploads/files/' . $file_original_name;
+        }
+        $bid_request->save();
+        return back()->with('success','Bid Created Successfuly!');
     }
 
     /**
@@ -89,17 +96,4 @@ class DashboardController extends Controller
     {
         //
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function getServiceRequest($id)
-    {
-        $service_request = ServiceRequest::findOrFail($id);
-        return view('partials.frontend.get_service_request',compact('service_request'));
-    }
-
-
 }

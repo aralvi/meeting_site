@@ -241,12 +241,12 @@
             <div class="mt-2 border w-100"></div>
             @foreach ($service_requests as $service)
                 
-                <a href="javascript:void(0);" title="Click To bid this request" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <a href="javascript:void(0);" class="service_request" title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}">
                 <div class="d-flex mt-4 justify-content-between pr-5">
-                    <div class="col-md-10">
+                    <div class="col-md-10 pl-5 pr-0">
                         <div class="cl-000000 robotoMedium f-24">{{ $service->title }}</div>
                         <div class="d-flex">
-                            <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted</div>
+                            <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
                             <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->name }} </div>
                         </div>
                         <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
@@ -299,7 +299,7 @@
                             <div></div>
                         </div>
                     </div>
-                    <div class="robotoMedium text-center">
+                    <div class="robotoMedium text-right col-md-2 pr-0">
                         <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
                         <div class="f-21 cl-6b6b6b">USD</div>
                     </div>
@@ -398,21 +398,54 @@
 <!-- Button trigger modal -->
 
 
+<
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">Bid To Request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <form action="{{ route('bids.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="specialist_id" value="{{ Auth::user()->specialist->id }}"> 
       <div class="modal-body">
-        ...
+        <div class="row">
+            <div class="col-md-6 service_request_detail d-flex"></div>
+            <div class="col-md-6">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">
+                                Delivery Time (In Days)
+                            </label>
+                            <input type="number" name="delivery" id="delivery" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">
+                                Budget
+                            </label>
+                            <input type="number" name="budget" id="budget" class="form-control">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="">Proposal</label>
+                            <textarea name="proposal" id="proposal" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="">Attachment (optional)</label>
+                            <input type="file" name="attachment" id="atatchment" class="form-control">
+                        </div>
+                    </div> 
+                </div>
+            </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
     </div>
   </div>
 </div>
@@ -425,5 +458,21 @@
     function getMinRange(e){
         document.getElementById('min').innerHTML = "$"+e.value;
     }
+
+
+    $('.service_request').on('click',function(){
+        var Service_request_id = $(this).attr('data-serviceRequestID');
+        $.ajax({
+            type: 'get',
+            url : '{{ url("get_service_request") }}'+"/"+Service_request_id,
+            success:function(data)
+              {
+                  $('.service_request_detail').empty();
+                  $('.service_request_detail').html(data);
+
+              }
+        })
+    })
+     
 </script>
  @endsection
