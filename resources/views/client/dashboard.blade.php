@@ -139,6 +139,8 @@ span.prefix{
                 @foreach ($categories->take(8) as $category)
                     <li class="pl-3"> <a href="#" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
                 @endforeach
+                @if (count($categories->skip(8)) > 0)
+                    
                 <li>
                     <!-- Example split danger button -->
                 <div class="btn-group">
@@ -152,6 +154,7 @@ span.prefix{
                 </div>
                 </div>
                 </li>
+                @endif
             </ul>
         </div>
     </section>
