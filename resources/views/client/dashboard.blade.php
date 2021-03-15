@@ -1,6 +1,7 @@
 @extends('layouts.frontend.app') @section('title','Client | Dashboard') {{-- head start --}} @section('extra-css')
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/index.css') }}" />
 
 <style type="text/css">
     .dropdown-toggle::after {
@@ -155,7 +156,7 @@ span.prefix{
         </div>
     </section>
 @endif
-<div class="container-fluid">
+<section class="container-fluid">
     <div class="row mt-5 justify-content-around">
         <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
             <div class="px-5 py-3">
@@ -236,7 +237,270 @@ span.prefix{
             </div>
         </div>
     </div>
+    
+</section>
+
+
+<section class=" main_padding pt-70 text-center">
+    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Popular Services</p>
+    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover the best services that are offered virtually.</p>
+    <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
+</section>
+
+
+<!-- T H I R D S E C T I O N E N D  -->
+<section class="main_padding pt-70">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <section class="d-block w-100">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/istock-1147195672-1.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Website Developer</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Customize your site</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Social Media</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Reach more customers</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/create-logos-1.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Logo Design</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Build your brand</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/maxresdefault-2.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Video Editing</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Edit your video</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="carousel-item">
+                <section class="d-block w-100">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/istock-1147195672-1.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Website Developer</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Customize your site</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Social Media</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Reach more customers</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Logo Design</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Build your brand</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Video Editing</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Edit your video</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="carousel-item">
+                <section class="d-block w-100">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Website Developer</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Customize your site</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Social Media</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Reach more customers</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Logo Design</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Build your brand</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="card border-0 text-white borderRadius-12px">
+                                <img class="card-img"
+                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
+                                    alt="Card image">
+                                <div
+                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                    <h5 class="card-title f-26 m-0">Video Editing</h5>
+                                    <p class="card-text f-18 m-0 pt-1">Edit your video</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+<!-- F O U R T H S E C T I O E N D -->
+
+
+
+<section class=" main_padding pt-70  text-center">
+    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Check Out These Specialists</p>
+    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover some of most talented specialists around the globe.</p>
+    <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
+</section>
+
+
+<!-- F I F T H     S E C T I O N E N D  -->
+
+<!-- S I X T H     S E C T I O N  S T A R T -->
+
+<section class="main_padding pt-70">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner h-413">
+
+            @foreach(App\Specialist::all()->chunk(4) as $specialistsCollections)
+
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <section class="d-block w-100">
+                        <div class="row m-0">
+                            @foreach($specialistsCollections as $specialist)
+                                <div class="col-md-3 col-lg-3 col-sm-12">
+                                    <a href="{{route('specialist_detail',encrypt($specialist->id))}}" >
+                                        <div class="card border-0 box_shadow">
+                                            <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                                class="card-img-top" alt="...">
+                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                                <img src="{{ asset('assets/frontend/images/19uk2-superdry-men-maroon-printed-round-neck-sports-t-shirt_500x500_0.png') }}"
+                                                    alt="" srcset="">
+                                            </div>
+                                            <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                                <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
+                                                <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->name }}
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </section>
+
+                </div>
+
+            @endforeach
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+<section class=" pl-3 pt-70">
     @include('common.messages')
+
     <div class="row mt-2 mb-5 px-3 mx-1 ">
         <div class="col-md-8 px-5 borderRadius-10px box_shadow1 p-0">
             <div class="d-flex mt-3 justify-content-between ">
@@ -476,7 +740,96 @@ span.prefix{
 
         </div>
     </div> --}}
-</div>
+</section>
+
+<section class="main_padding pt-70  w-100">
+    <div class="row m-0 justify-content-between">
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium f-26">Categories</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                @if(count($categories) > 0)
+                @foreach ($categories->take(5) as $category)
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">{{ ucwords($category->name) }}</a></li>
+                @endforeach
+                @endif
+                
+            </ul>
+
+        </div>
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium  f-26">About</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Careers</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Partnerships</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Privacy Policy</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Terms of Service</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Investor Relations</a></li>
+
+            </ul>
+        </div>
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium f-26">Support</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Help & Support</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Trust & Safety</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Selling</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Buying </a></li>
+
+
+            </ul>
+        </div>
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium f-26">Community</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Events</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Blog</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Forum</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Podcast</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Affiliates
+                    </a></li>
+
+
+            </ul>
+        </div>
+
+        <div class="col-md-2 p-0">
+            {{-- <div>
+                <h4 class="m-0 cl-000000 robotoMedium f-26">Join Us On</h4>
+            </div>
+            <div class="pt-4"> <input type="email" placeholder="Enter your email..."
+                    class="robotoRegular cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
+            </div>
+            <div class="pt-3"><button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 w-100 rounded"
+                    type="submit">Submit</button></div> --}}
+
+            <div>
+                <h4 class="m-0 cl-000000 robotoMedium f-26">Apps</h4>
+
+            </div>
+         
+            <div class="pt-3"><img
+            src="{{ asset('assets/frontend/images/appstore_2x.png') }}"
+            alt="" srcset=""></div>
+            <div class="pt-3"><img
+            src="{{ asset('assets/frontend/images/playstore_2x.png') }}"
+            alt="" srcset=""></div>
+         
+         
+            
+          
+            <div class="f-26 cl-bcbcbc pt-3 footerUl">Follow us On</div>
+            <div class="d-flex pt-3">
+                <div><a href=""><img src="{{ asset('assets/frontend/images/fb.png') }}" class="img-fluid"></a></div>
+                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/insta.png') }}" alt=""
+                            srcset=""></a></div>
+                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/twitter.png') }}" alt=""
+                            srcset=""></a></div>
+                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/linkdin.png') }}" alt=""
+                            srcset=""></a></div>
+            </div>
+            </div>
+        </div>
+</section>
 @endsection {{-- content section end --}} {{-- footer section start --}}
  @section('extra-script') 
 <script>

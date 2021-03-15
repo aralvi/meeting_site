@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app') @section('title','Client | Dashboard') {{-- head start --}} @section('extra-css')
+@extends('layouts.frontend.app') @section('title','Specialist | Dashboard') {{-- head start --}} @section('extra-css')
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}" />
 
