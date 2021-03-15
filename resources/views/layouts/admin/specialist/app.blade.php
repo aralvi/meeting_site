@@ -240,21 +240,7 @@
                                     <p>Appointments</p>
                                 </a>
                             </li>
-                            {{-- <li class="treeview {{ request()->is('clients*')? 'active': '' }}">
-                                <a href="" class="nav-link {{ request()->is('clients*')? 'active': '' }}">
-                                    <i class="fa fa-pie-chart"></i>
-                                    <span>Users</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="{{ request()->is('clients*')? 'active': '' }}">
-                                        <a href="{{ url('clients') }}" class="{{ request()->is('clients*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Clients</a>
-                                    </li>
-                                    <li class="{{ request()->is('specialists*')? 'active': '' }}">
-                                        <a href="{{ url('specialists') }}" class="{{ request()->is('specialists*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Specialists</a>
-                                    </li>
-                                </ul>
-                            </li> --}}
+                            
                             
                             
                         </ul>
