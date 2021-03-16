@@ -110,7 +110,21 @@
         display: none;
     }
 
-
+    .lable {
+    
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    }
+    .snehainput {
+        
+        width: 93%;
+    padding: 6px 5px;
+    outline: none;
+    }
+    span.prefix{
+        position: relative;
+        left: 8px;
+    }
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 
@@ -417,17 +431,35 @@
             <div class="col-md-6 service_request_detail d-flex"></div>
             <div class="col-md-6">
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="">
-                                Delivery Time (In Days)
+                        <div class="form-group col-md-12">
+                            <label class="d-flex align-items-center justify-content-between">
+                               Duration :
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="time" id="inlineRadio1" value="Days" onclick="enterDuration(this);">
+                                    <label class="form-check-label" for="inlineRadio1">Days</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="time" id="inlineRadio2" value="Hours" onclick="enterDuration(this);">
+                                    <label class="form-check-label" for="inlineRadio2">Hours</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="time" id="inlineRadio3" value="Minutes" onclick="enterDuration(this);">
+                                    <label class="form-check-label" for="inlineRadio3">Minutes</label>
+                                </div>
                             </label>
-                            <input type="number" name="delivery" id="delivery" class="form-control">
+                            
+                            <input type="number" name="delivery" id="delivery" class="form-control d-none">
+                            <label class="lbl_duration" style="display: none;"></label>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="">
-                                Budget
+                        <div class="form-group col-md-12">
+                            <label >
+                                Budget (USD)
                             </label>
-                            <input type="number" name="budget" id="budget" class="form-control">
+                            <div class="lable">
+                                <span class="prefix">$</span>
+                                <input class="snehainput border-0" type="number" name="budget" id="budget" class="form-control" placeholder="5 (USD)"/>
+                            </div>
+                            <label class="lbl_budget" style="display: none;"></label>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="">Proposal</label>
@@ -443,7 +475,7 @@
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary bid_submit">Submit</button>
         </div>
     </form>
     </div>
@@ -461,7 +493,21 @@
         document.getElementById('min').innerHTML = "$"+e.value;
     }
 
+    function enterDuration(e){
+        var duration =  $('#delivery').removeClass('d-none');
+        $(".lbl_duration").css("display", "none");
+        if(e.value == 'Days'){
+            duration[0].placeholder = "3 Days";
+        }
+        if(e.value == 'Hours'){
 
+            duration[0].placeholder = "2 Hours ";
+        }
+        if(e.value == 'Minutes'){
+
+            duration[0].placeholder = "20 Minutes";
+        }
+    }   
     $('.service_request').on('click',function(){
         var Service_request_id = $(this).attr('data-serviceRequestID');
         $.ajax({
@@ -474,6 +520,29 @@
 
               }
         })
+    })
+
+    $('.bid_submit').on('click',function(){
+        if($("input[name='time']:checked").val() == null){
+            $(".lbl_duration").html("Please select duration type!").css({ display: "block", color: "red" });
+            return false;
+        }else{
+
+            $(".lbl_duration").css("display", "none");
+        }
+        if($("#delivery").val() == ''){
+            $(".lbl_duration").html("Please Enter duration time!").css({ display: "block", color: "red" });
+            return false;
+        }else{
+            $(".lbl_duration").css("display", "none");
+        }
+        if($("#budget").val() == ''){
+            $(".lbl_budget").html("Please Enter your offer!").css({ display: "block", color: "red" });
+            return false;
+        }else{
+            $(".lbl_budget").css("display", "none");
+        }
+         
     })
      
 </script>
