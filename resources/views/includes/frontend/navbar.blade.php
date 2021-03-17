@@ -205,11 +205,11 @@
                     <li class="nav-item  pl-4">
                         <a class="nav-img" data-toggle="dropdown" href="#">
                             @if (Auth::user()->avatar != null)
-                            <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"  class="img-fluid w-75" alt="profile" width="40" />
+                            <img src="{{ asset(Auth::user()->avatar) }}"  class="img-fluid rounded-circle w-40 h-40" alt="profile"  />
                                 
                             @else
                                 
-                            <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"  class="img-fluid w-75" alt="profile" width="40" />
+                            <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"  class="img-fluid w-75" alt="profile" width="40"  />
                             @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

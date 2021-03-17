@@ -103,7 +103,7 @@ class RegisterController extends Controller
         $profile_image_original_name = $profileImage->getClientOriginalName();
         $image_changed_name = time() . '_' . str_replace('', '-', '');
 
-        $profileImage->move('/uploads/user/', $image_changed_name);
+        $profileImage->move('uploads/user/', $image_changed_name);
         $avatar_url = 'uploads/user/' . $image_changed_name;
 
         $user = User::create([
