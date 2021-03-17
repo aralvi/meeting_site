@@ -1937,7 +1937,7 @@
                     {{-- <img src="{{ asset('assets/frontend/images/key-8.png') }}" alt="" /> --}}
                     <em class="fa fa-key"></em>
                 </div>
-                <div class="w-100"><input type="number" class="form-control w-100 border-0" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></div>
+                <div class="w-100"><input type="number" class="form-control w-100 border-0" max="4" placeholder="SSN last four" id="payment_ssn" aria-label="" aria-describedby="basic-addon1" name="payment_ssn" /></div>
             </div>
         </div>
 

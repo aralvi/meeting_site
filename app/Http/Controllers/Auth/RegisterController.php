@@ -114,9 +114,9 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'password' => Hash::make($data['password']),
             'status'=>'inactive',
+            'avatar'=> $avatar_url
         ]);
-        $user->avatar = $avatar_url;
-        $user->save();
+        
 
         if($data['user_type'] =='specialist')
         {
