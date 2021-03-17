@@ -218,7 +218,7 @@
                                 
                             @endif
                             @if (Auth::user()->user_type == 'specialist')
-                            <a href="{{ url('specialist/dashboard') }}" class="dropdown-item">Dashboard</a>
+                            <a href="{{ route('specialist.index') }}" class="dropdown-item">Dashboard</a>
                                 
                             @endif
                             <a
