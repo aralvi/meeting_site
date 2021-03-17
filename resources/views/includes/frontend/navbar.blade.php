@@ -204,7 +204,13 @@
                     </li>
                     <li class="nav-item  pl-4">
                         <a class="nav-img" data-toggle="dropdown" href="#">
+                            @if (Auth::user()->avatar != null)
                             <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"  class="img-fluid w-75" alt="profile" width="40" />
+                                
+                            @else
+                                
+                            <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"  class="img-fluid w-75" alt="profile" width="40" />
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             @if (Auth::user()->user_type == 'client')
