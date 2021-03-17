@@ -59,6 +59,7 @@ class RegisterController extends Controller
                 'email' => ['bail','required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['bail','required', 'string', 'min:6', 'confirmed'],
                 'country' => ['bail','required'],
+                'avatar' => ['bail','required'],
             ];
 
         if ($data['user_type']=='specialist')
@@ -96,6 +97,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+
+        $profileImage = $request->file('avatar');
+        $profile_image_original_name = $profileImage->getClientOriginalName();
+        $image_changed_name = time() . '_' . str_replace('', '-', '');
+
+        $profileImage->move('public/uploads/user/', $image_changed_name);
+        $avatar_url = 'uploads/user/' . $image_changed_name;
+
         $user = User::create([
             'user_type' => $data['user_type'],
             'username' => $data['username'],
@@ -103,8 +113,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'country' => $data['country'],
             'password' => Hash::make($data['password']),
-            'status'=>'inactive'
+            'status'=>'inactive',
         ]);
+        $user->avatar = $avatar_url;
+        $user->save();
 
         if($data['user_type'] =='specialist')
         {
@@ -147,7 +159,7 @@ class RegisterController extends Controller
                 $specialist->payment_email = $data['payment_email'];
             }
             $specialist->opening_hours = json_encode($hours_arr);
-
+            
             $specialist->save();
         }
         else if($data['user_type'] =='client')
@@ -155,6 +167,7 @@ class RegisterController extends Controller
             $client = new Client();
             $client->user_id = $user->id;
             $client->business_phone = $data['client_phone'];
+            
             $client->save();
         }
         

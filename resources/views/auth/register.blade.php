@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col-md-3 col-3-Width"></div>
                             <div class="col-md-6 col-6-Width padding-bottom-reg inner-padding pr-0">
-                            <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_logo.png') }}" alt="" class="img-fluid" /></a>
+                            <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/images/register_avatar.png') }}" alt="" class="img-fluid" /></a>
                                 <div class="display-2 font-600 text-white pt-5">Register</div>
                                 <div class="progress progress-height mt-5 bg-gray">
                                     <span class="white-dot "></span>
@@ -171,6 +171,17 @@
                                             <em class="fa fa-key"></em>
                                         </div>
                                         <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
+                                    </div>
+                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                        <div class="col-sm-12 d-flex">
+                                            <div class="form-group col-sm-6 mb-0">
+                                                <label class="btn img-lbl border p-1 mb-0">
+                                                    Upload Avatar
+                                                    <input type="file" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required/>
+                                                </label>
+                                            </div>
+                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
+                                        </div>
                                     </div>
 
                                     <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
@@ -1501,7 +1512,17 @@
                 </div>
                 <div class="w-100"><input type="password" class="w-100 form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
-
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                        <div class="col-sm-12 d-flex">
+                                            <div class="form-group col-sm-6 mb-0">
+                                                <label class="btn img-lbl border p-1 mb-0">
+                                                    Upload Avatar
+                                                    <input type="file" style="display: none;" name="avatar" onchange="readURL(this);" required/>
+                                                </label>
+                                            </div>
+                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
+                                        </div>
+                                    </div>
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
             <div class="pt-4 f-14 cl-gray text-center">
                 <p class="mb-1">
@@ -1827,7 +1848,17 @@
                 </div>
                 <div class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
-
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                        <div class="col-sm-12 d-flex">
+                                            <div class="form-group col-sm-6 mb-0">
+                                                <label class="btn img-lbl border p-1 mb-0">
+                                                    Upload Avatar
+                                                    <input type="file" style="display: none;" name="avatar" onchange="readURL(this);" required/>
+                                                </label>
+                                            </div>
+                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
+                                        </div>
+                                    </div>
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-step1" value="Create Account" />
             
             <div class="row">
@@ -2623,7 +2654,7 @@
             $(document.body).on("click", "input.step1", function () 
             {
             //   $(this).parent("div").siblings("span.inputBtn").click();
-                if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')))
+                if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password'))&& inptFieldValidate($('.avatar')))
                 {
                     $.ajax({
                         url:"{{ route('usernameCheck') }}",
@@ -2714,6 +2745,19 @@
             // }
             // let v = $(this).parent("div").siblings("span.inputBtn").click();
             });
+
+
+          
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(".blah").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
         </script>
 	@endsection
 
