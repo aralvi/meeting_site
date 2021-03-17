@@ -15,6 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 Route::view('check','check');
+Route::view('profile','profile');
 Route::get('/', function () {
     return view('frontend.index');
 })->name('index');

@@ -180,7 +180,7 @@
                                                     <input type="file" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required/>
                                                 </label>
                                             </div>
-                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
+                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
                                         </div>
                                     </div>
 
@@ -1856,7 +1856,7 @@
                                                     <input type="file" style="display: none;" name="avatar" onchange="readURL(this);" required/>
                                                 </label>
                                             </div>
-                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
+                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
                                         </div>
                                     </div>
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-step1" value="Create Account" />
