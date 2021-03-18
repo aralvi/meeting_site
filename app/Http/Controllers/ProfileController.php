@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Http\Controllers\Controller;
+use App\Specialist;
 use App\User;
+use App\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +21,8 @@ class ProfileController extends Controller
     public function index()
     {
         $profile = Auth::user();
-        return view('admin.profile.change_profile', compact('profile'));
+        $subcategories = SubCategory::all();
+        return view('profile', compact('profile','subcategories'));
     }
 
     /**
@@ -144,18 +148,69 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
+        // dd($request->all()); 
         $profile = User::find(Auth::id());
-
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'username' => ['nullable', 'string', 'max:255', 'unique:users,username,' . $profile->id],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $profile->id],
         ]);
 
-        $profile->name = $request->name;
-        $profile->email = $request->email;
-        $profile->save();
+        
+            $profile->username = $request->username;
+            $profile->name = $request->name;
+            $profile->email = $request->email;
+            $profile->country = $request->country;
+            $profile->status = 'inactive';
+            $profile->save();
+        
 
+
+        if ($profile->user_type == 'specialist') {
+            if (count( $request->days) > 0) {
+                foreach ($request->days as $key => $value) {
+                    $from = $value . '_from';
+                    $to = $value . '_to';
+                    $hours_arr[$value] = [$request->$from, $request->$to];
+                    // if($value =="saturday" || $value=='sunday')
+                    // {
+                    //     $hours_arr[$value] = ['closed'];
+                    // }
+                    // else
+                    // {
+                    //     $hours_arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
+                    // }
+
+                }
+            }
+
+            $specialist = Specialist::findOrFail(Auth::user()->specialist->id);
+            $specialist->user_id = $profile->id;
+            $specialist->category_id = $request->category_id;
+            $specialist->sub_category_id = json_encode($request->sub_category_id);
+            $specialist->business_phone = $request->business_phone;
+            $specialist->public_profile = $request->public_profile;
+            $specialist->payment_method = $request->payment_method;
+            if ($request->payment_method == 'stripe' && $request->user_type != 'client') {
+                $specialist->payment_first_name = $request->payment_first_name;
+                $specialist->payment_last_name = $request->payment_last_name;
+                $specialist->payment_birth_date = $request->payment_birth_date;
+                $specialist->payment_ssn = $request->payment_ssn;
+                $specialist->account_number = $request->account_number;
+                $specialist->routing_number = $request->routing_number;
+            } else if ($request->payment_method != 'stripe' && $request->user_type != 'client') {
+                $specialist->payment_email = $request->payment_email;
+            }
+            $specialist->opening_hours = json_encode($hours_arr);
+
+            $specialist->save();
+        } else if ($profile->user_type == 'client') {
+            $client = Client::findOrFail(Auth::user()->client->id);
+            $client->user_id = $profile->id;
+            $client->business_phone = $request->client_phone;
+
+            $client->save();
+        }
         return redirect('profile')->with('success', 'Profile updated successfully!');
     }
 

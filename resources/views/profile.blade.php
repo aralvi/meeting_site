@@ -22,6 +22,10 @@
 	</ul>
 	<div class="col-md-2"></div>
 </div>
+
+
+
+
 <section class="main_padding pt-70">
 	<div class="row m-0 justify-content-center">
 		<div class="col-md-3 col-lg-3 col-sm-12 p-0 box_shadow1 borderRadius-12px pt-4 pb-5">
@@ -33,12 +37,20 @@
 							<label class="btn img-lbl  p-1 mb-0 position-relative " style="top: -34px; left:43px;"> <img src="{{ asset('assets/frontend/images/camera.png') }}" alt="" srcset="" height="30">
 								<input type="file" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required accept="image/png, image/jpg, image/jpeg" /> </label>
 						</div>
-						<button class="btn btn-sm btn-success">Upload Photo</button>
+						<button class="btn btn-sm bg-3AC574  text-white ">Upload Photo</button>
 					</form>
 				</div>
 				<p class="m-0 f-27 robotoMedium cl-5757575 pt-3">Caroline Johnson</p>
 				<p class="f-18 cl-a8a8a8a robotoMedium m-0 pt-1">Hair Stylist</p>
-			</div> {{--
+			</div>
+            
+            
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active cl-000000" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
+                <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
+     
+    </div>
+            {{--
 			<ul class="nav nav-tabs border-0 flex-column robotoRegular f-18 side_navpills-1 pt-4">
 				<li data-toggle="tab" href="#home" class="cl-616161 w-100 rounded pt-3 pb-3 pl-4 mt-1">Gift Cards</li>
 				<li class="pt-3 pb-3 mt-1 pl-4 bg-3ac574 active cl-ffffff appointment" data-toggle="tab" href="#menu1">Appointments</li>
@@ -55,9 +67,11 @@
 		<div class="col-md-7 col-lg-7 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
 			<p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
 			<p class="pl-3 f-21 cl-000000">Personal Info</p>
-            @if (Auth::user()->user_type =='specialist')
+            <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          @if (Auth::user()->user_type =='specialist')
                 
-			<form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate=""> @csrf
+			<form class="steps" action="{{ route('profile.update',Auth::user()->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="" id="specilaist_profile_form"> @csrf @method('PUT')
 				<div class="pl-5 pr-5 pb-5 first-step-html-change">
 					<div class="row justify-content-between">
 						<div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap col-md-5 border border-top-0 border-left-0 border-right-0">
@@ -350,7 +364,7 @@
 						<div class="input-group mb-3 col-md-5 border-input pt-4 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
 							<div class="d-flex"> <em class="fa fa-bars pb-2 d-flex justify-content-center align-items-end"></em> </div>
 							<div class="w-100 d-flex align-items-end">
-								<input type="text" class="form-control border-0" placeholder="Select Category" id="select_category" aria-label="" aria-describedby="basic-addon1" data-toggle="modal" data-target="#exampleModal" /> </div>
+								<input type="text" class="form-control border-0" placeholder="Select Category" id="select_category" aria-label="" aria-describedby="basic-addon1" data-toggle="modal" data-target="#exampleModal"  value="{{ Auth::user()->specialist->category->name }}"/> </div>
 						</div>
 						<div class="input-group mb-3 border-input   col-md-5 border border-top-0 border-left-0 border-right-0">
 							<label class="cl-gray m-0 pt-3"> <span>
@@ -508,7 +522,7 @@
 						</div>
 					</div>
                     <div class="row justify-content-end">
-                            <button type="submit" class="btn btn-sm btn-success">Updated</button>
+                            <button type="submit" class="btn btn-sm bg-3AC574  text-white">Updated</button>
                         </div>
 				</div>
 					<!-- Modal 1st code start-->
@@ -522,9 +536,33 @@
 								<div class="modal-body pl-5 pr-5 pt-0">
 									<select class="custom-select main-category" name="category_id" onchange="getSubCategories(this);"> @if(App\Category::all()->count() >0)
 										<option value="Select Main Category" selected="" disabled="">Select Main Category</option> @foreach(App\Category::all() as $category)
-										<option value="{{ $category->id }}">{{ ucwords($category->name) }}</option> @endforeach @endif </select>
+										<option value="{{ $category->id }}" {{ Auth::user()->specialist->category->id == $category->id ? 'selected':'' }}>{{ ucwords($category->name) }}</option> @endforeach @endif </select>
 								</div>
-								<div id="sub_categories"> </div>
+								<div id="sub_categories"> 
+                                    @if($subcategories->count() > 0)
+                                    <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">Business Category</h2>
+                                    <div class="border overflow-scroll-reg pl-5 mt-2">
+                                       @php
+                                       $sub_categories = json_decode(Auth::user()->specialist->sub_category_id);
+                                       @endphp
+                                        @foreach($subcategories as $key=>$subcategory)
+                                        @if($subcategory->category_id == Auth::user()->specialist->category_id)
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" 
+                                            @foreach($sub_categories as $selected_subcategory)
+                                            @if($selected_subcategory == $subcategory->id)
+                                            checked
+                                            @endif
+                                            @endforeach
+                                            name="sub_category_id[]" id="customCheck{{ $key }}" value="{{ $subcategory->id }}">
+                                            <label class="custom-control-label" for="customCheck{{ $key }}">{{ ucwords($subcategory->name) }}</label>
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                    </div>
+
+                                    @endif
+                                </div>
 								<div class="modal-footer m-auto border-0">
 									<button type="button" onclick="categorySubcategoryCheck();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
 								</div>
@@ -1307,8 +1345,9 @@
                     
 			</form>
             @else
-                <form action="" method="post">
+                <form action="{{ route('profile.update',Auth::user()->id) }}" method="post" id="client_profile_form">
                     @csrf
+                    @method('PUT')
                     <div class="pl-5 pr-5 first-step-html-change">
 
                         <div class="row justify-content-between">
@@ -1594,11 +1633,40 @@
 					    </div>
 
                         <div class="row justify-content-end">
-                            <button type="submit" class="btn btn-sm btn-success">Updated</button>
+                            <button type="submit" class="btn btn-sm bg-3AC574  text-white">Updated</button>
                         </div>
                     </div>
                 </form>
-            @endif
+            @endif  
+        </div>
+      <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+          
+        <form action="{{ url('password') }}" method="POST">
+				@csrf
+                <div class="px-5">
+
+                    <div class="form-group">
+                          <label for="old_password">Old Password*</label>
+                          <input id="old_password" name="old_password" type="password" class="form-control " value="{{ old('old_password') }}" autocomplete="first_name" placeholder="Enter Old Password">
+    
+                    </div>
+                    <div class="form-group">
+                          <label for="new_password">New Password*</label>
+                          <input id="new_password" name="new_password" type="password" class="form-control" value="{{ old('new_password') }}" placeholder="Enter New Password" autocomplete="new-password">
+    
+                    </div>
+                    <div class="form-group">
+                          <label for="password-confirm">Confirm New Password*</label>
+                        <input id="password-confirm" type="password" class="form-control" name="new_password_confirmation" placeholder="Re-Type New Password" autocomplete="new-password">
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-md" onclick="history.back()"><i class="fas fa-hand-point-left"></i> Go Back</button>
+                    <button type="submit" class="btn btn-primary btn-md"><i class="far fa-check-circle"></i> Save Changes</button>
+                </div>
+			</form>
+      </div>
+      
+    </div>
+            
 			</div>
 		</div>
 </section> @endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
@@ -1700,5 +1768,38 @@ const paymentRadio = (ele) => {
 	if($(ele).val() == 'payoneer') {
 		$('#payment_selection_html').html(document.getElementById('payoneer-html').innerHTML);
 	}
+
 }
+function categorySubcategoryCheck()
+        {
+            if($('select[name="category_id"]').val() ==null)
+            {
+            swal({
+                    icon: "error",
+                    text: "{{ __('Please Select Category!') }}",
+                    type: 'error'
+                });
+            }
+            else
+            {
+                meCheckSubCategory=false;
+                $.each($('input[name="sub_category_id[]"]'),function(){
+                    if($(this).is(':checked'))
+                    {
+                        meCheckSubCategory=true;
+                    }
+                });
+                if(!meCheckSubCategory)
+                {
+                    swal({
+                        icon: "error",
+                        text: "{{ __('Please Select Business Category!') }}",
+                        type: 'error'
+                    });
+                }
+                else{
+                    $('.close1').click();
+                }
+            }
+        }
 </script> @endsection {{-- footer section end --}}

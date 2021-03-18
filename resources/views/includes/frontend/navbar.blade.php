@@ -219,8 +219,9 @@
                             @endif
                             @if (Auth::user()->user_type == 'specialist')
                             <a href="{{ route('specialist.index') }}" class="dropdown-item">Dashboard</a>
-                                
+                            
                             @endif
+                            <a href="{{ route('profile.index') }}" class="dropdown-item">Profile</a>
                             <a
                                 class="dropdown-item"
                                 href="{{ route('logout') }}"

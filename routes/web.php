@@ -15,7 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 Route::view('check','check');
-Route::view('profile','profile');
+// Route::view('profile','profile');
 Route::get('/', function () {
     return view('frontend.index');
 })->name('index');
@@ -56,11 +56,12 @@ Route::group(['middleware'=>['auth']],function(){
     // Route::get('appointment', function () {
     //     return view('frontend.appoinment');
     // })->name('appointment');
+    Route::resource('profile', 'ProfileController');
     Route::post('/profile/change_avatar', 'ProfileController@update_avatar');
 
-    Route::get('/change-password', [ProfileController::class, 'password']);
+    Route::get('/change-password', 'ProfileController@password');
 
-    Route::post('/password', [ProfileController::class, 'update_password']);
+    Route::post('/password', 'ProfileController@update_password');
 
     Route::get('specialist-detail/{id}', 'SpecialistController@getSpecialistDetail')->name('specialist_detail');
 
