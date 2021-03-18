@@ -208,7 +208,7 @@ class ProfileController extends Controller
         } else if ($profile->user_type == 'client') {
             $client = Client::findOrFail(Auth::user()->client->id);
             $client->user_id = $profile->id;
-            $client->business_phone = $request->client_phone;
+            $client->business_phone = $request->business_phone;
 
             $client->save();
         }
