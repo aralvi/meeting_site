@@ -52,11 +52,16 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
 
 
 Route::group(['middleware'=>['auth']],function(){
-    
+
     // Route::get('appointment', function () {
     //     return view('frontend.appoinment');
     // })->name('appointment');
-    
+    Route::post('/profile/change_avatar', 'ProfileController@update_avatar');
+
+    Route::get('/change-password', [ProfileController::class, 'password']);
+
+    Route::post('/password', [ProfileController::class, 'update_password']);
+
     Route::get('specialist-detail/{id}', 'SpecialistController@getSpecialistDetail')->name('specialist_detail');
 
     Route::get('portfolio', function () {  return view('frontend.portfolio'); })->name('portfolio');

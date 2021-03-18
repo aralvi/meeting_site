@@ -29,14 +29,22 @@
 </div>
 <section class="main_padding pt-70">
     <div class="row m-0 justify-content-center">
-        <div class="col-md-3 col-lg-3 col-sm-12 p-0 box_shadow1 borderRadius-12px pt-5 pb-5">
+        <div class="col-md-3 col-lg-3 col-sm-12 p-0 box_shadow1 borderRadius-12px pt-4 pb-5">
+            <p class="border-bottom text-center">Your Profile</p>
             <div class="d-flex align-items-center flex-column">
                 <div class="dashboard_id text-center">
-                    <img id="blah" class="rounded-circle blah" src="{{ asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}" alt="" style="height: 118px;width:118px;"/>
-                    <label class="btn img-lbl  p-1 mb-0 position-relative " style="top: -34px; left:43px;">
-                        <img src="{{ asset('assets/frontend/images/camera.png') }}" alt="" srcset="" height="30">
-                        <input type="file" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required/>
-                    </label>
+                    <img id="blah" class="rounded-circle blah" src="{{(Auth::user()->avatar != null)? asset(Auth::user()->avatar): asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}" alt="" style="height: 118px;width:118px;"/>
+                    <form action="{{ url('/profile/change_avatar') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group m-0">
+
+                            <label class="btn img-lbl  p-1 mb-0 position-relative " style="top: -34px; left:43px;">
+                                <img src="{{ asset('assets/frontend/images/camera.png') }}" alt="" srcset="" height="30">
+                                <input type="file" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required accept="image/png, image/jpg, image/jpeg"/>
+                            </label>
+                        </div>
+                        <button class="btn btn-sm btn-primary">Upload Photo</button>
+                    </form>
                     
                 </div>
 
@@ -63,6 +71,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for=""></label>
                             <input type="text" name="" id="" class="form-control">
                         </div>
                     </div>
