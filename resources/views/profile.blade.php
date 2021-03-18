@@ -6,6 +6,12 @@
 .dropdown-toggle::after {
 	display: none;
 }
+body{
+	background-image: none;
+}
+.nav-pills .nav-link.active{
+	background-color: #3AC574 !important;
+}
 </style> @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular"> @include('includes.frontend.navbar') </section>
 <div class="pt-4 main_padding d-flex f-20 cl-3b3b3b3 justify-content-between robotoRegular">
@@ -49,20 +55,8 @@
                 <a class="nav-link active cl-000000" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
                 <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
      
-    </div>
-            {{--
-			<ul class="nav nav-tabs border-0 flex-column robotoRegular f-18 side_navpills-1 pt-4">
-				<li data-toggle="tab" href="#home" class="cl-616161 w-100 rounded pt-3 pb-3 pl-4 mt-1">Gift Cards</li>
-				<li class="pt-3 pb-3 mt-1 pl-4 bg-3ac574 active cl-ffffff appointment" data-toggle="tab" href="#menu1">Appointments</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu2" class="cl-616161">Favourites</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu3" class="cl-616161">Account & Settings</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu4" class="cl-616161">Reviews</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu5" class="cl-616161">Payments</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu6" class="cl-616161">Like us on Facebook</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu7" class="cl-616161">Terms of Service</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu8" class="cl-616161">Privacy Policy</li>
-				<li class="pt-3 pb-3 mt-1 pl-4" data-toggle="tab" href="#menu9" class="cl-616161">Call</li>
-			</ul> --}} 
+    		</div>
+           
         </div>
 		<div class="col-md-7 col-lg-7 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
 			<p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
@@ -584,62 +578,76 @@
 										<p class="text-warning">Note: All days are closed if you want to open then check the respective day</p>
 									</div>
 								</div>
+								@php
+								$days = json_decode(Auth::user()->specialist->opening_hours);	
+								@endphp
 								<div class="pl-4 mt-2 ">
 									<div class="border-bottom custom-control custom-checkbox ">
-										<input type="checkbox" class="custom-control-input checkbxCheck days " onchange="dayOpened(this);" id="customCheck101" name="days[]" value="monday">
+										<input type="checkbox" class="custom-control-input checkbxCheck days "
+										@foreach ($days  as $day => $time)
+											@if ($day == 'monday')
+												checked
+											@endif
+										@endforeach
+										onchange="dayOpened(this);" id="customCheck101" name="days[]" value="monday">
 										<label class="custom-control-label mr-5" for="customCheck101">Monday</label>
 										<!-- Time select code -->
-										<select class="custom-select-reg d-done ml-5 mr-2" style="display:none" name="monday_from">
-											<option value="1:00 AM">1:00 AM</option>
-											<option value="1:30 AM">1:30 AM</option>
-											<option value="2:00 AM">2:00 AM</option>
-											<option value="2:30 AM">2:30 AM</option>
-											<option value="3:00 AM">3:00 AM</option>
-											<option value="3:30 AM">3:30 AM</option>
-											<option value="4:00 AM">4:00 AM</option>
-											<option value="4:30 AM">4:30 AM</option>
-											<option value="5:00 AM">5:00 AM</option>
-											<option value="5:30 AM">5:30 AM</option>
-											<option value="6:00 AM">6:00 AM</option>
-											<option value="6:30 AM">6:30 AM</option>
-											<option value="7:00 AM">7:00 AM</option>
-											<option value="7:30 AM">7:30 AM</option>
-											<option value="8:00 AM">8:00 AM</option>
-											<option value="8:30 AM">8:30 AM</option>
-											<option value="9:00 AM">9:00 AM</option>
-											<option value="9:30 AM">9:30 AM</option>
-											<option value="10:00 AM">10:00 AM</option>
-											<option value="10:30 AM">10:30 AM</option>
-											<option value="11:00 AM">11:00 AM</option>
-											<option value="11:30 AM">11:30 AM</option>
-											<option value="12:00 AM">12:00 AM</option>
-											<option value="12:30 AM">12:30 AM</option>
-											<option value="1:00 AM">1:00 PM</option>
-											<option value="1:30 AM">1:30 PM</option>
-											<option value="2:00 AM">2:00 PM</option>
-											<option value="2:30 AM">2:30 PM</option>
-											<option value="3:00 AM">3:00 PM</option>
-											<option value="3:30 AM" selected>3:30 PM</option>
-											<option value="4:00 AM">4:00 PM</option>
-											<option value="4:30 AM">4:30 PM</option>
-											<option value="5:00 AM">5:00 PM</option>
-											<option value="5:30 AM">5:50 PM</option>
-											<option value="6:00 AM">6:00 PM</option>
-											<option value="6:30 AM">6:30 PM</option>
-											<option value="7:00 AM">7:00 PM</option>
-											<option value="7:30 AM">7:30 PM</option>
-											<option value="8:00 AM">8:00 PM</option>
-											<option value="8:30 AM">8:30 PM</option>
-											<option value="9:00 AM">9:00 PM</option>
-											<option value="9:30 AM">9:30 PM</option>
-											<option value="10:00 AM">10:00 PM</option>
-											<option value="10:30 AM">10:30 PM</option>
-											<option value="11:00 AM">11:00 PM</option>
-											<option value="11:30 AM">11:30 PM</option>
-											<option value="12:00 AM">12:00 PM</option>
-											<option value="12:30 AM">12:30 PM</option>
+										
+										<select class="custom-select-reg @foreach ($days  as $day => $time)
+											@if ($day != 'monday')
+												d-none
+											@endif
+										@endforeach ml-5 mr-2"  name="monday_from">
+											<option value="01:00 AM" {{ ($time[0] == "01:00 AM")?'selected':''  }}>1:00 AM</option>
+											<option value="01:30 AM" {{ ($time[0] == "01:30 AM")?'selected':''  }}>1:30 AM</option>
+											<option value="02:00 AM" {{ ($time[0] == "02:00 AM")?'selected':''  }}>2:00 AM</option>
+											<option value="02:30 AM" {{ ($time[0] == "02:30 AM")?'selected':''  }}>2:30 AM</option>
+											<option value="03:00 AM" {{ ($time[0] == "03:00 AM")?'selected':''  }}>3:00 AM</option>
+											<option value="03:30 AM" {{ ($time[0] == "03:30 AM")?'selected':''  }}>3:30 AM</option>
+											<option value="04:00 AM" {{ ($time[0] == "04:00 AM")?'selected':''  }}>4:00 AM</option>
+											<option value="04:30 AM" {{ ($time[0] == "04:30 AM")?'selected':''  }}>4:30 AM</option>
+											<option value="05:00 AM" {{ ($time[0] == "05:00 AM")?'selected':''  }}>5:00 AM</option>
+											<option value="05:30 AM" {{ ($time[0] == "05:30 AM")?'selected':''  }}>5:30 AM</option>
+											<option value="06:00 AM" {{ ($time[0] == "06:00 AM")?'selected':''  }}>6:00 AM</option>
+											<option value="06:30 AM" {{ ($time[0] == "06:30 AM")?'selected':''  }}>6:30 AM</option>
+											<option value="07:00 AM" {{ ($time[0] == "07:00 AM")?'selected':''  }}>7:00 AM</option>
+											<option value="07:30 AM" {{ ($time[0] == "07:30 AM")?'selected':''  }}>7:30 AM</option>
+											<option value="08:00 AM" {{ ($time[0] == "08:00 AM")?'selected':''  }}>8:00 AM</option>
+											<option value="08:30 AM" {{ ($time[0] == "08:30 AM")?'selected':''  }}>8:30 AM</option>
+											<option value="09:00 AM" {{ ($time[0] == "09:00 AM")?'selected':''  }}>9:00 AM</option>
+											<option value="09:30 AM" {{ ($time[0] == "09:30 AM")?'selected':''  }}>9:30 AM</option>
+											<option value="10:00 AM" {{ ($time[0] == "10:00 AM")?'selected':''  }}>10:00 AM</option>
+											<option value="10:30 AM" {{ ($time[0] == "10:30 AM")?'selected':''  }}>10:30 AM</option>
+											<option value="11:00 AM" {{ ($time[0] == "11:00 AM")?'selected':''  }}>11:00 AM</option>
+											<option value="11:30 AM" {{ ($time[0] == "11:30 AM")?'selected':''  }}>11:30 AM</option>
+											<option value="12:00 PM" {{ ($time[0] == "12:00 PM")?'selected':''  }}>12:00 PM</option>
+											<option value="12:30 PM" {{ ($time[0] == "12:30 PM")?'selected':''  }}>12:30 PM</option>
+											<option value="01:00 PM" {{ ($time[0] == "01:00 PM")?'selected':''  }}>1:00 PM</option>
+											<option value="01:30 PM" {{ ($time[0] == "01:30 PM")?'selected':''  }}>1:30 PM</option>
+											<option value="02:00 PM" {{ ($time[0] == "02:00 PM")?'selected':''  }}>2:00 PM</option>
+											<option value="02:30 PM" {{ ($time[0] == "02:30 PM")?'selected':''  }}>2:30 PM</option>
+											<option value="03:00 PM" {{ ($time[0] == "03:00 PM")?'selected':''  }}>3:00 PM</option>
+											<option value="03:30 PM" {{ ($time[0] == "03:30 PM")?'selected':''  }}>3:30 PM</option>
+											<option value="04:00 PM" {{ ($time[0] == "04:00 PM")?'selected':''  }}>4:00 PM</option>
+											<option value="04:30 PM" {{ ($time[0] == "04:30 PM")?'selected':''  }}>4:30 PM</option>
+											<option value="05:00 PM" {{ ($time[0] == "05:00 PM")?'selected':''  }}>5:00 PM</option>
+											<option value="05:30 PM" {{ ($time[0] == "05:30 PM")?'selected':''  }}>5:50 PM</option>
+											<option value="06:00 PM" {{ ($time[0] == "06:00 PM")?'selected':''  }}>6:00 PM</option>
+											<option value="06:30 PM" {{ ($time[0] == "06:30 PM")?'selected':''  }}>6:30 PM</option>
+											<option value="07:00 PM" {{ ($time[0] == "07:00 PM")?'selected':''  }}>7:00 PM</option>
+											<option value="07:30 PM" {{ ($time[0] == "07:30 PM")?'selected':''  }}>7:30 PM</option>
+											<option value="08:00 PM" {{ ($time[0] == "08:00 PM")?'selected':''  }}>8:00 PM</option>
+											<option value="08:30 PM" {{ ($time[0] == "08:30 PM")?'selected':''  }}>8:30 PM</option>
+											<option value="09:00 PM" {{ ($time[0] == "09:00 PM")?'selected':''  }}>9:00 PM</option>
+											<option value="09:30 PM" {{ ($time[0] == "09:30 PM")?'selected':''  }}>9:30 PM</option>
+											<option value="10:00 PM" {{ ($time[0] == "10:00 PM")?'selected':''  }}>10:00 PM</option>
+											<option value="10:30 PM" {{ ($time[0] == "10:30 PM")?'selected':''  }}>10:30 PM</option>
+											<option value="11:00 PM" {{ ($time[0] == "11:00 PM")?'selected':''  }}>11:00 PM</option>
+											<option value="11:30 PM" {{ ($time[0] == "11:30 PM")?'selected':''  }}>11:30 PM</option>
+											<option value="12:00 PM" {{ ($time[0] == "12:00 PM")?'selected':''  }}>12:00 PM</option>
+											<option value="12:30 PM" {{ ($time[0] == "12:30 PM")?'selected':''  }}>12:30 PM</option>
 										</select> -
-										<select class="custom-select-reg d-done ml-2" style="display:none" name="monday_to">
+										<select class="custom-select-reg d-done ml-2"  name="monday_to">
 											<option value="1:00 AM">1:00 AM</option>
 											<option value="1:30 AM">1:30 AM</option>
 											<option value="2:00 AM">2:00 AM</option>
@@ -689,8 +697,17 @@
 											<option value="12:00 AM">12:00 PM</option>
 											<option value="12:30 AM">12:30 PM</option>
 										</select>
-										<!-- Time select code --><span class="ml-5 pr-4 cl-gray">Closed</span>
-										<button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button>
+										<!-- Time select code -->
+										@foreach ($days  as $day => $time)
+											@if ($day != 'monday')
+											<span class="ml-5 pr-4 cl-gray">Closed</span>
+											@endif
+										@endforeach
+										@foreach ($days  as $day => $time)
+											@if ($day == 'monday')
+											<button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button>
+											@endif
+										@endforeach
 									</div>
 									<div class="border-bottom mt-3 custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck102" name="days[]" value="tuesday">
@@ -1659,8 +1676,10 @@
                           <label for="password-confirm">Confirm New Password*</label>
                         <input id="password-confirm" type="password" class="form-control" name="new_password_confirmation" placeholder="Re-Type New Password" autocomplete="new-password">
                     </div>
-                    <button type="button" class="btn btn-secondary btn-md" onclick="history.back()"><i class="fas fa-hand-point-left"></i> Go Back</button>
-                    <button type="submit" class="btn btn-primary btn-md"><i class="far fa-check-circle"></i> Save Changes</button>
+					<div class="row justify-content-end">
+
+						<button type="submit" class="btn btn-sm bg-3AC574  text-white"> Save Changes</button>
+					</div>
                 </div>
 			</form>
       </div>

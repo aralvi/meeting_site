@@ -20,6 +20,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        
         $profile = Auth::user();
         $subcategories = SubCategory::all();
         return view('profile', compact('profile','subcategories'));
