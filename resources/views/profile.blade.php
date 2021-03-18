@@ -46,8 +46,11 @@ body{
 						<button class="btn btn-sm bg-3AC574  text-white ">Upload Photo</button>
 					</form>
 				</div>
-				<p class="m-0 f-27 robotoMedium cl-5757575 pt-3">Caroline Johnson</p>
-				<p class="f-18 cl-a8a8a8a robotoMedium m-0 pt-1">Hair Stylist</p>
+				<p class="m-0 f-27 robotoMedium cl-5757575 pt-3">{{ Auth::user()->name }}</p>
+				@if (Auth::user()->user_type == 'specialist')
+					
+				<p class="f-18 cl-a8a8a8a robotoMedium m-0 pt-1">{{ Auth::user()->specialist->category->name }}</p>
+				@endif
 			</div>
             
             
