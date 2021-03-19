@@ -186,10 +186,13 @@ input {
     font-size: 2rem;
 }
 
-.f-21 {
+/* .f-21 {
     font-size: 1.3125rem;
-}
+} */
 
+.f-21 {
+    font-size: 1rem;
+}
 .cl-616161 {
     color: #616161;
 }
