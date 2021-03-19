@@ -567,7 +567,7 @@
                                             <div class="w-100">
                                                 <input
                                                     type="email"
-                                                    id="payment_email"
+                                                    id="payment_email_paypal1"
                                                     class="w-100 form-control border-0"
                                                     placeholder="Enter your PayPal email address"
                                                     aria-label=""
@@ -585,7 +585,7 @@
                                             <div class="w-100">
                                                 <input
                                                     type="email"
-                                                    id="payment_email"
+                                                    id="payment_email_pyoneer1"
                                                     class="w-100 form-control border-0"
                                                     placeholder="Enter you Payoneer email address"
                                                     aria-label=""
@@ -703,7 +703,7 @@
                                             <div class="w-100">
                                                 <input
                                                     type="email"
-                                                    id="payment_email"
+                                                    id="payment_email_paypal2"
                                                     class="w-100 form-control border-0"
                                                     placeholder="Enter your PayPal email address"
                                                     aria-label=""
@@ -722,7 +722,7 @@
                                             <div class="w-100">
                                                 <input
                                                     type="email"
-                                                    id="payment_email"
+                                                    id="payment_email_payoneer2"
                                                     class="w-100 form-control border-0"
                                                     placeholder="Enter you Payoneer email address"
                                                     aria-label=""
@@ -1866,26 +1866,7 @@
                 </div>
                 <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
 					<p class="pl-3 f-21 cl-000000">Portfolio</p>
-                    <form action="{{ url('password') }}" method="POST">
-                        @csrf
-                        <div class="px-5">
-                            <div class="form-group">
-                                <label for="old_password">Old Password*</label>
-                                <input id="old_password" name="old_password" type="password" class="form-control" value="{{ old('old_password') }}" autocomplete="first_name" placeholder="Enter Old Password" />
-                            </div>
-                            <div class="form-group">
-                                <label for="new_password">New Password*</label>
-                                <input id="new_password" name="new_password" type="password" class="form-control" value="{{ old('new_password') }}" placeholder="Enter New Password" autocomplete="new-password" />
-                            </div>
-                            <div class="form-group">
-                                <label for="password-confirm">Confirm New Password*</label>
-                                <input id="password-confirm" type="password" class="form-control" name="new_password_confirmation" placeholder="Re-Type New Password" autocomplete="new-password" />
-                            </div>
-                            <div class="row justify-content-end">
-                                <button type="submit" class="btn btn-sm bg-3AC574 text-white">Save Changes</button>
-                            </div>
-                        </div>
-                    </form>
+                   
                 </div>
                 <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-service-tab">
 					<p class="pl-3 f-21 cl-000000">Services</p>
@@ -1980,7 +1961,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Category</label>
-                                <select class="form-control select2"  name="category" id="select_category" style="width: 100%;"  onchange="getSubCategoriesForServices(this);">
+                                <select class="form-control select2"  name="category" id="select_service_category" style="width: 100%;"  onchange="getSubCategoriesForServices(this);">
                                     <option selected="selected" disabled>Choose category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -2211,43 +2192,5 @@
       }
 
 
-
-	  // open edit categoory modal
-
-	  $('.editServiceBtn').on('click', function() {
-		var ServiceId = $(this).attr('data-Serviceid');
-		$.ajax({
-			type: 'get',
-			url: url + '/specialist/services/' + ServiceId + '/edit',
-			success: function(data) {
-				$('.requestServiceData').html(data);
-			}
-		});
-	});
-
-	/*** Open Deleting Category  Modal ***/
-	$('.ServiceDelete').on('click', function() {
-		var ServiceId = $(this).attr('data-Serviceid');
-		$('#deleteServiceBtn').val(ServiceId);
-	});
-
-	/*** Deleting Category  ***/
-	$('#deleteServiceBtn').on('click', function() {
-		var ServiceId = $(this).val();
-		$.ajax({
-			type: 'post',
-			url: url + '/specialist/services/' + ServiceId,
-			data: { id: ServiceId, _token: token, _method: 'DELETE' },
-			success: function(data) {
-				// $("#deleteCatModal").modal("hide");
-				$("#target_" + ServiceId).hide();
-				
-				$('#message').html(data);
-			},
-
-		});
-	});
-
-// end of Category section
 </script>
 @endsection {{-- footer section end --}}
