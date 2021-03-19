@@ -4,7 +4,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Category</label>
-                                <select class="form-control select2"  name="category" id="select_category" style="width: 100%;"  onchange="getSubCategories(this);">
+                                <select class="form-control select2"  name="category" id="select_category" style="width: 100%;"  onchange="getSubCategoriesForServices(this);">
                                     <option selected="selected" disabled>Choose category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" {{ ($category->id == $service->category_id) ? "selected":'' }}>{{ $category->name }}</option>

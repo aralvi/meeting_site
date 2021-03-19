@@ -23,9 +23,44 @@
     <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/app.js') }}"></script>
-<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
+        <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
+        <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+        <script src="{{ asset('assets/admin/dist/js/custome.js') }}"></script>
+
+        <script>
+            $(function () {
+                 $(".select2").select2();
+                $("#example1")
+                    .DataTable({
+                        responsive: true,
+                        lengthChange: false,
+                        autoWidth: false,
+                        buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                    })
+                    .buttons()
+                    .container()
+                    .appendTo("#example1_wrapper .col-md-6:eq(0)");
+                // $('#example2').DataTable({
+                //   "paging": true,
+                //   "lengthChange": false,
+                //   "searching": false,
+                //   "ordering": true,
+                //   "info": true,
+                //   "autoWidth": false,
+                //   "responsive": true,
+                // });
+            });
+        </script>
     @yield('extra-script')
 </body>
 
