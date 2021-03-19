@@ -583,9 +583,65 @@ body{
 								</div>
 								@php
 								$days = json_decode(Auth::user()->specialist->opening_hours);	
+								$week_days = array('monday','tuesday','wednesday','thursday','friday','saturday','sunday' );
 								@endphp
 								<div class="pl-4 mt-2 ">
-									<div class="border-bottom custom-control custom-checkbox ">
+									@foreach ($week_days as $week_day)
+									
+										<div class="border-bottom custom-control custom-checkbox d-flex justify-content-between align-items-center">
+											<input type="checkbox" class="custom-control-input checkbxCheck days " {{ ( array_key_exists($week_day,$days)) ?'checked':'' }}
+											 onchange="dayOpened(this);" id="customCheck{{ $week_day }}" name="days[]" value="{{ $week_day }}">
+											<label class="custom-control-label mr-2" for="customCheck{{ $week_day }}" style="width: 100px;">{{ ucfirst($week_day) }}</label>
+											<!-- Time select code -->
+											
+											<select class="custom-select-reg {{ ( array_key_exists($week_day,$days))?'':'d-none' }} ml-5 mr-2"  name="{{ $week_day }}_from">
+												@for ($j = 1; $j <=2; $j++)
+													@if ($j==1)
+													{{ $interval = "AM" }}
+													
+													@else
+													{{ $interval = "PM" }}
+														
+													@endif
+												@for($i=1;$i<=12;$i++)
+												<option value="{{ $i.':'.'00 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[0] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}</option>
+												<option value="{{ $i.':'.'15 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[0] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}</option>
+												<option value="{{ $i.':'.'30 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[0] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}</option>
+												<option value="{{ $i.':'.'45 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[0] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}</option>
+												@endfor
+												@endfor
+											</select> -
+											<select class="custom-select-reg {{ ( array_key_exists($week_day,$days))?'':'d-none' }} ml-2"  name="{{ $week_day }}_to">
+												@for ($j = 1; $j <=2; $j++)
+													@if ($j==1)
+													{{ $interval = "AM" }}
+													
+													@else
+													{{ $interval = "PM" }}
+														
+													@endif
+												@for($i=1;$i<=12;$i++)
+												<option value="{{ $i.':'.'00 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[1] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}</option>
+												<option value="{{ $i.':'.'15 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[1] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}</option>
+												<option value="{{ $i.':'.'30 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[1] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}</option>
+												<option value="{{ $i.':'.'45 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->monday[1] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}</option>
+												@endfor
+												@endfor
+											</select>
+											<!-- Time select code -->
+											@if (!( array_key_exists($week_day,$days)))
+
+											<span class="ml-5 pr-4 cl-gray">Closed</span>
+												@else
+											<span class="ml-5 pr-4 d-none cl-gray">Closed</span>
+											@endif
+												
+											
+												<button type="button" class="close close-reg {{ ( array_key_exists($week_day,$days))?'':'d-none' }} " aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button>
+												
+										</div>
+									@endforeach
+									{{-- <div class="border-bottom custom-control custom-checkbox ">
 										<input type="checkbox" class="custom-control-input checkbxCheck days "
 										@foreach ($days  as $day => $time)
 											@if ($day == 'monday')
@@ -596,121 +652,51 @@ body{
 										<label class="custom-control-label mr-5" for="customCheck101">Monday</label>
 										<!-- Time select code -->
 										
-										<select class="custom-select-reg @foreach ($days  as $day => $time)
-											@if ($day != 'monday')
-												d-none
-											@endif
-										@endforeach ml-5 mr-2"  name="monday_from">
-											<option value="01:00 AM" {{ ($time[0] == "01:00 AM")?'selected':''  }}>1:00 AM</option>
-											<option value="01:30 AM" {{ ($time[0] == "01:30 AM")?'selected':''  }}>1:30 AM</option>
-											<option value="02:00 AM" {{ ($time[0] == "02:00 AM")?'selected':''  }}>2:00 AM</option>
-											<option value="02:30 AM" {{ ($time[0] == "02:30 AM")?'selected':''  }}>2:30 AM</option>
-											<option value="03:00 AM" {{ ($time[0] == "03:00 AM")?'selected':''  }}>3:00 AM</option>
-											<option value="03:30 AM" {{ ($time[0] == "03:30 AM")?'selected':''  }}>3:30 AM</option>
-											<option value="04:00 AM" {{ ($time[0] == "04:00 AM")?'selected':''  }}>4:00 AM</option>
-											<option value="04:30 AM" {{ ($time[0] == "04:30 AM")?'selected':''  }}>4:30 AM</option>
-											<option value="05:00 AM" {{ ($time[0] == "05:00 AM")?'selected':''  }}>5:00 AM</option>
-											<option value="05:30 AM" {{ ($time[0] == "05:30 AM")?'selected':''  }}>5:30 AM</option>
-											<option value="06:00 AM" {{ ($time[0] == "06:00 AM")?'selected':''  }}>6:00 AM</option>
-											<option value="06:30 AM" {{ ($time[0] == "06:30 AM")?'selected':''  }}>6:30 AM</option>
-											<option value="07:00 AM" {{ ($time[0] == "07:00 AM")?'selected':''  }}>7:00 AM</option>
-											<option value="07:30 AM" {{ ($time[0] == "07:30 AM")?'selected':''  }}>7:30 AM</option>
-											<option value="08:00 AM" {{ ($time[0] == "08:00 AM")?'selected':''  }}>8:00 AM</option>
-											<option value="08:30 AM" {{ ($time[0] == "08:30 AM")?'selected':''  }}>8:30 AM</option>
-											<option value="09:00 AM" {{ ($time[0] == "09:00 AM")?'selected':''  }}>9:00 AM</option>
-											<option value="09:30 AM" {{ ($time[0] == "09:30 AM")?'selected':''  }}>9:30 AM</option>
-											<option value="10:00 AM" {{ ($time[0] == "10:00 AM")?'selected':''  }}>10:00 AM</option>
-											<option value="10:30 AM" {{ ($time[0] == "10:30 AM")?'selected':''  }}>10:30 AM</option>
-											<option value="11:00 AM" {{ ($time[0] == "11:00 AM")?'selected':''  }}>11:00 AM</option>
-											<option value="11:30 AM" {{ ($time[0] == "11:30 AM")?'selected':''  }}>11:30 AM</option>
-											<option value="12:00 PM" {{ ($time[0] == "12:00 PM")?'selected':''  }}>12:00 PM</option>
-											<option value="12:30 PM" {{ ($time[0] == "12:30 PM")?'selected':''  }}>12:30 PM</option>
-											<option value="01:00 PM" {{ ($time[0] == "01:00 PM")?'selected':''  }}>1:00 PM</option>
-											<option value="01:30 PM" {{ ($time[0] == "01:30 PM")?'selected':''  }}>1:30 PM</option>
-											<option value="02:00 PM" {{ ($time[0] == "02:00 PM")?'selected':''  }}>2:00 PM</option>
-											<option value="02:30 PM" {{ ($time[0] == "02:30 PM")?'selected':''  }}>2:30 PM</option>
-											<option value="03:00 PM" {{ ($time[0] == "03:00 PM")?'selected':''  }}>3:00 PM</option>
-											<option value="03:30 PM" {{ ($time[0] == "03:30 PM")?'selected':''  }}>3:30 PM</option>
-											<option value="04:00 PM" {{ ($time[0] == "04:00 PM")?'selected':''  }}>4:00 PM</option>
-											<option value="04:30 PM" {{ ($time[0] == "04:30 PM")?'selected':''  }}>4:30 PM</option>
-											<option value="05:00 PM" {{ ($time[0] == "05:00 PM")?'selected':''  }}>5:00 PM</option>
-											<option value="05:30 PM" {{ ($time[0] == "05:30 PM")?'selected':''  }}>5:50 PM</option>
-											<option value="06:00 PM" {{ ($time[0] == "06:00 PM")?'selected':''  }}>6:00 PM</option>
-											<option value="06:30 PM" {{ ($time[0] == "06:30 PM")?'selected':''  }}>6:30 PM</option>
-											<option value="07:00 PM" {{ ($time[0] == "07:00 PM")?'selected':''  }}>7:00 PM</option>
-											<option value="07:30 PM" {{ ($time[0] == "07:30 PM")?'selected':''  }}>7:30 PM</option>
-											<option value="08:00 PM" {{ ($time[0] == "08:00 PM")?'selected':''  }}>8:00 PM</option>
-											<option value="08:30 PM" {{ ($time[0] == "08:30 PM")?'selected':''  }}>8:30 PM</option>
-											<option value="09:00 PM" {{ ($time[0] == "09:00 PM")?'selected':''  }}>9:00 PM</option>
-											<option value="09:30 PM" {{ ($time[0] == "09:30 PM")?'selected':''  }}>9:30 PM</option>
-											<option value="10:00 PM" {{ ($time[0] == "10:00 PM")?'selected':''  }}>10:00 PM</option>
-											<option value="10:30 PM" {{ ($time[0] == "10:30 PM")?'selected':''  }}>10:30 PM</option>
-											<option value="11:00 PM" {{ ($time[0] == "11:00 PM")?'selected':''  }}>11:00 PM</option>
-											<option value="11:30 PM" {{ ($time[0] == "11:30 PM")?'selected':''  }}>11:30 PM</option>
-											<option value="12:00 PM" {{ ($time[0] == "12:00 PM")?'selected':''  }}>12:00 PM</option>
-											<option value="12:30 PM" {{ ($time[0] == "12:30 PM")?'selected':''  }}>12:30 PM</option>
+										<select class="custom-select-reg {{ isset($days->monday)?'':'d-none' }} ml-5 mr-2"  name="monday_from">
+											@for ($j = 1; $j <=2; $j++)
+												@if ($j==1)
+												{{ $interval = "AM" }}
+												
+												@else
+												{{ $interval = "PM" }}
+													
+												@endif
+											@for($i=1;$i<=12;$i++)
+											<option value="{{ $i.':'.'00 '.$interval }}" {{ isset($days->monday) ? (($days->monday[0] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}</option>
+											<option value="{{ $i.':'.'15 '.$interval }}" {{ isset($days->monday) ? (($days->monday[0] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}</option>
+											<option value="{{ $i.':'.'30 '.$interval }}" {{ isset($days->monday) ? (($days->monday[0] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}</option>
+											<option value="{{ $i.':'.'45 '.$interval }}" {{ isset($days->monday) ? (($days->monday[0] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}</option>
+											@endfor
+											@endfor
 										</select> -
-										<select class="custom-select-reg d-done ml-2"  name="monday_to">
-											<option value="1:00 AM">1:00 AM</option>
-											<option value="1:30 AM">1:30 AM</option>
-											<option value="2:00 AM">2:00 AM</option>
-											<option value="2:30 AM">2:30 AM</option>
-											<option value="3:00 AM">3:00 AM</option>
-											<option value="3:30 AM">3:30 AM</option>
-											<option value="4:00 AM">4:00 AM</option>
-											<option value="4:30 AM">4:30 AM</option>
-											<option value="5:00 AM">5:00 AM</option>
-											<option value="5:30 AM">5:30 AM</option>
-											<option value="6:00 AM">6:00 AM</option>
-											<option value="6:30 AM">6:30 AM</option>
-											<option value="7:00 AM">7:00 AM</option>
-											<option value="7:30 AM">7:30 AM</option>
-											<option value="8:00 AM">8:00 AM</option>
-											<option value="8:30 AM">8:30 AM</option>
-											<option value="9:00 AM">9:00 AM</option>
-											<option value="9:30 AM">9:30 AM</option>
-											<option value="10:00 AM">10:00 AM</option>
-											<option value="10:30 AM">10:30 AM</option>
-											<option value="11:00 AM">11:00 AM</option>
-											<option value="11:30 AM">11:30 AM</option>
-											<option value="12:00 AM">12:00 AM</option>
-											<option value="12:30 AM">12:30 AM</option>
-											<option value="1:00 AM">1:00 PM</option>
-											<option value="1:30 AM">1:30 PM</option>
-											<option value="2:00 AM">2:00 PM</option>
-											<option value="2:30 AM">2:30 PM</option>
-											<option value="3:00 AM">3:00 PM</option>
-											<option value="3:30 AM">3:30 PM</option>
-											<option value="4:00 AM">4:00 PM</option>
-											<option value="4:30 AM">4:30 PM</option>
-											<option value="5:00 AM">5:00 PM</option>
-											<option value="5:30 AM">5:50 PM</option>
-											<option value="6:00 AM">6:00 PM</option>
-											<option value="6:30 AM">6:30 PM</option>
-											<option value="7:00 AM">7:00 PM</option>
-											<option value="7:30 AM" selected>7:30 PM</option>
-											<option value="8:00 AM">8:00 PM</option>
-											<option value="8:30 AM">8:30 PM</option>
-											<option value="9:00 AM">9:00 PM</option>
-											<option value="9:30 AM">9:30 PM</option>
-											<option value="10:00 AM">10:00 PM</option>
-											<option value="10:30 AM">10:30 PM</option>
-											<option value="11:00 AM">11:00 PM</option>
-											<option value="11:30 AM">11:30 PM</option>
-											<option value="12:00 AM">12:00 PM</option>
-											<option value="12:30 AM">12:30 PM</option>
+										<select class="custom-select-reg {{ isset($days->monday)?'':'d-none' }} ml-2"  name="monday_to">
+											@for ($j = 1; $j <=2; $j++)
+												@if ($j==1)
+												{{ $interval = "AM" }}
+												
+												@else
+												{{ $interval = "PM" }}
+													
+												@endif
+											@for($i=1;$i<=12;$i++)
+											<option value="{{ $i.':'.'00 '.$interval }}" {{ isset($days->monday) ? (($days->monday[1] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}</option>
+											<option value="{{ $i.':'.'15 '.$interval }}" {{ isset($days->monday) ? (($days->monday[1] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}</option>
+											<option value="{{ $i.':'.'30 '.$interval }}" {{ isset($days->monday) ? (($days->monday[1] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}</option>
+											<option value="{{ $i.':'.'45 '.$interval }}" {{ isset($days->monday) ? (($days->monday[1] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}</option>
+											@endfor
+											@endfor
 										</select>
 										<!-- Time select code -->
-										@foreach ($days  as $day => $time)
-											@if ($day != 'monday')
-											<span class="ml-5 pr-4 cl-gray">Closed</span>
-											@endif
-										@endforeach
-										@foreach ($days  as $day => $time)
-											@if ($day == 'monday')
-											<button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button>
-											@endif
-										@endforeach
+										@if (!isset($days->monday))
+
+										<span class="ml-5 pr-4 cl-gray">Closed</span>
+											@else
+										<span class="ml-5 pr-4 d-none cl-gray">Closed</span>
+										@endif
+											
+										
+											<button type="button" class="close close-reg {{ isset($days->monday)?'':'d-none' }} " aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button>
+											
 									</div>
 									<div class="border-bottom mt-3 custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input checkbxCheck days" onchange="dayOpened(this);" id="customCheck102" name="days[]" value="tuesday">
@@ -1353,7 +1339,7 @@ body{
 										</select>
 										<!-- Time select code --><span class="ml-5 pr-4 cl-gray">Closed</span>
 										<button type="button" class="close close-reg  d-none" aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button>
-									</div>
+									</div> --}}
 								</div>
 								<div class="modal-footer m-auto border-0">
 									<button type="button" onclick="dayCheckValidation();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save </button>
