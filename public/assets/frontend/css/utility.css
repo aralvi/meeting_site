@@ -166,7 +166,7 @@ input {
     color: #3B3B3B !important;
 }
 
-.dropdown-menu {
+.min-width_dropdown {
     min-width: 100% !important;
 }
 
