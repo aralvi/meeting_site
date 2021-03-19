@@ -172,10 +172,10 @@
                                         </div>
                                         <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
-                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                    <div class="input-group mb-3 border-input pb-3 pt-1  d-flex flex-nowrap">
                                         <div class="col-sm-12 d-flex">
-                                            <div class="form-group col-sm-6 mb-0">
-                                                <label class="btn img-lbl border p-1 mb-0">
+                                            <div class="form-group col-sm-6 mb-0 d-flex align-items-center">
+                                                <label class="btn img-lbl border p-1 mb-0 Upload_Avatar">
                                                     Upload Avatar
                                                     <input type="file" id="avatar" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required/>
                                                 </label>

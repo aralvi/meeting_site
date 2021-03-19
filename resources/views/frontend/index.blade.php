@@ -100,10 +100,10 @@
                 <li>
                     <!-- Example split danger button -->
                 <div class="btn-group">
-                <a href="" lass=" dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
+                <a href="" class=" dropdown-toggle dropdown-toggle-split cl-3b3b3b3"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
                 <div class="dropdown-menu">
                     @foreach (categories()->skip(8) as $category)
-                    <a class="dropdown-item" href="#">{{ ucwords($category->name) }}</a>
+                    <a class="dropdown-item " href="#">{{ ucwords($category->name) }}</a>
                         
                     @endforeach
                     
@@ -562,12 +562,12 @@
 
             </div>
          
-            <div class="pt-3"><img
+            <div class="pt-3"><a href=""><img 
             src="{{ asset('assets/frontend/images/appstore_2x.png') }}"
-            alt="" srcset=""></div>
-            <div class="pt-3"><img
+            alt="" class="w-135" srcset=""></a></div>
+            <div class="pt-3"><a href=""><img
             src="{{ asset('assets/frontend/images/playstore_2x.png') }}"
-            alt="" srcset=""></div>
+            alt="" class="w-135" srcset=""></a></div>
          
          
             
