@@ -256,4 +256,11 @@ class ProfileController extends Controller
         }
         return back()->with('success', 'images upload successfuly!');
     }
+
+    public function deleteImage($id)
+    {
+        $portfolio_image = Portfolio::findOrFail($id);
+        unlink($portfolio_image->image);
+        $portfolio_image->delete();
+    }
 }
