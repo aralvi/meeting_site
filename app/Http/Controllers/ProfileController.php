@@ -237,13 +237,7 @@ class ProfileController extends Controller
 
     public function portfolioImages(Request $request)
     {
-        if (Portfolio::where('specialist_id', Auth::user()->specialist->id)->exists()) {
-            $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
-            foreach ($portfolio_images as $portfolio_image) {
-                unlink($portfolio_image->image);
-                $portfolio_image->delete();
-            }
-        }
+       
         foreach ($request->images as $key => $image) {
             $portfolio = new Portfolio();
             $profile_image_original_name = $image->getClientOriginalName();
