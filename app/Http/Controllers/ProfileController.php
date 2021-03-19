@@ -23,15 +23,15 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        
+
         $profile = Auth::user();
         $subcategories = SubCategory::all();
         $categories = Category::all();
-        if(Auth::user()->user_type == 'specialist'){
-            $portfolio_images = Portfolio::where('specialist_id',Auth::user()->specialist->id)->get() ;
+        if (Auth::user()->user_type == 'specialist') {
+            $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
             $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
-            return view('profile', compact('profile','subcategories', 'services', 'categories', 'portfolio_images'));
-        }else{
+            return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images'));
+        } else {
             return view('profile', compact('profile', 'subcategories', 'categories'));
         }
     }
@@ -59,8 +59,6 @@ class ProfileController extends Controller
 
             $profileImage->move('public/uploads/user/', $image_changed_name);
             $avatar_url = 'public/uploads/user/' . $image_changed_name;
-
-           
         }
 
         $profile->avatar = $avatar_url;
@@ -167,18 +165,18 @@ class ProfileController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $profile->id],
         ]);
 
-        
-            $profile->username = $request->username;
-            $profile->name = $request->name;
-            $profile->email = $request->email;
-            $profile->country = $request->country;
-            $profile->status = 'inactive';
-            $profile->save();
-        
+
+        $profile->username = $request->username;
+        $profile->name = $request->name;
+        $profile->email = $request->email;
+        $profile->country = $request->country;
+        $profile->status = 'inactive';
+        $profile->save();
+
 
 
         if ($profile->user_type == 'specialist') {
-            if (count( $request->days) > 0) {
+            if (count($request->days) > 0) {
                 foreach ($request->days as $key => $value) {
                     $from = $value . '_from';
                     $to = $value . '_to';
@@ -239,18 +237,23 @@ class ProfileController extends Controller
 
     public function portfolioImages(Request $request)
     {
-        
-        foreach($request->images as $image){
+        if (Portfolio::where('specialist_id', Auth::user()->specialist->id)->exists()) {
+            $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
+            foreach ($portfolio_images as $portfolio_image) {
+                unlink($portfolio_image->image);
+                $portfolio_image->delete();
+            }
+        }
+        foreach ($request->images as $key => $image) {
             $portfolio = new Portfolio();
             $profile_image_original_name = $image->getClientOriginalName();
-            $image_changed_name = time() . '_' . str_replace('', '-', '');
+            $image_changed_name = time() . $key . '_' . str_replace('', '-', '');
 
             $image->move('public/uploads/portfolio/', $image_changed_name);
             $portfolio->image = 'public/uploads/portfolio/' . $image_changed_name;
             $portfolio->specialist_id = Auth::user()->specialist->id;
             $portfolio->save();
-
         }
-        return back()->with('success','images upload successfuly!');
+        return back()->with('success', 'images upload successfuly!');
     }
 }
