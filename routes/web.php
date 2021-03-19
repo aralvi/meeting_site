@@ -55,7 +55,8 @@ Route::group(['middleware'=>['auth']],function(){
     // Route::get('appointment', function () {
         //     return view('frontend.appoinment');
         // })->name('appointment');
-        Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
+    Route::post('portfolio_images', 'ProfileController@portfolioImages')->name('portfolio_images');    
+    Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
     Route::resource('profile', 'ProfileController');
     Route::post('/profile/change_avatar', 'ProfileController@update_avatar');
 

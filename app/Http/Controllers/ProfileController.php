@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Client;
 use App\Http\Controllers\Controller;
+use App\Models\Specialists\Portfolio;
 use App\Models\Specialists\Service;
 use App\Specialist;
 use App\User;
@@ -27,9 +28,9 @@ class ProfileController extends Controller
         $subcategories = SubCategory::all();
         $categories = Category::all();
         if(Auth::user()->user_type == 'specialist'){
-
+            $portfolio_images = Portfolio::where('specialist_id',Auth::user()->specialist->id)->get() ;
             $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
-            return view('profile', compact('profile','subcategories', 'services', 'categories'));
+            return view('profile', compact('profile','subcategories', 'services', 'categories', 'portfolio_images'));
         }else{
             return view('profile', compact('profile', 'subcategories', 'categories'));
         }
@@ -233,5 +234,23 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function portfolioImages(Request $request)
+    {
+        
+        foreach($request->images as $image){
+            $portfolio = new Portfolio();
+            $profile_image_original_name = $image->getClientOriginalName();
+            $image_changed_name = time() . '_' . str_replace('', '-', '');
+
+            $image->move('public/uploads/portfolio/', $image_changed_name);
+            $portfolio->image = 'public/uploads/portfolio/' . $image_changed_name;
+            $portfolio->specialist_id = Auth::user()->specialist->id;
+            $portfolio->save();
+
+        }
+        return back()->with('success','images upload successfuly!');
     }
 }

@@ -2,6 +2,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/register.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/login_register_common.css') }}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
 <style type="text/css">
     .dropdown-toggle::after {
         display: none;
@@ -12,6 +17,108 @@
     .nav-pills .nav-link.active {
         background-color: #3ac574 !important;
     }
+
+
+
+
+
+/* Start Gallery CSS */
+.thumb {
+	margin-bottom: 15px;
+}
+.thumb:last-child {
+	margin-bottom: 0;
+}
+/* CSS Image Hover Effects: https://www.nxworld.net/tips/css-image-hover-effects.html */
+.thumb 
+figure img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.thumb 
+figure:hover img {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+
+
+
+
+.ui-sortable-placeholder { 
+    	border: 1px dashed black!important; 
+        visibility: visible !important;
+        background: #eeeeee78 !important;
+       }
+    .ui-sortable-placeholder * { visibility: hidden; }
+        .RearangeBox.dragElemThumbnail{opacity:0.6;}
+        .RearangeBox {
+            width: 180px;
+            height:240px;
+            padding:10px 5px;
+            cursor: all-scroll;
+            float: left;
+            display: inline-block;            
+            margin: 5px!important;
+            text-align: center;
+          
+        }
+
+
+
+
+
+
+.IMGthumbnail{
+    max-width:168px;
+    height:220px;
+    margin:auto;
+  background-color: #ececec;
+  padding:2px;
+  border:none;
+}
+
+.IMGthumbnail img{
+   max-width:100%;
+max-height:100%;
+}
+
+.imgThumbContainer{
+
+  margin:4px;
+  border: solid;
+  display: inline-block;
+  justify-content: center;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.14);
+  -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+}
+
+
+
+.imgThumbContainer > .imgName{
+  text-align:center;
+  padding: 2px 6px;
+  margin-top:4px;
+  font-size:13px;
+  height: 15px;
+  overflow: hidden;
+}
+
+.imgThumbContainer > .imgRemoveBtn{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+    display: none;
+}
+
+.RearangeBox:hover > .imgRemoveBtn{ 
+    display: block;
+}
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
@@ -825,16 +932,16 @@
                                             <select class="custom-select-reg {{ ( array_key_exists($week_day,$days))?'':'d-none' }} ml-5 mr-2" name="{{ $week_day }}_from">
                                                 @for ($j = 1; $j <=2; $j++) @if ($j==1) {{ $interval = "AM" }} @else {{ $interval = "PM" }} @endif @for($i=1;$i<=12;$i++)
                                                 <option value="{{ $i.':'.'00 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[0] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}
+                                                    $week_day[0] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}
                                                 </option>
                                                 <option value="{{ $i.':'.'15 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[0] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}
+                                                    $week_day[0] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}
                                                 </option>
                                                 <option value="{{ $i.':'.'30 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[0] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}
+                                                    $week_day[0] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}
                                                 </option>
                                                 <option value="{{ $i.':'.'45 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[0] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}
+                                                    $week_day[0] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}
                                                 </option>
                                                 @endfor @endfor
                                             </select>
@@ -842,16 +949,16 @@
                                             <select class="custom-select-reg {{ ( array_key_exists($week_day,$days))?'':'d-none' }} ml-2" name="{{ $week_day }}_to">
                                                 @for ($j = 1; $j <=2; $j++) @if ($j==1) {{ $interval = "AM" }} @else {{ $interval = "PM" }} @endif @for($i=1;$i<=12;$i++)
                                                 <option value="{{ $i.':'.'00 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[1] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}
+                                                    $week_day[1] == $i.':'.'00 '.$interval) ? "selected":'' ):''}} >{{ $i.':'.'00 '.$interval }}
                                                 </option>
                                                 <option value="{{ $i.':'.'15 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[1] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}
+                                                    $week_day[1] == $i.':'.'15 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'15 '.$interval }}
                                                 </option>
                                                 <option value="{{ $i.':'.'30 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[1] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}
+                                                    $week_day[1] == $i.':'.'30 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'30 '.$interval }}
                                                 </option>
                                                 <option value="{{ $i.':'.'45 '.$interval }}" {{ ( array_key_exists($week_day,$days)) ? (($days->
-                                                    monday[1] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}
+                                                    $week_day[1] == $i.':'.'45 '.$interval) ? "selected":''):'' }} >{{ $i.':'.'45 '.$interval }}
                                                 </option>
                                                 @endfor @endfor
                                             </select>
@@ -1880,10 +1987,64 @@
                     @endif
                 </div>
                 @if(Auth::user()->user_type == 'specialist')
+
+
+
+
+
                 <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
-					<p class="pl-3 f-21 cl-000000">Portfolio</p>
+					<p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
+                    <section class="container">
+                        <div class="row gallery">
+                            @foreach ($portfolio_images as $image)
+                                
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <a href="{{ $image->image }}">
+                                    <figure><img class="img-fluid img-thumbnail" src="{{ $image->image }}" alt="Random Image"></figure>
+                                </a>
+                            </div>
+                            
+                            @endforeach
+                        </div>
+                            <form action="{{ route('portfolio_images') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row justify-content-center align-items-end">
+                                    <div style='form-group col-md-6'>
+                                        <label for="files">Upload Portfolio's Images </label>
+                                        <input id="files" type="file" name="images[]" class="form-control border-0" multiple/>        
+                                    </div>
+                                    <div class="form-group col-md-6 m-0">
+                                        <button type="submit" class="btn btn-md bg-3AC574 text-white">Upload Photos</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        <div style='padding:14px; margin:auto';>
+                        <div id="sortableImgThumbnailPreview">
+                                
+                            </div>
+                        </div>
+  
+
+                    </section>
                    
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-service-tab">
 					<p class="pl-3 f-21 cl-000000">Services</p>
 					<button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
@@ -2066,7 +2227,7 @@
 	{{-- Services modals ended  --}}
 </section>
 @endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -2210,6 +2371,84 @@
               }
           });
       }
+
+$(document).ready(function() {
+	$(".gallery").magnificPopup({
+		delegate: "a",
+		type: "image",
+		tLoading: "Loading image #%curr%...",
+		mainClass: "mfp-img-mobile",
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+		}
+	});
+});
+
+
+
+
+
+$(function() {
+            $("#sortableImgThumbnailPreview").sortable({
+             connectWith: ".RearangeBox",
+            
+                
+              start: function( event, ui ) { 
+                   $(ui.item).addClass("dragElemThumbnail");
+                   ui.placeholder.height(ui.item.height());
+           
+               },
+                stop:function( event, ui ) { 
+                   $(ui.item).removeClass("dragElemThumbnail");
+               }
+            });
+            $("#sortableImgThumbnailPreview").disableSelection();
+        });
+
+
+
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+  function handleFileSelect(evt) {
+    
+    var files = evt.target.files; 
+    var output = document.getElementById("sortableImgThumbnailPreview");
+    
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+           var imgThumbnailElem = "<div class='RearangeBox imgThumbContainer'><i class='material-icons imgRemoveBtn' onclick='removeThumbnailIMG(this)'>cancel</i><div class='IMGthumbnail' ><img  src='" + e.target.result + "'" + "title='"+ theFile.name + "'/></div><div class='imgName'>"+ theFile.name +"</div></div>";
+                    
+                    output.innerHTML = output.innerHTML + imgThumbnailElem; 
+          
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  function removeThumbnailIMG(elm){
+    elm.parentNode.outerHTML='';
+  }
 
 
 </script>
