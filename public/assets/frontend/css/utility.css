@@ -163,7 +163,11 @@ input {
 }
 
 .cl-3b3b3b3 {
-    color: #3B3B3B;
+    color: #3B3B3B !important;
+}
+
+.min-width_dropdown {
+    min-width: 100% !important;
 }
 
 .f-14 {
@@ -186,8 +190,13 @@ input {
     font-size: 2rem;
 }
 
-.f-21 {
+
+/* .f-21 {
     font-size: 1.3125rem;
+} */
+
+.f-21 {
+    font-size: 1rem;
 }
 
 .cl-616161 {

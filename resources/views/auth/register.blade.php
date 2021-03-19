@@ -172,12 +172,12 @@
                                         </div>
                                         <div class="w-100"><input type="password" class="form-control border-0 w-100" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
-                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
+                                    <div class="input-group mb-3 border-input pb-3 pt-1  d-flex flex-nowrap">
                                         <div class="col-sm-12 d-flex">
-                                            <div class="form-group col-sm-6 mb-0">
-                                                <label class="btn img-lbl border p-1 mb-0">
+                                            <div class="form-group col-sm-6 mb-0 d-flex align-items-center">
+                                                <label class="btn img-lbl border p-1 mb-0 Upload_Avatar">
                                                     Upload Avatar
-                                                    <input type="file" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required/>
+                                                    <input type="file" id="avatar" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required/>
                                                 </label>
                                             </div>
                                             <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
@@ -1513,18 +1513,20 @@
                 </div>
                 <div class="w-100"><input type="password" class="w-100 form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
+
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                        <div class="col-sm-12 d-flex">
-                                            <div class="form-group col-sm-6 mb-0">
-                                                <label class="btn img-lbl border p-1 mb-0">
-                                                    Upload Avatar
-                                                    <input type="file" style="display: none;" name="avatar" onchange="readURL(this);" required/>
-                                                </label>
-                                            </div>
-                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
-                                        </div>
-                                    </div>
+                <div class="col-sm-12 d-flex">
+                    <div class="form-group col-sm-6 mb-0">
+                        <label class="btn img-lbl border p-1 mb-0">
+                            Upload Avatar
+                            <input type="file" id="avatar" style="display: none;" name="avatar" onchange="readURL(this);"/>
+                        </label>
+                    </div>
+                    <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
+                </div>
+            </div>
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
+            
             <div class="pt-4 f-14 cl-gray text-center">
                 <p class="mb-1">
                     By Sigining up I agree the
@@ -1850,16 +1852,16 @@
                 <div class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
-                                        <div class="col-sm-12 d-flex">
-                                            <div class="form-group col-sm-6 mb-0">
-                                                <label class="btn img-lbl border p-1 mb-0">
-                                                    Upload Avatar
-                                                    <input type="file" style="display: none;" name="avatar" onchange="readURL(this);" required/>
-                                                </label>
-                                            </div>
-                                            <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
-                                        </div>
-                                    </div>
+                <div class="col-sm-12 d-flex">
+                    <div class="form-group col-sm-6 mb-0">
+                        <label class="btn img-lbl border p-1 mb-0">
+                            Upload Avatar
+                            <input type="file" id="avatar" style="display: none;" name="avatar" onchange="readURL(this);"/>
+                        </label>
+                    </div>
+                    <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
+                </div>
+            </div>
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-step1" value="Create Account" />
             
             <div class="row">
@@ -2280,7 +2282,7 @@
             {
                 if($('select[name="category_id"]').val() ==null)
                 {
-                swal({
+                    swal({
                         icon: "error",
                         text: "{{ __('Please Select Category!') }}",
                         type: 'error'
@@ -2407,6 +2409,20 @@
                 return true;
             }
 
+            function fileValidate(input)
+            {
+                if(input[0].files.length==0)
+                {
+                    swal({
+                        icon: "error",
+                        text: "{{ __('Please Upload Avatar!') }}",
+                        type: 'error'
+                    });
+                    return false;
+                }
+                
+                return true;
+            }
         </script>
 
         <script>
@@ -2614,8 +2630,9 @@
 
         <script>
         
-            $(document.body).on("click", "input.client-step1", function () {
-            // $(this).parent("div").siblings("span.inputBtn").click();
+            $(document.body).on("click", "input.client-step1", function ()
+            {
+                // $(this).parent("div").siblings("span.inputBtn").click();
                 if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
                 {
                     $.ajax({
@@ -2654,8 +2671,8 @@
 
             $(document.body).on("click", "input.step1", function () 
             {
-            //   $(this).parent("div").siblings("span.inputBtn").click();
-                if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password'))&& inptFieldValidate($('.avatar')))
+                //   $(this).parent("div").siblings("span.inputBtn").click();
+                if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')) && fileValidate($('#avatar')))
                 {
                     $.ajax({
                         url:"{{ route('usernameCheck') }}",
@@ -2750,12 +2767,14 @@
 
           
     function readURL(input) {
+       
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $(".blah").attr("src", e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
+            return true;
         }
     }
 

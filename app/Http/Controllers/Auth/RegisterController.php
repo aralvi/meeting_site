@@ -59,11 +59,12 @@ class RegisterController extends Controller
                 'email' => ['bail','required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['bail','required', 'string', 'min:6', 'confirmed'],
                 'country' => ['bail','required'],
-                'avatar' => ['bail','required'],
             ];
 
         if ($data['user_type']=='specialist')
         {
+            
+            $arr['avatar'] = ['bail','required'];
             $arr['payment_method'] = ['bail','required'];
             $arr['business_phone'] = ['bail','required', 'string'];
         }
@@ -100,11 +101,14 @@ class RegisterController extends Controller
         $request = request();
 
         $profileImage = $request->file('avatar');
-        $profile_image_original_name = $profileImage->getClientOriginalName();
-        $image_changed_name = time() . '_' . str_replace('', '-', '');
-
-        $profileImage->move('public/uploads/user/', $image_changed_name);
-        $avatar_url = 'public/uploads/user/' . $image_changed_name;
+        if($request->hasFile('avatar'))
+        {
+            $profile_image_original_name = $profileImage->getClientOriginalName();
+            $image_changed_name = time() . '_' . str_replace('', '-', '');
+            $profileImage->move('public/uploads/user/', $image_changed_name);
+            $avatar_url = 'public/uploads/user/' . $image_changed_name;
+        }
+        else{ $avatar_url = ''; }
 
         $user = User::create([
             'user_type' => $data['user_type'],
