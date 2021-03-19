@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Client;
 use App\Http\Controllers\Controller;
+use App\Models\Specialists\Service;
 use App\Specialist;
 use App\User;
 use App\SubCategory;
@@ -23,7 +25,14 @@ class ProfileController extends Controller
         
         $profile = Auth::user();
         $subcategories = SubCategory::all();
-        return view('profile', compact('profile','subcategories'));
+        $categories = Category::all();
+        if(Auth::user()->user_type == 'specialist'){
+
+            $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
+            return view('profile', compact('profile','subcategories', 'services', 'categories'));
+        }else{
+            return view('profile', compact('profile', 'subcategories', 'categories'));
+        }
     }
 
     /**
