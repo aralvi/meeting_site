@@ -63,8 +63,10 @@
 
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active cl-000000" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
+                @if (Auth::user()->user_type == 'specialist')
                 <a class="nav-link cl-000000" id="v-pills-portfolio-tab" data-toggle="pill" href="#v-pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
                 <a class="nav-link cl-000000" id="v-pills-service-tab" data-toggle="pill" href="#v-pills-service" role="tab" aria-controls="v-pills-service" aria-selected="false">Services</a>
+                @endif
                 <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
             </div>
         </div>
@@ -1864,6 +1866,7 @@
                     </form>
                     @endif
                 </div>
+                @if(Auth::user()->user_type == 'specialist')
                 <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
 					<p class="pl-3 f-21 cl-000000">Portfolio</p>
                    
@@ -1872,47 +1875,48 @@
 					<p class="pl-3 f-21 cl-000000">Services</p>
 					<button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
                     <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="text-uppercase">
-                                <th scope="col">#</th>
-                                <th scope="col">service</th>
-                                <th scope="col">Timing</th>
-                                <th scope="col">Rate</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($services as $key => $service)
-                            <tr id="target_{{ $service->id }}">
-                                <td>{{ $key +1 }}</td>
-                                <td>{{ $service->title }}</td>
-                                <td>{{ $service->timing }} Minutes</td>
-                                <td>${{ $service->rate }}</td>
-                                <td>
-                                    @if ($service->status == "Active")
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-uppercase">
+                                    <th scope="col">#</th>
+                                    <th scope="col">service</th>
+                                    <th scope="col">Timing</th>
+                                    <th scope="col">Rate</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($services as $key => $service)
+                                <tr id="target_{{ $service->id }}">
+                                    <td>{{ $key +1 }}</td>
+                                    <td>{{ $service->title }}</td>
+                                    <td>{{ $service->timing }} Minutes</td>
+                                    <td>${{ $service->rate }}</td>
+                                    <td>
+                                        @if ($service->status == "Active")
+                                            
+                                        <span class="badge badge-sm badge-success">{{ $service->status }}</span>
+                                        @else
+                                            
+                                        <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
+                                        @endif
                                         
-                                    <span class="badge badge-sm badge-success">{{ $service->status }}</span>
-                                    @else
-                                        
-                                    <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
-                                    @endif
+                                    </td>
                                     
-                                </td>
-                                
-                                <td style="min-width: 135px !important;">
-                                    <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-toggle="modal" data-target="#editServiceModal" data-Serviceid="{{ $service->id }}"><i class="fe fe-pencil"></i> Edit</button>
+                                    <td style="min-width: 135px !important;">
+                                        <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-toggle="modal" data-target="#editServiceModal" data-Serviceid="{{ $service->id }}"><i class="fe fe-pencil"></i> Edit</button>
 
-                                    <button title="Click to Delete Service" type="button" class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal" data-target="#deleteServiceModal" id="ServiceDelete" data-Serviceid="{{ $service->id }}"><i class="fe fe-trash"></i> Delete</button>
-                                </td>
-                            </tr>
-                                
-                            @endforeach
-                        </tbody>
-                    </table>
+                                        <button title="Click to Delete Service" type="button" class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal" data-target="#deleteServiceModal" id="ServiceDelete" data-Serviceid="{{ $service->id }}"><i class="fe fe-trash"></i> Delete</button>
+                                    </td>
+                                </tr>
+                                    
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                </div>
+                @endif
                 <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
 					<p class="pl-3 f-21 cl-000000">Password Setting</p>
                     <form action="{{ url('password') }}" method="POST">
@@ -1945,6 +1949,8 @@
 
 
 	{{-- services modals started --}}
+@if (Auth::user()->user_type == 'specialist')
+    
 
 		<!-- Modal For Adding Service-->
         <div class="modal fade" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="addServiceModalArea" aria-hidden="true">
@@ -2043,6 +2049,7 @@
                 </div>
             </div>
         </div>
+@endif
 	{{-- Services modals ended  --}}
 </section>
 @endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')

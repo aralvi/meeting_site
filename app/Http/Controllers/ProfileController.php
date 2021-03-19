@@ -25,9 +25,14 @@ class ProfileController extends Controller
         
         $profile = Auth::user();
         $subcategories = SubCategory::all();
-        $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
-        $categories = Category::all();
-        return view('profile', compact('profile','subcategories', 'services', 'categories'));
+        if(Auth::user()->user_type == 'specialist'){
+
+            $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
+            $categories = Category::all();
+            return view('profile', compact('profile','subcategories', 'services', 'categories'));
+        }else{
+            return view('profile', compact('profile', 'subcategories'));
+        }
     }
 
     /**
