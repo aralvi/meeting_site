@@ -125,6 +125,22 @@
         position: relative;
         left: 8px;
     }
+    .main-padding-dashboard{
+        padding-left: 143px;
+    padding-right: 143px;
+    }
+   
+.bid_submit{
+    background-color: #3AC574 !important;
+    color: #ffffff !important;
+
+}
+.bid_close{
+    color: #3AC574 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #3AC574; 
+
+}
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 
@@ -132,7 +148,7 @@
     @include('includes.frontend.navbar')
 </section>
 
-<div class="container-fluid">
+<div class="container-fluid main-padding-dashboard">
     <div class="row mt-5 justify-content-around">
         <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
             <div class="px-5 py-3">
@@ -247,12 +263,12 @@
         </div>
     </div>
     <div class="row px-3 ml-1 mt-2 mb-5">
-        <div class="col-md-8  borderRadius-10px box_shadow1 p-0">
+        <div class="col-md-8 mt-3 borderRadius-10px box_shadow1 pb-5">
             <div class="d-flex mt-3 justify-content-between px-5">
                 <div class="cl-3ac754 robotoMedium f-24">Job Description</div>
                 <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
             </div>
-            <div class="mt-2 border w-100"></div>
+            <div class="mt-3 border w-100"></div>
             @foreach ($service_requests as $service)
                 
                 <a href="javascript:void(0);" class="service_request " title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}" tabindex="0" data-toggle="tooltip" title="Click To bid this request">
@@ -285,7 +301,7 @@
                                         @php  if($service->tags !=null){
                                             $tags= explode('uploads/files/',$service->tags);
                                             }  @endphp
-                                        <a href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
+                                        <a class="cl-3ac754 " href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
                                         </div>
                                 </div>
                             </div>
@@ -416,7 +432,7 @@
 <!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content pl-5 pr-5 pt-3 ">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Bid To Request</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -474,13 +490,21 @@
             </div>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary bid_close" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary bid_submit">Submit</button>
         </div>
     </form>
     </div>
   </div>
 </div>
+<!-- T E N    S E C T I O N  S T A R T  -->
+<section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
+    <div class="d-flex justify-content-center  align-items-center"><img
+            src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}"
+            alt="" srcset=""></div>
+</section>
+
+<!-- T E N    S E C T I O N  E N D  -->
 @endsection {{-- content section end --}} {{-- footer section start --}}
  @section('extra-script') 
  
