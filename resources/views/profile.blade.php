@@ -1998,9 +1998,12 @@ max-height:100%;
                         <div class="row gallery">
                             @foreach ($portfolio_images as $image)
                                 
-                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb " id="target_{{ $image->id }}">
+                                <i class='material-icons imgRemoveBtn btn-danger position-relative float-right delete_portfolio_image Cursor' data-toggle="modal" data-target="#deletePortfolioModal" style="top: 23px;  z-index: 1;cursor: pointer;border-radius:5px;" data-portfolioID="{{ $image->id }}">delete</i>
                                 <a href="{{ $image->image }}">
-                                    <figure><img class="img-fluid img-thumbnail" src="{{ $image->image }}" alt="Random Image"></figure>
+                                    <figure>
+                                        <img class="img-fluid img-thumbnail" src="{{ $image->image }}" alt="Random Image">
+                                    </figure>
                                 </a>
                             </div>
                             
@@ -2219,6 +2222,26 @@ max-height:100%;
                     <div class="modal-footer">
                         <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
                         <button type="button" class="btn btn-md btn-primary deleteServiceBtn" id="deleteServiceBtn" data-dismiss="modal">Yes, Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal For Deleting Service-->
+        <div class="modal fade deletePortfolioModal" id="deletePortfolioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelPortfoliodelete" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelPortfoliodelete" style="font-size: 18px !important;">Delete Confirmation !</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure, you want to delete this Imge?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
+                        <button type="button" class="btn btn-md btn-primary deletePortfolioBtn" id="deletePortfolioBtn" data-dismiss="modal">Yes, Delete</button>
                     </div>
                 </div>
             </div>
