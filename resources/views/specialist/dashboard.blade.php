@@ -301,7 +301,7 @@
                                         @php  if($service->tags !=null){
                                             $tags= explode('uploads/files/',$service->tags);
                                             }  @endphp
-                                        <a class="cl-3ac754 " href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
+                                        <a class="cl-3ac754" href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
                                         </div>
                                 </div>
                             </div>
