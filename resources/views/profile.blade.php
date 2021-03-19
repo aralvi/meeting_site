@@ -15,20 +15,33 @@
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
-<div class="pt-4 main_padding d-flex f-20 cl-3b3b3b3 justify-content-between robotoRegular">
-    <div class="col-md-1 p-0"></div>
-    <ul class="listStyle-none p-0 col-md-10 d-flex justify-content-between robotoRegular f-18 ul_main_tabs m-0">
-        <li><a href="##" class="cl-3b3b3b3">Barbershop</a></li>
-        <li><a href="##" class="cl-3b3b3b3">Web Developer</a></li>
-        <li><a href="" class="cl-3b3b3b3">Banker</a></li>
-        <li><a href="" class="cl-3b3b3b3">Engineer</a></li>
-        <li><a href="" class="cl-3b3b3b3">Massage</a></li>
-        <li><a href="" class="cl-3b3b3b3">Massage</a></li>
-        <li><a href="" class="cl-3b3b3b3">Skin Care</a></li>
-        <li><a href="" class="cl-3b3b3b3">Hair Stylist</a></li>
-    </ul>
-    <div class="col-md-2"></div>
-</div>
+@if(count($categories) > 0)
+    <section class=" main_padding pt-5">
+        <div>
+            <ul class="listStyle-none p-0  d-flex robotoRegular f-18 ul_main_tabs m-0 d-flex justify-content-around">
+                @foreach ($categories->take(8) as $category)
+                    <li class="pl-3"> <a href="#" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
+                @endforeach
+                @if (count($categories->skip(8)) > 0)
+                    
+                <li>
+                    <!-- Example split danger button -->
+                <div class="btn-group">
+                <a href="" lass=" dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
+                <div class="dropdown-menu">
+                    @foreach ($categories->skip(8) as $category)
+                    <a class="dropdown-item" href="#">{{ ucwords($category->name) }}</a>
+                        
+                    @endforeach
+                    
+                </div>
+                </div>
+                </li>
+                @endif
+            </ul>
+        </div>
+    </section>
+@endif
 
 <section class="main_padding pt-70">
     <div class="row m-0 justify-content-center">
@@ -1875,7 +1888,7 @@
 					<p class="pl-3 f-21 cl-000000">Services</p>
 					<button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
                     <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-hover ">
                             <thead>
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
