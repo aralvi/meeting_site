@@ -186,8 +186,8 @@ max-height:100%;
                 @if (Auth::user()->user_type == 'specialist')
                 <a class="nav-link cl-000000" id="v-pills-portfolio-tab" data-toggle="pill" href="#v-pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
                 <a class="nav-link cl-000000" id="v-pills-service-tab" data-toggle="pill" href="#v-pills-service" role="tab" aria-controls="v-pills-service" aria-selected="false">Services</a>
-                <a class="nav-link  cl-000000" id="v-pills-appointment-tab" data-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Appointments</a>
                 @endif
+                <a class="nav-link  cl-000000" id="v-pills-appointment-tab" data-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Appointments</a>
                 <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
             </div>
         </div>
@@ -1300,100 +1300,95 @@ max-height:100%;
                     @endif
                 </div>
                 @if(Auth::user()->user_type == 'specialist')
-                <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
-					<p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
-                    <section class="container">
-                        <div class="row gallery">
-                            @foreach ($portfolio_images as $image)
-                                
-                            <div class="col-lg-3 col-md-4 col-xs-6 thumb " id="target_{{ $image->id }}">
-                                <i class='material-icons imgRemoveBtn btn-danger position-relative float-right delete_portfolio_image Cursor' data-toggle="modal" data-target="#deletePortfolioModal" style="top: 23px;  z-index: 1;cursor: pointer;border-radius:5px;" data-portfolioID="{{ $image->id }}">delete</i>
-                                <a href="{{ $image->image }}">
-                                    <figure>
-                                        <img class="img-fluid img-thumbnail" src="{{ $image->image }}" alt="Random Image">
-                                    </figure>
-                                </a>
-                            </div>
-                            
-                            @endforeach
-                        </div>
-                            <form action="{{ route('portfolio_images') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <div class="row justify-content-center align-items-end">
-                                    <div style='form-group col-md-6'>
-                                        <label for="files">Upload Portfolio's Images </label>
-                                        <input id="files" type="file" name="images[]" class="form-control border-0" multiple/>        
-                                    </div>
-                                    <div class="form-group col-md-6 m-0">
-                                        <button type="submit" class="btn btn-md bg-3AC574 text-white">Upload Photos</button>
-                                    </div>
-
+                    <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
+                        <p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
+                        <section class="container">
+                            <div class="row gallery">
+                                @foreach ($portfolio_images as $image)
+                                    
+                                <div class="col-lg-3 col-md-4 col-xs-6 thumb " id="target_{{ $image->id }}">
+                                    <i class='material-icons imgRemoveBtn btn-danger position-relative float-right delete_portfolio_image Cursor' data-toggle="modal" data-target="#deletePortfolioModal" style="top: 23px;  z-index: 1;cursor: pointer;border-radius:5px;" data-portfolioID="{{ $image->id }}">delete</i>
+                                    <a href="{{ $image->image }}">
+                                        <figure>
+                                            <img class="img-fluid img-thumbnail" src="{{ $image->image }}" alt="Random Image">
+                                        </figure>
+                                    </a>
                                 </div>
-                            </form>
-                        <div style='padding:14px; margin:auto';>
-                        <div id="sortableImgThumbnailPreview">
                                 
-                            </div>
-                        </div>
-  
-
-                    </section>
-                   
-                </div>
-                <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-service-tab">
-					<p class="pl-3 f-21 cl-000000">Services</p>
-					<button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
-                    <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                        <table id="example1" class="table table-hover ">
-                            <thead>
-                                <tr class="text-uppercase">
-                                    <th scope="col">#</th>
-                                    <th scope="col">service</th>
-                                    <th scope="col">Timing</th>
-                                    <th scope="col">Rate</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($services as $key => $service)
-                                <tr id="target_{{ $service->id }}">
-                                    <td>{{ $key +1 }}</td>
-                                    <td>{{ $service->title }}</td>
-                                    <td>{{ $service->timing }} Minutes</td>
-                                    <td>${{ $service->rate }}</td>
-                                    <td>
-                                        @if ($service->status == "Active")
-                                            
-                                        <span class="badge badge-sm badge-success">{{ $service->status }}</span>
-                                        @else
-                                            
-                                        <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
-                                        @endif
-                                        
-                                    </td>
-                                    
-                                    <td style="min-width: 135px !important;">
-                                        <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-toggle="modal" data-target="#editServiceModal" data-Serviceid="{{ $service->id }}"><i class="fe fe-pencil"></i> Edit</button>
-
-                                        <button title="Click to Delete Service" type="button" class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal" data-target="#deleteServiceModal" id="ServiceDelete" data-Serviceid="{{ $service->id }}"><i class="fe fe-trash"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                    
                                 @endforeach
-                            </tbody>
-                        </table>
+                            </div>
+                                <form action="{{ route('portfolio_images') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row justify-content-center align-items-end">
+                                        <div style='form-group col-md-6'>
+                                            <label for="files">Upload Portfolio's Images </label>
+                                            <input id="files" type="file" name="images[]" class="form-control border-0" multiple/>        
+                                        </div>
+                                        <div class="form-group col-md-6 m-0">
+                                            <button type="submit" class="btn btn-md bg-3AC574 text-white">Upload Photos</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            <div style='padding:14px; margin:auto';>
+                            <div id="sortableImgThumbnailPreview">
+                                    
+                                </div>
+                            </div>
+    
+
+                        </section>
+                    
                     </div>
-                </div>
 
+                    <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-service-tab">
+                        <p class="pl-3 f-21 cl-000000">Services</p>
+                        <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
+                        <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
+                            <table id="example1" class="table table-hover ">
+                                <thead>
+                                    <tr class="text-uppercase">
+                                        <th scope="col">#</th>
+                                        <th scope="col">service</th>
+                                        <th scope="col">Timing</th>
+                                        <th scope="col">Rate</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($services as $key => $service)
+                                    <tr id="target_{{ $service->id }}">
+                                        <td>{{ $key +1 }}</td>
+                                        <td>{{ $service->title }}</td>
+                                        <td>{{ $service->timing }} Minutes</td>
+                                        <td>${{ $service->rate }}</td>
+                                        <td>
+                                            @if ($service->status == "Active")
+                                                
+                                            <span class="badge badge-sm badge-success">{{ $service->status }}</span>
+                                            @else
+                                                
+                                            <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
+                                            @endif
+                                            
+                                        </td>
+                                        
+                                        <td style="min-width: 135px !important;">
+                                            <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-toggle="modal" data-target="#editServiceModal" data-Serviceid="{{ $service->id }}"><i class="fe fe-pencil"></i> Edit</button>
 
-
-
-
-
-
-
-
+                                            <button title="Click to Delete Service" type="button" class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal" data-target="#deleteServiceModal" id="ServiceDelete" data-Serviceid="{{ $service->id }}"><i class="fe fe-trash"></i> Delete</button>
+                                        </td>
+                                    </tr>
+                                        
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+                @endif
+                
                 <div class="tab-pane fade " id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
 					<p class="pl-3 f-21 cl-000000">Appointments</p>
 					<div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
@@ -1401,7 +1396,7 @@ max-height:100%;
                             <thead>
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
-                                    <th scope="col">Client</th>
+                                    <th scope="col">{{ Auth::user()->user_type=='specialist' ? 'Client' :'Specialist' }}</th>
                                     <th scope="col">Timing</th>
                                     <th scope="col">Rate</th>
                                     <th scope="col">Status</th>
@@ -1440,15 +1435,17 @@ max-height:100%;
                                     </td>
                                     
                                     <td style="min-width: 135px !important; " class="d-flex">
+
                                         @if ($appointment->status != "Completed" )
-                                            
-                                            <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
-                                                @csrf
-                                                @method('put')
-                                                
-                                                <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}">
-                                                <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
-                                            </form>
+                                            @if (Auth::user()->user_type=='specialist')
+                                                <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    
+                                                    <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}">
+                                                    <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
+                                                </form>
+                                            @endif
                                             @if ($appointment->status != "Cancelled")
                                                 
                                             <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
@@ -1468,7 +1465,7 @@ max-height:100%;
                         </table>
                     </div>
                 </div>
-                @endif
+
                 <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
 					<p class="pl-3 f-21 cl-000000">Password Setting</p>
                     <form action="{{ url('password') }}" method="POST">

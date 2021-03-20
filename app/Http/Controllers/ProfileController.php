@@ -24,17 +24,16 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
         $profile = Auth::user();
         $subcategories = SubCategory::all();
         $categories = Category::all();
+        $appointments = Appointment::where('user_id', Auth::user()->id)->get();
         if (Auth::user()->user_type == 'specialist') {
             $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
             $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
-            $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->get();
             return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images', 'appointments'));
         } else {
-            return view('profile', compact('profile', 'subcategories', 'categories'));
+            return view('profile', compact('profile', 'subcategories', 'categories','appointments'));
         }
     }
 
