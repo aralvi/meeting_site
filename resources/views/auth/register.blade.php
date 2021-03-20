@@ -2223,7 +2223,14 @@
                     $('.alerMsg').show();
                     $('.afterRegisterLoader').show();
                     setInterval(function(){
-                        window.location = '{{ route('index') }}';
+                        if($('input[name="user_type"]:checked').val()=='specialist')
+                        {
+                            url = '{{ url('/specialist') }}';
+                        }
+                        else{
+                           url = '{{ url('/client') }}';
+                        }
+                        window.location = url;
                     },5000);
 
                 },
