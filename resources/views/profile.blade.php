@@ -163,7 +163,7 @@ max-height:100%;
                         alt=""
                         style="height: 118px; width: 118px;"
                     />
-                    <form action="{{ url('/profile/change_avatar') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('/profile/change_avatar') }}" method="post" enctype="multipart/form-data" id="avatar_form">
                         @csrf
                         <div class="form-group m-0">
                             <label class="btn img-lbl p-1 mb-0 position-relative" style="top: -34px; left: 43px;">
@@ -171,7 +171,7 @@ max-height:100%;
                                 <input type="file" style="display: none;" name="avatar" class="avatar" onchange="readURL(this);" required accept="image/png, image/jpg, image/jpeg" />
                             </label>
                         </div>
-                        <button class="btn btn-sm bg-3AC574 text-white">Upload Photo</button>
+                        {{-- <button class="btn btn-sm bg-3AC574 text-white">Upload Photo</button> --}}
                     </form>
                 </div>
                 <p class="m-0 f-27 robotoMedium cl-5757575 pt-3">{{ ucwords(Auth::user()->name) }}</p>
@@ -1633,6 +1633,7 @@ max-height:100%;
                 $(".blah").attr("src", e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
+            $('#avatar_form').submit();
         }
     }
     const usernamePublicProfile = (ele) => {
