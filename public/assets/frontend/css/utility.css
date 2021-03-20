@@ -118,6 +118,10 @@ body {
     border-radius: 5px;
 }
 
+.border-bcbcbc {
+    border: 1px solid #bcbcbcbc;
+}
+
 .borderRadius-12px {
     border-radius: 12px;
 }

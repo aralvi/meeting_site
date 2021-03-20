@@ -91,10 +91,6 @@
         background-image: linear-gradient(to right, #000 -94%, #000 9%);
     }
     
-    .border-bcbcbc {
-        border: 1px solid #bcbcbcbc;
-    }
-    
     @media screen and (max-width: 1650px) and (min-width:1245px) {
         .index_para {
             font-size: 1.3rem !important;
