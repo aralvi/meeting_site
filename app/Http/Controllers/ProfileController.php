@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Client;
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
 use App\Models\Specialists\Portfolio;
 use App\Models\Specialists\Service;
 use App\Specialist;
@@ -30,7 +31,8 @@ class ProfileController extends Controller
         if (Auth::user()->user_type == 'specialist') {
             $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
             $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
-            return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images'));
+            $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->get();
+            return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images', 'appointments'));
         } else {
             return view('profile', compact('profile', 'subcategories', 'categories'));
         }

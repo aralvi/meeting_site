@@ -182,10 +182,11 @@ max-height:100%;
             </div>
 
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active cl-000000" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
+                <a class="nav-link  cl-000000" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
                 @if (Auth::user()->user_type == 'specialist')
                 <a class="nav-link cl-000000" id="v-pills-portfolio-tab" data-toggle="pill" href="#v-pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
                 <a class="nav-link cl-000000" id="v-pills-service-tab" data-toggle="pill" href="#v-pills-service" role="tab" aria-controls="v-pills-service" aria-selected="false">Services</a>
+                <a class="nav-link active cl-000000" id="v-pills-appointment-tab" data-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Appointments</a>
                 @endif
                 <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
             </div>
@@ -193,7 +194,7 @@ max-height:100%;
         <div class="col-md-7 col-lg-7 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
             <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
             <div class="tab-content" id="v-pills-tabContent">
-				<div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+				<div class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 					<p class="pl-3 f-21 cl-000000">Personal Info</p>
                     @if (Auth::user()->user_type =='specialist')
 
@@ -1987,11 +1988,6 @@ max-height:100%;
                     @endif
                 </div>
                 @if(Auth::user()->user_type == 'specialist')
-
-
-
-
-
                 <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
 					<p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
                     <section class="container">
@@ -2032,22 +2028,6 @@ max-height:100%;
                     </section>
                    
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-service-tab">
 					<p class="pl-3 f-21 cl-000000">Services</p>
 					<button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
@@ -2085,6 +2065,89 @@ max-height:100%;
                                         <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-toggle="modal" data-target="#editServiceModal" data-Serviceid="{{ $service->id }}"><i class="fe fe-pencil"></i> Edit</button>
 
                                         <button title="Click to Delete Service" type="button" class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal" data-target="#deleteServiceModal" id="ServiceDelete" data-Serviceid="{{ $service->id }}"><i class="fe fe-trash"></i> Delete</button>
+                                    </td>
+                                </tr>
+                                    
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="tab-pane fade show active" id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
+					<p class="pl-3 f-21 cl-000000">Appointments</p>
+					<div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
+                        <table id="example1" class="table table-hover ">
+                            <thead>
+                                <tr class="text-uppercase">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Client</th>
+                                    <th scope="col">Timing</th>
+                                    <th scope="col">Rate</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($appointments as $key => $appointment)
+                                <tr id="target_{{ $appointment->id }}">
+                                    <td>{{ $key +1 }}</td>
+                                    <td>{{ $appointment->user->name }}</td>
+                                    <td>{{ $appointment->time }}</td>
+                                    <td>${{ $appointment->rate }}</td>
+                                    <td>
+                                        @if ($appointment->status == "Pending")
+                                            
+                                        <span class="badge badge-sm badge-warning">{{ $appointment->status }}</span>
+                                        
+                                        @endif
+                                        @if ($appointment->status == "Approved")
+                                            
+                                        <span class="badge badge-sm badge-info">{{ $appointment->status }}</span>
+                                        
+                                        @endif
+                                        @if ($appointment->status == "Cancelled")
+                                            
+                                        <span class="badge badge-sm badge-danger">{{ $appointment->status }}</span>
+                                        
+                                        @endif
+                                        @if ($appointment->status == "Completed")
+                                            
+                                        <span class="badge badge-sm badge-success">{{ $appointment->status }}</span>
+                                        
+                                        @endif
+                                        
+                                    </td>
+                                    
+                                    <td style="min-width: 135px !important; " class="d-flex">
+                                        @if ($appointment->status != "Completed" )
+                                            
+                                            <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                                @csrf
+                                                @method('put')
+                                                
+                                                <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}">
+                                                <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
+                                            </form>
+                                            @if ($appointment->status != "Cancelled")
+                                                
+                                            <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                                @csrf
+                                                @method('put')
+                                                <input type="hidden" name="status" value="2">
+                                                <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+                                            </form>
+                                            @endif
+                                        @endif
+                                        
                                     </td>
                                 </tr>
                                     
