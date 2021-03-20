@@ -41,7 +41,6 @@ Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
 
 // usercheck
 Route::group(['middleware'=>['auth','specialistcheck']],function(){
-    Route::resource('appointments', 'AppointmentController');
     Route::resource('specialists', 'SpecialistController');
     Route::resource('specialist/services', 'Specialist\ServiceController');
     Route::resource('specialist', 'Specialist\DashboardController');
@@ -52,6 +51,7 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
 
 Route::group(['middleware'=>['auth']],function(){
     
+    Route::resource('appointments', 'AppointmentController');
     // Route::get('appointment', function () {
         //     return view('frontend.appoinment');
         // })->name('appointment');
