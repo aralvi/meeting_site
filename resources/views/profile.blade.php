@@ -696,7 +696,7 @@ max-height:100%;
                                                     aria-label=""
                                                     aria-describedby="basic-addon1"
                                                     name="payment_email"
-                                                    vallue="{{Auth::user()->specialist->payment_email}}"
+                                                    value="{{Auth::user()->specialist->payment_email}}"
                                                 />
                                             </div>
                                         </div>
@@ -714,7 +714,7 @@ max-height:100%;
                                                     aria-label=""
                                                     aria-describedby="basic-addon1"
                                                     name="payment_email"
-                                                    vallue="{{Auth::user()->specialist->payment_email}}"
+                                                    value="{{Auth::user()->specialist->payment_email}}"
                                                 />
                                             </div>
                                         </div>
@@ -819,44 +819,7 @@ max-height:100%;
                                         </div>
                                     </div>
                                 </div>
-                                <div id="paypal-html" style="display: none;">
-                                    <div class="row">
-                                        <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
-                                            <div><em class="fa fa-envelope"></em></div>
-                                            <div class="w-100">
-                                                <input
-                                                    type="email"
-                                                    id="payment_email_paypal2"
-                                                    class="w-100 form-control border-0"
-                                                    placeholder="Enter your PayPal email address"
-                                                    aria-label=""
-                                                    aria-describedby="basic-addon1"
-                                                    name="payment_email"
-                                                    vallue="{{Auth::user()->specialist->payment_email}}"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="payoneer-html" style="display: none;">
-                                    <div class="row">
-                                        <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
-                                            <div><em class="fa fa-envelope"></em></div>
-                                            <div class="w-100">
-                                                <input
-                                                    type="email"
-                                                    id="payment_email_payoneer2"
-                                                    class="w-100 form-control border-0"
-                                                    placeholder="Enter you Payoneer email address"
-                                                    aria-label=""
-                                                    aria-describedby="basic-addon1"
-                                                    name="payment_email"
-                                                    vallue="{{Auth::user()->specialist->payment_email}}"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="row">
                                     <div class="col-md-12 pt-4 warningAlert" style="display: none;">
                                         <div class="alert alert-warning warningAlertContent"></div>
@@ -983,6 +946,45 @@ max-height:100%;
                         </div>
                         <!-- Modal 2nd code end-->
                     </form>
+
+                    <div id="paypal-html" style="display: none;">
+                                    <div class="row">
+                                        <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                            <div><em class="fa fa-envelope"></em></div>
+                                            <div class="w-100">
+                                                <input
+                                                    type="email"
+                                                    id="payment_email_paypal2"
+                                                    class="w-100 form-control border-0"
+                                                    placeholder="Enter your PayPal email address"
+                                                    aria-label=""
+                                                    aria-describedby="basic-addon1"
+                                                    name="payment_email"
+                                                    value="{{Auth::user()->specialist->payment_email}}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="payoneer-html" style="display: none;">
+                                    <div class="row">
+                                        <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                            <div><em class="fa fa-envelope"></em></div>
+                                            <div class="w-100">
+                                                <input
+                                                    type="email"
+                                                    id="payment_email_payoneer2"
+                                                    class="w-100 form-control border-0"
+                                                    placeholder="Enter you Payoneer email address"
+                                                    aria-label=""
+                                                    aria-describedby="basic-addon1"
+                                                    name="payment_email"
+                                                    value="{{Auth::user()->specialist->payment_email}}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                     @else
                     <form action="{{ route('profile.update',Auth::user()->id) }}" method="post" id="client_profile_form">
                         @csrf @method('PUT')
