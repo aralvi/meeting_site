@@ -174,10 +174,10 @@ max-height:100%;
                         <button class="btn btn-sm bg-3AC574 text-white">Upload Photo</button>
                     </form>
                 </div>
-                <p class="m-0 f-27 robotoMedium cl-5757575 pt-3">{{ Auth::user()->name }}</p>
+                <p class="m-0 f-27 robotoMedium cl-5757575 pt-3">{{ ucwords(Auth::user()->name) }}</p>
                 @if (Auth::user()->user_type == 'specialist')
 
-                <p class="f-18 cl-a8a8a8a robotoMedium m-0 pt-1">{{ Auth::user()->specialist->category->name }}</p>
+                <p class="f-18 cl-a8a8a8a robotoMedium m-0 pt-1">{{ ucwords(Auth::user()->specialist->category->name) }}</p>
                 @endif
             </div>
 
@@ -1345,7 +1345,7 @@ max-height:100%;
                         <p class="pl-3 f-21 cl-000000">Services</p>
                         <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
                         <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                            <table id="example1" class="table table-hover ">
+                            <table id="example1" class="table table-hover example1">
                                 <thead>
                                     <tr class="text-uppercase">
                                         <th scope="col">#</th>
@@ -1392,7 +1392,7 @@ max-height:100%;
                 <div class="tab-pane fade " id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
 					<p class="pl-3 f-21 cl-000000">Appointments</p>
 					<div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                        <table id="example1" class="table table-hover ">
+                        <table id="example2" class="table table-hover example1">
                             <thead>
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
@@ -1405,12 +1405,12 @@ max-height:100%;
                             </thead>
                             <tbody>
                                 @foreach ($appointments as $key => $appointment)
-                                <tr id="target_{{ $appointment->id }}">
-                                    <td>{{ $key +1 }}</td>
-                                    <td>{{ $appointment->user->name }}</td>
-                                    <td>{{ $appointment->time }}</td>
-                                    <td>${{ $appointment->rate }}</td>
-                                    <td>
+                                <tr id="target_{{ $appointment->id }}" class="border-bottom">
+                                    <td class="border-0">{{ $key +1 }}</td>
+                                    <td class="border-0">{{ Auth::user()->user_type=='specialist' ? $appointment->user->name : $appointment->specialist->user->name}}</td>
+                                    <td class="border-0">{{ $appointment->time }}</td>
+                                    <td class="border-0">${{ $appointment->rate }}</td>
+                                    <td class="border-0">
                                         @if ($appointment->status == "Pending")
                                             
                                         <span class="badge badge-sm badge-warning">{{ $appointment->status }}</span>
@@ -1434,7 +1434,7 @@ max-height:100%;
                                         
                                     </td>
                                     
-                                    <td style="min-width: 135px !important; " class="d-flex">
+                                    <td style="min-width: 135px !important; " class="d-flex border-0">
 
                                         @if ($appointment->status != "Completed" )
                                             @if (Auth::user()->user_type=='specialist')
