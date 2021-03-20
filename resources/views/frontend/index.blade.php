@@ -424,7 +424,7 @@
                                             </div>
                                             <div class="card-footer  bg-ffffff pt-4 pb-4">
                                                 <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
-                                                <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->name }}
+                                                <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->username }}
                                                 </p>
                                             </div>
 
