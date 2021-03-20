@@ -5,9 +5,7 @@
 	@section('extra-css')
 
   
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/utility.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/navbar.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/portfolio.css') }}">
+
   <style type="text/css">
     .dropdown-toggle::after{display: none;}    
 
@@ -655,12 +653,6 @@ art as welll!!!! I would give him 10 stars...</div>
                                </section>
 
 
-
-                               <section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
-    <div class="d-flex justify-content-center  align-items-center"><img
-            src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}"
-            alt="" srcset=""></div>
-</section>
 
 
 
