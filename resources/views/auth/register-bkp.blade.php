@@ -1997,22 +1997,18 @@
     	<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-    
         <script>
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        var firebaseConfig = {
-            apiKey: "AIzaSyBruFwByQj7hW1gLDZoSD-_pjJk7oCsqCo",
-            authDomain: "learnme-51ddb.firebaseapp.com",
-            databaseURL: "https://learnme-51ddb.firebaseio.com",
-            projectId: "learnme-51ddb",
-            storageBucket: "learnme-51ddb.appspot.com",
-            messagingSenderId: "1031828631727",
-            appId: "1:1031828631727:web:55e541f24d85c3c592645a",
-            measurementId: "G-SP025S1K9V"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+            var firebaseConfig = {
+                apiKey: "AIzaSyC3kS7MheIjD8M9h1YwVRDmkDjF-YJisLg",
+                authDomain: "learnmelive.firebaseapp.com",
+                databaseURL: "https://learnmelive-default-rtdb.firebaseio.com",
+                projectId: "learnmelive",
+                storageBucket: "learnmelive.appspot.com",
+                messagingSenderId: "568851154115",
+                appId: "1:568851154115:web:1fa9bb3304fd2507b04e76"
+            };
+            firebase.initializeApp(firebaseConfig);
+
         </script>
         
         <script type="text/javascript">
