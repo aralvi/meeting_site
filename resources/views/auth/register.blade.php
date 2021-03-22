@@ -92,7 +92,7 @@
 
                         <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
                             @csrf
-                            
+                            <input type="hidden" value="" id="code_check">
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Registered?</div>
@@ -183,6 +183,8 @@
                                             <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
                                         </div>
                                     </div>
+
+                                    <div id="recaptcha-container"></div>
 
                                     <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
                                     <div class="pt-4 f-14 cl-gray text-center">
@@ -1525,6 +1527,8 @@
                     <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
                 </div>
             </div>
+
+            <div id="recaptcha-container"></div>
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
             
             <div class="pt-4 f-14 cl-gray text-center">
@@ -1832,7 +1836,7 @@
                     {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
                     <em class="fa fa-phone"></em>
                 </div>
-                <div class="w-100"> <input type="text" class="w-100 form-control border-0" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
+                <div class="w-100"> <input type="text" class="w-100 form-control border-0 phone-number" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
@@ -1851,6 +1855,7 @@
                 </div>
                 <div class="w-75"><input type="password" class="form-control border-0" placeholder="Confirm your password" name="password_confirmation" id="client_confirm_password" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
+
             <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap">
                 <div class="col-sm-12 d-flex">
                     <div class="form-group col-sm-6 mb-0">
@@ -1862,7 +1867,17 @@
                     <div class="image-div ml-3 col-sm-6"><img id="blah" src="{{ asset('uploads/user/default.jpg') }}" class="rounded-circle blah" alt="No Avatar Found" width="80px" height="80px" /></div>
                 </div>
             </div>
-            <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-step1" value="Create Account" />
+            <div id="recaptcha-container"></div>
+
+            <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap verify_number_div" style="display: none !important;">
+                <div>
+                    {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                    <em class="fa fa-university"></em>
+                </div>
+                <div class="w-100"><input type="number" id="verification_number" maxlength="6" class="w-100 form-control border-0" placeholder="Enter Verification Code" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></div>
+            </div>
+            <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep client-verify" onClick="sendPhoneCode(this);" value="Save" />
+            <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep d-none final-btn client-step1" value="Create Account" />
             
             <div class="row">
                 <div class="col-md-12 pt-4 alerMsg" style="display: none;">
@@ -1980,7 +1995,84 @@
     	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
     	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
     	<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
         <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyC3kS7MheIjD8M9h1YwVRDmkDjF-YJisLg",
+                authDomain: "learnmelive.firebaseapp.com",
+                databaseURL: "https://learnmelive-default-rtdb.firebaseio.com",
+                projectId: "learnmelive",
+                storageBucket: "learnmelive.appspot.com",
+                messagingSenderId: "568851154115",
+                appId: "1:568851154115:web:1fa9bb3304fd2507b04e76"
+            };
+            firebase.initializeApp(firebaseConfig);
+
+        </script>
+        
+        <script type="text/javascript">
+        
+            window.onload=function () {
+                render();
+            };
+        
+            function render() {
+                window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container');
+                recaptchaVerifier.render();
+            }
+        
+            function sendPhoneCode(id) { 
+                let user_type = $('input[name="user_type"]:checked').val();
+                let chk = false;
+                if(user_type=='client')
+                {
+                    if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
+                    {
+                        chk=true;
+                    }
+
+                }else if(user_type=='specialist')
+                {
+                    if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')) && fileValidate($('#avatar')))
+                    {
+                        chk = true;
+                    }
+                }
+
+                if(chk)
+                {
+                    let number = $(id).siblings('div').children('div').children('.phone-number').val();
+                    firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
+                        window.confirmationResult=confirmationResult;
+                        coderesult=confirmationResult;
+                        console.log(coderesult);   
+                        $(id).hide();
+                        $('.verify_number_div').show();
+                        $('#recaptcha-container').addClass('d-none');
+                        $(id).siblings('.final-btn').removeClass('d-none');
+                    }).catch(function (error) {
+                        console.log(error.message);
+                        return false;
+                    });
+                }
+            }
+        
+            function codeVerify(code) {
+                coderesult.confirm(code).then(function (result) {
+                    var user=result.user;
+                    console.log(user);
+                    $('#code_check').val(true);
+                }).catch(function (error) {
+                    console.log(error.message);
+                    $('#code_check').val(false);
+                });
+            }
+        
+        </script>
+
+        <script>
+
             function dayClosed(ele)
             {
                 $(ele).siblings('input').removeAttr('checked');
@@ -2061,11 +2153,13 @@
                 {
                     btnClicK('dot-100','width-100','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.');
                     $('.first-step-html-change').html(document.getElementById('client-html').innerHTML);
+                    render();
 
                 }else if($(ele).val()=='specialist')
                 {
                     btnClicKBack('dot-100','width-100','dot-0','width-0','No Credit Cards. <br> No Commitments <br> It takes only 2 minutes.')
                     $('.first-step-html-change').html(document.getElementById('specialist-html').innerHTML);
+                    render();
                 }
 
             }
@@ -2636,43 +2730,57 @@
         </script>
 
         <script>
-        
+            
+            
+
             $(document.body).on("click", "input.client-step1", function ()
             {
                 // $(this).parent("div").siblings("span.inputBtn").click();
                 if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
                 {
-                    $.ajax({
-                        url:"{{ route('usernameCheck') }}",
-                        type:"get",
-                        data:{username:$('#username').val(),email:$('#client-email').val()},
-                        success:function(data)
-                        {
-                                if(data.status==false)
-                                {
-                                    var wrapper = document.createElement('div');
-                                    var err = '';
-                                    $.each(data.errors, function (i, e) {
-                                        err += '<p>'+ i+' '+ e +' has been already taken.'+ '</p>';
-                                    });
-                                    wrapper.innerHTML = err;
-                                    swal({
-                                        icon: "error",
-                                        text: "{{ __('Please fix following error!') }}",
-                                        content: wrapper,
-                                        type: 'error'
-                                    });
-                                }
-                                else
-                                {
-                                    var myform = document.getElementById("registerForm");
-                                    var fd = new FormData(myform);
-                                    fd.append("_token","{{ csrf_token() }}");
-                                    ajaxCommonCode(fd);
-                                }
+                    codeVerify($('#verification_number').val());
+                    if($('#code_check').val())
+                    {
+                        $.ajax({
+                            url:"{{ route('usernameCheck') }}",
+                            type:"get",
+                            data:{username:$('#username').val(),email:$('#client-email').val()},
+                            success:function(data)
+                            {
+                                    if(data.status==false)
+                                    {
+                                        var wrapper = document.createElement('div');
+                                        var err = '';
+                                        $.each(data.errors, function (i, e) {
+                                            err += '<p>'+ i+' '+ e +' has been already taken.'+ '</p>';
+                                        });
+                                        wrapper.innerHTML = err;
+                                        swal({
+                                            icon: "error",
+                                            text: "{{ __('Please fix following error!') }}",
+                                            content: wrapper,
+                                            type: 'error'
+                                        });
+                                    }
+                                    else
+                                    {
+                                        var myform = document.getElementById("registerForm");
+                                        var fd = new FormData(myform);
+                                        fd.append("_token","{{ csrf_token() }}");
+                                        ajaxCommonCode(fd);
+                                    }
 
-                        }
-                    });
+                            }
+                        });
+                    }
+                    else{
+                        swal({
+                            icon: "error",
+                            text: "{{ __('Verification code is Invalid') }}",
+                            type: 'error'
+                        });
+                    }
+                    
             }
             });
 
@@ -2773,19 +2881,20 @@
 
 
           
-    function readURL(input) {
-       
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $(".blah").attr("src", e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-            return true;
-        }
-    }
+            function readURL(input) {
+            
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $(".blah").attr("src", e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                    return true;
+                }
+            }
 
         </script>
+
 	@endsection
 
 {{-- footer section end --}}
