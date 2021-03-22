@@ -1836,7 +1836,7 @@
                     {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
                     <em class="fa fa-phone"></em>
                 </div>
-                <div class="w-100"> <input type="text" class="w-100 form-control border-0 phone-number" placeholder="What is your phone number" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
+                <div class="w-100"> <input type="text" class="w-100 form-control border-0 phone-number" placeholder="+923011234567" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
