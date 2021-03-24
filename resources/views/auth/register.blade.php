@@ -92,7 +92,8 @@
 
                         <form class="steps" action="{{ route('register') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="">
                             @csrf
-                            <input type="hidden" value="" id="code_check">
+                            <input type="hidden" value="false" id="code_send_check">
+                            <input type="hidden" value="false" id="code_check">
                             <fieldset>
                                 <div class="text-right pt-4">
                                     <div class="">Already Registered?</div>
@@ -184,8 +185,6 @@
                                         </div>
                                     </div>
 
-                                    <div id="recaptcha-container"></div>
-
                                     <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
                                     <div class="pt-4 f-14 cl-gray text-center">
                                         <p class="mb-1">
@@ -215,7 +214,7 @@
                                             {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
                                             <em class="fa fa-phone"></em>
                                         </div>
-                                        <div class="w-100"> <input type="text" class="form-control border-0" placeholder="What is your business phone number" name="business_phone" id="business_phone" aria-label="" aria-describedby="basic-addon1" /></div>
+                                        <div class="w-100"> <input type="text" class="form-control border-0 phone-number" placeholder="+1 2522856763" name="business_phone" id="business_phone" aria-label="" aria-describedby="basic-addon1" /></div>
                                     </div>
 
                                     <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
@@ -503,6 +502,17 @@
                                             readonly
                                         />
                                     </div>
+
+                                    <div id="recaptcha-container"></div>
+
+                                    <div class="input-group mb-3 border-input pt-3 d-flex flex-nowrap verify_number_div" style="display: none !important;">
+                                        <div>
+                                            {{-- <img src="{{ asset('assets/frontend/images/sms -8.png') }}" alt="" /> --}}
+                                            <em class="fa fa-university"></em>
+                                        </div>
+                                        <div class="w-100"><input type="number" id="verification_number" maxlength="6" class="w-100 form-control border-0" placeholder="Enter Verification Code" aria-label="" aria-describedby="basic-addon1" name="routing_number" /></div>
+                                    </div>
+
                                     <input type="button" class="btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep step2 float-right" value="Continue" />
                                     <input type="button" data-page="4" name="previous" class=" btn bg-3AC574 w-25 mt-5 pt-2 pb-2 mb-3 text-white btnstep backstep2" value="Previous" />
                                     
@@ -1528,7 +1538,6 @@
                 </div>
             </div>
 
-            <div id="recaptcha-container"></div>
             <input type="button" class="btn bg-3AC574 w-100 mt-3 pt-2 pb-2  text-white btnstep step1" value="Continue Creating Account" />
             
             <div class="pt-4 f-14 cl-gray text-center">
@@ -1836,7 +1845,7 @@
                     {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
                     <em class="fa fa-phone"></em>
                 </div>
-                <div class="w-100"> <input type="text" class="w-100 form-control border-0 phone-number" placeholder="+923011234567" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
+                <div class="w-100"> <input type="text" class="w-100 form-control border-0 phone-number" placeholder="+1 2522856763" name="client_phone" id="client-phone" aria-label="" aria-describedby="basic-addon1" /></div>
             </div>
 
             <div class="input-group mb-2 border-input pt-3 d-flex flex-nowrap">
@@ -1997,7 +2006,7 @@
     	<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-    
+        
         <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -2014,7 +2023,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         </script>
-        
+    
         <script type="text/javascript">
         
             window.onload=function () {
@@ -2050,13 +2059,30 @@
                     firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
                         window.confirmationResult=confirmationResult;
                         coderesult=confirmationResult;
-                        console.log(coderesult);   
-                        $(id).hide();
+                        console.log(coderesult);
+                        if($(id).val() !="Continue")
+                        {
+                            $(id).hide();
+                        }
+                        swal({
+                            icon: "success",
+                            text: "{{ __('Verification code has been send to your phone number successfully') }}",
+                            type: 'success'
+                        });
                         $('.verify_number_div').show();
+                        $('#code_send_check').val(true);
                         $('#recaptcha-container').addClass('d-none');
                         $(id).siblings('.final-btn').removeClass('d-none');
                     }).catch(function (error) {
                         console.log(error.message);
+                        if(error.message=='Invalid format.')
+                        {
+                            swal({
+                                icon: "error",
+                                text: "{{ __('Please Enter Valid Phone Number') }}",
+                                type: 'error'
+                            });
+                        }
                         return false;
                     });
                 }
@@ -2066,10 +2092,15 @@
                 coderesult.confirm(code).then(function (result) {
                     var user=result.user;
                     console.log(user);
-                    $('#code_check').val(true);
+                    $('#code_check').val('true');
                 }).catch(function (error) {
                     console.log(error.message);
-                    $('#code_check').val(false);
+                    swal({
+                        icon: "error",
+                        text: "{{ __('Please Enter Valid Verification Code') }}",
+                        type: 'error'
+                    });
+                    $('#code_check').val('false');
                 });
             }
         
@@ -2742,8 +2773,12 @@
                 // $(this).parent("div").siblings("span.inputBtn").click();
                 if(inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($('#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($('#client-password'),$('#client_confirm_password')))
                 {
-                    codeVerify($('#verification_number').val());
-                    if($('#code_check').val())
+                    if($('#code_send_check').val()=='true' && $('#code_check').val()=='false')
+                    {
+                        codeVerify($('#verification_number').val());
+                    }
+                    
+                    if($('#code_check').val()=='true')
                     {
                         $.ajax({
                             url:"{{ route('usernameCheck') }}",
@@ -2777,20 +2812,20 @@
                             }
                         });
                     }
-                    else{
-                        swal({
-                            icon: "error",
-                            text: "{{ __('Verification code is Invalid') }}",
-                            type: 'error'
-                        });
-                    }
+                    // else{
+                    //     swal({
+                    //         icon: "error",
+                    //         text: "{{ __('Verification code is Invalid') }}",
+                    //         type: 'error'
+                    //     });
+                    // }
                     
             }
             });
 
             $(document.body).on("click", "input.step1", function () 
             {
-                //   $(this).parent("div").siblings("span.inputBtn").click();
+                // $(this).parent("div").siblings("span.inputBtn").click();
                 if(inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($('#email')) && passwordFieldValidate($('#password'),$('#confirm_password')) && fileValidate($('#avatar')))
                 {
                     $.ajax({
@@ -2827,8 +2862,34 @@
             $(document.body).on("click", "input.step2", function () {
                 let stepSecond = false;
                 // $(this).parent("div").siblings("span.inputBtn").click();
+
                 if(inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($('.checkbxCheck')))
-                {$(this).parent("div").siblings("span.inputBtn").click();}
+                {
+                    if($('#code_send_check').val() =='false')
+                    {
+                        sendPhoneCode($(this));
+                    }
+                    else if($('#code_send_check').val() =='true')
+                    {
+                        if($('#code_check').val() =='false')
+                        {
+                            codeVerify($('#verification_number').val());
+                        }
+                        // else if($('#code_check').val() =='true')
+                        // {
+                        //     swal({
+                        //         icon: "error",
+                        //         text: "{{ __('Please Verify Your Phone Number') }}",
+                        //         type: 'error'
+                        //     });
+                        // }
+
+                        if($('#code_check').val() =='true')
+                        {
+                            $(this).parent("div").siblings("span.inputBtn").click();
+                        }
+                    }
+                }
             });
 
             $(document.body).on("click", "input.backstep2", function () {
