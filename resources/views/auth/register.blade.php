@@ -2083,7 +2083,6 @@
                                 type: 'error'
                             });
                         }
-                        return false;
                     });
                 }
             }
@@ -2869,7 +2868,7 @@
                     {
                         sendPhoneCode($(this));
                     }
-                    
+
                     if($('#code_send_check').val() =='true')
                     {
                         if($('#code_check').val() =='false')
