@@ -2006,7 +2006,7 @@
     	<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-        
+
         <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -2869,7 +2869,8 @@
                     {
                         sendPhoneCode($(this));
                     }
-                    else if($('#code_send_check').val() =='true')
+                    
+                    if($('#code_send_check').val() =='true')
                     {
                         if($('#code_check').val() =='false')
                         {
