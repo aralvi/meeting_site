@@ -2090,10 +2090,10 @@
             function codeVerify(code) {
                 coderesult.confirm(code).then(function (result) {
                     var user=result.user;
-                    console.log(user);
+                    // console.log(user);
                     $('#code_check').val('true');
                 }).catch(function (error) {
-                    console.log(error.message);
+                    // console.log(error.message);
                     swal({
                         icon: "error",
                         text: "{{ __('Please Enter Valid Verification Code') }}",
@@ -2764,8 +2764,33 @@
         </script>
 
         <script>
-            
-            
+            setInterval(function(){
+                let user_type = $('input[name="user_type"]:checked').val();
+                if(user_type=='client')
+                {
+                    if($('#code_send_check').val()=='true' && $('#code_check').val()=='false')
+                    {
+                        $('.client-step1').val('Verify');
+                    }
+                    else if($('#code_send_check').val()=='true' && $('#code_check').val()=='true')
+                    {
+                        $('.client-step1').val('Create Account');
+                    }
+                    
+                }
+                else
+                {
+                    if($('#code_send_check').val()=='true' && $('#code_check').val()=='false')
+                    {
+                        $('.step2').val('Verify');
+                    }
+                    else if($('#code_send_check').val()=='true' && $('#code_check').val()=='true')
+                    {
+                        $('.step2').val('Continue');
+                    }
+                }
+
+            },500);
 
             $(document.body).on("click", "input.client-step1", function ()
             {
@@ -2776,7 +2801,7 @@
                     {
                         codeVerify($('#verification_number').val());
                     }
-                    
+                   
                     if($('#code_check').val()=='true')
                     {
                         $.ajax({
