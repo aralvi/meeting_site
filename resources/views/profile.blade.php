@@ -120,7 +120,7 @@ figure:hover img {
     display: block;
 }
 .img-thumbnail{
-    height: 200px !important;
+    height: 225px !important;
 }
 .px-50{
     padding-left: 50px !important;
