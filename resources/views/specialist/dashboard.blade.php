@@ -141,6 +141,9 @@
     border: 1px solid #3AC574; 
 
 }
+a:focus{
+    outline: none !important;
+}
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 
@@ -270,10 +273,16 @@
             </div>
             <div class="mt-3 border w-100"></div>
             @foreach ($service_requests as $service)
-                
-                <a href="javascript:void(0);" class="service_request " title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}" tabindex="0" data-toggle="tooltip" title="Click To bid this request">
+                @php 
+                    $check_bid = App\Models\Bid::where('service_request_id',$service->id)->where('specialist_id',Auth::user()->specialist->id)->first();
+                @endphp
+                @if ($check_bid ==null )
+                <a href="javascript:void(0);" class=" service_request" title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}"  tabindex="0" data-toggle="tooltip" title="Click To bid this request">
+                @elseif($check_bid !=null)
+                <a href="javascript:void(0);" class=" " title="Click To bid this request"   tabindex="0" data-toggle="tooltip" title="Click To bid this request">
+                @endif
                 <div class="d-flex mt-4 justify-content-between pr-5" >
-                    <div class="col-md-10 pl-5 pr-0">
+                    <div class="col-md-9 pl-5 pr-0">
                         <div class="cl-000000 robotoMedium f-24">{{ $service->title }}</div>
                         <div class="d-flex">
                             <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
@@ -332,6 +341,14 @@
                     <div class="robotoMedium text-right col-md-2 pr-0">
                         <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
                         <div class="f-21 cl-6b6b6b">USD</div>
+                    </div>
+                    <div class="col-md-1">
+                        @if ($check_bid ==null )
+                        <button class="btn btn-sm btn-success service_request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}"> Give Offer</button>    
+                        @elseif($check_bid !=null)
+                        
+                        <button class="btn btn-sm btn-info disabled " > Offer Sent</button>
+                        @endif
                     </div>
                 </div>
                 </a>
@@ -473,7 +490,7 @@
                             </label>
                             <div class="lable">
                                 <span class="prefix">$</span>
-                                <input class="snehainput border-0" type="number" name="budget" id="budget" class="form-control" placeholder="5 (USD)"/>
+                                <input class="snehainput border-0" type="number" name="budget" min="5" id="budget" class="form-control" placeholder="5 (USD)" onchange="minBudget(this);"/>
                             </div>
                             <label class="lbl_budget" style="display: none;"></label>
                         </div>
@@ -497,12 +514,6 @@
     </div>
   </div>
 </div>
-<!-- T E N    S E C T I O N  S T A R T  -->
-<section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
-    <div class="d-flex justify-content-center  align-items-center"><img
-            src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}"
-            alt="" srcset=""></div>
-</section>
 
 <!-- T E N    S E C T I O N  E N D  -->
 @endsection {{-- content section end --}} {{-- footer section start --}}
@@ -510,6 +521,11 @@
  
 <script>
    
+   function minBudget(e){
+       if(e.value <5){
+           e.value =5;
+       }
+   }
     function getMaxRange(e){
         document.getElementById('max').innerHTML = "$"+e.value;
     }

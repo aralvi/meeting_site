@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Bid;
 use Illuminate\Database\Eloquent\Model;
 
 class ServiceRequest extends Model
@@ -10,4 +11,9 @@ class ServiceRequest extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
+    
 }

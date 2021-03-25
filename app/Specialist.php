@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Appointment;
+use App\Models\Bid;
 use App\Models\Specialists\Service;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +30,10 @@ class Specialist extends Model
     public function appointment()
     {
         return $this->hasMany(Appointment::class);
+    }
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
     }
 
 }

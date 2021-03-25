@@ -73,7 +73,7 @@ figure:hover img {
 
 .IMGthumbnail{
     max-width:168px;
-    height:220px;
+    height:80%;
     margin:auto;
   background-color: #ececec;
   padding:2px;
@@ -81,8 +81,8 @@ figure:hover img {
 }
 
 .IMGthumbnail img{
-   max-width:100%;
-max-height:100%;
+   width:100%;
+    height:100%;
 }
 
 .imgThumbContainer{
@@ -104,7 +104,7 @@ max-height:100%;
   padding: 2px 6px;
   margin-top:4px;
   font-size:13px;
-  height: 15px;
+  height: 20%;
   overflow: hidden;
 }
 
@@ -118,6 +118,9 @@ max-height:100%;
 
 .RearangeBox:hover > .imgRemoveBtn{ 
     display: block;
+}
+.img-thumbnail{
+    height: 200px !important;
 }
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
