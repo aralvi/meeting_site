@@ -51,7 +51,7 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
 
 
 Route::group(['middleware'=>['auth']],function(){
-    
+    Route::get('category_specialists/{id}', 'HomeController@category_specialists')->name('category_specialists');
     Route::resource('appointments', 'AppointmentController');
     // Route::get('appointment', function () {
         //     return view('frontend.appoinment');
