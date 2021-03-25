@@ -122,6 +122,10 @@ figure:hover img {
 .img-thumbnail{
     height: 200px !important;
 }
+.px-50{
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+}
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
@@ -153,7 +157,7 @@ figure:hover img {
     </section>
 @endif
 
-<section class="main_padding pt-70">
+<section class="main_padding pt-70 px-50">
     <div class="row m-0 justify-content-center">
         <div class="col-md-3 col-lg-3 col-sm-12 p-0 box_shadow1 borderRadius-12px pt-4 pb-5">
             <p class="border-bottom text-center f-21 cl-616161">Your Profile</p>
@@ -1402,6 +1406,8 @@ figure:hover img {
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
                                     <th scope="col">{{ Auth::user()->user_type=='specialist' ? 'Client' :'Specialist' }}</th>
+                                    <th scope="col">Service</th>
+                                    <th scope="col">Date</th>
                                     <th scope="col">Timing</th>
                                     <th scope="col">Rate</th>
                                     <th scope="col">Status</th>
@@ -1413,6 +1419,8 @@ figure:hover img {
                                 <tr id="target_{{ $appointment->id }}" class="border-bottom">
                                     <td class="border-0">{{ $key +1 }}</td>
                                     <td class="border-0">{{ Auth::user()->user_type=='specialist' ? $appointment->user->name : $appointment->specialist->user->name}}</td>
+                                    <td class="border-0">{{ $appointment->service->title }}</td>
+                                    <td class="border-0">{{ $appointment->date }}</td>
                                     <td class="border-0">{{ $appointment->time }}</td>
                                     <td class="border-0">${{ $appointment->rate }}</td>
                                     <td class="border-0">
