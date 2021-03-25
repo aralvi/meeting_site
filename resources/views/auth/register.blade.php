@@ -3252,11 +3252,13 @@
                 window.scrollTo(0, 200);
                 $('.alerMsg').show();
                 $('.afterRegisterLoader').show();
-                swal({
-                    icon: "success",
-                    text: "{{ __('Profile submitted successfully. We will contact you via email (ASAP) when approved!') }}",
-                    type: 'success'
-                });
+                if ($('input[name="user_type"]:checked').val() == 'specialist') {
+                    swal({
+                        icon: "success",
+                        text: "{{ __('Profile submitted successfully. We will contact you via email (ASAP) when approved!') }}",
+                        type: 'success'
+                    });
+                }
 
                 setInterval(function () {
                     if ($('input[name="user_type"]:checked').val() == 'specialist') {
