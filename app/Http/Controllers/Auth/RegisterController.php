@@ -167,7 +167,7 @@ class RegisterController extends Controller
             $specialist->opening_hours = json_encode($hours_arr);
             if($specialist->save())
             {
-                Mail::to($data['email'])->send(new SpecialistWelcomeMail(['name'=>$data['name'],'message'=>'Profile submitted successfully. We will contact you via email (ASAP) when approved!']));
+                // Mail::to($data['email'])->send(new SpecialistWelcomeMail(['name'=>$data['name'],'message'=>'Profile submitted successfully. We will contact you via email (ASAP) when approved!']));
             }
         }
         else if($data['user_type'] =='client')
