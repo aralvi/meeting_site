@@ -391,38 +391,46 @@
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         
         <div class="carousel-inner h-413">
-
-            @foreach(App\Specialist::all()->chunk(4) as $specialistsCollections)
-
-                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    <section class="d-block w-100">
-                        <div class="row m-0">
-                            @foreach($specialistsCollections as $specialist)
-                            
-                                <div class="col-md-3 col-lg-3 col-sm-12">
-                                    <a href="{{route('specialist_detail',encrypt($specialist->id))}}" >
-                                        <div class="card border-0 box_shadow">
-                                            <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
-                                                class="card-img-top" alt="...">
-                                            <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                                <img src="{{ asset($specialist->user->avatar) }}"  class="img-fluid rounded-circle h-60 w-60 profile-shadow"  alt="profile"  >
-                                            </div>
-                                            <div class="card-footer  bg-ffffff pt-4 pb-4">
-                                                <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
-                                                <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->username }}
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </a>
+            @guest
+                @php
+                    $specialists = App\Specialist::all();
+                @endphp
+                @else
+                @php
+                    $specialists = App\Specialist::where('user_id','<>',Auth::user()->id)->get();
+                @endphp
+            @endguest
+@foreach($specialists->chunk(4) as $specialistsCollections)
+    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+        <section class="d-block w-100">
+            <div class="row m-0">
+                @foreach($specialistsCollections as $specialist)
+                
+                    <div class="col-md-3 col-lg-3 col-sm-12">
+                        <a href="{{route('specialist_detail',encrypt($specialist->id))}}" >
+                            <div class="card border-0 box_shadow">
+                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
+                                    <img src="{{ asset($specialist->user->avatar) }}"  class="img-fluid rounded-circle h-60 w-60 profile-shadow"  alt="profile"  >
                                 </div>
-                            @endforeach
-                        </div>
-                    </section>
+                                <div class="card-footer  bg-ffffff pt-4 pb-4">
+                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
+                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->username }}
+                                    </p>
+                                </div>
 
-                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
 
-            @endforeach
+    </div>
+
+@endforeach
+ 
 
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
