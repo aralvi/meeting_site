@@ -16,4 +16,9 @@ class Category extends Model
     {
     	return $this->hasOne(Specialist::class);
     }
+
+    public function servicerequest()
+    {
+    	return $this->hasOne(ServiceRequest::class);
+    }
 }

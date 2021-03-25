@@ -324,7 +324,7 @@
           @endif
           
 
-          <div class=" pb-3 robotoMedium f-18">
+          {{-- <div class=" pb-3 robotoMedium f-18">
             <div class="pt-3">Share:</div>
             <div class="d-flex pt-3">
             <div><img src="{{ asset('assets/frontend/images/Subtraction 1.png') }}" alt="" srcset=""></div>
@@ -333,7 +333,7 @@
             <div class="pl-3"> <img src="{{ asset('assets/frontend/images/Group 3.png') }}" alt="" srcset=""></div>
             @if($specialist->user->username)<div class="f-13 robotoMedium pl-3">{{ URL::to('/') }}/{{ $specialist->user->username }}</div>@endif
             </div>
-          </div>
+          </div> --}}
         </div>
       </section>
     </section>

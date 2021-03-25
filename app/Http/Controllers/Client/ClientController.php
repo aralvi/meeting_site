@@ -8,6 +8,8 @@ use App\Models\Appointment;
 use App\Models\Specialists\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Bid;
+use App\ServiceRequest;
 
 class ClientController extends Controller
 {
@@ -21,7 +23,8 @@ class ClientController extends Controller
         $appointments = Appointment::where('user_id',Auth::user()->id)->where('status','1')->get();
         $services = Service::all();
         $categories = Category::all();
-        return view('client.dashboard',compact('appointments', 'services', 'categories'));
+        $service_requests = ServiceRequest::where('user_id',Auth::user()->id)->get();
+        return view('client.dashboard',compact('appointments', 'services', 'categories','service_requests'));
     }
 
     /**
