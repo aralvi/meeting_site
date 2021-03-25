@@ -189,19 +189,20 @@ figure:hover img {
             </div>
 
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active cl-000000" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
+                <a class="nav-link {{ session('portfolio')? '':'active' }} cl-000000" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
                 @if (Auth::user()->user_type == 'specialist')
-                <a class="nav-link cl-000000" id="v-pills-portfolio-tab" data-toggle="pill" href="#v-pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
+                <a class="nav-link {{ session('portfolio')? 'active':'' }} cl-000000" id="v-pills-portfolio-tab" data-toggle="pill" href="#v-pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
                 <a class="nav-link cl-000000" id="v-pills-service-tab" data-toggle="pill" href="#v-pills-service" role="tab" aria-controls="v-pills-service" aria-selected="false">Services</a>
                 @endif
                 <a class="nav-link  cl-000000" id="v-pills-appointment-tab" data-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Appointments</a>
                 <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
             </div>
         </div>
+        
         <div class="col-md-7 col-lg-7 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
             <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
             <div class="tab-content" id="v-pills-tabContent">
-				<div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+				<div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 					<p class="pl-3 f-21 cl-000000">Personal Info</p>
                     @if (Auth::user()->user_type =='specialist')
 
@@ -1309,7 +1310,7 @@ figure:hover img {
                     @endif
                 </div>
                 @if(Auth::user()->user_type == 'specialist')
-                    <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
+                    <div class="tab-pane fade {{ session('portfolio')? 'show active':'' }}" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
                         <p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
                         <section class="container">
                             <div class="row gallery">

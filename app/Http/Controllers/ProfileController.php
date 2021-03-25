@@ -250,7 +250,7 @@ class ProfileController extends Controller
             $portfolio->specialist_id = Auth::user()->specialist->id;
             $portfolio->save();
         }
-        return back()->with('success', 'images upload successfuly!');
+        return back()->with(['success'=> 'images upload successfuly!','portfolio'=>'active']);
     }
 
     public function deleteImage($id)
