@@ -54,7 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
     'live_ip_check' => env('live_ip_check', 'local'),
-
+    'mail_from' => env('mail_from'),
+    'mail_from_name' => env('mail_from_name'),
     'asset_url' => env('ASSET_URL', null),
 
     /*

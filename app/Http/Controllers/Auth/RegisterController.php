@@ -8,8 +8,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use App\Specialist;
 use App\Client;
+use App\Mail\SpecialistWelcomeMail;
 
 class RegisterController extends Controller
 {
@@ -163,8 +165,10 @@ class RegisterController extends Controller
                 $specialist->payment_email = $data['payment_email'];
             }
             $specialist->opening_hours = json_encode($hours_arr);
-            
-            $specialist->save();
+            if($specialist->save())
+            {
+                Mail::to($data['email'])->send(new SpecialistWelcomeMail(['name'=>$data['name'],'message'=>'Profile submitted successfully. We will contact you via email (ASAP) when approved!']));
+            }
         }
         else if($data['user_type'] =='client')
         {
@@ -178,5 +182,4 @@ class RegisterController extends Controller
         return $user;
     }
 
-    
 }
