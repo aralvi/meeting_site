@@ -207,7 +207,7 @@ a:focus{
                     <img src="{{ asset('assets/frontend/images/arrow-up.png') }}" alt="" />
                 </div>
                 <div class="col-md-4">
-                    <h3 class="mb-0 f-45">$68.789</h3>
+                    <h3 class="mb-0 f-45">$0</h3>
                 </div>
                 <div class="col-md-12 text-right">
                     <p class="cl-6A6A6A f-18 mb-0">Updated 2h ago</p>
@@ -224,7 +224,7 @@ a:focus{
                     <img src="{{ asset('assets/frontend/images/arrow-up.png') }}" alt="" />
                 </div>
                 <div class="col-md-4">
-                    <h3 class="mb-0 f-45">$28,000</h3>
+                    <h3 class="mb-0 f-45">$0</h3>
                 </div>
                 <div class="col-md-12 text-right">
                     <p class="cl-6A6A6A f-18 mb-0">This Month So Far</p>

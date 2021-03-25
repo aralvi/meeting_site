@@ -58,13 +58,32 @@
         height: 599px;
     }
     
+    .profile-shadow {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    
     .card_circle {
-        width: 94px;
+        /* width: 94px;
         height: 94px;
         border-radius: 50px;
         position: absolute;
         bottom: 92px;
-        right: 44px;
+        right: 44px; */
+        /* width: 94px; */
+        border: 5px solid white;
+        /* height: 94px; */
+        border-radius: 50px;
+        position: absolute;
+        bottom: 66px;
+        right: 14px;
+    }
+    
+    .h-60 {
+        height: 60px !important;
+    }
+    
+    .w-60 {
+        width: 60px !important;
     }
     
     .banner-content {
