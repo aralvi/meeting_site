@@ -86,7 +86,7 @@ class RegisterController extends Controller
         }
         else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
         {
-            $arr['payment_email'] = ['bail','required', 'string', 'email', 'max:255', 'unique:users'];
+            $arr['payment_email'] = ['bail','required', 'string', 'email', 'max:255'];
         }
 
         return Validator::make($data, $arr);

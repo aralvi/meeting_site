@@ -3262,12 +3262,12 @@
 
                 setInterval(function () {
                     if ($('input[name="user_type"]:checked').val() == 'specialist') {
-                        url = '{{ url(' / specialist ') }}';
+                        url = '{{ url('/specialist ') }}';
                     } else {
-                        url = '{{ url(' / client ') }}';
+                        url = '{{ url('/client ') }}';
                     }
                     window.location = url;
-                }, 5000);
+                }, 2000);
 
             },
             error: function (request, status, error) {
