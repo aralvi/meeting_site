@@ -29,7 +29,12 @@
                 </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="pt-2 pb-2 border-ffffff w-25 d-flex pl-3 pr-3 rounded">
-                    <div class="w-100 cl-ffffff"><input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " value="what are you looking for ?"></div>
+                    <div class="w-100 cl-ffffff">
+                        <form action="{{ route('search') }}" method="get" id="search_form">
+                            @csrf
+                            <input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " onfocusout="search_function();" id="search" name="search" placeholder="what are you looking for ?">
+                        </form>
+                    </div>
                     
                     <div>   <img src="{{ asset('assets/frontend/images/search2.png') }}" class="ml-auto" alt=""
                         class="img-fluid p-2 search-img" /></div>
@@ -243,3 +248,14 @@
                 </ul>
             </div>
         </nav>
+       <script>
+           function search_function() {
+               var input = document.getElementById('search').value;
+               if(input != null){
+
+                   var form = document.getElementById("search_form");
+                   form.submit();
+               }
+            }
+           
+       </script>

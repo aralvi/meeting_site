@@ -16,4 +16,12 @@ class Bid extends Model
     {
         return $this->belongsTo(Specialist::class);
     }
+    public function getStatusAttribute($attribute)
+    {
+        return [
+            '0' => 'Declined',
+            '1' => 'Approved',
+            
+        ][$attribute];
+    }
 }

@@ -46,11 +46,12 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
     Route::resource('specialist/services', 'Specialist\ServiceController');
     Route::resource('specialist', 'Specialist\DashboardController');
     Route::get('get_service_request/{id}', 'Specialist\DashboardController@getServiceRequest')->name('get_service_request');
-    Route::resource('bids', 'Specialist\BidController');
 });
 
 
 Route::group(['middleware'=>['auth']],function(){
+    Route::get('search', 'HomeController@search')->name('search');
+    Route::resource('bids', 'Specialist\BidController');
     Route::get('category_specialists/{id}', 'HomeController@category_specialists')->name('category_specialists');
     Route::resource('appointments', 'AppointmentController');
     // Route::get('appointment', function () {

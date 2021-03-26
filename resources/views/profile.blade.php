@@ -129,33 +129,7 @@ figure:hover img {
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
-@if(count($categories) > 0)
-    <section class=" main_padding pt-5">
-        <div>
-            <ul class="listStyle-none p-0  d-flex robotoRegular f-18 ul_main_tabs m-0 d-flex justify-content-around">
-                @foreach ($categories->take(8) as $category)
-                    <li class="pl-3"> <a href="#" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
-                @endforeach
-                @if (count($categories->skip(8)) > 0)
-                    
-                <li>
-                    <!-- Example split danger button -->
-                <div class="btn-group">
-                <a href="" lass=" dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
-                <div class="dropdown-menu">
-                    @foreach ($categories->skip(8) as $category)
-                    <a class="dropdown-item" href="#">{{ ucwords($category->name) }}</a>
-                        
-                    @endforeach
-                    
-                </div>
-                </div>
-                </li>
-                @endif
-            </ul>
-        </div>
-    </section>
-@endif
+@include('includes.frontend.navigations')
 
 <section class="main_padding pt-70 px-50">
     <div class="row m-0 justify-content-center">
@@ -1782,83 +1756,83 @@ figure:hover img {
           });
       }
 
-$(document).ready(function() {
-	$(".gallery").magnificPopup({
-		delegate: "a",
-		type: "image",
-		tLoading: "Loading image #%curr%...",
-		mainClass: "mfp-img-mobile",
-		gallery: {
-			enabled: true,
-			navigateByImgClick: true,
-			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-		},
-		image: {
-			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-		}
-	});
-});
-
-
-
-
-
-$(function() {
-            $("#sortableImgThumbnailPreview").sortable({
-             connectWith: ".RearangeBox",
-            
-                
-              start: function( event, ui ) { 
-                   $(ui.item).addClass("dragElemThumbnail");
-                   ui.placeholder.height(ui.item.height());
-           
-               },
-                stop:function( event, ui ) { 
-                   $(ui.item).removeClass("dragElemThumbnail");
-               }
-            });
-            $("#sortableImgThumbnailPreview").disableSelection();
+    $(document).ready(function() {
+        $(".gallery").magnificPopup({
+            delegate: "a",
+            type: "image",
+            tLoading: "Loading image #%curr%...",
+            mainClass: "mfp-img-mobile",
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+            },
+            image: {
+                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+            }
         });
+    });
 
 
 
 
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
-  function handleFileSelect(evt) {
-    
-    var files = evt.target.files; 
-    var output = document.getElementById("sortableImgThumbnailPreview");
-    
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-           var imgThumbnailElem = "<div class='RearangeBox imgThumbContainer'><i class='material-icons imgRemoveBtn' onclick='removeThumbnailIMG(this)'>cancel</i><div class='IMGthumbnail' ><img  src='" + e.target.result + "'" + "title='"+ theFile.name + "'/></div><div class='imgName'>"+ theFile.name +"</div></div>";
+    $(function() {
+                $("#sortableImgThumbnailPreview").sortable({
+                connectWith: ".RearangeBox",
+                
                     
-                    output.innerHTML = output.innerHTML + imgThumbnailElem; 
-          
-        };
-      })(f);
+                start: function( event, ui ) { 
+                    $(ui.item).addClass("dragElemThumbnail");
+                    ui.placeholder.height(ui.item.height());
+            
+                },
+                    stop:function( event, ui ) { 
+                    $(ui.item).removeClass("dragElemThumbnail");
+                }
+                });
+                $("#sortableImgThumbnailPreview").disableSelection();
+            });
 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
+
+
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+    function handleFileSelect(evt) {
+        
+        var files = evt.target.files; 
+        var output = document.getElementById("sortableImgThumbnailPreview");
+        
+        // Loop through the FileList and render image files as thumbnails.
+        for (var i = 0, f; f = files[i]; i++) {
+
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+            continue;
+        }
+
+        var reader = new FileReader();
+
+        // Closure to capture the file information.
+        reader.onload = (function(theFile) {
+            return function(e) {
+            // Render thumbnail.
+            var imgThumbnailElem = "<div class='RearangeBox imgThumbContainer'><i class='material-icons imgRemoveBtn' onclick='removeThumbnailIMG(this)'>cancel</i><div class='IMGthumbnail' ><img  src='" + e.target.result + "'" + "title='"+ theFile.name + "'/></div><div class='imgName'>"+ theFile.name +"</div></div>";
+                        
+                        output.innerHTML = output.innerHTML + imgThumbnailElem; 
+            
+            };
+        })(f);
+
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+        }
     }
-  }
 
-  function removeThumbnailIMG(elm){
-    elm.parentNode.outerHTML='';
-  }
+    function removeThumbnailIMG(elm){
+        elm.parentNode.outerHTML='';
+    }
 
 
 </script>
