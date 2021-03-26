@@ -141,78 +141,28 @@
                                 $f_d = explode(' ' ,$t[0])[1];
                                 $t_hour = explode(':', $t[1])[0];
                                 $t_d = explode(' ' ,$t[1])[1];
+                                if($t_d=='PM')
+                                {
+                                    $t_hour +=12; 
+                                }
+                                $s = ['15']
                             @endphp
+                        
                             <div class="row m-0 pt-4">
-                                <div class="col-md-12 p-0 justify-content-between d-flex">
-                                    <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
-                                        <label class="border pt-2 rounded w-100 pb-2" >
-                                            <input type="radio" name="time" class="bg-success btnclass" @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '9:00 AM')
-                                                    disabled
-                                                @endif
-                                            @endforeach value="9:00 AM" />
-                                            <span class="checkmark pl-2">9:00 AM</span>
-                                        </label>
-                                    </div>
-                                    <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
-                                        <label class="border container1 pt-2 rounded w-100 pb-2">
-                                            <input type="radio" name="time" class="bg-success checkmark btnclass" value="9:20 AM"  @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '9:20 AM')
-                                                    disabled
-                                                @endif
-                                            @endforeach/>
-                                            <span class="Time pl-2">9:20 AM</span>
-                                        </label>
-                                    </div>
-                                    <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
-                                        <label class="border container1 pt-2 rounded w-100 pb-2">
-                                            <input type="radio" name="time" class="bg-success checkmark btnclass" value="9:40 AM" @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '9:40 AM')
-                                                    disabled
-                                                @endif
-                                            @endforeach/>
-                                            <span class="Time pl-2">9:40 AM</span>
-                                        </label>
-                                    </div>
-                                    <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
-                                        <label class="border container1 pt-2 rounded w-100 pb-2">
-                                            <input type="radio" name="time" class="bg-success checkmark btnclass" value="10:00 AM" @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '10:00 AM')
-                                                    disabled
-                                                @endif
-                                            @endforeach/>
-                                            <span class="Time pl-2">10:00 AM</span>
-                                        </label>
-                                    </div>
-                                    <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
-                                        <label class="border container1 pt-2 rounded w-100 pb-2">
-                                            <input type="radio" name="time" class="bg-success checkmark btnclass" value="10:20 AM" @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '10:20 AM')
-                                                    disabled
-                                                @endif
-                                            @endforeach/>
-                                            <span class="Time pl-2">10:20 AM</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-0 pt-4">
-                                <div class="col-md-12 p-0 ">
-                                    @for($i=$f_hour; $i<=$t_hour; $i++)
-                                        
-                                        <div class="robotoRegular cl-878787 col-md-2 text-center p-0">
-                                            <label class="border pt-2 rounded w-100 pb-2">
-                                                <input type="radio" name="time" class="bg-success btnclass" value="10:50 AM" @foreach ($appointments as $appointment)
-                                                    @if ($appointment->time == '10:50 AM')
-                                                        disabled
-                                                    @endif
-                                                @endforeach/>
-                                                <span class="checkmark pl-2">10:50 AM</span>
-                                            </label>
-                                        </div>
-                                    @endfor
+                                @for($i=$f_hour; $i<=$t_hour; $i++)
+
                                     
-                                </div>
+                                    <div class="ml-1 robotoRegular cl-878787 col-md-2 text-center p-0">
+                                        <label class="border pt-2 rounded w-100 pb-2">
+                                            <input type="radio" name="time" class="bg-success btnclass" value="10:50 AM" @foreach ($appointments as $appointment)
+                                                @if ($appointment->time == '10:50 AM')
+                                                    disabled
+                                                @endif
+                                            @endforeach/>
+                                            <span class="checkmark pl-2">10:50 AM</span>
+                                        </label>
+                                    </div>
+                                @endfor
                             </div>
                             <div class="border w-100 mt-5"></div>
                         </div>
