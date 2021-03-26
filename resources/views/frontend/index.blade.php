@@ -22,8 +22,8 @@
                 @csrf
                 <div class="d-flex bg-ffffff w-81 pt-3 pb-3 borderRadius-5px pl-3">
                     <div><img src="{{ asset('assets/frontend/images/search.png') }}" class="img-fluid" alt="" /></div>
-                    <div class="pl-3">
-                        <input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21" name="search" placeholder="Book your services..." />
+                    <div class="pl-3 w-100">
+                        <input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 w-100" name="search" placeholder="Book your services..." />
                     </div>
                 </div>
                 <div class="pl-3">
