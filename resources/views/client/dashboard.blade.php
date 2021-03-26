@@ -139,7 +139,7 @@ span.prefix{
             <div>
                 <ul class="listStyle-none p-0  d-flex robotoRegular f-18 ul_main_tabs m-0 d-flex justify-content-around">
                     @foreach ($categories->take(8) as $category)
-                        <li class="pl-3"> <a href="#" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
+                        <li class="pl-3"> <a href="{{ route('category_specialists',$category->id) }}" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
                     @endforeach
                     @if (count($categories->skip(8)) > 0)
                         
@@ -149,7 +149,7 @@ span.prefix{
                     <a href="" lass=" dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
                     <div class="dropdown-menu">
                         @foreach ($categories->skip(8) as $category)
-                        <a class="dropdown-item" href="#">{{ ucwords($category->name) }}</a>
+                        <a class="dropdown-item" href="{{ route('category_specialists',$category->id) }}">{{ ucwords($category->name) }}</a>
                             
                         @endforeach
                         
@@ -612,7 +612,6 @@ span.prefix{
                                                                 </div>
                                                                 <div class="mt-3 border w-100"></div>
                                                                 @foreach ($request->bids as $service)
-                                                                    
                                                                     <div class="d-flex mt-4 justify-content-between pr-5" >
                                                                         <div class="col-md-9 pl-5 pr-0">
                                                                             <div class="cl-000000 robotoMedium f-24">{{ ucfirst($request->title) }}</div>
@@ -736,11 +735,10 @@ $('.action_btn').on('click', function(e) {
     
     $.ajax({
         type: "POST",
-        
         url: url,
         data: { status: status, _token: "{{ csrf_token() }}",_method:" put" },
         success: function(msg) {
-                console.log(msg.status);
+                console.log(msg.approval);
 
             if(msg.status == 'Declined'){
                 $('.change_status_'+msg.id).siblings('input[name="status"]').val(1)
@@ -751,6 +749,11 @@ $('.action_btn').on('click', function(e) {
                 $('.change_status_'+msg.id).removeClass('btn-success').addClass('btn-danger');
                 $('.change_status_'+msg.id).siblings('input[name="status"]').val(0)
                 $('.change_status_'+msg.id).text('Declined')
+            }
+            if(msg.approval == true){
+                $('button.action_btn').not('button.change_status_'+msg.id).hide();
+            }if(msg.approval == false){
+                 $('button.action_btn').show();
             }
         }
     });

@@ -29,7 +29,7 @@
                 </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="pt-2 pb-2 border-ffffff w-25 d-flex pl-3 pr-3 rounded">
-                    <div class="w-100 cl-ffffff"><input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " value="what are you looking for ?"></div>
+                    <div class="w-100 cl-ffffff"><input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " placeholder="what are you looking for ?"></div>
                     
                     <div>   <img src="{{ asset('assets/frontend/images/search2.png') }}" class="ml-auto" alt=""
                         class="img-fluid p-2 search-img" /></div>

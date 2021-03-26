@@ -97,7 +97,10 @@ class BidController extends Controller
         $bid = Bid::findOrFail($id);
         $bid->status = $request->status;
         $bid->save();
-        return response()->json(['id' => $id, 'status' => $bid->status]);
+        $approval = Bid::where('service_request_id',$bid->service_request_id)->where('status','1')->exists();
+        
+    
+        return response()->json(['id' => $id, 'status' => $bid->status,'approval'=>$approval]);
     }
 
     /**
