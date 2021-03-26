@@ -49,8 +49,8 @@ class BidController extends Controller
         }
         if ($request->time == 'Minutes') {
 
-            
-            $bid_request->delivery = $request->delivery." " . $request->time;
+
+            $bid_request->delivery = $request->delivery . " " . $request->time;
         }
         $bid_request->perposal = $request->perposal;
         if ($file = $request->file('attachment')) {
@@ -60,7 +60,7 @@ class BidController extends Controller
             $bid_request->attachment = 'uploads/files/' . $image_changed_name;
         }
         $bid_request->save();
-        return back()->with('success','Bid Created Successfuly!');
+        return back()->with('success', 'Bid Created Successfuly!');
     }
 
     /**
@@ -94,7 +94,10 @@ class BidController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bid = Bid::findOrFail($id);
+        $bid->status = $request->status;
+        $bid->save();
+        return response()->json(['id' => $id, 'status' => $bid->status]);
     }
 
     /**
