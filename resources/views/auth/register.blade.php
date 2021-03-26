@@ -3267,7 +3267,7 @@
                         url = '{{ url('/client ') }}';
                     }
                     window.location = url;
-                }, 5000);
+                }, 2000);
 
             },
             error: function (request, status, error) {
