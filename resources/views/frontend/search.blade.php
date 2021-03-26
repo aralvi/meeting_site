@@ -112,6 +112,7 @@
               <thead class="sticky-top bg-white cl-3ac754 ">
                 <tr class="bg-white robotoRegular ">
                   <th scope="col">No</th>
+                  <th scope="col">Service By</th>
                   <th scope="col">Service</th>
                   <th scope="col">Category</th>
                   <th scope="col">Subcategory</th>
@@ -125,6 +126,7 @@
                 @foreach($services as $key=>$service)
                   <tr class="border-bottom">
                     <th scope="row">{{ ++$key }}</th>
+                    <th scope="row">{{ ucwords($service->specialist->user->username) }}</th>
                     <td>{{ ucwords($service->title) }}</td>
                     <td>{{ ucwords($service->category->name) }}</td>
                     @php
