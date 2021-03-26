@@ -49,3 +49,15 @@
             return Category::where('status','active')->get();
         }
     }
+
+    if(!function_exists('deviceTime'))
+    {
+        function deviceTime($dateFormatString)
+        { 
+            $responseTime = 21;
+            $tz = getCurrentUserTimeZone();
+            $date = new DateTime(date('m/d/Y h:i:s a', time()));
+            $date->setTimezone(new DateTimeZone($tz));
+            return $date->format($dateFormatString);
+        }
+    }
