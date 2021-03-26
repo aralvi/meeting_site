@@ -50,6 +50,7 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
 
 
 Route::group(['middleware'=>['auth']],function(){
+    Route::get('search', 'HomeController@search')->name('search');
     Route::resource('bids', 'Specialist\BidController');
     Route::get('category_specialists/{id}', 'HomeController@category_specialists')->name('category_specialists');
     Route::resource('appointments', 'AppointmentController');

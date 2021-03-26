@@ -73,16 +73,7 @@
                         <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
                             class="card-img-top" alt="...">
                         <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                             @if ($specialist->user->avatar != null)
-                                <img src="{{ asset($specialist->user->avatar) }}"  class="img-fluid rounded-circle w-60 h-60 profile-shadow" alt="profile"  />
-                                {{-- <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}" --}}
-                                {{-- alt="" srcset=""> --}}
-                                    
-                                @else
-                                    
-                                <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"
-                                alt="" srcset="">
-                                @endif
+                               <img src="{{ ($specialist->user->avatar != null) ? asset($specialist->user->avatar) : asset('uploads/user/default.jpg') }}"  class="img-fluid rounded-circle h-60 w-60 profile-shadow"  alt="profile"  >
                         </div>
                         <div class="card-footer  bg-ffffff pt-4 pb-4">
                             <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
