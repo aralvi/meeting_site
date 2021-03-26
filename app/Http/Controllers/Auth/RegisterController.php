@@ -86,7 +86,7 @@ class RegisterController extends Controller
         }
         else if($data['payment_method']!='stripe' && $data['user_type'] !='client')
         {
-            $arr['payment_email'] = ['bail','required', 'string', 'email', 'max:255', 'unique:users'];
+            $arr['payment_email'] = ['bail','required', 'string', 'email', 'max:255'];
         }
 
         return Validator::make($data, $arr);
@@ -167,7 +167,7 @@ class RegisterController extends Controller
             $specialist->opening_hours = json_encode($hours_arr);
             if($specialist->save())
             {
-                // Mail::to($data['email'])->send(new SpecialistWelcomeMail(['name'=>$data['name'],'message'=>'Profile submitted successfully. We will contact you via email (ASAP) when approved!']));
+                Mail::to($data['email'])->send(new SpecialistWelcomeMail(['name'=>$data['name'],'message'=>'Profile submitted successfully. We will contact you via email (ASAP) when approved!']));
             }
         }
         else if($data['user_type'] =='client')
