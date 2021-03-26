@@ -1,119 +1,48 @@
-@extends('layouts.frontend.app')
-@section('title','Home')
-{{-- head start --}}
+@extends('layouts.frontend.app') @section('title','Home') {{-- head start --}} @section('extra-css')
 
-@section('extra-css')
-
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/index.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/index.css') }}" />
 <style type="text/css">
     .dropdown-toggle::after {
         display: none;
     }
-
-
 </style>
-@endsection
-{{-- head end --}}
+@endsection {{-- head end --}} {{-- content section start --}} @section('content')
 
-
-{{-- content section start --}}
-
-@section('content')
-
-<section class=" main_padding bg-navbar nav-bg-img pb-5">
+<section class="main_padding bg-navbar nav-bg-img pb-5">
     @include('includes.frontend.navbar')
-    {{-- <nav class="navbar navbar-expand-lg navbar-light pt-3 pl-0 pr-0">
-        <a class="navbar-brand" href="#"><img src="{{ asset('assets/frontend/images/navlogo.png') }}" class="img-fluid"
-    alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <form class="form-inline my-2 my-lg-0 ml-auto cl-ffffff robotoRegular">
-            <a href="{{route('login')}}"
-                class="btn btn-outline-success border-0 my-2 my-sm-0 pt-2 pb-2 cl-ffffff  login_button"
-                type="submit">Log In</a>
-            <a href="{{route('register')}}"
-                class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 mr-3 ml-3 login_button"
-                type="submit">Sign up</a><span>Business?</span>
-        </form>
-    </div>
-    </nav> --}}
-    <div class="text-center"><img src="{{ asset('assets/frontend/images/nav_2.png') }}" class="img-fluid" alt=""></div>
+    <div class="text-center"><img src="{{ asset('assets/frontend/images/nav_2.png') }}" class="img-fluid" alt="" /></div>
     <div class="text-center pt-4">
-        <p class="m-0 cl-ffffff robotoLight f-26 index_para">Book a virtual appointment with service professionals
-            worldwide
-        </p>
+        <p class="m-0 cl-ffffff robotoLight f-26 index_para">Book a virtual appointment with service professionals worldwide</p>
     </div>
-    <div class="text-center pt-4 pb-4"><img src="{{ asset('assets/frontend/images/curve.png') }}" alt=""></div>
+    <div class="text-center pt-4 pb-4"><img src="{{ asset('assets/frontend/images/curve.png') }}" alt="" /></div>
     <div class="d-flex justify-content-center">
         <div class="row m-0 pt-3 pb-3 bg-0000006b d-flex w-43 justify-content-center align-items-center">
-            <div class="d-flex bg-ffffff w-81  pt-3 pb-3 borderRadius-5px pl-3">
-                <div><img src="{{ asset('assets/frontend/images/search.png') }}" class="img-fluid" alt=""></div>
-
-                <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
-                        placeholder="Book your services..."></div>
-            </div>
-            {{-- <div class="d-flex bg-ffffff w-42  pt-3 pb-3 borderRadius-5px pl-3 ml-3 mr-3">
-                <div><img src="{{ asset('assets/frontend/images/location.png') }}" class="img-fluid" alt="">
+            <form action="{{ route('search') }}" method="get" class="col-md-12 d-flex">
+                @csrf
+                <div class="d-flex bg-ffffff w-81 pt-3 pb-3 borderRadius-5px pl-3">
+                    <div><img src="{{ asset('assets/frontend/images/search.png') }}" class="img-fluid" alt="" /></div>
+                    <div class="pl-3">
+                        <input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21" name="search" placeholder="Book your services..." />
+                    </div>
+                </div>
+                <div class="pl-3">
+                    <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 pt-3 pb-3 pl-3 pr-3" type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt="" /></button>
+                </div>
+            </form>
         </div>
-
-        <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 "
-                placeholder="Near?"></div>
-    </div> --}}
-    <div class="pl-3"> <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-3 pb-3 pl-3 pr-3"
-            type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt=""></button></div>
-
-    </div>
     </div>
 </section>
 
 @include('includes.frontend.navigations')
-<!-- 2 N D S E C T I O N -->
-{{-- @if(count(categories()) > 0)
-    <section class=" main_padding pt-5">
-        <div>
-            <ul class="listStyle-none p-0  d-flex robotoRegular f-18 ul_main_tabs m-0 d-flex justify-content-around">
-                @foreach (categories()->take(8) as $category)
-                    <li class="pl-3"> <a href="{{ route('category_specialists',$category->id) }}" class="cl-3b3b3b3">{{ ucwords($category->name) }}</a></li>
-                @endforeach
-                @if (count(categories()->skip(8)) > 0)
-                    
-                <li>
-                    <!-- Example split danger button -->
-                <div class="btn-group">
-                <a href="" class=" dropdown-toggle dropdown-toggle-split cl-3b3b3b3"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
-                <div class="dropdown-menu dropdown-menu-nav">
-                    @foreach (categories()->skip(8) as $category)
-                    <a class="dropdown-item " href="{{ route('category_specialists',$category->id) }}">{{ ucwords($category->name) }}</a>
-                        
-                    @endforeach
-                    
-                </div>
-                </div>
-                </li>
-                @endif
-            </ul>
-        </div>
-    </section>
-@endif --}}
-
-
-
-<!-- 2 N D S E C T I O N E N D  -->
 
 <!-- T H I R D S E C T I O N -->
 
-
-<section class=" main_padding pt-70 text-center">
-    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Popular Services</p>
-    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover the best services that are offered virtually.</p>
-    <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
+<section class="main_padding pt-70 text-center">
+    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0">Popular Services</p>
+    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">Discover the best services that are offered virtually.</p>
+    <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="" />
 </section>
-
 
 <!-- T H I R D S E C T I O N E N D  -->
 <section class="main_padding pt-70">
@@ -124,51 +53,37 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/istock-1147195672-1.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/istock-1147195672-1.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Website Developer</h5>
                                     <p class="card-text f-18 m-0 pt-1">Customize your site</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Social Media</h5>
                                     <p class="card-text f-18 m-0 pt-1">Reach more customers</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img" src="{{ asset('assets/frontend/images/create-logos-1.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/create-logos-1.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Logo Design</h5>
                                     <p class="card-text f-18 m-0 pt-1">Build your brand</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img" src="{{ asset('assets/frontend/images/maxresdefault-2.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/maxresdefault-2.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Video Editing</h5>
                                     <p class="card-text f-18 m-0 pt-1">Edit your video</p>
-
                                 </div>
                             </div>
                         </div>
@@ -180,53 +95,37 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/istock-1147195672-1.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/istock-1147195672-1.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Website Developer</h5>
                                     <p class="card-text f-18 m-0 pt-1">Customize your site</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Social Media</h5>
                                     <p class="card-text f-18 m-0 pt-1">Reach more customers</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Logo Design</h5>
                                     <p class="card-text f-18 m-0 pt-1">Build your brand</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Video Editing</h5>
                                     <p class="card-text f-18 m-0 pt-1">Edit your video</p>
-
                                 </div>
                             </div>
                         </div>
@@ -238,53 +137,37 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Website Developer</h5>
                                     <p class="card-text f-18 m-0 pt-1">Customize your site</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Social Media</h5>
                                     <p class="card-text f-18 m-0 pt-1">Reach more customers</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Logo Design</h5>
                                     <p class="card-text f-18 m-0 pt-1">Build your brand</p>
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="card border-0 text-white borderRadius-12px">
-                                <img class="card-img"
-                                    src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}"
-                                    alt="Card image">
-                                <div
-                                    class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
+                                <img class="card-img" src="{{ asset('assets/frontend/images/feature-article-investment-banking-101-what-it-is-and-what-investment-bankers-actually-do-838x484-2019.png') }}" alt="Card image" />
+                                <div class="card-img-overlay borderRadius-12px p-0 cl-ffffff bg_gradient_card_footer pl-3 pt-3 pb-3">
                                     <h5 class="card-title f-26 m-0">Video Editing</h5>
                                     <p class="card-text f-18 m-0 pt-1">Edit your video</p>
-
                                 </div>
                             </div>
                         </div>
@@ -313,75 +196,62 @@
                               
                                       </video>
                                   </div> -->
-            <img src="{{ asset('assets/frontend/images/pexels-anastasia-shuraeva-4210037.png') }}" class="img-fluid"
-                alt="" srcset="">
+            <img src="{{ asset('assets/frontend/images/pexels-anastasia-shuraeva-4210037.png') }}" class="img-fluid" alt="" srcset="" />
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 pl-5 pl-0">
             <div>
-                <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">Engage with a network of global
-                    independent specialists right at your fingertips. </p>
+                <p class="m-0 f-44 RobotoMedium cl-3ac754 fw-600 sixColumnTilte f-16">Engage with a network of global independent specialists right at your fingertips.</p>
                 <div class="d-flex">
-                    <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
-                            src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Post a Job hire a
-                        specialist</div>
+                    <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset="" /></div>
+
+                    <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Post a Job hire a specialist</div>
                 </div>
-                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Simply post a virtual job you
-                    need completed within specific date/times and receive competitive bids from specialists. </p>
+                <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Simply post a virtual job you need completed within specific date/times and receive competitive bids from specialists.</p>
                 <!-- 2 -->
                 <div class="pt-2">
                     <div class="d-flex">
-                        <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
-                                src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Hire expert
-                            specialists without breaking the bank</div>
+                        <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset="" /></div>
+
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Hire expert specialists without breaking the bank</div>
                     </div>
-                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">Keep within your budget with
-                        our bidding features. By naming your own price, our premium specialist marketplace will assist
-                        in orchestrating your need on your terms.</p>
+                    <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
+                        Keep within your budget with our bidding features. By naming your own price, our premium specialist marketplace will assist in orchestrating your need on your terms.
+                    </p>
                 </div>
                 <!-- 3 -->
                 <div class="pt-2">
                     <div class="d-flex">
-                        <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
-                                src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Pay Safely and
-                            Securely</div>
+                        <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset="" /></div>
+
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Pay Safely and Securely</div>
                     </div>
                     <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
-                        You'll always know what you'll pay upfront. Your payment isn't released until your appointment
-                        is completed.
+                        You'll always know what you'll pay upfront. Your payment isn't released until your appointment is completed.
                     </p>
                 </div>
                 <!-- 4 -->
                 <div class="pt-2">
                     <div class="d-flex">
-                        <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img
-                                src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset=""></div>
-                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Contact us
-                            anytime
-                        </div>
+                        <div class="m-0 d-flex justify-content-center align-items-center pt-1"><img src="{{ asset('assets/frontend/images/tick.png') }}" alt="" srcset="" /></div>
+
+                        <div class="m-0 f-34 fw-600 cl-000000 pl-3 RobotoMedium sixColumnMiniTitle f-16">Contact us anytime</div>
                     </div>
                     <p class="m-0 cl-707070 robotoRegular f-21 pt-1 sixColumnMiniPara f-16">
                         Our 24/7 support team is available to assist anytime.
                     </p>
                 </div>
-
             </div>
         </div>
     </div>
-
 </section>
 
 <!-- F I F T H S E C T I O N -->
 
-
-<section class=" main_padding pt-70  text-center">
-    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Check Out These Specialists</p>
-    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular ">Discover some of most talented specialists around the globe.</p>
-    <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
+<section class="main_padding pt-70 text-center">
+    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0">Check Out These Specialists</p>
+    <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">Discover some of most talented specialists around the globe.</p>
+    <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="" />
 </section>
-
 
 <!-- F I F T H     S E C T I O N E N D  -->
 
@@ -389,49 +259,33 @@
 
 <section class="main_padding pt-70">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-        
         <div class="carousel-inner h-413">
-            @guest
-                @php
-                    $specialists = App\Specialist::all();
-                @endphp
-                @else
-                @php
-                    $specialists = App\Specialist::where('user_id','<>',Auth::user()->id)->get();
-                @endphp
-            @endguest
-@foreach($specialists->chunk(4) as $specialistsCollections)
-    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-        <section class="d-block w-100">
-            <div class="row m-0">
-                @foreach($specialistsCollections as $specialist)
-                
-                    <div class="col-md-3 col-lg-3 col-sm-12">
-                        <a href="{{route('specialist_detail',encrypt($specialist->id))}}" >
-                            <div class="card border-0 box_shadow">
-                                <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body p-0 m-0 bg-transparent circle card_circle ">
-                                    <img src="{{ ($specialist->user->avatar != null) ? asset($specialist->user->avatar) : asset('uploads/user/default.jpg') }}"  class="img-fluid rounded-circle h-60 w-60 profile-shadow"  alt="profile"  >
-                                </div>
-                                <div class="card-footer  bg-ffffff pt-4 pb-4">
-                                    <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
-                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->username }}
-                                    </p>
-                                </div>
+            @guest @php $specialists = App\Specialist::all(); @endphp @else @php $specialists = App\Specialist::where('user_id','<>',Auth::user()->id)->get(); @endphp @endguest @foreach($specialists->chunk(4) as $specialistsCollections)
+            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                <section class="d-block w-100">
+                    <div class="row m-0">
+                        @foreach($specialistsCollections as $specialist)
 
-                            </div>
-                        </a>
+                        <div class="col-md-3 col-lg-3 col-sm-12">
+                            <a href="{{route('specialist_detail',encrypt($specialist->id))}}">
+                                <div class="card border-0 box_shadow">
+                                    <img src="{{ asset('assets/frontend/images/86d75f5ebf6abc13a630dda33b292727.png') }}" class="card-img-top" alt="..." />
+                                    <div class="card-body p-0 m-0 bg-transparent circle card_circle">
+                                        <img src="{{ ($specialist->user->avatar != null) ? asset($specialist->user->avatar) : asset('uploads/user/default.jpg') }}" class="img-fluid rounded-circle h-60 w-60 profile-shadow" alt="profile" />
+                                    </div>
+                                    <div class="card-footer bg-ffffff pt-4 pb-4">
+                                        <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
+                                        <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->username }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </section>
             </div>
-        </section>
 
-    </div>
-
-@endforeach
- 
-
+            @endforeach
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -447,53 +301,38 @@
 <!-- S I X T H     S E C T I O N  E N D -->
 <!-- S E V E N T H    S E C T I O N  S T A R T -->
 <section class="mt-70">
-    <div class="card img-fluid text-center border-0"> <img class="card-img-top w-100 bg-linear-gradient"
-            src="{{ asset('assets/frontend/images/banner.png') }}" alt="Card image">
-        <div
-            class="banner-content cl-fff d-flex justify-content-center flex-column align-items-center father-day-banner-styling">
+    <div class="card img-fluid text-center border-0">
+        <img class="card-img-top w-100 bg-linear-gradient" src="{{ asset('assets/frontend/images/banner.png') }}" alt="Card image" />
+        <div class="banner-content cl-fff d-flex justify-content-center flex-column align-items-center father-day-banner-styling">
             <div class="main_Div">
                 <div class="d-flex justify-content-center">
-                    <div><img src="{{ asset('assets/frontend/images/Webp.net-resizeimage (1).png') }}" alt=""></div>
-                    <div class="f-21 cl-ffffff robotoRegular pl-3 d-flex align-items-center"><div class="d-flex"><div>learnmelive</div> <div class="pl-4 pr-0"><ul class="p-0"><li></li></ul></div><div class="">IOS, Android</div> </div>
+                    <div><img src="{{ asset('assets/frontend/images/Webp.net-resizeimage (1).png') }}" alt="" /></div>
+                    <div class="f-21 cl-ffffff robotoRegular pl-3 d-flex align-items-center">
+                        <div class="d-flex">
+                            <div>learnmelive</div>
+                            <div class="pl-4 pr-0">
+                                <ul class="p-0">
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="">IOS, Android</div>
+                        </div>
                     </div>
                 </div>
                 <div class="robotoMedium cl-ffffff f-35 pt-2">Download our app to book you next</div>
                 <div class="robotoMedium cl-ffffff f-35 pt-1">appointment anytime, anywhere.</div>
                 <div class="d-flex pt-4">
                     <div class="d-flex bg-ffffff align-items-center borderRadius-5px pl-3 w-75">
-                        <div><img src="{{ asset('assets/frontend/images/usa.png') }}" class="img-fluid" alt=""><span
-                                class="cl-acacac pl-2">+1</span></div>
+                        <div><img src="{{ asset('assets/frontend/images/usa.png') }}" class="img-fluid" alt="" /><span class="cl-acacac pl-2">+1</span></div>
 
-                        <div class="pl-3"><input type="search"
-                                class="bg-transparent outline-none border-0 robotoRegular f-21 "
-                                placeholder="Your phone number"></div>
-
+                        <div class="pl-3"><input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21" placeholder="Your phone number" /></div>
                     </div>
-                    <div class="ml-3"><button type="button"
-                            class="btn btn-dark bg-transparent pt-3 pb-3 pl-4 pr-4 border-ffffff robotoMedium">Download</button>
-                    </div>
+                    <div class="ml-3"><button type="button" class="btn btn-dark bg-transparent pt-3 pb-3 pl-4 pr-4 border-ffffff robotoMedium">Download</button></div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </section>
 <!-- S E V E N T H    S E C T I O N  E N d -->
 
-
-    
-
-
-@endsection
-
-{{-- content section end --}}
-
-{{-- footer section start --}}
-
-
-@section('extra-script')
-
-@endsection
-
-{{-- footer section end --}}
+@endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script') @endsection {{-- footer section end --}}
