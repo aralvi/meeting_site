@@ -71,9 +71,9 @@
     </div>
 </section>
 
-
+@include('includes.frontend.navigations')
 <!-- 2 N D S E C T I O N -->
-@if(count(categories()) > 0)
+{{-- @if(count(categories()) > 0)
     <section class=" main_padding pt-5">
         <div>
             <ul class="listStyle-none p-0  d-flex robotoRegular f-18 ul_main_tabs m-0 d-flex justify-content-around">
@@ -99,7 +99,7 @@
             </ul>
         </div>
     </section>
-@endif
+@endif --}}
 
 
 
