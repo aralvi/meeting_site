@@ -145,7 +145,7 @@
                                 {
                                     $t_hour +=12; 
                                 }
-                                $s = ['15']
+                                
                             @endphp
                         
                             <div class="row m-0 pt-4">
@@ -172,7 +172,7 @@
                         <div class="cl-000000 f-18 col-md-6 pl-0 pr-0"><div>Standard buzz cut or 1 length even line up</div></div>
                         <div class="col-md-6 cl-000000 d-flex justify-content-end"><div class="f-21">${{ number_format($service->rate) }}</div></div>
                     </div> --}}
-                    <div class="row m-0 pt-3">
+                    <div class="row m-0 pt-3" style="display: none;">
                         <div class="col-md-6 p-0">
                             {{-- <div class="btn-group w-50 h-44">
                                 <button type="button" class="btn btn-outline-success bg-3ac574 cl-ffffff dropdown-toggle-btn w-100 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
