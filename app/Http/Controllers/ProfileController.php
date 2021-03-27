@@ -210,6 +210,8 @@ class ProfileController extends Controller
                 $specialist->payment_ssn = $request->payment_ssn;
                 $specialist->account_number = $request->account_number;
                 $specialist->routing_number = $request->routing_number;
+                $specialist->stripe_public_key = $request->stripe_public_key;
+                $specialist->stripe_secrete_key = $request->stripe_secrete_key;
             } else if ($request->payment_method != 'stripe' && $request->user_type != 'client') {
                 $specialist->payment_email = $request->payment_email;
             }

@@ -2,11 +2,10 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/register.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/login_register_common.css') }}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
     .dropdown-toggle::after {
         display: none;
@@ -18,117 +17,102 @@
         background-color: #3ac574 !important;
     }
 
+    /* Start Gallery CSS */
+    .thumb {
+        margin-bottom: 15px;
+    }
+    .thumb:last-child {
+        margin-bottom: 0;
+    }
+    /* CSS Image Hover Effects: https://www.nxworld.net/tips/css-image-hover-effects.html */
+    .thumb figure img {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        -webkit-transition: 0.3s ease-in-out;
+        transition: 0.3s ease-in-out;
+    }
+    .thumb figure:hover img {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+    }
 
-
-
-
-/* Start Gallery CSS */
-.thumb {
-	margin-bottom: 15px;
-}
-.thumb:last-child {
-	margin-bottom: 0;
-}
-/* CSS Image Hover Effects: https://www.nxworld.net/tips/css-image-hover-effects.html */
-.thumb 
-figure img {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
-}
-.thumb 
-figure:hover img {
-  -webkit-filter: grayscale(0);
-  filter: grayscale(0);
-}
-
-
-
-
-
-.ui-sortable-placeholder { 
-    	border: 1px dashed black!important; 
+    .ui-sortable-placeholder {
+        border: 1px dashed black !important;
         visibility: visible !important;
         background: #eeeeee78 !important;
-       }
-    .ui-sortable-placeholder * { visibility: hidden; }
-        .RearangeBox.dragElemThumbnail{opacity:0.6;}
-        .RearangeBox {
-            width: 180px;
-            height:240px;
-            padding:10px 5px;
-            cursor: all-scroll;
-            float: left;
-            display: inline-block;            
-            margin: 5px!important;
-            text-align: center;
-          
-        }
+    }
+    .ui-sortable-placeholder * {
+        visibility: hidden;
+    }
+    .RearangeBox.dragElemThumbnail {
+        opacity: 0.6;
+    }
+    .RearangeBox {
+        width: 180px;
+        height: 240px;
+        padding: 10px 5px;
+        cursor: all-scroll;
+        float: left;
+        display: inline-block;
+        margin: 5px !important;
+        text-align: center;
+    }
 
+    .IMGthumbnail {
+        max-width: 168px;
+        height: 80%;
+        margin: auto;
+        background-color: #ececec;
+        padding: 2px;
+        border: none;
+    }
 
+    .IMGthumbnail img {
+        width: 100%;
+        height: 100%;
+    }
 
+    .imgThumbContainer {
+        margin: 4px;
+        border: solid;
+        display: inline-block;
+        justify-content: center;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    }
 
+    .imgThumbContainer > .imgName {
+        text-align: center;
+        padding: 2px 6px;
+        margin-top: 4px;
+        font-size: 13px;
+        height: 20%;
+        overflow: hidden;
+    }
 
+    .imgThumbContainer > .imgRemoveBtn {
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        cursor: pointer;
+        display: none;
+    }
 
-.IMGthumbnail{
-    max-width:168px;
-    height:80%;
-    margin:auto;
-  background-color: #ececec;
-  padding:2px;
-  border:none;
-}
-
-.IMGthumbnail img{
-   width:100%;
-    height:100%;
-}
-
-.imgThumbContainer{
-
-  margin:4px;
-  border: solid;
-  display: inline-block;
-  justify-content: center;
-    position: relative;
-    border: 1px solid rgba(0,0,0,0.14);
-  -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
-}
-
-
-
-.imgThumbContainer > .imgName{
-  text-align:center;
-  padding: 2px 6px;
-  margin-top:4px;
-  font-size:13px;
-  height: 20%;
-  overflow: hidden;
-}
-
-.imgThumbContainer > .imgRemoveBtn{
-    position: absolute;
-    right: 2px;
-    top: 2px;
-    cursor: pointer;
-    display: none;
-}
-
-.RearangeBox:hover > .imgRemoveBtn{ 
-    display: block;
-}
-.img-thumbnail{
-    height: 225px !important;
-}
-.px-50{
-    padding-left: 50px !important;
-    padding-right: 50px !important;
-}
-.select2-container--default .select2-selection--single {
-    border: none !important;
-}
+    .RearangeBox:hover > .imgRemoveBtn {
+        display: block;
+    }
+    .img-thumbnail {
+        height: 225px !important;
+    }
+    .px-50 {
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+    .select2-container--default .select2-selection--single {
+        border: none !important;
+    }
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
@@ -171,16 +155,16 @@ figure:hover img {
                 <a class="nav-link {{ session('portfolio')? 'active':'' }} cl-000000" id="v-pills-portfolio-tab" data-toggle="pill" href="#v-pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
                 <a class="nav-link cl-000000" id="v-pills-service-tab" data-toggle="pill" href="#v-pills-service" role="tab" aria-controls="v-pills-service" aria-selected="false">Services</a>
                 @endif
-                <a class="nav-link  cl-000000" id="v-pills-appointment-tab" data-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Appointments</a>
+                <a class="nav-link cl-000000" id="v-pills-appointment-tab" data-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Appointments</a>
                 <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
             </div>
         </div>
-        
+
         <div class="col-md-7 col-lg-7 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
             <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
             <div class="tab-content" id="v-pills-tabContent">
-				<div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-					<p class="pl-3 f-21 cl-000000">Personal Info</p>
+                <div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <p class="pl-3 f-21 cl-000000">Personal Info</p>
                     @if (Auth::user()->user_type =='specialist')
 
                     <form class="steps" action="{{ route('profile.update',Auth::user()->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="registerForm" novalidate="" id="specilaist_profile_form">
@@ -760,6 +744,38 @@ figure:hover img {
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row d-flex justify-content-between">
+                                        <div class="input-group mb-3 border-input col-md-5 pt-3 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                            <div><em class="fa fa-key"></em></div>
+                                            <div class="w-100">
+                                                <input
+                                                    type="text"
+                                                    id="stripe_public_key"
+                                                    class="form-control border-0"
+                                                    placeholder="Stripe public key"
+                                                    aria-label=""
+                                                    aria-describedby="basic-addon1"
+                                                    name="stripe_public_key"
+                                                    value="{{Auth::user()->specialist->stripe_public_key}}"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3 border-input pt-3 col-md-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                            <div><em class="fa fa-key"></em></div>
+                                            <div class="w-100">
+                                                <input
+                                                    type="text"
+                                                    class="w-100 form-control border-0"
+                                                    placeholder="stripe secrete key"
+                                                    id="stirpe_secrete_key"
+                                                    aria-label=""
+                                                    aria-describedby="basic-addon1"
+                                                    name="stripe_secrete_key"
+                                                    value="{{Auth::user()->specialist->stripe_secrete_key}}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endif @if(Auth::user()->specialist->payment_method == "paypal")
                                     <div class="row">
                                         <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
@@ -896,7 +912,7 @@ figure:hover img {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-md-12 pt-4 warningAlert" style="display: none;">
                                         <div class="alert alert-warning warningAlertContent"></div>
@@ -1013,7 +1029,7 @@ figure:hover img {
 
                                             <button type="button" class="close close-reg {{ ( array_key_exists($week_day,$days))?'':'d-none' }} " aria-label="Close" onclick="dayClosed(this);"><span aria-hidden="true">&times;</span></button>
                                         </div>
-                                        @endforeach 
+                                        @endforeach
                                     </div>
                                     <div class="modal-footer m-auto border-0">
                                         <button type="button" onclick="dayCheckValidation();" class="btn bg-3ac574 text-white pl-5 pr-5 mt-3 mb-3">Save</button>
@@ -1025,43 +1041,43 @@ figure:hover img {
                     </form>
 
                     <div id="paypal-html" style="display: none;">
-                                    <div class="row">
-                                        <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
-                                            <div><em class="fa fa-envelope"></em></div>
-                                            <div class="w-100">
-                                                <input
-                                                    type="email"
-                                                    id="payment_email_paypal2"
-                                                    class="w-100 form-control border-0"
-                                                    placeholder="Enter your PayPal email address"
-                                                    aria-label=""
-                                                    aria-describedby="basic-addon1"
-                                                    name="payment_email"
-                                                    value="{{Auth::user()->specialist->payment_email}}"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                <div><em class="fa fa-envelope"></em></div>
+                                <div class="w-100">
+                                    <input
+                                        type="email"
+                                        id="payment_email_paypal2"
+                                        class="w-100 form-control border-0"
+                                        placeholder="Enter your PayPal email address"
+                                        aria-label=""
+                                        aria-describedby="basic-addon1"
+                                        name="payment_email"
+                                        value="{{Auth::user()->specialist->payment_email}}"
+                                    />
                                 </div>
-                                <div id="payoneer-html" style="display: none;">
-                                    <div class="row">
-                                        <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
-                                            <div><em class="fa fa-envelope"></em></div>
-                                            <div class="w-100">
-                                                <input
-                                                    type="email"
-                                                    id="payment_email_payoneer2"
-                                                    class="w-100 form-control border-0"
-                                                    placeholder="Enter you Payoneer email address"
-                                                    aria-label=""
-                                                    aria-describedby="basic-addon1"
-                                                    name="payment_email"
-                                                    value="{{Auth::user()->specialist->payment_email}}"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="payoneer-html" style="display: none;">
+                        <div class="row">
+                            <div class="input-group mb-3 col-md-12 border-input pt-4 mb-4 mt-5 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                <div><em class="fa fa-envelope"></em></div>
+                                <div class="w-100">
+                                    <input
+                                        type="email"
+                                        id="payment_email_payoneer2"
+                                        class="w-100 form-control border-0"
+                                        placeholder="Enter you Payoneer email address"
+                                        aria-label=""
+                                        aria-describedby="basic-addon1"
+                                        name="payment_email"
+                                        value="{{Auth::user()->specialist->payment_email}}"
+                                    />
                                 </div>
+                            </div>
+                        </div>
+                    </div>
                     @else
                     <form action="{{ route('profile.update',Auth::user()->id) }}" method="post" id="client_profile_form">
                         @csrf @method('PUT')
@@ -1468,98 +1484,111 @@ figure:hover img {
                     @endif
                 </div>
                 @if(Auth::user()->user_type == 'specialist')
-                    <div class="tab-pane fade {{ session('portfolio')? 'show active':'' }}" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
-                        <p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
-                        <section class="container">
-                            <div class="row gallery">
-                                @foreach ($portfolio_images as $image)
-                                    
-                                <div class="col-lg-3 col-md-4 col-xs-6 thumb " id="target_{{ $image->id }}">
-                                    <i class='material-icons imgRemoveBtn btn-danger position-relative float-right delete_portfolio_image Cursor' data-toggle="modal" data-target="#deletePortfolioModal" style="top: 23px;  z-index: 1;cursor: pointer;border-radius:5px;" data-portfolioID="{{ $image->id }}">delete</i>
-                                    <a href="{{ $image->image }}">
-                                        <figure>
-                                            <img class="img-fluid img-thumbnail" src="{{ $image->image }}" alt="Random Image">
-                                        </figure>
-                                    </a>
-                                </div>
-                                
-                                @endforeach
+                <div class="tab-pane fade {{ session('portfolio')? 'show active':'' }}" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab">
+                    <p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
+                    <section class="container">
+                        <div class="row gallery">
+                            @foreach ($portfolio_images as $image)
+
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb" id="target_{{ $image->id }}">
+                                <i
+                                    class="material-icons imgRemoveBtn btn-danger position-relative float-right delete_portfolio_image Cursor"
+                                    data-toggle="modal"
+                                    data-target="#deletePortfolioModal"
+                                    style="top: 23px; z-index: 1; cursor: pointer; border-radius: 5px;"
+                                    data-portfolioID="{{ $image->id }}"
+                                >
+                                    delete
+                                </i>
+                                <a href="{{ $image->image }}">
+                                    <figure>
+                                        <img class="img-fluid img-thumbnail" src="{{ $image->image }}" alt="Random Image" />
+                                    </figure>
+                                </a>
                             </div>
-                                <form action="{{ route('portfolio_images') }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row justify-content-center align-items-end">
-                                        <div style='form-group col-md-6'>
-                                            <label for="files">Upload Portfolio's Images </label>
-                                            <input id="files" type="file" name="images[]" class="form-control border-0" multiple/>        
-                                        </div>
-                                        <div class="form-group col-md-6 m-0">
-                                            <button type="submit" class="btn btn-md bg-3AC574 text-white">Upload Photos</button>
-                                        </div>
 
-                                    </div>
-                                </form>
-                            <div style='padding:14px; margin:auto';>
-                            <div id="sortableImgThumbnailPreview">
-                                    
-                                </div>
-                            </div>
-    
-
-                        </section>
-                    
-                    </div>
-
-                    <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-service-tab">
-                        <p class="pl-3 f-21 cl-000000">Services</p>
-                        <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;"> Add Service</button>
-                        <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                            <table id="example1" class="table table-hover example1">
-                                <thead>
-                                    <tr class="text-uppercase">
-                                        <th scope="col">#</th>
-                                        <th scope="col">service</th>
-                                        <th scope="col">Timing</th>
-                                        <th scope="col">Rate</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($services as $key => $service)
-                                    <tr id="target_{{ $service->id }}">
-                                        <td>{{ $key +1 }}</td>
-                                        <td>{{ $service->title }}</td>
-                                        <td>{{ $service->timing }} Minutes</td>
-                                        <td>${{ $service->rate }}</td>
-                                        <td>
-                                            @if ($service->status == "Active")
-                                                
-                                            <span class="badge badge-sm badge-success">{{ $service->status }}</span>
-                                            @else
-                                                
-                                            <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
-                                            @endif
-                                            
-                                        </td>
-                                        
-                                        <td style="min-width: 135px !important;">
-                                            <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-toggle="modal" data-target="#editServiceModal" data-Serviceid="{{ $service->id }}"><i class="fe fe-pencil"></i> Edit</button>
-
-                                            <button title="Click to Delete Service" type="button" class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal" data-target="#deleteServiceModal" id="ServiceDelete" data-Serviceid="{{ $service->id }}"><i class="fe fe-trash"></i> Delete</button>
-                                        </td>
-                                    </tr>
-                                        
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            @endforeach
                         </div>
+                        <form action="{{ route('portfolio_images') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row justify-content-center align-items-end">
+                                <div style="form-group col-md-6">
+                                    <label for="files">Upload Portfolio's Images </label>
+                                    <input id="files" type="file" name="images[]" class="form-control border-0" multiple />
+                                </div>
+                                <div class="form-group col-md-6 m-0">
+                                    <button type="submit" class="btn btn-md bg-3AC574 text-white">Upload Photos</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="padding: 14px; margin: auto;" ;>
+                            <div id="sortableImgThumbnailPreview"></div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-service-tab">
+                    <p class="pl-3 f-21 cl-000000">Services</p>
+                    <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal" class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;">Add Service</button>
+                    <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
+                        <table id="example1" class="table table-hover example1">
+                            <thead>
+                                <tr class="text-uppercase">
+                                    <th scope="col">#</th>
+                                    <th scope="col">service</th>
+                                    <th scope="col">Timing</th>
+                                    <th scope="col">Rate</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($services as $key => $service)
+                                <tr id="target_{{ $service->id }}">
+                                    <td>{{ $key +1 }}</td>
+                                    <td>{{ $service->title }}</td>
+                                    <td>{{ $service->timing }} Minutes</td>
+                                    <td>${{ $service->rate }}</td>
+                                    <td>
+                                        @if ($service->status == "Active")
+
+                                        <span class="badge badge-sm badge-success">{{ $service->status }}</span>
+                                        @else
+
+                                        <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
+                                        @endif
+                                    </td>
+
+                                    <td style="min-width: 135px !important;">
+                                        <button title="Click to Update Service" class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn" data-toggle="modal" data-target="#editServiceModal" data-Serviceid="{{ $service->id }}">
+                                            <i class="fe fe-pencil"></i> Edit
+                                        </button>
+
+                                        <button
+                                            title="Click to Delete Service"
+                                            type="button"
+                                            class="btn btn-danger btn-sm ServiceDelete"
+                                            data-toggle="modal"
+                                            data-target="#deleteServiceModal"
+                                            id="ServiceDelete"
+                                            data-Serviceid="{{ $service->id }}"
+                                        >
+                                            <i class="fe fe-trash"></i> Delete
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                
+                </div>
+
                 @endif
-                
-                <div class="tab-pane fade " id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
-					<p class="pl-3 f-21 cl-000000">Appointments</p>
-					<div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
+
+                <div class="tab-pane fade" id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
+                    <p class="pl-3 f-21 cl-000000">Appointments</p>
+                    <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
                         <table id="example2" class="table table-hover example1">
                             <thead>
                                 <tr class="text-uppercase">
@@ -1584,54 +1613,44 @@ figure:hover img {
                                     <td class="border-0">${{ $appointment->rate }}</td>
                                     <td class="border-0">
                                         @if ($appointment->status == "Pending")
-                                            
-                                        <span class="badge badge-sm badge-warning">{{ $appointment->status }}</span>
-                                        
-                                        @endif
-                                        @if ($appointment->status == "Approved")
-                                            
-                                        <span class="badge badge-sm badge-info">{{ $appointment->status }}</span>
-                                        
-                                        @endif
-                                        @if ($appointment->status == "Cancelled")
-                                            
-                                        <span class="badge badge-sm badge-danger">{{ $appointment->status }}</span>
-                                        
-                                        @endif
-                                        @if ($appointment->status == "Completed")
-                                            
-                                        <span class="badge badge-sm badge-success">{{ $appointment->status }}</span>
-                                        
-                                        @endif
-                                        
-                                    </td>
-                                    
-                                    <td style="min-width: 135px !important; " class="d-flex border-0">
 
-                                        @if ($appointment->status != "Completed" )
-                                            @if (Auth::user()->user_type=='specialist')
-                                                <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
-                                                    @csrf
-                                                    @method('put')
-                                                    
-                                                    <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}">
-                                                    <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
-                                                </form>
-                                            @endif
-                                            @if ($appointment->status != "Cancelled")
-                                                
-                                            <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
-                                                @csrf
-                                                @method('put')
-                                                <input type="hidden" name="status" value="2">
-                                                <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
-                                            </form>
-                                            @endif
+                                        <span class="badge badge-sm badge-warning">{{ $appointment->status }}</span>
+
+                                        @endif @if ($appointment->status == "Approved")
+
+                                        <span class="badge badge-sm badge-info">{{ $appointment->status }}</span>
+
+                                        @endif @if ($appointment->status == "Cancelled")
+
+                                        <span class="badge badge-sm badge-danger">{{ $appointment->status }}</span>
+
+                                        @endif @if ($appointment->status == "Completed")
+
+                                        <span class="badge badge-sm badge-success">{{ $appointment->status }}</span>
+
                                         @endif
-                                        
+                                    </td>
+
+                                    <td style="min-width: 135px !important;" class="d-flex border-0">
+                                        @if ($appointment->status != "Completed" ) @if (Auth::user()->user_type=='specialist')
+                                        <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                            @csrf @method('put')
+
+                                            <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}" />
+                                            <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
+                                        </form>
+                                        @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client')
+                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal"  data-specialist="{{ $appointment->specialist_id }}">payment</button>
+                                        @endif
+                                        <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                            @csrf @method('put')
+                                            <input type="hidden" name="status" value="2" />
+                                            <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+                                        </form>
+                                        @endif @endif
                                     </td>
                                 </tr>
-                                    
+
                                 @endforeach
                             </tbody>
                         </table>
@@ -1639,7 +1658,7 @@ figure:hover img {
                 </div>
 
                 <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
-					<p class="pl-3 f-21 cl-000000">Password Setting</p>
+                    <p class="pl-3 f-21 cl-000000">Password Setting</p>
                     <form action="{{ url('password') }}" method="POST">
                         @csrf
                         <div class="px-5">
@@ -1665,135 +1684,155 @@ figure:hover img {
         </div>
     </div>
 
+    {{-- Modal for payment --}}
+   <div class="modal fade" tabindex="-1" role="dialog" id="payment_modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Enter Detail for Payment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" >
+            <form action="{{route('checkout.credit-card')}}"  method="post" id="payment-form">
+                        @csrf         
+                               <div class="form-group">
+                                   <input type="hidden" name="specialist" id="specialist_id">
+                            <input type="number" name="amount" onfocusout="stripe_payment(this);" class="form-control" autofocus>       
+                            </div>  
+            <div id="payment_request"></div>
+            </form>
+        </div>
+        
+        </div>
+    </div>
+    </div>
 
 
+    {{-- services modals started --}} @if (Auth::user()->user_type == 'specialist')
 
+    <!-- Modal For Adding Service-->
+    <div class="modal fade" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="addServiceModalArea" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addServiceModalArea" style="font-size: 18px !important;">Add New Service</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('specialist/services') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-control select2" name="category" id="select_service_category" style="width: 100%;" onchange="getSubCategoriesForServices(this);">
+                                <option selected="selected" disabled>Choose category</option>
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group sub_categories"></div>
+                        <div class="form-group">
+                            <label for="title">Title*</label>
+                            <input id="title" type="text" class="form-control text-capitalize" name="title" value="{{ old('title') }}" autocomplete="title" placeholder="Enter Service Title" />
+                        </div>
+                        <div class="form-group mb-0">
+                            <label for="timing">Timing*</label>
+                            <input id="timing" type="number" class="form-control text-capitalize" name="timing" value="{{ old('timing') }}" autocomplete="timing" placeholder="Enter Service Timing" />
+                            <small class="font-italic text-muted m-0 p-0"> ( in minutes )</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="rate">Rate*</label>
+                            <input id="rate" type="number" class="form-control text-capitalize" name="rate" value="{{ old('rate') }}" autocomplete="rate" placeholder="Enter Service Rate" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description*</label>
+                            <textarea id="description" class="form-control summernote" name="description" required> </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">tags*</label>
+                            <input type="text" name="tags" class="form-control" placeholder="laravel,php" required />
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                <input type="checkbox" name="status" class="custom-control-input" checked id="customSwitch3" />
+                                <label class="custom-control-label" for="customSwitch3">Inactive/Active</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-md btn-danger" data-dismiss="modal"><i class="fas fa-backspace"></i> Cancel</button>
+                        <button type="submit" class="btn btn-md btn-primary"><i class="fas fa-check-circle"></i> Add Service</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-	{{-- services modals started --}}
+    <!-- Modal For Editing Service-->
+    <div class="modal fade editServiceModal" id="editServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelServiceedit" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelServiceedit" style="font-size: 18px !important;">Edit Service</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="requestServiceData"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal For Deleting Service-->
+    <div class="modal fade deleteServiceModal" id="deleteServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelServicedelete" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelServicedelete" style="font-size: 18px !important;">Delete Confirmation !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure, you want to delete this Service?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
+                    <button type="button" class="btn btn-md btn-primary deleteServiceBtn" id="deleteServiceBtn" data-dismiss="modal">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal For Deleting Service-->
+    <div class="modal fade deletePortfolioModal" id="deletePortfolioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelPortfoliodelete" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelPortfoliodelete" style="font-size: 18px !important;">Delete Confirmation !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure, you want to delete this Imge?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
+                    <button type="button" class="btn btn-md btn-primary deletePortfolioBtn" id="deletePortfolioBtn" data-dismiss="modal">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif {{-- Services modals ended --}}
+</section>
+@endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
 @if (Auth::user()->user_type == 'specialist')
     
 
-		<!-- Modal For Adding Service-->
-        <div class="modal fade" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="addServiceModalArea" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addServiceModalArea" style="font-size: 18px !important;">Add New Service</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="{{ url('specialist/services') }}" method="POST">
-                        @csrf
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select class="form-control select2"  name="category" id="select_service_category" style="width: 100%;"  onchange="getSubCategoriesForServices(this);">
-                                    <option selected="selected" disabled>Choose category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group sub_categories" >
-                                
-                            </div>
-                            <div class="form-group">
-                                <label for="title">Title*</label>
-                                <input id="title" type="text" class="form-control text-capitalize" name="title" value="{{ old('title') }}" autocomplete="title" placeholder="Enter Service Title" />
-                            </div>
-                            <div class="form-group mb-0">
-                                <label for="timing">Timing*</label>
-                                <input id="timing" type="number" class="form-control text-capitalize" name="timing" value="{{ old('timing') }}" autocomplete="timing" placeholder="Enter Service Timing" />
-                                <small class="font-italic text-muted m-0 p-0"> ( in minutes )</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="rate">Rate*</label>
-                                <input id="rate" type="number" class="form-control text-capitalize" name="rate" value="{{ old('rate') }}" autocomplete="rate" placeholder="Enter Service Rate" />
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description*</label>
-                               <textarea id="description" class="form-control summernote" name="description" required> </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="description">tags*</label>
-                               <input type="text" name="tags" class="form-control" placeholder="laravel,php" required>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                <input type="checkbox" name="status" class="custom-control-input" checked id="customSwitch3">
-                                <label class="custom-control-label" for="customSwitch3">Inactive/Active</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-md btn-danger" data-dismiss="modal"><i class="fas fa-backspace"></i> Cancel</button>
-                            <button type="submit" class="btn btn-md btn-primary"><i class="fas fa-check-circle"></i> Add Service</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal For Editing Service-->
-        <div class="modal fade editServiceModal" id="editServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelServiceedit" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelServiceedit" style="font-size: 18px !important;">Edit Service</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="requestServiceData"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal For Deleting Service-->
-        <div class="modal fade deleteServiceModal" id="deleteServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelServicedelete" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelServicedelete" style="font-size: 18px !important;">Delete Confirmation !</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure, you want to delete this Service?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
-                        <button type="button" class="btn btn-md btn-primary deleteServiceBtn" id="deleteServiceBtn" data-dismiss="modal">Yes, Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal For Deleting Service-->
-        <div class="modal fade deletePortfolioModal" id="deletePortfolioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelPortfoliodelete" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelPortfoliodelete" style="font-size: 18px !important;">Delete Confirmation !</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure, you want to delete this Imge?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
-                        <button type="button" class="btn btn-md btn-primary deletePortfolioBtn" id="deletePortfolioBtn" data-dismiss="modal">Yes, Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-@endif
-	{{-- Services modals ended  --}}
-</section>
-@endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script>
     function readURL(input) {
@@ -1803,7 +1842,7 @@ figure:hover img {
                 $(".blah").attr("src", e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
-            $('#avatar_form').submit();
+            $("#avatar_form").submit();
         }
     }
     const usernamePublicProfile = (ele) => {
@@ -1924,23 +1963,20 @@ figure:hover img {
             }
         }
     }
-	 function getSubCategoriesForServices(ele)
-      {
-          let id = $(ele).val();
-          $.ajax({
-              url:"{{ url('sub_categories') }}",
-              type:"get",
-              data:{id:id},
-              success:function(data)
-              {
-                  $('.sub_categories').empty();
-                  $('.sub_categories').html(data);
+    function getSubCategoriesForServices(ele) {
+        let id = $(ele).val();
+        $.ajax({
+            url: "{{ url('sub_categories') }}",
+            type: "get",
+            data: { id: id },
+            success: function (data) {
+                $(".sub_categories").empty();
+                $(".sub_categories").html(data);
+            },
+        });
+    }
 
-              }
-          });
-      }
-
-    $(document).ready(function() {
+    $(document).ready(function () {
         $(".gallery").magnificPopup({
             delegate: "a",
             type: "image",
@@ -1949,75 +1985,108 @@ figure:hover img {
             gallery: {
                 enabled: true,
                 navigateByImgClick: true,
-                preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+                preload: [0, 1], // Will preload 0 - before current, and 1 after the current image
             },
             image: {
-                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-            }
+                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+            },
         });
     });
 
+    $(function () {
+        $("#sortableImgThumbnailPreview").sortable({
+            connectWith: ".RearangeBox",
 
+            start: function (event, ui) {
+                $(ui.item).addClass("dragElemThumbnail");
+                ui.placeholder.height(ui.item.height());
+            },
+            stop: function (event, ui) {
+                $(ui.item).removeClass("dragElemThumbnail");
+            },
+        });
+        $("#sortableImgThumbnailPreview").disableSelection();
+    });
 
-
-
-    $(function() {
-                $("#sortableImgThumbnailPreview").sortable({
-                connectWith: ".RearangeBox",
-                
-                    
-                start: function( event, ui ) { 
-                    $(ui.item).addClass("dragElemThumbnail");
-                    ui.placeholder.height(ui.item.height());
-            
-                },
-                    stop:function( event, ui ) { 
-                    $(ui.item).removeClass("dragElemThumbnail");
-                }
-                });
-                $("#sortableImgThumbnailPreview").disableSelection();
-            });
-
-
-
-
-    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    document.getElementById("files").addEventListener("change", handleFileSelect, false);
 
     function handleFileSelect(evt) {
-        
-        var files = evt.target.files; 
+        var files = evt.target.files;
         var output = document.getElementById("sortableImgThumbnailPreview");
-        
+
         // Loop through the FileList and render image files as thumbnails.
-        for (var i = 0, f; f = files[i]; i++) {
+        for (var i = 0, f; (f = files[i]); i++) {
+            // Only process image files.
+            if (!f.type.match("image.*")) {
+                continue;
+            }
 
-        // Only process image files.
-        if (!f.type.match('image.*')) {
-            continue;
-        }
+            var reader = new FileReader();
 
-        var reader = new FileReader();
+            // Closure to capture the file information.
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    // Render thumbnail.
+                    var imgThumbnailElem =
+                        "<div class='RearangeBox imgThumbContainer'><i class='material-icons imgRemoveBtn' onclick='removeThumbnailIMG(this)'>cancel</i><div class='IMGthumbnail' ><img  src='" +
+                        e.target.result +
+                        "'" +
+                        "title='" +
+                        theFile.name +
+                        "'/></div><div class='imgName'>" +
+                        theFile.name +
+                        "</div></div>";
 
-        // Closure to capture the file information.
-        reader.onload = (function(theFile) {
-            return function(e) {
-            // Render thumbnail.
-            var imgThumbnailElem = "<div class='RearangeBox imgThumbContainer'><i class='material-icons imgRemoveBtn' onclick='removeThumbnailIMG(this)'>cancel</i><div class='IMGthumbnail' ><img  src='" + e.target.result + "'" + "title='"+ theFile.name + "'/></div><div class='imgName'>"+ theFile.name +"</div></div>";
-                        
-                        output.innerHTML = output.innerHTML + imgThumbnailElem; 
-            
-            };
-        })(f);
+                    output.innerHTML = output.innerHTML + imgThumbnailElem;
+                };
+            })(f);
 
-        // Read in the image file as a data URL.
-        reader.readAsDataURL(f);
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
         }
     }
 
-    function removeThumbnailIMG(elm){
-        elm.parentNode.outerHTML='';
+    function removeThumbnailIMG(elm) {
+        elm.parentNode.outerHTML = "";
     }
+
 
 
 </script>
+@else
+    <script>
+        
+    // ajax for payment
+$('.payment_btn').on('click',function(){
+    var specialist_id = $(this).data('specialist');
+    $('#specialist_id').val(specialist_id);
+    $('#payment_request').empty();
+
+    // $.ajax({
+    //     type:'get',
+    //     url: "{{ url('checkout') }}",
+    //     data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id},
+    //     success:function(data){
+    //         $('#payment_request').html(data);
+    //     }
+
+    // })
+    
+})
+function stripe_payment(e){
+    var specialist_id = $('#specialist_id').val();
+ $.ajax({
+        type:'get',
+        url: "{{ url('checkout') }}",
+        data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id,amount:e.value},
+        success:function(data){
+            $('#payment_request').html(data);
+        }
+
+    })
+    
+}
+
+    </script>
+@endif
 @endsection {{-- footer section end --}}

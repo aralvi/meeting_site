@@ -82,4 +82,9 @@ Route::group(['middleware'=>['auth']],function(){
     Route::resource('servicerequests', 'ServiceRequestController');
     Route::get('sub_categories', 'Client\ClientController@getSubCategories')->name('request.get_subcategories');
     Route::view('client/dashboard','client.index');
+
+
+    // payemnts 
+    Route::get('checkout', 'StripeController@checkout');
+    Route::post('checkout', 'StripeController@afterpayment')->name('checkout.credit-card');
 });
