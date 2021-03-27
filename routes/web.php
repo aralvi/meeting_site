@@ -15,7 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::view('check','check');
+Route::view('check', 'frontend.portfolio_dispay');
 // Route::view('profile','profile');
 Route::get('/', function () {
     return view('frontend.index');
@@ -68,6 +68,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::post('/password', 'ProfileController@update_password');
 
     Route::get('specialist-detail/{id}', 'SpecialistController@getSpecialistDetail')->name('specialist_detail');
+    Route::get('specialist-portfolio/{id}', 'SpecialistController@getPortfolio')->name('specialist_portfolio');
 
     Route::get('portfolio', function () {  return view('frontend.portfolio'); })->name('portfolio');
     Route::get('carousels', function () {  return view('frontend.carousels'); })->name('carousels');

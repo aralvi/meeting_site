@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Specialists\Portfolio;
 use Illuminate\Http\Request;
 use App\Specialist;
 use App\User;
@@ -99,5 +100,11 @@ class SpecialistController extends Controller
     {
         $specialist = Specialist::where('id',decrypt($id))->first();
         return view('frontend.specialist_detail',compact('specialist'));
+    }
+
+    public function getPortfolio($id)
+    {
+        $portfolios = Portfolio::where('specialist_id', decrypt($id))->get();
+        return view('frontend.portfolio_display',compact('portfolios'));
     }
 }
