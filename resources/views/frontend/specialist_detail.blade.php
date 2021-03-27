@@ -404,11 +404,11 @@
                 <div class="row ml-3">
                     <div class="col-md-3 text-left ">{{ ucfirst($key) }}</div>
                     <div class="col-md-3 text-center">
-                        {{ getTimeZoneTime($specialist->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[0]) }}
+                        {{ getTimeZoneTime($specialist->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[0]) }}
                     </div>
                     <div class="col-md-3 text-center"> - </div>
                     <div class="col-md-3 text-center">
-                        {{ getTimeZoneTime($specialist->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[1]) }}
+                        {{ getTimeZoneTime($specialist->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[1]) }}
                     </div>
                 </div>
 

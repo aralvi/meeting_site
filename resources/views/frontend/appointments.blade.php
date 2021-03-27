@@ -152,10 +152,10 @@
                                 $current = clone $start;
                             @endphp
                         
-                            <div class="row m-0 pt-4">
+                            <div class="row pt-4 ml-1 mr-1">
                                 
                                 @while ($current <= $end)
-                                    <div class="ml-1 robotoRegular cl-878787 col-md-2 text-center p-0">
+                                    <div class="ml-4 robotoRegular cl-878787 col-md-2 text-center p-0">
                                         <label class="border pt-2 rounded w-100 pb-2">
                                             <input type="radio" name="time" class="bg-success btnclass" value="{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}" @foreach ($appointments as $appointment)
                                                 @if ($appointment->time == '{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}')
