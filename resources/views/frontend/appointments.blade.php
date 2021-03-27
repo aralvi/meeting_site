@@ -16,7 +16,7 @@
 
     <section class="main_padding pt-70">
 
-        <div class="container-fluid error-message-div" style="display:none;">
+        <div class="container-fluid error-message-div ml-1" style="display:none;">
             <div class="row">
                 <div class="col-12">
                     <div class="alert alert-danger alert-block" role="alert">
