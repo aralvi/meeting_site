@@ -858,11 +858,7 @@
             type: "get",
             data: {
                 val: val,
-                id: {
-                    {
-                        $specialist - > id
-                    }
-                }
+                id: {{$specialist->id}}
             },
             success: function (data) {
                 $('.services-table-body').html(data);
