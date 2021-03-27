@@ -13,6 +13,18 @@
         }
     }
 
+    if(!function_exists('getTimeZoneDate'))
+    {
+        function getTimeZoneDate($ftz,$ttz,$date)
+        {
+            date_default_timezone_set($ftz);
+            $datetime = new DateTime($date);
+            $la_time = new DateTimeZone($ttz);
+            $datetime->setTimezone($la_time);
+            return date("d M Y", strtotime($date));
+        }
+    }
+
     if(!function_exists('getCurrentUserTimeZone'))
     {
         function getCurrentUserTimeZone(){
