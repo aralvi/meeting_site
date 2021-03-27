@@ -157,11 +157,8 @@
                                 @while ($current <= $end)
                                     <div class="ml-4 robotoRegular cl-878787 col-md-2 text-center p-0">
                                         <label class="border pt-2 rounded w-100 pb-2">
-                                            <input type="radio" name="time" class="bg-success btnclass" value="{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}" @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}')
-                                                    disabled
-                                                @endif
-                                            @endforeach/>
+                                            @php $tz = 'America/Chicago'; @endphp
+                                            <input type="radio" name="time" class="bg-success btnclass" value="{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A"))}}" @if (in_array(getTimeZoneTime($service->specialist->user->time_zone,$tz,$current->format("g:i A")),$appointments)) disabled @endif/>
                                             <span class="checkmark pl-2">{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}</span>
                                         </label>
                                     </div>

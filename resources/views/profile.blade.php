@@ -1391,12 +1391,13 @@ figure:hover img {
                             </thead>
                             <tbody>
                                 @foreach ($appointments as $key => $appointment)
+                                    @php $tz = Auth::user()->user_type=='specialist' ? $appointment->specialist->user->time_zone : $appointment->user->time_zone @endphp
                                 <tr id="target_{{ $appointment->id }}" class="border-bottom">
                                     <td class="border-0">{{ $key +1 }}</td>
                                     <td class="border-0">{{ Auth::user()->user_type=='specialist' ? $appointment->user->name : $appointment->specialist->user->name}}</td>
                                     <td class="border-0">{{ $appointment->service->title }}</td>
-                                    <td class="border-0">{{ $appointment->date }}</td>
-                                    <td class="border-0">{{ $appointment->time }}</td>
+                                    <td class="border-0">{{ date('d-m-Y', strtotime(getTimeZoneDate('America/Chicago',$tz,$appointment->date.' '.$appointment->time))) }}</td>
+                                    <td class="border-0">{{ getTimeZoneTime('America/Chicago',$tz,$appointment->date.' '.$appointment->time) }}</td>
                                     <td class="border-0">${{ $appointment->rate }}</td>
                                     <td class="border-0">
                                         @if ($appointment->status == "Pending")

@@ -35,7 +35,7 @@ class AppointmentController extends Controller
         '!=',$id)->get();
         $today = Carbon::today();
         $tomorrow = Carbon::tomorrow();
-        $appointments = Appointment::where('service_id',$id)->where('status','1')->whereBetween('created_at', [$today, $tomorrow])->get();
+        $appointments = Appointment::where('service_id',$id)->where('status','1')->whereBetween('created_at', [$today, $tomorrow])->get()->pluck('time')->toArray();
         return view('frontend.appointments',compact('service', 'appointments', 'services'));
     }
 
@@ -65,9 +65,9 @@ class AppointmentController extends Controller
         $appointment->user_id = Auth::user()->id;
         $appointment->service_id = $request->service_id;
         $appointment->specialist_id = $request->specialist_id;
-        $appointment->date = $request->date;
+        $appointment->date = getTimeZoneDate(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
         $appointment->rate = $request->rate;
-        $appointment->time = $request->time;
+        $appointment->time = getTimeZoneTime(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
         $appointment->save();
         return back()->with('success','Appointment Created Successfuly!');
 

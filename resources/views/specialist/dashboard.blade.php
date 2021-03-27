@@ -171,7 +171,7 @@ a:focus{
                                 </div>
                                 <div class="d-flex flex-column justify-content-between">
                                     <p>Time</p>
-                                    <p>{{ $appointment->time }}</p>
+                                    <p>{{ getTimeZoneTime('America/Chicago',$appointment->specialist->user->time_zone,$appointment->time) }}</p>
                                 </div>
                             </div>
                             @endforeach
