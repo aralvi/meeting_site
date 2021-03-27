@@ -167,9 +167,29 @@
                                     </div>
                                     @php $current->modify("+30 minutes") @endphp
                                 @endwhile
-
                             </div>
                             <div class="border w-100 mt-5"></div>
+                            
+                            <div class="row m-0 pt-3">
+                                <div class="col-md-6 p-0">
+                                    {{-- <div class="btn-group w-50 h-44">
+                                        <button type="button" class="btn btn-outline-success bg-3ac574 cl-ffffff dropdown-toggle-btn w-100 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Any staff Member
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Separated link</a>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                                <div class="col-md-6 pl-0 ml-auto text-end pr-0">
+                                    <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button appointment-btn ml-auto" type="submit">Submit</button>
+                                </div>
+                            </div>
+                            
                         </div>
                     @endforeach
                     
@@ -177,25 +197,7 @@
                         <div class="cl-000000 f-18 col-md-6 pl-0 pr-0"><div>Standard buzz cut or 1 length even line up</div></div>
                         <div class="col-md-6 cl-000000 d-flex justify-content-end"><div class="f-21">${{ number_format($service->rate) }}</div></div>
                     </div> --}}
-                    <div class="row m-0 pt-3" style="display: none;">
-                        <div class="col-md-6 p-0">
-                            {{-- <div class="btn-group w-50 h-44">
-                                <button type="button" class="btn btn-outline-success bg-3ac574 cl-ffffff dropdown-toggle-btn w-100 rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Any staff Member
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div> --}}
-                        </div>
-                        <div class="col-md-6 pl-0 ml-auto text-end pr-0">
-                            <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button appointment-btn ml-auto" type="submit">Submit</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </form>
