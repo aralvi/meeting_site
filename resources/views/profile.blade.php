@@ -126,6 +126,9 @@ figure:hover img {
     padding-left: 50px !important;
     padding-right: 50px !important;
 }
+.select2-container--default .select2-selection--single {
+    border: none !important;
+}
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
@@ -550,7 +553,7 @@ figure:hover img {
                                 <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap col-md-5 border border-top-0 border-left-0 border-right-0">
                                     <div class="d-flex"><em class="fas fa-user-clock d-flex justify-content-center align-items-center"></em></div>
                                     <div class="w-100">
-                                        <select name="timezone" class="form-control w-100 border-0">
+                                        <select name="timezone" class="form-control w-100 border-0 select2">
                                             <option></option>
                                             <option value="Etc/GMT+12">(GMT-12:00) International Date Line West</option>
                                             <option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
@@ -1369,8 +1372,7 @@ figure:hover img {
                                 <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap col-md-5 border border-top-0 border-left-0 border-right-0">
                                     <div class="d-flex"><em class="fas fa-user-clock d-flex justify-content-center align-items-center"></em></div>
                                     <div class="w-100">
-                                        <select name="timezone" class="form-control w-100 border-0">
-                                            <option></option>
+                                        <select name="timezone" class="form-control w-100 border-0 select2" data-placeholder="Select Time Zone">
                                             <option value="Etc/GMT+12">(GMT-12:00) International Date Line West</option>
                                             <option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
                                             <option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
