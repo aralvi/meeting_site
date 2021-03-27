@@ -404,11 +404,11 @@
                 <div class="row ml-3">
                     <div class="col-md-3 text-left ">{{ ucfirst($key) }}</div>
                     <div class="col-md-3 text-center">
-                        {{ getTimeZoneTime($specialist->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[0]) }}
+                        {{ getTimeZoneTime($specialist->user->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[0]) }}
                     </div>
                     <div class="col-md-3 text-center"> - </div>
                     <div class="col-md-3 text-center">
-                        {{ getTimeZoneTime($specialist->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[1]) }}
+                        {{ getTimeZoneTime($specialist->user->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[1]) }}
                     </div>
                 </div>
 
@@ -1017,49 +1017,72 @@
     });
 
 
-    window.onload = function () {
-        clock();
+    // window.onload = function () {
+    //     clock();
 
-        function clock() {
-            var now = new Date();
-            var month = new Array();
-            month[0] = "January";
-            month[1] = "February";
-            month[2] = "March";
-            month[3] = "April";
-            month[4] = "May";
-            month[5] = "June";
-            month[6] = "July";
-            month[7] = "August";
-            month[8] = "September";
-            month[9] = "October";
-            month[10] = "November";
-            month[11] = "December";
-            var n = month[now.getMonth() + 1];
-            var TwentyFourHour = now.getHours();
-            var hour = now.getHours();
-            var min = now.getMinutes();
-            var sec = now.getSeconds();
-            var current_date = now.getDate();
-            var mid = 'PM';
-            if (min < 10) {
-                min = "0" + min;
-            }
-            if (hour > 12) {
-                hour = hour - 12;
-            }
-            if (hour == 0) {
-                hour = 12;
-            }
-            if (TwentyFourHour < 12) {
-                mid = 'AM';
-            }
-            document.getElementById('time').innerHTML = n + " " + current_date + ", " + hour + ':' + min + ' ' +
-            mid;
-            setTimeout(clock, 1000);
-        }
+    //     function clock() {
+    //         var now = new Date();
+    //         var month = new Array();
+    //         month[0] = "January";
+    //         month[1] = "February";
+    //         month[2] = "March";
+    //         month[3] = "April";
+    //         month[4] = "May";
+    //         month[5] = "June";
+    //         month[6] = "July";
+    //         month[7] = "August";
+    //         month[8] = "September";
+    //         month[9] = "October";
+    //         month[10] = "November";
+    //         month[11] = "December";
+    //         var n = month[now.getMonth() + 1];
+    //         var TwentyFourHour = now.getHours();
+    //         var hour = now.getHours();
+    //         var min = now.getMinutes();
+    //         var sec = now.getSeconds();
+    //         var current_date = now.getDate();
+    //         var mid = 'PM';
+    //         if (min < 10) {
+    //             min = "0" + min;
+    //         }
+    //         if (hour > 12) {
+    //             hour = hour - 12;
+    //         }
+    //         if (hour == 0) {
+    //             hour = 12;
+    //         }
+    //         if (TwentyFourHour < 12) {
+    //             mid = 'AM';
+    //         }
+    //         document.getElementById('time').innerHTML = n + " " + current_date + ", " + hour + ':' + min + ' ' +
+    //         mid;
+    //         setTimeout(clock, 1000);
+    //     }
+    // }
+    function formatDate(date)
+    {
+      var year = '',
+      month = date.getMonth() + 1, // months are zero indexed
+      day = date.getDate(),
+      hour = date.getHours(),
+      minute = date.getMinutes(),
+      second = date.getSeconds(),
+      hourFormatted = hour % 12 || 12, // hour returned in 24 hour format
+      minuteFormatted = minute < 10 ? "0" + minute : minute,
+      morning = hour < 12 ? "am" : "pm";
+      return month + "/" + day + "/" + year + " " + hourFormatted + ":" +
+              minuteFormatted + morning;
     }
 
+    setInterval(function(){
+      let l = "{{ $specialist->user->time_zone }}";
+      let ampm = new Date().toLocaleTimeString('en-US', { timeZone: l }).split(' ');
+      let tm = new Date().toLocaleTimeString('en-US', { timeZone: l }).split(":");
+      let dt = new Date().toLocaleDateString('en-US', { timeZone: l}).split('/');
+      let dtm = new Date().toLocaleDateString('en-US', { timeZone: l ,month:'long'}).split('/');
+      let final = dtm+" "+dt[1]+" , "+tm['0']+":"+tm[1]+" "+ampm[1];
+      document.getElementById('time').innerHTML =final;
+    },1000);
 </script>
 @endsection
 
