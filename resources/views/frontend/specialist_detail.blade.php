@@ -203,6 +203,9 @@
 	top:18px;
 }
 
+.h-513{
+  height: 513px !important;
+}
 
 
   </style>
@@ -225,30 +228,30 @@
         <div class="row m-0 pl-0 pr-0 pt-4 pb-4">
           <div class="col-md-6 col-lg-6">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
+              {{-- <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
+              </ol> --}}
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
+                <div class="carousel-item active h-513">
+                  <img src="{{ ($specialist->user->avatar != null) ? asset($specialist->user->avatar) : asset('assets/frontend/images/avatar-large.png')  }}" class="d-block w-100 img-fluid h-100" alt="...">
                 </div>
-                <div class="carousel-item">
+                {{-- <div class="carousel-item">
                 <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
                 </div>
                 <div class="carousel-item">
                 <img src="{{ asset('assets/frontend/images/Group 152.png') }}" class="d-block w-100 img-fluid" alt="...">
-                </div>
+                </div> --}}
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              {{-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-              </a>
+              </a> --}}
             </div>
           </div>
         <div class="col-md-5 col-lg-6 cl-ffffff pl-5 pr-5">
