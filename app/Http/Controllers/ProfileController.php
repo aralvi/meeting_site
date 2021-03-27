@@ -172,6 +172,7 @@ class ProfileController extends Controller
         $profile->name = $request->name;
         $profile->email = $request->email;
         $profile->country = $request->country;
+        $profile->time_zone = $request->timezone;
         $profile->status = 'inactive';
         $profile->save();
 
