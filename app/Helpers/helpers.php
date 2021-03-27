@@ -3,11 +3,11 @@
     use Illuminate\Support\Facades\Auth;
     if(!function_exists('getTimeZoneTime'))
     {
-        function getTimeZoneTime($ftz,$time)
+        function getTimeZoneTime($ftz,$ttz,$time)
         {
             date_default_timezone_set($ftz);
             $datetime = new DateTime($time);
-            $la_time = new DateTimeZone($ftz);
+            $la_time = new DateTimeZone($ttz);
             $datetime->setTimezone($la_time);
             return date("g:i A", strtotime($datetime->format('H:i')));
         }

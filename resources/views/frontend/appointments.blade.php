@@ -128,7 +128,7 @@
                                         <div><img src="{{ asset('assets/frontend/images/Group198.png') }}" alt="" class="img-fluid w-75" /></div>
                                         <div class="f-21 robotoRegular cl-000000 pl-3">
                                             Available Time
-                                            <div class="f-16 cl-878787">{{ getTimeZoneTime(Auth::user()->time_zone,$t[0]) }} {{ getTimeZoneTime(Auth::user()->time_zone,$t[1]) }}</div>
+                                            <div class="f-16 cl-878787">{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$t[0]) }} {{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$t[1]) }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -157,12 +157,12 @@
                                 @while ($current <= $end)
                                     <div class="ml-1 robotoRegular cl-878787 col-md-2 text-center p-0">
                                         <label class="border pt-2 rounded w-100 pb-2">
-                                            <input type="radio" name="time" class="bg-success btnclass" value="{{ getTimeZoneTime(Auth::user()->time_zone,$current->format("g:i A")) }}" @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '{{ getTimeZoneTime(Auth::user()->time_zone,$current->format("g:i A")) }}')
+                                            <input type="radio" name="time" class="bg-success btnclass" value="{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}" @foreach ($appointments as $appointment)
+                                                @if ($appointment->time == '{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}')
                                                     disabled
                                                 @endif
                                             @endforeach/>
-                                            <span class="checkmark pl-2">{{ getTimeZoneTime(Auth::user()->time_zone,$current->format("g:i A")) }}</span>
+                                            <span class="checkmark pl-2">{{ getTimeZoneTime($service->specialist->user->time_zone,Auth::user()->time_zone,$current->format("g:i A")) }}</span>
                                         </label>
                                     </div>
                                     @php $current->modify("+30 minutes") @endphp
@@ -189,7 +189,7 @@
                                     <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button appointment-btn ml-auto" type="submit">Submit</button>
                                 </div>
                             </div>
-                            
+
                         </div>
                     @endforeach
                     
