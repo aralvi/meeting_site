@@ -105,13 +105,20 @@ img {
 .h-600{
   height: 600px !important;
 }
-.w-160{
-  width: 160px !important;
+.w-157{
+  width: 157px !important;
 }
 .h-101{
   height: 101px !important;
 }
+@media (min-width: 1200px){
+
+  .container {
+    width: 960px !important;
+  }
+}
 </style>
+
 @endsection
 
 
@@ -128,7 +135,7 @@ img {
     <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
 </section>
 
-<div class="container my-5">
+<div class="container my-5 pr-0">
   @foreach ($portfolios as $key => $portfolio)
       
   <div class="mySlides h-600">
@@ -148,7 +155,7 @@ img {
      @foreach ($portfolios as $key => $portfolio)
       
   
-  <div class="column w-160 h-101">
+  <div class="column w-157 h-101">
     <img class="demo cursor h-100 w-100" src="{{ asset($portfolio->image) }}"  onclick="currentSlide({{ $key+1 }})" alt="The Woods">
   </div>
   @endforeach
@@ -189,7 +196,6 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
 }
 </script>
     
