@@ -128,7 +128,7 @@
                                         <div><img src="{{ asset('assets/frontend/images/Group198.png') }}" alt="" class="img-fluid w-75" /></div>
                                         <div class="f-21 robotoRegular cl-000000 pl-3">
                                             Available Time
-                                            <div class="f-16 cl-878787">{{$t[0]}} to {{$t[1]}}</div>
+                                            <div class="f-16 cl-878787">{{ getTimeZoneTime(Auth::user()->time_zone,$t[0]) }} {{ getTimeZoneTime(Auth::user()->time_zone,$t[1]) }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -145,24 +145,29 @@
                                 {
                                     $t_hour +=12; 
                                 }
-                                
+                                $p_t = [15,30,45,0];
+                                $current_date = date('Y-m-d');
+                                $start = new DateTime($current_date." ".$t[0]);
+                                $end = new DateTime($current_date." ".$t[1]);
+                                $current = clone $start;
                             @endphp
                         
                             <div class="row m-0 pt-4">
-                                @for($i=$f_hour; $i<=$t_hour; $i++)
-
-                                    
+                                
+                                @while ($current <= $end)
                                     <div class="ml-1 robotoRegular cl-878787 col-md-2 text-center p-0">
                                         <label class="border pt-2 rounded w-100 pb-2">
-                                            <input type="radio" name="time" class="bg-success btnclass" value="10:50 AM" @foreach ($appointments as $appointment)
-                                                @if ($appointment->time == '10:50 AM')
+                                            <input type="radio" name="time" class="bg-success btnclass" value="{{ getTimeZoneTime(Auth::user()->time_zone,$current->format("g:i A")) }}" @foreach ($appointments as $appointment)
+                                                @if ($appointment->time == '{{ getTimeZoneTime(Auth::user()->time_zone,$current->format("g:i A")) }}')
                                                     disabled
                                                 @endif
                                             @endforeach/>
-                                            <span class="checkmark pl-2">10:50 AM</span>
+                                            <span class="checkmark pl-2">{{ getTimeZoneTime(Auth::user()->time_zone,$current->format("g:i A")) }}</span>
                                         </label>
                                     </div>
-                                @endfor
+                                    @php $current->modify("+30 minutes") @endphp
+                                @endwhile
+
                             </div>
                             <div class="border w-100 mt-5"></div>
                         </div>
@@ -539,7 +544,7 @@
             {
                 $('.all-day').hide();
                 $('.error-message-div').show();
-                $('.error-message-text').html("Sorry ! {{ $service->specialist->user->username }} is not available at "+ d.toLocaleString('en-us', {weekday: 'long'}));
+                $('.error-message-text').html("Sorry ! {{ $service->specialist->user->username }} is not available on "+ d.toLocaleString('en-us', {weekday: 'long'}));
             }
         },1000);
 

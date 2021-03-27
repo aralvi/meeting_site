@@ -1,13 +1,13 @@
 <?php
     use App\Category;
-
-    if(!function_exists('getTime'))
+    use Illuminate\Support\Facades\Auth;
+    if(!function_exists('getTimeZoneTime'))
     {
         function getTimeZoneTime($ftz,$time)
         {
             date_default_timezone_set($ftz);
             $datetime = new DateTime($time);
-            $la_time = new DateTimeZone(getCurrentUserTimeZone());
+            $la_time = new DateTimeZone($ftz);
             $datetime->setTimezone($la_time);
             return date("g:i A", strtotime($datetime->format('H:i')));
         }
