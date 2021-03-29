@@ -19,7 +19,7 @@ class CreateRatingsTable extends Migration
             $table->foreign('specialist_id')->references('id')->on('specialists')->onDelete('cascade');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('rating')->nullable();
+            $table->enum('rating',['1','2','3','4','5'])->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();
         });
