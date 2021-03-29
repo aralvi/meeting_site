@@ -625,121 +625,43 @@
                 if we know the reviewer has visited this business.</div>
 
             <!-- COMMENTS SECTION START -->
+            @if (isset($specialist->ratings))
+                
+            @foreach ($specialist->ratings as $rating)
+                
             <div class="d-flex pt-5">
-                <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}"
+                <div class="img_commentSection"><img src="{{ asset($rating->user->avatar) }}"
                         alt="" srcset=""></div>
                 <div class="content_commentSection pl-4">
                     <div>
                         <div class="d-flex">
                             <div class="d-flex align-items-center pr-3">
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""  srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""  srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""  srcset=""></div>
 
 
 
                             </div>
-                            <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella
-                                P.</div>
-                            <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020
+                            <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">{{$rating->user->country}}</div>
+                            <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">{{$rating->created_at->format('F d,Y')}}
                             </div>
                         </div>
                     </div>
-                    <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in
-                        town!!!! My son enjoys his work of
-                        art as welll!!!! I would give him 10 stars...</div>
-                    <div class="d-flex f-21 robotoMedium pt-3">
+                    <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">{{ $rating->description }}</div>
+                    {{-- <div class="d-flex f-21 robotoMedium pt-3">
                         <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
                         <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
                         <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
+            @endforeach
+            @endif
             <!-- 2 -->
-            <div class="d-flex pt-5">
-                <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}"
-                        alt="" srcset=""></div>
-                <div class="content_commentSection pl-4">
-                    <div>
-                        <div class="d-flex">
-                            <div class="d-flex align-items-center pr-3">
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-
-
-
-                            </div>
-                            <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella
-                                P.</div>
-                            <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in
-                        town!!!! My son enjoys his work of
-                        art as welll!!!! I would give him 10 stars...</div>
-                    <div class="d-flex f-21 robotoMedium pt-3">
-                        <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
-                        <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
-                        <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
-                    </div>
-                </div>
-            </div>
-            <!-- end -->
-            <!-- 3 -->
-            <div class="d-flex pt-5">
-                <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}"
-                        alt="" srcset=""></div>
-                <div class="content_commentSection pl-4">
-                    <div>
-                        <div class="d-flex">
-                            <div class="d-flex align-items-center pr-3">
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""
-                                        srcset=""></div>
-
-
-
-                            </div>
-                            <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella
-                                P.</div>
-                            <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in
-                        town!!!! My son enjoys his work of
-                        art as welll!!!! I would give him 10 stars...</div>
-                    <div class="d-flex f-21 robotoMedium pt-3">
-                        <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
-                        <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
-                        <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
-                    </div>
-                </div>
-            </div>
-            <!-- end -->
+            
 
 
         </div>

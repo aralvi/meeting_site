@@ -24,12 +24,12 @@
         margin-bottom: 0;
     }
     /* CSS Image Hover Effects: https://www.nxworld.net/tips/css-image-hover-effects.html */
-    .thumb figure img {
+    /* .thumb figure img {
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);
         -webkit-transition: 0.3s ease-in-out;
         transition: 0.3s ease-in-out;
-    }
+    } */
     .thumb figure:hover img {
         -webkit-filter: grayscale(0);
         filter: grayscale(0);
@@ -186,6 +186,7 @@ h1 { font-size: 1.5em; margin: 10px; }
                 @if (Auth::user()->user_type == 'specialist')
                 <a class="nav-link {{ session('portfolio')? 'active':'' }} cl-000000" id="v-pills-portfolio-tab" data-toggle="pill" href="#v-pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
                 <a class="nav-link cl-000000" id="v-pills-service-tab" data-toggle="pill" href="#v-pills-service" role="tab" aria-controls="v-pills-service" aria-selected="false">Services</a>
+                <a class="nav-link cl-000000" id="v-pills-bid-tab" data-toggle="pill" href="#v-pills-bid" role="tab" aria-controls="v-pills-bid" aria-selected="false">Bids</a>
                 @endif
                 <a class="nav-link cl-000000" id="v-pills-appointment-tab" data-toggle="pill" href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment" aria-selected="false">Appointments</a>
                 <a class="nav-link cl-000000" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</a>
@@ -968,6 +969,10 @@ h1 { font-size: 1.5em; margin: 10px; }
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-bid" role="tabpanel" aria-labelledby="v-pills-bid-tab">
+                    <p class="pl-3 f-21 cl-000000">Bids</p>
+                    
                 </div>
 
                 @endif
