@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Specialist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class StripePaymentController extends Controller
     {
         $specialist = Specialist::findOrFail($request->specialist_id);
         $amount = $request->amount;
-        return view('stripe',compact('specialist', 'amount'));
+        $appointment_id = $request->appointment;
+        return view('stripe',compact('specialist', 'amount', 'appointment_id'));
     }
 
     /**
@@ -37,6 +39,16 @@ class StripePaymentController extends Controller
             "source" => $request->stripeToken,
             "description" => "Payment from ". Auth::user()->name,
         ]);
+        $appointment = Appointment::findOrFail($request->appointment_id);
+        if($appointment->rate > $request->amount){
+            $appointment->payment_status = '1';
+        }else{
+            $appointment->payment_status = '2';
+
+        }
+        $appointment->payment_amount = $request->amount;
+        $appointment->save();
+
 
         // Session::flash('success', 'Payment successful!');
 

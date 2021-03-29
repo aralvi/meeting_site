@@ -131,6 +131,7 @@
     data-stripe-publishable-key="{{ $specialist->stripe_public_key }}" id="payment-form">
     @csrf
     <input type="hidden" name="stripe_public_key" value="{{ $specialist->stripe_public_key }}">
+    <input type="hidden" name="appointment_id" value="{{ $appointment_id }}">
     <div class=' row'>
         <div class='col-md-12 form-group required'>
             <label class='control-label'>Name on Card</label> <input class='form-control border-bottom text-capitalize' size='4' type='text' placeholder="ex. ewdtech">

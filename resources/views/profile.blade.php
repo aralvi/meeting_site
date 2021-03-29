@@ -160,7 +160,7 @@
             </div>
         </div>
 
-        <div class="col-md-7 col-lg-7 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
+        <div class="col-md-8 col-lg-8 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
             <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -1599,6 +1599,8 @@
                                     <th scope="col">Timing</th>
                                     <th scope="col">Rate</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Payment Status</th>
+                                    {{-- <th scope="col">Payment Remaining</th> --}}
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -1631,6 +1633,24 @@
 
                                         @endif
                                     </td>
+                                    <td class="border-0">
+                                        @if ($appointment->payment_status == "Pending")
+
+                                        <span class="badge badge-sm badge-warning">{{ $appointment->payment_status }}</span>
+
+                                        @endif @if ($appointment->payment_status == "Partial Paid")
+
+                                        <span class="badge badge-sm badge-info">{{ $appointment->payment_status }}</span>
+
+                                        @endif @if ($appointment->payment_status == "Paid")
+
+                                        <span class="badge badge-sm badge-success">{{ $appointment->payment_status }}</span>
+
+                                        @endif
+                                    </td>
+                                    {{-- <td class="border-0">
+                                        {{ $appointment->rate - $appointment->payment_amount }}
+                                    </td> --}}
 
                                     <td style="min-width: 135px !important;" class="d-flex border-0">
                                         @if ($appointment->status != "Completed" ) @if (Auth::user()->user_type=='specialist')
@@ -1640,8 +1660,8 @@
                                             <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}" />
                                             <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
                                         </form>
-                                        @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client')
-                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal"  data-specialist="{{ $appointment->specialist_id }}" data-amount="{{ $appointment->rate }}">payment</button>
+                                        @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid")
+                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal" data-appointment="{{ $appointment->id }}" data-specialist="{{ $appointment->specialist_id }}" data-amount="{{ $appointment->rate }}">payment</button>
                                         @endif
                                         <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
                                             @csrf @method('put')
@@ -2056,12 +2076,13 @@
 $('.payment_btn').on('click',function(){
     var specialist_id = $(this).data('specialist');
     var amount = $(this).data('amount');
+    var appointment = $(this).data('appointment');
     $('#payment_request').empty();
 
     $.ajax({
         type:'get',
         url: "{{ url('stripe') }}",
-        data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id,amount:amount},
+        data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id,amount:amount,appointment:appointment},
         success:function(data){
             $('#payment_request').html(data);
         }
