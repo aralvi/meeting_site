@@ -42,7 +42,7 @@ class Specialist extends Model
     }
     public function ratings()
     {
-        return $this->hasOne(Rating::class);
+        return $this->hasMany(Rating::class);
     }
 
 }
