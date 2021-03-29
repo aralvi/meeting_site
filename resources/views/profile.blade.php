@@ -1436,50 +1436,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         });
     }
 
-    function addReview(e)
-    {
-        let id = $(e).data('id');
-        var myform = document.getElementById("add-review-form-"+id);
-        var fd = new FormData(myform);
-        fd.append("_token","{{ csrf_token() }}");
-        $.ajax({
-            url:"{{ route('add.client.review') }}",
-            type:"post",
-            processData: false, 
-            contentType: false,
-            // data: $('#add-client-form').serialize(),
-            data: fd,
-            success:function(data)
-            {
-                if (data.success == true) 
-                {
-                    swal('success', data.message, 'success')
-                        .then((value) => {
-                            window.location = '{{ route('clients.index') }}';
-                        });
-                } else {
-                    if (data.hasOwnProperty('message')) {
-                        var wrapper = document.createElement('div');
-                        var err = '';
-                        $.each(data.message, function (i, e) {
-                            err += '<p>' + e + '</p>';
-                        })
-
-                        wrapper.innerHTML = err;
-                        swal({
-                            icon: "error",
-                            text: "{{ __('Please fix following error!') }}",
-                            content: wrapper,
-                            type: 'error'
-                        });
-                        //setTimeout("pageRedirect()", 3000);
-                        //$('.actions  li:first-child a').click();
-                    }
-                }
-
-            }
-        });
-    }
+    
 
     $(document).ready(function () {
         $(".gallery").magnificPopup({
@@ -1547,6 +1504,51 @@ h1 { font-size: 1.5em; margin: 10px; }
 </script>
 @else
     <script>
+
+function addReview(e)
+    {
+        let id = $(e).data('id');
+        var myform = document.getElementById("add-review-form-"+id);
+        var fd = new FormData(myform);
+        fd.append("_token","{{ csrf_token() }}");
+        $.ajax({
+            url:"{{ route('add.client.review') }}",
+            type:"post",
+            processData: false, 
+            contentType: false,
+            // data: $('#add-client-form').serialize(),
+            data: fd,
+            success:function(data)
+            {
+                if (data.success == true) 
+                {
+                    swal('success', data.message, 'success')
+                        .then((value) => {
+                            window.location = '{{ route('clients.index') }}';
+                        });
+                } else {
+                    if (data.hasOwnProperty('message')) {
+                        var wrapper = document.createElement('div');
+                        var err = '';
+                        $.each(data.message, function (i, e) {
+                            err += '<p>' + e + '</p>';
+                        })
+
+                        wrapper.innerHTML = err;
+                        swal({
+                            icon: "error",
+                            text: "{{ __('Please fix following error!') }}",
+                            content: wrapper,
+                            type: 'error'
+                        });
+                        //setTimeout("pageRedirect()", 3000);
+                        //$('.actions  li:first-child a').click();
+                    }
+                }
+
+            }
+        });
+    }
 
         function labelChange(elem){
             let e = $(elem).data('id');

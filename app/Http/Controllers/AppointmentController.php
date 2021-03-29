@@ -136,7 +136,10 @@ class AppointmentController extends Controller
         $review->user_id = Auth::user()->id;
         $review->rating = $request->rating;
         $review->description = $request->description;
-        $review->save();
+        if($review->save())
+        {
+            return response()->json(['success' => true, 'message' =>"Client has been added successfully"]);
+        }
 
     }
 }
