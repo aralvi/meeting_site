@@ -35,4 +35,12 @@ class Appointment extends Model
             '3' => 'Completed'
         ][$attribute];
     }
+    public function getPaymentStatusAttribute($attribute)
+    {
+        return [
+            '0' => 'Pending',
+            '1' => 'Partial Paid',
+            '2' => 'Paid',
+        ][$attribute];
+    }
 }

@@ -1642,7 +1642,6 @@
                                         </form>
                                         @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client')
                                         <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal"  data-specialist="{{ $appointment->specialist_id }}">payment</button>
-                                        <button type="button" class="btn btn-sm btn-success">Add Review</button>
                                         @endif
                                         <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
                                             @csrf @method('put')
