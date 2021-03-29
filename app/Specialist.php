@@ -40,5 +40,9 @@ class Specialist extends Model
     {
         return $this->hasMany(Bid::class);
     }
+    public function ratings()
+    {
+        return $this->hasOne(Rating::class);
+    }
 
 }
