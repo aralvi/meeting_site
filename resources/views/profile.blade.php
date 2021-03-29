@@ -1061,7 +1061,7 @@ h1 { font-size: 1.5em; margin: 10px; }
                                                 <div class="modal-body" >
                                                     
                                                     <form id="add-review-form-{{$appointment->id}}">
-
+                                                        <input type="hidden" name="specialist_id" value="{{ $appointment->specialist->id }}">
                                                         <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
                                                             <div>
                                                                 {{-- <img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /> --}}
@@ -1070,16 +1070,16 @@ h1 { font-size: 1.5em; margin: 10px; }
                                                             <div class="w-100">
                             
                                                                 <fieldset class="rating">
-    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+    <input type="radio" id="mystar{{ $appointment->id }}5" name="rating" value="5" /><label onclick="labelChange(this);" data-id="5" class = "full" for="mystar{{ $appointment->id }}5" title="Awesome - 5 stars"></label>
+    {{-- <input type="radio" id="star4half" name="rating" value="4 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star4half" title="Pretty good - 4.5 stars"></label> --}}
+    <input type="radio" id="mystar{{ $appointment->id }}4" name="rating" value="4" /><label onclick="labelChange(this);" data-id="4" class = "full" for="mystar{{ $appointment->id }}4" title="Pretty good - 4 stars"></label>
+    {{-- <input type="radio" id="star3half" name="rating" value="3 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star3half" title="Meh - 3.5 stars"></label> --}}
+    <input type="radio" id="mystar{{ $appointment->id }}3" name="rating" value="3" /><label onclick="labelChange(this);" data-id="3" class = "full" for="mystar{{ $appointment->id }}3" title="Meh - 3 stars"></label>
+    {{-- <input type="radio" id="star2half" name="rating" value="2 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star2half" title="Kinda bad - 2.5 stars"></label> --}}
+    <input type="radio" id="mystar{{ $appointment->id }}2" name="rating" value="2" /><label onclick="labelChange(this);" data-id="2" class = "full" for="mystar{{ $appointment->id }}2" title="Kinda bad - 2 stars"></label>
+    {{-- <input type="radio" id="star1half" name="rating" value="1 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star1half" title="Meh - 1.5 stars"></label> --}}
+    <input type="radio" id="mystar{{ $appointment->id }}1" name="rating" value="1" /><label onclick="labelChange(this);" data-id="1" class = "full" for="mystar{{ $appointment->id }}1" title="Sucks big time - 1 star"></label>
+    {{-- <input type="radio" id="starhalf" name="rating" value="half" /><label onclick="labelChange(this);" data-id="star" class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label> --}}
 </fieldset>
                                                             </div>
                                                         </div>
@@ -1088,13 +1088,13 @@ h1 { font-size: 1.5em; margin: 10px; }
                                                             <div class="input-group mb-3 border-input pt-4 d-flex ml-4 flex-nowrap col-md-11 border border-top-0 border-left-0 border-right-0">
                                                                 <div class="d-flex"><em class="fa fa-pencil d-flex justify-content-center align-items-center"></em></div>
                                                                 <div class="w-100">
-                                                                    <textarea type="text" class="w-100 form-control border-0" placeholder="Enter Message Body" name="username"></textarea>
+                                                                    <textarea type="text" class="w-100 form-control border-0" placeholder="Enter Message Body" name="description"></textarea>
                                                                 </div>
                                                             </div>
                                 
                                                         </div>
 
-                                                        <button type="button" class="btn btn-sm btn-success">Add</button>
+                                                        <button type="button" class="btn btn-sm btn-success" onclick="addReview(this);" data-id="{{$appointment->id}}">Add</button>
                                                     </form>
                                                     
                                                 </div>
@@ -1430,6 +1430,52 @@ h1 { font-size: 1.5em; margin: 10px; }
             },
         });
     }
+
+    function addReview(e)
+    {
+        let id = $(e).data('id');
+        var myform = document.getElementById("add-review-form-"+id);
+        var fd = new FormData(myform);
+        fd.append("_token","{{ csrf_token() }}");
+        $.ajax({
+            url:"{{ route('add.client.review') }}",
+            type:"post",
+            processData: false, 
+            contentType: false,
+            // data: $('#add-client-form').serialize(),
+            data: fd,
+            success:function(data)
+            {
+                if (data.success == true) 
+                {
+                    swal('success', data.message, 'success')
+                        .then((value) => {
+                            window.location = '{{ route('clients.index') }}';
+                        });
+                } else {
+                    if (data.hasOwnProperty('message')) {
+                        var wrapper = document.createElement('div');
+                        var err = '';
+                        $.each(data.message, function (i, e) {
+                            err += '<p>' + e + '</p>';
+                        })
+
+                        wrapper.innerHTML = err;
+                        swal({
+                            icon: "error",
+                            text: "{{ __('Please fix following error!') }}",
+                            content: wrapper,
+                            type: 'error'
+                        });
+                        //setTimeout("pageRedirect()", 3000);
+                        //$('.actions  li:first-child a').click();
+                    }
+                }
+
+            }
+        });
+    }
+
     $(document).ready(function () {
         $(".gallery").magnificPopup({
             delegate: "a",
@@ -1496,6 +1542,15 @@ h1 { font-size: 1.5em; margin: 10px; }
 </script>
 @else
     <script>
+
+        function labelChange(elem){
+            let e = $(elem).data('id');
+            console.log('#star'+e);
+            // $('#star'+e).find(['id="'+$(elem).data('id')+'"']).not().attr('checked',false);
+            $('#star'+e).attr('checked',true);
+            
+        }
+
         function ratingChange(elem){
             $(elem).addClass("checked");
             $(elem).prevAll().addClass("checked");

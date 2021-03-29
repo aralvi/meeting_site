@@ -8,7 +8,7 @@ use App\Models\Specialists\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Rating;
 class AppointmentController extends Controller
 {
     /**
@@ -127,5 +127,16 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addReview(Request $request)
+    {
+        $review = new Rating();
+        $review->specialist_id = $request->specialist_id;
+        $review->user_id = Auth::user()->id;
+        $review->rating = $request->rating;
+        $review->description = $request->description;
+        $review->save();
+
     }
 }

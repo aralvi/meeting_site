@@ -83,7 +83,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('sub_categories', 'Client\ClientController@getSubCategories')->name('request.get_subcategories');
     Route::view('client/dashboard','client.index');
 
-
+    Route::post('add/client/review','AppointmentController@addReview')->name('add.client.review');
     // payemnts 
 
     Route::get('stripe', 'StripePaymentController@stripe');
