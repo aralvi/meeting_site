@@ -160,7 +160,7 @@
             </div>
         </div>
 
-        <div class="col-md-8 col-lg-8 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
+        <div class="col-md-7 col-lg-7 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
             <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -1586,7 +1586,7 @@
 
                 @endif
 
-                <div class="tab-pane fade " id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
+                <div class="tab-pane fade" id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
                     <p class="pl-3 f-21 cl-000000">Appointments</p>
                     <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
                         <table id="example2" class="table table-hover example1">
@@ -1599,8 +1599,6 @@
                                     <th scope="col">Timing</th>
                                     <th scope="col">Rate</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Payment Status</th>
-                                    <th scope="col">Payment Remaining</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -1633,24 +1631,6 @@
 
                                         @endif
                                     </td>
-                                    <td class="border-0">
-                                        @if ($appointment->payment_status == "Pending")
-
-                                        <span class="badge badge-sm badge-warning">{{ $appointment->payment_status }}</span>
-
-                                        @endif @if ($appointment->payment_status == "Partial Paid")
-
-                                        <span class="badge badge-sm badge-info">{{ $appointment->payment_status }}</span>
-
-                                        @endif @if ($appointment->payment_status == "Paid")
-
-                                        <span class="badge badge-sm badge-success">{{ $appointment->payment_status }}</span>
-
-                                        @endif
-                                    </td>
-                                    <td class="border-0">
-                                        {{ $appointment->rate - $appointment->payment_amount }}
-                                    </td>
 
                                     <td style="min-width: 135px !important;" class="d-flex border-0">
                                         @if ($appointment->status != "Completed" ) @if (Auth::user()->user_type=='specialist')
@@ -1660,8 +1640,8 @@
                                             <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}" />
                                             <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
                                         </form>
-                                        @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid")
-                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal" data-appointment="{{ $appointment->id }}" data-specialist="{{ $appointment->specialist_id }}" data-amount="{{ $appointment->rate }}">payment</button>
+                                        @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client')
+                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal"  data-specialist="{{ $appointment->specialist_id }}">payment</button>
                                         @endif
                                         <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
                                             @csrf @method('put')
@@ -1716,9 +1696,14 @@
             </button>
         </div>
         <div class="modal-body" >
-            
+            <form action="{{route('checkout.credit-card')}}"  method="post" id="payment-form">
+                        @csrf         
+                               <div class="form-group">
+                                   <input type="hidden" name="specialist" id="specialist_id">
+                            <input type="number" name="amount" onfocusout="stripe_payment(this);" class="form-control" autofocus>       
+                            </div>  
             <div id="payment_request"></div>
-            
+            </form>
         </div>
         
         </div>
@@ -2075,22 +2060,33 @@
     // ajax for payment
 $('.payment_btn').on('click',function(){
     var specialist_id = $(this).data('specialist');
-    var amount = $(this).data('amount');
-    var appointment = $(this).data('appointment');
+    $('#specialist_id').val(specialist_id);
     $('#payment_request').empty();
 
-    $.ajax({
+    // $.ajax({
+    //     type:'get',
+    //     url: "{{ url('checkout') }}",
+    //     data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id},
+    //     success:function(data){
+    //         $('#payment_request').html(data);
+    //     }
+
+    // })
+    
+})
+function stripe_payment(e){
+    var specialist_id = $('#specialist_id').val();
+ $.ajax({
         type:'get',
-        url: "{{ url('stripe') }}",
-        data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id,amount:amount,appointment:appointment},
+        url: "{{ url('checkout') }}",
+        data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id,amount:e.value},
         success:function(data){
             $('#payment_request').html(data);
         }
 
     })
     
-})
-
+}
 
 
     </script>

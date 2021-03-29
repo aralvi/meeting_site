@@ -69,6 +69,8 @@ class RegisterController extends Controller
             $arr['avatar'] = ['bail','required'];
             $arr['payment_method'] = ['bail','required'];
             $arr['business_phone'] = ['bail','required', 'string'];
+            $arr['languages'] = ['required'];
+            $arr['description'] = ['bail','required', 'string'];
         }
         else if($data['user_type']=='client')
         {
@@ -148,6 +150,8 @@ class RegisterController extends Controller
             $specialist->category_id = $data['category_id'];
             $specialist->sub_category_id = json_encode($data['sub_category_id']);
             $specialist->business_phone = $data['business_phone'];
+            $specialist->description = $data['description'];
+            $specialist->languages = json_encode($data['languages']);
             $specialist->public_profile = $data['public_profile'];
             $specialist->payment_method = $data['payment_method'];
             if($data['payment_method']=='stripe' && $data['user_type'] !='client')

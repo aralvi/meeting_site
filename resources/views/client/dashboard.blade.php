@@ -140,7 +140,7 @@ span.prefix{
         <div class="row mt-5 justify-content-around">
             <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
                 <div class="px-5 py-3">
-                    <div class="cl-3ac754 f-34">Today's Appointments <span class="text-muted cl-6A6A6A">({{ count($appointments) }})</span></div>
+                    <div class="cl-3ac754 f-34">Upcoming Appointments <span class="text-muted cl-6A6A6A">({{ count($appointments) }})</span></div>
                     <div class="card-body px-0">
                         <div class="row m-0 p-0">
                             <div class="col-md-2 pl-0 py-0">
@@ -448,7 +448,7 @@ span.prefix{
                                                 </div>
                                                 <div class="card-footer  bg-ffffff pt-4 pb-4">
                                                     <h5 class="card-title m-0 RobotoMedium f-21 cl-000000">{{ ucwords($specialist->category->name) }}</h5>
-                                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->name }}
+                                                    <p class="card-text m-0 robotoRegular cl-6 cl-6b6b6b f-21 pt-1">{{ $specialist->user->username }}
                                                     </p>
                                                 </div>
 
