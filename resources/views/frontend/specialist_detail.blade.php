@@ -391,32 +391,8 @@
             @if($specialist->description !=null)
             <div class="border-bottom pb-3">
                 <div class="robotoMedium f-18 pt-3">About Me</div>
-                <div class="robotoRegular f-18 text-justify pt-3">{{$specialist->description}}
+                <div class="robotoRegular f-18 text-justify pt-3">{{ucfirst($specialist->description)}}
                 </div>
-            </div>
-            @endif
-
-            @if(json_decode($specialist->opening_hours))
-            <div class="border-bottom pb-3  f-18">
-                <div class="robotoMedium f-18 pt-3">Days & Hours of Availability</div>
-                @foreach(json_decode($specialist->opening_hours) as $key=>$value)
-
-                <div class="row ml-3">
-                    <div class="col-md-3 text-left ">{{ ucfirst($key) }}</div>
-                    <div class="col-md-3 text-center">
-                        {{ getTimeZoneTime($specialist->user->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[0]) }}
-                    </div>
-                    <div class="col-md-3 text-center"> - </div>
-                    <div class="col-md-3 text-center">
-                        {{ getTimeZoneTime($specialist->user->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[1]) }}
-                    </div>
-                </div>
-
-                @endforeach
-                {{-- <div class="robotoMedium pt-3">Specifications:</div>
-              <div class="robotoRegular pt-3">Confirmed Appointment</div>
-              <div class="robotoRegular pt-3">Timings Decided</div> --}}
-
             </div>
             @endif
 
@@ -430,23 +406,49 @@
             @endif
 
             @if($specialist->languages !=null)
-            <div class="border-bottom pb-3 f-18">
-                <div class="robotoMedium pt-3">Languages</div>
-                <div class="d-flex pt-3  robotoRegular">
-                    <div>
-                        <div>English</div>
-                        <div class="pt-3">French</div>
-                        <div class="pt-3">Portuguese</div>
-                    </div>
-                    <div class="pl-5">
-                        <div>Primary</div>
-                        <div class="pt-3">Secondary</div>
-                        <div class="pt-3">Secondary</div>
+                <div class="border-bottom pb-3 f-18">
+                    <div class="robotoMedium pt-3">Languages</div>
+                    <div class="d-flex pt-3  robotoRegular">
+                        <div class="ml-3">
+                            @foreach(json_decode($specialist->languages) as $language)
+                                <div>{{ ucfirst($language) }}</div>
+                            @endforeach
+                            {{-- <div>English</div>
+                            <div class="pt-3">French</div>
+                            <div class="pt-3">Portuguese</div> --}}
+                        </div>
+                        {{-- <div class="pl-5">
+                            <div>Primary</div>
+                            <div class="pt-3">Secondary</div>
+                            <div class="pt-3">Secondary</div>
+                        </div> --}}
                     </div>
                 </div>
-            </div>
             @endif
 
+            @if(json_decode($specialist->opening_hours))
+                <div class="border-bottom pb-3  f-18">
+                    <div class="robotoMedium f-18 pt-3">Days & Hours of Availability</div>
+                    @foreach(json_decode($specialist->opening_hours) as $key=>$value)
+
+                    <div class="row ml-3">
+                        <div class="col-md-3 text-left ">{{ ucfirst($key) }}</div>
+                        <div class="col-md-3 text-center">
+                            {{ getTimeZoneTime($specialist->user->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[0]) }}
+                        </div>
+                        <div class="col-md-3 text-center"> - </div>
+                        <div class="col-md-3 text-center">
+                            {{ getTimeZoneTime($specialist->user->time_zone,Auth::user()->time_zone,$key.' '.json_decode($specialist->opening_hours)->$key[1]) }}
+                        </div>
+                    </div>
+
+                    @endforeach
+                    {{-- <div class="robotoMedium pt-3">Specifications:</div>
+                <div class="robotoRegular pt-3">Confirmed Appointment</div>
+                <div class="robotoRegular pt-3">Timings Decided</div> --}}
+
+                </div>
+            @endif
 
             {{-- <div class=" pb-3 robotoMedium f-18">
             <div class="pt-3">Share:</div>

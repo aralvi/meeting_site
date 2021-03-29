@@ -3,6 +3,7 @@
 {{-- head start --}}
 
 @section('extra-css')
+<link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}">
 <style type="text/css">
     .placeholder-color-change::-webkit-input-placeholder {
@@ -12,7 +13,23 @@
     .country-select {
         border: none !important;
     }
+    .select2{ width:100% !important; }
+    .select2-selection{ border:none !important;}
+    /* .select2-results__options{ border-top: 1px solid #aaaaaa !important;border-bottom: 1px solid #aaaaaa !important;} */
+    
+    .select2-container--default .select2-selection--multiple .select2-selection__choice{
+        background-color: #3AC574 !important;
+        color:#ffffff;
+        border:none !important;
+        padding-bottom: 4px !important;
+        padding-bottom: 4px !important;
+    }
 
+    .select2-container--open .select2-dropdown--below{ border-top: 1px solid #aaaaaa !important; }
+    .select2-container--open .select2-dropdown--above{ border-bottom: 1px solid #aaaaaa !important; }
+    .select2-selection__choice__remove{
+        color:#cd2a2a !important;
+    }
     .swal-button {
         background-color: #3AC574 !important;
     }
@@ -347,7 +364,8 @@
                                     <em class="fa fa-map-marker"></em>
                                 </div>
                                 <div class="w-100">
-                                    <select id="country" name="country" class="form-control country-select w-100">
+                                    <select id="country" name="country" class="select2 form-control country-select w-100">
+                                        <option selected disabled>Choose a Country...</option>
                                         <option value="Afganistan">Afghanistan</option>
                                         <option value="Albania">Albania</option>
                                         <option value="Algeria">Algeria</option>
@@ -595,6 +613,103 @@
                                         <option value="Zambia">Zambia</option>
                                         <option value="Zimbabwe">Zimbabwe</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                                <div>
+                                    {{-- <img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /> --}}
+                                    <em class="fa fa-language"></em>
+                                </div>
+                                <div class="w-100">
+
+                                    <select id="languages" name="languages[]" class="form-control country-select w-100 select2" multiple="multiple">
+                                        <option selected disabled>Choose Languages...</option>
+                                        <option value="Afrikaans">Afrikaans</option>
+                                        <option value="Albanian">Albanian</option>
+                                        <option value="Arabic">Arabic</option>
+                                        <option value="Armenian">Armenian</option>
+                                        <option value="Basque">Basque</option>
+                                        <option value="Bengali">Bengali</option>
+                                        <option value="Bulgarian">Bulgarian</option>
+                                        <option value="Catalan">Catalan</option>
+                                        <option value="Cambodian">Cambodian</option>
+                                        <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
+                                        <option value="Croatian">Croatian</option>
+                                        <option value="Czech">Czech</option>
+                                        <option value="Danish">Danish</option>
+                                        <option value="Dutch">Dutch</option>
+                                        <option value="English">English</option>
+                                        <option value="Estonian">Estonian</option>
+                                        <option value="Fiji">Fiji</option>
+                                        <option value="Finnish">Finnish</option>
+                                        <option value="French">French</option>
+                                        <option value="Georgian">Georgian</option>
+                                        <option value="German">German</option>
+                                        <option value="Greek">Greek</option>
+                                        <option value="Gujarati">Gujarati</option>
+                                        <option value="Hebrew">Hebrew</option>
+                                        <option value="Hindi">Hindi</option>
+                                        <option value="Hungarian">Hungarian</option>
+                                        <option value="Icelandic">Icelandic</option>
+                                        <option value="Indonesian">Indonesian</option>
+                                        <option value="Irish">Irish</option>
+                                        <option value="Italian">Italian</option>
+                                        <option value="Japanese">Japanese</option>
+                                        <option value="Javanese">Javanese</option>
+                                        <option value="Korean">Korean</option>
+                                        <option value="Latin">Latin</option>
+                                        <option value="Latvian">Latvian</option>
+                                        <option value="Lithuanian">Lithuanian</option>
+                                        <option value="Macedonian">Macedonian</option>
+                                        <option value="Malay">Malay</option>
+                                        <option value="Malayalam">Malayalam</option>
+                                        <option value="Maltese">Maltese</option>
+                                        <option value="Maori">Maori</option>
+                                        <option value="Marathi">Marathi</option>
+                                        <option value="Mongolian">Mongolian</option>
+                                        <option value="Nepali">Nepali</option>
+                                        <option value="Norwegian">Norwegian</option>
+                                        <option value="Persian">Persian</option>
+                                        <option value="Polish">Polish</option>
+                                        <option value="Portuguese">Portuguese</option>
+                                        <option value="Punjabi">Punjabi</option>
+                                        <option value="Quechua">Quechua</option>
+                                        <option value="Romanian">Romanian</option>
+                                        <option value="Russian">Russian</option>
+                                        <option value="Samoan">Samoan</option>
+                                        <option value="Serbian">Serbian</option>
+                                        <option value="Slovak">Slovak</option>
+                                        <option value="Slovenian">Slovenian</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="Swahili">Swahili</option>
+                                        <option value="Swedish ">Swedish </option>
+                                        <option value="Tamil">Tamil</option>
+                                        <option value="Tatar">Tatar</option>
+                                        <option value="Telugu">Telugu</option>
+                                        <option value="Thai">Thai</option>
+                                        <option value="Tibetan">Tibetan</option>
+                                        <option value="Tonga">Tonga</option>
+                                        <option value="Turkish">Turkish</option>
+                                        <option value="Ukrainian">Ukrainian</option>
+                                        <option value="Urdu">Urdu</option>
+                                        <option value="Uzbek">Uzbek</option>
+                                        <option value="Vietnamese">Vietnamese</option>
+                                        <option value="Welsh">Welsh</option>
+                                        <option value="Xhosa">Xhosa</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                                <div>
+                                    {{-- <img src="{{ asset('assets/frontend/images/selection-8 (1).png') }}" alt="" />
+                                    --}}
+                                    <em class="fa fa-bars"></em>
+                                </div>
+                                <div class="w-100">
+                                    <textarea name="description" type="text" id="description" class="form-control border-0" placeholder="Please Type Description..."
+                                      ></textarea>
                                 </div>
                             </div>
 
@@ -2938,11 +3053,13 @@
 <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/select2/js/select2.min.js') }}" ></script>
 <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 
 <script>
+    $(".select2").select2();
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     var firebaseConfig = {
@@ -3054,8 +3171,8 @@
             $(ele).siblings('button').addClass('d-none');
             $(ele).siblings('span').removeClass('d-none');
         }
-
     }
+
     setInterval(() => {
         let meCheck = false;
         $.each($('.days'), function () {
@@ -3164,6 +3281,20 @@
         $('#select_category').parent('div').siblings('div').children('em').css("color", "#3ac574");
         $('#select_category').removeClass('placeholder-color-change');
         $('#select_category').parent('div').parent('div').css("border-bottom", "1px solid #3ac574");
+        return true;
+    }
+
+    function selectFieldValidateChanged(id,target) {
+        if ($(id).val() == null || $(id).val().length ==0) {
+            $(target).addClass('placeholder-color-change');
+            $(target).parent('div').siblings('div').children('em').css("color", "#e91e63");
+            $(target).parent('div').parent('div').removeClass('border-input');
+            $(target).parent('div').parent('div').css("border-bottom", "1px solid #e91e63");
+            return false;
+        }
+        $(target).parent('div').siblings('div').children('em').css("color", "#3ac574");
+        $(target).removeClass('placeholder-color-change');
+        $(target).parent('div').parent('div').css("border-bottom", "1px solid #3ac574");
         return true;
     }
 
@@ -3710,7 +3841,7 @@
     });
 
     $(document.body).on("click", "input.step1", function () {
-        // $(this).parent("div").siblings("span.inputBtn").click();
+        $(this).parent("div").siblings("span.inputBtn").click();
         if (inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($(
             '#email')) && passwordFieldValidate($('#password'), $('#confirm_password')) && fileValidate($(
                 '#avatar'))) {
@@ -3749,8 +3880,8 @@
         let stepSecond = false;
         // $(this).parent("div").siblings("span.inputBtn").click();
 
-        if (inptFieldValidate($('#business_phone')) && inptFieldValidate($('#business_location')) &&
-            selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($(
+        if (inptFieldValidate($('#business_phone')) && selectFieldValidateChanged($('#country'),$('#country')) && selectFieldValidateChanged($('#languages'),$('#languages'))  && inptFieldValidate($('#description'))
+            && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($(
                 '.checkbxCheck'))) {
             if ($('#code_send_check').val() == 'false') {
                 sendPhoneCode($(this));
