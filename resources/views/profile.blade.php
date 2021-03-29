@@ -105,6 +105,47 @@
     .select2-container--default .select2-selection--single {
         border: none !important;
     }
+
+    fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
@@ -1008,6 +1049,63 @@
                                         </form>
                                         @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid")
                                         <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal" data-appointment="{{ $appointment->id }}" data-specialist="{{ $appointment->specialist_id }}" data-amount="{{ $appointment->rate }}">payment</button>
+
+                                        <div class="modal fade" tabindex="-1" role="dialog" id="review_modal{{$appointment->id}}">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Add Review</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" >
+                                                    
+                                                    <form id="add-review-form-{{$appointment->id}}">
+
+                                                        <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                                                            <div>
+                                                                {{-- <img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /> --}}
+                                                                <em class="fa fa-language"></em>
+                                                            </div>
+                                                            <div class="w-100">
+                            
+                                                                <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+</fieldset>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row justify-content-between">
+                                                            <div class="input-group mb-3 border-input pt-4 d-flex ml-4 flex-nowrap col-md-11 border border-top-0 border-left-0 border-right-0">
+                                                                <div class="d-flex"><em class="fa fa-pencil d-flex justify-content-center align-items-center"></em></div>
+                                                                <div class="w-100">
+                                                                    <textarea type="text" class="w-100 form-control border-0" placeholder="Enter Message Body" name="username"></textarea>
+                                                                </div>
+                                                            </div>
+                                
+                                                        </div>
+
+                                                        <button type="button" class="btn btn-sm btn-success">Add</button>
+                                                    </form>
+                                                    
+                                                </div>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#review_modal{{$appointment->id}}">Add Review</button>
+
                                         @endif
                                         <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
                                             @csrf @method('put')
@@ -1399,7 +1497,15 @@
 </script>
 @else
     <script>
-        
+        function ratingChange(elem){
+            $(elem).addClass("checked");
+            $(elem).prevAll().addClass("checked");
+            $(elem).nextAll().removeClass("checked");
+            $(elem).nextAll().children('input').attr("checked",false);
+            $('span.checked').each(function(){
+                $(this).children('input').attr('checked',true);
+            });
+        }
     // ajax for payment
 $('.payment_btn').on('click',function(){
     var specialist_id = $(this).data('specialist');
