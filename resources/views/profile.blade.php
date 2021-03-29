@@ -1586,7 +1586,7 @@
 
                 @endif
 
-                <div class="tab-pane fade" id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
+                <div class="tab-pane fade " id="v-pills-appointment" role="tabpanel" aria-labelledby="v-pills-appointment-tab">
                     <p class="pl-3 f-21 cl-000000">Appointments</p>
                     <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
                         <table id="example2" class="table table-hover example1">
@@ -1641,7 +1641,7 @@
                                             <button type="submit" class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
                                         </form>
                                         @endif @if ($appointment->status != "Cancelled") @if (Auth::user()->user_type=='client')
-                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal"  data-specialist="{{ $appointment->specialist_id }}">payment</button>
+                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal" data-target="#payment_modal"  data-specialist="{{ $appointment->specialist_id }}" data-amount="{{ $appointment->rate }}">payment</button>
                                         @endif
                                         <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
                                             @csrf @method('put')
@@ -1696,14 +1696,9 @@
             </button>
         </div>
         <div class="modal-body" >
-            <form action="{{route('checkout.credit-card')}}"  method="post" id="payment-form">
-                        @csrf         
-                               <div class="form-group">
-                                   <input type="hidden" name="specialist" id="specialist_id">
-                            <input type="number" name="amount" onfocusout="stripe_payment(this);" class="form-control" autofocus>       
-                            </div>  
+            
             <div id="payment_request"></div>
-            </form>
+            
         </div>
         
         </div>
@@ -2060,33 +2055,21 @@
     // ajax for payment
 $('.payment_btn').on('click',function(){
     var specialist_id = $(this).data('specialist');
-    $('#specialist_id').val(specialist_id);
+    var amount = $(this).data('amount');
     $('#payment_request').empty();
 
-    // $.ajax({
-    //     type:'get',
-    //     url: "{{ url('checkout') }}",
-    //     data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id},
-    //     success:function(data){
-    //         $('#payment_request').html(data);
-    //     }
-
-    // })
-    
-})
-function stripe_payment(e){
-    var specialist_id = $('#specialist_id').val();
- $.ajax({
+    $.ajax({
         type:'get',
-        url: "{{ url('checkout') }}",
-        data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id,amount:e.value},
+        url: "{{ url('stripe') }}",
+        data: {_token:'{{ csrf_token() }}',specialist_id:specialist_id,amount:amount},
         success:function(data){
             $('#payment_request').html(data);
         }
 
     })
     
-}
+})
+
 
     </script>
 @endif

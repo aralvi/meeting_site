@@ -85,6 +85,7 @@ Route::group(['middleware'=>['auth']],function(){
 
 
     // payemnts 
-    Route::get('checkout', 'StripeController@checkout');
-    Route::post('checkout', 'StripeController@afterpayment')->name('checkout.credit-card');
+
+    Route::get('stripe', 'StripePaymentController@stripe');
+    Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 });
