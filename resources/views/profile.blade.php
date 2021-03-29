@@ -1600,7 +1600,7 @@
                                     <th scope="col">Rate</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Payment Status</th>
-                                    {{-- <th scope="col">Payment Remaining</th> --}}
+                                    <th scope="col">Payment Remaining</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -1648,9 +1648,9 @@
 
                                         @endif
                                     </td>
-                                    {{-- <td class="border-0">
+                                    <td class="border-0">
                                         {{ $appointment->rate - $appointment->payment_amount }}
-                                    </td> --}}
+                                    </td>
 
                                     <td style="min-width: 135px !important;" class="d-flex border-0">
                                         @if ($appointment->status != "Completed" ) @if (Auth::user()->user_type=='specialist')
