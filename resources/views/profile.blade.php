@@ -2092,6 +2092,7 @@ $('.payment_btn').on('click',function(){
 })
 
 
+
     </script>
 @endif
 @endsection {{-- footer section end --}}
