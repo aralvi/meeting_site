@@ -1195,7 +1195,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Add Review</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
+                                                        <button type="button" class="close close{{$appointment->id}}" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -1203,6 +1203,7 @@
                                                     <div class="modal-body">
 
                                                         <form id="add-review-form-{{$appointment->id}}">
+                                                            <input type="hidden" name="appointment_id" value="{{ $appointment->id }}">
                                                             <input type="hidden" name="specialist_id" value="{{ $appointment->specialist->id }}">
                                                             <div class="ml-4 input-group mb-3 pt-4 d-flex flex-nowrap">
                                                                 <div class="w-100">
@@ -1233,9 +1234,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if($appointment->rating == null)
 
-                                        <button type="button" class="btn btn-sm btn-success" data-toggle="modal"
-                                            data-target="#review_modal{{$appointment->id}}">Add Review</button>
+                                            <button type="button" class="btn btn-sm btn-success add-review-{{$appointment->id}}" data-toggle="modal"
+                                        data-target="#review_modal{{$appointment->id}}">Add Review</button>
+
+                                        @endif
+                                        
 
                                         @endif
                                         <form action="{{ route('appointments.update',$appointment->id) }}"
@@ -1684,7 +1689,8 @@
                 if (data.success == true) {
                     swal('success', data.message, 'success')
                         .then((value) => {
-                            window.location = '{{ route('clients.index') }}';
+                           $('.close'+id).click();
+                           $('.add-review-'+id).hide();
                         });
                 } else {
                     if (data.hasOwnProperty('message')) {
