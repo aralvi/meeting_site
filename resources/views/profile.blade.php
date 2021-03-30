@@ -634,7 +634,7 @@
                             <div class="modal-dialog border-1" role="document">
                                 <div class="modal-content pt-4">
                                     <div class="modal-header border-0 pl-5 pr-5">
-                                        <h2 class="modal-title cl-gray" id="exampleModalLabel">Main Category</h2>
+                                        <h2 class="modal-title cl-gray" id="exampleModalLabel">Category</h2>
                                         <button type="button" class="close close1" data-dismiss="modal"
                                             aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
@@ -642,7 +642,7 @@
                                         <select class="custom-select main-category" name="category_id"
                                             onchange="getSubCategories(this);">
                                             @if(App\Category::all()->count() >0)
-                                            <option value="Select Main Category" selected="" disabled="">Select Main
+                                            <option value="Select Main Category" selected="" disabled="">Select
                                                 Category</option>
                                             @foreach(App\Category::all() as $category)
                                             <option value="{{ $category->id }}"
@@ -653,8 +653,7 @@
                                     </div>
                                     <div id="sub_categories">
                                         @if($subcategories->count() > 0)
-                                        <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">Business
-                                            Category</h2>
+                                        <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">SubCategory</h2>
                                         <div class="border overflow-scroll-reg pl-5 mt-2">
                                             @php $sub_categories =
                                             json_decode(Auth::user()->specialist->sub_category_id); @endphp
@@ -858,9 +857,7 @@
                                         <select id="country" name="country"
                                             class="form-control country-select w-100 border-0">
                                             @foreach (countries() as $country)
-                                            <option value="{{ $country }}"
-                                                {{ ($country == Auth::user()->country) ? 'selected':'' }}>{{ $country }}
-                                            </option>
+                                                <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -1206,81 +1203,29 @@
                                                     <div class="modal-body">
 
                                                         <form id="add-review-form-{{$appointment->id}}">
-                                                            <input type="hidden" name="specialist_id"
-                                                                value="{{ $appointment->specialist->id }}">
-                                                            <div
-                                                                class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
-                                                                <div>
-                                                                    {{-- <img src="{{ asset('assets/frontend/images/location.png') }}"
-                                                                    alt="" /> --}}
-                                                                    <em class="fa fa-language"></em>
-                                                                </div>
+                                                            <input type="hidden" name="specialist_id" value="{{ $appointment->specialist->id }}">
+                                                            <div class="ml-4 input-group mb-3 pt-4 d-flex flex-nowrap">
                                                                 <div class="w-100">
-
                                                                     <fieldset class="rating">
-                                                                        <input type="radio"
-                                                                            id="mystar{{ $appointment->id }}5"
-                                                                            name="rating" value="5" /><label
-                                                                            onclick="labelChange(this);" data-id="5"
-                                                                            class="full"
-                                                                            for="mystar{{ $appointment->id }}5"
-                                                                            title="Awesome - 5 stars"></label>
-                                                                        {{-- <input type="radio" id="star4half" name="rating" value="4 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star4half" title="Pretty good - 4.5 stars"></label> --}}
-                                                                        <input type="radio"
-                                                                            id="mystar{{ $appointment->id }}4"
-                                                                            name="rating" value="4" /><label
-                                                                            onclick="labelChange(this);" data-id="4"
-                                                                            class="full"
-                                                                            for="mystar{{ $appointment->id }}4"
-                                                                            title="Pretty good - 4 stars"></label>
-                                                                        {{-- <input type="radio" id="star3half" name="rating" value="3 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star3half" title="Meh - 3.5 stars"></label> --}}
-                                                                        <input type="radio"
-                                                                            id="mystar{{ $appointment->id }}3"
-                                                                            name="rating" value="3" /><label
-                                                                            onclick="labelChange(this);" data-id="3"
-                                                                            class="full"
-                                                                            for="mystar{{ $appointment->id }}3"
-                                                                            title="Meh - 3 stars"></label>
-                                                                        {{-- <input type="radio" id="star2half" name="rating" value="2 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star2half" title="Kinda bad - 2.5 stars"></label> --}}
-                                                                        <input type="radio"
-                                                                            id="mystar{{ $appointment->id }}2"
-                                                                            name="rating" value="2" /><label
-                                                                            onclick="labelChange(this);" data-id="2"
-                                                                            class="full"
-                                                                            for="mystar{{ $appointment->id }}2"
-                                                                            title="Kinda bad - 2 stars"></label>
-                                                                        {{-- <input type="radio" id="star1half" name="rating" value="1 and a half" /><label onclick="labelChange(this);" data-id="star" class="half" for="star1half" title="Meh - 1.5 stars"></label> --}}
-                                                                        <input type="radio"
-                                                                            id="mystar{{ $appointment->id }}1"
-                                                                            name="rating" value="1" /><label
-                                                                            onclick="labelChange(this);" data-id="1"
-                                                                            class="full"
-                                                                            for="mystar{{ $appointment->id }}1"
-                                                                            title="Sucks big time - 1 star"></label>
-                                                                        {{-- <input type="radio" id="starhalf" name="rating" value="half" /><label onclick="labelChange(this);" data-id="star" class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label> --}}
+                                                                        <input type="radio" id="mystar{{ $appointment->id }}5" name="rating" value="5" /><label onclick="labelChange(this);" data-id="5" class = "full" for="mystar{{ $appointment->id }}5" title="Awesome - 5 stars"></label>
+                                                                        <input type="radio" id="mystar{{ $appointment->id }}4" name="rating" value="4" /><label onclick="labelChange(this);" data-id="4" class = "full" for="mystar{{ $appointment->id }}4" title="Pretty good - 4 stars"></label>
+                                                                        <input type="radio" id="mystar{{ $appointment->id }}3" name="rating" value="3" /><label onclick="labelChange(this);" data-id="3" class = "full" for="mystar{{ $appointment->id }}3" title="Meh - 3 stars"></label>
+                                                                        <input type="radio" id="mystar{{ $appointment->id }}2" name="rating" value="2" /><label onclick="labelChange(this);" data-id="2" class = "full" for="mystar{{ $appointment->id }}2" title="Kinda bad - 2 stars"></label>
+                                                                        <input type="radio" id="mystar{{ $appointment->id }}1" name="rating" value="1" /><label onclick="labelChange(this);" data-id="1" class = "full" for="mystar{{ $appointment->id }}1" title="Sucks big time - 1 star"></label>
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
-
+    
                                                             <div class="row justify-content-between">
-                                                                <div
-                                                                    class="input-group mb-3 border-input pt-4 d-flex ml-4 flex-nowrap col-md-11 border border-top-0 border-left-0 border-right-0">
-                                                                    <div class="d-flex"><em
-                                                                            class="fa fa-pencil d-flex justify-content-center align-items-center"></em>
-                                                                    </div>
+                                                                <div class="input-group mb-3 pt-4 d-flex ml-4 flex-nowrap col-md-11 border-top-0 border-left-0 border-right-0">
                                                                     <div class="w-100">
-                                                                        <textarea type="text"
-                                                                            class="w-100 form-control border-0"
-                                                                            placeholder="Enter Message Body"
-                                                                            name="description"></textarea>
+                                                                        <textarea type="text" class="w-100 form-control border" placeholder="Enter Message Body" name="description"></textarea>
                                                                     </div>
                                                                 </div>
-
+                                    
                                                             </div>
-
-                                                            <button type="button" class="btn btn-sm btn-success"
-                                                                onclick="addReview(this);"
-                                                                data-id="{{$appointment->id}}">Add</button>
+    
+                                                            <button type="button" class="btn btn-sm btn-success" onclick="addReview(this);" data-id="{{$appointment->id}}">Add</button>
                                                         </form>
 
                                                     </div>
