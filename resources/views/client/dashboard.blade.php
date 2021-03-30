@@ -562,96 +562,6 @@ span.prefix{
                             @if($service_requests->count() >0)
                                 @foreach($service_requests as $i=>$request)
 
-                                    <!-- Modal -->
-                                    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content pl-5 pr-5 pt-3 ">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Service Request Bids</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                </div>
-                                                
-                                                <div class="modal-body">
-                                                    @if($request->bids->count() > 0)
-
-                                                        <div class="row px-3 ml-1 mt-2 mb-5">
-                                                            <div class="col-md-12 mt-3 borderRadius-10px box_shadow1 pb-5">
-                                                                <div class="d-flex mt-3 justify-content-between px-5">
-                                                                    <div class="cl-3ac754 robotoMedium f-24 col-md-9 px-0">Bids Description</div>
-                                                                    <div class="f-24 cl-3ac754 robotoMedium col-md-2 px-0 text-right">Amount</div>
-                                                                    <div class="f-24 cl-3ac754 robotoMedium col-md-1">Action</div>
-                                                                </div>
-                                                                <div class="mt-3 border w-100"></div>
-                                                                @foreach ($request->bids as $service)
-                                                                    <div class="d-flex mt-4 justify-content-between pr-5" >
-                                                                        <div class="col-md-9 pl-5 pr-0">
-                                                                            <div class="cl-000000 robotoMedium f-24">{{ ucfirst($request->title) }}</div>
-                                                                            <div class="d-flex">
-                                                                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Bid by:</div>
-                                                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->specialist->user->name }} </div>
-                                                                            </div>
-                                                                            <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
-                                                                                {{$service->perposal}}
-                                                                            </div>
-                                                                            <div class="d-flex pt-2">
-                                                                                <div>
-                                                                                    <div class="d-flex">
-                                                                                        <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                                                                        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Bid</div>
-                                                                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div></div>
-                                                                            </div>
-                                                                            @if($service->attachment !=null)
-
-                                                                                <div class="d-flex pt-2">
-                                                                                    <div>
-                                                                                        <div class="d-flex">
-                                                                                            <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
-                                                                                            <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
-                                                                                                
-                                                                                                <a class="cl-3ac754" href="public/{{ $service->attachment }}" download="downlaod">test</a>
-                                                                                                </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div></div>
-                                                                                </div>
-                                                                            
-                                                                            @endif
-                                                                        </div>
-                                                                        <div class="robotoMedium text-right col-md-2 pr-0">
-                                                                            <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
-                                                                            <div class="f-21 cl-6b6b6b">USD</div>
-                                                                        </div>
-                                                                        <div class="col-md-1">
-                                                                            {{-- <form action="{{ route('bids.update',$service->id) }}" method="post" class="bid_accept">
-                                                                            @csrf @method('PUT') --}}
-                                                                            <input type="hidden" name="url" value="{{ route('bids.update',$service->id) }}" class="url">
-                                                                            <input type="hidden" name="status" value="{{ ($service->status == 'Declined') ? 1 :0 }}" class="status">
-                                                                            <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Declined' }} </button>
-                                                                            {{-- </form> --}}
-                                                                            
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="mt-3 border w-100"></div>
-                                                                    
-                                                                @endforeach
-                                                                
-                                                            </div>
-                                                        </div>
-
-                                                    @endif
-                                                </div>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <tr id="target_" class="border-bottom">
                                         <td class="border-0">{{++$i}}</td>
                                         <td class="border-0">{{ ucwords($request->title) }}</td>
@@ -662,7 +572,99 @@ span.prefix{
                                         <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
                                         <td class="border-0">{{ ucfirst($request->description) }}</td>
                                         <td class="border-0">$ {{ $request->budget }}</td>
-                                        <td><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal">Bids</button></td>
+                                        <td>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade bd-example-modal-lg" id="exampleModal{{$request->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content pl-5 pr-5 pt-3 ">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Service Request Bids</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                        
+                                                        <div class="modal-body">
+                                                            @if($request->bids->count() > 0)
+
+                                                                <div class="row px-3 ml-1 mt-2 mb-5">
+                                                                    <div class="col-md-12 mt-3 borderRadius-10px box_shadow1 pb-5">
+                                                                        <div class="d-flex mt-3 justify-content-between px-5">
+                                                                            <div class="cl-3ac754 robotoMedium f-24 col-md-9 px-0">Bids Description</div>
+                                                                            <div class="f-24 cl-3ac754 robotoMedium col-md-2 px-0 text-right">Amount</div>
+                                                                            <div class="f-24 cl-3ac754 robotoMedium col-md-1">Action</div>
+                                                                        </div>
+                                                                        <div class="mt-3 border w-100"></div>
+                                                                        @foreach ($request->bids as $service)
+                                                                            <div class="d-flex mt-4 justify-content-between pr-5" >
+                                                                                <div class="col-md-9 pl-5 pr-0">
+                                                                                    <div class="cl-000000 robotoMedium f-24">{{ ucfirst($request->title) }}</div>
+                                                                                    <div class="d-flex">
+                                                                                        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Bid by:</div>
+                                                                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->specialist->user->name }} </div>
+                                                                                    </div>
+                                                                                    <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
+                                                                                        {{$service->perposal}}
+                                                                                    </div>
+                                                                                    <div class="d-flex pt-2">
+                                                                                        <div>
+                                                                                            <div class="d-flex">
+                                                                                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
+                                                                                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Bid</div>
+                                                                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div></div>
+                                                                                    </div>
+                                                                                    @if($service->attachment !=null)
+
+                                                                                        <div class="d-flex pt-2">
+                                                                                            <div>
+                                                                                                <div class="d-flex">
+                                                                                                    <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
+                                                                                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
+                                                                                                        
+                                                                                                        <a class="cl-3ac754" href="public/{{ $service->attachment }}" download="downlaod">test</a>
+                                                                                                        </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div></div>
+                                                                                        </div>
+                                                                                    
+                                                                                    @endif
+                                                                                </div>
+                                                                                <div class="robotoMedium text-right col-md-2 pr-0">
+                                                                                    <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
+                                                                                    <div class="f-21 cl-6b6b6b">USD</div>
+                                                                                </div>
+                                                                                <div class="col-md-1">
+                                                                                    {{-- <form action="{{ route('bids.update',$service->id) }}" method="post" class="bid_accept">
+                                                                                    @csrf @method('PUT') --}}
+                                                                                    <input type="hidden" name="url" value="{{ route('bids.update',$service->id) }}" class="url">
+                                                                                    <input type="hidden" name="status" value="{{ ($service->status == 'Declined') ? 1 :0 }}" class="status">
+                                                                                    <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Declined' }} </button>
+                                                                                    {{-- </form> --}}
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="mt-3 border w-100"></div>
+                                                                            
+                                                                        @endforeach
+                                                                        
+                                                                    </div>
+                                                                </div>
+
+                                                            @endif
+                                                        </div>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal{{$request->id}}">Bids</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif
