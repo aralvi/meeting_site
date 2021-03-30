@@ -1673,6 +1673,7 @@
 </script>
 @else
 <script>
+    
     function addReview(e) {
         let id = $(e).data('id');
         var myform = document.getElementById("add-review-form-" + id);
