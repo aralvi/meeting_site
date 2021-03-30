@@ -1024,23 +1024,26 @@
                             <thead>
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
-                                    <th scope="col">Bid By</th>
+                                    <th scope="col">{{ (Auth::user()->user_type=='client')?'Bid By' }}</th>
                                     <th scope="col">Duration</th>
                                     <th scope="col">Budget</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Work Status</th>
+                                    <th scope="col">Payment Status</th>
+                                    <th scope="col">Payment Remaining</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($bids as $key => $bid)
-                                <tr id="target_{{ $bid->id }}">
+
+                                <tr id="target_{{ $bid->id }}" >
                                     <td>{{ $key +1 }}</td>
                                     <td>{{ $bid->specialist->user->username }}</td>
                                     <td>{{ $bid->delivery }} Minutes</td>
                                     <td>${{ $bid->budget }}</td>
                                     <td>
-                                        @if ($bid->status == "Accepted")
+                                        @if ($bid->status == "Approved")
 
                                         <span class="badge badge-sm badge-success">{{ $bid->status }}</span>
                                         @else
@@ -1049,17 +1052,38 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {{-- @if ($bid->status == 'Accepted') --}}
+                                        @if ($bid->status == 'Approved')
                                             
-                                        <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status" data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
-                                        {{-- @endif --}}
+                                        <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status"   data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
+                                        @endif
+                                    </td>
+                                    <td class="">
+                                        @if ($bid->payment_status == "Pending")
+
+                                        <span
+                                            class="badge badge-sm badge-warning">{{ $bid->payment_status }}</span>
+
+                                        @endif @if ($bid->payment_status == "Partial Paid")
+
+                                        <span
+                                            class="badge badge-sm badge-info">{{ $bid->payment_status }}</span>
+
+                                        @endif @if ($bid->payment_status == "Paid")
+
+                                        <span
+                                            class="badge badge-sm badge-success">{{ $bid->payment_status }}</span>
+
+                                        @endif
+                                    </td>
+                                    <td class="">
+                                        ${{ $bid->budget - $bid->payment_amount }}
                                     </td>
                                     <td style="min-width: 135px !important;">
-                                        @if (Auth::user()->user_type=='client' && $bid->payment_status != "Paid")
+                                        @if (Auth::user()->user_type=='client' && $bid->payment_status != "Paid" && $bid->status == 'Accepted')
                                         <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
-                                            data-target="#payment_modal" data-bid="{{ $bid->id }}"
+                                            data-target="#payment_modal" data-id="{{ $bid->id }}"
                                             data-specialist="{{ $bid->specialist_id }}"
-                                            data-amount="{{ $bid->budget }}">payment</button>
+                                            data-amount="{{ $bid->budget }}" data-payment_for="bid">payment</button>
                                         @endif
                                         
                                     </td>
@@ -1146,7 +1170,7 @@
                                         @endif
                                     </td>
                                     <td class="border-0">
-                                        {{ $appointment->rate - $appointment->payment_amount }}
+                                        ${{ $appointment->rate - $appointment->payment_amount }}
                                     </td>
 
                                     <td style="min-width: 135px !important;" class="d-flex border-0">
@@ -1163,9 +1187,9 @@
                                         @endif @if ($appointment->status != "Cancelled") 
                                         @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid")
                                         <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
-                                            data-target="#payment_modal" data-appointment="{{ $appointment->id }}"
+                                            data-target="#payment_modal" data-id="{{ $appointment->id }}"
                                             data-specialist="{{ $appointment->specialist_id }}"
-                                            data-amount="{{ $appointment->rate }}">payment</button>
+                                            data-amount="{{ $appointment->rate }}" data-payment_for="appointment">payment</button>
 
                                         <div class="modal fade" tabindex="-1" role="dialog"
                                             id="review_modal{{$appointment->id}}">
@@ -1761,7 +1785,9 @@
     $('.payment_btn').on('click', function () {
         var specialist_id = $(this).data('specialist');
         var amount = $(this).data('amount');
-        var appointment = $(this).data('appointment');
+        var appointment = $(this).data('id');
+        var payment_for = $(this).data('payment_for');
+        console.log(specialist_id,appointment,amount,payment_for)
         $('#payment_request').empty();
         $.ajax({
             type: 'get',
@@ -1770,7 +1796,8 @@
                 _token: '{{ csrf_token() }}',
                 specialist_id: specialist_id,
                 amount: amount,
-                appointment: appointment
+                appointment: appointment,
+                payment_for:payment_for,
             },
             success: function (data) {
                 $('#payment_request').html(data);
@@ -1786,7 +1813,6 @@
         var bid = $(this);
         var bid_id = $(this).data('bid');
         var work_status = $(this).attr('data-work_status');
-        alert(work_status)
         $.ajax({
             type: 'post',
             url: "{{ route('bid_work_status') }}",
