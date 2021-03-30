@@ -28,7 +28,7 @@ class ProfileController extends Controller
         $profile = Auth::user();
         $subcategories = SubCategory::all();
         $categories = Category::all();
-        $bids = Bid::all();
+        $bids = Bid::all()->groupBy('service_request_id');
         if (Auth::user()->user_type == 'specialist') {
             $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
             $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();

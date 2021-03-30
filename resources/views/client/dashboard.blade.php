@@ -632,7 +632,7 @@ span.prefix{
                                                                             @csrf @method('PUT') --}}
                                                                             <input type="hidden" name="url" value="{{ route('bids.update',$service->id) }}" class="url">
                                                                             <input type="hidden" name="status" value="{{ ($service->status == 'Declined') ? 1 :0 }}" class="status">
-                                                                            <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success d-none' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Declined' }} </button>
+                                                                            <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Declined' }} </button>
                                                                             {{-- </form> --}}
                                                                             
                                                                         </div>
