@@ -43,24 +43,24 @@ class StripePaymentController extends Controller
         ]);
         if($request->payment_for == 'appointment'){
             $appointment = Appointment::findOrFail($request->appointment_id);
-            if($appointment->rate > $request->amount){
+            $appointment->payment_amount = $appointment->payment_amount + $request->amount;
+            if($appointment->rate > $appointment->payment_amount + $request->amount){
                 $appointment->payment_status = '1';
             }else{
                 $appointment->payment_status = '2';
 
             }
-            $appointment->payment_amount = $request->amount;
             $appointment->save();
         }
 
         if($request->payment_for == 'bid'){
             $bid = Bid::findOrFail($request->appointment_id);
-            if ($bid->budget > $request->amount) {
+            $bid->payment_amount =  $bid->payment_amount + $request->amount;
+            if ($bid->budget >$bid->payment_amount + $request->amount) {
                 $bid->payment_status = '1';
             } else {
                 $bid->payment_status = '2';
             }
-            $bid->payment_amount = $request->amount;
             $bid->save();
         }
 
