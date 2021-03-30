@@ -32,7 +32,7 @@
                     <div class="w-100 cl-ffffff">
                         <form action="{{ route('search') }}" method="get" id="search_form">
                             @csrf
-                            <input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " onfocusout="search_function();" id="search" name="search" placeholder="what are you looking for ?">
+                            <input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " onkeyup="search_function();" id="search" name="search" placeholder="what are you looking for ?">
                         </form>
                     </div>
                     
@@ -252,7 +252,6 @@
            function search_function() {
                var input = document.getElementById('search').value;
                if(input != null){
-
                    var form = document.getElementById("search_form");
                    form.submit();
                }
