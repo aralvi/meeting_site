@@ -6,6 +6,7 @@ use App\Category;
 use App\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Bid;
 use App\Models\Specialists\Portfolio;
 use App\Models\Specialists\Service;
 use App\Specialist;
@@ -27,14 +28,15 @@ class ProfileController extends Controller
         $profile = Auth::user();
         $subcategories = SubCategory::all();
         $categories = Category::all();
+        $bids = Bid::all();
         if (Auth::user()->user_type == 'specialist') {
             $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
             $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
             $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->get();
-            return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images', 'appointments'));
+            return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images', 'appointments', 'bids'));
         } else {
             $appointments = Appointment::where('user_id', Auth::user()->id)->get();
-            return view('profile', compact('profile', 'subcategories', 'categories','appointments'));
+            return view('profile', compact('profile', 'subcategories', 'categories','appointments', 'bids'));
         }
     }
 

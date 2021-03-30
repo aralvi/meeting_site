@@ -496,7 +496,7 @@ a:focus{
                         </div>
                         <div class="form-group col-md-12">
                             <label for="">Proposal</label>
-                            <textarea name="proposal" id="proposal" class="form-control"></textarea>
+                            <textarea name="perposal" id="perposal" class="form-control"></textarea>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="">Attachment (optional)</label>

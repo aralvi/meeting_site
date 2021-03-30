@@ -15,7 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::view('check', 'frontend.portfolio_dispay');
+Route::view('check', 'check');
 // Route::view('profile','profile');
 Route::get('/', function () {
     return view('frontend.index');
@@ -52,6 +52,7 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
 Route::group(['middleware'=>['auth']],function(){
     Route::get('search', 'HomeController@search')->name('search');
     Route::resource('bids', 'Specialist\BidController');
+    Route::post('bid-work-status', 'Specialist\BidController@changeWorkStatus')->name('bid_work_status');
     Route::get('category_specialists/{id}', 'HomeController@category_specialists')->name('category_specialists');
     Route::resource('appointments', 'AppointmentController');
     // Route::get('appointment', function () {

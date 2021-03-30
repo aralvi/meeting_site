@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Bid;
 use App\Specialist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,8 @@ class StripePaymentController extends Controller
         $specialist = Specialist::findOrFail($request->specialist_id);
         $amount = $request->amount;
         $appointment_id = $request->appointment;
-        return view('stripe',compact('specialist', 'amount', 'appointment_id'));
+        $payment_for = $request->payment_for;
+        return view('stripe',compact('specialist', 'amount', 'appointment_id', 'payment_for'));
     }
 
     /**
@@ -39,15 +41,28 @@ class StripePaymentController extends Controller
             "source" => $request->stripeToken,
             "description" => "Payment from ". Auth::user()->name,
         ]);
-        $appointment = Appointment::findOrFail($request->appointment_id);
-        if($appointment->rate > $request->amount){
-            $appointment->payment_status = '1';
-        }else{
-            $appointment->payment_status = '2';
+        if($request->payment_for == 'appointment'){
+            $appointment = Appointment::findOrFail($request->appointment_id);
+            if($appointment->rate > $request->amount){
+                $appointment->payment_status = '1';
+            }else{
+                $appointment->payment_status = '2';
 
+            }
+            $appointment->payment_amount = $request->amount;
+            $appointment->save();
         }
-        $appointment->payment_amount = $request->amount;
-        $appointment->save();
+
+        if($request->payment_for == 'bid'){
+            $bid = Bid::findOrFail($request->appointment_id);
+            if ($bid->budget > $request->amount) {
+                $bid->payment_status = '1';
+            } else {
+                $bid->payment_status = '2';
+            }
+            $bid->payment_amount = $request->amount;
+            $bid->save();
+        }
 
 
         // Session::flash('success', 'Payment successful!');
