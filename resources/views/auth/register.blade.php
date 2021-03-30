@@ -348,29 +348,30 @@
                         </div>
                         <div class="h1 text-center cl-3AC574 pt-4">Help Clients find You.</div>
                         <div class="pl-5 pr-5">
-                            <div class="input-group mb-3 border-input pt-5 d-flex flex-nowrap">
-                                <div>
-                                    {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
-                                    <em class="fa fa-phone"></em>
-                                </div>
-                                <div class="w-100"> <input type="text" class="form-control border-0 phone-number"
-                                        placeholder="+1 2522856763" name="business_phone" id="business_phone"
-                                        aria-label="" aria-describedby="basic-addon1" /></div>
-                            </div>
 
-                            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                            <div class="input-group mb-3 border-input pt-5 d-flex flex-nowrap">
                                 <div>
                                     {{-- <img src="{{ asset('assets/frontend/images/location.png') }}" alt="" /> --}}
                                     <em class="fa fa-map-marker"></em>
                                 </div>
                                 <div class="w-100">
-                                    <select id="country" name="country" class="select2 form-control country-select w-100">
+                                    <select id="country" name="country" onchange="countryChange(this);" class="specialist-select form-control country-select w-100">
                                         <option selected disabled>Choose a Country...</option>
                                         @foreach (countries() as $country)
-                                            <option value="{{ $country }}">{{ $country }}</option>
+                                            <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
+                                <div>
+                                    {{-- <img src="{{ asset('assets/frontend/images/phone-8.png') }}" alt="" /> --}}
+                                    <em class="fa fa-phone"></em>
+                                </div>
+                                <div class="w-100"> <input type="text" class="form-control border-0 phone-number" readonly
+                                        placeholder="+1 2522856763" name="business_phone" id="business_phone"
+                                        aria-label="" aria-describedby="basic-addon1" /></div>
                             </div>
 
                             <div class="input-group mb-3 border-input pt-4 d-flex flex-nowrap">
@@ -380,8 +381,8 @@
                                 </div>
                                 <div class="w-100">
 
-                                    <select id="languages" name="languages[]" class="form-control country-select w-100 select2" multiple="multiple">
-                                        <option selected disabled>Choose Languages...</option>
+                                    <select id="languages" name="languages[]" class="language-select form-control country-select w-100 select2" multiple="multiple">
+                                        <option disabled hidden>Choose Languages...</option>
                                         <option value="Afrikaans">Afrikaans</option>
                                         <option value="Albanian">Albanian</option>
                                         <option value="Arabic">Arabic</option>
@@ -465,7 +466,7 @@
                                     <em class="fa fa-bars"></em>
                                 </div>
                                 <div class="w-100">
-                                    <textarea name="description" type="text" id="description" class="form-control border-0" placeholder="Please Type Description..."
+                                    <textarea name="description" type="text" id="description" class="form-control border-0" placeholder="Tell clients about yourself..."
                                       ></textarea>
                                 </div>
                             </div>
@@ -673,7 +674,7 @@
                         <div class="modal-dialog border-1" role="document">
                             <div class="modal-content pt-4">
                                 <div class="modal-header border-0 pl-5 pr-5 ">
-                                    <h2 class="modal-title cl-gray" id="exampleModalLabel">Main Category</h2>
+                                    <h2 class="modal-title cl-gray" id="exampleModalLabel">Category</h2>
                                     <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -682,8 +683,7 @@
                                     <select class="custom-select main-category" name="category_id"
                                         onchange="getSubCategories(this);">
                                         @if(App\Category::all()->count() >0)
-                                        <option value="Select Main Category" selected="" disabled="">Select Main
-                                            Category</option>
+                                        <option value="Select Main Category" selected="" disabled="">Select Category</option>
                                         @foreach(App\Category::all() as $category)
                                         <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
                                         @endforeach
@@ -1158,9 +1158,10 @@
             <em class="fa fa-map-marker"></em>
         </div>
         <div class="w-100">
-            <select id="country" name="country" class="form-control country-select w-100">
+            <select id="country" name="country" onchange="countryChange(this);" class="client-select form-control country-select w-100">
+                <option selected disabled>Choose a Country...</option>
                 @foreach (countries() as $country)
-                    <option value="{{ $country }}" >{{ $country }}</option>
+                    <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                 @endforeach
             </select>
         </div>
@@ -1172,7 +1173,7 @@
             <em class="fa fa-phone"></em>
         </div>
         <div class="w-100"> <input type="text" class="w-100 form-control border-0 phone-number"
-                placeholder="+1 2522856763" name="client_phone" id="client-phone" aria-label=""
+                placeholder="+1 2522856763" name="client_phone" readonly id="client-phone" aria-label=""
                 aria-describedby="basic-addon1" /></div>
     </div>
 
@@ -1367,7 +1368,9 @@
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 
 <script>
-    $(".select2").select2();
+    // $(".specialist-select").select2();
+    // $(".client-select").select2();
+    $(".language-select").select2();
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     var firebaseConfig = {
@@ -1395,9 +1398,16 @@
         recaptchaVerifier.render();
     }
 
+    function countryChange(elem)
+    {
+        $('.phone-number').val('+'+$(elem).find('option[value="'+$(elem).val()+'"]').data('code'));
+        $('.phone-number').removeAttr('readonly');
+    }
+
     function sendPhoneCode(id) {
         let user_type = $('input[name="user_type"]:checked').val();
         let chk = false;
+        
         if (user_type == 'client') {
             if (inptFieldValidate($('#username')) && inptFieldValidate($('#client-name')) && inptFieldValidate($(
                     '#client-email')) && inptFieldValidate($('#client-phone')) && passwordFieldValidate($(
@@ -1769,7 +1779,7 @@
             if (!meCheckSubCategory) {
                 swal({
                     icon: "error",
-                    text: "{{ __('Please Select Business Category!') }}",
+                    text: "{{ __('Please Select SubCategory!') }}",
                     type: 'error'
                 });
             } else {
@@ -2149,7 +2159,7 @@
     });
 
     $(document.body).on("click", "input.step1", function () {
-        $(this).parent("div").siblings("span.inputBtn").click();
+        // $(this).parent("div").siblings("span.inputBtn").click();
         if (inptFieldValidate($('#username')) && inptFieldValidate($('#name')) && inptFieldValidate($(
             '#email')) && passwordFieldValidate($('#password'), $('#confirm_password')) && fileValidate($(
                 '#avatar'))) {
@@ -2188,7 +2198,7 @@
         let stepSecond = false;
         // $(this).parent("div").siblings("span.inputBtn").click();
 
-        if (inptFieldValidate($('#business_phone')) && selectFieldValidateChanged($('#country'),$('#country')) && selectFieldValidateChanged($('#languages'),$('#languages'))  && inptFieldValidate($('#description'))
+        if (selectFieldValidateChanged($('#country'),$('#country')) && inptFieldValidate($('#business_phone')) && selectFieldValidateChanged($('#languages'),$('#languages'))  && inptFieldValidate($('#description'))
             && selectFieldValidate($('.main-category')) && checkboxSubCategory() && checkboxFieldValidate($(
                 '.checkbxCheck'))) {
             if ($('#code_send_check').val() == 'false') {

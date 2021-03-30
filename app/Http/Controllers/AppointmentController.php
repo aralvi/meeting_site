@@ -6,6 +6,7 @@ use App\Client;
 use App\Models\Appointment;
 use App\Models\Specialists\Service;
 use Carbon\Carbon;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Rating;
@@ -131,6 +132,16 @@ class AppointmentController extends Controller
 
     public function addReview(Request $request)
     {
+        $validations = Validator::make($request->all(),[
+            'rating'=>'required',
+            'description'=>'required',
+        ]);
+
+        if($validations->fails())
+        {
+            return response()->json(['success' => false, 'message' => $validations->errors()]);
+        }
+
         $review = new Rating();
         $review->specialist_id = $request->specialist_id;
         $review->user_id = Auth::user()->id;

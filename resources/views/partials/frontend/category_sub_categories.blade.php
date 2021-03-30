@@ -1,5 +1,5 @@
 @if($sub_categories->count() > 0)
-  <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">Business Category</h2>
+  <h2 class="modal-title pl-5 pr-5 cl-gray" id="exampleModalLabel">SubCategory</h2>
   <div class="border overflow-scroll-reg pl-5 mt-2">
     @foreach($sub_categories as $key=>$category)
       <div class="custom-control custom-checkbox">
