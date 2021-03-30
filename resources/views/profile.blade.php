@@ -1079,7 +1079,7 @@
                                             <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
                                                 data-target="#payment_modal" data-id="{{ $bid->id }}"
                                                 data-specialist="{{ $bid->specialist_id }}"
-                                                data-amount="{{ $bid->budget }}" data-payment_for="bid">payment</button>
+                                                data-amount="{{ $bid->budget - $bid->payment_amount }}" data-payment_for="bid">payment</button>
                                             @endif
                                             
                                         </td>
@@ -1187,7 +1187,7 @@
                                         <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
                                             data-target="#payment_modal" data-id="{{ $appointment->id }}"
                                             data-specialist="{{ $appointment->specialist_id }}"
-                                            data-amount="{{ $appointment->rate }}" data-payment_for="appointment">payment</button>
+                                            data-amount="{{ $appointment->rate - $appointment->payment_amount }}" data-payment_for="appointment">payment</button>
 
                                         <div class="modal fade" tabindex="-1" role="dialog"
                                             id="review_modal{{$appointment->id}}">
