@@ -593,7 +593,7 @@ span.prefix{
                                                                                 <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->specialist->user->name }} </div>
                                                                             </div>
                                                                             <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
-                                                                                {{$service->description}}
+                                                                                {{$service->perposal}}
                                                                             </div>
                                                                             <div class="d-flex pt-2">
                                                                                 <div>
@@ -632,7 +632,7 @@ span.prefix{
                                                                             @csrf @method('PUT') --}}
                                                                             <input type="hidden" name="url" value="{{ route('bids.update',$service->id) }}" class="url">
                                                                             <input type="hidden" name="status" value="{{ ($service->status == 'Declined') ? 1 :0 }}" class="status">
-                                                                            <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Declined' }} </button>
+                                                                            <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success d-none' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Declined' }} </button>
                                                                             {{-- </form> --}}
                                                                             
                                                                         </div>
@@ -727,6 +727,7 @@ $('.action_btn').on('click', function(e) {
                 $('button.action_btn').not('button.change_status_'+msg.id).hide();
             }if(msg.approval == false){
                  $('button.action_btn').show();
+                 $('button.action_btn').removeClass('d-none');
             }
         }
     });
