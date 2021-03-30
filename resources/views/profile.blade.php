@@ -245,7 +245,7 @@
         <div class="col-md-8 col-lg-8 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
             <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade {{ session('portfolio')? '':'' }} " id="v-pills-profile"
+                <div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile"
                     role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <p class="pl-3 f-21 cl-000000">Personal Info</p>
                     @if (Auth::user()->user_type =='specialist')
@@ -1017,14 +1017,14 @@
                 </div>
                 
                 @endif
-                <div class="tab-pane fade show active" id="v-pills-bid" role="tabpanel" aria-labelledby="v-pills-bid-tab">
+                <div class="tab-pane fade " id="v-pills-bid" role="tabpanel" aria-labelledby="v-pills-bid-tab">
                     <p class="pl-3 f-21 cl-000000">Bids</p>
                     <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
                         <table id="example1" class="table table-hover example1">
                             <thead>
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
-                                    <th scope="col">{{ (Auth::user()->user_type=='client')?'Bid By' }}</th>
+                                    <th scope="col">{{ (Auth::user()->user_type=='client')?'Bid By':'Bid For' }}</th>
                                     <th scope="col">Duration</th>
                                     <th scope="col">Budget</th>
                                     <th scope="col">Status</th>
@@ -1039,7 +1039,8 @@
 
                                 <tr id="target_{{ $bid->id }}" >
                                     <td>{{ $key +1 }}</td>
-                                    <td>{{ $bid->specialist->user->username }}</td>
+                                    <td>
+                                        {{ (Auth::user()->user_type=='client')?$bid->specialist->user->username : $bid->service_request->User->username }}</td>
                                     <td>{{ $bid->delivery }} Minutes</td>
                                     <td>${{ $bid->budget }}</td>
                                     <td>
@@ -1057,29 +1058,25 @@
                                         <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status"   data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
                                         @endif
                                     </td>
-                                    <td class="">
-                                        @if ($bid->payment_status == "Pending")
+                                    <td>
+                                        @if ($bid->status == 'Approved')
+                                            @if ($bid->payment_status == "Pending")
+                                                <span class="badge badge-sm badge-warning">{{ $bid->payment_status }}</span>
+                                            @endif @if ($bid->payment_status == "Partial Paid")
+                                                <span class="badge badge-sm badge-info">{{ $bid->payment_status }}</span>
+                                            @endif @if ($bid->payment_status == "Paid")
+                                                <span class="badge badge-sm badge-success">{{ $bid->payment_status }}</span>
+                                            @endif
+                                        @endif
 
-                                        <span
-                                            class="badge badge-sm badge-warning">{{ $bid->payment_status }}</span>
-
-                                        @endif @if ($bid->payment_status == "Partial Paid")
-
-                                        <span
-                                            class="badge badge-sm badge-info">{{ $bid->payment_status }}</span>
-
-                                        @endif @if ($bid->payment_status == "Paid")
-
-                                        <span
-                                            class="badge badge-sm badge-success">{{ $bid->payment_status }}</span>
-
+                                    </td>
+                                    <td>
+                                        @if ($bid->status == 'Approved')
+                                            ${{ $bid->budget - $bid->payment_amount }}
                                         @endif
                                     </td>
-                                    <td class="">
-                                        ${{ $bid->budget - $bid->payment_amount }}
-                                    </td>
                                     <td style="min-width: 135px !important;">
-                                        @if (Auth::user()->user_type=='client' && $bid->payment_status != "Paid" && $bid->status == 'Accepted')
+                                        @if (Auth::user()->user_type=='client' && $bid->payment_status != "Paid" && $bid->status == 'Approved')
                                         <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
                                             data-target="#payment_modal" data-id="{{ $bid->id }}"
                                             data-specialist="{{ $bid->specialist_id }}"
