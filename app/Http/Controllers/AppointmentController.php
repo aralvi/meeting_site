@@ -143,6 +143,7 @@ class AppointmentController extends Controller
         }
 
         $review = new Rating();
+        $review->appointment_id = $request->appointment_id;
         $review->specialist_id = $request->specialist_id;
         $review->user_id = Auth::user()->id;
         $review->rating = $request->rating;

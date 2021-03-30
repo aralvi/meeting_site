@@ -6,6 +6,8 @@ use App\Client;
 use App\Models\Specialists\Service;
 use App\Specialist;
 use App\User;
+use App\Rating;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
@@ -25,6 +27,10 @@ class Appointment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function rating()
+    {
+        return $this->hasOne(Rating::class);
     }
     public function getStatusAttribute($attribute)
     {
