@@ -113,4 +113,12 @@ class BidController extends Controller
     {
         //
     }
+
+    public function changeWorkStatus(Request $request)
+    {
+        $bid = Bid::findOrFail($request->bid_id);
+        $bid->work_status = $request->work_status;
+        $bid->save();
+        return $bid->work_status;
+    }
 }

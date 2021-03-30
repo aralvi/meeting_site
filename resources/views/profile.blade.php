@@ -231,9 +231,9 @@
                     aria-selected="false">Portfolio</a>
                 <a class="nav-link cl-000000" id="v-pills-service-tab" data-toggle="pill" href="#v-pills-service"
                     role="tab" aria-controls="v-pills-service" aria-selected="false">Services</a>
+                    @endif
                 <a class="nav-link cl-000000" id="v-pills-bid-tab" data-toggle="pill" href="#v-pills-bid" role="tab"
                     aria-controls="v-pills-bid" aria-selected="false">Bids</a>
-                @endif
                 <a class="nav-link cl-000000" id="v-pills-appointment-tab" data-toggle="pill"
                     href="#v-pills-appointment" role="tab" aria-controls="v-pills-appointment"
                     aria-selected="false">Appointments</a>
@@ -245,7 +245,7 @@
         <div class="col-md-8 col-lg-8 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
             <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile"
+                <div class="tab-pane fade {{ session('portfolio')? '':'' }} " id="v-pills-profile"
                     role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <p class="pl-3 f-21 cl-000000">Personal Info</p>
                     @if (Auth::user()->user_type =='specialist')
@@ -625,7 +625,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-end">
-                                <button type="submit" class="btn btn-sm bg-3AC574 text-white">Updated</button>
+                                <button type="submit" class="btn btn-sm bg-3AC574 text-white">Save Changes</button>
                             </div>
                         </div>
                         <!-- Modal 1st code start-->
@@ -910,7 +910,7 @@
                             </div>
 
                             <div class="row justify-content-end">
-                                <button type="submit" class="btn btn-sm bg-3AC574 text-white">Updated</button>
+                                <button type="submit" class="btn btn-sm bg-3AC574 text-white">Save Changes</button>
                             </div>
                         </div>
                     </form>
@@ -1015,12 +1015,61 @@
                         </table>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-bid" role="tabpanel" aria-labelledby="v-pills-bid-tab">
-                    <p class="pl-3 f-21 cl-000000">Bids</p>
-
-                </div>
-
+                
                 @endif
+                <div class="tab-pane fade show active" id="v-pills-bid" role="tabpanel" aria-labelledby="v-pills-bid-tab">
+                    <p class="pl-3 f-21 cl-000000">Bids</p>
+                    <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
+                        <table id="example1" class="table table-hover example1">
+                            <thead>
+                                <tr class="text-uppercase">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Bid By</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Budget</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Work Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($bids as $key => $bid)
+                                <tr id="target_{{ $bid->id }}">
+                                    <td>{{ $key +1 }}</td>
+                                    <td>{{ $bid->specialist->user->username }}</td>
+                                    <td>{{ $bid->delivery }} Minutes</td>
+                                    <td>${{ $bid->budget }}</td>
+                                    <td>
+                                        @if ($bid->status == "Accepted")
+
+                                        <span class="badge badge-sm badge-success">{{ $bid->status }}</span>
+                                        @else
+
+                                        <span class="badge badge-sm badge-danger">{{ $bid->status }}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{-- @if ($bid->status == 'Accepted') --}}
+                                            
+                                        <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status" data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
+                                        {{-- @endif --}}
+                                    </td>
+                                    <td style="min-width: 135px !important;">
+                                        @if (Auth::user()->user_type=='client' && $bid->payment_status != "Paid")
+                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
+                                            data-target="#payment_modal" data-bid="{{ $bid->id }}"
+                                            data-specialist="{{ $bid->specialist_id }}"
+                                            data-amount="{{ $bid->budget }}">payment</button>
+                                        @endif
+                                        
+                                    </td>
+                                </tr>
+
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <div class="tab-pane fade " id="v-pills-appointment" role="tabpanel"
                     aria-labelledby="v-pills-appointment-tab">
@@ -1101,8 +1150,7 @@
                                     </td>
 
                                     <td style="min-width: 135px !important;" class="d-flex border-0">
-                                        @if ($appointment->status != "Completed" ) @if
-                                        (Auth::user()->user_type=='specialist')
+                                        @if ($appointment->status != "Completed" ) @if (Auth::user()->user_type=='specialist')
                                         <form action="{{ route('appointments.update',$appointment->id) }}"
                                             method="post">
                                             @csrf @method('put')
@@ -1112,8 +1160,8 @@
                                             <button type="submit"
                                                 class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
                                         </form>
-                                        @endif @if ($appointment->status != "Cancelled") @if
-                                        (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid")
+                                        @endif @if ($appointment->status != "Cancelled") 
+                                        @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid")
                                         <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
                                             data-target="#payment_modal" data-appointment="{{ $appointment->id }}"
                                             data-specialist="{{ $appointment->specialist_id }}"
@@ -1666,8 +1714,7 @@
                 if (data.success == true) {
                     swal('success', data.message, 'success')
                         .then((value) => {
-                            window.location = '{{ route('
-                            clients.index ') }}';
+                            window.location = '{{ route('clients.index') }}';
                         });
                 } else {
                     if (data.hasOwnProperty('message')) {
@@ -1734,4 +1781,34 @@
 
 </script>
 @endif
+<script>
+    $('.work_status').on('click',function(){
+        var bid = $(this);
+        var bid_id = $(this).data('bid');
+        var work_status = $(this).attr('data-work_status');
+        alert(work_status)
+        $.ajax({
+            type: 'post',
+            url: "{{ route('bid_work_status') }}",
+            data: {
+                _token: '{{ csrf_token() }}',
+                bid_id: bid_id,
+                work_status:work_status,
+               
+            },
+            success: function (data) {
+                if(data == 'Completed'){
+                    bid.removeClass('btn-success').addClass('btn-danger');
+                    bid.text('Mark Un-Complete')
+                    bid.attr('data-work_status','0')
+                }if(data == 'Un-Complete'){
+                    bid.attr('data-work_status','1')
+                    bid.removeClass('btn-danger').addClass('btn-success');
+                    bid.text('Mark Completed')
+
+                }
+            }
+        })
+    })
+</script>
 @endsection {{-- footer section end --}}

@@ -24,4 +24,19 @@ class Bid extends Model
             
         ][$attribute];
     }
+    public function getPaymentStatusAttribute($attribute)
+    {
+        return [
+            '0' => 'Pending',
+            '1' => 'Partial Paid',
+            '2' => 'Paid',
+        ][$attribute];
+    }
+    public function getWorkStatusAttribute($attribute)
+    {
+        return [
+            '0' => 'Un-Complete',
+            '1' => 'Completed',
+        ][$attribute];
+    }
 }
