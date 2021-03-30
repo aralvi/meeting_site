@@ -1433,7 +1433,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure, you want to delete this Imge?
+                    Are you sure, you want to delete this Image?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
