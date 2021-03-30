@@ -318,9 +318,7 @@
                                         <select id="country" name="country"
                                             class="form-control country-select w-100 border-0">
                                             @foreach (countries() as $country)
-                                            <option value="{{ $country }}"
-                                                {{ ($country == Auth::user()->country) ? 'selected':'' }}>{{ $country }}
-                                            </option>
+                                                <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -1673,7 +1671,7 @@
 </script>
 @else
 <script>
-    
+
     function addReview(e) {
         let id = $(e).data('id');
         var myform = document.getElementById("add-review-form-" + id);
