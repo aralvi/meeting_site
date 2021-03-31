@@ -213,7 +213,7 @@
                         {{-- <button class="btn btn-sm bg-3AC574 text-white">Upload Photo</button> --}}
                     </form>
                 </div>
-                <p class="m-0 f-27 robotoMedium cl-5757575 pt-3">{{ ucwords(Auth::user()->name) }}</p>
+                <p class="m-0 f-27 robotoMedium cl-5757575 pt-3">{{ ucwords(Auth::user()->username) }}</p>
                 @if (Auth::user()->user_type == 'specialist')
 
                 <p class="f-18 cl-a8a8a8a robotoMedium m-0 pt-1">{{ ucwords(Auth::user()->specialist->category->name) }}
@@ -1051,8 +1051,12 @@
                                         </td>
                                         <td>
                                             @if ($bid->status == 'Approved')
-                                                
-                                            <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status"   data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
+                                             @if (Auth::user()->user_type == 'specialist')
+                                                 <span class="badge badge-sm {{ ($bid->work_status == 'Completed')? 'badge-success':'badge-danger' }}">{{ $bid->work_status }}</span>
+                                             @else
+                                                 
+                                             <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status"   data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
+                                             @endif   
                                             @endif
                                         </td>
                                         <td>
