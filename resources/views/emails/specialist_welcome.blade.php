@@ -21,7 +21,7 @@
             <div style="font-size: 21px; padding-top: 16px;">Learnmelive team </div>
             <div class="robotoRegular" style="padding-top: 16px;padding-bottom: 60px;"><button type="button"
             style="padding-left: 42px;padding-right: 42px;padding-top: 12px;padding-bottom: 12px;border-radius: 4px;border: 0px ;background-color: #3AC574;color: #ffffff !important;"><a
-            href="" style="text-decoration: none;color: #ffffff;">Back to homepage</a></button></div>
+            href="{{ url('/') }}" target="_blank" style="text-decoration: none;color: #ffffff;">Back to homepage</a></button></div>
             </section>
             </div>
         </section>
