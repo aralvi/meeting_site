@@ -37,6 +37,12 @@ class CategoryController extends Controller
         ]);
         $category = new Category();
         $category->name = $request->name;
+        if(isset($request->status)){
+            $category->status = 'active';
+        }else{
+            $category->status = 'inactive';
+
+        }
         $category->save();
         return back()->with('success', 'Category has been stored successfuly!');
     }
@@ -80,6 +86,11 @@ class CategoryController extends Controller
         ]);
         $category = Category::findOrFail($id);
         $category->name = $request->name;
+        if (isset($request->status)) {
+            $category->status = 'active';
+        } else {
+            $category->status = 'inactive';
+        }
         $category->save();
         return back()->with('success', 'Category has been updated successfuly!');
     }

@@ -244,7 +244,7 @@
                             icon: 'success'
                         });
                         $('.afterRegisterLoader').hide();
-                        $("#payment_modal .close").click() 
+                        $("#payment_modal .close").click(); 
 
                     }, 
 
