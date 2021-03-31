@@ -288,12 +288,12 @@
                                     </div>
                                 </div>
 
-                                <button title="Click to Update SubCategory" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-target=".editCatModal{{ $subcategory->id }}" data-toggle="modal" data-catid="{{ $subcategory->id }}"><i class="fe fe-pencil"></i> Edit</button>
+                                <button title="Click to Update SubCategory" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-target=".editCatModal{{ $subcategory->id }}" data-toggle="modal" data-catid="{{ $subcategory->id }}"><i class="fa fa-pencil"></i> Edit</button>
                                 <form method="post" id="delete-subcategories-form-{{ $subcategory->id }}" action="{{ route('subcategories.destroy',$subcategory->id) }}">
                                     @csrf
                                     @method('delete')
                                </form>
-                               <button title="Click to Delete SubCategory" type="button" class="btn btn-danger btn-sm" onclick="deleteSubcategory({{ $subcategory->id }});"><i class="fe fe-trash"></i> Delete</button>
+                               <button title="Click to Delete SubCategory" type="button" class="btn btn-danger btn-sm" onclick="deleteSubcategory({{ $subcategory->id }});"><i class="fa fa-trash"></i> Delete</button>
 
                             </td>
                         </tr>
