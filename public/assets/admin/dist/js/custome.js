@@ -84,17 +84,9 @@
          data: { id: catID, _token: token, _method: 'DELETE' },
          success: function(data) {
              $("#target_" + catID).hide();
-             $('#success_errror_any').addClass("hide");
-             $('#messageDiv').removeClass("alert-danger hide");
-             $('#messageDiv').addClass("alert-success");
-             $('#message').html(data);
+             $("#deleteCatModal .close").click();
          },
-         error: function() {
-             $('#success_errror_any').addClass("hide");
-             $('#messageDiv').removeClass("alert-success hide");
-             $('#messageDiv').addClass("alert-danger");
-             $('#message').html('Category not found or Something is wrong');
-         }
+
 
      });
  });
