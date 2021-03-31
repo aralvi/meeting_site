@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SpecialistWelcomeMail extends Mailable
+class AdminApprovalMail extends Mailable
 {
     use Queueable, SerializesModels;
     protected $data;
@@ -18,7 +18,7 @@ class SpecialistWelcomeMail extends Mailable
      */
     public function __construct($data)
     {
-       $this->data = $data;
+        $this->data = $data;
     }
 
     /**
@@ -29,9 +29,9 @@ class SpecialistWelcomeMail extends Mailable
     public function build()
     {
         $data = $this->data;
-        return $this->view('emails.specialist_welcome',compact('data'))
-                ->from(config('app.mail_from'),config('app.mail_from_name'))
-                ->replyTo(config('app.mail_from'),config('app.mail_from_name'))
-                ->subject("Welcome");
+        return $this->view('emails.admin_approval',compact('data'))
+                ->from($data['email'])
+                ->replyTo($data['email'])
+                ->subject("Approval");
     }
 }
