@@ -71,7 +71,7 @@ class ProfileController extends Controller
         if (!empty($old_avatar)) {
             unlink($old_avatar);
         }
-        return redirect('/profile')->with('success', 'Profile image updated successfully!');
+        return back()->with('success', 'Profile image updated successfully!');
     }
 
     /**
@@ -83,7 +83,7 @@ class ProfileController extends Controller
     public function password()
     {
         $password = Auth::user();
-        return view('admin.profile.change_password', compact('password'));
+        return view('admin.password', compact('password'));
     }
     public function UserPassword()
     {

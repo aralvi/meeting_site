@@ -35,9 +35,11 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallba
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 
 Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
-   Route::get('/','AdminController@index');
-   Route::get('users','AdminController@users');
-   Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
+   Route::resource('/','Admin\AdminController');
+   Route::resource('/categories', 'Admin\CategoryController');
+   Route::get('/password', 'ProfileController@password');
+//    Route::get('users','AdminController@users');
+//    Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
 });
 
 // usercheck
