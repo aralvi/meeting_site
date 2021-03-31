@@ -124,6 +124,9 @@
         border: none !important;
     }
 
+    .select2-container--open .select2-dropdown--below{ border-top: 1px solid #aaaaaa !important; }
+    .select2-container--open .select2-dropdown--above{ border-bottom: 1px solid #aaaaaa !important; }
+
     fieldset,
     label {
         margin: 0;
@@ -852,8 +855,8 @@
                                             class="fa fa-map-marker d-flex justify-content-center align-items-center"></em>
                                     </div>
                                     <div class="w-100">
-                                        <select id="country" name="country"
-                                            class="form-control country-select w-100 border-0">
+                                        <select id="country" name="country" onchange="countryChange(this);"
+                                            class="select2 form-control country-select w-100 border-0">
                                             @foreach (countries() as $country)
                                                 <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                             @endforeach
@@ -879,8 +882,8 @@
                                             class="fa fa-phone d-flex justify-content-center align-items-center"></em>
                                     </div>
                                     <div class="w-100">
-                                        <input type="number" class="form-control border-0"
-                                            placeholder="What is your business phone#" name="business_phone"
+                                        <input type="text" class="form-control border-0 phone-number"
+                                            placeholder="What is your business phone" name="business_phone"
                                             id="business_phone" aria-label="" aria-describedby="basic-addon1"
                                             value="{{ Auth::user()->client->business_phone }}" />
                                     </div>
@@ -1031,64 +1034,63 @@
                             </thead>
                             <tbody>
                                 @foreach ($bids as $key => $service_request_bids)
-                                @foreach ($service_request_bids as $bid)
-                                    @if ($bid->status == 'Approved')
-                                        
-                                    <tr id="target_{{ $bid->id }}" >
-                                        <td>{{ $key +1 }}</td>
-                                        <td>
-                                            {{ (Auth::user()->user_type=='client')?$bid->specialist->user->username : $bid->service_request->User->username }}</td>
-                                        <td>{{ $bid->delivery }} Minutes</td>
-                                        <td>${{ $bid->budget }}</td>
-                                        <td>
-                                            @if ($bid->status == "Approved")
-    
-                                            <span class="badge badge-sm badge-success">{{ $bid->status }}</span>
-                                            @else
-    
-                                            <span class="badge badge-sm badge-danger">{{ $bid->status }}</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($bid->status == 'Approved')
-                                             @if (Auth::user()->user_type == 'specialist')
-                                                 <span class="badge badge-sm {{ ($bid->work_status == 'Completed')? 'badge-success':'badge-danger' }}">{{ $bid->work_status }}</span>
-                                             @else
-                                                 
-                                             <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status"   data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
-                                             @endif   
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($bid->status == 'Approved')
-                                                @if ($bid->payment_status == "Pending")
-                                                    <span class="badge badge-sm badge-warning">{{ $bid->payment_status }}</span>
-                                                @endif @if ($bid->payment_status == "Partial Paid")
-                                                    <span class="badge badge-sm badge-info">{{ $bid->payment_status }}</span>
-                                                @endif @if ($bid->payment_status == "Paid")
-                                                    <span class="badge badge-sm badge-success">{{ $bid->payment_status }}</span>
-                                                @endif
-                                            @endif
-    
-                                        </td>
-                                        <td>
-                                            @if ($bid->status == 'Approved')
-                                                ${{ $bid->budget - $bid->payment_amount }}
-                                            @endif
-                                        </td>
-                                        <td style="min-width: 135px !important;">
-                                            @if (Auth::user()->user_type=='client' && $bid->payment_status != "Paid" && $bid->status == 'Approved')
-                                            <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
-                                                data-target="#payment_modal" data-id="{{ $bid->id }}"
-                                                data-specialist="{{ $bid->specialist_id }}"
-                                                data-amount="{{ $bid->budget - $bid->payment_amount }}" data-payment_for="bid">payment</button>
-                                            @endif
+                                    @foreach ($service_request_bids as $bid)
+                                        @if ($bid->status == 'Approved')
                                             
-                                        </td>
-                                    </tr>
-                                    @endif
-                                @endforeach
-
+                                        <tr id="target_{{ $bid->id }}" >
+                                            <td>{{ $key +1 }}</td>
+                                            <td>
+                                                {{ (Auth::user()->user_type=='client')?$bid->specialist->user->username : $bid->service_request->User->username }}</td>
+                                            <td>{{ $bid->delivery }} Minutes</td>
+                                            <td>${{ $bid->budget }}</td>
+                                            <td>
+                                                @if ($bid->status == "Approved")
+        
+                                                <span class="badge badge-sm badge-success">{{ $bid->status }}</span>
+                                                @else
+        
+                                                <span class="badge badge-sm badge-danger">{{ $bid->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($bid->status == 'Approved')
+                                                @if (Auth::user()->user_type == 'specialist')
+                                                    <span class="badge badge-sm {{ ($bid->work_status == 'Completed')? 'badge-success':'badge-danger' }}">{{ $bid->work_status }}</span>
+                                                @else
+                                                    
+                                                <button class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status"   data-bid="{{ $bid->id }}" data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
+                                                @endif   
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($bid->status == 'Approved')
+                                                    @if ($bid->payment_status == "Pending")
+                                                        <span class="badge badge-sm badge-warning">{{ $bid->payment_status }}</span>
+                                                    @endif @if ($bid->payment_status == "Partial Paid")
+                                                        <span class="badge badge-sm badge-info">{{ $bid->payment_status }}</span>
+                                                    @endif @if ($bid->payment_status == "Paid")
+                                                        <span class="badge badge-sm badge-success">{{ $bid->payment_status }}</span>
+                                                    @endif
+                                                @endif
+        
+                                            </td>
+                                            <td>
+                                                @if ($bid->status == 'Approved')
+                                                    ${{ $bid->budget - $bid->payment_amount }}
+                                                @endif
+                                            </td>
+                                            <td style="min-width: 135px !important;">
+                                                @if (Auth::user()->user_type=='client' && $bid->payment_status != "Paid" && $bid->status == 'Approved')
+                                                <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
+                                                    data-target="#payment_modal" data-id="{{ $bid->id }}"
+                                                    data-specialist="{{ $bid->specialist_id }}"
+                                                    data-amount="{{ $bid->budget - $bid->payment_amount }}" data-payment_for="bid">payment</button>
+                                                @endif
+                                                
+                                            </td>
+                                        </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </tbody>
                         </table>
@@ -1453,308 +1455,314 @@
 </section>
 @endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
 @if (Auth::user()->user_type == 'specialist')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script>
+    
+        const usernamePublicProfile = (ele) => {
+            let val = $(ele).val();
+            val = val.split(" ").join("-");
+            $(ele).val(val);
+            $("#public_profile").val(val + ".learnme.live");
+        };
 
+        function getSubCategories(ele) {
+            let id = $(ele).val();
+            $("#select_category").val(
+                $(ele)
+                .find("option[value=" + id + "]")
+                .text()
+            );
+            $.ajax({
+                url: "{{ route('get.sub_categories') }}",
+                type: "get",
+                data: {
+                    id: id,
+                },
+                success: function (data) {
+                    $("#sub_categories").html(data);
+                },
+            });
+        }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-<script>
-  
-    const usernamePublicProfile = (ele) => {
-        let val = $(ele).val();
-        val = val.split(" ").join("-");
-        $(ele).val(val);
-        $("#public_profile").val(val + ".learnme.live");
-    };
-
-    function getSubCategories(ele) {
-        let id = $(ele).val();
-        $("#select_category").val(
-            $(ele)
-            .find("option[value=" + id + "]")
-            .text()
-        );
-        $.ajax({
-            url: "{{ route('get.sub_categories') }}",
-            type: "get",
-            data: {
-                id: id,
-            },
-            success: function (data) {
-                $("#sub_categories").html(data);
-            },
-        });
-    }
-
-    function dayClosed(ele) {
-        $(ele).siblings("input").removeAttr("checked");
-        $(ele).siblings("select").addClass("d-none");
-        $(ele).addClass("d-none");
-        $(ele).siblings("span").removeClass("d-none");
-    }
-
-    function dayOpened(ele) {
-        if ($(ele).is(":checked")) {
-            $(ele).siblings("select").removeClass("d-none").show();
-            $(ele).siblings("button").removeClass("d-none");
-            $(ele).siblings("span").addClass("d-none");
-        } else {
+        function dayClosed(ele) {
+            $(ele).siblings("input").removeAttr("checked");
             $(ele).siblings("select").addClass("d-none");
-            $(ele).siblings("button").addClass("d-none");
+            $(ele).addClass("d-none");
             $(ele).siblings("span").removeClass("d-none");
         }
-    }
-    setInterval(() => {
-        let meCheck = false;
-        $.each($(".days"), function () {
-            if ($(this).is(":checked")) {
-                meCheck = true;
-            }
-        });
-        if (meCheck) {
-            let allChecked = document.getElementById("select_opening_hours");
-            allChecked.placeholder = "Completed";
-        } else {
-            let notChecked = document.getElementById("select_opening_hours");
-            notChecked.placeholder = "Not Completed";
-        }
-    }, 1000);
 
-    function dayCheckValidation() {
-        let meCheck = false;
-        $.each($(".days"), function () {
-            if ($(this).is(":checked")) {
-                meCheck = true;
+        function dayOpened(ele) {
+            if ($(ele).is(":checked")) {
+                $(ele).siblings("select").removeClass("d-none").show();
+                $(ele).siblings("button").removeClass("d-none");
+                $(ele).siblings("span").addClass("d-none");
+            } else {
+                $(ele).siblings("select").addClass("d-none");
+                $(ele).siblings("button").addClass("d-none");
+                $(ele).siblings("span").removeClass("d-none");
             }
-        });
-        if (!meCheck) {
-            swal({
-                icon: "error",
-                text: "{{ __('Please Check Your Available Day!') }}",
-                type: "error",
-            });
-        } else {
-            $(".close2").click();
         }
-    }
-    const paymentRadio = (ele) => {
-        $(ele).parent().addClass("bg-3AC574");
-        $(ele).parent().siblings().removeClass("bg-3AC574");
-        $(ele).parent().siblings().find("label").removeClass("text-white");
-        // $(ele).siblings().removeClass('text-white');
-        $(ele).siblings().addClass("text-white");
-        if ($(ele).val() == "stripe") {
-            $("#payment_selection_html").html(document.getElementById("stripe-html").innerHTML);
-        }
-        if ($(ele).val() == "paypal") {
-            $("#payment_selection_html").html(document.getElementById("paypal-html").innerHTML);
-        }
-        if ($(ele).val() == "payoneer") {
-            $("#payment_selection_html").html(document.getElementById("payoneer-html").innerHTML);
-        }
-    };
-
-    function categorySubcategoryCheck() {
-        if ($('select[name="category_id"]').val() == null) {
-            swal({
-                icon: "error",
-                text: "{{ __('Please Select Category!') }}",
-                type: "error",
-            });
-        } else {
-            meCheckSubCategory = false;
-            $.each($('input[name="sub_category_id[]"]'), function () {
+        
+        setInterval(() => {
+            let meCheck = false;
+            $.each($(".days"), function () {
                 if ($(this).is(":checked")) {
-                    meCheckSubCategory = true;
+                    meCheck = true;
                 }
             });
-            if (!meCheckSubCategory) {
+            if (meCheck) {
+                let allChecked = document.getElementById("select_opening_hours");
+                allChecked.placeholder = "Completed";
+            } else {
+                let notChecked = document.getElementById("select_opening_hours");
+                notChecked.placeholder = "Not Completed";
+            }
+        }, 1000);
+
+        function dayCheckValidation() {
+            let meCheck = false;
+            $.each($(".days"), function () {
+                if ($(this).is(":checked")) {
+                    meCheck = true;
+                }
+            });
+            if (!meCheck) {
                 swal({
                     icon: "error",
-                    text: "{{ __('Please Select Business Category!') }}",
+                    text: "{{ __('Please Check Your Available Day!') }}",
                     type: "error",
                 });
             } else {
-                $(".close1").click();
+                $(".close2").click();
             }
         }
-    }
 
-    function getSubCategoriesForServices(ele) {
-        let id = $(ele).val();
-        $.ajax({
-            url: "{{ url('sub_categories') }}",
-            type: "get",
-            data: {
-                id: id
-            },
-            success: function (data) {
-                $(".sub_categories").empty();
-                $(".sub_categories").html(data);
-            },
-        });
-    }
-
-
-
-    $(document).ready(function () {
-        $(".gallery").magnificPopup({
-            delegate: "a",
-            type: "image",
-            tLoading: "Loading image #%curr%...",
-            mainClass: "mfp-img-mobile",
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 1], // Will preload 0 - before current, and 1 after the current image
-            },
-            image: {
-                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-            },
-        });
-    });
-    $(function () {
-        $("#sortableImgThumbnailPreview").sortable({
-            connectWith: ".RearangeBox",
-            start: function (event, ui) {
-                $(ui.item).addClass("dragElemThumbnail");
-                ui.placeholder.height(ui.item.height());
-            },
-            stop: function (event, ui) {
-                $(ui.item).removeClass("dragElemThumbnail");
-            },
-        });
-        $("#sortableImgThumbnailPreview").disableSelection();
-    });
-    document.getElementById("files").addEventListener("change", handleFileSelect, false);
-
-    function handleFileSelect(evt) {
-        var files = evt.target.files;
-        var output = document.getElementById("sortableImgThumbnailPreview");
-        // Loop through the FileList and render image files as thumbnails.
-        for (var i = 0, f;
-            (f = files[i]); i++) {
-            // Only process image files.
-            if (!f.type.match("image.*")) {
-                continue;
+        const paymentRadio = (ele) => {
+            $(ele).parent().addClass("bg-3AC574");
+            $(ele).parent().siblings().removeClass("bg-3AC574");
+            $(ele).parent().siblings().find("label").removeClass("text-white");
+            // $(ele).siblings().removeClass('text-white');
+            $(ele).siblings().addClass("text-white");
+            if ($(ele).val() == "stripe") {
+                $("#payment_selection_html").html(document.getElementById("stripe-html").innerHTML);
             }
-            var reader = new FileReader();
-            // Closure to capture the file information.
-            reader.onload = (function (theFile) {
-                return function (e) {
-                    // Render thumbnail.
-                    var imgThumbnailElem =
-                        "<div class='RearangeBox imgThumbContainer'><i class='material-icons imgRemoveBtn' onclick='removeThumbnailIMG(this)'>cancel</i><div class='IMGthumbnail' ><img  src='" +
-                        e.target.result +
-                        "'" +
-                        "title='" +
-                        theFile.name +
-                        "'/></div><div class='imgName'>" +
-                        theFile.name +
-                        "</div></div>";
-                    output.innerHTML = output.innerHTML + imgThumbnailElem;
-                };
-            })(f);
-            // Read in the image file as a data URL.
-            reader.readAsDataURL(f);
-        }
-    }
+            if ($(ele).val() == "paypal") {
+                $("#payment_selection_html").html(document.getElementById("paypal-html").innerHTML);
+            }
+            if ($(ele).val() == "payoneer") {
+                $("#payment_selection_html").html(document.getElementById("payoneer-html").innerHTML);
+            }
+        };
 
-    function removeThumbnailIMG(elm) {
-        elm.parentNode.outerHTML = "";
-    }
-
-</script>
-@else
-<script>
-
-    function addReview(e) {
-        let id = $(e).data('id');
-        var myform = document.getElementById("add-review-form-" + id);
-        var fd = new FormData(myform);
-        fd.append("_token", "{{ csrf_token() }}");
-        $.ajax({
-            url: "{{ route('add.client.review') }}",
-            type: "post",
-            processData: false,
-            contentType: false,
-            // data: $('#add-client-form').serialize(),
-            data: fd,
-            success: function (data) {
-                if (data.success == true) {
-                    swal('success', data.message, 'success')
-                        .then((value) => {
-                           $('.close'+id).click();
-                           $('.add-review-'+id).hide();
-                        });
-                } else {
-                    if (data.hasOwnProperty('message')) {
-                        var wrapper = document.createElement('div');
-                        var err = '';
-                        $.each(data.message, function (i, e) {
-                            err += '<p>' + e + '</p>';
-                        })
-
-                        wrapper.innerHTML = err;
-                        swal({
-                            icon: "error",
-                            text: "{{ __('Please fix following error!') }}",
-                            content: wrapper,
-                            type: 'error'
-                        });
-                        //setTimeout("pageRedirect()", 3000);
-                        //$('.actions  li:first-child a').click();
+        function categorySubcategoryCheck() {
+            if ($('select[name="category_id"]').val() == null) {
+                swal({
+                    icon: "error",
+                    text: "{{ __('Please Select Category!') }}",
+                    type: "error",
+                });
+            } else {
+                meCheckSubCategory = false;
+                $.each($('input[name="sub_category_id[]"]'), function () {
+                    if ($(this).is(":checked")) {
+                        meCheckSubCategory = true;
                     }
+                });
+                if (!meCheckSubCategory) {
+                    swal({
+                        icon: "error",
+                        text: "{{ __('Please Select Business Category!') }}",
+                        type: "error",
+                    });
+                } else {
+                    $(".close1").click();
                 }
-
             }
+        }
+
+        function getSubCategoriesForServices(ele) {
+            let id = $(ele).val();
+            $.ajax({
+                url: "{{ url('sub_categories') }}",
+                type: "get",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    $(".sub_categories").empty();
+                    $(".sub_categories").html(data);
+                },
+            });
+        }
+
+
+
+        $(document).ready(function () {
+            $(".gallery").magnificPopup({
+                delegate: "a",
+                type: "image",
+                tLoading: "Loading image #%curr%...",
+                mainClass: "mfp-img-mobile",
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [0, 1], // Will preload 0 - before current, and 1 after the current image
+                },
+                image: {
+                    tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                },
+            });
         });
-    }
-
-    function labelChange(elem) {
-        let e = $(elem).data('id');
-        console.log('#star' + e);
-        // $('#star'+e).find(['id="'+$(elem).data('id')+'"']).not().attr('checked',false);
-        $('#star' + e).attr('checked', true);
-
-    }
-
-    function ratingChange(elem) {
-        $(elem).addClass("checked");
-        $(elem).prevAll().addClass("checked");
-        $(elem).nextAll().removeClass("checked");
-        $(elem).nextAll().children('input').attr("checked", false);
-        $('span.checked').each(function () {
-            $(this).children('input').attr('checked', true);
+        $(function () {
+            $("#sortableImgThumbnailPreview").sortable({
+                connectWith: ".RearangeBox",
+                start: function (event, ui) {
+                    $(ui.item).addClass("dragElemThumbnail");
+                    ui.placeholder.height(ui.item.height());
+                },
+                stop: function (event, ui) {
+                    $(ui.item).removeClass("dragElemThumbnail");
+                },
+            });
+            $("#sortableImgThumbnailPreview").disableSelection();
         });
-    }
-    // ajax for payment
-    $('.payment_btn').on('click', function () {
-        var specialist_id = $(this).data('specialist');
-        var amount = $(this).data('amount');
-        var appointment = $(this).data('id');
-        var payment_for = $(this).data('payment_for');
-        console.log(specialist_id,appointment,amount,payment_for)
-        $('#payment_request').empty();
-        $.ajax({
-            type: 'get',
-            url: "{{ url('stripe') }}",
-            data: {
-                _token: '{{ csrf_token() }}',
-                specialist_id: specialist_id,
-                amount: amount,
-                appointment: appointment,
-                payment_for:payment_for,
-            },
-            success: function (data) {
-                $('#payment_request').html(data);
+        document.getElementById("files").addEventListener("change", handleFileSelect, false);
+
+        function handleFileSelect(evt) {
+            var files = evt.target.files;
+            var output = document.getElementById("sortableImgThumbnailPreview");
+            // Loop through the FileList and render image files as thumbnails.
+            for (var i = 0, f;
+                (f = files[i]); i++) {
+                // Only process image files.
+                if (!f.type.match("image.*")) {
+                    continue;
+                }
+                var reader = new FileReader();
+                // Closure to capture the file information.
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        // Render thumbnail.
+                        var imgThumbnailElem =
+                            "<div class='RearangeBox imgThumbContainer'><i class='material-icons imgRemoveBtn' onclick='removeThumbnailIMG(this)'>cancel</i><div class='IMGthumbnail' ><img  src='" +
+                            e.target.result +
+                            "'" +
+                            "title='" +
+                            theFile.name +
+                            "'/></div><div class='imgName'>" +
+                            theFile.name +
+                            "</div></div>";
+                        output.innerHTML = output.innerHTML + imgThumbnailElem;
+                    };
+                })(f);
+                // Read in the image file as a data URL.
+                reader.readAsDataURL(f);
             }
+        }
+
+        function removeThumbnailIMG(elm) {
+            elm.parentNode.outerHTML = "";
+        }
+
+    </script>
+@else
+    <script>
+
+        function addReview(e) {
+            let id = $(e).data('id');
+            var myform = document.getElementById("add-review-form-" + id);
+            var fd = new FormData(myform);
+            fd.append("_token", "{{ csrf_token() }}");
+            $.ajax({
+                url: "{{ route('add.client.review') }}",
+                type: "post",
+                processData: false,
+                contentType: false,
+                // data: $('#add-client-form').serialize(),
+                data: fd,
+                success: function (data) {
+                    if (data.success == true) {
+                        swal('success', data.message, 'success')
+                            .then((value) => {
+                            $('.close'+id).click();
+                            $('.add-review-'+id).hide();
+                            });
+                    } else {
+                        if (data.hasOwnProperty('message')) {
+                            var wrapper = document.createElement('div');
+                            var err = '';
+                            $.each(data.message, function (i, e) {
+                                err += '<p>' + e + '</p>';
+                            })
+
+                            wrapper.innerHTML = err;
+                            swal({
+                                icon: "error",
+                                text: "{{ __('Please fix following error!') }}",
+                                content: wrapper,
+                                type: 'error'
+                            });
+                            //setTimeout("pageRedirect()", 3000);
+                            //$('.actions  li:first-child a').click();
+                        }
+                    }
+
+                }
+            });
+        }
+
+        function labelChange(elem) {
+            let e = $(elem).data('id');
+            console.log('#star' + e);
+            // $('#star'+e).find(['id="'+$(elem).data('id')+'"']).not().attr('checked',false);
+            $('#star' + e).attr('checked', true);
+
+        }
+
+        function ratingChange(elem) {
+            $(elem).addClass("checked");
+            $(elem).prevAll().addClass("checked");
+            $(elem).nextAll().removeClass("checked");
+            $(elem).nextAll().children('input').attr("checked", false);
+            $('span.checked').each(function () {
+                $(this).children('input').attr('checked', true);
+            });
+        }
+        // ajax for payment
+        $('.payment_btn').on('click', function () {
+            var specialist_id = $(this).data('specialist');
+            var amount = $(this).data('amount');
+            var appointment = $(this).data('id');
+            var payment_for = $(this).data('payment_for');
+            console.log(specialist_id,appointment,amount,payment_for)
+            $('#payment_request').empty();
+            $.ajax({
+                type: 'get',
+                url: "{{ url('stripe') }}",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    specialist_id: specialist_id,
+                    amount: amount,
+                    appointment: appointment,
+                    payment_for:payment_for,
+                },
+                success: function (data) {
+                    $('#payment_request').html(data);
+                }
+            })
+
         })
 
-    })
-
-</script>
+    </script>
 @endif
 <script>
-      function readURL(input) {
+
+    function countryChange(elem)
+    {
+        $('.phone-number').val('+'+$(elem).find('option[value="'+$(elem).val()+'"]').data('code'));
+    }
+
+    function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
