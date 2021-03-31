@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="pt-2 pb-2 border-ffffff w-25 d-flex pl-3 pr-3 rounded">
                     <div class="w-100 cl-ffffff">
-                        <form action="{{ route('search') }}" method="get" id="search_form">
+                        <form action="{{ route('search') }}" method="get" id="search_form" onsubmit="return submit_function();">
                             @csrf
                             <input type="search" class="bg-transparent border-0 cl-ffffff w-100 robotoRegular " onfocusout="search_function();" id="search" name="search" placeholder="what are you looking for ?">
                         </form>
@@ -52,7 +52,7 @@
                         <a class="nav-link cl-ffffff" href="#">Blog <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item  p-0 robotoRegular pl-4 cl-ffffff">
-                        <a class="nav-link cl-ffffff" href="#">About us</a>
+                        <a class="nav-link cl-ffffff" href="#">Appointments</a>
                     </li>
                     <li class="nav-item dropdown  pl-4 robotoRegular">
                         <a class="nav-link cl-ffffff cl-ffffff" href="#" id="navbarDropdown" data-toggle="dropdown"
@@ -256,5 +256,11 @@
                    form.submit();
                }
             }
+           function submit_function(){
+            var input = document.forms["search_form"]["search"].value;
+            if (input == "") {
+                return false;
+            }
+           }
            
        </script>

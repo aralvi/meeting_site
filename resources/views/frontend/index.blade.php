@@ -23,11 +23,11 @@
                 <div class="d-flex bg-ffffff w-81 pt-3 pb-3 borderRadius-5px pl-3">
                     <div><img src="{{ asset('assets/frontend/images/search.png') }}" class="img-fluid" alt="" /></div>
                     <div class="pl-3 w-100">
-                        <input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 w-100" name="search" placeholder="Book your services..." />
+                        <input type="search" class="bg-transparent outline-none border-0 robotoRegular f-21 w-100 search" name="search" placeholder="Book your services..." />
                     </div>
                 </div>
                 <div class="pl-3">
-                    <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 pt-3 pb-3 pl-3 pr-3" type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt="" /></button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 pt-3 pb-3 pl-3 pr-3 search-btn" type="submit"><img src="{{ asset('assets/frontend/images/search2.png') }}" alt="" /></button>
                 </div>
             </form>
         </div>
@@ -335,4 +335,14 @@
 </section>
 <!-- S E V E N T H    S E C T I O N  E N d -->
 
-@endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script') @endsection {{-- footer section end --}}
+@endsection {{-- content section end --}} 
+{{-- footer section start --}} 
+@section('extra-script') 
+<script>
+    $('.search-btn').on('click',function(){
+        if($('.search').val() == ''){
+            return false
+        }
+    })
+</script>
+@endsection {{-- footer section end --}}
