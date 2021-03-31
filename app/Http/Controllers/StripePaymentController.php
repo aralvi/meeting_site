@@ -56,7 +56,7 @@ class StripePaymentController extends Controller
         if($request->payment_for == 'bid'){
             $bid = Bid::findOrFail($request->appointment_id);
             $bid->payment_amount =  $bid->payment_amount + $request->amount;
-            if ($bid->budget >$bid->payment_amount + $request->amount) {
+            if ($bid->budget > $bid->payment_amount + $request->amount) {
                 $bid->payment_status = '1';
             } else {
                 $bid->payment_status = '2';

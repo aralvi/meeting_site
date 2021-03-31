@@ -40,6 +40,7 @@ class BidController extends Controller
         $bid_request->specialist_id = $request->specialist_id;
         $bid_request->service_request_id = $request->service_request_id;
         $bid_request->budget = $request->budget;
+        $bid_request->payment_amount = 0;
         if ($request->time == 'Days') {
             $bid_request->delivery = $request->delivery . " " . $request->time;
         }
