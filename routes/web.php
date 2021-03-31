@@ -37,6 +37,7 @@ Route::get('category/sub_categories','CategoryController@getSubCategories')->nam
 Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
    Route::resource('/','Admin\AdminController');
    Route::resource('/categories', 'Admin\CategoryController');
+   Route::resource('/subcategories', 'Admin\SubCategoryController');
    Route::get('/password', 'ProfileController@password');
 //    Route::get('users','AdminController@users');
 //    Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
