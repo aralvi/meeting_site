@@ -460,7 +460,7 @@
 
         swal('success', 'SubCategory has been deleted successfully', 'success')
                 .then((value) => {
-	                                window.location.href = '';
+	                                // window.location.href = '';
 	                            });
         @endif
         function addSubCategory()
