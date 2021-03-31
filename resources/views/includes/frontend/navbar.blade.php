@@ -226,7 +226,14 @@
                             <a href="{{ route('specialist.index') }}" class="dropdown-item">Dashboard</a>
                             
                             @endif
+                            @if (Auth::user()->user_type == 'admin')
+                            <a href="{{ url('/dashboard') }}" class="dropdown-item">Setting</a>
+                            
+                            @endif
+                            @if (Auth::user()->user_type != 'admin')
                             <a href="{{ route('profile.index') }}" class="dropdown-item">Profile</a>
+                            
+                            @endif
                             <a
                                 class="dropdown-item"
                                 href="{{ route('logout') }}"
