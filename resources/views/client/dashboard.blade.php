@@ -591,7 +591,7 @@ span.prefix{
                                                                 <div class="row px-3 ml-1 mt-2 mb-5">
                                                                     <div class="col-md-12 mt-3 borderRadius-10px box_shadow1 pb-5">
                                                                         <div class="d-flex mt-3 justify-content-between px-5">
-                                                                            <div class="cl-3ac754 robotoMedium f-24 col-md-9 px-0">Bids Description</div>
+                                                                            <div class="cl-3ac754 robotoMedium f-24 col-md-9 px-0 text-left">Bids Description</div>
                                                                             <div class="f-24 cl-3ac754 robotoMedium col-md-2 px-0 text-right">Amount</div>
                                                                             <div class="f-24 cl-3ac754 robotoMedium col-md-1">Action</div>
                                                                         </div>
@@ -599,10 +599,10 @@ span.prefix{
                                                                         @foreach ($request->bids as $service)
                                                                             <div class="d-flex mt-4 justify-content-between pr-5" >
                                                                                 <div class="col-md-9 pl-5 pr-0">
-                                                                                    <div class="cl-000000 robotoMedium f-24">{{ ucfirst($request->title) }}</div>
+                                                                                    <div class="cl-000000 robotoMedium f-24 text-left">{{ ucfirst($request->title) }}</div>
                                                                                     <div class="d-flex">
                                                                                         <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Bid by:</div>
-                                                                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->specialist->user->name }} </div>
+                                                                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->specialist->user->username }} </div>
                                                                                     </div>
                                                                                     <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
                                                                                         {{$service->perposal}}
@@ -625,8 +625,10 @@ span.prefix{
                                                                                                 <div class="d-flex">
                                                                                                     <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
                                                                                                     <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
-                                                                                                        
-                                                                                                        <a class="cl-3ac754" href="public/{{ $service->attachment }}" download="downlaod">test</a>
+                                                                                                        @php  if($service->attachment  !=null){
+                                                                                                                    $attachment= explode('uploads/files/',$service->attachment );
+                                                                                                                    }  @endphp
+                                                                                                        <a class="cl-3ac754" href="public/{{ $service->attachment }}" download="downlaod">{{ $attachment[1] }}</a>
                                                                                                         </div>
                                                                                                 </div>
                                                                                             </div>
@@ -644,7 +646,7 @@ span.prefix{
                                                                                     @csrf @method('PUT') --}}
                                                                                     <input type="hidden" name="url" value="{{ route('bids.update',$service->id) }}" class="url">
                                                                                     <input type="hidden" name="status" value="{{ ($service->status == 'Declined') ? 1 :0 }}" class="status">
-                                                                                    <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Declined' }} </button>
+                                                                                    <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Ignore' }} </button>
                                                                                     {{-- </form> --}}
                                                                                     
                                                                                 </div>
@@ -713,7 +715,6 @@ $('.action_btn').on('click', function(e) {
         url: url,
         data: { status: status, _token: "{{ csrf_token() }}",_method:" put" },
         success: function(msg) {
-                console.log(msg.approval);
 
             if(msg.status == 'Declined'){
                 $('.change_status_'+msg.id).siblings('input[name="status"]').val(1)
@@ -723,7 +724,7 @@ $('.action_btn').on('click', function(e) {
             }else if(msg.status == 'Approved'){
                 $('.change_status_'+msg.id).removeClass('btn-success').addClass('btn-danger');
                 $('.change_status_'+msg.id).siblings('input[name="status"]').val(0)
-                $('.change_status_'+msg.id).text('Declined')
+                $('.change_status_'+msg.id).text('Ignore')
             }
             if(msg.approval == true){
                 $('button.action_btn').not('button.change_status_'+msg.id).hide();
