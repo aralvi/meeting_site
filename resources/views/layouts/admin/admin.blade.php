@@ -1,323 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>@yield('title','')</title>
+<html>
 
-        <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/fontawesome-free/css/all.min.css') }}" />
-        <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/adminlte.min.css') }}" />
-        <!-- Select2 -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}" />
-        <!-- summernote -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/summernote/summernote-bs4.min.css')}}" />
-        <!-- overlayScrollbars -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}" />
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
-    </head>
-        <style>
-            .sidebar-menu {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-            .bg-222d32 {
-                background-color: #222d32;
-            }
+<head>
+    @include('includes.frontend.head') @yield('extra-css')
+</head>
 
-            .sidebar-menu > li {
-                position: relative;
-                margin: 0;
-                padding: 0;
-            }
-
-            .sidebar-menu > li > a {
-                padding: 12px 5px 12px 15px;
-                display: block;
-                border-left: 3px solid transparent;
-                color: #b8c7ce;
-            }
-
-            .sidebar-menu > li > a > .fa {
-                width: 20px;
-            }
-
-            .sidebar-menu > li:hover > a,
-            .sidebar-menu > li.active > a {
-                color: #fff;
-                background: #1e282c;
-                border-left-color: #3c8dbc;
-            }
-
-            .sidebar-menu > li > .treeview-menu {
-                margin: 0 1px;
-                background: #2c3b41;
-            }
-
-            .sidebar-menu > li .label,
-            .sidebar-menu > li .badge {
-                margin-top: 3px;
-                margin-right: 5px;
-            }
-
-            .sidebar-menu li.header {
-                padding: 10px 25px 10px 15px;
-                font-size: 12px;
-                color: #4b646f;
-                background: #1a2226;
-            }
-
-            .sidebar-menu li > a > .fa-angle-left {
-                width: auto;
-                height: auto;
-                padding: 0;
-                margin-right: 10px;
-                margin-top: 3px;
-            }
-
-            .sidebar-menu li.active > a > .fa-angle-left {
-                transform: rotate(-90deg);
-            }
-
-            .sidebar-menu li.active > .treeview-menu {
-                display: block;
-            }
-
-            .sidebar-menu a {
-                color: #b8c7ce;
-                text-decoration: none;
-            }
-
-            .sidebar-menu .treeview-menu {
-                display: none;
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                padding-left: 5px;
-            }
-
-            .sidebar-menu .treeview-menu .treeview-menu {
-                padding-left: 20px;
-            }
-
-            .sidebar-menu .treeview-menu > li {
-                margin: 0;
-            }
-
-            .sidebar-menu .treeview-menu > li > a {
-                padding: 5px 5px 5px 15px;
-                display: block;
-                font-size: 14px;
-                /* color: #8aa4af; */
-            }
-            .sidebar-menu .treeview-menu > li > a:hover ,
-            .sidebar-menu .treeview-menu > li.active >a.active {
-                background-color: rgba(255, 255, 255, 0.9);;
-                color: #343a40 !important;
-            }
-
-            .sidebar-menu .treeview-menu > li > a > .fa {
-                width: 20px;
-            }
-
-            .sidebar-menu .treeview-menu > li > a > .fa-angle-left,
-            .sidebar-menu .treeview-menu > li > a > .fa-angle-down {
-                width: auto;
-            }
-
-            .sidebar-menu .treeview-menu > li.active > a.nav-link,
-            .sidebar-menu .treeview-menu > li > a.nav-link:hover {
-                color: #fff !important;
-            }
-            
-        </style>
-        <script>
-            var url = "{{ url('/') }}";
-            var token = "{{ csrf_token() }}";
-        </script>
-    </head>
-
-    <body class="hold-transition sidebar-mini layout-fixed">
-        <div class="wrapper">
-            <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-                <!-- Left navbar links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="{{ url('/') }}" class="mt-1 bg-dark rounded btn btn-sm">Go to site</a>
-                    </li>
-                </ul>
-
-                <!-- Right navbar links -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-img" data-toggle="dropdown" href="#">
-                            {{-- @if (Auth::user()->avatar != '') --}} {{-- <img src="{{asset('uploads/images/user/avatars/'.Auth::user()->avatar)}}" class="avatar-img rounded-circle" alt="..." /> --}} {{-- @else --}}
-                            <img src="{{asset('assets/admin/dist/img/avatar.png')}}" class="avatar-img rounded-circle" alt="profile" width="40" />
-
-                            {{-- @endif --}}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a
-                                class="dropdown-item"
-                                href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();"
-                            >
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+<body>
+    @yield('navbar')
+   <section class="main_padding pt-70 px-50">
+    <div class="row m-0 justify-content-center">
+        <div class="col-md-3 col-lg-3 col-sm-12 p-0 box_shadow1 borderRadius-12px pt-4 pb-5">
+            <p class="border-bottom text-center f-21 cl-616161">Your Profile</p>
+            <div class="d-flex align-items-center flex-column">
+                <div class="dashboard_id text-center">
+                    <img id="blah" class="rounded-circle blah"
+                        src="{{(Auth::user()->avatar != null)? asset(Auth::user()->avatar): asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}"
+                        alt="" style="height: 118px; width: 118px;" />
+                    <form action="{{ url('/profile/change_avatar') }}" method="post" enctype="multipart/form-data"
+                        id="avatar_form">
+                        @csrf
+                        <div class="form-group m-0">
+                            <label class="btn img-lbl p-1 mb-0 position-relative" style="top: -34px; left: 43px;">
+                                <img src="{{ asset('assets/frontend/images/camera.png') }}" alt="" srcset=""
+                                    height="30" />
+                                <input type="file" style="display: none;" name="avatar" class="avatar"
+                                    onchange="readURL(this);" required accept="image/png, image/jpg, image/jpeg" />
+                            </label>
                         </div>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.navbar -->
-
-            <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-222d32">
-                <!-- Brand Logo -->
-                <a href="index3.html" class="brand-link">
-                    <img src="{{ asset('assets/admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8;" />
-
-                    <span class="brand-text font-weight-light">EWD Tech</span>
-                </a>
-
-                <!-- Sidebar -->
-                <div class="sidebar">
-                    <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="{{ asset('assets/admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" />
-                        </div>
-                        <div class="info">
-                            {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
-                        </div>
-                    </div>
-
-                    <!-- SidebarSearch Form -->
-                    <div class="form-inline">
-                        <div class="input-group" data-widget="sidebar-search">
-                            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" />
-                            <div class="input-group-append">
-                                <button class="btn btn-sidebar">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Menu -->
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column sidebar-menu bg-222d32" data-widget="treeview" role="menu" data-accordion="false">
-                            <li class="treeview {{ request()->is('admin/home')? 'active': '' }}">
-                                <a href="{{ url('/admin/home') }}" class="nav-link {{ request()->is('admin/home')? 'active': '' }}">
-                                    <i class="fa fa-dashboard"></i>
-                                    <p>Dashboard</p>
-                                </a>
-                            </li>
-                            <li class="treeview {{ request()->is('clients*')? 'active': '' }}">
-                                <a href="" class="nav-link {{ request()->is('clients*')? 'active': '' }}">
-                                    <i class="fa fa-pie-chart"></i>
-                                    <span>Users</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="{{ request()->is('clients*')? 'active': '' }}">
-                                        <a href="{{ url('clients') }}" class="{{ request()->is('clients*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Clients</a>
-                                    </li>
-                                    <li class="{{ request()->is('specialists*')? 'active': '' }}">
-                                        <a href="{{ url('specialists') }}" class="{{ request()->is('specialists*')? 'active': '' }}"><i class="fa fa-circle-o"></i> Specialists</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            
-                            
-                        </ul>
-                    </nav>
-                    <!-- /.sidebar-menu -->
+                        {{-- <button class="btn btn-sm bg-3AC574 text-white">Upload Photo</button> --}}
+                    </form>
                 </div>
-                <!-- /.sidebar -->
-            </aside>
+                <p class="m-0 f-27 robotoMedium cl-5757575 pt-3">{{ ucwords(Auth::user()->username) }}</p>
+                @if (Auth::user()->user_type == 'specialist')
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                @include('common.messages')
-                @yield('content')
+                <p class="f-18 cl-a8a8a8a robotoMedium m-0 pt-1">{{ ucwords(Auth::user()->specialist->category->name) }}
+                </p>
+                @endif
             </div>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer">
-                <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-                <div class="float-right d-none d-sm-inline-block"><b>Version</b> 3.1.0-rc</div>
-            </footer>
 
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link {{ Request::is('dashboard') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard') }}" >Profile</a>
+                <a class="nav-link {{ Request::is('dashboard/categories') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/categories') }}" >Categories</a>
+                <a class="nav-link {{ Request::is('dashboard/subcategories') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/subcategories') }}" >Sub Categories</a>
+              
+                
+                <a class="nav-link cl-000000 {{ Request::is('dashboard/password') ? 'active' : ''  }}" href="{{ url('/dashboard/password') }}">Password</a>
+            </div>
         </div>
-        <!-- ./wrapper -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-        <script>
-            $.sidebarMenu = function (menu) {
-                var animationSpeed = 300;
+        <div class="col-md-8 col-lg-8 col-sm-12 pt-4 p-0 ml-4 box_shadow1 borderRadius-12px">
+            @yield('content') 
+        </div>
+    </div>
 
-                $(menu).on("click", "li a", function (e) {
-                    var $this = $(this);
-                    var checkElement = $this.next();
+   
 
-                    if (checkElement.is(".treeview-menu") && checkElement.is(":visible")) {
-                        checkElement.slideUp(animationSpeed, function () {
-                            checkElement.removeClass("menu-open");
-                        });
-                        checkElement.parent("li").removeClass("active");
-                    }
 
-                    //If the menu is not visible
-                    else if (checkElement.is(".treeview-menu") && !checkElement.is(":visible")) {
-                        //Get the parent menu
-                        var parent = $this.parents("ul").first();
-                        //Close all open menus within the parent
-                        var ul = parent.find("ul:visible").slideUp(animationSpeed);
-                        //Remove the menu-open class from the parent
-                        ul.removeClass("menu-open");
-                        //Get the parent li
-                        var parent_li = $this.parent("li");
+</section>
+    
+    @yield('footer')
+    
+<!-- E I G H T    S E C T I O N  S T A R T -->
+<section class="main_padding pt-70  w-100">
+    <div class="w-100 border-bcbcbc"></div>
+</section>
 
-                        //Open the target menu and add the menu-open class
-                        checkElement.slideDown(animationSpeed, function () {
-                            //Add the class active to the parent li
-                            checkElement.addClass("menu-open");
-                            parent.find("li.active").removeClass("active");
-                            parent_li.addClass("active");
-                        });
-                    }
-                    //if this isn't a link, prevent the page from being redirected
-                    if (checkElement.is(".treeview-menu")) {
-                        e.preventDefault();
-                    }
-                });
-            };
+<!-- E I G H T    S E C T I O N  E N D  -->
 
-            $.sidebarMenu($(".sidebar-menu"));
-        </script>
-        <script src="{{ asset('assets/admin/plugins/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- N I N E    S E C T I O N  S T A R T -->
+<section class="main_padding pt-70  w-100">
+    <div class="row m-0 justify-content-between">
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium f-26">Categories</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Graphics & Design</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Digital Marketing</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Business</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Lifestyle</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Sitemap</a></li>
+
+            </ul>
+
+        </div>
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium  f-26">About</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Careers</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Partnerships</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Privacy Policy</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Terms of Service</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Investor Relations</a></li>
+
+            </ul>
+        </div>
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium f-26">Support</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Help & Support</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Trust & Safety</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Selling</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Buying </a></li>
+
+
+            </ul>
+        </div>
+        <div>
+            <h4 class="m-0 cl-000000 robotoMedium f-26">Community</h4>
+            <ul class="p-0 robotoRegular footerUl">
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Events</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Blog</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Forum</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Podcast</a></li>
+                <li class="listStyle-none pt-4"><a href="" class="f-21 cl-6b6b6b">Affiliates
+                    </a></li>
+
+
+            </ul>
+        </div>
+
+        <div class="col-md-2 p-0">
+            {{-- <div>
+                <h4 class="m-0 cl-000000 robotoMedium f-26">Join Us On</h4>
+            </div>
+            <div class="pt-4"> <input type="email" placeholder="Enter your email..."
+                    class="robotoRegular cl-6b6b6b    bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
+            </div>
+            <div class="pt-3"><button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 w-100 rounded"
+                    type="submit">Submit</button></div> --}}
+
+            <div>
+                <h4 class="m-0 cl-000000 robotoMedium f-26">Apps</h4>
+
+            </div>
+         
+            <div class="pt-3"><a href=""><img 
+            src="{{ asset('assets/frontend/images/appstore_2x.png') }}"
+            alt="" class="w-135" srcset=""></a></div>
+            <div class="pt-3"><a href=""><img
+            src="{{ asset('assets/frontend/images/playstore_2x.png') }}"
+            alt="" class="w-135" srcset=""></a></div>
+         
+         
+            
+          
+            <div class="f-26 cl-bcbcbc pt-3 footerUl">Follow us On</div>
+            <div class="d-flex pt-3">
+                <div><a href=""><img src="{{ asset('assets/frontend/images/fb.png') }}" class="img-fluid"></a></div>
+                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/insta.png') }}" alt=""
+                            srcset=""></a></div>
+                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/twitter.png') }}" alt=""
+                            srcset=""></a></div>
+                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/linkdin.png') }}" alt=""
+                            srcset=""></a></div>
+            </div>
+            </div>
+        </div>
+</section>
+
+<!-- N I N E    S E C T I O N  E N D  -->
+
+<!-- T E N    S E C T I O N  S T A R T  -->
+<section class="main_padding bg-4b4b4b4 mt-5 pt-4 pb-4">
+    <div class="d-flex justify-content-center  align-items-center"><img
+            src="{{ asset('assets/frontend/images/Copyright © 2021 learnmelive, All Right Reserved learnmelive.png') }}"
+            alt="" srcset=""></div>
+</section>
+
+<!-- T E N    S E C T I O N  E N D  -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+    	<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
+    	<script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+        <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
+        <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
         <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
         <script src="{{ asset('assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
         <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
@@ -327,37 +193,38 @@
         <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
         <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
         <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-        <!-- Select2 -->
-        <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
-        <!-- Summernote -->
-        <script src="{{ asset('assets/admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
-        <script src="{{ asset('assets/admin/dist/js/adminlte.js') }}"></script>
         <script src="{{ asset('assets/admin/dist/js/custome.js') }}"></script>
+<script>
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(".blah").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+            $("#avatar_form").submit();
+        }
+    }
+    
+</script>
         <script>
             $(function () {
                  $(".select2").select2();
-                $("#example1")
+                $(".example1")
                     .DataTable({
                         responsive: true,
                         lengthChange: false,
                         autoWidth: false,
-                        buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                        "scrollX": true,
+                        // buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
                     })
                     .buttons()
                     .container()
-                    .appendTo("#example1_wrapper .col-md-6:eq(0)");
-                // $('#example2').DataTable({
-                //   "paging": true,
-                //   "lengthChange": false,
-                //   "searching": false,
-                //   "ordering": true,
-                //   "info": true,
-                //   "autoWidth": false,
-                //   "responsive": true,
-                // });
+                    .appendTo(".dataTables_wrapper .col-md-6:eq(0)");
+                
             });
-    
         </script>
-        @yield('script')
-    </body>
+    @yield('extra-script')
+</body>
+
 </html>
