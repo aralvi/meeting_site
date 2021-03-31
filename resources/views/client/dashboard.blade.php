@@ -599,43 +599,49 @@ span.prefix{
                                                                         @foreach ($request->bids as $service)
                                                                             <div class="d-flex mt-4 justify-content-between pr-5" >
                                                                                 <div class="col-md-9 pl-5 pr-0">
-                                                                                    <div class="cl-000000 robotoMedium f-24 text-left">{{ ucfirst($request->title) }}</div>
                                                                                     <div class="d-flex">
-                                                                                        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Bid by:</div>
-                                                                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->specialist->user->username }} </div>
-                                                                                    </div>
-                                                                                    <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
-                                                                                        {{$service->perposal}}
-                                                                                    </div>
-                                                                                    <div class="d-flex pt-2">
-                                                                                        <div>
-                                                                                            <div class="d-flex">
-                                                                                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                                                                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Bid</div>
-                                                                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div></div>
-                                                                                    </div>
-                                                                                    @if($service->attachment !=null)
 
+                                                                                        <div style="height: 50px;width:50px;" class="mr-2"><img src="{{ $service->specialist->user->avatar }}" class="rounded-circle w-100 h-100" alt="" srcset=""></div>
+                                                                                        <div class="">
+                                                                                        <div class="cl-000000 robotoMedium f-24 text-left">{{ ucfirst($request->title) }}</div>
+                                                                                        <div class="d-flex">
+                                                                                            <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Bid by:</div>
+                                                                                            <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->specialist->user->username }} </div>
+                                                                                        </div>
+                                                                                        <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
+                                                                                            {{$service->perposal}}
+                                                                                        </div>
                                                                                         <div class="d-flex pt-2">
                                                                                             <div>
                                                                                                 <div class="d-flex">
-                                                                                                    <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
-                                                                                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
-                                                                                                        @php  if($service->attachment  !=null){
-                                                                                                                    $attachment= explode('uploads/files/',$service->attachment );
-                                                                                                                    }  @endphp
-                                                                                                        <a class="cl-3ac754" href="public/{{ $service->attachment }}" download="downlaod">{{ $attachment[1] }}</a>
-                                                                                                        </div>
+                                                                                                    <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
+                                                                                                    <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Bid</div>
+                                                                                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div></div>
                                                                                         </div>
-                                                                                    
-                                                                                    @endif
+                                                                                        @if($service->attachment !=null)
+    
+                                                                                            <div class="d-flex pt-2">
+                                                                                                <div>
+                                                                                                    <div class="d-flex">
+                                                                                                        <div><img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" /></div>
+                                                                                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
+                                                                                                            @php  if($service->attachment  !=null){
+                                                                                                                        $attachment= explode('uploads/files/',$service->attachment );
+                                                                                                                        }  @endphp
+                                                                                                            <a class="cl-3ac754" href="public/{{ $service->attachment }}" download="downlaod">{{ $attachment[1] }}</a>
+                                                                                                            </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div></div>
+                                                                                            </div>
+                                                                                        
+                                                                                        @endif
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                                 <div class="robotoMedium text-right col-md-2 pr-0">
                                                                                     <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
