@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Specialist;
 use App\Client;
 use App\Mail\SpecialistWelcomeMail;
+use App\Mail\AdminApprovalMail;
 
 class RegisterController extends Controller
 {
@@ -125,7 +126,6 @@ class RegisterController extends Controller
             'avatar'=> $avatar_url
         ]);
         
-
         if($data['user_type'] =='specialist')
         {
             if(count(explode(',',$data['days'])) >0)
@@ -171,7 +171,10 @@ class RegisterController extends Controller
             $specialist->opening_hours = json_encode($hours_arr);
             if($specialist->save())
             {
+                // config('app.mail_from'),config('app.mail_from_name')
                 Mail::to($data['email'])->send(new SpecialistWelcomeMail(['name'=>$data['name'],'message'=>'Profile submitted successfully. We will contact you via email (ASAP) when approved!']));
+                Mail::to(config('app.mail_from'))->send(new AdminApprovalMail(['name'=>$data['name'],'email'=>$data['email'],'message'=>'Profile '.$data['username'].' submitted successfully. Please Approved it']));
+
             }
         }
         else if($data['user_type'] =='client')

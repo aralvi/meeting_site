@@ -605,19 +605,11 @@
             <div class="d-flex">
                 <div class="f-34 cl-000000 robotoMedium">Reviews</div>
                 <div class="d-flex align-items-center pl-4">
-                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="">
-                    </div>
-                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="">
-                    </div>
-                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="">
-                    </div>
-                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="">
-                    </div>
-                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="">
-                    </div>
-
-
-
+                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
                 </div>
             </div>
             <div class="w-75 f-21 RobotoRegular cl-616161 text-justify">Reviews are no joke! Booksy values authentic
@@ -636,21 +628,15 @@
                     <div>
                         <div class="d-flex">
                             <div class="d-flex align-items-center pr-3">
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""  srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""  srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset=""></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt=""  srcset=""></div>
-
-
-
+                                @php $r = "assets/frontend/images/rating/".$rating->rating.".png" @endphp
+                                <div class="pl-2"><img src="{{ asset($r) }}" alt="" srcset=""></div>
                             </div>
                             <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">{{$rating->user->country}}</div>
                             <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">{{$rating->created_at->format('F d,Y')}}
                             </div>
                         </div>
                     </div>
-                    <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">{{ $rating->description }}</div>
+                    <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">{{ ucfirst($rating->description) }}</div>
                     {{-- <div class="d-flex f-21 robotoMedium pt-3">
                         <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
                         <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
@@ -666,7 +652,7 @@
 
         </div>
         <div class="col-md-4 p-0">
-            <section>
+            {{-- <section>
                 <div class="row m-0 pt-2 card_boxShadow pt-4 pb-3">
                     <div class="col-md-5 text-center">
                         <div class="f-41 cl-616161 robotoRegular">5.0<span
@@ -695,9 +681,6 @@
                                 <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar"
                                     style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-
-
-
                             <div class="pl-2">85%</div>
                         </div>
                         <div class="d-flex align-items-center pt-2">
@@ -706,9 +689,6 @@
                                 <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar"
                                     style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-
-
-
                             <div class="pl-2">40%</div>
                         </div>
                         <div class="d-flex align-items-center pt-2">
@@ -747,7 +727,7 @@
 
                     </div>
                 </div>
-            </section>
+            </section> --}}
         </div>
     </div>
 </section>

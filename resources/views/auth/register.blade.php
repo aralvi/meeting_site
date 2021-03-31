@@ -30,6 +30,11 @@
     .select2-selection__choice__remove{
         color:#cd2a2a !important;
     }
+
+    .select2-container .select2-search, 
+    .select2-container .select2-search__field {
+        width: 100% !important;
+    }
     .swal-button {
         background-color: #3AC574 !important;
     }
@@ -1370,7 +1375,7 @@
 <script>
     // $(".specialist-select").select2();
     // $(".client-select").select2();
-    $(".language-select").select2();
+    $(".language-select").select2({placeholder: "Language Spoken",});
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     var firebaseConfig = {
