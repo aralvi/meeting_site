@@ -1099,7 +1099,7 @@
                     aria-labelledby="v-pills-appointment-tab">
                     <p class="pl-3 f-21 cl-000000">Appointments</p>
                     <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                        <table id="example2" class="table table-hover example1">
+                        <table id="example2" class="table table-hover example1" style="width:100%">
                             <thead>
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
@@ -1173,7 +1173,7 @@
                                         ${{ $appointment->rate - $appointment->payment_amount }}
                                     </td>
 
-                                    <td style="min-width: 135px !important;" class="d-flex border-0">
+                                    <td style="min-width: 135px !important;text-align:left!important;" class="d-flex border-0">
                                         @if ($appointment->status != "Completed" ) @if (Auth::user()->user_type=='specialist')
                                         <form action="{{ route('appointments.update',$appointment->id) }}"
                                             method="post">
@@ -1182,22 +1182,22 @@
                                             <input type="hidden" name="status"
                                                 value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}" />
                                             <button type="submit"
-                                                class="btn btn-sm btn-success">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
+                                                class="btn btn-sm btn-success ml-1">{{ ($appointment->status == 'Cancelled')? 'Approve': ($appointment->status == 'Pending')? 'Approve':'Completed' }}</button>
                                         </form>
                                         @endif @if ($appointment->status != "Cancelled") 
                                         @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid")
-                                        <button class="btn btn-success btn-sm payment_btn" data-toggle="modal"
+                                        <button class="btn btn-success btn-sm payment_btn ml-1" data-toggle="modal"
                                             data-target="#payment_modal" data-id="{{ $appointment->id }}"
                                             data-specialist="{{ $appointment->specialist_id }}"
-                                            data-amount="{{ $appointment->rate - $appointment->payment_amount }}" data-payment_for="appointment">payment</button>
+                                            data-amount="{{ $appointment->rate - $appointment->payment_amount }}" data-payment_for="appointment">Payment</button>
 
-                                        <div class="modal fade" tabindex="-1" role="dialog"
+                                        <div class="modal fade " tabindex="-1" role="dialog"
                                             id="review_modal{{$appointment->id}}">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Add Review</h5>
-                                                        <button type="button" class="close close{{$appointment->id}}" data-dismiss="modal"
+                                                        <h5 class="modal-title ml-4">Add Review</h5>
+                                                        <button type="button" class="close mr-2 close{{$appointment->id}}" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -1207,7 +1207,8 @@
                                                         <form id="add-review-form-{{$appointment->id}}">
                                                             <input type="hidden" name="appointment_id" value="{{ $appointment->id }}">
                                                             <input type="hidden" name="specialist_id" value="{{ $appointment->specialist->id }}">
-                                                            <div class="ml-4 input-group mb-3 pt-4 d-flex flex-nowrap">
+                                                            <div class="ml-4 input-group mb-1 pt-2">
+                                                                <div class="w-100"><label>Rating</label></div>
                                                                 <div class="w-100">
                                                                     <fieldset class="rating">
                                                                         <input type="radio" id="mystar{{ $appointment->id }}5" name="rating" value="5" /><label onclick="labelChange(this);" data-id="5" class = "full" for="mystar{{ $appointment->id }}5" title="Awesome - 5 stars"></label>
@@ -1218,17 +1219,15 @@
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
-    
-                                                            <div class="row justify-content-between">
-                                                                <div class="input-group mb-3 pt-4 d-flex ml-4 flex-nowrap col-md-11 border-top-0 border-left-0 border-right-0">
-                                                                    <div class="w-100">
-                                                                        <textarea type="text" class="w-100 form-control border" placeholder="Enter Message Body" name="description"></textarea>
-                                                                    </div>
+                                                            <div class="row">
+                                                                <div class="form-group mb-3 pt-3 ml-4 col-md-11">
+                                                                    <label class="mb-2">Review Detail</label>
+                                                                    <textarea type="text" class="w-100 form-control border" placeholder="Enter Message Body" name="description"></textarea>
                                                                 </div>
                                     
                                                             </div>
     
-                                                            <button type="button" class="btn btn-sm btn-success" onclick="addReview(this);" data-id="{{$appointment->id}}">Add</button>
+                                                            <button type="button" class="btn btn-sm btn-success ml-4" onclick="addReview(this);" data-id="{{$appointment->id}}">Add</button>
                                                         </form>
 
                                                     </div>
@@ -1238,7 +1237,7 @@
                                         </div>
                                         @if($appointment->rating == null)
 
-                                            <button type="button" class="btn btn-sm btn-success add-review-{{$appointment->id}}" data-toggle="modal"
+                                            <button type="button" class="btn btn-sm btn-success add-review-{{$appointment->id}} ml-1" data-toggle="modal"
                                         data-target="#review_modal{{$appointment->id}}">Add Review</button>
 
                                         @endif
@@ -1249,7 +1248,7 @@
                                             method="post">
                                             @csrf @method('put')
                                             <input type="hidden" name="status" value="2" />
-                                            <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+                                            <button type="submit" class="btn btn-sm btn-danger ml-1">Cancel</button>
                                         </form>
                                         @endif @endif
                                     </td>
