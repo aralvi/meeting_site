@@ -47,13 +47,36 @@
                         <thead>
                             <tr class="text-uppercase">
                                 <th scope="col">#</th>
-                                <th scope="col">User</th>
+                                <th scope="col">Photo</th>
+                                <th scope="col">User Type</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Time Zone</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach($users as $key => $user)
+                            <tr id="target_{{ $user->id }}">
+                                <td>{{ $key+1 }}</td>
+                               
+                                <td class="text-capitalize"><img src="{{ $user->avatar }}" alt="" srcset=""></td>
+                                <td class="text-capitalize">{{ $user->user_type }}</td>
+                                <td class="text-capitalize">{{ $user->username }}</td>
+                                <td class="text-capitalize">{{ $user->email }}</td>
+                                <td class="text-capitalize">{{ $user->country }}</td>
+                                <td class="text-capitalize">{{ $user->time_zone }}</td>
+                                <td class="text-capitalize"> <span class="badge badge-sm {{ ($user->status == 'active')? 'badge-success':'badge-danger' }}">{{ $user->status}}</span></td>
+                                
+                                <td style="min-width: 135px !important;">
+                                    <button title="Click to Update user" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-target=".editCatModal" data-toggle="modal" data-catid="{{ $user->id }}"><i class="fa fa-pencil"></i> </button>
+
+                                    <button title="Click to Delete user" type="button" class="btn btn-danger btn-sm catDelete" data-toggle="modal" data-target=".deleteCatModal" id="catDelete" data-catid="{{ $user->id }}"><i class="fa fa-trash"></i> </button>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
