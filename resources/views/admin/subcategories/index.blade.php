@@ -222,7 +222,7 @@
                             <td >{{ ucwords($subcategory->name) }}</td>
                             <td >{{ ucfirst($subcategory->description) }}</td>
                             
-                            <td style="min-width: 135px !important;">
+                            <td style="min-width: 135px !important;" class="d-flex">
                                 
                                 <div class="modal fade editCatModal{{ $subcategory->id }}" id="editCatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelcatedit" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -293,7 +293,7 @@
                                     @csrf
                                     @method('delete')
                                </form>
-                               <button title="Click to Delete SubCategory" type="button" class="btn btn-danger btn-sm" onclick="deleteSubcategory({{ $subcategory->id }});"><i class="fa fa-trash"></i></button>
+                               <button title="Click to Delete SubCategory" type="button" class="btn btn-danger btn-sm ml-1" onclick="deleteSubcategory({{ $subcategory->id }});"><i class="fa fa-trash"></i></button>
 
                             </td>
                         </tr>
