@@ -199,40 +199,80 @@
 
 <p class="pl-3 f-21 cl-000000">Add SubCategory</p>
 
-<form action="{{ route('subcategories.store') }}" method="post" >
-    @csrf
-    <div class="pl-5 pr-5 first-step-html-change">
-    
-        <div class="row justify-content-between">
-            <div
-                class="input-group mb-3 col-md-5 border-input pt-4 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
-                <div class="d-flex"><em class="fa fa-list d-flex justify-content-center align-items-center"></em>
-                </div>
-                <div class="w-100">
-                    <select id="country" name="country" class="form-control country-select w-100 border-0">
-                        @foreach ($categories as $category)
-                        <option value="{{ $category }}" data-code="{{ $country['code'] }}">
-                            {{ $country['name'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div
-                class="input-group mb-3 border-input pt-4 d-flex flex-nowrap col-md-5 border border-top-0 border-left-0 border-right-0">
-                <div class="d-flex"><em class="fa fa-list d-flex justify-content-center align-items-end pb-2"></em>
-                </div>
-                <div class="w-100 d-flex align-items-end">
-                    <input type="text" class="w-100 form-control border-0" placeholder="Enter SubCategory Name" name="email"
-                        id="email" aria-label="" aria-describedby="basic-addon1" value="" />
-                </div>
-            </div>
-        </div>
 
-        <div class="row justify-content-end">
-            <button type="submit" class="btn btn-sm bg-3AC574 text-white">Save Changes</button>
+<div class="modal fade " tabindex="-1" role="dialog" id="add-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ml-4">Add SubCategory</h5>
+                <button type="button" class="close mr-2 close{{$appointment->id}}" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form action="{{ route('subcategories.store') }}" method="post" id="add-subcategories-form" >
+                    @csrf
+                    <div class="pl-5 pr-5 first-step-html-change">
+                    
+                        <div class="row justify-content-between">
+                            <div
+                                class="input-group mb-3 col-md-5 border-input pt-4 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                <div class="d-flex"><em class="fa fa-list d-flex justify-content-center align-items-center"></em>
+                                </div>
+                                <div class="w-100">
+                                    <select id="country" name="category" class="form-control country-select w-100 border-0">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div
+                                class="input-group mb-3 border-input pt-4 d-flex flex-nowrap col-md-5 border border-top-0 border-left-0 border-right-0">
+                                <div class="d-flex"><em class="fa fa-list d-flex justify-content-center align-items-end pb-2"></em>
+                                </div>
+                                <div class="w-100 d-flex align-items-end">
+                                    <input type="text" class="w-100 form-control border-0" placeholder="Enter SubCategory Name" name="name"
+                                            aria-label="" aria-describedby="basic-addon1" value="" />
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="row justify-content-between">
+                            <div class="input-group mb-3 col-md-12 border-input pt-4 d-flex flex-nowrap border border-top-0 border-left-0 border-right-0">
+                                <div>
+                                    
+                                    <em class="fa fa-bars"></em>
+                                </div>
+                                <div class="w-100">
+                                    <textarea name="description" type="text" id="description" class="form-control border-0" placeholder="Type SubCategory Description..."
+                                        ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="row justify-content-end">
+                            <button type="button" class="btn btn-sm bg-3AC574 text-white" onclick="addSubCategory();">Add</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
         </div>
     </div>
-</form>
+</div>
+                                        @if($appointment->rating == null)
+
+                                            <button type="button" class="btn btn-sm btn-success add-review-{{$appointment->id}} ml-1" data-toggle="modal"
+                                        data-target="#review_modal{{$appointment->id}}">Add Review</button>
+
+                                        @endif
+
+
+
 
 
 
@@ -240,6 +280,48 @@
 @endsection {{-- content section end --}} {{-- footer section start --}} @section('extra-script')
 
 <script>
+
+function addSubCategory()
+{
+    var myform = document.getElementById("add-subcategories-form");
+    var fd = new FormData(myform);
+    fd.append("_token", "{{ csrf_token() }}");
+    $.ajax({
+        url: "{{ route('subcategories.store') }}",
+        type: "post",
+        processData: false,
+        contentType: false,
+        data: fd,
+        success: function (data) {
+            if (data.success == true) {
+                swal('success', data.message, 'success')
+                    .then((value) => {
+                        window.location = "{{ route('subcategories.index') }}";
+                    });
+            } else {
+                if (data.hasOwnProperty('message')) {
+                    var wrapper = document.createElement('div');
+                    var err = '';
+                    $.each(data.message, function (i, e) {
+                        err += '<p>' + e + '</p>';
+                    })
+
+                    wrapper.innerHTML = err;
+                    swal({
+                        icon: "error",
+                        text: "{{ __('Please fix following error!') }}",
+                        content: wrapper,
+                        type: 'error'
+                    });
+                    //setTimeout("pageRedirect()", 3000);
+                    //$('.actions  li:first-child a').click();
+                }
+            }
+
+        }
+    });
+}
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

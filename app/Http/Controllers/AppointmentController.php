@@ -150,7 +150,7 @@ class AppointmentController extends Controller
         $review->description = $request->description;
         if($review->save())
         {
-            return response()->json(['success' => true, 'message' =>"Client has been added successfully"]);
+            return response()->json(['success' => true, 'message' =>"Review has been added successfully"]);
         }
 
     }
