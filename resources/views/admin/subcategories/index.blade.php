@@ -228,7 +228,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabelcatedit" style="font-size: 18px !important;">Edit Category</h5>
+                                                <h5 class="modal-title" id="exampleModalLabelcatedit" style="font-size: 18px !important;">Edit SubCategory</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -288,9 +288,13 @@
                                     </div>
                                 </div>
 
-                                <button title="Click to Update Category" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-target=".editCatModal{{ $subcategory->id }}" data-toggle="modal" data-catid="{{ $subcategory->id }}"><i class="fe fe-pencil"></i> Edit</button>
+                                <button title="Click to Update SubCategory" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-target=".editCatModal{{ $subcategory->id }}" data-toggle="modal" data-catid="{{ $subcategory->id }}"><i class="fe fe-pencil"></i> Edit</button>
+                                <form method="post" id="delete-subcategories-form-{{ $subcategory->id }}" action="{{ route('subcategories.destroy',$subcategory->id) }}">
+                                    @csrf
+                                    @method('delete')
+                               </form>
+                               <button title="Click to Delete SubCategory" type="button" class="btn btn-danger btn-sm" onclick="deleteSubcategory({{ $subcategory->id }});"><i class="fe fe-trash"></i> Delete</button>
 
-                                <button title="Click to Delete Category" type="button" class="btn btn-danger btn-sm catDelete" data-toggle="modal" data-target=".deleteCatModal" id="catDelete" data-catid="{{ $subcategory->id }}"><i class="fe fe-trash"></i> Delete</button>
                             </td>
                         </tr>
                     @endforeach
@@ -451,6 +455,14 @@
 @endsection 
 @section('extra-script')
     <script>
+
+        @if (session("message"))
+
+        swal('success', 'SubCategory has been deleted successfully', 'success')
+                .then((value) => {
+	                                window.location.href = '';
+	                            });
+        @endif
         function addSubCategory()
         {
             var myform = document.getElementById("add-subcategories-form");
@@ -534,5 +546,45 @@
                 }
             });
         }
+
+        function deleteSubcategory(id)
+        {
+            swal({
+                title: "Do you want to delete this subcategory?",
+                text: "Once deleted, you will not be able to recover this subcategory!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete)
+                {
+                    var myform = document.getElementById("delete-subcategories-form-"+id).submit();
+                    // var fd = new FormData(myform);
+                    // fd.append("_token","dssfsdfsdfertwer32/sfdf/@sdfsdf345345534dffg");
+                    // var c_url = '{{ route("subcategories.destroy", ":id") }}';
+                    // c_url = c_url.replace(':id',id);
+                    // $.ajax({
+                    //     url: c_url,
+                    //     type: "delete",
+                    //     processData: false,
+                    //     contentType: false,
+                    //     data:fd,
+                    //     success: function (data) {
+                    //         if (data.success == true) {
+                    //             swal('success', data.message, 'success')
+                    //                 .then((value) => {
+                    //                     window.location = " ";
+                    //                 });
+                    //         } 
+                    //     }
+                    // });
+                    } 
+                });
+
+        }
+
+
+        
     </script>
 @endsection
