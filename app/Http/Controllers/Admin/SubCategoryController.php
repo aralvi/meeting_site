@@ -28,8 +28,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('status','active')->get();
-        return view('admin.subcategories.create',compact('categories'));
+
     }
 
     /**
