@@ -254,108 +254,84 @@
                     
             </div>
         </section>
-        @endif
+    @endif
 
-    <section class="main_padding pt-70 text-center">
-        <p class="main_title robotoMedium f-34 cl-000000 m-0">Portfolio</p>
-        <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">The best and highly skilled Performance done previously</p>
-        <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="" />
-    </section>
-    <section class="main_padding pt-70">
-        <div class="row m-0">
-            <div class="col-lg-7 col-md-7 col-sm-12 pl-0 pr-0 bg_img_8 d-flex flex-column justify-content-end">
-                <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
-                    / 01
-                </div>
-                <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
-                <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
-                <div class="w-100 bg-000000a6 borderRadius-10px">
-                    <div class="d-flex pt-3 pb-3 justify-content-end pr-4">
-                        <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}" alt="" srcset="" /><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
-                        <div class="pl-3"><img src="{{ asset('assets/frontend/images/Path 104.png') }}" alt="" srcset="" /><span class="cl-8b8b8b pl-1 robotoRegular">10</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 pr-0">
-                <div class="bg_imgcol-5 d-flex flex-column justify-content-end">
-                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
-                        / 01
-                    </div>
-                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
-                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
-                    <div class="w-100 bg-000000a6 borderRadius-10px">
-                        <div class="d-flex pt-3 pb-3 justify-content-end pr-4">
-                            <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}" alt="" srcset="" /><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
-                            <div class="pl-3"><img src="{{ asset('assets/frontend/images/Path 104.png') }}" alt="" srcset="" /><span class="cl-8b8b8b pl-1 robotoRegular">10</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 2nd -->
-                <div class="bg_imgcol-5_two d-flex flex-column justify-content-end">
-                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">
-                        / 01
-                    </div>
-                    <div class="f-34 robotoMedium cl-ffffff pl-4 porfolio_images_title">From Fashion To better look</div>
-                    <div class="f-26 robotoRegular cl-ffffff pl-4 pb-3 porfolio_images_subtitle">Fashion in Demand</div>
-                    <div class="w-100 bg-000000a6 borderRadius-10px">
-                        <div class="d-flex pt-3 pb-3 justify-content-end pr-4">
-                            <div><img src="{{ asset('assets/frontend/images/Path 103.png') }}" alt="" srcset="" /><span class="cl-8b8b8b pl-1 robotoRegular">1</span></div>
-                            <div class="pl-3"><img src="{{ asset('assets/frontend/images/Path 104.png') }}" alt="" srcset="" /><span class="cl-8b8b8b pl-1 robotoRegular">10</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end -->
-            </div>
-        </div>
-    </section>
-    <section class="main_padding pt-5 text-center">
-        <button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5" type="submit">See all</button>
-    </section>
+        @if($service->specialist->portfolios->count() >0 )
+        <section class=" main_padding pt-70 text-center">
+            <p class="main_title robotoMedium  f-34 cl-000000  m-0">Portfolio</p>
+            <p class="f-21 m-0 pt-3 cl-616161 robotoRegular">The best and highly skilled Performance done previously</p>
+            <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
+        </section>
 
-    <section class=" main_padding pt-5">
-        <div class="row m-0">
-            <div class="col-md-8 col-lg-8 pl-0">
-                <div class="d-flex">
-                    <div class="f-34 cl-000000 robotoMedium">Reviews</div>
-                    <div class="d-flex align-items-center pl-4">
-                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/rating/5.png') }}" alt="" srcset=""></div>
-                    </div>
+        <section class=" main_padding pt-70 ">
+            <div class="row m-0">
+                @foreach ($service->specialist->portfolios->take(1) as $portfolio)
+                <div class="col-lg-7 col-md-7 col-sm-12 pl-0 pr-0 bg_img_8 d-flex flex-column  justify-content-end"  >
+                    <img src="{{ asset($portfolio->image) }}" alt="" class="w-100 h-100 border-10">
                 </div>
-                <div class="w-75 f-21 RobotoRegular cl-616161 text-justify">Reviews are no joke! Booksy values authentic
-                    reviews and only verifies them
-                    if we know the reviewer has visited this business.</div>
-    
-                <!-- COMMENTS SECTION START -->
-                @if (isset($service->specialist->ratings))
-                    
-                    @foreach ($service->specialist->ratings as $rating)
-                        <div class="d-flex pt-5">
-                            <div class="img_commentSection"><img src="{{ asset($rating->user->avatar) }}"
-                                    alt="" srcset=""></div>
-                            <div class="content_commentSection pl-4">
-                                <div>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center pr-3">
-                                            @php $r = "assets/frontend/images/rating/".$rating->rating.".png" @endphp
-                                            <div class="pl-2"><img src="{{ asset($r) }}" alt="" srcset=""></div>
-                                        </div>
-                                        <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">{{$rating->user->country}}</div>
-                                        <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">{{$rating->created_at->format('F d,Y')}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">{{ ucfirst($rating->description) }}</div>
-                                {{-- <div class="d-flex f-21 robotoMedium pt-3">
-                                    <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
-                                    <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
-                                    <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
-                                </div> --}}
-                            </div>
+                @endforeach
+                <div class="col-lg-5 col-md-5 col-sm-12 pr-0 d-flex flex-column justify-content-between">
+                    @foreach ($service->specialist->portfolios->skip(1)->take(2) as $portfolio)
+                        <div class="bg_imgcol-5 d-flex flex-column  justify-content-end">
+                            <img src="{{ asset($portfolio->image) }}" alt="" class="w-100 h-100 border-10">
                         </div>
                     @endforeach
-    
-                @endif
+                </div>
+            </div>
+        </section>
+        <section class=" main_padding pt-5 text-center">
+            <a href="{{route('specialist_portfolio',encrypt($service->specialist->id))}}" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pl-5 pr-5 " type="submit">See
+                all</a>
+        </section>
+    @endif
+
+
+    @if($service->specialist->ratings->count() > 0)
+        <section class=" main_padding pt-5">
+            <div class="row m-0">
+                <div class="col-md-8 col-lg-8 pl-0">
+                    <div class="d-flex">
+                        <div class="f-34 cl-000000 robotoMedium">Reviews</div>
+                        <div class="d-flex align-items-center pl-4">
+                            <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                            <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                            <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                            <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                            <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                        </div>
+                    </div>
+                    <div class="w-75 f-21 RobotoRegular cl-616161 text-justify">Reviews are no joke! Booksy values authentic
+                        reviews and only verifies them
+                        if we know the reviewer has visited this business.
+                    </div>
+
+                    <!-- COMMENTS SECTION START -->
+                    @if (isset($service->specialist->ratings))
+                        
+                        @foreach ($service->specialist->ratings as $rating)
+                            <div class="d-flex pt-5">
+                                <div class="img_commentSection"><img src="{{ asset($rating->user->avatar) }}"
+                                        alt="" srcset=""></div>
+                                <div class="content_commentSection pl-4">
+                                    <div>
+                                        <div class="d-flex">
+                                            <div class="d-flex align-items-center pr-3">
+                                                @php $r = "assets/frontend/images/rating/".$rating->rating.".png" @endphp
+                                                <div class="pl-2"><img src="{{ asset($r) }}" alt="" srcset=""></div>
+                                            </div>
+                                            <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">{{$rating->user->country}}</div>
+                                            <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">{{$rating->created_at->format('F d,Y')}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">{{ ucfirst($rating->description) }}</div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    @endif
                 <!-- 2 -->
+                </div>
             </div>
             <div class="col-md-4 p-0">
                 {{-- <section>
@@ -373,13 +349,13 @@
                                         srcset=""></div>
                                 <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt=""
                                         srcset=""></div>
-    
-    
-    
+
+
+
                             </div>
                             <div class="f-19 robotoRegular cl-a2a2a2 pt-3">150 reviews</div>
                         </div>
-    
+
                         <div class="progressBarmainDiv robotoRegular cl-a2a2a2 col-md-7 pl-0">
                             <div class="d-flex align-items-center">
                                 <div class="f-16 pr-2">5</div>
@@ -403,9 +379,9 @@
                                     <div class=" borderRadius-12px" role="progressbar" style="width: 45%;"
                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-    
-    
-    
+
+
+
                                 <div class="pl-2">0</div>
                             </div>
                             <div class="d-flex align-items-center pt-2">
@@ -414,9 +390,9 @@
                                     <div class=" borderRadius-12px" role="progressbar" style="width: 45%;"
                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-    
-    
-    
+
+
+
                                 <div class="pl-2">0</div>
                             </div>
                             <div class="d-flex align-items-center pt-2">
@@ -425,18 +401,18 @@
                                     <div class=" borderRadius-12px" role="progressbar" style="width: 45%;"
                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-    
-    
-    
+
+
+
                                 <div class="pl-2">0</div>
                             </div>
-    
+
                         </div>
                     </div>
                 </section> --}}
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection {{-- content section end --}} 
 {{-- footer section start --}} 
 
