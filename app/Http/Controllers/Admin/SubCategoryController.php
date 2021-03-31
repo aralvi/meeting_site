@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\SubCategory;
+use App\Category;
+use Validator;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -14,7 +16,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::where('status','active')->get();
+        $subcategories = SubCategory::all();
+        return view('admin.subcategories.index',compact('categories','subcategories'));
     }
 
     /**
@@ -24,7 +28,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.subcategories.create');
+
     }
 
     /**
@@ -35,7 +39,24 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validations = Validator::make($request->all(),[
+            'category'=>'required',
+            'name'=>'required',
+        ]);
+
+        if($validations->fails())
+        {
+            return response()->json(['success' => false, 'message' => $validations->errors()]);
+        }
+
+        $subcategory = new SubCategory();
+        $subcategory->category_id = $request->category;
+        $subcategory->name = $request->name;
+        $subcategory->description = $request->description;
+        if($subcategory->save())
+        {
+            return response()->json(['success' => true, 'message' =>"Subcategory has been added successfully"]);
+        }
     }
 
     /**
@@ -67,9 +88,25 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(Request $request, SubCategory $subcategory)
     {
-        //
+        $validations = Validator::make($request->all(),[
+            'category'=>'required',
+            'name'=>'required',
+        ]);
+
+        if($validations->fails())
+        {
+            return response()->json(['success' => false, 'message' => $validations->errors()]);
+        }
+
+        $subcategory->category_id = $request->category;
+        $subcategory->name = $request->name;
+        $subcategory->description = $request->description;
+        if($subcategory->save())
+        {
+            return response()->json(['success' => true, 'message' =>"Subcategory has been updated successfully"]);
+        }
     }
 
     /**
