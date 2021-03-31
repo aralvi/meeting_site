@@ -27,6 +27,11 @@
              $("#target_" + ServiceId).hide();
 
              $('#message').html(data);
+             swal({
+                 icon: "success",
+                 text: "Service Deleted Successfuly!",
+                 icon: 'success'
+             });
          },
 
      });
@@ -50,6 +55,11 @@
              $("#target_" + portfolioID).hide();
 
              $('#message').html(data);
+             swal({
+                 icon: "success",
+                 text: "Image Deleted Successfuly!",
+                 icon: 'success'
+             });
          },
 
      });
@@ -85,6 +95,11 @@
          success: function(data) {
              $("#target_" + catID).hide();
              $("#deleteCatModal .close").click();
+             swal({
+                 icon: "success",
+                 text: "Category Deleted Successfuly!",
+                 icon: 'success'
+             });
          },
 
 

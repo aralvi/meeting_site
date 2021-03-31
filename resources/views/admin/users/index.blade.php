@@ -59,7 +59,9 @@
                         </thead>
                         <tbody>
                             @foreach($users as $key => $user)
+                            @if ($user->id != Auth::user()->id && $user->user_type != 'admin')
                             <tr id="target_{{ $user->id }}">
+                                    
                                 <td>{{ $key+1 }}</td>
                                
                                 <td class="text-capitalize"><img src="{{ $user->avatar }}" alt="" srcset=""></td>
@@ -71,11 +73,14 @@
                                 <td class="text-capitalize"> <span class="badge badge-sm {{ ($user->status == 'active')? 'badge-success':'badge-danger' }}">{{ $user->status}}</span></td>
                                 
                                 <td style="min-width: 135px !important;">
-                                    <button title="Click to Update user" class="btn btn-warning btn-sm editCatBtn" id="editCatBtn" data-target=".editCatModal" data-toggle="modal" data-catid="{{ $user->id }}"><i class="fa fa-pencil"></i> </button>
+                                    <button class="btn {{ ($user->status== 'active')? 'btn-danger':'btn-success' }}  btn-sm cahnge_status"   data-user="{{ $user->id }}" data-status="{{ ($user->status == 'active')? 'inactive':'active' }}">{{ ($user->status == 'active')? 'Inactive':'Activate' }}</button>
 
-                                    <button title="Click to Delete user" type="button" class="btn btn-danger btn-sm catDelete" data-toggle="modal" data-target=".deleteCatModal" id="catDelete" data-catid="{{ $user->id }}"><i class="fa fa-trash"></i> </button>
+                                    {{-- <button title="Click to Update user" class="btn btn-warning btn-sm change_status" id="editCatBtn" data-target=".editCatModal" data-toggle="modal" data-catid="{{ $user->id }}"><i class="fa fa-pencil"></i> </button> --}}
+
+                                    {{-- <button title="Click to Delete user" type="button" class="btn btn-danger btn-sm catDelete" data-toggle="modal" data-target=".deleteCatModal" id="catDelete" data-catid="{{ $user->id }}"><i class="fa fa-trash"></i> </button> --}}
                                 </td>
                             </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -148,3 +153,49 @@
             </div>
         </div>
 @endsection 
+@section('extra-script')
+    <script>
+        $('.cahnge_status').on('click',function(){
+        var user = $(this);
+        var user_id = $(this).data('user');
+        var status = $(this).attr('data-status');
+        $.ajax({
+            type: 'post',
+            url: "{{ url('dashboard/users/') }}"+"/"+user_id,
+            data: {
+                _token: '{{ csrf_token() }}',
+                user_id: user_id,
+                status:status,
+               _method:" put"
+               
+            },
+            success: function (data) {
+                if(data == 'active'){
+                    user.removeClass('btn-success').addClass('btn-danger');
+                    user.text('Inactive')
+                    user.attr('data-status','inactive')
+                    swal({
+                            icon: "success",
+                            text: "{{ __('User Activated Successfully') }}",
+                            icon: 'success'
+                        });
+                }if(data == 'inactive'){
+                    user.attr('data-status','active')
+                    user.removeClass('btn-danger').addClass('btn-success');
+                    user.text('Activate')
+                    swal({
+                            icon: "success",
+                            text: "{{ __('User In-Activated Successfully') }}",
+                            icon: 'success'
+                        });
+
+                }
+            }
+        })
+    })
+
+
+
+
+    </script>
+@endsection
