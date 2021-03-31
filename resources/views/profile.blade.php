@@ -1458,16 +1458,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $(".blah").attr("src", e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-            $("#avatar_form").submit();
-        }
-    }
+  
     const usernamePublicProfile = (ele) => {
         let val = $(ele).val();
         val = val.split(" ").join("-");
@@ -1764,6 +1755,16 @@
 </script>
 @endif
 <script>
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(".blah").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+            $("#avatar_form").submit();
+        }
+    }
     $('.work_status').on('click',function(){
         var bid = $(this);
         var bid_id = $(this).data('bid');
