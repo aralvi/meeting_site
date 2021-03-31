@@ -42,6 +42,7 @@
                 <a class="nav-link {{ Request::is('dashboard') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard') }}" >Profile</a>
                 <a class="nav-link {{ Request::is('dashboard/categories') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/categories') }}" >Categories</a>
                 <a class="nav-link {{ Request::is('dashboard/subcategories') || Request::is('dashboard/subcategories/create') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/subcategories') }}" >Sub Categories</a>
+                <a class="nav-link {{ Request::is('dashboard/users') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/users') }}" >Users</a>
               
                 
                 <a class="nav-link cl-000000 {{ Request::is('dashboard/password') ? 'active' : ''  }}" href="{{ url('/dashboard/password') }}">Password</a>
