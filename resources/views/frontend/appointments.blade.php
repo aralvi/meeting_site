@@ -311,151 +311,129 @@
     <section class="main_padding pt-5 text-center">
         <button href="" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5" type="submit">See all</button>
     </section>
-    <section class="main_padding pt-5">
+
+    <section class=" main_padding pt-5">
         <div class="row m-0">
             <div class="col-md-8 col-lg-8 pl-0">
                 <div class="d-flex">
                     <div class="f-34 cl-000000 robotoMedium">Reviews</div>
                     <div class="d-flex align-items-center pl-4">
-                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
+                        <div class="pl-2"><img src="{{ asset('assets/frontend/images/rating/5.png') }}" alt="" srcset=""></div>
                     </div>
                 </div>
-                <div class="w-75 f-21 RobotoRegular cl-616161 text-justify">Reviews are no joke! Booksy values authentic reviews and only verifies them if we know the reviewer has visited this business.</div>
+                <div class="w-75 f-21 RobotoRegular cl-616161 text-justify">Reviews are no joke! Booksy values authentic
+                    reviews and only verifies them
+                    if we know the reviewer has visited this business.</div>
+    
                 <!-- COMMENTS SECTION START -->
-                <div class="d-flex pt-5">
-                    <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}" alt="" srcset="" /></div>
-                    <div class="content_commentSection pl-4">
-                        <div>
-                            <div class="d-flex">
-                                <div class="d-flex align-items-center pr-3">
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
+                @if (isset($service->specialist->ratings))
+                    
+                    @foreach ($service->specialist->ratings as $rating)
+                        <div class="d-flex pt-5">
+                            <div class="img_commentSection"><img src="{{ asset($rating->user->avatar) }}"
+                                    alt="" srcset=""></div>
+                            <div class="content_commentSection pl-4">
+                                <div>
+                                    <div class="d-flex">
+                                        <div class="d-flex align-items-center pr-3">
+                                            @php $r = "assets/frontend/images/rating/".$rating->rating.".png" @endphp
+                                            <div class="pl-2"><img src="{{ asset($r) }}" alt="" srcset=""></div>
+                                        </div>
+                                        <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">{{$rating->user->country}}</div>
+                                        <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">{{$rating->created_at->format('F d,Y')}}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
-                                <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
+                                <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">{{ ucfirst($rating->description) }}</div>
+                                {{-- <div class="d-flex f-21 robotoMedium pt-3">
+                                    <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
+                                    <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
+                                    <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
+                                </div> --}}
                             </div>
                         </div>
-                        <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of art as welll!!!! I would give him 10 stars...</div>
-                        <div class="d-flex f-21 robotoMedium pt-3">
-                            <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
-                            <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
-                            <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+    
+                @endif
                 <!-- 2 -->
-                <div class="d-flex pt-5">
-                    <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}" alt="" srcset="" /></div>
-                    <div class="content_commentSection pl-4">
-                        <div>
-                            <div class="d-flex">
-                                <div class="d-flex align-items-center pr-3">
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                </div>
-                                <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
-                                <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
-                            </div>
-                        </div>
-                        <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of art as welll!!!! I would give him 10 stars...</div>
-                        <div class="d-flex f-21 robotoMedium pt-3">
-                            <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
-                            <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
-                            <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end -->
-                <!-- 3 -->
-                <div class="d-flex pt-5">
-                    <div class="img_commentSection"><img src="{{ asset('assets/frontend/images/commentsectioniimg.png') }}" alt="" srcset="" /></div>
-                    <div class="content_commentSection pl-4">
-                        <div>
-                            <div class="d-flex">
-                                <div class="d-flex align-items-center pr-3">
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 71.png') }}" alt="" srcset="" /></div>
-                                </div>
-                                <div class="f-26 RobotoRegular cl-616161 borderLeft pl-3 pr-3 comment_SectionName">Gisella P.</div>
-                                <div class="f-21 RobotoRegular cl-616161 borderLeft pl-3 comment_SectionDate">Dec 20, 2020</div>
-                            </div>
-                        </div>
-                        <div class="w-75 f-26 RobotoRegular cl-616161 pt-3 text-justify Comment">This barber is the best in town!!!! My son enjoys his work of art as welll!!!! I would give him 10 stars...</div>
-                        <div class="d-flex f-21 robotoMedium pt-3">
-                            <div><a class="cl-a2a2a2 comment_SectionLRD" href="##">Like</a></div>
-                            <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Dislike</a></div>
-                            <div class="pl-4"><a class="cl-a2a2a2 comment_SectionLRD" href="##">Reply</a></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end -->
             </div>
             <div class="col-md-4 p-0">
-                <section>
+                {{-- <section>
                     <div class="row m-0 pt-2 card_boxShadow pt-4 pb-3">
                         <div class="col-md-5 text-center">
-                            <div class="f-41 cl-616161 robotoRegular">5.0<span class="robotoRegular f-16 cl-979797">/5</span></div>
+                            <div class="f-41 cl-616161 robotoRegular">5.0<span
+                                    class="robotoRegular f-16 cl-979797">/5</span></div>
                             <div class="d-flex align-items-center justify-content-center">
-                                <div><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
-                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset="" /></div>
+                                <div><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt="" srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt=""
+                                        srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt=""
+                                        srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt=""
+                                        srcset=""></div>
+                                <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 70.png') }}" alt=""
+                                        srcset=""></div>
+    
+    
+    
                             </div>
                             <div class="f-19 robotoRegular cl-a2a2a2 pt-3">150 reviews</div>
                         </div>
+    
                         <div class="progressBarmainDiv robotoRegular cl-a2a2a2 col-md-7 pl-0">
                             <div class="d-flex align-items-center">
                                 <div class="f-16 pr-2">5</div>
                                 <div class="progress w-261 h-6px">
-                                    <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar"
+                                        style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="pl-2">85%</div>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div class="f-16 pr-2">4</div>
                                 <div class="progress w-261 h-6px">
-                                    <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-3ac574 borderRadius-12px" role="progressbar"
+                                        style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="pl-2">40%</div>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div class="f-16 pr-2">3</div>
                                 <div class="progress w-261 h-6px">
-                                    <div class="borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class=" borderRadius-12px" role="progressbar" style="width: 45%;"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+    
+    
+    
                                 <div class="pl-2">0</div>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div class="f-16 pr-2">2</div>
                                 <div class="progress w-261 h-6px">
-                                    <div class="borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class=" borderRadius-12px" role="progressbar" style="width: 45%;"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+    
+    
+    
                                 <div class="pl-2">0</div>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div class="f-16 pr-2">1</div>
                                 <div class="progress w-261 h-6px">
-                                    <div class="borderRadius-12px" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class=" borderRadius-12px" role="progressbar" style="width: 45%;"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+    
+    
+    
                                 <div class="pl-2">0</div>
                             </div>
+    
                         </div>
                     </div>
-                </section>
+                </section> --}}
             </div>
         </div>
     </section>
