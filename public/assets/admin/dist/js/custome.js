@@ -54,3 +54,47 @@
 
      });
  });
+
+ // open edit categoory modal
+ $('.editCatBtn').on('click', function() {
+     var catID = $(this).data('catid');
+     $.ajax({
+         type: 'get',
+         url: url + '/dashboard/categories/' + catID + '/edit',
+         success: function(data) {
+             $('.requestCatData').html(data);
+
+         }
+     });
+ });
+
+ /*** Open Deleting Category  Modal ***/
+ $('.catDelete').on('click', function() {
+     var catID = $(this).data('catid');
+
+     $('#deleteCatBtn').val(catID);
+ });
+
+ /*** Deleting Category  ***/
+ $('#deleteCatBtn').on('click', function() {
+     var catID = $(this).val();
+     $.ajax({
+         type: 'post',
+         url: url + '/dashboard/categories/' + catID,
+         data: { id: catID, _token: token, _method: 'DELETE' },
+         success: function(data) {
+             $("#target_" + catID).hide();
+             $('#success_errror_any').addClass("hide");
+             $('#messageDiv').removeClass("alert-danger hide");
+             $('#messageDiv').addClass("alert-success");
+             $('#message').html(data);
+         },
+         error: function() {
+             $('#success_errror_any').addClass("hide");
+             $('#messageDiv').removeClass("alert-success hide");
+             $('#messageDiv').addClass("alert-danger");
+             $('#message').html('Category not found or Something is wrong');
+         }
+
+     });
+ });

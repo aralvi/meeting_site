@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = Category::all();
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -24,18 +26,19 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+
+        ]);
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+        return back()->with('success', 'Category has been stored successfuly!');
     }
 
     /**
@@ -57,7 +60,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.editCategory', compact('category'));
     }
 
     /**
@@ -69,7 +73,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+
+
+        ]);
+        $category = Category::findOrFail($id);
+        $category->name = $request->name;
+        $category->save();
+        return back()->with('success', 'Category has been updated successfuly!');
     }
 
     /**
@@ -80,6 +92,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id)->delete();
+
     }
 }
