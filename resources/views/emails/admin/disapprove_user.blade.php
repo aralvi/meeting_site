@@ -33,7 +33,7 @@
         
         <div class="robotoRegular"
         style="font-size: 21px;max-width: 500px;text-align: center;margin: auto; padding-top: 16px;border-bottom: 1px solid #707070;padding-bottom: 20px;">
-        We sorry to inform you but your account has been banned permanently. We have found policy violation in your
+        Hi,{{ @$data['name'] }} We sorry to inform you but your account has been banned permanently. We have found policy violation in your
         content
         </div>
         <div class="robotoRegular"
