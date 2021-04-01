@@ -99,7 +99,7 @@ class LoginController extends Controller
         $role = Auth::user()->user_type;
         switch ($role) {
             case 'admin':
-                return '/dashboard';
+                return '/dashboard/profile';
                 break;
             case 'specialist':
                 return '/specialist';
