@@ -205,7 +205,7 @@
                     bid.text('Mark Completed')
                     swal({
                             icon: "success",
-                            text: "{{ __('Work is marked as Un-Completed') }}",
+                            text: "{{ __('Work is marked as Un-Complete') }}",
                             icon: 'success'
                         });
 

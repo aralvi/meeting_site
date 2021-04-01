@@ -214,7 +214,7 @@
                  $(".select2").select2();
                 $(".example1")
                     .DataTable({
-                        responsive: true,
+                        // responsive: true,
                         lengthChange: false,
                         autoWidth: false,
                         "scrollX": true,
