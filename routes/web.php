@@ -35,7 +35,7 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallba
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 
 Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
-   Route::resource('/','Admin\AdminController');
+   Route::resource('/profile','Admin\AdminController');
    Route::resource('/categories', 'Admin\CategoryController');
    Route::resource('/users', 'Admin\UserController');
    Route::resource('/subcategories', 'Admin\SubCategoryController');

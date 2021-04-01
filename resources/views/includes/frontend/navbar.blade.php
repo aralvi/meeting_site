@@ -227,7 +227,7 @@
                             
                             @endif
                             @if (Auth::user()->user_type == 'admin')
-                            <a href="{{ url('/dashboard') }}" class="dropdown-item">Setting</a>
+                            <a href="{{ url('/dashboard/profile') }}" class="dropdown-item">Setting</a>
                             
                             @endif
                             @if (Auth::user()->user_type != 'admin')
