@@ -51,8 +51,8 @@ class ServiceController extends Controller
         $service->title =  $request->title;
         $service->timing =  $request->timing;
         $service->rate =  $request->rate;
-        $tags = explode(',',$request->tags);
-        $service->tags = json_encode($tags);
+        // $tags = explode(',',$request->tags);
+        // $service->tags = json_encode($tags);
         $service->description = $request->description;
         $service->status =  isset($request->status) ? '1' : '0';
         $service->save();
@@ -105,8 +105,8 @@ class ServiceController extends Controller
         $service->title =  $request->title;
         $service->timing =  $request->timing;
         $service->rate =  $request->rate;
-        $tags = explode(',', $request->tags);
-        $service->tags = json_encode($tags);
+        // $tags = explode(',', $request->tags);
+        // $service->tags = json_encode($tags);
         $service->description = $request->description;
         $service->status =  isset($request->status)?'1':'0';
         $service->save();

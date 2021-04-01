@@ -62,13 +62,19 @@ class AppointmentController extends Controller
 
     public function storeAppointment(Request $request)
     {
+        $date = getTimeZoneDate(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
+        $time = getTimeZoneTime(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
+        if(Appointment::where('date',$date)->where('time')->first() !=null)
+        {
+            return back()->with('error',$request->time.' on '.$request->date.' has been already booked!');
+        }
         $appointment = new Appointment();
         $appointment->user_id = Auth::user()->id;
         $appointment->service_id = $request->service_id;
         $appointment->specialist_id = $request->specialist_id;
-        $appointment->date = getTimeZoneDate(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
+        $appointment->date = $date;
         $appointment->rate = $request->rate;
-        $appointment->time = getTimeZoneTime(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
+        $appointment->time = $time;
         $appointment->save();
         return back()->with('success','Appointment Created Successfuly!');
 

@@ -318,10 +318,10 @@
                                             class="fa fa-map-marker d-flex justify-content-center align-items-center"></em>
                                     </div>
                                     <div class="w-100">
-                                        <select id="country" name="country"
+                                        <select id="country" name="country" onchange="countryChange(this);"
                                             class="form-control country-select w-100 border-0">
                                             @foreach (countries() as $country)
-                                                <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
+                                                <option {{ Auth::user()->country  == ucwords(strtolower($country['name'])) ? "selected":" " }} value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -332,8 +332,8 @@
                                             class="fa fa-phone d-flex justify-content-center align-items-center"></em>
                                     </div>
                                     <div class="w-100">
-                                        <input type="number" class="form-control border-0"
-                                            placeholder="What is your business phone#" name="business_phone"
+                                        <input type="text" class="form-control border-0 phone-number"
+                                            placeholder="What is your business phone" name="business_phone"
                                             id="business_phone" aria-label="" aria-describedby="basic-addon1"
                                             value="{{ Auth::user()->specialist->business_phone }}" />
                                     </div>
@@ -858,7 +858,7 @@
                                         <select id="country" name="country" onchange="countryChange(this);"
                                             class="select2 form-control country-select w-100 border-0">
                                             @foreach (countries() as $country)
-                                                <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
+                                                <option {{ Auth::user()->country  == ucwords(strtolower($country['name'])) ? "selected":" " }} value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -963,7 +963,7 @@
                     <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal"
                         class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;">Add Service</button>
                     <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-                        <table id="example1" class="table table-hover example1">
+                        <table id="example1" class="table table-hover example1" style="width:100%;">
                             <thead>
                                 <tr class="text-uppercase">
                                     <th scope="col">#</th>
@@ -976,38 +976,37 @@
                             </thead>
                             <tbody>
                                 @foreach ($services as $key => $service)
-                                <tr id="target_{{ $service->id }}">
-                                    <td>{{ $key +1 }}</td>
-                                    <td>{{ $service->title }}</td>
-                                    <td>{{ $service->timing }} Minutes</td>
-                                    <td>${{ $service->rate }}</td>
-                                    <td>
-                                        @if ($service->status == "Active")
+                                    <tr id="target_{{ $service->id }}">
+                                        <td>{{ $key +1 }}</td>
+                                        <td>{{ $service->title }}</td>
+                                        <td>{{ $service->timing }} Minutes</td>
+                                        <td>${{ $service->rate }}</td>
+                                        <td>
+                                            @if ($service->status == "Active")
 
-                                        <span class="badge badge-sm badge-success">{{ $service->status }}</span>
-                                        @else
+                                            <span class="badge badge-sm badge-success">{{ $service->status }}</span>
+                                            @else
 
-                                        <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
-                                        @endif
-                                    </td>
+                                            <span class="badge badge-sm badge-danger">{{ $service->status }}</span>
+                                            @endif
+                                        </td>
 
-                                    <td style="min-width: 135px !important;">
-                                        <button title="Click to Update Service"
-                                            class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn"
-                                            data-toggle="modal" data-target="#editServiceModal"
-                                            data-Serviceid="{{ $service->id }}">
-                                            <i class="fe fe-pencil"></i> Edit
-                                        </button>
+                                        <td style="min-width: 135px !important;">
+                                            <button title="Click to Update Service"
+                                                class="btn btn-warning btn-sm editServiceBtn" id="editServiceBtn"
+                                                data-toggle="modal" data-target="#editServiceModal"
+                                                data-Serviceid="{{ $service->id }}">
+                                                <i class="fe fe-pencil"></i> Edit
+                                            </button>
 
-                                        <button title="Click to Delete Service" type="button"
-                                            class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal"
-                                            data-target="#deleteServiceModal" id="ServiceDelete"
-                                            data-Serviceid="{{ $service->id }}">
-                                            <i class="fe fe-trash"></i> Delete
-                                        </button>
-                                    </td>
-                                </tr>
-
+                                            <button title="Click to Delete Service" type="button"
+                                                class="btn btn-danger btn-sm ServiceDelete" data-toggle="modal"
+                                                data-target="#deleteServiceModal" id="ServiceDelete"
+                                                data-Serviceid="{{ $service->id }}">
+                                                <i class="fe fe-trash"></i> Delete
+                                            </button>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -1109,7 +1108,7 @@
                                     </th>
                                     <th scope="col">Service</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Timing</th>
+                                    <th scope="col">Time</th>
                                     <th scope="col">Rate</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Payment Status</th>
@@ -1345,7 +1344,7 @@
                         </div>
                         <div class="form-group sub_categories"></div>
                         <div class="form-group">
-                            <label for="title">Title*</label>
+                            <label for="title">Notes*</label>
                             <input id="title" type="text" class="form-control text-capitalize" name="title"
                                 value="{{ old('title') }}" autocomplete="title" placeholder="Enter Service Title" />
                         </div>
@@ -1365,10 +1364,12 @@
                             <textarea id="description" class="form-control summernote" name="description"
                                 required> </textarea>
                         </div>
-                        <div class="form-group">
+
+                        {{-- <div class="form-group">
                             <label for="description">tags*</label>
                             <input type="text" name="tags" class="form-control" placeholder="laravel,php" required />
-                        </div>
+                        </div> --}}
+
                         <div class="form-group">
                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                 <input type="checkbox" name="status" class="custom-control-input" checked
