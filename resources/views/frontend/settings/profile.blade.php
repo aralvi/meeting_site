@@ -112,9 +112,9 @@
                                     </div>
                                     <div class="w-100">
                                         <select id="country" name="country"
-                                            class="form-control country-select w-100 border-0">
+                                            class="form-control country-select w-100 border-0"  onchange="countryChange(this);">
                                             @foreach (countries() as $country)
-                                                <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
+                                                <option {{ Auth::user()->country  == ucwords(strtolower($country['name'])) ? "selected":" " }} value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -125,7 +125,7 @@
                                             class="fa fa-phone d-flex justify-content-center align-items-center"></em>
                                     </div>
                                     <div class="w-100">
-                                        <input type="number" class="form-control border-0"
+                                        <input type="text" class="form-control border-0 phone-number"
                                             placeholder="What is your business phone#" name="business_phone"
                                             id="business_phone" aria-label="" aria-describedby="basic-addon1"
                                             value="{{ Auth::user()->specialist->business_phone }}" />
@@ -651,7 +651,7 @@
                                         <select id="country" name="country" onchange="countryChange(this);"
                                             class="select2 form-control country-select w-100 border-0">
                                             @foreach (countries() as $country)
-                                                <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
+                                                 <option {{ Auth::user()->country  == ucwords(strtolower($country['name'])) ? "selected":" " }} value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>

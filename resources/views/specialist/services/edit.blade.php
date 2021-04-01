@@ -25,7 +25,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="title">Title*</label>
+                                <label for="title">Notes*</label>
                                 <input id="title" type="text" class="form-control text-capitalize" name="title" value="{{ $service->title }}" autocomplete="title" placeholder="Enter Service Title" />
                             </div>
                             <div class="form-group mb-0">

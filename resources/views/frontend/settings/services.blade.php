@@ -43,12 +43,12 @@
 <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal"
     class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;">Add Service</button>
 <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
-    <table id="example1" class="table table-hover example1">
+    <table id="example1" class="table table-hover example1"  style="width:100%;">
         <thead>
             <tr class="text-uppercase">
                 <th scope="col">#</th>
                 <th scope="col">service</th>
-                <th scope="col">Timing</th>
+                <th scope="col">Time</th>
                 <th scope="col">Rate</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="form-group sub_categories"></div>
                         <div class="form-group">
-                            <label for="title">Title*</label>
+                            <label for="title">Notes*</label>
                             <input id="title" type="text" class="form-control text-capitalize" name="title"
                                 value="{{ old('title') }}" autocomplete="title" placeholder="Enter Service Title" />
                         </div>
@@ -137,10 +137,10 @@
                             <textarea id="description" class="form-control summernote" name="description"
                                 required> </textarea>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="description">tags*</label>
                             <input type="text" name="tags" class="form-control" placeholder="laravel,php" required />
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                 <input type="checkbox" name="status" class="custom-control-input" checked
@@ -150,9 +150,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-md btn-danger" data-dismiss="modal"><i
-                                class="fas fa-backspace"></i> Cancel</button>
-                        <button type="submit" class="btn btn-md btn-primary"><i class="fas fa-check-circle"></i> Add
+                        <button type="button" class="btn btn-md btn-danger" data-dismiss="modal"> Cancel</button>
+                        <button type="submit" class="btn btn-md bg-3AC574 text-white"> Add
                             Service</button>
                     </div>
                 </form>
