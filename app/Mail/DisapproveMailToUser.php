@@ -28,6 +28,9 @@ class DisapproveMailToUser extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $data = $this->data;
+        return $this->view('emails.admin.disapprove_user',compact('data'))
+                ->from(config('app.mail_from'),config('app.mail_from_name'))
+                ->subject("Disapprove");
     }
 }

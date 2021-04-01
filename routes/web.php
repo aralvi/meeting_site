@@ -14,7 +14,7 @@ use Laravel\Socialite\Facades\Socialite;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('semail','emails.specialist_welcome');
+Route::view('semail','emails.admin.disapprove_user');
 Route::view('check', 'check');
 // Route::view('profile','profile');
 Route::get('/', function () {
