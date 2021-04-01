@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use Illuminate\Http\Request;
+use App\Mail\ApproveMailToUser;
+use App\Mail\DisapproveMailToUser;
 
 class UserController extends Controller
 {
@@ -74,7 +77,15 @@ class UserController extends Controller
         // dd($request->all());
         $user = User::findOrFail($request->user_id);
         $user->status = $request->status;
-        $user->save();
+        if($user->save()){
+            if($request->status=='active'){
+                Mail::to($user->email)->send(new ApproveMailToUser(['name'=>$user->name]));
+            }
+            else if($request->status=='inactive'){
+                Mail::to($user->email)->send(new DisapproveMailToUser(['name'=>$user->name]));  
+            }
+        }
+
         return $user->status;
 
     }

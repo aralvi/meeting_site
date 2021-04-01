@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class DisapproveMailToUser extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +28,9 @@ class DisapproveMailToUser extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $data = $this->data;
+        return $this->view('emails.admin.disapprove_user',compact('data'))
+                ->from(config('app.mail_from'),config('app.mail_from_name'))
+                ->subject("Disapprove");
     }
 }

@@ -155,9 +155,13 @@ span.prefix{
                                         <h3>{{ ucwords($appointment->service->title) }}</h3>
                                     </div>
                                     <div class="col-md-4">
-                                        <p>Time</p>
+                                        <p>Date & Time</p>
                                         <p>{{ getTimeZoneDate('America/Chicago',$appointment->user->time_zone,$appointment->date) }} {{ getTimeZoneTime('America/Chicago',$appointment->user->time_zone,$appointment->time) }}</p>
                                     </div>
+                                    <div class="col-md-4">
+                                        <span class="font-weight-bold">Rate</span>
+                                        <span class="ml-2">${{ $appointment->rate }}</span>
+                                    </div>    
                                     <div class="col-md-12"><button class="btn btn-success mb-2 mt-2">Message</button></div>
                                 </div>
                                 @endforeach

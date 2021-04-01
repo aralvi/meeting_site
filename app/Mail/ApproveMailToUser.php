@@ -28,6 +28,9 @@ class ApproveMailToUser extends Mailable
      */
     public function build()
     {
-        return $this->to('email@example.com', 'Mr. Example')->view('emails.admin.approve_user',['data'=>$this->data]);
+        $data = $this->data;
+        return $this->view('emails.admin.approve_user',compact('data'))
+                ->from(config('app.mail_from'),config('app.mail_from_name'))
+                ->subject("Approve");
     }
 }
