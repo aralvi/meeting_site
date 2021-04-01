@@ -1,4 +1,4 @@
- <form action="{{ url('specialist/services/'.$service->id) }}" method="POST">
+ <form action="{{ url('services/'.$service->id) }}" method="POST">
     @method('put')
                         @csrf
                         <div class="modal-body">

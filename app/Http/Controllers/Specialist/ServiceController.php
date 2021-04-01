@@ -19,10 +19,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        
         $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
-        // $services = Service::all();
         $categories = Category::all();
-        return view('specialist/services/index',compact('services', 'categories'));
+        return view('frontend.settings.services',compact('services', 'categories'));
     }
 
     /**

@@ -25,19 +25,22 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile = Auth::user();
+        // $profile = Auth::user();
+        // $subcategories = SubCategory::all();
+        // $categories = Category::all();
+        // $bids = Bid::all()->groupBy('service_request_id');
+        // if (Auth::user()->user_type == 'specialist') {
+        //     $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
+        //     $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
+        //     $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->get();
+        //     return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images', 'appointments', 'bids'));
+        // } else {
+        //     $appointments = Appointment::where('user_id', Auth::user()->id)->get();
+        //     return view('profile', compact('profile', 'subcategories', 'categories','appointments', 'bids'));
+        // }
         $subcategories = SubCategory::all();
-        $categories = Category::all();
-        $bids = Bid::all()->groupBy('service_request_id');
-        if (Auth::user()->user_type == 'specialist') {
-            $portfolio_images = Portfolio::where('specialist_id', Auth::user()->specialist->id)->get();
-            $services = Service::where('specialist_id', Auth::user()->specialist->id)->get();
-            $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->get();
-            return view('profile', compact('profile', 'subcategories', 'services', 'categories', 'portfolio_images', 'appointments', 'bids'));
-        } else {
-            $appointments = Appointment::where('user_id', Auth::user()->id)->get();
-            return view('profile', compact('profile', 'subcategories', 'categories','appointments', 'bids'));
-        }
+        $profile = Auth::user();
+        return view('frontend.settings.profile', compact('profile', 'subcategories'));
     }
 
     /**
@@ -83,7 +86,12 @@ class ProfileController extends Controller
     public function password()
     {
         $password = Auth::user();
-        return view('admin.password', compact('password'));
+        if (url()->current() == url('dashboard/password')){
+
+            return view('admin.password', compact('password'));
+        }else{
+            return view('frontend.settings.password', compact('password'));
+        }
     }
     public function UserPassword()
     {
@@ -241,7 +249,11 @@ class ProfileController extends Controller
         //
     }
 
-
+    public function portfolio()
+    {
+        $portfolio_images = Portfolio::where('specialist_id',Auth::user()->specialist->id)->get();
+        return view('frontend.settings.portfolio',compact('portfolio_images'));
+    }
     public function portfolioImages(Request $request)
     {
        

@@ -15,7 +15,8 @@ class BidController extends Controller
      */
     public function index()
     {
-        //
+        $bids = Bid::all()->groupBy('service_request_id');
+        return view('frontend.settings.bid', compact('bids'));
     }
 
     /**

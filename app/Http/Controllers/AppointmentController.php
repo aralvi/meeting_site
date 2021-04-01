@@ -19,8 +19,14 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::where('specialist_id',Auth::user()->specialist->id)->get();
-        return view('specialist.appointments.index',compact('appointments'));
+        if (Auth::user()->user_type == 'specialist') {
+            $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->get();
+            return view('frontend.settings.appointment', compact( 'appointments'));
+        } else {
+            $appointments = Appointment::where('user_id', Auth::user()->id)->get();
+            return view('frontend.settings.appointment', compact('appointments'));
+        }
+        
     }
 
     /**

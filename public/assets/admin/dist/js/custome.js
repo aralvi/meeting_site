@@ -2,7 +2,7 @@
      var ServiceId = $(this).attr('data-Serviceid');
      $.ajax({
          type: 'get',
-         url: url + '/specialist/services/' + ServiceId + '/edit',
+         url: url + '/services/' + ServiceId + '/edit',
          success: function(data) {
              $('.requestServiceData').html(data);
          }
@@ -20,7 +20,7 @@
      var ServiceId = $(this).val();
      $.ajax({
          type: 'post',
-         url: url + '/specialist/services/' + ServiceId,
+         url: url + '/services/' + ServiceId,
          data: { id: ServiceId, _token: token, _method: 'DELETE' },
          success: function(data) {
              // $("#deleteCatModal").modal("hide");

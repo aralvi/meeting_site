@@ -47,7 +47,7 @@ Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
 // usercheck
 Route::group(['middleware'=>['auth','specialistcheck']],function(){
     Route::resource('specialists', 'SpecialistController');
-    Route::resource('specialist/services', 'Specialist\ServiceController');
+    Route::resource('services', 'Specialist\ServiceController');
     Route::resource('specialist', 'Specialist\DashboardController');
     Route::get('get_service_request/{id}', 'Specialist\DashboardController@getServiceRequest')->name('get_service_request');
 });
@@ -59,9 +59,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::post('bid-work-status', 'Specialist\BidController@changeWorkStatus')->name('bid_work_status');
     Route::get('category_specialists/{id}', 'HomeController@category_specialists')->name('category_specialists');
     Route::resource('appointments', 'AppointmentController');
-    // Route::get('appointment', function () {
-        //     return view('frontend.appoinment');
-        // })->name('appointment');
+    Route::get('portfolio_setting', 'ProfileController@portfolio')->name('portfolio_setting');
     Route::post('portfolio_images', 'ProfileController@portfolioImages')->name('portfolio_images');    
     Route::post('portfolio_image_delete/{id}', 'ProfileController@deleteImage')->name('portfolio_image_delete');    
     Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
