@@ -76,8 +76,7 @@
                 <div class="w-100">
                     <select id="country" name="country" class="form-control country-select w-100 border-0">
                         @foreach (countries() as $country)
-                        <option value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">
-                            {{ $country['name'] }}</option>
+                        <option {{ Auth::user()->country  == ucwords(strtolower($country['name'])) ? "selected":" " }} value="{{ ucwords(strtolower($country['name'])) }}" data-code="{{ $country['code'] }}">{{ $country['name'] }}</option>
                         @endforeach
                     </select>
                 </div>
