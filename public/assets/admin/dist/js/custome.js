@@ -65,6 +65,7 @@
      });
  });
 
+
  // open edit categoory modal
  $('.editCatBtn').on('click', function() {
      var catID = $(this).data('catid');
