@@ -70,7 +70,7 @@ class AppointmentController extends Controller
     {
         $date = getTimeZoneDate(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
         $time = getTimeZoneTime(Auth::user()->time_zone,'America/Chicago',$request->date." ".$request->time);
-        if(Appointment::where('date',$date)->where('time')->first() !=null)
+        if(Appointment::where('date',$date)->where('time',$time)->first() !=null)
         {
             return back()->with('error',$request->time.' on '.$request->date.' has been already booked!');
         }

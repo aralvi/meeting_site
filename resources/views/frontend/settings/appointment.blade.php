@@ -65,7 +65,7 @@
                                 <tr id="target_{{ $appointment->id }}" class="border-bottom">
                                     <td class="border-0">{{ $key +1 }}</td>
                                     <td class="border-0">
-                                        {{ Auth::user()->user_type=='specialist' ? $appointment->user->name : $appointment->specialist->user->name}}
+                                        {{ Auth::user()->user_type=='specialist' ? $appointment->user->username : $appointment->specialist->user->username}}
                                     </td>
                                     <td class="border-0">{{ $appointment->service->title }}</td>
                                     <td class="border-0">
