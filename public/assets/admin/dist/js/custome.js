@@ -40,30 +40,58 @@
  /*** Open Deleting Category  Modal ***/
  $('.delete_portfolio_image').on('click', function() {
      var portfolioID = $(this).attr('data-portfolioID');
-     $('#deletePortfolioBtn').val(portfolioID);
+     swal({
+             title: "Do you want to delete this Portfolio Image?",
+             text: "Once deleted, you will not be able to recover this Portfolio Image!",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+         .then((willDelete) => {
+             if (willDelete) {
+                 $.ajax({
+                     type: 'post',
+                     url: url + '/portfolio_image_delete/' + portfolioID,
+                     data: { id: portfolioID, _token: token },
+                     success: function(data) {
+                         // $("#deleteCatModal").modal("hide");
+                         $("#target_" + portfolioID).hide();
+
+                         $('#message').html(data);
+                         swal({
+                             icon: "success",
+                             text: "Portfolio Image Deleted Successfuly!",
+                             icon: 'success'
+                         });
+                     },
+
+                 });
+             }
+         });
+     //  $('#deletePortfolioBtn').val(portfolioID);
  });
 
  /*** Deleting Category  ***/
- $('#deletePortfolioBtn').on('click', function() {
-     var portfolioID = $(this).val();
-     $.ajax({
-         type: 'post',
-         url: url + '/portfolio_image_delete/' + portfolioID,
-         data: { id: portfolioID, _token: token },
-         success: function(data) {
-             // $("#deleteCatModal").modal("hide");
-             $("#target_" + portfolioID).hide();
+ //  $('#deletePortfolioBtn').on('click', function() {
+ //      var portfolioID = $(this).val();
+ //      $.ajax({
+ //          type: 'post',
+ //          url: url + '/portfolio_image_delete/' + portfolioID,
+ //          data: { id: portfolioID, _token: token },
+ //          success: function(data) {
+ //              // $("#deleteCatModal").modal("hide");
+ //              $("#target_" + portfolioID).hide();
 
-             $('#message').html(data);
-             swal({
-                 icon: "success",
-                 text: "Image Deleted Successfuly!",
-                 icon: 'success'
-             });
-         },
+ //              $('#message').html(data);
+ //              swal({
+ //                  icon: "success",
+ //                  text: "Image Deleted Successfuly!",
+ //                  icon: 'success'
+ //              });
+ //          },
 
-     });
- });
+ //      });
+ //  });
 
  // open edit categoory modal
  $('.editCatBtn').on('click', function() {
