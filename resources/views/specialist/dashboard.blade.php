@@ -164,15 +164,16 @@ a:focus{
                         <div class="col-md-10 p-0 cl-6A6A6A">
                             @foreach ($appointments as $appointment)
                                 
-                            <div class="mt-3 d-flex justify-content-around align-items-center bg-F2F5FA box_shadow2">
-                                <div class="d-flex flex-column justify-content-between">
+                            <div class="mt-3 row align-items-center bg-F2F5FA box_shadow2">
+                                <div class="col-md-8">
                                     <p>{{ $appointment->specialist->user->name }}</p>
                                     <h3>{{ $appointment->service->title }}</h3>
                                 </div>
-                                <div class="d-flex flex-column justify-content-between">
-                                    <p>Time</p>
-                                    <p>{{ getTimeZoneTime('America/Chicago',$appointment->specialist->user->time_zone,$appointment->time) }}</p>
+                                <div class="col-md-4">
+                                    <p>Date & Time</p>
+                                    <p>{{ getTimeZoneDate('America/Chicago',$appointment->specialist->user->time_zone,$appointment->date) }} {{ getTimeZoneTime('America/Chicago',$appointment->specialist->user->time_zone,$appointment->time) }}</p>
                                 </div>
+                                <div class="col-md-12"><button class="btn btn-success mb-2 mt-2">Message</button></div>
                             </div>
                             @endforeach
                             

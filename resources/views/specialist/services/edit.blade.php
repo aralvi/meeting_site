@@ -41,10 +41,10 @@
                                 <label for="description">Description*</label>
                                <textarea id="description" class="form-control summernote" name="description" required> {{ $service->description }}</textarea>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="description">tags*</label>
                                <input type="text" name="tags" class="form-control" placeholder="laravel php" required value="{{ implode(',',array_map('ucwords',$tags)) }}">
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                 <input type="checkbox" name="status" class="custom-control-input" {{($service->status == 'Active') ?'checked':'' }} id="customSwitch2">
