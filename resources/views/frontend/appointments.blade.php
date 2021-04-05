@@ -18,7 +18,7 @@
 
         <div class="container-fluid error-message-div ml-1" style="display:none;">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 px-0">
                     <div class="alert alert-danger alert-block" role="alert">
                         {{-- <button type="button" class="close" data-dismiss="alert">×</button> --}}
                         <strong class="error-message-text"></strong>
