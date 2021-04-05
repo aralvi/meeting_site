@@ -51,7 +51,7 @@
         <ul class="navbar-nav ml-auto d-flex justify-content-center align-items-center f-20 ">
 
             <li class="nav-item  robotoRegular">
-                <a class="nav-link cl-ffffff" href="#">Blog <span class="sr-only">(current)</span></a>
+                <a class="nav-link cl-ffffff" href="#">Events <span class="sr-only">(current)</span></a>
             </li>
             {{-- <li class="nav-item  p-0 robotoRegular pl-4 cl-ffffff">
                 <a class="nav-link cl-ffffff" href="#">Appointments
@@ -63,7 +63,7 @@
                 <a class="nav-link cl-ffffff cl-ffffff" href="#" id="navbarDropdown" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="">Appointments
 
-                    <sup class="badge badge-success mt-1 ">{{ appointmentCount()['appointment_count'] }}</sup>
+                    <sup class="badge badge-success mt-1 ">{{ (appointmentCount()['appointment_count'] == 0 )? '':appointmentCount()['appointment_count'] }}</sup>
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                     @foreach (appointmentCount()['appointments'] as $appointment)
@@ -260,7 +260,7 @@
                 </div>
             </li>
             <li class="nav-item  robotoRegular pl-4 cl-ffffff">
-                <a class="nav-link cl-ffffff" href="#">Spa</a>
+                <a class="nav-link cl-ffffff" href="#">Post Request</a>
             </li>
             <li class="nav-item  pl-4">
                 <a class="nav-img" data-toggle="dropdown" href="#">

@@ -83,10 +83,10 @@
 
             </div>
          
-            <div class="pt-3"><a href=""><img 
+            <div class="pt-3"><a href="https://apps.apple.com/app/id1522102968"><img 
             src="{{ asset('assets/frontend/images/appstore_2x.png') }}"
             alt="" class="w-135" srcset=""></a></div>
-            <div class="pt-3"><a href=""><img
+            <div class="pt-3"><a href="https://play.google.com/store/apps/details?id=com.brandon.learnme"><img
             src="{{ asset('assets/frontend/images/playstore_2x.png') }}"
             alt="" class="w-135" srcset=""></a></div>
          
@@ -95,12 +95,12 @@
           
             <div class="f-26 cl-bcbcbc pt-3 footerUl">Follow us On</div>
             <div class="d-flex pt-3">
-                <div><a href=""><img src="{{ asset('assets/frontend/images/fb.png') }}" class="img-fluid"></a></div>
-                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/insta.png') }}" alt=""
+                <div><a href="https://www.facebook.com/Learnmelive/"><img src="{{ asset('assets/frontend/images/fb.png') }}" class="img-fluid"></a></div>
+                <div class="pl-3"><a href="https://www.instagram.com/learnmelive/"><img src="{{ asset('assets/frontend/images/insta.png') }}" alt=""
                             srcset=""></a></div>
-                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/twitter.png') }}" alt=""
+                <div class="pl-3"><a href="https://twitter.com/learnmelive"><img src="{{ asset('assets/frontend/images/twitter.png') }}" alt=""
                             srcset=""></a></div>
-                <div class="pl-3"><a href=""><img src="{{ asset('assets/frontend/images/linkdin.png') }}" alt=""
+                <div class="pl-3"><a href="https://www.linkedin.com/company/learnme-live/about/"><img src="{{ asset('assets/frontend/images/linkdin.png') }}" alt=""
                             srcset=""></a></div>
             </div>
             </div>

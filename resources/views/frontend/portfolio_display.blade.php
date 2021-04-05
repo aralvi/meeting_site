@@ -33,8 +33,8 @@ img {
 }
 
 /* Next & previous buttons */
-.prev,
-.next {
+a.prev,
+a.next {
   cursor: pointer;
   position: absolute;
   top: 40%;
@@ -47,6 +47,8 @@ img {
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #3AC574 !important;
 }
 
 /* Position the "next button" to the right */
