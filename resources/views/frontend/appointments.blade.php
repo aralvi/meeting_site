@@ -497,7 +497,7 @@
             {
                 $('.all-day').hide();
                 $('.error-message-div').show();
-                $('.error-message-text').html("{{ $service->specialist->user->username }} is not available on "+ d.toLocaleString('en-us', {weekday: 'long'}));
+                $('.error-message-text').html("{{ $service->specialist->user->username }} is not available on "+ d.toLocaleString('en-us', {weekday: 'long'})+"s.");
             }
         },1000);
 
