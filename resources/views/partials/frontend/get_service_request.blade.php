@@ -24,7 +24,7 @@
     <div class="d-flex pt-2">
         <div>
             <div class="d-flex">
-                <div>>@if($service_request->tags !=null)<img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" />@endif</div>
+                <div>@if($service_request->tags !=null)<img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" />@endif</div>
                 <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
                     @php if($service_request->tags !=null){
                     $tags= explode('uploads/files/',$service_request->tags);
