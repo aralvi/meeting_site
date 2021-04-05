@@ -72,7 +72,7 @@
                         <div class="col-md-2 p-0">
                             <img src="{{ asset(Auth::user()->user_type=='specialist' ? $appointment->user->avatar : $appointment->specialist->user->avatar ) }}"
                                 alt="" class="img-fluid rounded-circle w-40 h-40" />
-                            <span class="green-dot ml--1 mt-1"></span>
+                                <span class="green-dot ml--1 mt-1"></span>
                         </div>
                         <div class="col-md-6 pl-2 pt-1 p-0">
                             <div class="row m-0">
