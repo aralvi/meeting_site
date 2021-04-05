@@ -43,8 +43,13 @@ class Kernel extends HttpKernel
         'admincheck'=>[
             \App\Http\Middleware\AdminCheck::class,
         ],
+        
         'specialistcheck'=>[
             \App\Http\Middleware\SpecialistCheck::class,
+        ],
+
+        'checkuserstatus'=>[
+            \App\Http\Middleware\CheckUserStatus::class,
         ],
 
         'api' => [

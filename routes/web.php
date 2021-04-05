@@ -17,6 +17,11 @@ use Laravel\Socialite\Facades\Socialite;
 Route::view('semail','emails.admin.disapprove_user');
 Route::view('check', 'check');
 // Route::view('profile','profile');
+
+Route::get('/unauthorize', function () {
+    return view('unauthorize');
+})->name('unauthorize.user');
+
 Route::get('/', function () {
     return view('frontend.index');
 })->name('index');
@@ -45,7 +50,7 @@ Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
 });
 
 // usercheck
-Route::group(['middleware'=>['auth','specialistcheck']],function(){
+Route::group(['middleware'=>['auth','specialistcheck','checkuserstatus']],function(){
     Route::resource('specialists', 'SpecialistController');
     Route::resource('services', 'Specialist\ServiceController');
     Route::resource('specialist', 'Specialist\DashboardController');
@@ -53,7 +58,7 @@ Route::group(['middleware'=>['auth','specialistcheck']],function(){
 });
 
 
-Route::group(['middleware'=>['auth']],function(){
+Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::get('search', 'HomeController@search')->name('search');
     Route::resource('bids', 'Specialist\BidController');
     Route::post('bid-work-status', 'Specialist\BidController@changeWorkStatus')->name('bid_work_status');

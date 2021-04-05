@@ -1,59 +1,38 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
   <!-- BEGIN: Head-->
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
-    <meta name="author" content="ThemeSelect">
-    <title>404 Page | Materialize - Material Design Admin Template</title>
-    <link rel="apple-touch-icon" href="{{ asset('assets/admin/images/favicon/apple-touch-icon-152x152.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/images/favicon/favicon-32x32.png')}}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- BEGIN: VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/vendors/vendors.min.css')}}">
-    <!-- END: VENDOR CSS-->
-    <!-- BEGIN: Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/themes/vertical-modern-menu-template/materialize.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/themes/vertical-modern-menu-template/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/pages/page-404.css')}}">
-    <!-- END: Page Level CSS-->
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/custom/custom.css')}}">
-    <!-- END: Custom CSS-->
-  </head>
+    <head>
+    
+    <title>403 FORBIDDEN</title>
+  
+    </head>
   <!-- END: Head-->
-  <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 1-column  bg-full-screen-image blank-page blank-page" data-open="click" data-menu="vertical-modern-menu" data-col="1-column">
-    <div class="row">
-      <div class="col s12">
-        <div class="container"><div class="section section-404 p-0 m-0 height-100vh">
-  <div class="row">
-    <!-- 404 -->
-    <div class="col s12 center-align white">
-      <img src="{{ asset('assets/admin/images/gallery/error-2.png')}}" class="bg-image-404" alt="">
-      <h4 class="error-code m-0">Unauthorization</h4>
-      <h6 class="mb-2">You do not have access of this page.</h6>
-      <a class="btn waves-effect waves-light gradient-45deg-deep-purple-blue gradient-shadow mb-4" href="{{ route('login') }}">Back
-        TO Home</a>
-    </div>
-  </div>
-</div>
+    <body >
+      <section class="container" style="width: 60%;margin: auto;padding-top: 30px;">
+        <div
+        style="height:14px;background-color: #e20000;border-top-left-radius: 30px !important;border-top-right-radius: 30px !important;">
+        <section
+        style="margin: auto;text-align: center;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-top-left-radius: 14px !important;border-top-right-radius: 14px !important;">
+        <div style="margin: auto;padding-top: 50px;">
+        <img src="{{ asset('assets/frontend/images/lock.png')}}" style="margin: auto; width: 260px;" alt="" srcset="">
         </div>
-      </div>
-    </div>
-
-    <!-- BEGIN VENDOR JS-->
-    <script src="{{ asset('assets/admin/js/vendors.min.js')}}" type="text/javascript"></script>
-    <!-- BEGIN VENDOR JS-->
-    <!-- BEGIN PAGE VENDOR JS-->
-    <!-- END PAGE VENDOR JS-->
-    <!-- BEGIN THEME  JS-->
-    <script src="{{ asset('assets/admin/js/plugins.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('assets/admin/js/custom/custom-script.js')}}" type="text/javascript"></script>
-    <!-- END THEME  JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
-    <!-- END PAGE LEVEL JS-->
+        <div class="robotoMedium" style="font-size: 55px;padding-top: 16px;color: #e20000;">403 FORBIDDEN </div>
+        
+        <div class="robotoRegula"
+        style="font-size: 21px;max-width: 500px;text-align: center;margin: auto; padding-top: 16px;border-bottom: 1px solid #707070;padding-bottom: 30px;">
+        
+        Sorry You are not approved by Admin!
+        </div>
+        <div style="padding-bottom: 60px;"></div>
+        
+        <!-- <div class=" robotoRegular" style="padding-top: 16px;padding-bottom: 60px;"><button type="button"
+        style="padding-left: 42px;padding-right: 42px;padding-top: 12px;padding-bottom: 12px;border-radius: 4px;border: 0px ;background-color: #e20000;color: #ffffff !important;"><a
+        href="" style="text-decoration: none;color: #ffffff;">Login</a></button></div> -->
+        </section>
+        </div>
+        
+        
+        
+        </section>
   </body>
 </html>
