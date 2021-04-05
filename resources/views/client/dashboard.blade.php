@@ -125,6 +125,7 @@ span.prefix{
     position: relative;
     left: 8px;
 }
+    .fs-1-3{ font-size:1.3rem !important; }
 </style>
 @endsection {{-- head end --}} 
 {{-- content section start --}} 
@@ -140,29 +141,29 @@ span.prefix{
         <div class="row mt-5 justify-content-around">
             <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
                 <div class="px-5 py-3">
-                    <div class="cl-3ac754 f-34">Upcoming Appointments <span class="text-muted cl-6A6A6A">({{ count($appointments) }})</span></div>
+                    <div class="cl-3ac754 f-34">Upcoming Appointments <span class="text-muted cl-6A6A6A">({{ count($appointments->take(3)) }})</span></div>
                     <div class="card-body px-0">
                         <div class="row m-0 p-0">
                             <div class="col-md-2 pl-0 py-0">
-                                <h1 class="h1 f-145">{{ count($appointments) }}</h1>
+                                <h1 class="h1 f-145">{{ count($appointments->take(3)) }}</h1>
                             </div>
                             <div class="col-md-10 p-0 cl-6A6A6A">
-                                @foreach ($appointments as $appointment)
+                                @foreach ($appointments->take(3) as $appointment)
                                     
                                 <div class="mt-3 row align-items-center bg-F2F5FA box_shadow2">
                                     <div class="col-md-8">
-                                        <p>{{ ucwords($appointment->specialist->user->name) }}</p>
-                                        <h3>{{ ucwords($appointment->service->title) }}</h3>
+                                        <p>{{ ucwords($appointment->specialist->user->name) }}sadsadsaddsadsa</p>
+                                        <h3 class="fs-1-3">{{ ucwords($appointment->service->title) }}</h3>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 p-0">
                                         <p>Date & Time</p>
-                                        <p>{{ getTimeZoneDate('America/Chicago',$appointment->user->time_zone,$appointment->date) }} {{ getTimeZoneTime('America/Chicago',$appointment->user->time_zone,$appointment->time) }}</p>
+                                        <p>{{ date('M d Y',strtotime(getTimeZoneDate('America/Chicago',$appointment->user->time_zone,$appointment->date))) }} {{ getTimeZoneTime('America/Chicago',$appointment->user->time_zone,$appointment->time) }}</p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <span class="font-weight-bold">Rate</span>
+                                    <div class="col-md-4 p-0">
+                                        <span class="font-weight-bold ml-3">Rate</span>
                                         <span class="ml-2">${{ $appointment->rate }}</span>
                                     </div>    
-                                    <div class="col-md-12"><button class="btn btn-success mb-2 mt-2">Message</button></div>
+                                    <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button></div>
                                 </div>
                                 @endforeach
                                 
@@ -170,8 +171,8 @@ span.prefix{
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-md bg-3ac574 cl-ffffff">Update</button>
-                        <a href="{{ route('client.show',Auth::user()->id) }}" class="cl-3ac754">Previous Appointments >></a>
+                        {{-- <button class="btn btn-md bg-3ac574 cl-ffffff">Update</button> --}}
+                        <a href="{{ url('appointments') }}" class="cl-3ac754">View All Appointments >></a>
                     </div>
                 </div>
             </div>
