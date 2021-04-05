@@ -36,7 +36,7 @@
         </div>
         <div></div>
     </div>
-    <div class="d-flex pt-2 pl-4">
+    {{-- <div class="d-flex pt-2 pl-4">
         <div>
             <div class="d-flex">
                 <div class="d-flex">
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div></div>
-    </div>
+    </div> --}}
 </div>
 <div class="robotoMedium text-right col-md-4 px-0">
     <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service_request->budget))}}</div>
