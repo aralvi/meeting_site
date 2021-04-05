@@ -63,7 +63,7 @@
                 <a class="nav-link cl-ffffff cl-ffffff" href="#" id="navbarDropdown" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="">Appointments
 
-                    <sup class="badge badge-success mt-1 ">{{ (appointmentCount()['appointment_count'] == 0 )? '':appointmentCount()['appointment_count'] }}</sup>
+                    <sup class="badge badge-success mt-1 rounded-circle">{{ (appointmentCount()['appointment_count'] == 0 )? '':appointmentCount()['appointment_count'] }}</sup>
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                     @foreach (appointmentCount()['appointments'] as $appointment)
