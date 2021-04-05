@@ -131,7 +131,7 @@ span.prefix{
 {{-- content section start --}} 
 @section('content')
 
-    <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
+    <section class="px-5 pt-2 pb-2 nav-bg-img robotoRegular">
         @include('includes.frontend.navbar')
     </section>
 

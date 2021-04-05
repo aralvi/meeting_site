@@ -8,7 +8,7 @@
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('content')
 
-<section class="main_padding bg-navbar nav-bg-img pb-5">
+<section class="px-5 bg-navbar nav-bg-img pb-5">
     @include('includes.frontend.navbar')
 
     <div class="text-center"><img src="{{ asset('assets/frontend/images/nav_2.png') }}" class="img-fluid" alt="" /></div>

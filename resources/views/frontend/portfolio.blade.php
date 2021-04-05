@@ -19,7 +19,7 @@
 
 	@section('content')
 		
-  <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
+  <section class="px-5 pt-2 pb-2 nav-bg-img robotoRegular">
       {{-- <nav class="navbar navbar-expand-lg navbar-light p-0">
         <a class="navbar-brand" href="#"
           ><img

@@ -7,7 +7,7 @@
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} 
 @section('content')
-    <section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">
+    <section class="px-5 pt-2 pb-2 nav-bg-img robotoRegular">
         @include('includes.frontend.navbar')
     </section>
     @include('common.messages')
@@ -497,7 +497,7 @@
             {
                 $('.all-day').hide();
                 $('.error-message-div').show();
-                $('.error-message-text').html("Sorry ! {{ $service->specialist->user->username }} is not available on "+ d.toLocaleString('en-us', {weekday: 'long'}));
+                $('.error-message-text').html("{{ $service->specialist->user->username }} is not available on "+ d.toLocaleString('en-us', {weekday: 'long'}));
             }
         },1000);
 

@@ -26,7 +26,7 @@
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} @section('navbar')
 
-<section class="main_padding pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
+<section class="px-5 pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
 @include('includes.frontend.navigations') @endsection @section('content')
 
 <p class="border-bottom pl-3 f-21 cl-616161">Appointments</p>
