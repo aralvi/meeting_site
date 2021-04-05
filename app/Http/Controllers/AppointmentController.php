@@ -20,10 +20,10 @@ class AppointmentController extends Controller
     public function index()
     {
         if (Auth::user()->user_type == 'specialist') {
-            $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->get();
+            $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->orderBy('created_at','ASC')->get();
             return view('frontend.settings.appointment', compact( 'appointments'));
         } else {
-            $appointments = Appointment::where('user_id', Auth::user()->id)->get();
+            $appointments = Appointment::where('user_id', Auth::user()->id)->orderBy('created_at', 'ASC')->get();
             return view('frontend.settings.appointment', compact('appointments'));
         }
         

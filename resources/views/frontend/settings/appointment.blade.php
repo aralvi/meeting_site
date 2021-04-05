@@ -39,7 +39,8 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($appointments as $key => $appointment) @php $tz = Auth::user()->user_type=='specialist' ? $appointment->specialist->user->time_zone : $appointment->user->time_zone @endphp
+            @foreach ($appointments as $key => $appointment) 
+            @php $tz = Auth::user()->user_type=='specialist' ? $appointment->specialist->user->time_zone : $appointment->user->time_zone @endphp
             <tr class="border-0">
                 <td class=" border-0">
                     <section class="p-100">

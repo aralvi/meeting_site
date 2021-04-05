@@ -1,6 +1,7 @@
 <?php
     use App\Category;
-    use Illuminate\Support\Facades\Auth;
+use App\Models\Appointment;
+use Illuminate\Support\Facades\Auth;
     if(!function_exists('getTimeZoneTime'))
     {
         function getTimeZoneTime($ftz,$ttz,$time)
@@ -720,5 +721,19 @@
             $date = new DateTime(date('m/d/Y h:i:s a', time()));
             $date->setTimezone(new DateTimeZone($tz));
             return $date->format($dateFormatString);
+        }
+    }
+
+    if(!function_exists('apointments_function')){
+        function appointmentCount()
+        {
+        if(Auth::check()){
+            if (Auth::user()->user_type == 'specialist') {
+                $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->where('status','0')->get();
+            } else {
+                $appointments = Appointment::where('user_id', Auth::user()->id)->where('status', '0')->get();
+            }
+            return ['appointment_count'=>count($appointments) ,'appointments'=> $appointments];
+            }
         }
     }
