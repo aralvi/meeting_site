@@ -1,4 +1,4 @@
-@extends('layouts.frontend.setting') @section('title','Profile') {{-- head start --}} @section('extra-css')
+@extends('layouts.frontend.setting') @section('title','Bids') {{-- head start --}} @section('extra-css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/register.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/login_register_common.css') }}" />
@@ -37,8 +37,7 @@
 @section('content')
 
 
-<p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
-<p class="pl-3 f-21 cl-000000">Bids</p>
+<p class="border-bottom pl-3 f-21 cl-616161">Bids</p>
 <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
     <table id="example1" class="table table-hover example1">
         <thead>

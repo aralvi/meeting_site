@@ -198,10 +198,9 @@
 @section('content')
 
 
-<p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
+<p class="border-bottom pl-3 f-21 cl-616161">Portfolio/Images</p>
 
 
-<p class="pl-3 f-21 cl-000000">Portfolio/Images</p>
 <section class="container">
     <div class="row gallery">
         @foreach ($portfolio_images as $image)

@@ -1,4 +1,4 @@
-@extends('layouts.frontend.setting') @section('title','Profile') {{-- head start --}} @section('extra-css')
+@extends('layouts.frontend.setting') @section('title','Services') {{-- head start --}} @section('extra-css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/dashboard.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/register.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/login_register_common.css') }}" />

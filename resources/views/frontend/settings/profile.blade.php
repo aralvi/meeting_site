@@ -39,11 +39,10 @@
 @section('content')
 
 
-<p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
+<p class="border-bottom pl-3 f-21 cl-616161">Personal Info</p>
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade {{ session('portfolio')? '':'show active' }} " id="v-pills-profile"
                     role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <p class="pl-3 f-21 cl-000000">Personal Info</p>
                     @if (Auth::user()->user_type =='specialist')
 
                     <form class="steps" action="{{ route('profile.update',Auth::user()->id) }}" method="POST"
