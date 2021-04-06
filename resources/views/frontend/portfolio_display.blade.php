@@ -133,7 +133,7 @@ a.next {
 
 @include('includes.frontend.navigations')
 <section class=" main_padding pt-2  text-center">
-    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Check Out These Portfolios</p>
+    <p class="main_title RobotoMedium f-34 cl-000000 fw-600 m-0 ">Check Out My Work</p>
     <img src="{{ asset('assets/frontend/images/greencurve.png') }}" class="img-fluid pt-3" alt="">
 </section>
 
