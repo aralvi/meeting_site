@@ -260,7 +260,11 @@
                 </div>
             </li>
             <li class="nav-item  robotoRegular pl-4 cl-ffffff">
-                <a class="nav-link cl-ffffff" href="{{ (Auth::user()->user_type == 'specialist')? url('services'):url('') }}?add_new">{{ (Auth::user()->user_type == 'specialist')?'Add Service':'Post Request' }}</a>
+                @if (Auth::user()->user_type == 'specialist')
+                    <a class="nav-link cl-ffffff" href="{{  url('services')}}?add_new">Add Service</a>
+                @elseif(Auth::user()->user_type == 'client')
+                    <a class="nav-link cl-ffffff" href="{{ route('client.index')}}#post_job">Post Request</a>
+                @endif
             </li>
             <li class="nav-item  pl-4">
                 <a class="nav-img" data-toggle="dropdown" href="#">

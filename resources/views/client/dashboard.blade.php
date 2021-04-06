@@ -481,7 +481,7 @@ span.prefix{
         </div>
     </section>
 
-    <section class=" pl-3 pt-70">
+    <section class=" pl-3 pt-70" id="post_job">
         @include('common.messages')
 
         <div class="row mt-2 mb-5 px-3 mx-1 ">
