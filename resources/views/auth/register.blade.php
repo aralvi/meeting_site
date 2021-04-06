@@ -219,6 +219,7 @@
                     @csrf
                     <input type="hidden" value="false" id="code_send_check">
                     <input type="hidden" value="false" id="code_check">
+                    <input type="hidden" value="true" id="check_verify">
                     <fieldset>
                         <div class="text-right pt-4">
                             <div class="">Already Registered?</div>
@@ -2104,6 +2105,16 @@
             if ($('#code_send_check').val() == 'true' && $('#code_check').val() == 'false') {
                 $('.step2').val('Verify');
             } else if ($('#code_send_check').val() == 'true' && $('#code_check').val() == 'true') {
+                if($('#check_verify').val() == 'true'){
+
+                    swal({
+                           icon: "success",
+                           text: "{{ __('Mobile number verified now you can continue!') }}",
+                           type: 'success'
+                       });
+                    }
+                    $('#check_verify').val('false') ;
+                
                 $('.step2').val('Continue');
             }
         }

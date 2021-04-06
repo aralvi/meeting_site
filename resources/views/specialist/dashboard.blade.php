@@ -318,7 +318,7 @@ a:focus{
                                             <div class="d-flex">
                                                 <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
                                                 <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
+                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->created_at->diffForHumans(null, true).' ago' }}
                                                 </div>
                                             </div>
                                         </div>
@@ -387,7 +387,7 @@ a:focus{
                                             <div class="d-flex">
                                                 <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
                                                 <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
+                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->created_at->diffForHumans(null, true).' ago' }}
                                                 </div>
                                             </div>
                                         </div>
