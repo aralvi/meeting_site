@@ -38,9 +38,7 @@
 @section('content')
 
 
-<p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
-
-<p class="pl-3 f-21 cl-000000">Services</p>
+<p class="border-bottom pl-3 f-21 cl-616161">Services</p>
 <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal"
     class="btn btn-sm bg-3AC574 text-white m-2 add_service" style="float: right;">Add Service</button>
 <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
