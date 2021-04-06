@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                 <input type="checkbox" name="status" class="custom-control-input" {{($service->status == 'Active') ?'checked':'' }} id="customSwitch2">
-                                <label class="custom-control-label" for="customSwitch2">Inactive/Active</label>
+                                <label class="custom-control-label p-0" for="customSwitch2">Inactive/Active</label>
                                 </div>
                             </div>
                         </div>

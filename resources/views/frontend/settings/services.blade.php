@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <style type="text/css">
     .dropdown-toggle::after {
         display: none;
@@ -41,7 +42,7 @@
 
 <p class="pl-3 f-21 cl-000000">Services</p>
 <button title="Click to Add Service" data-toggle="modal" data-target="#addServiceModal"
-    class="btn btn-sm bg-3AC574 text-white m-2" style="float: right;">Add Service</button>
+    class="btn btn-sm bg-3AC574 text-white m-2 add_service" style="float: right;">Add Service</button>
 <div class="table-responsive ServiceTableData px-3" id="ServiceTableData">
     <table id="example1" class="table table-hover example1"  style="width:100%;">
         <thead>
@@ -145,7 +146,7 @@
                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                 <input type="checkbox" name="status" class="custom-control-input" checked
                                     id="customSwitch3" />
-                                <label class="custom-control-label" for="customSwitch3">Inactive/Active</label>
+                                <label class="custom-control-label p-0" for="customSwitch3">Inactive/Active</label>
                             </div>
                         </div>
                     </div>
@@ -206,7 +207,9 @@
 
 <script>
     
-
+    if(window.location.href == "{{ url('services') }}?add_new"){
+        $('.add_service').click()
+    }
 
     function getSubCategoriesForServices(ele) {
         let id = $(ele).val();
