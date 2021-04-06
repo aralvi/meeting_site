@@ -134,6 +134,7 @@
          <input type="hidden" name="stripe_public_key" value="{{ $specialist->stripe_public_key }}">
          <input type="hidden" name="appointment_id" value="{{ $appointment_id }}">
          <input type="hidden" name="payment_for" value="{{ $payment_for }}">
+         <input type="hidden" id="payable_amount" value="{{ $amount }}">
          <div class=' row'>
              <div class='col-md-12 form-group required'>
                  <label class='control-label'>Name on Card</label> <input
@@ -203,12 +204,14 @@
                  $('.text-danger').removeClass('text-danger');
                  $inputs.each(function (i, el) {
                      var $input = $(el);
+                     
                      if ($input.val() === '') {
                          $input.addClass('border border-danger');
                          $input.parent().addClass('text-danger');
                          $errorMessage.removeClass('d-none');
                          e.preventDefault();
                      }
+                     
                  });
 
                  if (!$form.data('cc-on-file')) {
@@ -236,23 +239,35 @@
                      // insert the token into the form so it gets submitted to the server
                      $form.find('input[type=text]').empty();
                      $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-                     $('.afterRegisterLoader').show();
-                     $.ajax({
-                         type: 'post',
-                         url: "{{ route('stripe.post') }}",
-                         data: $form.serialize(),
-                         success: function (data) {
-                             swal({
-                                 icon: "success",
-                                 text: "{{ __('Payment submit successfully') }}",
-                                 icon: 'success'
-                             });
-                             $('.afterRegisterLoader').hide();
-                             $("#payment_modal .close").click();
+                     var amount = $('input[name=amount]');
+                     var payable_amount = $('#payable_amount');
+                     console.log(amount,payable_amount)
+                     if (amount.val() != payable_amount.val()) {
+                         amount.addClass('border border-danger');
+                         amount.parent().addClass('text-danger');
+                         $('.error').removeClass('d-none').children('div.alert-danger').text('You need to pay $'+payable_amount.val());
+                         e.preventDefault();
+                         return false;
+                     }else{
 
-                         },
-
-                     })
+                         $('.afterRegisterLoader').show();
+                         $.ajax({
+                             type: 'post',
+                             url: "{{ route('stripe.post') }}",
+                             data: $form.serialize(),
+                             success: function (data) {
+                                 swal({
+                                     icon: "success",
+                                     text: "{{ __('Payment submit successfully') }}",
+                                     icon: 'success'
+                                 });
+                                 $('.afterRegisterLoader').hide();
+                                 $("#payment_modal .close").click();
+    
+                             },
+    
+                         })
+                     }
                      // $form.get(0).submit();
                  }
              }
