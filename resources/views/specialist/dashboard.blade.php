@@ -282,7 +282,7 @@ a:focus{
                 data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-portfolio"
                 aria-selected="false">New</a>
             <a class="nav-link cl-000000" id="v-pills-alraady" data-toggle="pill" href="#v-pills-already-bid" role="tab"
-                aria-controls="v-pills-bid" aria-selected="false">Already Bid</a>
+                aria-controls="v-pills-bid" aria-selected="false">Submitted Proposals</a>
         </div>
     </div>
 
@@ -308,7 +308,7 @@ a:focus{
                                     <div class="cl-000000 robotoMedium f-24">{{ ucwords($service->title) }}</div>
                                     <div class="d-flex">
                                         <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
-                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->name }} </div>
+                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->username }} </div>
                                     </div>
                                     <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
                                         {{ ucfirst($service->description) }}
@@ -339,34 +339,14 @@ a:focus{
                                         </div>
                                         <div></div>
                                     </div>
-                                    {{-- <div class="d-flex pt-2 pl-4">
-                                        <div>
-                                            <div class="d-flex">
-                                                <div class="d-flex">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                </div>
-                                                <div
-                                                    class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">
-                                                    110 reviews</div>
-                                            </div>
-                                        </div>
-                                        <div></div>
-                                    </div> --}}
+                                   
                                 </div>
                                 <div class="robotoMedium text-right col-md-2 pr-0">
                                     <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
                                     <div class="f-21 cl-6b6b6b">USD</div>
                                 </div>
                                 <div class="col-md-1">
-                                    <button class="btn btn-sm btn-success service_request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}"> Give Offer</button>
+                                    <button class="btn btn-sm btn-success service_request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}">Submit Proposal</button>
                                 </div>
                             </div>
 
@@ -397,7 +377,7 @@ a:focus{
                                     <div class="cl-000000 robotoMedium f-24">{{ ucwords($service->title) }}</div>
                                     <div class="d-flex">
                                         <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
-                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->name }} </div>
+                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->username }} </div>
                                     </div>
                                     <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
                                         {{ ucfirst($service->description) }}
@@ -428,27 +408,7 @@ a:focus{
                                         </div>
                                         <div></div>
                                     </div>
-                                    {{-- <div class="d-flex pt-2 pl-4">
-                                        <div>
-                                            <div class="d-flex">
-                                                <div class="d-flex">
-                                                    <div><img src="{{ asset('assets/frontend/images/Path 93.png') }}" alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                    <div class="pl-2"><img src="{{ asset('assets/frontend/images/Path 93.png') }}"
-                                                            alt="" /></div>
-                                                </div>
-                                                <div
-                                                    class="pl-1 cl-3ac754 f-14 robotoRegular d-flex align-items-center reviews pl-2 pr-2 pt-1 pb-1 ml-2">
-                                                    110 reviews</div>
-                                            </div>
-                                        </div>
-                                        <div></div>
-                                    </div> --}}
+                                   
                                 </div>
                                 <div class="robotoMedium text-right col-md-2 pr-0">
                                     <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
@@ -470,86 +430,7 @@ a:focus{
         </div>
 
         
-        {{-- <div class="col-md-3 borderRadius-10px box_shadow1 p-0">
-            <div class="f-24 cl-3ac754 robotoMedium mt-3 px-3">
-                Projects
-            </div>
-            <div class="mt-2 border w-100"></div>
-            <div class="card-body">
-                <form action="" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label for="skills" class="f-18">Enter Your Skills</label>
-                        <select name="" class="form-control">
-                            <option disabled selected>Select Skills</option>
-                        </select>
-                        <a href="javascript:void(0)" class="cl-3ac754 float-right f-15">Edit Profile Skills</a>
-                    </div>
-                    <div class="form-group">
-                        <label for="skills" class="f-18">Enter Project Typ</label>
-                        <select name="" class="form-control">
-                            <option disabled selected>Fixed PRojects</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="skills" class="f-18">Enter Project Type</label>
-                        <select name="" class="form-control">
-                            <option disabled selected>Urgents</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="skills" class="f-18">Enter Location</label>
-                        <input type="text" name="location" class="form-control" placeholder="United States">
-                    </div>
-                    <div class="form-group">
-                        <label for="skills" class="f-18">Select Price Range</label>
-                        <div class="d-flex justify-content-center cl-6b6b6b">
-                            <p id="min">$1</p>
-                            <span>&nbsp; - &nbsp;</span>
-                            <p id="max">$300</p>
-                        </div>
-                    <div slider id="slider-distance">
-                        <div>
-                            <div inverse-left style="width:70%;"></div>
-                            <div inverse-right style="width:70%;"></div>
-                            <div range style="left:0%;right:0%;"></div>
-                            <span thumb style="left:0%;"></span>
-                            <span thumb style="left:100%;"></span>
-                            <div sign style="left:0%;" class="d-none">
-                                <span class="min_value" id="value">$1</span>
-                            </div>
-                            <div sign style="left:100%;" class="d-none">
-                                <span class="max_value" id="value">$300</span>
-                            </div>
-                        </div>
-                        <input type="range" value="1" max="300" min="1" step="1" onmousemove="getMinRange(this)" oninput="
-                            this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                            let value = (this.value/parseInt(this.max))*100
-                            
-                            var children = this.parentNode.childNodes[1].childNodes;
-                                children[1].style.width=value+'%';
-                                children[5].style.left=value+'%';
-                                children[7].style.left=value+'%';children[11].style.left=value+'%';
-                                children[11].childNodes[1].innerHTML=this.value;
-                            
-                            "
-                             />
-
-                        <input type="range" value="300" max="300" min="1" step="1" onmousemove="getMaxRange(this)" oninput="
-                            this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                            let value = (this.value/parseInt(this.max))*100
-                            var children = this.parentNode.childNodes[1].childNodes;
-                                children[3].style.width=(100-value)+'%';
-                                children[5].style.right=(100-value)+'%';
-                                children[9].style.left=value+'%';children[13].style.left=value+'%';
-                                children[13].childNodes[1].innerHTML=this.value;"
-                            />
-                    </div>
-                    </div>
-                </form>
-            </div>
-
-        </div> --}}
+        
     </div>
 </div>
 
@@ -564,7 +445,7 @@ a:focus{
   <div class="modal-dialog" role="document">
     <div class="modal-content pl-5 pr-5 pt-3 ">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Bid To Request</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Submit Proposal </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

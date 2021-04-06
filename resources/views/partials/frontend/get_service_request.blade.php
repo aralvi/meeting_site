@@ -3,7 +3,7 @@
     <div class="cl-000000 robotoMedium f-24">{{ $service_request->title }}</div>
     <div class="d-flex">
         <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
-        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service_request->User->name }}
+        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service_request->User->username }}
         </div>
     </div>
     <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b ">

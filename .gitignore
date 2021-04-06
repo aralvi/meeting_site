@@ -21,3 +21,4 @@ composer.lock
 composer.lock
 .idea/workspace.xml
 /public/public
+/public/uploads
