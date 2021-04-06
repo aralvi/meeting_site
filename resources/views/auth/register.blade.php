@@ -316,7 +316,7 @@
                                 <div class="col-sm-12 d-flex">
                                     <div class="form-group col-sm-6 mb-0 d-flex align-items-center">
                                         <label class="btn img-lbl border p-1 mb-0 Upload_Avatar">
-                                            Upload Avatar
+                                            Upload Photo
                                             <input type="file" id="avatar" style="display: none;" name="avatar"
                                                 class="avatar" onchange="readURL(this);" required />
                                         </label>
@@ -1100,7 +1100,7 @@
         <div class="col-sm-12 d-flex">
             <div class="form-group col-sm-6 mb-0">
                 <label class="btn img-lbl border p-1 mb-0">
-                    Upload Avatar
+                    Upload Photo
                     <input type="file" id="avatar" style="display: none;" name="avatar" onchange="readURL(this);" />
                 </label>
             </div>
@@ -1206,7 +1206,7 @@
         <div class="col-sm-12 d-flex">
             <div class="form-group col-sm-6 mb-0">
                 <label class="btn img-lbl border p-1 mb-0">
-                    Upload Avatar
+                    Upload Photo
                     <input type="file" id="avatar" style="display: none;" name="avatar" onchange="readURL(this);" />
                 </label>
             </div>
@@ -1884,7 +1884,7 @@
         if (input[0].files.length == 0) {
             swal({
                 icon: "error",
-                text: "{{ __('Please Upload Avatar!') }}",
+                text: "{{ __('Please Upload Photo!') }}",
                 type: 'error'
             });
             return false;
