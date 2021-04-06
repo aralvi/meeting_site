@@ -183,7 +183,7 @@ class ProfileController extends Controller
         $profile->email = $request->email;
         $profile->country = $request->country;
         $profile->time_zone = $request->timezone;
-        $profile->status = 'inactive';
+        $profile->status = 'active';
         $profile->save();
 
         if(url()->previous() != url('dashboard')){
