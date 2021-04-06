@@ -20,7 +20,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::where('user_id',Auth::user()->id)->where('status','1')->get();
+        $agoDate = \Carbon\Carbon::now()->addDays(2)->format('d M Y');
+        $currentDate = \Carbon\Carbon::today()->format('d M Y');
+        $appointments = Appointment::where('user_id',Auth::user()->id)->where('status','1')->where('payment_status', '2')->whereBetween('date', [$currentDate, $agoDate])->get();
         $services = Service::all();
         $categories = Category::all();
         $service_requests = ServiceRequest::where('user_id',Auth::user()->id)->get();
