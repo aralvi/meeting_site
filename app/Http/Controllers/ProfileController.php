@@ -186,7 +186,7 @@ class ProfileController extends Controller
         $profile->status = 'active';
         $profile->save();
 
-        if(url()->previous() != url('dashboard')){
+        if(Auth::user()->user_type != 'admin'){
 
             if ($profile->user_type == 'specialist') {
                 if (count($request->days) > 0) {
