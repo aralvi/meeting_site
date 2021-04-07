@@ -19,7 +19,9 @@ class CreateTablePayments extends Migration
             $table->unsignedBigInteger('specialist_id');
             $table->string('appointment_id')->nullable();
             $table->string('bid_id')->nullable();
-            $table->double('amount');
+            $table->string('deduction_rate')->default(20);
+            $table->double('recieve_amount', 8, 2);
+            $table->double('paid_amount', 8, 2);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('specialist_id')->references('id')->on('specialists')->onDelete('cascade');
             $table->enum('recieve_status',['0','1'])->default(0);
