@@ -16,7 +16,7 @@
     </section>
 
     <!-- E I G H T    S E C T I O N  E N D  -->
- @include('includes.frontend.footer')
+        @include('includes.frontend.footer')
     <!-- N I N E    S E C T I O N  S T A R T -->
     
     <!-- N I N E    S E C T I O N  E N D  -->
