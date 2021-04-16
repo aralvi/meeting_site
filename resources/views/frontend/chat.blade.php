@@ -21,6 +21,14 @@
             height: 180px;
             border-radius: 100%;
           }
+          @media screen and (min-width:1240px) {
+            .r-Main-P{
+            padding-left: 140px;
+          padding-right: 140px;
+          }
+              
+          }
+         
 
           .pr {
             position: relative;
@@ -134,8 +142,12 @@
             border-radius: 50%;
             height: 23px;
             cursor:pointer;
+            background:transparent !important;
         }
-        
+        svg:not(:root).svg-inline--fa {
+    overflow: visible;
+    color: #3ac373;
+}
         ::-webkit-scrollbar-track {
           background:#D5D5D5;
             border-radius: 10px;
@@ -337,6 +349,23 @@
         .picker-emoji-content::-webkit-scrollbar {
             width: 6px;
         }
+        .card-header,.card-footer{
+            background-color: #fff !important;
+            
+        }
+        .card-header{
+            border-bottom:0px !important;
+        }
+        textarea{
+            border:0px !important; 
+        }
+        .card {
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    border:0px !important;
+        }
+    .card-body{
+    padding:0px !important;
+    }
         
     </style>
 @endsection
@@ -351,7 +380,7 @@
 
 	<div class="wrapper">
 
-	    <div class="row">
+	    <div class="row m-0 r-Main-P mt-5">
             <div class="col-md-3 ">
                 <div class="bg-white pl-3 pr-3">
                     <div class="pt-4 pb-4" style="min-height: 702px; max-height: 702px;">
@@ -397,7 +426,7 @@
                 </div>
             </div>
 	        <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12 pl-0 pr-0">
-	            <div class="card" style="min-height: 702px; max-height: 702px;    overflow-y: scroll;">
+	            <div class="card" style="min-height: 702px; max-height: 702px;    ">
         			<div class="card-header border-0">
         				<div class="title border-0">All Conversations ({{App\User::where('id', '!=',Auth::user()->id)->get()->count()}})</div>
         			</div>
@@ -440,7 +469,7 @@
 	        <div class="col-sm-7 col-md-6 col-lg-6 col-xs-12 pl-0">
 	            <div class="card" style="min-height: 702px; max-height: 702px;">
         			<div class="card-header">
-        			   <div class="row m-0 align-items-center">
+        			   <div class="row m-0 align-items-center border-bottom pb-2">
         			       <div class="col-md-7 col-lg-7 p-0"> 
         			       <div class="d-flex">
         			           <div>  <div class="parent"><img src="{{ $user->avatar?asset($user->avatar): asset('uploads/user/default.jpg') }}" class="rounded-circle img-fluid smallProfile" alt=""
@@ -459,7 +488,7 @@
         			      </div>
         			      <div class="col-md-5 col-lg-5 d-flex justify-content-between">
         			          <!--<span><img src="{{asset('assets/frontend/images/chat/search.png')}}" class="" alt="" srcset=""></span>-->
-        			          <input type="text" onchange="searchInput(this);" placeholder="Search Messages...">
+        			          <input class="border rounded f-14 pl-2" style="height:30px;" type="text" onchange="searchInput(this);" placeholder="Search Messages...">
         			          <button onclick="scrollBodyBottom();" class="my-custom-btn"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
         			          <button onclick="scrollBodyTop();" class="my-custom-btn"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
         			          <span class="ml-1" id="filter-count"></span>
@@ -487,7 +516,7 @@
         					<div class="input-group border-top d-flex align-items-center pb-2">
         						<textarea  name="content" class="form-control  pl-0" placeholder="Type your message ..." autocomplete="off"></textarea>
         						<div id="emojis" class="d-none" style="position: absolute; bottom: 102%; right: 26%;"></div>
-        						<span onclick="if($('#emojis').hasClass('d-none')){ $('#emojis').removeClass('d-none') }else{ $('#emojis').addClass('d-none') }">	<img src="{{asset('assets/frontend/images/chat/Group-150.png')}}" class="" alt="" srcset="" style="cursor:pointer;" ></span>
+        						<span class="pl-3" onclick="if($('#emojis').hasClass('d-none')){ $('#emojis').removeClass('d-none') }else{ $('#emojis').addClass('d-none') }">	<img src="{{asset('assets/frontend/images/chat/Group-150.png')}}" class="" alt="" srcset="" style="cursor:pointer;" ></span>
         						<input type="file"  name="img" style="display:none;" id="img" onchange="fileValidation();">
         			        	<img src="{{asset('assets/frontend/images/chat/Path-87.png')}}" class="" onclick="$('#img').click();" alt="" srcset="" style="cursor:pointer;" >
         						
