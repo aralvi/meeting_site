@@ -412,10 +412,10 @@
         			<div class="card-body pl-0 pr-0">
         				<div class="d-flex">
         				    
-        				     @if(App\User::where('id', '!=',auth::user()->id)->get()->count() > 0)
+        				     @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
 			                    
 			                    <ul class="list-group " style="width:100%;">
-                			        @foreach(App\User::where('id', '!=',auth::user()->id)->get() as $u)
+                			        @foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
                 			            <a href="{{ route('chat.index',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
                 			                   <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
@@ -671,7 +671,7 @@
         function ajaxCommonCode(){
             
             $.ajax({
-               url:"{{ route('chat.user.update',auth::user()->id) }}",
+               url:"{{ route('chat.user.update',Auth::user()->id) }}",
                type:"get",
                success:function(data)
                {
@@ -680,7 +680,7 @@
             });
             
             $.ajax({
-                url:"{{ route('chat.updated.users',auth::user()->id) }}",
+                url:"{{ route('chat.updated.users',Auth::user()->id) }}",
                 type:"get",
                 success:function(data)
                 {
@@ -852,9 +852,9 @@
 		}
 		console.log("Function Response : "+formatTime(new Date(),'datetime'));
 		
-		var sender_reciever =  "@if(App\Chat::where('sender_id',auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',auth::user()->id)->first()->sender_reciever}}@else{{auth::user()->id.$id}}@endif";
+		var sender_reciever =  "@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@else{{Auth::user()->id.$id}}@endif";
         console.log("sender_reciever "+sender_reciever);
-		var sender ='{{ auth::user()->id }}';
+		var sender ='{{ Auth::user()->id }}';
 		var reciever='{{ $id }}';
 // 		firebase.database().ref('/chats').remove();
 		firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(sender_reciever.toString()).on('value', function(snapshot) {
@@ -877,7 +877,7 @@
 					chat_element +='<div class="d-flex mt-3">';
         		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{asset("assets/frontend/images/chat/smallprofile.png")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
         		        chat_element +='<div class="col-lg-11 pl-3">';
-        		            chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ auth::user()->time_zone }}').format('M-D-Y h : mm A')+'</span></div> ';
+        		            chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h : mm A')+'</span></div> ';
         		            if (this.file_type=='img' && this.file_link !='')
     					    {
                             	chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;left: 17px;"><i class="fa fa-download" aria-hidden="true"></i></a>';
@@ -946,7 +946,8 @@
 			var formData = new FormData(frm);
 			formData.append('sender',sender);
 			formData.append('reciever',reciever);
-			formData.append('name','{{ auth::user()->name }}');
+			formData.append('name','{{ Auth::user()->name }}');
+            formData.append("_token","{{ csrf_token() }}");
 			if(chat_content !='' && img!=''){ chk = true; }
 			else if(chat_content =='' && img!=''){ chk = true; }
 			else if(chat_content !='' && img==''){ chk = true; }
@@ -959,12 +960,9 @@
                     processData: false,
 					data: formData,
 					method: 'post',
-					headers: {
-						'X-CSRF-TOKEN': $("meta[name=csrf-token]").attr('content')
-					},
 					beforeSend: function() {
 						$(this).attr('disabled', true);
-						let name = "{{ auth::user()->name }}";
+						let name = "{{ Auth::user()->name }}";
 						name = name[0].toUpperCase() + name.slice(1);
 				        var chat_element = '';
 				        chat_element +='<div class="d-flex mt-3">';
@@ -1024,7 +1022,7 @@
 		$("#chat-form [name=content]").keyup(function() {
 			var ref = firebase.database().ref('typing');
 			ref.set({
-				name: '{{ auth::user()->name }}'
+				name: '{{ Auth::user()->name }}'
 			});
 
 			timer = setTimeout(function() {
@@ -1072,7 +1070,7 @@
             focusOnInput();
             
             $.ajax({
-               url:"{{ route('chat.user.update',auth::user()->id) }}",
+               url:"{{ route('chat.user.update',Auth::user()->id) }}",
                type:"get",
                success:function(data)
                {
@@ -1081,7 +1079,7 @@
             });
             
             $.ajax({
-                url:"{{ route('chat.updated.users',auth::user()->id) }}",
+                url:"{{ route('chat.updated.users',Auth::user()->id) }}",
                 type:"get",
                 success:function(data)
                 {
@@ -1110,9 +1108,9 @@
             });
         }
         setInterval(function(){
-            @if(App\User::where('id', '!=',auth::user()->id)->get()->count() > 0)
-    			@foreach(App\User::where('id', '!=',auth::user()->id)->get() as $u)
-    			    sender_reciever_count ="@if(App\Chat::where('sender_id',auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',auth::user()->id)->first()->sender_reciever}}@endif";
+            @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
+    			@foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
+    			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
                         
                         if(ysnapshot.numChildren()>0 && (sender_reciever_count == sender_reciever))
@@ -1172,7 +1170,7 @@
         
         setInterval(function(){
             $.ajax({
-               url:"{{ route('chat.user.update',auth::user()->id) }}",
+               url:"{{ route('chat.user.update',Auth::user()->id) }}",
                type:"get",
                success:function(data)
                {
@@ -1181,7 +1179,7 @@
             });
             
             $.ajax({
-                url:"{{ route('chat.updated.users',auth::user()->id) }}",
+                url:"{{ route('chat.updated.users',Auth::user()->id) }}",
                 type:"get",
                 success:function(data)
                 {
