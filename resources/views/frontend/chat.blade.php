@@ -85,7 +85,7 @@
           }
           .smallProfile {
          
-            height: 46px;
+            width: 46px;
         
           }
         
