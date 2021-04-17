@@ -480,7 +480,7 @@
                                 <div class="pl-2">
                                     <div>{{ ucwords($user->name) }}</div>
                                     <div class="d-flex">
-                                        <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login > time())active @else {{ "Last seen ".Carbon\Carbon::parse($user->last_login)->diffForHumans()}} @endif</div>
+                                        <div class="cl-a8a8a8 f-11 user-status"></div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
                                     </div>
                                 </div>
@@ -877,7 +877,7 @@
         console.log("sender_reciever "+sender_reciever);
 		var sender ='{{ Auth::user()->id }}';
 		var reciever='{{ $id }}';
-// 		firebase.database().ref('/chats').remove();
+		// firebase.database().ref('/chats').remove();
 		firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(sender_reciever.toString()).on('value', function(snapshot) {
 // 			console.log(snapshot.val());
 			var chat_element = '';
@@ -894,9 +894,9 @@
 					    cls="chat-text reciever-div";
 					    img_class="justify-content-left";
 					}
-					
+                    
 					chat_element +='<div class="d-flex mt-3">';
-        		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{asset("assets/frontend/images/chat/smallprofile.png")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
+        		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="'+this.avatar+'" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
         		        chat_element +='<div class="col-lg-11 pl-3">';
         		            chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h : mm A')+'</span></div> ';
         		            if (this.file_type=='img' && this.file_link !='')
@@ -987,7 +987,7 @@
 						name = name[0].toUpperCase() + name.slice(1);
 				        var chat_element = '';
 				        chat_element +='<div class="d-flex mt-3">';
-            		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{asset("assets/frontend/images/chat/smallprofile.png")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
+            		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{ Auth::user()->avatar!=''?asset(Auth::user()->avatar): asset("uploads/user/default.jpg")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
             		        chat_element +='<div class="col-lg-11 pl-3">';
             		            chat_element +='<div>'+name+'<span class="f-12 pl-2">'+formatTime(new Date(),"datetime")+'</span></div> ';
             		            if (document.getElementById('img').files && document.getElementById('img').files[0])
@@ -1071,7 +1071,7 @@
             firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever+"unread").once("value", function(ysnapshot) {
                 $.each(ysnapshot.val(),function(i,v){
                     if(v.content){content = v.content;}else{content ='';}
-    		        firebase.database().ref('/chats/'+i).set({content:content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read"})
+    		        firebase.database().ref('/chats/'+i).set({avatar:v.avatar,content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read"})
                     console.log("status has been update of : "+i+"  "); 
                 });
             });

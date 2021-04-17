@@ -59,6 +59,8 @@ class FirebaseController extends Controller
 		$input['sender_reciever'] = $input['sender_reciever'];
 		$chat = Chat::create($input);
         $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/FirebaseKey.json');
+        $sender_user = User::where('id',$sender)->first();
+        $sender_user->avatar!=''? $pro=url('/').'/'.$sender_user->avatar: $pro=url('/public/uploads/user/default.jpg');
         $firebase = (new Factory)
         ->withServiceAccount($serviceAccount)
         ->withDatabaseUri(config('services.firebase.database_url'))
@@ -68,6 +70,7 @@ class FirebaseController extends Controller
         ->getReference('chats')
         ->push([
             'id'=>$chat->id,
+            'avatar'=>$pro,
             'type' =>  $chat->type,
             'content'  =>  $chat->content,
             'name'=>$chat->name,
