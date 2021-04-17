@@ -142,6 +142,77 @@
             });
         },1000);
 
+        @if(Auth::check())
+            setInterval(function(){
+                firebase.database().ref('/chats').orderByChild("reciever_status").equalTo("{{ Auth::user()->id }}unread").on("value", function(ysnapshot) {
+                    var chat_html = "";
+                    var chk =0;
+                    if(ysnapshot.val() != null) {
+                        $.each(ysnapshot.val(),function(){
+                            if(this.sender_id !=chk)
+                            {
+                                var count = 0;
+                                if(this.reciever_status){
+                                    firebase.database().ref('/chats').orderByChild("status").equalTo(this.sender_reciever+"unread").on("value", function(cSnapshot) {
+                                        count = cSnapshot.numChildren();
+                                        
+                                    });
+
+                                    firebase.database().ref('/chats').orderByChild("status").equalTo(this.sender_reciever+"unread").limitToLast(1).on("value", function(snapshot) {
+                                        if(snapshot.val() !=null)
+                                        {
+                                            $.each(snapshot.val(),function(){
+                                                var cnt = '';
+                                                var c_url = '{{ route("single.chat", ":id") }}';
+                                                c_url = c_url.replace(':id',this.sender_id);
+                                                var s_url = '{{ route("chat.user.status", ":id") }}';
+                                                s_url = s_url.replace(':id',this.sender_id);
+                                                if(this.content.length>20 ){ cnt = this.content.substring(0,20)+"..." }else{ cnt=this.content; }
+                                                chat_html += '<a class="dropdown-item d-flex row m-0 pt-2" href="'+c_url+'">';
+                                                    chat_html+='<div class="col-md-2 p-0">';
+                                                        chat_html +='<img src="'+this.avatar+'" alt="" class="img-fluid">';
+                                                        $.ajax({
+                                                            url:s_url,
+                                                            type:"get",
+                                                            success:function(data)
+                                                            {
+                                                                if(data.next>data.current)
+                                                                {
+                                                                    chat_html+='<span class="ml--1 green-dot mt-1"></span>';
+                                                                }else{
+                                                                    chat_html+='<span class="ml--1 mt-1"></span>';
+                                                                }
+                                                            }
+                                                        });
+                                                        // chat_html+='<span class="ml--1 mt-1"></span>';
+                                                    chat_html+='</div>';
+                                                    
+                                                    chat_html+='<div class="col-md-6 pl-2 pt-1 p-0">';
+                                                        chat_html+='<div class="row m-0"><div class="dropdown-heading">'+this.name[0].toUpperCase() + this.name.slice(1)+'</div></div>';
+                                                        chat_html+='<div class="row m-0"><div class="dropdown-contnt">'+cnt+'</div></div>';
+                                                    chat_html+='</div>';
+
+                                                    chat_html+='<div class="col-md-3 p-0">';
+                                                        chat_html+='<div class="row m-0 justify-content-end mt-1"><span class="green-dot-nmbr">'+count+'</span></div>';
+                                                        chat_html+='<div class="row m-0 justify-content-end mt-1"><span class="dropdown-contnt">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mm a')+'</span></div>';
+                                                    chat_html+='</div>';
+                                                chat_html+="</a>";
+                                            });
+                                            
+                                        }
+                                        
+                                    });
+                                }
+                                
+                                chk = this.sender_id;
+                            }
+                        });
+                        $("#nav-home").html(chat_html);
+                    }
+                });
+            },1000);
+        @endif
+
         $(function () {
             $(".select2").select2();
             $(".example1")
