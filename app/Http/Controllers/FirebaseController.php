@@ -15,7 +15,12 @@ use Carbon\Carbon;
 class FirebaseController extends Controller
 {
 
-    public function index($id)
+    public function index()
+    {
+        return view('frontend.chat_index');
+    }
+
+    public function singleChat($id)
     {
         // $id = decrypt($id);
         $user = User::where('id',$id)->first();
@@ -143,6 +148,13 @@ class FirebaseController extends Controller
         {
             return response()->json(["old"=>$t,"next"=>$user->last_login]);
         }
+        
+    }
+
+    public function chatUserStatus($id)
+    {
+        $user = User::find($id);
+        return response()->json(["current"=>time(),"next"=>$user->last_login]);
         
     }
     

@@ -100,8 +100,10 @@ Route::group(['middleware'=>['auth','checkuserstatus']],function(){
 
 Route::middleware(['auth'])->group(function(){
     Route::post('save-token','FirebaseController@save_token')->name('save-token');
-    Route::get('chat/{id}', 'FirebaseController@index')->name('chat.index');
+    Route::get('chat/{id}', 'FirebaseController@singleChat')->name('single.chat');
+    Route::get('users/chat', 'FirebaseController@index')->name('chat.index');
     Route::post('chat/store', 'FirebaseController@store')->name('chat.store');
     Route::get('chat/user/update/{id}', 'FirebaseController@chatUserUpdate')->name('chat.user.update');
+    Route::get('chat/user/status/{id}', 'FirebaseController@chatUserStatus')->name('chat.user.status');
     Route::get('chat/update/users/{id}', 'FirebaseController@chatUpdatedUsers')->name('chat.updated.users');
 });

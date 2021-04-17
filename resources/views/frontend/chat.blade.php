@@ -436,7 +436,7 @@
 			                    
 			                    <ul class="list-group " style="width:100%;">
                 			        @foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
-                			            <a href="{{ route('chat.index',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
+                			            <a href="{{ route('single.chat',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
                 			                   <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
                                                     <div class="parent"><img src="{{$u->avatar!=''?asset($u->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid smallProfile" alt=""
@@ -548,8 +548,7 @@
 	<script src="{{ asset('assets/frontend/js/emoji/jquery.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/emoji.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/DisMojiPicker.js') }}"></script>
-	<script src="{{ asset('assets/frontend/js/moment.js') }}"></script>
-	<script src="{{ asset('assets/frontend/js/moment-timezone.js') }}"></script>
+	
 	<script>
 	
 	    // Get the modal
@@ -893,6 +892,7 @@
 					    cls="chat-text reciever-div";
 					    img_class="justify-content-left";
 					}
+                    console.log("reciver-status: "+this.reciever_status);
 					chat_element +='<div class="d-flex mt-3">';
         		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="'+this.avatar+'" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
         		        chat_element +='<div class="col-lg-11 pl-3">';
@@ -1070,7 +1070,7 @@
                     if(v.content){content = v.content;}else{content ='';}
                         if(v.sender_id !=sender)
                         {
-                            firebase.database().ref('/chats/'+i).set({avatar:v.avatar,content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read"})
+                            firebase.database().ref('/chats/'+i).set({avatar:v.avatar,content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read",reciever_status:"read"})
                             console.log("status has been update of : "+i+"  ");
                         }
     		             
@@ -1134,7 +1134,6 @@
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-                        console.log('badge : '+sender_reciever_count+"=>"+sender_reciever);
                         if(ysnapshot.numChildren()>0 && (sender_reciever_count == sender_reciever))
                         {
                             if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
@@ -1171,7 +1170,7 @@
                                 }
                                 if(dateDifference(new Date(),new Date(this.created_at))==1 || dateDifference(new Date(),new Date(this.created_at))==0)
                                 {
-                                    $('#time-div-{{ $u->id }}').html(formatTime(new Date(this.created_at),"time"));
+                                    $('#time-div-{{ $u->id }}').html(moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mm a'));
                                 }
                                 else{
                                     $('#time-div-{{ $u->id }}').html(dateDifference(new Date(),new Date(this.created_at))+" days");
