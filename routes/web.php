@@ -16,6 +16,7 @@ use Laravel\Socialite\Facades\Socialite;
 */
 Route::view('semail','emails.admin.disapprove_user');
 Route::view('check', 'check');
+Route::view('video', 'video');
 // Route::view('profile','profile');
 
 Route::get('/unauthorize', function () {
