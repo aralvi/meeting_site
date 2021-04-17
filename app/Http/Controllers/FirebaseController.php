@@ -152,7 +152,7 @@ class FirebaseController extends Controller
             $a['id']=$user->id;
             $a['current']=time();
             $a['next']=$user->last_login;
-            $a['status'] = Carbon::parse($user->last_login)->diffForHumans();
+            $a['status'] = Carbon::parse(intval($user->last_login))->diffForHumans();
             $arr[] = $a;
         }
         return response()->json($arr);
