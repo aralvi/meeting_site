@@ -52,7 +52,23 @@
     <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
     <script src="{{ asset('assets/admin/dist/js/custome.js') }}"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+		var config = {
+			apiKey: '{{config('services.firebase.api_key')}}',
+			authDomain: '{{config('services.firebase.auth_domain')}}',
+			databaseURL: "{{config('services.firebase.database_url')}}",
+			projectId: "{{config('services.firebase.project_id')}}",
+			storageBucket: "{{config('services.firebase.storage_bucket')}}",
+			messagingSenderId: "{{config('services.firebase.messaging_sender_id')}}",
+			appId: "{{config('services.firebase.appId')}}"
+		};
+		firebase.initializeApp(config);
+    </script>
     <script>
         $(function () {
             $(".select2").select2();

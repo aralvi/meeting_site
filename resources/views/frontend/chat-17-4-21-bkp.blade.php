@@ -540,10 +540,10 @@
 @endsection
 
 @section('extra-script')
-	{{-- <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script> --}}
+	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/jquery.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/emoji.js') }}"></script>
@@ -798,17 +798,17 @@
 		 }
 
 		// Initialize Firebase
-		// var config = {
-		// 	apiKey: '{{config('services.firebase.api_key')}}',
-		// 	authDomain: '{{config('services.firebase.auth_domain')}}',
-		// 	databaseURL: "{{config('services.firebase.database_url')}}",
-		// 	projectId: "{{config('services.firebase.project_id')}}",
-		// 	storageBucket: "{{config('services.firebase.storage_bucket')}}",
-		// 	messagingSenderId: "{{config('services.firebase.messaging_sender_id')}}",
-		// 	appId: "{{config('services.firebase.appId')}}"
-		// };
+		var config = {
+			apiKey: '{{config('services.firebase.api_key')}}',
+			authDomain: '{{config('services.firebase.auth_domain')}}',
+			databaseURL: "{{config('services.firebase.database_url')}}",
+			projectId: "{{config('services.firebase.project_id')}}",
+			storageBucket: "{{config('services.firebase.storage_bucket')}}",
+			messagingSenderId: "{{config('services.firebase.messaging_sender_id')}}",
+			appId: "{{config('services.firebase.appId')}}"
+		};
 		
-		// firebase.initializeApp(config);
+		firebase.initializeApp(config);
         const messaging = firebase.messaging();
         messaging.usePublicVapidKey("{{config('services.firebase.public_key')}}");
         function sendTokenToServer(fcm_token) {
