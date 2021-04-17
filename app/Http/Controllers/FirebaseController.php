@@ -81,6 +81,7 @@ class FirebaseController extends Controller
             'file_type'=>$file,
             'file_link'=>$imgName,
             'status'=>$chat->sender_reciever."unread",
+            'reciever_status'=>$reciever."unread",
             'created_at'=>$chat->created_at,
         ]);
         $reciever = User::where('id',$chat->reciever_id)->first();
