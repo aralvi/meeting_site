@@ -84,9 +84,8 @@
                   height: 85px;
           }
           .smallProfile {
-         
             width: 46px;
-        
+            height: 38px;
           }
         
           .parent {
@@ -894,7 +893,7 @@
 					    cls="chat-text reciever-div";
 					    img_class="justify-content-left";
 					}
-                    
+
 					chat_element +='<div class="d-flex mt-3">';
         		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="'+this.avatar+'" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
         		        chat_element +='<div class="col-lg-11 pl-3">';
