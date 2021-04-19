@@ -142,106 +142,6 @@
                         </div>
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
-                            <a class="dropdown-item d-flex row m-0 pt-2" href="#">
-                                <div class="col-md-2 p-0">
-                                    <img src="{{ asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}"
-                                        alt="" class="img-fluid" />
-                                    <span class="green-dot ml--1 mt-1"></span>
-                                </div>
-                                <div class="col-md-6 pl-2 pt-1 p-0">
-                                    <div class="row m-0">
-                                        <div class="dropdown-heading">Heading is here</div>
-                                    </div>
-                                    <div class="row m-0">
-                                        <div class="dropdown-contnt">
-                                            there is some text below heading
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 p-0">
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="green-dot-nmbr">3</span>
-                                    </div>
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="dropdown-contnt">3:34 pm</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex row m-0 pt-2" href="#">
-                                <div class="col-md-2 p-0">
-                                    <img src="{{ asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}"
-                                        alt="" class="img-fluid" />
-                                    <span class="green-dot ml--1 mt-1"></span>
-                                </div>
-                                <div class="col-md-6 pl-2 pt-1 p-0">
-                                    <div class="row m-0">
-                                        <div class="dropdown-heading">Heading is here</div>
-                                    </div>
-                                    <div class="row m-0">
-                                        <div class="dropdown-contnt">
-                                            there is some text below heading
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 p-0">
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="green-dot-nmbr">3</span>
-                                    </div>
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="dropdown-contnt">3:34 pm</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex row m-0 pt-2" href="#">
-                                <div class="col-md-2 p-0">
-                                    <img src="{{ asset('assets/frontend/images/navlogo.png') }}" alt=""
-                                        class="img-fluid" />
-                                    <span class="green-dot ml--1 mt-1"></span>
-                                </div>
-                                <div class="col-md-6 pl-2 pt-1 p-0">
-                                    <div class="row m-0">
-                                        <div class="dropdown-heading">Heading is here</div>
-                                    </div>
-                                    <div class="row m-0">
-                                        <div class="dropdown-contnt">
-                                            there is some text below heading
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 p-0">
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="green-dot-nmbr">3</span>
-                                    </div>
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="dropdown-contnt">3:34 pm</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex row m-0 pt-2" href="#">
-                                <div class="col-md-2 p-0">
-                                    <img src="{{ asset('assets/frontend/images/navlogo.png') }}" alt=""
-                                        class="img-fluid" />
-                                    <span class="green-dot ml--1 mt-1"></span>
-                                </div>
-                                <div class="col-md-6 pl-2 pt-1 p-0">
-                                    <div class="row m-0">
-                                        <div class="dropdown-heading">Heading is here</div>
-                                    </div>
-                                    <div class="row m-0">
-                                        <div class="dropdown-contnt">
-                                            there is some text below heading
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 p-0">
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="green-dot-nmbr">3</span>
-                                    </div>
-                                    <div class="row m-0 justify-content-end mt-1">
-                                        <span class="dropdown-contnt">3:34 pm</span>
-                                    </div>
-                                </div>
-                            </a>
                         </div>
 
                         <div class="dropdown-footer mt-5">
@@ -252,7 +152,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 p-0 pr-3 text-white text-right">
-                                    <h6>See all in inbox</h6>
+                                    <a href="{{ route('chat.index') }}" style="color: #ffffff;"><h6>See all in inbox</h6></a>
                                 </div>
                             </div>
                         </div>
