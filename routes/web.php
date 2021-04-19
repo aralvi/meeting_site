@@ -40,13 +40,13 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallba
 Route::get('category/sub_categories','CategoryController@getSubCategories')->name('get.sub_categories');
 
 Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
-   Route::resource('/profile','Admin\AdminController');
-   Route::resource('/categories', 'Admin\CategoryController');
-   Route::resource('/users', 'Admin\UserController');
-   Route::resource('/subcategories', 'Admin\SubCategoryController');
-   Route::get('/password', 'ProfileController@password');
-//    Route::get('users','AdminController@users');
-//    Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
+    Route::resource('/profile','Admin\AdminController');
+    Route::resource('/categories', 'Admin\CategoryController');
+    Route::resource('/users', 'Admin\UserController');
+    Route::resource('/subcategories', 'Admin\SubCategoryController');
+    Route::get('/password', 'ProfileController@password');
+    //    Route::get('users','AdminController@users');
+    //    Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
 });
 
 // usercheck
@@ -59,6 +59,7 @@ Route::group(['middleware'=>['auth','specialistcheck','checkuserstatus']],functi
 
 
 Route::group(['middleware'=>['auth','checkuserstatus']],function(){
+    Route::view('video', 'video');
     Route::get('search', 'HomeController@search')->name('search');
     Route::resource('bids', 'Specialist\BidController');
     Route::post('bid-work-status', 'Specialist\BidController@changeWorkStatus')->name('bid_work_status');
