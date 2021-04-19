@@ -28,18 +28,6 @@ class FirebaseController extends Controller
     }
 
     public function store(Request $request) {
-        if($request->hasFile('img'))
-        {
-            $imgName = time().'.'.$request->img->getClientOriginalExtension();
-            $request->img->move(public_path('images/firebase'), $imgName);
-            $file ='img';
-            $imgName = url('/images/firebase')."/".$imgName;
-        }
-        else
-        {
-            $file ='';
-            $imgName = '';
-        }
         
 		$this->validate($request, [
 			'name' => 'required'
@@ -56,13 +44,40 @@ class FirebaseController extends Controller
         }else{
 			$input['sender_reciever'] = $sender.$reciever;
 		}
-
+        $cnt = "";
 		$input['ip'] = request()->ip();
 		$input['type'] = 'chat';
 		$input['sender_id'] = $sender;
 		$input['reciever_id'] = $reciever;
 		$input['sender_reciever'] = $input['sender_reciever'];
 		$chat = Chat::create($input);
+        if($request->hasFile('img'))
+        {
+            $ext =  $request->img->extension();
+            $fileName= $request->img->getClientOriginalName();
+            if($ext=='pdf'){
+                $file='pdf';
+                $cnt=$fileName;
+            }
+            else if($ext=="docx" || $ext=='doc'){
+                $file="doc";
+                $cnt=$fileName;
+            }
+            else{
+                $file="img";
+                $cnt=$chat->content;
+            }
+            $imgName = time().'.'.$ext;
+            $request->img->move(public_path('images/firebase'), $imgName);
+            $imgName = url('/images/firebase')."/".$imgName;
+        }
+        else
+        {
+            $file ='';
+            $imgName = '';
+            $fileName="";
+            $cnt=$chat->content;
+        }
         $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/FirebaseKey.json');
         $sender_user = User::where('id',$sender)->first();
         $sender_user->avatar!=''? $pro=url('/').'/'.$sender_user->avatar: $pro=url('/public/uploads/user/default.jpg');
@@ -77,13 +92,14 @@ class FirebaseController extends Controller
             'id'=>$chat->id,
             'avatar'=>$pro,
             'type' =>  $chat->type,
-            'content'  =>  $chat->content,
+            'content'  =>  $cnt,
             'name'=>$chat->name,
             'sender_id'=>$chat->sender_id,
             'reciever_id'=>$chat->reciever_id,
             'ip'=>$chat->ip,
             'sender_reciever'=>$chat->sender_reciever,
             'file_type'=>$file,
+            'file_name'=>$fileName,
             'file_link'=>$imgName,
             'status'=>$chat->sender_reciever."unread",
             'reciever_status'=>$reciever."unread",

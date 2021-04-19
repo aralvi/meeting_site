@@ -391,7 +391,7 @@
         				     @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
 			                    
 			                    <ul class="list-group " style="width:100%;">
-                			        @foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
+                			        @foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
                 			            <a href="{{ route('single.chat',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 bg-white ">
                 			                   <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
@@ -401,7 +401,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7 p-0 f-13 d-flex flex-column justify-content-center">
-                                                    <div>{{ ucwords($u->name) }}</div>
+                                                    <div>{{ ucwords($u->username) }}</div>
                                                     <div class="pt-1" id="message-div-{{ $u->id }}"></div>
                                                 </div>
                                                 <div class="col-md-2 pl-0 d-flex flex-column justify-content-center align-items-center">
@@ -460,7 +460,7 @@
       }
       setInterval(function(){
             @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
-    			@foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
+    			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
                         if(ysnapshot.numChildren()>0){

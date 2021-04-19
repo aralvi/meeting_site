@@ -21,6 +21,14 @@
             height: 180px;
             border-radius: 100%;
           }
+          @media screen and (min-width:1240px) {
+            .r-Main-P{
+            padding-left: 140px;
+          padding-right: 140px;
+          }
+              
+          }
+         
 
           .pr {
             position: relative;
@@ -76,9 +84,8 @@
                   height: 85px;
           }
           .smallProfile {
-         
-            height: 46px;
-        
+            width: 40px;
+            height: 38px;
           }
         
           .parent {
@@ -134,8 +141,12 @@
             border-radius: 50%;
             height: 23px;
             cursor:pointer;
+            background:transparent !important;
         }
-        
+        svg:not(:root).svg-inline--fa {
+    overflow: visible;
+    color: #3ac373;
+}
         ::-webkit-scrollbar-track {
           background:#D5D5D5;
             border-radius: 10px;
@@ -337,6 +348,23 @@
         .picker-emoji-content::-webkit-scrollbar {
             width: 6px;
         }
+        .card-header,.card-footer{
+            background-color: #fff !important;
+            
+        }
+        .card-header{
+            border-bottom:0px !important;
+        }
+        textarea{
+            border:0px !important; 
+        }
+        .card {
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    border:0px !important;
+        }
+    .card-body{
+    padding:0px !important;
+    }
         
     </style>
 @endsection
@@ -344,14 +372,13 @@
 @section('content')
     <section class="px-5 bg-navbar nav-bg-img pb-5">
         @include('includes.frontend.navbar')
-
     </section>
 
     @include('includes.frontend.navigations')
 
 	<div class="wrapper">
 
-	    <div class="row">
+	    <div class="row m-0 r-Main-P mt-5">
             <div class="col-md-3 ">
                 <div class="bg-white pl-3 pr-3">
                     <div class="pt-4 pb-4" style="min-height: 702px; max-height: 702px;">
@@ -359,7 +386,7 @@
                           <img src="{{$user->avatar !=''?asset($user->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid main-profile" alt="" srcset="">
                           <div class="small-Circle bg-grey  user-staus-{{ $user->id }}"></div>
                         </div>
-                        <div class="text-center f-22 cl-5757575">{{ ucwords($user->name) }}</div>
+                        <div class="text-center f-22 cl-5757575">{{ ucwords($user->username) }}</div>
                         <div class="cl-a8a8a8 f-17 text-center">{{ $user->user_type=='specialist'? ucwords($user->specialist->category->name) :'' }}</div>
                         {{-- <div class="row m-0  pt-3 pb-3 border-bottom cl-a8a8a8">
                           <div class="col-md-6 col-md-6 p-0">
@@ -397,7 +424,7 @@
                 </div>
             </div>
 	        <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12 pl-0 pr-0">
-	            <div class="card" style="min-height: 702px; max-height: 702px;    overflow-y: scroll;">
+	            <div class="card" style="min-height: 702px; max-height: 702px;    ">
         			<div class="card-header border-0">
         				<div class="title border-0">All Conversations ({{App\User::where('id', '!=',Auth::user()->id)->get()->count()}})</div>
         			</div>
@@ -408,7 +435,7 @@
 			                    
 			                    <ul class="list-group " style="width:100%;">
                 			        @foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
-                			            <a href="{{ route('chat.index',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
+                			            <a href="{{ route('single.chat',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
                 			                   <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
                                                     <div class="parent"><img src="{{$u->avatar!=''?asset($u->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid smallProfile" alt=""
@@ -417,7 +444,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7 p-0 f-13 d-flex flex-column justify-content-center">
-                                                    <div>{{ ucwords($u->name) }}</div>
+                                                    <div>{{ ucwords($u->username) }}</div>
                                                     <div class="pt-1" id="message-div-{{ $u->id }}"></div>
                                                 </div>
                                                 <div class="col-md-2 pl-0 d-flex flex-column justify-content-center align-items-center">
@@ -440,7 +467,7 @@
 	        <div class="col-sm-7 col-md-6 col-lg-6 col-xs-12 pl-0">
 	            <div class="card" style="min-height: 702px; max-height: 702px;">
         			<div class="card-header">
-        			   <div class="row m-0 align-items-center">
+        			   <div class="row m-0 align-items-center border-bottom pb-2">
         			       <div class="col-md-7 col-lg-7 p-0"> 
         			       <div class="d-flex">
         			           <div>  <div class="parent"><img src="{{ $user->avatar?asset($user->avatar): asset('uploads/user/default.jpg') }}" class="rounded-circle img-fluid smallProfile" alt=""
@@ -449,9 +476,9 @@
 
                                            </div></div>
                                 <div class="pl-2">
-                                    <div>{{ ucwords($user->name) }}</div>
+                                    <div>{{ ucwords($user->username) }}</div>
                                     <div class="d-flex">
-                                        <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login > time())active @else {{ "Last seen ".Carbon\Carbon::parse($user->last_login)->diffForHumans()}} @endif</div>
+                                        <div class="cl-a8a8a8 f-11 user-status"></div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
                                     </div>
                                 </div>
@@ -459,7 +486,7 @@
         			      </div>
         			      <div class="col-md-5 col-lg-5 d-flex justify-content-between">
         			          <!--<span><img src="{{asset('assets/frontend/images/chat/search.png')}}" class="" alt="" srcset=""></span>-->
-        			          <input type="text" onchange="searchInput(this);" placeholder="Search Messages...">
+        			          <input class="border rounded f-14 pl-2" style="height:30px;" type="text" onchange="searchInput(this);" placeholder="Search Messages...">
         			          <button onclick="scrollBodyBottom();" class="my-custom-btn"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
         			          <button onclick="scrollBodyTop();" class="my-custom-btn"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
         			          <span class="ml-1" id="filter-count"></span>
@@ -471,11 +498,11 @@
         			<div class="card-body messag-log" style="max-height: 417px !important;min-height: 417px !important;">
         			   
         
-        				<div class="d-flex justify-content-center">
+        				{{-- <div class="d-flex justify-content-center">
         					<div class="spinner-border text-success" role="status">
         						<span class="sr-only">Loading...</span>
         					</div>
-        				</div>
+        				</div> --}}
         
         				
         			</div>
@@ -487,7 +514,7 @@
         					<div class="input-group border-top d-flex align-items-center pb-2">
         						<textarea  name="content" class="form-control  pl-0" placeholder="Type your message ..." autocomplete="off"></textarea>
         						<div id="emojis" class="d-none" style="position: absolute; bottom: 102%; right: 26%;"></div>
-        						<span onclick="if($('#emojis').hasClass('d-none')){ $('#emojis').removeClass('d-none') }else{ $('#emojis').addClass('d-none') }">	<img src="{{asset('assets/frontend/images/chat/Group-150.png')}}" class="" alt="" srcset="" style="cursor:pointer;" ></span>
+        						<span class="pl-3" onclick="if($('#emojis').hasClass('d-none')){ $('#emojis').removeClass('d-none') }else{ $('#emojis').addClass('d-none') }">	<img src="{{asset('assets/frontend/images/chat/Group-150.png')}}" class="" alt="" srcset="" style="cursor:pointer;" ></span>
         						<input type="file"  name="img" style="display:none;" id="img" onchange="fileValidation();">
         			        	<img src="{{asset('assets/frontend/images/chat/Path-87.png')}}" class="" onclick="$('#img').click();" alt="" srcset="" style="cursor:pointer;" >
         						
@@ -512,63 +539,21 @@
 @endsection
 
 @section('extra-script')
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/jquery.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/emoji.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/DisMojiPicker.js') }}"></script>
-	<script src="{{ asset('assets/frontend/js/moment.js') }}"></script>
-	<script src="{{ asset('assets/frontend/js/moment-timezone.js') }}"></script>
+	
 	<script>
 	
-	    // Get the modal
 	    var index = 0;
 	    var total = 0;
         var modal = document.getElementById("myModal");
-        // $('textarea[name="content"]').emojioneArea({
-        //     pickerPosition:"top",
-        //     toneStyle:"bullet"
-        // });
         
         $("#emojis").disMojiPicker()
         $("#emojis").picker(emoji =>$('textarea[name="content"]').val($('textarea[name="content"]').val()+emoji));
         twemoji.parse(document.body);
-        
-        function getDateTime() {
-            var now     = new Date(); 
-            var year    = now.getFullYear();
-            var month   = now.getMonth()+1; 
-            var day     = now.getDate();
-            var hour    = now.getHours();
-            var minute  = now.getMinutes();
-            var second  = now.getSeconds(); 
-            // if(month.toString().length == 1) {
-            //      month = +month;
-            // }
-            // if(day.toString().length == 1) {
-            //      day = '0'+day;
-            // }   
-            // if(hour.toString().length == 1) {
-            //      hour = '0'+hour;
-            // }
-            if(minute.toString().length == 1) {
-                 minute = '0'+minute;
-            }
-            // if(second.toString().length == 1) {
-            //      second = '0'+second;
-            // }  
-            
-            if(hour >= 12){
-			l="PM"
-			}else{
-			l="AM"
-			}
-             return month+'-'+day+'-'+year+' '+hour+':'+minute+" "+l;
-        }
-        // console.log("Current Time: "+getDateTime());
+      
         function scrollBodyBottom(){
             if(total >0)
             {
@@ -578,15 +563,10 @@
                 }
                 
                 var elmnt = document.getElementById("span-"+index);
-                // elmnt.style.color="red";
                 elmnt.scrollIntoView();
                 window.scrollTo(0, 0);
             }
             
-            // $('.message-log').animate({
-            //     scrollTop: $(".chat-content span.highlight").offset().top
-            // }, 2000);
-            // $('.message-log').scrollTop($("span.highlight").offset().top)
         }
         
         function scrollBodyTop(){
@@ -597,12 +577,10 @@
                     console.log(index+" : "+total);
                 }
                 var elmnt = document.getElementById("span-"+index);
-                // elmnt.style.color="red";
                 elmnt.scrollIntoView();
                 window.scrollTo(0, 0); 
             }
             
-            // $('chat-content').scrollTop($("span.highlight").offset().top)
         }
         
        function searchInput(elem)
@@ -610,31 +588,15 @@
            index = 0;
            total = 0;
             
-            // Retrieve the input field text and reset the count to zero
             var filter = $(elem).val(), count = 0;
             
-                // Loop through the comment list
+               
                 $(".chat-content-area").each(function(){
                     if(filter!='')
                     {
-                        // var inputText = $(this);
-                        // var innerHTML = inputText.html();
-                        // var index = innerHTML.indexOf(filter);
-                        // console.log(index);
-                        // if (index >= 0) { 
-                        //   innerHTML = innerHTML.substring(0,index) + "<span class='highlight'>" + innerHTML.substring(index,index+filter.length) + "</span>" + innerHTML.substring(index + filter.length);
-                        //   console.log(innerHTML);
-                        //   inputText.html(innerHTML);
-                        // }
-                        
-                        // If the list item does not contain the text phrase fade it out
                         if ($(this).text().search(new RegExp(filter, "igm")) < 0) {
                             $(this).children('span').removeClass('highlight');
-                            // $(this).children('span').removeAttr('id');
-                            $(this).children('span').css('color','#FFFFFF');
-                            // $(this).fadeOut();
-            
-                        // Show the list item if the phrase matches and increase the count by 1
+                            $(this).children('span').css('color','#FFFFFF');1
                         } else {
                             count++;
                             total = count;
@@ -642,10 +604,7 @@
                             var regex = new RegExp("("+filter+")", "igm");
                             console.log(regex);
                             var spn = '<span class="highlight" id="span-'+count+'">'+filter+'</span>';
-                            // replace text with the new one ($1 refers to first group matched by regex)
                             $(this).html(originalText.replace(regex, spn));
-                            // $(this).show();
-                            
                         }
                     }else{
                         $(this).children('span').removeClass('highlight');
@@ -654,8 +613,6 @@
                     }
                 });
             
-    
-            // Update the count
             var numberItems = count;
             $("#filter-count").text(count);
         }
@@ -692,24 +649,14 @@
         }
         
         function imagePopUp(e){
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
             var modalImg = document.getElementById("img01");
             var captionText = document.getElementById("caption");
-            // img.onclick = function(){
-            //   modal.style.display = "block";
-            //   modalImg.src = this.src;
-            //   captionText.innerHTML = this.alt;
-            // }
             modal.style.display = "block";
             modalImg.src = e.src;
             captionText.innerHTML = e.alt;
         }
         
-        
-        // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-        
-        // When the user clicks on <span> (x), close the modal
         span.onclick = function() { 
           modal.style.display = "none";
         }
@@ -724,7 +671,6 @@
         function fileValidation() {
             var fileInput = document.getElementById('img');
             var filePath = fileInput.value;
-            // Allowing file type
             var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.JPG|\.JPEG|\.PNG|\.GIF)$/i;
             if (!allowedExtensions.exec(filePath)) {
                 alert('Invalid file type only image is allowed');
@@ -734,7 +680,7 @@
             else 
             {
               
-                // Image preview
+                
                 if (fileInput.files && fileInput.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
@@ -752,12 +698,6 @@
 		var scroll_bottom = function() {
 		    var log = $('.messag-log');
             log.animate({ scrollTop: log.prop('scrollHeight')}, 0);
-// 			var card_height = 0;
-// 			$('.card-body .chat-item').each(function() {
-// 				card_height += parseInt($(this).outerHeight());
-// 			});
-// 			$(".card-body").scrollTop(parseInt(card_height)+25);
-// 			console.log("this is height "+card_height);
 		}
 
 		var escapeHtml = function(unsafe) {
@@ -769,18 +709,6 @@
 		         .replace(/'/g, "&#039;");
 		 }
 
-		// Initialize Firebase
-		var config = {
-			apiKey: '{{config('services.firebase.api_key')}}',
-			authDomain: '{{config('services.firebase.auth_domain')}}',
-			databaseURL: "{{config('services.firebase.database_url')}}",
-			projectId: "{{config('services.firebase.project_id')}}",
-			storageBucket: "{{config('services.firebase.storage_bucket')}}",
-			messagingSenderId: "{{config('services.firebase.messaging_sender_id')}}",
-			appId: "{{config('services.firebase.appId')}}"
-		};
-		
-		firebase.initializeApp(config);
         const messaging = firebase.messaging();
         messaging.usePublicVapidKey("{{config('services.firebase.public_key')}}");
         function sendTokenToServer(fcm_token) {
@@ -822,35 +750,13 @@
           return strTime = date.getMonth() + '/' + date.getDay()+'/'+date.getFullYear()+' '+ hours + ':' + minutes +':'+ seconds + " " +ampm;
         }
         
-		function formatTime(date,req){
-
-			var h=date.getHours(),m=date.getMinutes(),l="AM";
-			if(h > 12){
-			h = h - 12;
-			}
-// 			if(h < 10){
-// 			h = '0'+h;
-// 			}
-			if(m < 10){
-			m = '0'+m;
-			}
-			if(date.getHours() >= 12){
-			l="PM"
-			}else{
-			l="AM"
-			}
-			if(req=="datetime"){return date.getMonth()+1+"-"+date.getDate()+"-"+date.getFullYear()+" "+h+':'+m+' '+l;}
-			return h+':'+m+' '+l;
-		}
-		console.log("Function Response : "+formatTime(new Date(),'datetime'));
-		
 		var sender_reciever =  "@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@else{{Auth::user()->id.$id}}@endif";
         console.log("sender_reciever "+sender_reciever);
 		var sender ='{{ Auth::user()->id }}';
 		var reciever='{{ $id }}';
-// 		firebase.database().ref('/chats').remove();
+		// firebase.database().ref('/chats').remove();
 		firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(sender_reciever.toString()).on('value', function(snapshot) {
-// 			console.log(snapshot.val());
+
 			var chat_element = '';
 		    
 			if(snapshot.val() != null) {
@@ -865,11 +771,11 @@
 					    cls="chat-text reciever-div";
 					    img_class="justify-content-left";
 					}
-					
+                    console.log("reciver-status: "+this.reciever_status);
 					chat_element +='<div class="d-flex mt-3">';
-        		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{asset("assets/frontend/images/chat/smallprofile.png")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
+        		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="'+this.avatar+'" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
         		        chat_element +='<div class="col-lg-11 pl-3">';
-        		            chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h : mm A')+'</span></div> ';
+        		            chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h:mmA')+'</span></div> ';
         		            if (this.file_type=='img' && this.file_link !='')
     					    {
                             	chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;left: 17px;"><i class="fa fa-download" aria-hidden="true"></i></a>';
@@ -898,7 +804,7 @@
 		
 		firebase.database().ref('/typing').on('value', function(snapshot) {
 			var user = snapshot.val();
-			if(user && user.name == '{{ $user->name }}') {
+			if(user && user.name == '{{ $user->username }}') {
 				$(".users").html(user.name + ' is typing....');
 				
 			}else{
@@ -928,8 +834,7 @@
 				}
 			}
 		});
-		
-		// #chat-form action handler
+
 		$(".send-msg").click(function() {
 			var chat_content = $('textarea[name=content]').val();
 			var img = $('input[name=img]').val();
@@ -938,7 +843,7 @@
 			var formData = new FormData(frm);
 			formData.append('sender',sender);
 			formData.append('reciever',reciever);
-			formData.append('name','{{ Auth::user()->name }}');
+			formData.append('name','{{ Auth::user()->username }}');
             formData.append("_token","{{ csrf_token() }}");
 			if(chat_content !='' && img!=''){ chk = true; }
 			else if(chat_content =='' && img!=''){ chk = true; }
@@ -954,13 +859,13 @@
 					method: 'post',
 					beforeSend: function() {
 						$(this).attr('disabled', true);
-						let name = "{{ Auth::user()->name }}";
+						let name = "{{ Auth::user()->username }}";
 						name = name[0].toUpperCase() + name.slice(1);
 				        var chat_element = '';
 				        chat_element +='<div class="d-flex mt-3">';
-            		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{asset("assets/frontend/images/chat/smallprofile.png")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
+            		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{ Auth::user()->avatar!=''?asset(Auth::user()->avatar): asset("uploads/user/default.jpg")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
             		        chat_element +='<div class="col-lg-11 pl-3">';
-            		            chat_element +='<div>'+name+'<span class="f-12 pl-2">'+formatTime(new Date(),"datetime")+'</span></div> ';
+            		            chat_element +='<div>'+name+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h:mmA')+'</span></div> ';
             		            if (document.getElementById('img').files && document.getElementById('img').files[0])
         					    {
                                     var reader = new FileReader();
@@ -986,7 +891,6 @@
     				    
     					$(".messag-log").append(chat_element);
     					$('textarea[name=content]').val('');
-				        // $('input[name=content]').focus();
 				        $('input[name=img]').val('');
 				        $('#imagePreview').html("");
 				        $('#emojis').addClass('d-none');
@@ -997,10 +901,6 @@
 					},
 					success: function(data) {
 					    $('#img').val('');
-					   // if(data.data.sender_id == {{ $id }}){
-					   //     focusOnInput();
-					   // }
-					    console.log(data.data.sender_id+" : {{ $id }}");
 						scroll_bottom();
 					}
 				});
@@ -1014,7 +914,7 @@
 		$("#chat-form [name=content]").keyup(function() {
 			var ref = firebase.database().ref('typing');
 			ref.set({
-				name: '{{ Auth::user()->name }}'
+				name: '{{ Auth::user()->username }}'
 			});
 
 			timer = setTimeout(function() {
@@ -1038,23 +938,23 @@
         
         function focusOnInput()
         {
-            console.log("it has been executed "+sender_reciever+"unread");
             firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever+"unread").once("value", function(ysnapshot) {
                 $.each(ysnapshot.val(),function(i,v){
                     if(v.content){content = v.content;}else{content ='';}
-    		        firebase.database().ref('/chats/'+i).set({content:content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read"})
-                    console.log("status has been update of : "+i+"  "); 
+                        if(v.sender_id !=sender)
+                        {
+                            firebase.database().ref('/chats/'+i).set({avatar:v.avatar,content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read",reciever_status:"read"})
+                            console.log("status has been update of : "+i+"  ");
+                        }
+    		             
                 });
             });
         }
-        // focusOnInput();
         
         function dateDifference(date1,date2)
         {
             const diffTime = Math.abs(date2 - date1);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-            // console.log(diffTime + " milliseconds");
-            // console.log(diffDays + " days");
             return diffDays;
         }
         
@@ -1104,7 +1004,6 @@
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-                        
                         if(ysnapshot.numChildren()>0 && (sender_reciever_count == sender_reciever))
                         {
                             if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
@@ -1112,13 +1011,11 @@
                             }
                             
                         }
-                        else if(ysnapshot.numChildren()>0 && (sender_reciever_count != sender_reciever)){
+                        else if(ysnapshot.numChildren()>0 && (sender_reciever_count != sender_reciever) && {{ $u->id }}!={{ Auth::user()->id }}){
                             $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
                             $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
-                            // $('#badge-{{ $u->id }}').addClass('d-none');
                         }
                         else{
-                            // console.log(sender_reciever_count+": "+sender_reciever);
                             $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
                         }
                         
@@ -1141,7 +1038,7 @@
                                 }
                                 if(dateDifference(new Date(),new Date(this.created_at))==1 || dateDifference(new Date(),new Date(this.created_at))==0)
                                 {
-                                    $('#time-div-{{ $u->id }}').html(formatTime(new Date(this.created_at),"time"));
+                                    $('#time-div-{{ $u->id }}').html(moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mmA'));
                                 }
                                 else{
                                     $('#time-div-{{ $u->id }}').html(dateDifference(new Date(),new Date(this.created_at))+" days");
@@ -1200,19 +1097,9 @@
             });
         },10000);
         
-        
         setInterval(function(){
-            // let l = "{{ $user->time_zone }}";
-            // let ampm = new Date().toLocaleTimeString('en-US', { timeZone: l }).split(' ');
-            // let tm = new Date().toLocaleTimeString('en-US', { timeZone: l }).split(":");
-            // let dt = new Date().toLocaleDateString('en-US', { timeZone: l}).split('/');
-            // let dtm = new Date().toLocaleDateString('en-US', { timeZone: l ,month:'long'}).split('/');
-            // let final = dtm+" "+dt[1]+" , "+tm['0']+":"+tm[1]+" "+ampm[1];
-            document.getElementById('local_time').innerHTML ="Local time "+moment(new Date()).tz("{{ $user->time_zone }}").format('MMM D h:mm A');
+            
+            document.getElementById('local_time').innerHTML ="Local time "+moment(new Date()).tz("{{ $user->time_zone }}").format('MMM D h:mmA');
         },1000);    
-        
-        // firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever.toString()+"unread").on("value", function(ysnapshot) {
-        //     console.log(ysnapshot.numChildren());
-        // });
 	</script>
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.frontend.app')
 
 @section('extra-css')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/all.min.css"  />
     <link href="{{ asset('assets/frontend/css/custom.css') }}" />
     <link href="{{ asset('assets/frontend/css/emoji/jquerysctipttop.css') }}" />
     <link href="{{ asset('assets/frontend/css/emoji/emojis.css') }}" />
@@ -12,7 +12,7 @@
         /*    color:#FFFFFF !important;*/
         /*}*/
         
-        /*.sender-div{*/
+        /*.  bn  -div{*/
         /*    background:#3AC574 !important;*/
         /*    color:#FFFFFF !important;*/
         /*}*/
@@ -387,7 +387,7 @@
                           <img src="{{$user->avatar !=''?asset($user->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid main-profile" alt="" srcset="">
                           <div class="small-Circle bg-grey  user-staus-{{ $user->id }}"></div>
                         </div>
-                        <div class="text-center f-22 cl-5757575">{{ ucwords($user->name) }}</div>
+                        <div class="text-center f-22 cl-5757575">{{ ucwords($user->username) }}</div>
                         <div class="cl-a8a8a8 f-17 text-center">{{ $user->user_type=='specialist'? ucwords($user->specialist->category->name) :'' }}</div>
                         {{-- <div class="row m-0  pt-3 pb-3 border-bottom cl-a8a8a8">
                           <div class="col-md-6 col-md-6 p-0">
@@ -435,7 +435,7 @@
         				     @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
 			                    
 			                    <ul class="list-group " style="width:100%;">
-                			        @foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
+                			        @foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
                 			            <a href="{{ route('single.chat',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
                 			                   <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
@@ -445,7 +445,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7 p-0 f-13 d-flex flex-column justify-content-center">
-                                                    <div>{{ ucwords($u->name) }}</div>
+                                                    <div>{{ ucwords($u->username) }}</div>
                                                     <div class="pt-1" id="message-div-{{ $u->id }}"></div>
                                                 </div>
                                                 <div class="col-md-2 pl-0 d-flex flex-column justify-content-center align-items-center">
@@ -477,7 +477,7 @@
 
                                            </div></div>
                                 <div class="pl-2">
-                                    <div>{{ ucwords($user->name) }}</div>
+                                    <div>{{ ucwords($user->username) }}</div>
                                     <div class="d-flex">
                                         <div class="cl-a8a8a8 f-11 user-status"></div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
@@ -487,7 +487,7 @@
         			      </div>
         			      <div class="col-md-5 col-lg-5 d-flex justify-content-between">
         			          <!--<span><img src="{{asset('assets/frontend/images/chat/search.png')}}" class="" alt="" srcset=""></span>-->
-        			          <input class="border rounded f-14 pl-2" style="height:30px;" type="text" onchange="searchInput(this);" placeholder="Search Messages...">
+        			          <input class="border rounded f-14 pl-2" style="height:30px;" type="text" onkeyup="searchInput(this);" placeholder="Search Messages...">
         			          <button onclick="scrollBodyBottom();" class="my-custom-btn"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
         			          <button onclick="scrollBodyTop();" class="my-custom-btn"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
         			          <span class="ml-1" id="filter-count"></span>
@@ -499,11 +499,11 @@
         			<div class="card-body messag-log" style="max-height: 417px !important;min-height: 417px !important;">
         			   
         
-        				<div class="d-flex justify-content-center">
+        				{{-- <div class="d-flex justify-content-center">
         					<div class="spinner-border text-success" role="status">
         						<span class="sr-only">Loading...</span>
         					</div>
-        				</div>
+        				</div> --}}
         
         				
         			</div>
@@ -540,62 +540,21 @@
 @endsection
 
 @section('extra-script')
-	{{-- <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script> --}}
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/jquery.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/emoji.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/DisMojiPicker.js') }}"></script>
 	
 	<script>
 	
-	    // Get the modal
 	    var index = 0;
 	    var total = 0;
         var modal = document.getElementById("myModal");
-        // $('textarea[name="content"]').emojioneArea({
-        //     pickerPosition:"top",
-        //     toneStyle:"bullet"
-        // });
         
         $("#emojis").disMojiPicker()
         $("#emojis").picker(emoji =>$('textarea[name="content"]').val($('textarea[name="content"]').val()+emoji));
         twemoji.parse(document.body);
-        
-        function getDateTime() {
-            var now     = new Date(); 
-            var year    = now.getFullYear();
-            var month   = now.getMonth()+1; 
-            var day     = now.getDate();
-            var hour    = now.getHours();
-            var minute  = now.getMinutes();
-            var second  = now.getSeconds(); 
-            // if(month.toString().length == 1) {
-            //      month = +month;
-            // }
-            // if(day.toString().length == 1) {
-            //      day = '0'+day;
-            // }   
-            // if(hour.toString().length == 1) {
-            //      hour = '0'+hour;
-            // }
-            if(minute.toString().length == 1) {
-                 minute = '0'+minute;
-            }
-            // if(second.toString().length == 1) {
-            //      second = '0'+second;
-            // }  
-            
-            if(hour >= 12){
-			l="PM"
-			}else{
-			l="AM"
-			}
-             return month+'-'+day+'-'+year+' '+hour+':'+minute+" "+l;
-        }
-        // console.log("Current Time: "+getDateTime());
+      
         function scrollBodyBottom(){
             if(total >0)
             {
@@ -605,15 +564,10 @@
                 }
                 
                 var elmnt = document.getElementById("span-"+index);
-                // elmnt.style.color="red";
                 elmnt.scrollIntoView();
                 window.scrollTo(0, 0);
             }
             
-            // $('.message-log').animate({
-            //     scrollTop: $(".chat-content span.highlight").offset().top
-            // }, 2000);
-            // $('.message-log').scrollTop($("span.highlight").offset().top)
         }
         
         function scrollBodyTop(){
@@ -624,12 +578,10 @@
                     console.log(index+" : "+total);
                 }
                 var elmnt = document.getElementById("span-"+index);
-                // elmnt.style.color="red";
                 elmnt.scrollIntoView();
                 window.scrollTo(0, 0); 
             }
             
-            // $('chat-content').scrollTop($("span.highlight").offset().top)
         }
         
        function searchInput(elem)
@@ -637,52 +589,37 @@
            index = 0;
            total = 0;
             
-            // Retrieve the input field text and reset the count to zero
             var filter = $(elem).val(), count = 0;
             
-                // Loop through the comment list
+               
                 $(".chat-content-area").each(function(){
+                    var originalText = $(this).text();
                     if(filter!='')
                     {
-                        // var inputText = $(this);
-                        // var innerHTML = inputText.html();
-                        // var index = innerHTML.indexOf(filter);
-                        // console.log(index);
-                        // if (index >= 0) { 
-                        //   innerHTML = innerHTML.substring(0,index) + "<span class='highlight'>" + innerHTML.substring(index,index+filter.length) + "</span>" + innerHTML.substring(index + filter.length);
-                        //   console.log(innerHTML);
-                        //   inputText.html(innerHTML);
-                        // }
-                        
-                        // If the list item does not contain the text phrase fade it out
                         if ($(this).text().search(new RegExp(filter, "igm")) < 0) {
                             $(this).children('span').removeClass('highlight');
-                            // $(this).children('span').removeAttr('id');
                             $(this).children('span').css('color','#FFFFFF');
-                            // $(this).fadeOut();
-            
-                        // Show the list item if the phrase matches and increase the count by 1
                         } else {
                             count++;
                             total = count;
-                            var originalText = $(this).text();
-                            var regex = new RegExp("("+filter+")", "igm");
-                            console.log(regex);
-                            var spn = '<span class="highlight" id="span-'+count+'">'+filter+'</span>';
-                            // replace text with the new one ($1 refers to first group matched by regex)
-                            $(this).html(originalText.replace(regex, spn));
-                            // $(this).show();
                             
+                            var regex = new RegExp("("+filter+")", "igm");
+                            var spn = '<span class="highlight" id="span-'+count+'">'+filter+'</span>';
+                            $(this).html(originalText.replace(regex, spn));
                         }
                     }else{
-                        $(this).children('span').removeClass('highlight');
-                        $(this).children('span').css('color','#FFFFFF');
+
+                        let txt = $(this).children('span').text();
+                        // alert(txt);
+                        $(this).children('span').removeAttr('id');
+                        $(this).children('span').removeAttr('class');
+                        $(this).html(originalText.replace('<span>'+txt+'</span>', txt));
+                        // $(this).children('span').removeClass('highlight');
+                        // $(this).children('span').css('color','#FFFFFF');
                         
                     }
                 });
             
-    
-            // Update the count
             var numberItems = count;
             $("#filter-count").text(count);
         }
@@ -719,24 +656,14 @@
         }
         
         function imagePopUp(e){
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
             var modalImg = document.getElementById("img01");
             var captionText = document.getElementById("caption");
-            // img.onclick = function(){
-            //   modal.style.display = "block";
-            //   modalImg.src = this.src;
-            //   captionText.innerHTML = this.alt;
-            // }
             modal.style.display = "block";
             modalImg.src = e.src;
             captionText.innerHTML = e.alt;
         }
         
-        
-        // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-        
-        // When the user clicks on <span> (x), close the modal
         span.onclick = function() { 
           modal.style.display = "none";
         }
@@ -751,8 +678,7 @@
         function fileValidation() {
             var fileInput = document.getElementById('img');
             var filePath = fileInput.value;
-            // Allowing file type
-            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.JPG|\.JPEG|\.PNG|\.GIF)$/i;
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.JPG|\.JPEG|\.PNG|\.GIF|\.pdf|\.doc|\.docx)$/i;
             if (!allowedExtensions.exec(filePath)) {
                 alert('Invalid file type only image is allowed');
                 fileInput.value = '';
@@ -761,14 +687,24 @@
             else 
             {
               
-                // Image preview
                 if (fileInput.files && fileInput.files[0]) {
+                    const name = fileInput.files[0].name;
+                    const lastDot = name.lastIndexOf('.');
+                    const fileName = name.substring(0, lastDot);
+                    const ext = name.substring(lastDot + 1).toLowerCase();
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                        document.getElementById(
-                            'imagePreview').innerHTML = 
-                            '<button style="position: relative; cursor: pointer; right: -96px; height: 20px; top: 4px; width: 20px; border-radius: 50%; outline: none !important;" onclick="deleteImage();"><i class="fa fa-times" aria-hidden="true" style="position: absolute; color: red; right: 4px; top: 1px; height: 14px; font-size: 12px;"></i></button><img src="' + e.target.result
-                            + '" style="height:100px;width:100px;cursor:pointer;" onclick="imagePopUp(this);"/>';
+                        var html = '<span style="position: relative; cursor: pointer; right: -96px; height: 20px; top: 4px; width: 20px; border-radius: 50%; outline: none !important;" onclick="deleteImage();"><i class="fa fa-times" aria-hidden="true" style="position: absolute; color: red; right: 4px; top: 1px; height: 14px; font-size: 12px;"></i></span>';
+                        if(ext=='pdf')
+                        {
+                            html+='<div class="d-flex flex-column"><i class="fa fa-file-pdf-o" aria-hidden="true" style=" position: relative; top: 22px;"></i><div style=" position: relative; top: 25px;">'+name.substring(0,10) + "..."+'</div></div>';
+                        }else if(ext=='docx' || ext=='doc'){
+                            html += '<div class="d-flex flex-column"><i class="fa fa-file-word-o" aria-hidden="true" style=" position: relative; top: 22px;"></i><div style=" position: relative; top: 25px;">'+name.substring(0, 10) + "..."+'</div></div>';
+                        }else{
+                            html+='<img src="' + e.target.result+ '" style="height:100px;width:100px;cursor:pointer;" onclick="imagePopUp(this);"/>';
+                        }
+                        document.getElementById('imagePreview').innerHTML = html;
+                            
                     };
                       
                     reader.readAsDataURL(fileInput.files[0]);
@@ -779,12 +715,6 @@
 		var scroll_bottom = function() {
 		    var log = $('.messag-log');
             log.animate({ scrollTop: log.prop('scrollHeight')}, 0);
-// 			var card_height = 0;
-// 			$('.card-body .chat-item').each(function() {
-// 				card_height += parseInt($(this).outerHeight());
-// 			});
-// 			$(".card-body").scrollTop(parseInt(card_height)+25);
-// 			console.log("this is height "+card_height);
 		}
 
 		var escapeHtml = function(unsafe) {
@@ -796,18 +726,6 @@
 		         .replace(/'/g, "&#039;");
 		 }
 
-		// Initialize Firebase
-		// var config = {
-		// 	apiKey: '{{config('services.firebase.api_key')}}',
-		// 	authDomain: '{{config('services.firebase.auth_domain')}}',
-		// 	databaseURL: "{{config('services.firebase.database_url')}}",
-		// 	projectId: "{{config('services.firebase.project_id')}}",
-		// 	storageBucket: "{{config('services.firebase.storage_bucket')}}",
-		// 	messagingSenderId: "{{config('services.firebase.messaging_sender_id')}}",
-		// 	appId: "{{config('services.firebase.appId')}}"
-		// };
-		
-		// firebase.initializeApp(config);
         const messaging = firebase.messaging();
         messaging.usePublicVapidKey("{{config('services.firebase.public_key')}}");
         function sendTokenToServer(fcm_token) {
@@ -849,60 +767,23 @@
           return strTime = date.getMonth() + '/' + date.getDay()+'/'+date.getFullYear()+' '+ hours + ':' + minutes +':'+ seconds + " " +ampm;
         }
         
-		function formatTime(date,req){
-
-			var h=date.getHours(),m=date.getMinutes(),l="AM";
-			if(h > 12){
-			h = h - 12;
-			}
-// 			if(h < 10){
-// 			h = '0'+h;
-// 			}
-			if(m < 10){
-			m = '0'+m;
-			}
-			if(date.getHours() >= 12){
-			l="PM"
-			}else{
-			l="AM"
-			}
-			if(req=="datetime"){return date.getMonth()+1+"-"+date.getDate()+"-"+date.getFullYear()+" "+h+':'+m+' '+l;}
-			return h+':'+m+' '+l;
-		}
-		console.log("Function Response : "+formatTime(new Date(),'datetime'));
-		
-		var sender_reciever =  "@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@else{{Auth::user()->id.$id}}@endif";
+		var   sender_reciever =  "@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@else{{Auth::user()->id.$id}}@endif";
         console.log("sender_reciever "+sender_reciever);
 		var sender ='{{ Auth::user()->id }}';
 		var reciever='{{ $id }}';
 		// firebase.database().ref('/chats').remove();
 		firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(sender_reciever.toString()).on('value', function(snapshot) {
-// 			console.log(snapshot.val());
+
 			var chat_element = '';
 		    
 			if(snapshot.val() != null) {
 				$.each(snapshot.val(),function(){
-					var cls = "";
-					var img_cls = "";
 					var mt = "mt-0";
-					if (this.sender_id==sender) {
-						cls="chat-text float-right sender-div";
-						img_class="justify-content-left";
-					}else{
-					    cls="chat-text reciever-div";
-					    img_class="justify-content-left";
-					}
-                    console.log("reciver-status: "+this.reciever_status);
-					chat_element +='<div class="d-flex mt-3">';
+					chat_element +='<div class="d-flex mt-4">';
         		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="'+this.avatar+'" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
         		        chat_element +='<div class="col-lg-11 pl-3">';
-        		            chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h : mm A')+'</span></div> ';
-        		            if (this.file_type=='img' && this.file_link !='')
-    					    {
-                            	chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;left: 17px;"><i class="fa fa-download" aria-hidden="true"></i></a>';
-                                chat_element +='<img src="' + this.file_link + '" onclick="imagePopUp(this);" style="height:100px;width:100px;cursor:pointer;"/></div>';
-                            }
-                            
+        		            chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h:mmA')+'</span></div> ';
+        		            
                             if(this.content && this.content !='' && this.content!='undefined')
 						    {
 						        mt="";
@@ -910,6 +791,22 @@
     								chat_element += this.content;
     							chat_element += '</div>';
 						    }
+
+                            if (this.file_type=='pdf' && this.file_link !='')
+    					    {
+                            	chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;left: 3px;color:#5d616d;"><div class="d-flex flex-column"><i class="fa fa-file-word-o" aria-hidden="true" style="position: relative; top: 13px; font-size: 15px; left: 4px;">&nbsp;'+this.file_name+'</i></div></a>';
+                                chat_element +='</div>';
+                            }
+                            else if ((this.file_type=='docx' || this.file_type=='doc') && this.file_link !='')
+    					    {
+                            	chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;color:#5d616d;"><div class="d-flex flex-column"><i class="fa fa-file-word-o" aria-hidden="true" style="position: relative; top: 13px; font-size: 15px; left: 4px;">&nbsp;'+this.file_name+'</i></div></a>';
+                                chat_element +='</div>';
+                            }
+                            else if (this.file_type=='img' && this.file_link !='')
+    					    {
+                            	chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;left: 17px;"><i class="fa fa-download" aria-hidden="true"></i></a>';
+                                chat_element +='<img src="' + this.file_link + '" onclick="imagePopUp(this);" style="height:100px;width:100px;cursor:pointer;"/></div>';
+                            }
         		            chat_element +='</div>';
         		        chat_element +='</div>';
         		    chat_element +='</div>';
@@ -925,7 +822,7 @@
 		
 		firebase.database().ref('/typing').on('value', function(snapshot) {
 			var user = snapshot.val();
-			if(user && user.name == '{{ $user->name }}') {
+			if(user && user.name == '{{ $user->username }}') {
 				$(".users").html(user.name + ' is typing....');
 				
 			}else{
@@ -955,8 +852,7 @@
 				}
 			}
 		});
-		
-		// #chat-form action handler
+
 		$(".send-msg").click(function() {
 			var chat_content = $('textarea[name=content]').val();
 			var img = $('input[name=img]').val();
@@ -965,7 +861,7 @@
 			var formData = new FormData(frm);
 			formData.append('sender',sender);
 			formData.append('reciever',reciever);
-			formData.append('name','{{ Auth::user()->name }}');
+			formData.append('name','{{ Auth::user()->username }}');
             formData.append("_token","{{ csrf_token() }}");
 			if(chat_content !='' && img!=''){ chk = true; }
 			else if(chat_content =='' && img!=''){ chk = true; }
@@ -981,13 +877,13 @@
 					method: 'post',
 					beforeSend: function() {
 						$(this).attr('disabled', true);
-						let name = "{{ Auth::user()->name }}";
+						let name = "{{ Auth::user()->username }}";
 						name = name[0].toUpperCase() + name.slice(1);
 				        var chat_element = '';
 				        chat_element +='<div class="d-flex mt-3">';
             		        chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="{{ Auth::user()->avatar!=''?asset(Auth::user()->avatar): asset("uploads/user/default.jpg")}}" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
             		        chat_element +='<div class="col-lg-11 pl-3">';
-            		            chat_element +='<div>'+name+'<span class="f-12 pl-2">'+formatTime(new Date(),"datetime")+'</span></div> ';
+            		            chat_element +='<div>'+name+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h:mmA')+'</span></div> ';
             		            if (document.getElementById('img').files && document.getElementById('img').files[0])
         					    {
                                     var reader = new FileReader();
@@ -998,14 +894,27 @@
                                     };
                                     reader.readAsDataURL(document.getElementById('img').files[0]);	
                                 }
+                                var cnt = $('textarea[name=content]').val();
+                                if (document.getElementById('img').files && document.getElementById('img').files[0]){
+                                    
+                                    const fname = document.getElementById('img').files[0].name;
+                                    const lastDot = fname.lastIndexOf('.');
+                                    const fileName = fname.substring(0, lastDot);
+                                    const ext = fname.substring(lastDot + 1).toLowerCase();
+                                    if(ext=='pdf'||ext=="docx" ||ext=="dox"){
+                                        cnt=fname;
+                                    }
+
+                                }
                                 
-                                if($('textarea[name=content]').val() !='')
+                                if(cnt !='')
     						    {
     						        mt="";
     						        chat_element += '<div class="cl-a8a8a8 f-12 chat-content-area">';
-        								chat_element += $('textarea[name=content]').val();
+        								chat_element += cnt;
         							chat_element += '</div>';
     						    }
+                                
             		            chat_element +='</div>';
             		        chat_element +='</div>';
             		    chat_element +='</div>';
@@ -1013,7 +922,6 @@
     				    
     					$(".messag-log").append(chat_element);
     					$('textarea[name=content]').val('');
-				        // $('input[name=content]').focus();
 				        $('input[name=img]').val('');
 				        $('#imagePreview').html("");
 				        $('#emojis').addClass('d-none');
@@ -1024,10 +932,6 @@
 					},
 					success: function(data) {
 					    $('#img').val('');
-					   // if(data.data.sender_id == {{ $id }}){
-					   //     focusOnInput();
-					   // }
-					    console.log(data.data.sender_id+" : {{ $id }}");
 						scroll_bottom();
 					}
 				});
@@ -1041,7 +945,7 @@
 		$("#chat-form [name=content]").keyup(function() {
 			var ref = firebase.database().ref('typing');
 			ref.set({
-				name: '{{ Auth::user()->name }}'
+				name: '{{ Auth::user()->username }}'
 			});
 
 			timer = setTimeout(function() {
@@ -1077,14 +981,11 @@
                 });
             });
         }
-        // focusOnInput();
         
         function dateDifference(date1,date2)
         {
             const diffTime = Math.abs(date2 - date1);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-            // console.log(diffTime + " milliseconds");
-            // console.log(diffDays + " days");
             return diffDays;
         }
         
@@ -1131,7 +1032,7 @@
         }
         setInterval(function(){
             @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
-    			@foreach(App\User::where('id', '!=',Auth::user()->id)->get() as $u)
+    			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
                         if(ysnapshot.numChildren()>0 && (sender_reciever_count == sender_reciever))
@@ -1144,10 +1045,8 @@
                         else if(ysnapshot.numChildren()>0 && (sender_reciever_count != sender_reciever) && {{ $u->id }}!={{ Auth::user()->id }}){
                             $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
                             $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
-                            // $('#badge-{{ $u->id }}').addClass('d-none');
                         }
                         else{
-                            // console.log(sender_reciever_count+": "+sender_reciever);
                             $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
                         }
                         
@@ -1170,7 +1069,7 @@
                                 }
                                 if(dateDifference(new Date(),new Date(this.created_at))==1 || dateDifference(new Date(),new Date(this.created_at))==0)
                                 {
-                                    $('#time-div-{{ $u->id }}').html(moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mm a'));
+                                    $('#time-div-{{ $u->id }}').html(moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mmA'));
                                 }
                                 else{
                                     $('#time-div-{{ $u->id }}').html(dateDifference(new Date(),new Date(this.created_at))+" days");
@@ -1229,19 +1128,9 @@
             });
         },10000);
         
-        
         setInterval(function(){
-            // let l = "{{ $user->time_zone }}";
-            // let ampm = new Date().toLocaleTimeString('en-US', { timeZone: l }).split(' ');
-            // let tm = new Date().toLocaleTimeString('en-US', { timeZone: l }).split(":");
-            // let dt = new Date().toLocaleDateString('en-US', { timeZone: l}).split('/');
-            // let dtm = new Date().toLocaleDateString('en-US', { timeZone: l ,month:'long'}).split('/');
-            // let final = dtm+" "+dt[1]+" , "+tm['0']+":"+tm[1]+" "+ampm[1];
-            document.getElementById('local_time').innerHTML ="Local time "+moment(new Date()).tz("{{ $user->time_zone }}").format('MMM D h:mm A');
+            
+            document.getElementById('local_time').innerHTML ="Local time "+moment(new Date()).tz("{{ $user->time_zone }}").format('MMM D h:mmA');
         },1000);    
-        
-        // firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever.toString()+"unread").on("value", function(ysnapshot) {
-        //     console.log(ysnapshot.numChildren());
-        // });
 	</script>
 @endsection
