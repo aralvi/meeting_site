@@ -104,7 +104,7 @@
               </div>
           </li>
         </ul>
-      </div>
+      </div> 
       <div class="col s7">
         <div class="video-grid" id="video">
           <div class="video-view">
