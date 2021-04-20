@@ -458,34 +458,20 @@
           // console.log(diffDays + " days");
           return diffDays;
       }
-
-      setInterval(function(){
-            @if(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get()->count() > 0)
+        setInterval(function(){
+            @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-                        firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").limitToLast(1).on("value", function(ssnapshot) {
-                            if(ssnapshot.numChildren()>0){
-                                $.each(ssnapshot.val(),function(){
-                                    if(ysnapshot.numChildren()>0 && this.sender_id ==sender)
-                                    {
-                                        if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
-                                            $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
-                                        }
-                                        
-                                    }
-                                    else if(ysnapshot.numChildren()>0 && this.sender_id !=sender && {{ $u->id }}!={{ $id }}){
-                                        $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
-                                        $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
-                                    }
-                                    else{
-                                        $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
-                                    }
-                                });
-                                
-                            }
-                            
-                        });
+                        if(ysnapshot.numChildren()>0){
+                            $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
+                            $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
+                            // $('#badge-{{ $u->id }}').addClass('d-none');
+                        }
+                        else{
+                            // console.log(sender_reciever_count+": "+sender_reciever);
+                            $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
+                        }
                         
                     });
                     
@@ -506,7 +492,7 @@
                                 }
                                 if(dateDifference(new Date(),new Date(this.created_at))==1 || dateDifference(new Date(),new Date(this.created_at))==0)
                                 {
-                                    $('#time-div-{{ $u->id }}').html(moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mmA'));
+                                    $('#time-div-{{ $u->id }}').html(moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mma'));
                                 }
                                 else{
                                     $('#time-div-{{ $u->id }}').html(dateDifference(new Date(),new Date(this.created_at))+" days");
@@ -519,58 +505,8 @@
                         
                     });
     		    @endforeach
-    	    @endif
+    	    @endif  
         },100);
-
-        // setInterval(function(){
-        //     @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
-    	// 		@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
-    	// 		    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
-        //     		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-        //                 if(ysnapshot.numChildren()>0){
-        //                     $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
-        //                     $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
-        //                     // $('#badge-{{ $u->id }}').addClass('d-none');
-        //                 }
-        //                 else{
-        //                     // console.log(sender_reciever_count+": "+sender_reciever);
-        //                     $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
-        //                 }
-                        
-        //             });
-                    
-        //             firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(sender_reciever_count.toString()).limitToLast(1).on("value", function(snapshot) {
-                        
-        //                 if(snapshot.val() !=null)
-        //                 {
-        //                     $.each(snapshot.val(),function(){
-                                
-        //                         if(this.file_type="img" && this.file_link!='')
-        //                         {
-        //                             $('#message-div-{{ $u->id }}').html('Image');
-        //                         }else{ 
-        //                             var cnt = '';
-        //                             if(this.content.length>20 ){ cnt = this.content.substring(0,20)+"..." }else{ cnt=this.content; }
-        //                             $('#message-div-{{ $u->id }}').html(cnt);
-                                    
-        //                         }
-        //                         if(dateDifference(new Date(),new Date(this.created_at))==1 || dateDifference(new Date(),new Date(this.created_at))==0)
-        //                         {
-        //                             $('#time-div-{{ $u->id }}').html(moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mma'));
-        //                         }
-        //                         else{
-        //                             $('#time-div-{{ $u->id }}').html(dateDifference(new Date(),new Date(this.created_at))+" days");
-        //                         }
-                                
-                                
-        //                     });
-                            
-        //                 }
-                        
-        //             });
-    	// 	    @endforeach
-    	//     @endif  
-        // },100);
         setInterval(function(){
             $.ajax({
                url:"{{ route('chat.user.update',Auth::user()->id) }}",
