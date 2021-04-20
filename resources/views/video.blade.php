@@ -24,15 +24,15 @@
           <div class="row card-content" style="margin-bottom: 0px;">
               <div class="input-field">
                 <label for="appID" class="active">App ID</label>
-                <input type="text" placeholder="App ID" name="appID" value="229e3bdfe52e432b86e27f442b1cf04a">
+                <input type="text" placeholder="App ID" name="appID" value="">
               </div>
               <div class="input-field">
                 <label for="channel" class="active">Channel</label>
-                <input type="text" placeholder="channel" name="channel" value="alvi">
+                <input type="text" placeholder="channel" name="channel" value="">
               </div>
               <div class="input-field">
                 <label for="token" class="active">Token</label>
-                <input type="text" placeholder="token" name="token" value="006229e3bdfe52e432b86e27f442b1cf04aIAC7xfrKn459toBW9nGlSutSNwn29TbksnSK9W3QKo3eI7J6GK4AAAAAEACsrxsmg3F+YAEAAQCCcX5g">
+                <input type="text" placeholder="token" name="token" value="">
               </div>
               <div class="row" style="margin: 0">
                 <div class="col s12">
@@ -104,7 +104,7 @@
               </div>
           </li>
         </ul>
-      </div>
+      </div> 
       <div class="col s7">
         <div class="video-grid" id="video">
           <div class="video-view">
