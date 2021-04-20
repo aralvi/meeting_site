@@ -65,6 +65,8 @@ Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::post('bid-work-status', 'Specialist\BidController@changeWorkStatus')->name('bid_work_status');
     Route::get('category_specialists/{id}', 'HomeController@category_specialists')->name('category_specialists');
     Route::resource('appointments', 'AppointmentController');
+    Route::get('user/appointment/notification','AppointmentController@userAppointmentNotification')->name('user.appointment.notification');
+    Route::get('appointment/notification/status/update/{id}','AppointmentController@notificationStatusUpdate')->name('appointment.notification.status.update');
     Route::get('portfolio_setting', 'ProfileController@portfolio')->name('portfolio_setting');
     Route::post('portfolio_images', 'ProfileController@portfolioImages')->name('portfolio_images');    
     Route::post('portfolio_image_delete/{id}', 'ProfileController@deleteImage')->name('portfolio_image_delete');    
@@ -102,6 +104,7 @@ Route::group(['middleware'=>['auth','checkuserstatus']],function(){
 Route::middleware(['auth'])->group(function(){
     Route::post('save-token','FirebaseController@save_token')->name('save-token');
     Route::get('chat/{id}', 'FirebaseController@singleChat')->name('single.chat');
+    Route::get('chat/user/switch/{id}', 'FirebaseController@chatUserSwitch')->name('chat.user.switch');
     Route::get('users/chat', 'FirebaseController@index')->name('chat.index');
     Route::post('chat/store', 'FirebaseController@store')->name('chat.store');
     Route::get('chat/user/update/{id}', 'FirebaseController@chatUserUpdate')->name('chat.user.update');

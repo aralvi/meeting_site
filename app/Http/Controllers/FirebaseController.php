@@ -27,6 +27,13 @@ class FirebaseController extends Controller
         return view('frontend.chat',compact(['id','user']));
     }
 
+    public function chatUserSwitch($id)
+    {
+        // $id = decrypt($id);
+        $user = User::where('id',$id)->first();
+        return view('partials.frontend.chat_load',compact(['id','user']))->render();
+    }
+
     public function store(Request $request) {
         
 		$this->validate($request, [

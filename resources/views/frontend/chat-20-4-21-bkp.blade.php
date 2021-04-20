@@ -496,7 +496,7 @@
         	
         			                   </div>
         			</div>
-        			<div class="card-body messag-log" style="max-height: 417px !important;min-height: 417px !important;" onmouseenter="focusOnInput();">
+        			<div class="card-body messag-log" style="max-height: 417px !important;min-height: 417px !important;">
         			   
         
         				{{-- <div class="d-flex justify-content-center">
@@ -972,7 +972,6 @@
             firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever+"unread").once("value", function(ysnapshot) {
                 $.each(ysnapshot.val(),function(i,v){
                     if(v.content){content = v.content;}else{content ='';}
-                        // console.log("update => "+v.reciever_id+" : "+sender);
                         if(v.sender_id !=sender)
                         {
                             firebase.database().ref('/chats/'+i).set({avatar:v.avatar,content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read",reciever_status:"read"})
@@ -1036,28 +1035,20 @@
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-                        firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").limitToLast(1).on("value", function(ssnapshot) {
-                            if(ssnapshot.numChildren()>0){
-                                $.each(ssnapshot.val(),function(){
-                                    if(ysnapshot.numChildren()>0 && this.sender_id ==sender)
-                                    {
-                                        if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
-                                            $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
-                                        }
-                                        
-                                    }
-                                    else if(ysnapshot.numChildren()>0 && this.sender_id !=sender && {{ $u->id }}!={{ $id }}){
-                                        $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
-                                        $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
-                                    }
-                                    else{
-                                        $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
-                                    }
-                                });
-                                
+                        if(ysnapshot.numChildren()>0 && (sender_reciever_count == sender_reciever))
+                        {
+                            if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
+                                $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
                             }
                             
-                        });
+                        }
+                        else if(ysnapshot.numChildren()>0 && (sender_reciever_count != sender_reciever) && {{ $u->id }}!={{ Auth::user()->id }}){
+                            $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
+                            $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
+                        }
+                        else{
+                            $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
+                        }
                         
                     });
                     
@@ -1138,6 +1129,7 @@
         },10000);
         
         setInterval(function(){
+            
             document.getElementById('local_time').innerHTML ="Local time "+moment(new Date()).tz("{{ $user->time_zone }}").format('MMM D h:mmA');
         },1000);    
 	</script>

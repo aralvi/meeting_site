@@ -383,12 +383,12 @@
 	        <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12 pl-0 pr-0">
 	            <div class="card" style="min-height: 702px; max-height: 702px;    ">
         			<div class="card-header border-0">
-        				<div class="title border-0">All User ({{App\User::where('id', '!=',Auth::user()->id)->get()->count()}})</div>
+        				<div class="title border-0">All User ({{App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get()->count()}})</div>
         			</div>
         			<div class="card-body pl-0 pr-0" style="overflow-y: scroll;">
         				<div class="d-flex">
         				    
-        				     @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
+        				     @if(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get()->count() > 0)
 			                    
 			                    <ul class="list-group " style="width:100%;">
                 			        @foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)

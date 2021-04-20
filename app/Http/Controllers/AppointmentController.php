@@ -93,7 +93,8 @@ class AppointmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $appointment = Appointment::where('id',$id)->first();
+        return view('frontend.settings.appointment_show', compact('appointment'));
     }
 
     /**
@@ -164,6 +165,41 @@ class AppointmentController extends Controller
         {
             return response()->json(['success' => true, 'message' =>"Review has been added successfully"]);
         }
+    }
 
+    public function userAppointmentNotification()
+    {
+        $user = Auth::user();
+        if($user->user_type=="client"){
+            $appointments = Appointment::where('user_id',$user->id)->where('notification_status',0)->get();
+        }else if($user->user_type=="specialist"){
+            $appointments = Appointment::where('specialist_id',$user->specialist->id)->where('notification_status',0)->get();
+        }
+
+        $arr =[];
+        foreach($appointments as $appointment)
+        {
+            if($appointment->status=="Approved" || $appointment->status=="Cancelled"){
+
+                $user->user_type=='client'?$appointment->specialist->user->avatar!=''? $avatar=url('/').'/'.$appointment->specialist->user->avatar: $pro=url('/public/uploads/user/default.jpg'):$appointment->user->avatar!=''? $avatar=url('/').'/'.$appointment->user->avatar: $avatar=url('/public/uploads/user/default.jpg');
+                $user->user_type=='client'?$username=$appointment->specialist->user->username :$username=$appointment->user->username;
+                $a = [];
+                $a['id']=$appointment->id;
+                $a['url'] = url('/appointments').'/'.$appointment->id;
+                $a['status']=$appointment->status;
+                $a['avatar']=$avatar;
+                $a['username'] = $username;
+                $arr[] = $a;
+            }
+        }
+        return response()->json($arr);
+    }
+
+    public function notificationStatusUpdate($id)
+    {
+        $appointment = Appointment::find($id);
+        $appointment->notification_status = 1;
+        $appointment->save();
+        return "fine";
     }
 }

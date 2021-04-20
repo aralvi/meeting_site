@@ -1,375 +1,4 @@
-@extends('layouts.frontend.app')
 
-@section('extra-css')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/all.min.css"  />
-    <link href="{{ asset('assets/frontend/css/custom.css') }}" />
-    <link href="{{ asset('assets/frontend/css/emoji/jquerysctipttop.css') }}" />
-    <link href="{{ asset('assets/frontend/css/emoji/emojis.css') }}" />
-    <style>
-        
-        /*.reciever-div{*/
-        /*    background:#007bff !important;*/
-        /*    color:#FFFFFF !important;*/
-        /*}*/
-        
-        /*.  bn  -div{*/
-        /*    background:#3AC574 !important;*/
-        /*    color:#FFFFFF !important;*/
-        /*}*/
-        .main-profile {
-            width: 180px;
-            height: 180px;
-            border-radius: 100%;
-          }
-          @media screen and (min-width:1240px) {
-            .r-Main-P{
-            padding-left: 140px;
-          padding-right: 140px;
-          }
-              
-          }
-         
-
-          .pr {
-            position: relative;
-            width: fit-content;
-            margin: auto;
-          }
-        
-          .small-Circle {
-            width: 21px;
-            height: 21px;
-            position: absolute;
-        
-            top: 0%;
-            right: 17%;
-            border-radius: 100%;
-          }
-        
-          .bg-grey {
-            background-color: #AAAAAA;
-          }
-        
-          .f-22 {
-            font-size: 22px;
-          }
-        
-          .cl-5757575 {
-            color: #575757;
-          }
-        
-          .cl-a8a8a8 {
-            color: #A8A8A8;
-          }
-          .cl-a8a8a8{
-            color: #A8A8A8;
-          }
-          .f-17 {
-            /*font-size: 17px;*/
-            font-size:12px;
-          }
-          .cl-3ac754{
-                  color: #3AC574;
-          }
-          .bg-3ac754{
-                  background-color: #3AC574 !important;
-          }
-          .f-21{
-              font-size:21px !important;
-          }
-          .f-11{
-              font-size:11px !important;
-          }
-          .h-85{
-                  height: 85px;
-          }
-          .smallProfile {
-            width: 40px;
-            height: 38px;
-          }
-        
-          .parent {
-            position: relative;
-            width: fit-content;
-          }
-        
-          .parentCircle-Child {
-            width: 12px;
-            height: 12px;
-            position: absolute;
-            top: 0%;
-            right: 5%;
-            border-radius: 100%;
-          }
-          .notification-divMain{
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-          
-          }
-          .cl-9b9461{
-            color: #9B9461;
-          }
-          .cl-green{
-              color:#12EF54;
-          }
-          .f-13{
-              font-size:13px;
-          }
-          .f-10{
-                font-size:10px;
-          }
-          .f-12{
-                font-size:12px;
-          }
-          .card-footer .btn {
-            height: 36px;
-          }
-          .h-36{
-                  height: 36px;
-              
-          }
-          ::-webkit-scrollbar {
-            width: 6px;
-                border-radius: 10px;
-        }
-        
-        .my-custom-btn{
-            outline: none !important;
-            font-size: 15px;
-            border: none;
-            border-radius: 50%;
-            height: 23px;
-            cursor:pointer;
-            background:transparent !important;
-        }
-        svg:not(:root).svg-inline--fa {
-    overflow: visible;
-    color: #3ac373;
-}
-        ::-webkit-scrollbar-track {
-          background:#D5D5D5;
-            border-radius: 10px;
-        
-        }
-         
-        ::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); */
-            background:#3AC574 !important;
-            height:100px;
-        
-        }
-        
-        #myImg {
-          border-radius: 5px;
-          cursor: pointer;
-          transition: 0.3s;
-        }
-        
-        #myImg:hover {opacity: 0.7;}
-        
-        /* The Modal (background) */
-        .modal {
-          display: none; /* Hidden by default */
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Sit on top */
-          padding-top: 100px; /* Location of the box */
-          left: 0;
-          top: 0;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow: auto; /* Enable scroll if needed */
-          background-color: rgb(0,0,0); /* Fallback color */
-          background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-        }
-        
-        /* Modal Content (image) */
-        .modal-content {
-          margin: auto;
-          display: block;
-          width: 80%;
-          max-width: 700px;
-        }
-        
-        /* Caption of Modal Image */
-        #caption {
-          margin: auto;
-          display: block;
-          width: 80%;
-          max-width: 700px;
-          text-align: center;
-          color: #ccc;
-          padding: 10px 0;
-          height: 150px;
-        }
-        
-        /* Add Animation */
-        .modal-content, #caption {  
-          -webkit-animation-name: zoom;
-          -webkit-animation-duration: 0.6s;
-          animation-name: zoom;
-          animation-duration: 0.6s;
-        }
-        
-        @-webkit-keyframes zoom {
-          from {-webkit-transform:scale(0)} 
-          to {-webkit-transform:scale(1)}
-        }
-        
-        @keyframes zoom {
-          from {transform:scale(0)} 
-          to {transform:scale(1)}
-        }
-        
-        /* The Close Button */
-        .close {
-          position: absolute;
-          top: 15px;
-          right: 35px;
-          color: #f1f1f1;
-          font-size: 40px;
-          font-weight: bold;
-          transition: 0.3s;
-        }
-        
-        .close:hover,
-        .close:focus {
-          color: #bbb;
-          text-decoration: none;
-          cursor: pointer;
-        }
-        
-        span.highlight{
-            background-color: yellow;
-            /*outline: 1px solid orange;*/
-            color:black;
-            padding-left: 3px;
-            padding-right: 3px;
-            border-radius: 4px;
-        }
-        
-        /* 100% Image Width on Smaller Screens */
-        @media only screen and (max-width: 700px){
-          .modal-content {
-            width: 100%;
-          }
-        }
-        
-        .emoji-picker {
-            background-color: #303841;
-            width: 400px;
-            /*margin: 50px;*/
-            border-radius: 5px;
-            height: 400px;
-            display: flex;
-        }
-        
-        .emoji-selectables {
-            background-color: #212427;
-            width: 45px;
-            height: 100%;
-            padding: 10px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .emoji-selectables span {
-            margin-bottom: 7px;
-            cursor: pointer;
-        }
-        
-        .emoji-selectables span.active img {
-            filter: none;
-        }
-        
-        .emoji-selectables span img {
-            width: 25px;
-            display: block;
-            display: flex;
-            align-items: center;
-            filter: grayscale(100%)
-        }
-        
-        .emoji-content div {
-            width: 100%;
-        
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 5px;
-        }
-        
-        .emoji-content span {
-            display: block;
-            padding: 5px;
-            cursor: pointer;
-        }
-        
-        .emoji-content span:hover {
-            transform: scale(1.1);
-            background-color: #3f4953;
-            border-radius: 5px;
-        }
-        
-        .picker-emoji-content {
-            display: none;
-            
-        }
-        
-        .picker-emoji-sel.face {
-            color: aliceblue;
-            font-size: 10px;
-        }
-        
-        .picker-emoji-content.active {
-            display: flex;
-            display: flex;
-            height: 100%;
-            overflow-y: scroll;
-        }
-        
-        .emoji-content span img {
-            width: 32px;
-            height: 32px;
-        }
-        
-        
-        .picker-emoji-content::-webkit-scrollbar-thumb {
-            height: 10px;
-            background-color: #65B88D;
-            border-radius: 100px;
-        }
-        
-        .picker-emoji-content::-webkit-scrollbar-track {
-            background-color: #303841;
-        }
-        
-        .picker-emoji-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        .card-header,.card-footer{
-            background-color: #fff !important;
-            
-        }
-        .card-header{
-            border-bottom:0px !important;
-        }
-        textarea{
-            border:0px !important; 
-        }
-        .card {
-    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
-    border:0px !important;
-        }
-    .card-body{
-    padding:0px !important;
-    }
-        
-    </style>
-@endsection
-
-@section('content')
     <section class="px-5 bg-navbar nav-bg-img pb-5">
         @include('includes.frontend.navbar')
 
@@ -436,8 +65,8 @@
 			                    
 			                    <ul class="list-group " style="width:100%;">
                 			        @foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
-                			            <a href="{{ route('single.chat',$u->id) }}" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
-                			                   <div class="row m-0  pt-3">
+                                        <a data-url="{{ route('chat.user.switch',$u->id) }}" onclick="chatUserSwitch(this);" type="button" class="h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
+                			                <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
                                                     <div class="parent"><img src="{{$u->avatar!=''?asset($u->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid smallProfile" alt=""
                                                     srcset="">
@@ -496,7 +125,7 @@
         	
         			                   </div>
         			</div>
-        			<div class="card-body messag-log" style="max-height: 417px !important;min-height: 417px !important;" onmouseenter="focusOnInput();">
+        			<div class="card-body messag-log" style="max-height: 417px !important;min-height: 417px !important;">
         			   
         
         				{{-- <div class="d-flex justify-content-center">
@@ -537,8 +166,149 @@
       <img class="modal-content" id="img01" style="width: auto;height: 80%;margin: 0px auto;">
       <div id="caption"></div>
     </div>
-@endsection
+    <!-- E I G H T    S E C T I O N  S T A R T -->
+    <section class="main_padding pt-70  w-100">
+        <div class="w-100 border-bcbcbc"></div>
+    </section>
 
+    <!-- E I G H T    S E C T I O N  E N D  -->
+        @include('includes.frontend.footer')
+    <!-- N I N E    S E C T I O N  S T A R T -->
+    
+    <!-- N I N E    S E C T I O N  E N D  -->
+
+    <!-- T E N    S E C T I O N  S T A R T  -->
+    
+
+    <!-- T E N    S E C T I O N  E N D  -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/jquery.validate.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
+    <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+    <script src="{{ asset('assets/admin/dist/js/custome.js') }}"></script>
+    
+    <script>
+
+        function chatUserSwitch(elem)
+        {
+            $.ajax({
+                url:$(elem).data('url'),
+                type:"get",
+                success:function(data){
+                    $('#body-content').html(data);
+                }
+            });
+        }
+       
+        @if(Auth::check())
+            setInterval(function(){
+                firebase.database().ref('/chats').orderByChild("reciever_status").equalTo("{{ Auth::user()->id }}unread").on("value", function(ysnapshot) {
+                    var chat_html = "";
+                    var chk =0;
+                    if(ysnapshot.val() != null) {
+                        $.each(ysnapshot.val(),function(){
+                            if(this.sender_id !=chk)
+                            {
+                                var count = 0;
+                                if(this.reciever_status){
+                                    firebase.database().ref('/chats').orderByChild("status").equalTo(this.sender_reciever+"unread").on("value", function(cSnapshot) {
+                                        count = cSnapshot.numChildren();
+                                        
+                                    });
+
+                                    firebase.database().ref('/chats').orderByChild("status").equalTo(this.sender_reciever+"unread").limitToLast(1).on("value", function(snapshot) {
+                                        if(snapshot.val() !=null)
+                                        {
+                                            $.each(snapshot.val(),function(){
+                                                var cnt = '';
+                                                var c_url = '{{ route("single.chat", ":id") }}';
+                                                c_url = c_url.replace(':id',this.sender_id);
+                                                var s_url = '{{ route("chat.user.status", ":id") }}';
+                                                s_url = s_url.replace(':id',this.sender_id);
+                                                if(this.content.length>20 ){ cnt = this.content.substring(0,20)+"..." }else{ cnt=this.content; }
+                                                chat_html += '<a class="dropdown-item d-flex row m-0 pt-2" href="'+c_url+'">';
+                                                    chat_html+='<div class="col-md-2 p-0">';
+                                                        chat_html +='<img src="'+this.avatar+'" alt="" class="img-fluid">';
+                                                        $.ajax({
+                                                            url:s_url,
+                                                            type:"get",
+                                                            success:function(data)
+                                                            {
+                                                                if(data.next>data.current)
+                                                                {
+                                                                    chat_html+='<span class="ml--1 green-dot mt-1"></span>';
+                                                                }else{
+                                                                    chat_html+='<span class="ml--1 mt-1"></span>';
+                                                                }
+                                                            }
+                                                        });
+                                                        // chat_html+='<span class="ml--1 mt-1"></span>';
+                                                    chat_html+='</div>';
+                                                    
+                                                    chat_html+='<div class="col-md-6 pl-2 pt-1 p-0">';
+                                                        chat_html+='<div class="row m-0"><div class="dropdown-heading">'+this.name[0].toUpperCase() + this.name.slice(1)+'</div></div>';
+                                                        chat_html+='<div class="row m-0"><div class="dropdown-contnt">'+cnt+'</div></div>';
+                                                    chat_html+='</div>';
+
+                                                    chat_html+='<div class="col-md-3 p-0">';
+                                                        chat_html+='<div class="row m-0 justify-content-end mt-1"><span class="green-dot-nmbr">'+count+'</span></div>';
+                                                        chat_html+='<div class="row m-0 justify-content-end mt-1"><span class="dropdown-contnt">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('h:mm a')+'</span></div>';
+                                                    chat_html+='</div>';
+                                                chat_html+="</a>";
+                                            });
+                                            
+                                        }
+                                        
+                                    });
+                                }
+                                
+                                chk = this.sender_id;
+                            }
+                        });
+                        $("#nav-home").html(chat_html);
+                    }
+                });
+            },1000);
+        @endif
+
+        $(function () {
+            $(".select2").select2();
+            $(".example1")
+                .DataTable({
+                    responsive: true,
+                    lengthChange: false,
+                    autoWidth: false,
+                    // "scrollX": true,
+                    // buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                })
+                .buttons()
+                .container()
+                .appendTo(".dataTables_wrapper .col-md-6:eq(0)");
+
+        });
+    </script>
 @section('extra-script')
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/jquery.js') }}"></script>
@@ -972,7 +742,6 @@
             firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever+"unread").once("value", function(ysnapshot) {
                 $.each(ysnapshot.val(),function(i,v){
                     if(v.content){content = v.content;}else{content ='';}
-                        // console.log("update => "+v.reciever_id+" : "+sender);
                         if(v.sender_id !=sender)
                         {
                             firebase.database().ref('/chats/'+i).set({avatar:v.avatar,content,file_type:v.file_type,file_link:v.file_link,ip:v.ip,name:v.name,created_at:v.created_at,reciever_id:v.reciever_id,sender_id:v.sender_id,sender_reciever:v.sender_reciever,status:"read",reciever_status:"read"})
@@ -1036,28 +805,20 @@
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-                        firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").limitToLast(1).on("value", function(ssnapshot) {
-                            if(ssnapshot.numChildren()>0){
-                                $.each(ssnapshot.val(),function(){
-                                    if(ysnapshot.numChildren()>0 && this.sender_id ==sender)
-                                    {
-                                        if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
-                                            $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
-                                        }
-                                        
-                                    }
-                                    else if(ysnapshot.numChildren()>0 && this.sender_id !=sender && {{ $u->id }}!={{ $id }}){
-                                        $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
-                                        $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
-                                    }
-                                    else{
-                                        $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
-                                    }
-                                });
-                                
+                        if(ysnapshot.numChildren()>0 && (sender_reciever_count == sender_reciever))
+                        {
+                            if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
+                                $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
                             }
                             
-                        });
+                        }
+                        else if(ysnapshot.numChildren()>0 && (sender_reciever_count != sender_reciever) && {{ $u->id }}!={{ Auth::user()->id }}){
+                            $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
+                            $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
+                        }
+                        else{
+                            $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
+                        }
                         
                     });
                     
