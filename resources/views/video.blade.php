@@ -24,15 +24,15 @@
           <div class="row card-content" style="margin-bottom: 0px;">
               <div class="input-field">
                 <label for="appID" class="active">App ID</label>
-                <input type="text" placeholder="App ID" name="appID" value="">
+                <input type="text" placeholder="App ID" name="appID" value="229e3bdfe52e432b86e27f442b1cf04a">
               </div>
               <div class="input-field">
                 <label for="channel" class="active">Channel</label>
-                <input type="text" placeholder="channel" name="channel" value="">
+                <input type="text" placeholder="channel" name="channel" value="abc">
               </div>
               <div class="input-field">
                 <label for="token" class="active">Token</label>
-                <input type="text" placeholder="token" name="token" value="">
+                <input type="text" id="token" placeholder="token" name="token" value="">
               </div>
               <div class="row" style="margin: 0">
                 <div class="col s12">
@@ -116,11 +116,24 @@
       </div>
     </div>
   </form>
+  <button id="video-chat">video chat</button>
   <script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/frontend/js/video-js/materialize.min.js') }}"></script>
   <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
   <!--<script src="assets/AgoraRTCSDK.js"></script>-->
   <script>
+$('#video-chat').on('click',function(){
+  $.ajax({
+    type: 'get',
+    url: '{{ url("test-token") }}',
+   
+    success:function(data){
+      $('#token').val(data);
+      $('#join').click();
+    }
+ })
+})
+
     console.log("agora sdk version: " + AgoraRTC.VERSION + " compatible: " + AgoraRTC.checkSystemRequirements());
     var resolutions = [
       {
