@@ -383,7 +383,7 @@
         width: 10px;
         margin-right: 10px;
         border-radius: 50%;
-        background-color: green;
+        background-color: #3AC574;
         animation: loading 1s linear infinite;
         }
         /* Creating the loading animation*/
