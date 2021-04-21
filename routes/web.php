@@ -60,6 +60,7 @@ Route::group(['middleware'=>['auth','specialistcheck','checkuserstatus']],functi
 
 Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::view('video', 'video');
+    Route::view('test-token', 'php/sample/RtcTokenBuilderSample');
     Route::get('search', 'HomeController@search')->name('search');
     Route::resource('bids', 'Specialist\BidController');
     Route::post('bid-work-status', 'Specialist\BidController@changeWorkStatus')->name('bid_work_status');
