@@ -17,7 +17,7 @@
       </div>
     </nav>
   </div>
-  <form id="form" class="row col l12 s12">
+  <form id="form" class="row col l12 s12 " style="display: none;">
     <div class="row container col l12 s12">
       <div class="col" style="min-width: 433px; max-width: 443px">
         <div class="card" style="margin-top: 0px; margin-bottom: 0px;">

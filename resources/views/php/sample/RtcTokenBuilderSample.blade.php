@@ -1,13 +1,12 @@
 @include('php/src/RtcTokenBuilder')
 <?php
-
-$appID = "970CA35de60c44645bbae8a215061b33";
-$appCertificate = "5CFd2fd1755d40ecb72977518be15d3b";
+$appID = "229e3bdfe52e432b86e27f442b1cf04a";
+$appCertificate = "8731cf7600124d0a8166b9b50d0bb018";
 $channelName = "abc";
-$uid = 2882341273;
-$uidStr = "2882341273";
+$uid = 2882341271;
+$uidStr = "";
 $role = RtcTokenBuilder::RoleAttendee;
-$expireTimeInSeconds = 3600;
+$expireTimeInSeconds = 33600;
 $currentTimestamp = (new DateTime("now", new DateTimeZone('UTC')))->getTimestamp();
 $privilegeExpiredTs = $currentTimestamp + $expireTimeInSeconds;
 
