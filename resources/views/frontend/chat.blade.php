@@ -249,6 +249,8 @@
             padding-right: 3px;
             border-radius: 4px;
         }
+
+        .cursor-pointer{cursor: pointer;}
         
         /* 100% Image Width on Smaller Screens */
         @media only screen and (max-width: 700px){
@@ -488,7 +490,7 @@
 			                    
 			                    <ul class="list-group " style="width:100%;">
                 			        @foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
-                			            <a data-original-url="{{ route('single.chat',$u->id) }}" data-url="{{ route('chat.user.switch',$u->id) }}" onclick="chatUserSwitch(this);" type="button" class="item-nav  h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
+                			            <a data-original-url="{{ route('single.chat',$u->id) }}" data-url="{{ route('chat.user.switch',$u->id) }}" onclick="chatUserSwitch(this);" type="button" class="item-nav  h-85 border  list-group-item-action cursor-pointer  border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
                 			                   <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
                                                     <div class="parent"><img src="{{$u->avatar!=''?asset($u->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid smallProfile" alt=""
