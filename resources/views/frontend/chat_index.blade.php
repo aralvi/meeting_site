@@ -450,20 +450,18 @@
 	<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script> --}}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
 	<script>
-      function dateDifference(date1,date2)
-      {
-          const diffTime = Math.abs(date2 - date1);
-          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-          // console.log(diffTime + " milliseconds");
-          // console.log(diffDays + " days");
-          return diffDays;
-      }
+        function dateDifference(date1,date2)
+        {
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            return diffDays;
+        }
         setInterval(function(){
             @if(App\User::where('id', '!=',Auth::user()->id)->get()->count() > 0)
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-                        if(ysnapshot.numChildren()>0){
+                        if(ysnapshot.numChildren()>0 {{ $u->id }}!=this.sender_id){
                             $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
                             $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
                             // $('#badge-{{ $u->id }}').addClass('d-none');
