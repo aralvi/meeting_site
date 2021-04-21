@@ -107,7 +107,6 @@
             border-radius: 50%;
           
           }
-          .typing-dot{width: 7px; height: 7px;background: green;border-radius: 50%;margin-top: 10px;margin-left: 1px;}
           .cl-9b9461{
             color: #9B9461;
           }
@@ -366,55 +365,7 @@
     .card-body{
     padding:0px !important;
     }
-    .loader{
-        position: relative;
-        top: 50%;
-        left: 8%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-            
-        }
-        /* Creating the dots */
-        span.typing{
-        height: 10px;
-        width: 10px;
-        margin-right: 10px;
-        border-radius: 50%;
-        background-color: green;
-        animation: loading 1s linear infinite;
-        }
-        /* Creating the loading animation*/
-        @keyframes loading {
-        0%{
-            transform: translateX(0);
-        }
-        25%{
-            transform: translateX(15px);
-        }
-        50%{
-            transform: translateX(-15px);
-        }
-        100%{
-            transform: translateX(0);
-        }
-            
-        }
-        span:span.typing:nth-child(1){
-        animation-delay: 0.1s;
-        }
-        span.typing:nth-child(2){
-        animation-delay: 0.2s;
-        }
-        span.typing:nth-child(3){
-        animation-delay: 0.3s;
-        }
-        /* span.typing:nth-child(4){
-        animation-delay: 0.4s;
-        }
-        span.typing:nth-child(5){
-        animation-delay: 0.5s;
-        } */
+        
     </style>
 @endsection
 
@@ -427,10 +378,7 @@
     @include('includes.frontend.navigations')
 
 	<div class="wrapper">
-        <input type="hidden" id="sender" value="{{ Auth::user()->id }}">
-        <input type="hidden" id="reciever" value="{{ $id }}">
-        <input type="hidden" id="username" value="{{ $user->username }}">
-        <input type="hidden" id="sender_reciever" value="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@else{{Auth::user()->id.$id}}@endif">
+
 	    <div class="row m-0 r-Main-P mt-5">
             <div class="col-md-3 ">
                 <div class="bg-white pl-3 pr-3">
@@ -484,11 +432,11 @@
         			<div class="card-body pl-0 pr-0">
         				<div class="d-flex">
         				    
-        				    @if(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get()->count() > 0)
+        				     @if(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get()->count() > 0)
 			                    
 			                    <ul class="list-group " style="width:100%;">
                 			        @foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
-                			            <a data-original-url="{{ route('single.chat',$u->id) }}" data-url="{{ route('chat.user.switch',$u->id) }}" onclick="chatUserSwitch(this);" type="button" class="item-nav  h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
+                			            <a href="{{ route('single.chat',$u->id) }}" class="item-nav  h-85 border  list-group-item-action   border-left-0 border-right-0 @if($user->id==$u->id) bg-3ac754 text-white @else bg-white @endif">
                 			                   <div class="row m-0  pt-3">
                                                 <div class="col-md-3">
                                                     <div class="parent"><img src="{{$u->avatar!=''?asset($u->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid smallProfile" alt=""
@@ -509,6 +457,8 @@
                 			        @endforeach
             			        </ul>
             			    @endif
+        				    
+        					
         				</div>
         			</div>
         			<div class="card-footer border-0" ></div>
@@ -559,9 +509,9 @@
         			</div>
         			
         			<div class="card-footer border-0 pl-3 pr-3" >
+        				<div class="users text-uppercase pl-4" style="height: 23px;"></div>
         				<div id="imagePreview" style="margin-left: -19px !important;height:90px" class="d-flex"></div>
-        				<div class="users d-flex" style="height: 23px;"></div>
-                        <form id="chat-form" method="post" class="mt-1 ">
+        				<form id="chat-form" method="post" class="mt-1 ">
         					<div class="input-group border-top d-flex align-items-center pb-2">
         						<textarea  name="content" class="form-control  pl-0" placeholder="Type your message ..." autocomplete="off"></textarea>
         						<div id="emojis" class="d-none" style="position: absolute; bottom: 102%; right: 26%;"></div>
@@ -571,7 +521,7 @@
         						
         					
         						<div class="input-group-btn">
-        							<button type="button" class="btn btn-primary send-msg bg-3ac754 border-0 " onclick="messageSend();">Send&nbsp; <img src="{{asset('assets/frontend/images/chat/Path-88.png')}}" class="" alt="" srcset=""></button>
+        							<button type="button" class="btn btn-primary send-msg bg-3ac754 border-0 ">Send&nbsp; <img src="{{asset('assets/frontend/images/chat/Path-88.png')}}" class="" alt="" srcset=""></button>
         						</div>
         					</div>
         				</form>
@@ -587,8 +537,6 @@
       <img class="modal-content" id="img01" style="width: auto;height: 80%;margin: 0px auto;">
       <div id="caption"></div>
     </div>
-
-    
 @endsection
 
 @section('extra-script')
@@ -596,66 +544,8 @@
 	<script src="{{ asset('assets/frontend/js/emoji/jquery.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/emoji.js') }}"></script>
 	<script src="{{ asset('assets/frontend/js/emoji/DisMojiPicker.js') }}"></script>
-    <script>
-        function chatUserSwitch(elem)
-        {
-            window.history.replaceState({}, '',$(elem).data('original-url'));
-            $.ajax({
-                url:$(elem).data('url'),
-                type:"get",
-                success:function(data){
-                    sender = data.sender;
-                    reciever = data.reciever;
-                    sender_reciever = data.sender_reciever;
-                    userName = data.username;
-                    $('.wrapper').html(data.html);
-                    firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(data.sender_reciever).on('value', function(snapshot) {
-                        var chat_element = '';
-                        if(snapshot.val() != null) {
-                            $.each(snapshot.val(),function(){
-                                var mt = "mt-0";
-                                chat_element +='<div class="d-flex mt-4">';
-                                    chat_element +='<div class="col-lg-1 p-0"><div class="parent"><img src="'+this.avatar+'" class="rounded-circle img-fluid smallProfile" alt="" srcset=""></div></div>';
-                                    chat_element +='<div class="col-lg-11 pl-3">';
-                                        chat_element +='<div>'+this.name[0].toUpperCase() + this.name.slice(1)+'<span class="f-12 pl-2">'+moment(this.created_at).tz('{{ Auth::user()->time_zone }}').format('M-D-Y h:mmA')+'</span></div> ';
-                                        
-                                        if(this.content && this.content !='' && this.content!='undefined')
-                                        {
-                                            mt="";
-                                            chat_element += '<div class="cl-a8a8a8 f-12 chat-content-area">';
-                                                chat_element += this.content;
-                                            chat_element += '</div>';
-                                        }
-
-                                        if (this.file_type=='pdf' && this.file_link !='')
-                                        {
-                                            chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;left: 3px;color:#5d616d;"><div class="d-flex flex-column"><i class="fa fa-file-word-o" aria-hidden="true" style="position: relative; top: 13px; font-size: 15px; left: 4px;">&nbsp;'+this.file_name+'</i></div></a>';
-                                            chat_element +='</div>';
-                                        }
-                                        else if ((this.file_type=='docx' || this.file_type=='doc') && this.file_link !='')
-                                        {
-                                            chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;color:#5d616d;"><div class="d-flex flex-column"><i class="fa fa-file-word-o" aria-hidden="true" style="position: relative; top: 13px; font-size: 15px; left: 4px;">&nbsp;'+this.file_name+'</i></div></a>';
-                                            chat_element +='</div>';
-                                        }
-                                        else if (this.file_type=='img' && this.file_link !='')
-                                        {
-                                            chat_element += '<div class="d-flex justify-content-left mb-2"><a href="'+this.file_link+'" download="download" style="position: relative;left: 17px;"><i class="fa fa-download" aria-hidden="true"></i></a>';
-                                            chat_element +='<img src="' + this.file_link + '" onclick="imagePopUp(this);" style="height:100px;width:100px;cursor:pointer;"/></div>';
-                                        }
-                                        chat_element +='</div>';
-                                    chat_element +='</div>';
-                                chat_element +='</div>';
-                                $(".messag-log").html(chat_element);
-                            });
-                        }
-                        scroll_bottom();
-                        }, function(error) {
-                        alert('ERROR! Please, open your console.')
-                        console.log(error);
-                    });
-                }
-            });
-        }
+	<script>
+	
 	    var index = 0;
 	    var total = 0;
         var modal = document.getElementById("myModal");
@@ -881,26 +771,16 @@
           minutes = minutes < 10 ? '0'+minutes : minutes;
           return strTime = date.getMonth() + '/' + date.getDay()+'/'+date.getFullYear()+' '+ hours + ':' + minutes +':'+ seconds + " " +ampm;
         }
-        var sender_reciever;
-		var sender;
-		var reciever;
-        var userName;
-        function setValue(){
-            sender_reciever = $('#sender_reciever').val();
-            sender = $('#sender').val();
-            reciever = $('#reciever').val();
-            userName = $('#username').val();
-        }
-        setValue();
-        setInterval(setValue,100);
         
-		// var sender_reciever =  "@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@else{{Auth::user()->id.$id}}@endif";
-		// var sender ='{{ Auth::user()->id }}';
-		// var reciever='{{ $id }}';
+		var   sender_reciever =  "@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@else{{Auth::user()->id.$id}}@endif";
+        console.log("sender_reciever "+sender_reciever);
+		var sender ='{{ Auth::user()->id }}';
+		var reciever='{{ $id }}';
 		// firebase.database().ref('/chats').remove();
-		firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(sender_reciever).on('value', function(snapshot) {
+		firebase.database().ref('/chats').orderByChild("sender_reciever").equalTo(sender_reciever.toString()).on('value', function(snapshot) {
 
 			var chat_element = '';
+		    
 			if(snapshot.val() != null) {
 				$.each(snapshot.val(),function(){
 					var mt = "mt-0";
@@ -947,12 +827,8 @@
 		
 		firebase.database().ref('/typing').on('value', function(snapshot) {
 			var user = snapshot.val();
-			if(user && user.name == userName) {
-                var html = '';
-                html+='<div class="loader"><span class="typing"></span><span class="typing" ></span><span class="typing" ></span></div>';
-                // html+='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-                html+='<div class="ml-3">'+user.name+' is typing</div>';
-				$(".users").html(html);
+			if(user && user.name == '{{ $user->username }}') {
+				$(".users").html(user.name + ' is typing....');
 				
 			}else{
 				$(".users").html(' ');
@@ -977,13 +853,12 @@
     			else if($('textarea[name=content]').val() !='' && $('input[name=img]').val()==''){ chk = true; }
 				if(chk)
 				{
-					// $(".send-msg").click();
-                    messageSend();
+					$(".send-msg").click();
 				}
 			}
 		});
 
-		function messageSend() {
+		$(".send-msg").click(function() {
 			var chat_content = $('textarea[name=content]').val();
 			var img = $('input[name=img]').val();
 			var chk = false;
@@ -1069,7 +944,7 @@
 			    console.log("not fine");
 			}
 			
-		}
+		});
 
 		var timer;
 		$("#chat-form [name=content]").keyup(function() {
@@ -1161,7 +1036,6 @@
                 }
             });
         }
-
         setInterval(function(){
             @if(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get()->count() > 0)
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
@@ -1170,14 +1044,14 @@
                         firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").limitToLast(1).on("value", function(ssnapshot) {
                             if(ssnapshot.numChildren()>0){
                                 $.each(ssnapshot.val(),function(){
-                                    if(ysnapshot.numChildren()>0 && this.sender_id == sender)
+                                    if(ysnapshot.numChildren()>0 && this.sender_id ==sender)
                                     {
                                         if(!$('#badge-{{ $u->id }}').parent('div').hasClass('d-none')){
                                             $('#badge-{{ $u->id }}').parent('div').addClass('d-none');
                                         }
                                         
                                     }
-                                    else if(ysnapshot.numChildren()>0 && this.sender_id !=sender && {{ $u->id }}!=reciever){
+                                    else if(ysnapshot.numChildren()>0 && this.sender_id !=sender && {{ $u->id }}!={{ $id }}){
                                         $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
                                         $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
                                     }

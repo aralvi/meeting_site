@@ -11,6 +11,7 @@ use Kreait\Firebase\Database;
 use App\Chat;
 use App\User;
 use Carbon\Carbon;
+use Auth;
 
 class FirebaseController extends Controller
 {
@@ -30,8 +31,20 @@ class FirebaseController extends Controller
     public function chatUserSwitch($id)
     {
         // $id = decrypt($id);
+        if(Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first() !=null)
+        {
+            $sender_reciever = Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$id)->first()->sender_reciever;
+        }
+        else if(Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first() !=null)
+        {
+            $sender_reciever = Chat::where('sender_id',$id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever;
+        }
+        else{
+            $sender_reciever = Auth::user()->id.$id;
+        }
+
         $user = User::where('id',$id)->first();
-        return view('partials.frontend.chat_load',compact(['id','user']))->render();
+        return  response()->json(['html'=>view('partials.frontend.chat_load',compact(['id','user']))->render(),'username'=>$user->username,'sender'=>Auth::user()->id,'reciever'=>$id,'sender_reciever'=>$sender_reciever]);
     }
 
     public function store(Request $request) {

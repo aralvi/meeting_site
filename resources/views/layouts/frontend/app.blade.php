@@ -80,10 +80,10 @@
             setInterval(function(){
                 firebase.database().ref('/chats').orderByChild("reciever_id").equalTo("{{ Auth::user()->id }}").on("value", function(ysnapshot) {
                     var chat_html = "";
-                    var chk =0;
+                    var chk =[];
                     if(ysnapshot.val() != null) {
                         $.each(ysnapshot.val(),function(){
-                            if(this.sender_id !=chk)
+                            if(chk.indexOf(this.sender_id) === -1)
                             {
                                 var count = 0;
                                 if(this.reciever_status){
@@ -140,8 +140,7 @@
                                         
                                     });
                                 }
-                                
-                                chk = this.sender_id;
+                                chk.push(this.sender_id);
                             }
                         });
                         $("#nav-home").html(chat_html);
