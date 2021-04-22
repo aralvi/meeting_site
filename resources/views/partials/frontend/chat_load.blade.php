@@ -8,7 +8,7 @@
             <div class="pt-4 pb-4" style="min-height: 702px; max-height: 702px;">
                 <div class="pr">
                     <img src="{{$user->avatar !=''?asset($user->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid main-profile" alt="" srcset="">
-                    <div class="small-Circle bg-grey  user-staus-{{ $user->id }}"></div>
+                    <div class="small-Circle @if($user->last_login >time()) bg-success @else bg-grey @endif  user-staus-{{ $user->id }}"></div>
                 </div>
                 <div class="text-center f-22 cl-5757575">{{ ucwords($user->username) }}</div>
                 <div class="cl-a8a8a8 f-17 text-center">{{ $user->user_type=='specialist'? ucwords($user->specialist->category->name) :'' }}</div>
