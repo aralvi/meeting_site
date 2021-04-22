@@ -655,6 +655,36 @@
                         alert('ERROR! Please, open your console.')
                         console.log(error);
                     });
+                    
+                    $.ajax({
+                        url:"{{ route('chat.updated.users',Auth::user()->id) }}",
+                        type:"get",
+                        success:function(data)
+                        {
+                            console.log(data);
+                            $.each(data,function(){
+                                if(this.next > this.current)
+                                {
+                                    $('.user-staus-'+this.id).addClass('bg-success');
+                                    $('.user-staus-'+this.id).removeClass('bg-grey');
+                                    if(this.id=="{{$user->id}}")
+                                    {
+                                        $('.user-status').html('active');
+                                    }
+                                    
+                                }else{
+                                    $('.user-staus-'+this.id).removeClass('bg-success');
+                                    $('.user-staus-'+this.id).addClass('bg-grey');
+                                    if(this.id=="{{$user->id}}")
+                                    {
+                                        $('.user-status').html("Last seen "+this.status);
+                                    }
+                                    
+                                }
+                            });
+                        }
+                    });
+
                 }
             });
         }
