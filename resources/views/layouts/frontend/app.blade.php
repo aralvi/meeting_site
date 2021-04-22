@@ -7,7 +7,6 @@
 </head>
 
 <body id="body-content">
-
     @yield('content')
     @yield('footer')
 
@@ -74,18 +73,18 @@
     </script>
     <script>
 
-       
-
         @if(Auth::check())
             setInterval(function(){
                 firebase.database().ref('/chats').orderByChild("reciever_id").equalTo("{{ Auth::user()->id }}").on("value", function(ysnapshot) {
                     var chat_html = "";
+                    var msg_chk = false;
                     var chk =[];
                     if(ysnapshot.val() != null) {
                         $.each(ysnapshot.val(),function(){
                             if(chk.indexOf(this.sender_id) === -1)
                             {
                                 var count = 0;
+
                                 if(this.reciever_status){
                                     firebase.database().ref('/chats').orderByChild("status").equalTo(this.sender_reciever+"unread").on("value", function(cSnapshot) {
                                         count = cSnapshot.numChildren();
@@ -102,23 +101,24 @@
                                                 s_url = s_url.replace(':id',this.sender_id);
                                                 if(this.content.length>20 ){ cnt = this.content.substring(0,20)+"..." }else{ cnt=this.content; }
                                                 if(this.sender_id !='{{Auth::user()->id}}'){
+                                                    if(count>0){ msg_chk=true; }
                                                     chat_html += '<a class="dropdown-item d-flex row m-0 pt-2" href="'+c_url+'">';
                                                         chat_html+='<div class="col-md-2 p-0">';
                                                             chat_html +='<img src="'+this.avatar+'" alt="" class="img-fluid">';
                                                             $.ajax({
                                                                 url:s_url,
                                                                 type:"get",
+                                                                async: false, 
                                                                 success:function(data)
                                                                 {
                                                                     if(data.next>data.current)
                                                                     {
                                                                         chat_html+='<span class="ml--1 green-dot mt-1"></span>';
                                                                     }else{
-                                                                        chat_html+='<span class="ml--1 mt-1"></span>';
+                                                                        chat_html+='<span class="ml--1 grey-dot mt-1"></span>';
                                                                     }
                                                                 }
                                                             });
-                                                            // chat_html+='<span class="ml--1 mt-1"></span>';
                                                         chat_html+='</div>';
                                                         
                                                         chat_html+='<div class="col-md-6 pl-2 pt-1 p-0">';
@@ -139,10 +139,23 @@
                                         }
                                         
                                     });
+                                    
                                 }
                                 chk.push(this.sender_id);
                             }
                         });
+                        if(msg_chk){ $('.messageDropdown').children('span').addClass('green-dot'); }else{$('.messageDropdown').children('span').removeClass('green-dot');}
+                        chat_html+='<div class="dropdown-footer mt-5">';
+                            chat_html+='<div class="bg-3ac574 row m-0 pt-2 pb-3">';
+                                chat_html+='<div class="col-md-6 d-flex p-0 pl-4">';
+                                    chat_html+='<div><i class="fa fa-cog text-white" aria-hidden="true"></i></div>';
+                                    chat_html+='<div><i class="fa fa-volume-up text-white pl-2" aria-hidden="true"></i></div>';
+                                chat_html+='</div>';
+                                chat_html+='<div class="col-md-6 p-0 pr-3 text-white text-right">';
+                                    chat_html+='<a href="{{ route("chat.index") }}" style="color: #ffffff;"><h6>See all in inbox</h6></a>';
+                                chat_html+='</div>';
+                            chat_html+='</div>';
+                        chat_html+='</div>';
                         $("#nav-home").html(chat_html);
                     }
                 });
@@ -152,6 +165,7 @@
                     type:"get",
                     success:function(data){
                         var html ='';
+                        // if(data.length>0){ $('.messageDropdown').children('span').addClass('green-dot'); }else{$('.messageDropdown').children('span').removeClass('green-dot');}
                         data.map(v=>{
                             html += '<a class="dropdown-item d-flex row m-0 pt-2" href="'+v.url+'">';
                                 html+='<div class="col-md-2 p-0">';
@@ -168,12 +182,45 @@
                                 html+='</div>';
                             html+="</a>";
                         });
-
+                        html+='<div class="dropdown-footer mt-5">';
+                            html+='<div class="bg-3ac574 row m-0 pt-2 pb-3">';
+                                html+='<div class="col-md-6 d-flex p-0 pl-4">';
+                                    html+='<div><i class="fa fa-cog text-white" aria-hidden="true"></i></div>';
+                                    html+='<div><i class="fa fa-volume-up text-white pl-2" aria-hidden="true"></i></div>';
+                                html+='</div>';
+                                html+='<div class="col-md-6 p-0 pr-3 text-white text-right">';
+                                    html+='<a href="{{ route("appointments.index") }}" style="color: #ffffff;"><h6>See all Notifications</h6></a>';
+                                html+='</div>';
+                            html+='</div>';
+                        html+='</div>';
                         $('#nav-profile').html(html);
                     }
                 });
 
             },1000);
+
+            window.onload = function() {
+                $.ajax({
+                    url:"{{ route('chat.user.update',Auth::user()->id) }}",
+                    type:"get",
+                    success:function(data)
+                    {
+                        console.log(data);
+                    }
+                });
+            }
+
+            setInterval(function(){
+                $.ajax({
+                    url:"{{ route('chat.user.update',Auth::user()->id) }}",
+                    type:"get",
+                    success:function(data)
+                    {
+                        console.log(data);
+                    }
+                });
+            },10000);
+
         @endif
 
         $(function () {

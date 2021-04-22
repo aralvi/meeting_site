@@ -461,7 +461,7 @@
     			@foreach(App\User::where('id', '!=',Auth::user()->id)->where('user_type','!=','admin')->get() as $u)
     			    sender_reciever_count ="@if(App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first() !=null){{App\Chat::where('sender_id',Auth::user()->id)->where('reciever_id',$u->id)->first()->sender_reciever}}@elseif(App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first() !=null){{App\Chat::where('sender_id',$u->id)->where('reciever_id',Auth::user()->id)->first()->sender_reciever}}@endif";
             		firebase.database().ref('/chats').orderByChild("status").equalTo(sender_reciever_count.toString()+"unread").on("value", function(ysnapshot) {
-                        if(ysnapshot.numChildren()>0 {{ $u->id }}!=this.sender_id){
+                        if(ysnapshot.numChildren()>0 && {{ $u->id }}!=this.sender_id){
                             $('#badge-{{ $u->id }}').parent('div').removeClass('d-none');
                             $('#badge-{{ $u->id }}').html(ysnapshot.numChildren());
                             // $('#badge-{{ $u->id }}').addClass('d-none');
@@ -505,30 +505,24 @@
     		    @endforeach
     	    @endif  
         },100);
+
         setInterval(function(){
-            $.ajax({
-               url:"{{ route('chat.user.update',Auth::user()->id) }}",
-               type:"get",
-               success:function(data)
-               {
-                   console.log(data);
-               }
-            });
             
             $.ajax({
                 url:"{{ route('chat.updated.users',Auth::user()->id) }}",
                 type:"get",
                 success:function(data)
                 {
-                    console.log(data);
                     $.each(data,function(){
                         if(this.next > this.current)
                         {
+                            console.log("if next and current: "+this.next+" : "+this.current);
                             $('.user-staus-'+this.id).addClass('bg-success');
                             $('.user-staus-'+this.id).removeClass('bg-grey');
                             
                             
                         }else{
+                            console.log("else next and current: "+this.next+" : "+this.current);
                             $('.user-staus-'+this.id).removeClass('bg-success');
                             $('.user-staus-'+this.id).addClass('bg-grey');
                         

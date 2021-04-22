@@ -112,10 +112,10 @@
                 </div>
             </li>
             <li class="nav-item dropdown  pl-4 robotoRegular">
-                <a class="nav-link cl-ffffff cl-ffffff" href="#" id="navbarDropdown" data-toggle="dropdown"
+                <a class="nav-link cl-ffffff cl-ffffff messageDropdown" href="#" id="navbarDropdown" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="">
                     Messages
-                    <span class="green-dot mt-1 ml-2"></span>
+                    <span class="mt-1 ml-2"></span>
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                     <nav>
@@ -129,13 +129,14 @@
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <a class="dropdown-item" href="#">Action</a>
+                            
                         </div>
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
+                            
                         </div>
 
-                        <div class="dropdown-footer mt-5">
+                        {{-- <div class="dropdown-footer mt-5">
                             <div class="bg-3ac574 row m-0 pt-2 pb-3">
                                 <div class="col-md-6 d-flex p-0 pl-4">
                                     <div><i class="fa fa-cog text-white" aria-hidden="true"></i></div>
@@ -146,7 +147,7 @@
                                     <a href="{{ route('chat.index') }}" style="color: #ffffff;"><h6>See all in inbox</h6></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </li>

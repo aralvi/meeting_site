@@ -525,13 +525,13 @@
         			       <div class="d-flex">
         			           <div>  <div class="parent"><img src="{{ $user->avatar?asset($user->avatar): asset('uploads/user/default.jpg') }}" class="rounded-circle img-fluid smallProfile" alt=""
                                 srcset="">
-                            <div class="parentCircle-Child bg-grey user-staus-{{ $user->id }}" ></div>
+                            <div class="parentCircle-Child @if($user->last_login >time()) bg-success @else bg-grey @endif user-staus-{{ $user->id }}" ></div>
 
                                            </div></div>
                                 <div class="pl-2">
                                     <div>{{ ucwords($user->username) }}</div>
                                     <div class="d-flex">
-                                        <div class="cl-a8a8a8 f-11 user-status"></div>
+                                        <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login >time()) active @else Last seen {{ Carbon\Carbon::parse(intval($user->last_login))->diffForHumans() }} @endif</div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
                                     </div>
                                 </div>
@@ -742,15 +742,6 @@
         }
         
         function ajaxCommonCode(){
-            
-            $.ajax({
-               url:"{{ route('chat.user.update',Auth::user()->id) }}",
-               type:"get",
-               success:function(data)
-               {
-                   console.log(data);
-               }
-            });
             
             $.ajax({
                 url:"{{ route('chat.updated.users',Auth::user()->id) }}",
@@ -1124,44 +1115,35 @@
         
         window.onload = function() {
             focusOnInput();
-            
-            $.ajax({
-               url:"{{ route('chat.user.update',Auth::user()->id) }}",
-               type:"get",
-               success:function(data)
-               {
-                   console.log(data);
-               }
-            });
-            
-            $.ajax({
-                url:"{{ route('chat.updated.users',Auth::user()->id) }}",
-                type:"get",
-                success:function(data)
-                {
-                    console.log(data);
-                    $.each(data,function(){
-                         if(this.next > this.current)
-                        {
-                            $('.user-staus-'+this.id).addClass('bg-success');
-                            $('.user-staus-'+this.id).removeClass('bg-grey');
-                            if(this.id=="{{$user->id}}")
-                            {
-                                $('.user-status').html('active');
-                            }
+
+            // $.ajax({
+            //     url:"{{ route('chat.updated.users',Auth::user()->id) }}",
+            //     type:"get",
+            //     success:function(data)
+            //     {
+            //         console.log(data);
+            //         $.each(data,function(){
+            //              if(this.next > this.current)
+            //             {
+            //                 $('.user-staus-'+this.id).addClass('bg-success');
+            //                 $('.user-staus-'+this.id).removeClass('bg-grey');
+            //                 if(this.id=="{{$user->id}}")
+            //                 {
+            //                     $('.user-status').html('active');
+            //                 }
                             
-                        }else{
-                            $('.user-staus-'+this.id).removeClass('bg-success');
-                            $('.user-staus-'+this.id).addClass('bg-grey');
-                            if(this.id=="{{$user->id}}")
-                            {
-                                $('.user-status').html("Last seen "+this.status);
-                            }
+            //             }else{
+            //                 $('.user-staus-'+this.id).removeClass('bg-success');
+            //                 $('.user-staus-'+this.id).addClass('bg-grey');
+            //                 if(this.id=="{{$user->id}}")
+            //                 {
+            //                     $('.user-status').html("Last seen "+this.status);
+            //                 }
                             
-                        }
-                    });
-                }
-            });
+            //             }
+            //         });
+            //     }
+            // });
         }
 
         setInterval(function(){
@@ -1231,14 +1213,6 @@
         
         
         setInterval(function(){
-            $.ajax({
-               url:"{{ route('chat.user.update',Auth::user()->id) }}",
-               type:"get",
-               success:function(data)
-               {
-                   console.log(data);
-               }
-            });
             
             $.ajax({
                 url:"{{ route('chat.updated.users',Auth::user()->id) }}",
@@ -1251,7 +1225,7 @@
                         {
                             $('.user-staus-'+this.id).addClass('bg-success');
                             $('.user-staus-'+this.id).removeClass('bg-grey');
-                            if(this.id=="{{$user->id}}")
+                            if(this.id==reciever)
                             {
                                 $('.user-status').html('active');
                             }
@@ -1259,7 +1233,7 @@
                         }else{
                             $('.user-staus-'+this.id).removeClass('bg-success');
                             $('.user-staus-'+this.id).addClass('bg-grey');
-                            if(this.id=="{{$user->id}}")
+                            if(this.id==reciever)
                             {
                                 $('.user-status').html("Last seen "+this.status);
                             }

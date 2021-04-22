@@ -38,6 +38,15 @@
     background-color: #3ac574;
 }
 
+.grey-dot {
+    position: absolute;
+    padding: 4px;
+    height: 3px;
+    width: 3px;
+    border-radius: 25px;
+    background-color: #AAAAAA;
+}
+
 .green-dot-nmbr {
     width: 21px;
     height: 21px;

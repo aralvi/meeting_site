@@ -42,7 +42,6 @@ class FirebaseController extends Controller
         else{
             $sender_reciever = Auth::user()->id.$id;
         }
-
         $user = User::where('id',$id)->first();
         return  response()->json(['html'=>view('partials.frontend.chat_load',compact(['id','user']))->render(),'username'=>$user->username,'sender'=>Auth::user()->id,'reciever'=>$id,'sender_reciever'=>$sender_reciever]);
     }
@@ -179,7 +178,7 @@ class FirebaseController extends Controller
     {
         $t = time();
         $user = User::find($id);
-        $user->last_login = $t + 10;
+        $user->last_login = $t + 20;
         if($user->save())
         {
             return response()->json(["old"=>$t,"next"=>$user->last_login]);
