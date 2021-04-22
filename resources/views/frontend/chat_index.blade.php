@@ -506,6 +506,32 @@
     	    @endif  
         },100);
 
+        window.onload = function() {
+            $.ajax({
+                url:"{{ route('chat.updated.users',Auth::user()->id) }}",
+                type:"get",
+                success:function(data)
+                {
+                    $.each(data,function(){
+                        if(this.next > this.current)
+                        {
+                            console.log("if next and current: "+this.next+" : "+this.current);
+                            $('.user-staus-'+this.id).addClass('bg-success');
+                            $('.user-staus-'+this.id).removeClass('bg-grey');
+                            
+                            
+                        }else{
+                            console.log("else next and current: "+this.next+" : "+this.current);
+                            $('.user-staus-'+this.id).removeClass('bg-success');
+                            $('.user-staus-'+this.id).addClass('bg-grey');
+                        
+                            
+                        }
+                    });
+                }
+            });
+        }
+        
         setInterval(function(){
             
             $.ajax({
