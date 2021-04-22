@@ -64,7 +64,7 @@
                                         <div class="col-md-3">
                                             <div class="parent"><img src="{{$u->avatar!=''?asset($u->avatar): asset('uploads/user/default.jpg')}}" class="rounded-circle img-fluid smallProfile" alt=""
                                             srcset="">
-                                            <div class="parentCircle-Child bg-grey  user-staus-{{ $u->id }}"></div>
+                                            <div class="parentCircle-Child @if($user->last_login >time() && $user->id==$u->id) bg-success @else bg-grey @endif  user-staus-{{ $u->id }}"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7 p-0 f-13 d-flex flex-column justify-content-center">
