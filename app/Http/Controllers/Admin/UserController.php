@@ -79,10 +79,10 @@ class UserController extends Controller
         $user->status = $request->status;
         if($user->save()){
             if($request->status=='active'){
-                Mail::to($user->email)->send(new ApproveMailToUser(['name'=>$user->name]));
+                Mail::to($user->email)->send(new ApproveMailToUser(['name'=>$user->username]));
             }
             else if($request->status=='inactive'){
-                Mail::to($user->email)->send(new DisapproveMailToUser(['name'=>$user->name]));  
+                Mail::to($user->email)->send(new DisapproveMailToUser(['name'=>$user->username]));  
             }
         }
 

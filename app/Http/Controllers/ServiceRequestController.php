@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\ServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ServiceRequestActiveMail;
+use App\Mail\ServiceRequestInActiveMail;
 
 class ServiceRequestController extends Controller
 {
@@ -16,6 +19,24 @@ class ServiceRequestController extends Controller
     public function index()
     {
         //
+    }
+
+    public function adminClientPosting()
+    {
+        $postings = ServiceRequest::all();
+        return view('admin.postings.index',compact('postings'));
+    }
+
+    public function adminClientPostingUpdate($id,Request $request){
+        $posting = ServiceRequest::find($id);
+        $posting->status = $request->status;
+        $posting->save();
+        if($posting->status=='active'){
+            Mail::to($posting->user->email)->send(new ServiceRequestActiveMail(['name'=>$posting->title]));
+        }else if($posting->status=='inactive'){
+            Mail::to($posting->user->email)->send(new ServiceRequestInActiveMail(['name'=>$posting->title]));
+        }
+        return $posting->status;
     }
 
     /**

@@ -241,197 +241,199 @@ a:focus{
             </div>
         </div>
     </div>
-    <div class="row mt-3 pl-5 ">
-        <div class="col-md-12 p-0">
-            <div class="row">
-                <div class="col-md-10 p-0">
-                    <div class="d-flex justify-content-between align-items-baseline">
+    @if(Auth::user()->status=='active')
+        <div class="row mt-3 pl-5 ">
+            <div class="col-md-12 p-0">
+                <div class="row">
+                    <div class="col-md-10 p-0">
+                        <div class="d-flex justify-content-between align-items-baseline">
 
-                        <p class="f-34 mb-0">Available Jobs</p>
-                        <div class="d-flex m-0">
-                            <div class="pt-4 w-100">
-                                <input type="text" placeholder="Search for services"
-                                    class="service_inpt robotoRegular h-44 cl-6b6b6b bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
-                            </div>
-                            <div class="pt-4 pl-2">
-                                <button
-                                    class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2 service_inpt_btn"
-                                    type="button" onclick="inputSearchServices();"><img
-                                        src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button>
+                            <p class="f-34 mb-0">Available Jobs</p>
+                            <div class="d-flex m-0">
+                                <div class="pt-4 w-100">
+                                    <input type="text" placeholder="Search for services"
+                                        class="service_inpt robotoRegular h-44 cl-6b6b6b bg-transparent footer_input pt-2 pb-2 pl-3 w-100 rounded">
+                                </div>
+                                <div class="pt-4 pl-2">
+                                    <button
+                                        class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3ac574  pt-2 pb-2 pl-2 pr-2 service_inpt_btn"
+                                        type="button" onclick="inputSearchServices();"><img
+                                            src="{{ asset('assets/frontend/images/Group 188.png ') }}" alt=""></button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
+                    <div class="col-md-2 px-0 d-flex align-items-end justify-content-end f-18">
 
-                </div>
-                <div class="col-md-2 px-0 d-flex align-items-end justify-content-end f-18">
+                        <p class="mb-0">Sort by :</p>
+                        <select name="" id="" class="border-0 cl-3ac754">
+                            <option value="">Latest</option>
+                        </select>
 
-                    <p class="mb-0">Sort by :</p>
-                    <select name="" id="" class="border-0 cl-3ac754">
-                        <option value="">Latest</option>
-                    </select>
-
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row px-3 ml-1 mt-2 mb-5">
-        <div class="nav flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-           
-            <a class="nav-link active cl-000000" id="v-pills-portfolio-tab"
-                data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-portfolio"
-                aria-selected="false">New</a>
-            <a class="nav-link cl-000000" id="v-pills-alraady" data-toggle="pill" href="#v-pills-already-bid" role="tab"
-                aria-controls="v-pills-bid" aria-selected="false">Submitted Proposals</a>
+        <div class="row px-3 ml-1 mt-2 mb-5">
+            <div class="nav flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            
+                <a class="nav-link active cl-000000" id="v-pills-portfolio-tab"
+                    data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-portfolio"
+                    aria-selected="false">New</a>
+                <a class="nav-link cl-000000" id="v-pills-alraady" data-toggle="pill" href="#v-pills-already-bid" role="tab"
+                    aria-controls="v-pills-bid" aria-selected="false">Submitted Proposals</a>
+            </div>
         </div>
-    </div>
 
-    <div class="row px-3 ml-1 mt-2 mb-5">
+        <div class="row px-3 ml-1 mt-2 mb-5">
 
-        <div class="tab-content col-md-12">
+            <div class="tab-content col-md-12">
 
-            <div class="col-md-12 mt-3 borderRadius-10px box_shadow1 pb-5 tab-pane fade show active" id="v-pills-new">
-                <div class="d-flex mt-3 justify-content-between px-5 pt-1">
-                    <div class="cl-3ac754 robotoMedium f-24">Job Description</div>
-                    <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
-                </div>
-                <div class="mt-3 border w-100"></div>
-                @foreach ($service_requests as $service)
-                    @php 
-                        $check_bid = App\Models\Bid::where('service_request_id',$service->id)->where('specialist_id',Auth::user()->specialist->id)->first();
-                    @endphp
-                   
-                    @if ($check_bid ==null)
-                        <a href="javascript:void(0);" class=" service_request" title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}"  tabindex="0" data-toggle="tooltip" title="Click To bid this request">
-                            <div class="d-flex mt-4 justify-content-between pr-5" >
-                                <div class="col-md-9 pl-5 pr-0">
-                                    <div class="cl-000000 robotoMedium f-24">{{ ucwords($service->title) }}</div>
-                                    <div class="d-flex">
-                                        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
-                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->username }} </div>
-                                    </div>
-                                    <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
-                                        {{ ucfirst($service->description) }}
-                                    </div>
-                                    <div class="d-flex pt-2">
-                                        <div>
-                                            <div class="d-flex">
-                                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->created_at->diffForHumans(null, true).' ago' }}
+                <div class="col-md-12 mt-3 borderRadius-10px box_shadow1 pb-5 tab-pane fade show active" id="v-pills-new">
+                    <div class="d-flex mt-3 justify-content-between px-5 pt-1">
+                        <div class="cl-3ac754 robotoMedium f-24">Job Description</div>
+                        <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
+                    </div>
+                    <div class="mt-3 border w-100"></div>
+                    @foreach ($service_requests as $service)
+                        @php 
+                            $check_bid = App\Models\Bid::where('service_request_id',$service->id)->where('specialist_id',Auth::user()->specialist->id)->first();
+                        @endphp
+                    
+                        @if ($check_bid ==null)
+                            <a href="javascript:void(0);" class=" service_request" title="Click To bid this request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}"  tabindex="0" data-toggle="tooltip" title="Click To bid this request">
+                                <div class="d-flex mt-4 justify-content-between pr-5" >
+                                    <div class="col-md-9 pl-5 pr-0">
+                                        <div class="cl-000000 robotoMedium f-24">{{ ucwords($service->title) }}</div>
+                                        <div class="d-flex">
+                                            <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
+                                            <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->username }} </div>
+                                        </div>
+                                        <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
+                                            {{ ucfirst($service->description) }}
+                                        </div>
+                                        <div class="d-flex pt-2">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
+                                                    <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
+                                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->created_at->diffForHumans(null, true).' ago' }}
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div></div>
                                         </div>
-                                        <div></div>
-                                    </div>
-                                    <div class="d-flex pt-2">
-                                        <div>
-                                            <div class="d-flex">
-                                                
-                                                <div>@if($service->tags !=null)<img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" />@endif</div>
-                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
-                                                    @php  if($service->tags !=null){
-                                                        $tags= explode('uploads/files/',$service->tags);
-                                                        }  @endphp
-                                                    <a class="cl-3ac754" href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
-                                                    </div>
+                                        <div class="d-flex pt-2">
+                                            <div>
+                                                <div class="d-flex">
+                                                    
+                                                    <div>@if($service->tags !=null)<img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" />@endif</div>
+                                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
+                                                        @php  if($service->tags !=null){
+                                                            $tags= explode('uploads/files/',$service->tags);
+                                                            }  @endphp
+                                                        <a class="cl-3ac754" href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
+                                                        </div>
+                                                </div>
                                             </div>
+                                            <div></div>
                                         </div>
-                                        <div></div>
+                                    
                                     </div>
-                                   
+                                    <div class="robotoMedium text-right col-md-2 pr-0">
+                                        <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
+                                        <div class="f-21 cl-6b6b6b">USD</div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-sm btn-success service_request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}">Submit Proposal</button>
+                                    </div>
                                 </div>
-                                <div class="robotoMedium text-right col-md-2 pr-0">
-                                    <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
-                                    <div class="f-21 cl-6b6b6b">USD</div>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-sm btn-success service_request" data-toggle="modal" data-target="#exampleModal" data-serviceRequestID="{{ $service->id }}">Submit Proposal</button>
-                                </div>
-                            </div>
 
-                        </a>
-                        <div class="mt-3 border w-100"></div>
-                    @endif
-                        
-                    
-                @endforeach
-                
-            </div>
-    
-            <div class="col-md-12 mt-3 borderRadius-10px box_shadow1 pb-5 tab-pane fade " id="v-pills-already-bid">
-                <div class="d-flex mt-3 justify-content-between px-5 pt-1">
-                    <div class="cl-3ac754 robotoMedium f-24">Job Description</div>
-                    <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
-                </div>
-                <div class="mt-3 border w-100"></div>
-                @foreach ($service_requests as $service)
-                    @php 
-                        $check_bid = App\Models\Bid::where('service_request_id',$service->id)->where('specialist_id',Auth::user()->specialist->id)->first();
-                    @endphp
-                    @if ($check_bid !=null)
-                        <a href="javascript:void(0);" class=" " title="Click To bid this request"   tabindex="0" data-toggle="tooltip" title="Click To bid this request">
+                            </a>
+                            <div class="mt-3 border w-100"></div>
+                        @endif
                             
-                            <div class="d-flex mt-4 justify-content-between pr-5" >
-                                <div class="col-md-9 pl-5 pr-0">
-                                    <div class="cl-000000 robotoMedium f-24">{{ ucwords($service->title) }}</div>
-                                    <div class="d-flex">
-                                        <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
-                                        <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->username }} </div>
-                                    </div>
-                                    <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
-                                        {{ ucfirst($service->description) }}
-                                    </div>
-                                    <div class="d-flex pt-2">
-                                        <div>
-                                            <div class="d-flex">
-                                                <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
-                                                <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
-                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->created_at->diffForHumans(null, true).' ago' }}
+                        
+                    @endforeach
+                    
+                </div>
+        
+                <div class="col-md-12 mt-3 borderRadius-10px box_shadow1 pb-5 tab-pane fade " id="v-pills-already-bid">
+                    <div class="d-flex mt-3 justify-content-between px-5 pt-1">
+                        <div class="cl-3ac754 robotoMedium f-24">Job Description</div>
+                        <div class="f-24 cl-3ac754 robotoMedium">Amount</div>
+                    </div>
+                    <div class="mt-3 border w-100"></div>
+                    @foreach ($service_requests as $service)
+                        @php 
+                            $check_bid = App\Models\Bid::where('service_request_id',$service->id)->where('specialist_id',Auth::user()->specialist->id)->first();
+                        @endphp
+                        @if ($check_bid !=null)
+                            <a href="javascript:void(0);" class=" " title="Click To bid this request"   tabindex="0" data-toggle="tooltip" title="Click To bid this request">
+                                
+                                <div class="d-flex mt-4 justify-content-between pr-5" >
+                                    <div class="col-md-9 pl-5 pr-0">
+                                        <div class="cl-000000 robotoMedium f-24">{{ ucwords($service->title) }}</div>
+                                        <div class="d-flex">
+                                            <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center ">Posted by:</div>
+                                            <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->User->username }} </div>
+                                        </div>
+                                        <div class="w-100 text-justify f-18 robotoRegular cl-6b6b6b pr-5" >
+                                            {{ ucfirst($service->description) }}
+                                        </div>
+                                        <div class="d-flex pt-2">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <div><img src="{{ asset('assets/frontend/images/Group 305.png') }}" alt="" /></div>
+                                                    <div class="cl-3ac754 f-14 robotoRegular d-flex align-items-center pl-2">Posted</div>
+                                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">{{ $service->created_at->diffForHumans(null, true).' ago' }}
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div></div>
                                         </div>
-                                        <div></div>
-                                    </div>
-                                    <div class="d-flex pt-2">
-                                        <div>
-                                            <div class="d-flex">
-                                                
-                                                <div>@if($service->tags !=null)<img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" />@endif</div>
-                                                <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
-                                                    @php  if($service->tags !=null){
-                                                        $tags= explode('uploads/files/',$service->tags);
-                                                        }  @endphp
-                                                    <a class="cl-3ac754" href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
-                                                    </div>
+                                        <div class="d-flex pt-2">
+                                            <div>
+                                                <div class="d-flex">
+                                                    
+                                                    <div>@if($service->tags !=null)<img src="{{ asset('assets/frontend/images/Subtraction 2.png') }}" alt="" />@endif</div>
+                                                    <div class="pl-1 cl-6b6b6b f-14 robotoRegular d-flex align-items-center">
+                                                        @php  if($service->tags !=null){
+                                                            $tags= explode('uploads/files/',$service->tags);
+                                                            }  @endphp
+                                                        <a class="cl-3ac754" href="public/{{ $service->tags }}" download="downlaod">{{ isset($tags)?$tags['1']:'' }}</a>
+                                                        </div>
+                                                </div>
                                             </div>
+                                            <div></div>
                                         </div>
-                                        <div></div>
+                                    
                                     </div>
-                                   
+                                    <div class="robotoMedium text-right col-md-2 pr-0">
+                                        <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
+                                        <div class="f-21 cl-6b6b6b">USD</div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-sm btn-info disabled " > Offer Sent</button>
+                                    </div>
                                 </div>
-                                <div class="robotoMedium text-right col-md-2 pr-0">
-                                    <div class="f-24 cl-000000 white-spaces robotoMedium">${{ number_format(intval($service->budget))}}</div>
-                                    <div class="f-21 cl-6b6b6b">USD</div>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-sm btn-info disabled " > Offer Sent</button>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="mt-3 border w-100"></div>
-                    @endif
+                            </a>
+                            <div class="mt-3 border w-100"></div>
+                        @endif
 
+                        
+                    @endforeach
                     
-                @endforeach
-                
+                </div>
+
             </div>
 
+            
+            
         </div>
-
-        
-        
-    </div>
+    @endif
 </div>
 
 

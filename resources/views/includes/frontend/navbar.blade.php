@@ -166,8 +166,8 @@
 
                     @else
 
-                    <img src="{{ asset('assets/frontend/images/55881685_1284744685011014_8335587762602246144_n.png') }}"
-                        class="img-fluid w-75" alt="profile" width="40" />
+                    <img src="{{ asset('uploads/user/default.jpg') }}"
+                        class="img-fluid w-40 h-40" alt="profile" width="40" />
                     @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">

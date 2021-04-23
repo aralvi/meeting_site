@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $agoDate = \Carbon\Carbon::now()->addDays(2)->format('d M Y');
         $currentDate = \Carbon\Carbon::today()->format('d M Y');
         $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->where('status', '1')->where('payment_status','2')->whereBetween('date', [$currentDate, $agoDate])->get();
-        $service_requests = ServiceRequest::all();
+        $service_requests = ServiceRequest::where('status','active')->get();
         // dd()
         $categories = Category::all();
         return view('specialist.dashboard', compact('appointments', 'service_requests', 'categories'));

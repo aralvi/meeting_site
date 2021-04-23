@@ -14,7 +14,7 @@
             <div class="d-flex align-items-center flex-column">
                 <div class="dashboard_id text-center">
                     <img id="blah" class="rounded-circle blah"
-                        src="{{(Auth::user()->avatar != null)? asset(Auth::user()->avatar): asset('assets/frontend/images/GettyImages-1136599956-hair-stylist-1200x630-min.png') }}"
+                        src="{{(Auth::user()->avatar != null)? asset(Auth::user()->avatar): asset('uploads/user/default.jpg') }}"
                         alt="" style="height: 118px; width: 118px;" />
                     <form action="{{ url('/profile/change_avatar') }}" method="post" enctype="multipart/form-data"
                         id="avatar_form">
@@ -43,8 +43,7 @@
                 <a class="nav-link {{ Request::is('dashboard/categories') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/categories') }}" >Categories</a>
                 <a class="nav-link {{ Request::is('dashboard/subcategories') || Request::is('dashboard/subcategories/create') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/subcategories') }}" >Sub Categories</a>
                 <a class="nav-link {{ Request::is('dashboard/users') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/users') }}" >Users</a>
-              
-                
+                <a class="nav-link {{ Request::is('dashboard/client/postings') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/client/postings') }}" >Service Requests</a>
                 <a class="nav-link cl-000000 {{ Request::is('dashboard/password') ? 'active' : ''  }}" href="{{ url('/dashboard/password') }}">Password</a>
             </div>
         </div>
