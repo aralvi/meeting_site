@@ -76,7 +76,7 @@
                                 $subcategories = App\SubCategory::whereIn('id',json_decode($request->subcategories))->get()->pluck('name')->toArray();
                             @endphp 
                             <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
-                            <td>{{ ucfirst($request->description) }}</td>
+                            <td>{{ Str::limit($request->description,50,".....") }}</td>
                             <td>$ {{ $request->budget }}</td>
                             <td class="text-capitalize"> <span class="badge badge-sm {{ ($request->status == 'active')? 'badge-success':'badge-danger' }} badge-{{ $request->id }}">{{ $request->status}}</span></td>
                             <td style="min-width: 135px !important;">
