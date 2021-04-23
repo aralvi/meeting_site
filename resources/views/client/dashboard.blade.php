@@ -693,12 +693,17 @@ span.prefix{
             </div>
         </section>
     @else
-        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-            Your Profile is under view and administrator will approved your profile as soon as possible
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="container" >
+            <div class="row">
+                <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                    Your Profile is under view and administrator will approved your profile as soon as possible
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
         </div>
+        
         
     @endif
 
