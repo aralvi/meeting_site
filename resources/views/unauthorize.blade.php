@@ -21,7 +21,7 @@
         <div class="robotoRegula"
         style="font-size: 21px;max-width: 500px;text-align: center;margin: auto; padding-top: 16px;border-bottom: 1px solid #707070;padding-bottom: 30px;">
         
-        Sorry You are not approved by Admin!
+        Your Profile is under view and administrator will approved your profile as soon as possible
         </div>
         <div style="padding-bottom: 60px;"></div>
         
