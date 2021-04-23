@@ -237,6 +237,7 @@
                                 });
 
                             }
+                            window.location = '';
                         }
                     });
                 } 

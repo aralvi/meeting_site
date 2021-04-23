@@ -140,6 +140,7 @@
                                 });
 
                             }
+                            window.location = '';
                         }
                     });
                 } 
