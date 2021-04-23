@@ -71,7 +71,7 @@
                                 
                             <td>{{ $key+1 }}</td>
                             
-                            <td class="text-capitalize"><img src="{{ asset($user->avatar) }}" alt="" srcset=""></td>
+                            <td class="text-capitalize"><img style="height: 118px; width: 118px;" src="{{ asset($user->avatar) }}" alt="" srcset=""></td>
                             <td class="text-capitalize">{{ $user->user_type }}</td>
                             <td class="text-capitalize">{{ $user->username }}</td>
                             <td class="text-capitalize">{{ $user->email }}</td>
