@@ -15,7 +15,6 @@ class AddColumnServiceRequests extends Migration
     {
         Schema::table('service_requests', function (Blueprint $table) {
            $table->string('status')->default('inactive')->after('budget');
-           
         });
     }
 
