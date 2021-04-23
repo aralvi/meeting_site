@@ -434,8 +434,8 @@ a:focus{
             
         </div>
     @else
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Your Profile is under view and administrator will approved your profile as soon as possible
+        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+            Your Profile is under view and administrator will approved your profile as soon as possible
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
