@@ -104,7 +104,7 @@ Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::resource('clients', 'ClientController');
     Route::resource('servicerequests', 'ServiceRequestController');
     Route::get('sub-categories', 'Client\ClientController@getSubCategories')->name('request.get_subcategories');
-    Route::get('dispute-araise/{project}/{id}',"ClientSpecialistDisputeController@disputeAraise")->name('dispute-araise');
+    Route::get('raise-dispute/{project}/{id}',"ClientSpecialistDisputeController@disputeAraise")->name('dispute-araise');
     Route::resource('disputes','ClientSpecialistDisputeController');
 });
 
