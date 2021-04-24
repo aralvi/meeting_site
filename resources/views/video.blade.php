@@ -28,7 +28,7 @@
               </div>
               <div class="input-field">
                 <label for="channel" class="active">Channel</label>
-                <input type="text" placeholder="channel" name="channel" value="abc">
+                <input type="text" placeholder="channel" name="channel" value="" id="channelName">
               </div>
               <div class="input-field">
                 <label for="token" class="active">Token</label>
@@ -116,6 +116,7 @@
       </div>
     </div>
   </form>
+  <input type="hidden" id="name" value="{{ Auth::user()->username }}">
   <button id="video-chat">video chat</button>
   <script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/frontend/js/video-js/materialize.min.js') }}"></script>
@@ -123,12 +124,15 @@
   <!--<script src="assets/AgoraRTCSDK.js"></script>-->
   <script>
 $('#video-chat').on('click',function(){
+  var username = $('#name').val();
   $.ajax({
     type: 'get',
     url: '{{ url("test-token") }}',
-   
+   data: {name:username},
     success:function(data){
-      $('#token').val(data);
+      
+      $('#token').val(JSON.parse(data).token);
+      $('#channelName').val(JSON.parse(data).channel);
       $('#join').click();
     }
  })

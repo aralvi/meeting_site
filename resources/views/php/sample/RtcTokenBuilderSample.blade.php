@@ -1,8 +1,12 @@
 @include('php/src/RtcTokenBuilder')
 <?php
+if(Auth::user()->user_type == 'specialist')
+    $channel = Auth::user()->username."_".$_GET['name'];
+elseif (Auth::user()->user_type == 'client')
+$channel = $_GET['name']."_".Auth::user()->username;
 $appID = "229e3bdfe52e432b86e27f442b1cf04a";
 $appCertificate = "8731cf7600124d0a8166b9b50d0bb018";
-$channelName = "abc";
+$channelName = $channel;
 $uid = 2882341271;
 $uidStr = "";
 $role = RtcTokenBuilder::RoleAttendee;
@@ -15,6 +19,7 @@ $privilegeExpiredTs = $currentTimestamp + $expireTimeInSeconds;
 
 $token = RtcTokenBuilder::buildTokenWithUserAccount($appID, $appCertificate, $channelName, $uidStr, $role, $privilegeExpiredTs);
 // echo 'Token with user account: ' . $token . PHP_EOL;
-echo $token . PHP_EOL;
+$arr = array('channel'=>$channel,'token'=>$token . PHP_EOL);
+echo json_encode($arr);
  
 ?>
