@@ -103,7 +103,9 @@ Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::post('store-appointment','AppointmentController@storeAppointment')->name('store.appointment');
     Route::resource('clients', 'ClientController');
     Route::resource('servicerequests', 'ServiceRequestController');
-    Route::get('sub_categories', 'Client\ClientController@getSubCategories')->name('request.get_subcategories');
+    Route::get('sub-categories', 'Client\ClientController@getSubCategories')->name('request.get_subcategories');
+    Route::get('dispute-araise/{project}/{id}',"ClientSpecialistDisputeController@disputeAraise")->name('dispute-araise');
+    Route::resource('disputes','ClientSpecialistDisputeController');
 });
 
 Route::middleware(['auth'])->group(function(){

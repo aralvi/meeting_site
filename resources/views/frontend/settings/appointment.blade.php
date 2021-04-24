@@ -80,27 +80,24 @@
                             <!-- end -->
                             <!-- 3 -->
                             <div class="text-center d-flex justify-content-center flex-column align-items-center">
-                                @if ($appointment->status != "Completed" ) 
+                                @if ($appointment->status != "Completed") 
                                     @if (Auth::user()->user_type=='specialist')
-                                    @if ($appointment->status == "Approved" && $appointment->payment_status != "Paid")
-                                        <div class="pt-3">
-                                                    <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Pending Client Payment</button>
-                                                
-                                                </div>
-                                                @else
-
-                                                <div class="pt-3">
-                                                    <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
-                                                        @csrf @method('put')
-            
-                                                        <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}" />
-                                                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3AC574 border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">
-                                                            {{ ($appointment->status == 'Cancelled')? 'Accept': ($appointment->status == 'Pending')? 'Accept':'Completed' }}
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                    @endif
+                                        @if ($appointment->status == "Approved" && $appointment->payment_status != "Paid")
+                                            <div class="pt-3"><button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Pending Client Payment</button></div>
+                                        @else
+                                            <div class="pt-3">
+                                                <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                                    @csrf @method('put')
+        
+                                                    <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}" />
+                                                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3AC574 border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">
+                                                        {{ ($appointment->status == 'Cancelled')? 'Accept': ($appointment->status == 'Pending')? 'Accept':'Completed' }}
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        @endif
                                     @endif 
+
                                     @if ($appointment->status != "Cancelled") 
                                         @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid" )
                                             @if ($appointment->status == 'Pending')
@@ -125,14 +122,24 @@
                                             @endif
 
                                         @endif
-                                    <div class="pt-3">
-                                        <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
-                                            @csrf @method('put')
-                                            <input type="hidden" name="status" value="2" />
-                                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Decline</button>
-                                        </form>
-                                    </div>
+                                        <div class="pt-3">
+                                            <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
+                                                @csrf @method('put')
+                                                <input type="hidden" name="status" value="2" />
+                                                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Decline</button>
+                                            </form>
+                                        </div>
                                     @endif 
+                                @endif
+
+                                @if ($appointment->status != "Cancelled")
+                                    <div class="pt-3">
+                                        @if(App\ClientSpecialistDispute::where('project_id',$appointment->id)->first() ==null)
+                                            <a href="{{ route('dispute-araise',['project'=>encrypt($appointment->id),'id'=>Auth::user()->user_type=="client"? encrypt($appointment->specialist->user->id):encrypt($appointment->user->id)]) }}?project_type=appointments" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Araise Dispute</a>
+                                        @else
+                                            <a href="#" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">View Dispute{{ App\ClientSpecialistDispute::where('project_id',$appointment->id)->first()->id }}</a>    
+                                        @endif
+                                    </div>
                                 @endif
                             </div>
                             <!-- end -->
