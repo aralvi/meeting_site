@@ -615,6 +615,7 @@
                     </video>
                     
                   </div>
+                   <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" />
                   <form id="form" class="row col-lg-12 col-sm-12 l12 s12 " >
                     <div class="row container col-lg-12 col-sm-12 l12 s12">
                       <div class="col-md-4 " style="min-width: 433px; max-width: 443px;">
