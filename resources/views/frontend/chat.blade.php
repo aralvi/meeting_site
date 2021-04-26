@@ -618,7 +618,7 @@
                           <meta http-equiv="X-UA-Compatible" content="ie=edge">
                           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                           <title>Basic Communication</title>
-                          <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" />
+                          {{-- <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" /> --}}
                         </head>
                         <body class="agora-theme">
                           
