@@ -616,9 +616,25 @@
                     
                   </div>
                   
-                 
+                  <!DOCTYPE html>
+                  <html lang="en">
+
+                  <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <title>Basic Communication</title>
                     <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" />
-                  
+                  </head>
+                  <body class="agora-theme">
+                    <div class="navbar-fixed">
+                      <nav class="agora-navbar">
+                        <div class="nav-wrapper agora-primary-bg valign-wrapper">
+                          <h5 class="left-align">Basic Communication</h5>
+                          <a href="https://github.com/AgoraIO/Basic-Video-Call/tree/master/One-to-One-Video/Agora-Web-Tutorial-1to1" class="agora-github-pin"></a>
+                        </div>
+                      </nav>
+                    </div>
                     <form id="form" class="row col l12 s12 " >
                       <div class="row container col l12 s12">
                         <div class="col" style="min-width: 433px; max-width: 443px;">
@@ -649,7 +665,7 @@
                           <ul class="collapsible card agora-secondary-border" style="margin-top: .4rem; border: 1px ">
                             <li>
                               <div class="collapsible-header agora-secondary-bg">
-                                <h6 class="center-align">ADVANCED SETTINGS</h6>
+                                <h8 class="center-align">ADVANCED SETTINGS</h8>
                               </div>
                               <div class="collapsible-body card-content">
                                 <div class="row">
@@ -718,7 +734,8 @@
                         </div>
                       </div>
                     </form>
-                  
+                  </body>
+                  </html>
                 <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
                 <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
             </div>
@@ -1393,16 +1410,13 @@
  <script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/frontend/js/video-js/materialize.min.js') }}"></script>
   <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
-  <script src="{{ asset('assets/frontend/js/video-js/video-custom.js') }}"></script>
-
-
-<script >
+<script>
   $('#video-chat').on('click', function() {
     var username = $(this).data('caller');
     $.ajax({
         type: 'get',
-        url: '{{url("test-token")}}',
-        data: {name:username},
+        url: '{{ url("test-token") }}',
+        data: { name: username },
         success: function(data) {
 
             $('#token').val(JSON.parse(data).token);
@@ -1868,5 +1882,8 @@ $(function() {
     })
 })
 </script>
+
+
+
 
 @endsection
