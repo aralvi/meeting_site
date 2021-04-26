@@ -181,7 +181,7 @@ class AppointmentController extends Controller
         {
             if($appointment->status=="Approved" || $appointment->status=="Cancelled"){
 
-                ($user->user_type=='client')?$appointment->specialist->user->avatar!=''? $avatar=url('/').'/'.$appointment->specialist->user->avatar: $pro=url('/public/uploads/user/default.jpg'):$appointment->user->avatar!=''? $avatar=url('/').'/'.$appointment->user->avatar: $avatar=url('/public/uploads/user/default.jpg');
+                ($user->user_type=='client')?($appointment->specialist->user->avatar!='')? $avatar=url('/').'/'.$appointment->specialist->user->avatar: $pro=url('/public/uploads/user/default.jpg'):($appointment->user->avatar!='')? $avatar=url('/').'/'.$appointment->user->avatar: $avatar=url('/public/uploads/user/default.jpg');
                 ($user->user_type=='client')?$username=$appointment->specialist->user->username :$username=$appointment->user->username;
                 $a = [];
                 $a['id']=$appointment->id;
