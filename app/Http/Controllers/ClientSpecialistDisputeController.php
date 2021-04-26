@@ -94,9 +94,10 @@ class ClientSpecialistDisputeController extends Controller
      * @param  \App\ClientSpecialistDispute  $clientSpecialistDispute
      * @return \Illuminate\Http\Response
      */
-    public function show(ClientSpecialistDispute $clientSpecialistDispute)
+    public function show($id)
     {
-        //
+        $dispute = ClientSpecialistDispute::where('id',decrypt($id))->first();
+        return view('frontend.client_specialist_dispute_show',compact('dispute'));
     }
 
     /**
@@ -131,5 +132,27 @@ class ClientSpecialistDisputeController extends Controller
     public function destroy(ClientSpecialistDispute $clientSpecialistDispute)
     {
         //
+    }
+
+    public function userDisputeNotifications(){
+        $disputes = ClientSpecialistDispute::where('reciever_id',Auth::user()->id)->where('reciever_seen',0)->get();
+        $arr =[];
+        foreach($disputes as $dispute)
+        {
+            if($dispute->project_type=='appointments')
+            {
+                Auth::user()->user_type=='client'?$dispute->appointment->specialist->user->avatar!=''? $avatar=url('/').'/'.$dispute->appointment->specialist->user->avatar: $pro=url('/public/uploads/user/default.jpg'):$dispute->appointment->user->avatar!=''? $avatar=url('/').'/'.$dispute->appointment->user->avatar: $avatar=url('/public/uploads/user/default.jpg');
+                Auth::user()->user_type=='client'?$username=$dispute->appointment->specialist->user->username :$username=$dispute->appointment->user->username;
+                $a = [];
+                $a['id'] = $dispute->id;
+                $a['url'] = url('/disputes').'/'.$dispute->id;
+                $a['subject']=$dispute->subject;
+                $a['avatar']=$avatar;
+                $a['username'] = $username;
+                $arr[] = $a;
+            }
+        }
+        return response()->json($arr);
+        // return response()->json(['user'=])
     }
 }

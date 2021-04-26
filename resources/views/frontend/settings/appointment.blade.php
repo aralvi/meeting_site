@@ -137,7 +137,7 @@
                                         @if(App\ClientSpecialistDispute::where('project_id',$appointment->id)->first() ==null)
                                             <a href="{{ route('dispute-araise',['project'=>encrypt($appointment->id),'id'=>Auth::user()->user_type=="client"? encrypt($appointment->specialist->user->id):encrypt($appointment->user->id)]) }}?project_type=appointments" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Raise Dispute</a>
                                         @else
-                                            <a href="#" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">View Dispute{{ App\ClientSpecialistDispute::where('project_id',$appointment->id)->first()->id }}</a>    
+                                            <a href="{{ route('disputes.show',encrypt(App\ClientSpecialistDispute::where('project_id',$appointment->id)->first()->id)) }}" target="_blank" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">View Dispute</a>    
                                         @endif
                                     </div>
                                 @endif

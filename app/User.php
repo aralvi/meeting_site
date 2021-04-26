@@ -64,6 +64,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Appointment::class);
     }
+
+    public function reply()
+    {
+        return $this->hasOne(DisputeReply::class,'sender_id','id');
+    }
+
     public function ratings()
     {
         return $this->hasMany(Rating::class);
