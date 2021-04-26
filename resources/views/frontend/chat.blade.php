@@ -613,9 +613,11 @@
                     <video controls class="p-74">
                         <source src="./assets/images/MyVideo4.mp4" type="video/mp4" />
                     </video>
+                    
+                  </div>
                   <form id="form" class="row col-lg-12 col-sm-12 l12 s12 " >
                     <div class="row container col-lg-12 col-sm-12 l12 s12">
-                      <div class="col-md-4 d-none" style="min-width: 433px; max-width: 443px;">
+                      <div class="col-md-4 " style="min-width: 433px; max-width: 443px;">
                         <div class="card" style="margin-top: 0px; margin-bottom: 0px;">
                           <div class="row card-content" style="margin-bottom: 0px;">
                               <div class="input-field">
@@ -712,8 +714,6 @@
                       </div>
                     </div>
                   </form>
-
-                </div>
                 <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
                 <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
             </div>
