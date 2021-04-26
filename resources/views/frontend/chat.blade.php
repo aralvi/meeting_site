@@ -616,9 +616,17 @@
                     
                   </div>
                   
-                  
+                  <!DOCTYPE html>
+                  <html lang="en">
+
+                  <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <title>Basic Communication</title>
                     <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" />
-                 
+                  </head>
+                  <body class="agora-theme">
                     
                     <form id="form" class="row col l12 s12 " >
                       <div class="row container col l12 s12">
@@ -719,7 +727,8 @@
                         </div>
                       </div>
                     </form>
-                  
+                  </body>
+                  </html>
                 <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
                 <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
             </div>
