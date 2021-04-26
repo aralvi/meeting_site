@@ -62,7 +62,7 @@
                     </div>
         
                     <div class="col-md-1 p-0 justify-content-end">
-                        <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
+                        <button type="button" onclick="sendDispute();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
                     </div>
                 </div>
         </div>
