@@ -149,10 +149,7 @@
                   height: 36px;
               
           }
-          ::-webkit-scrollbar {
-            width: 6px;
-                border-radius: 10px;
-        }
+        
         
         .my-custom-btn{
             outline: none !important;
@@ -171,6 +168,10 @@
           background:#D5D5D5;
             border-radius: 10px;
         
+        }
+          ::-webkit-scrollbar {
+            width: 6px;
+                border-radius: 10px;
         }
          
         ::-webkit-scrollbar-thumb {

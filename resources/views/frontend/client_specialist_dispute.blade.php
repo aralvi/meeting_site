@@ -55,14 +55,16 @@
                     placeholder="Enter Comment">{{ old('comment') }}</textarea>
             </div>
 
-            <div style="form-group">
-                <label for="files">Upload Dispute Video/Image </label>
-                <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
-            </div>
-
-            <div class="row justify-content-end">
-                <button type="button" onclick="sendDispute();" class="btn btn-sm bg-3AC574 text-white">Send</button>
-            </div>
+            <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div style="form-group col-md-11 p-0">
+                        <label for="files">Upload Dispute Video/Image </label>
+                        <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
+                    </div>
+        
+                    <div class="col-md-1 p-0 justify-content-end">
+                        <button type="button" onclick="sendDispute();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
+                    </div>
+                </div>
         </div>
     </form>
 @endsection {{-- content section end --}} 
