@@ -3,7 +3,7 @@
 if(Auth::user()->user_type == 'specialist')
     $channel = Auth::user()->username."_".$_GET['name'];
 elseif (Auth::user()->user_type == 'client')
-$channel = $_GET['name']."_".Auth::user()->username;
+    $channel = $_GET['name']."_".Auth::user()->username;
 $appID = "229e3bdfe52e432b86e27f442b1cf04a";
 $appCertificate = "8731cf7600124d0a8166b9b50d0bb018";
 $channelName = $channel;
