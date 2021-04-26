@@ -67,7 +67,7 @@ class DisputeReplyController extends Controller
             $file_type ='';
             $file_link = '';
         }
-        Auth::user()->user_type=='client'?$user_type='client':$user_type='specialist';
+        (Auth::user()->user_type=='client')?$user_type='client':$user_type='specialist';
         $dispute = new DisputeReply();
         $dispute->dispute_id = $request->dispute_id;
         $dispute->user_type = $user_type;
