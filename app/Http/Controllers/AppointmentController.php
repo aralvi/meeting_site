@@ -180,8 +180,20 @@ class AppointmentController extends Controller
         foreach($appointments as $appointment)
         {
             if($appointment->status=="Approved" || $appointment->status=="Cancelled"){
-
-                ($user->user_type=='client')? ($appointment->specialist->user->avatar!='') ? $avatar=url('/').'/'.$appointment->specialist->user->avatar: $pro=url('/public/uploads/user/default.jpg') : ($appointment->user->avatar!='') ? $avatar=url('/').'/'.$appointment->user->avatar : $avatar=url('/public/uploads/user/default.jpg');
+                if($user->user_type=='client'){
+                    if($appointment->specialist->user->avatar!=''){
+                        $avatar=url('/').'/'.$appointment->specialist->user->avatar;
+                    }else{
+                        $pro=url('/public/uploads/user/default.jpg');
+                    }
+                }else{
+                    if($appointment->user->avatar!=''){
+                        $avatar=url('/').'/'.$appointment->user->avatar;
+                    }else{
+                        $avatar=url('/public/uploads/user/default.jpg');
+                    }
+                }
+                // ($user->user_type=='client')? ($appointment->specialist->user->avatar!='') ? $avatar=url('/').'/'.$appointment->specialist->user->avatar: $pro=url('/public/uploads/user/default.jpg') : ($appointment->user->avatar!='') ? $avatar=url('/').'/'.$appointment->user->avatar : $avatar=url('/public/uploads/user/default.jpg');
                 ($user->user_type=='client')?$username=$appointment->specialist->user->username :$username=$appointment->user->username;
                 $a = [];
                 $a['id']=$appointment->id;
