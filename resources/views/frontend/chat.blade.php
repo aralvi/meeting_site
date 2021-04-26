@@ -656,7 +656,7 @@
                                     </div>
                                     <div class="collapsible-body card-content">
                                       <div class="row">
-                                        <div class="col s12">
+                                        <div class="col-sm-12 s12">
                                           <div class="input-field">
                                             <label for="UID" class="active">UID</label>
                                             <input type="number" placeholder="UID" name="uid">
@@ -673,7 +673,7 @@
                                             <label for="cameraResolution" class="active">CAMERA RESOLUTION</label>
                                             <select name="cameraResolution" id="cameraResolution"></select>
                                           </div>
-                                          <div class="row col s12">
+                                          <div class="row col-sm-12 s12">
                                             <div class="row">
                                               <label for="mode" class="active">MODE</label>
                                             </div>
@@ -689,7 +689,7 @@
                                               </label>
                                             </div>
                                           </div>
-                                          <div class="row col s12">
+                                          <div class="row col-sm-12 s12">
                                             <div class="row">
                                               <label for="codec" class="active">CODEC</label>
                                             </div>
