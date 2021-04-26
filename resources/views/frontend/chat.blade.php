@@ -615,7 +615,19 @@
                     </video>
                     
                   </div>
-                   <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" />
+                  
+                <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
+                <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary bg-3ac574" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" />
                   <form id="form" class="row col-lg-12 col-sm-12 l12 s12 " >
                     <div class="row container col-lg-12 col-sm-12 l12 s12">
                       <div class="col-md-4 " style="min-width: 433px; max-width: 443px;">
@@ -715,18 +727,6 @@
                       </div>
                     </div>
                   </form>
-                <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
-                <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary bg-3ac574" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 @endsection
 
 @section('extra-script')
