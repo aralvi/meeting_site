@@ -86,9 +86,25 @@
           .h-85{
                   height: 85px;
           }
+          .modal-header .close {
+              padding-top:12px i !important;
+    /* padding: 0.5rem !important; */
+    /* margin: -1rem -1rem -1rem auto; */
+}
+                .embed-responsive-21by9::before {
+            padding-top: 32px !important;
+                }
           .smallProfile {
             width: 40px;
             height: 38px;
+          }
+          #video-chat {
+                background-color: #38be70;
+        border: 0px;
+        padding: 5px;
+        border: 1px solid #38be70;
+        border-radius: 3px;
+        color: #fff !IMPORTANT;
           }
         
           .parent {
@@ -602,7 +618,7 @@
         <div class="modal-content">
             <div class="modal-header pl-5 pr-5 bg-3ac574 cl-ffffff p-3">
                 <h5 class="modal-title pl-4" id="exampleModalLabel">Waiting Room</h5>
-                <button type="button" class="close cl-ffffff opacity-1 end-call" data-dismiss="modal" aria-label="Close">
+                <button type="button" class=" cl-ffffff opacity-1 border-0 bg-transparent end-call" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="cl-ffffff f-35 mr-3">&times;</span>
                 </button>
             </div>
