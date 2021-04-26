@@ -602,7 +602,7 @@
         <div class="modal-content">
             <div class="modal-header pl-5 pr-5 bg-3ac574 cl-ffffff p-3">
                 <h5 class="modal-title pl-4" id="exampleModalLabel">Waiting Room</h5>
-                <button type="button" class="close cl-ffffff opacity-1" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close cl-ffffff opacity-1 end-call" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="cl-ffffff f-35 mr-3">&times;</span>
                 </button>
             </div>
@@ -730,7 +730,7 @@
                 <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary bg-3ac574" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary bg-3ac574 end-call" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -1401,6 +1401,10 @@
   <script src="{{ asset('assets/frontend/js/video-js/materialize.min.js') }}"></script>
   <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
 <script>
+
+  $('.end-call').on('click',function(){
+    $('#leave').click();
+  })
   $('#video-chat').on('click', function() {
     var username = $(this).data('caller');
     $.ajax({
