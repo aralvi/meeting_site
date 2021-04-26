@@ -610,7 +610,6 @@
                 <div class="f-45 robotoMedium cl-3ac754">Thank you for joining.</div>
                 <div class="f-24 cl-616161">Meeting ID : 121545456484</div>
                 <div class="embed-responsive embed-responsive-21by9">
-                    <video controls class="p-74">
                         <!DOCTYPE html>
                         <html lang="en">
       
@@ -724,7 +723,6 @@
                           </form>
                         </body>
                         </html>
-                    </video>
                     
                   </div>
                   
