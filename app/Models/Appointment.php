@@ -7,6 +7,7 @@ use App\Models\Specialists\Service;
 use App\Specialist;
 use App\User;
 use App\Rating;
+use App\ClientSpecialistDispute;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,10 +29,17 @@ class Appointment extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
     public function rating()
     {
         return $this->hasOne(Rating::class);
     }
+
+    public function dispute()
+    {
+        return $this->hasOne(ClientSpecialistDispute::class,'project_id','id');
+    }
+
     public function getStatusAttribute($attribute)
     {
         return [
