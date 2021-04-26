@@ -8,10 +8,14 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
 
-        ::-webkit-scrollbar-track {
+            ::-webkit-scrollbar-track {
           background:#D5D5D5;
             border-radius: 10px;
         
+        }
+          ::-webkit-scrollbar {
+            width: 6px;
+                border-radius: 10px;
         }
          
         ::-webkit-scrollbar-thumb {
@@ -21,6 +25,7 @@
             height:100px;
         
         }
+        
      .dropdown-toggle::after {
         display: none;
     }
@@ -111,6 +116,19 @@
           text-decoration: none;
           cursor: pointer;
         }
+        .p-20{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .f-21{
+            font-size: 21px;
+        }
+        .cl-575757{
+            color: #575757
+        }
+        .cl-a8a8a8{
+            color: #A8A8A8;
+        }
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} 
 @section('navbar')
@@ -120,14 +138,14 @@
 @endsection
 @section('content')
     <p class="border-bottom pl-3 f-21 cl-616161">Dispute</p>            
-    <section class="p-100">
+    <section class="p-20">
         <div class="row pt-3 pb-3  box_shadow1 ml-0 mr-0 borderRadius-10px justify-content-around">
 
             <!-- 2 -->
             <div class="col-md-12 col-lg-12 d-flex justify-content-center align-items-start flex-column">
-                <p class=" ml-2">{{ $dispute->subject }}</p>
-                <div class="d-flex ml-4">
-                    <div class="f-18 d-flex align-items-center cl-000000 robotoRegular">
+                <p class="pl-4 f-21 cl-575757 mb-1">{{ $dispute->subject }}</p>
+                <div class="d-flex pl-4 cl-a8a8a8  ">
+                    <div class=" d-flex align-items-center  robotoRegular">
                         {{ $dispute->comment }}
                     </div>
                 </div>
@@ -157,11 +175,11 @@
 
     </section>
 
-    <section class="p-100 mt-3" style="height: 400px; overflow-y:scroll;" id="disputeReplies">
+    <section class="p-20 mt-3" style="height: 400px; overflow-y:scroll;" id="disputeReplies">
         
     </section>
 
-    <section class="p-100 mt-3 mb-2">
+    <section class="p-20 mt-3 mb-2">
         <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
             @csrf
            <input type="hidden" name="dispute_id" value="{{ $dispute->id }}">
@@ -172,13 +190,15 @@
                         placeholder="Enter reply">{{ old('reply') }}</textarea>
                 </div>
     
-                <div style="form-group">
-                    <label for="files">Upload Dispute Video/Image </label>
-                    <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
-                </div>
-    
-                <div class="row justify-content-end">
-                    <button type="button" onclick="sendDisputeReply();" class="btn btn-sm bg-3AC574 text-white">Send</button>
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div style="form-group col-md-11 p-0">
+                        <label for="files">Upload Dispute Video/Image </label>
+                        <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
+                    </div>
+        
+                    <div class="col-md-1 p-0 justify-content-end">
+                        <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -205,6 +225,7 @@
             });
         }
         getAllReplies();
+        // setInterval(getAllReplies,2000);
         var modal = document.getElementById("myModal");
         function imagePopUp(e){
             var modalImg = document.getElementById("img01");
@@ -252,11 +273,16 @@
                 {
                     if (data.success == true) 
                     {
-                        swal('success', data.message, 'success')
-                            .then((value) => {
-                                getAllReplies();
-                                // window.location ='';
-                            });
+                        getAllReplies();
+                        $('#reply').val('');
+                        $('#files').val('');
+                        // swal('success', data.message, 'success')
+                        //     .then((value) => {
+                        //         getAllReplies();
+                        //         $('#reply').val('');
+                        //         $('#files').val('');
+                        //         // window.location ='';
+                        //     });
                     } else {
                         if (data.hasOwnProperty('message')) {
                             var wrapper = document.createElement('div');
@@ -281,6 +307,15 @@
             });
 
 	    }
+
+        $(document).on('keypress',function(e) {
+			if(e.which == 13 && !e.shiftKey) {
+				e.preventDefault();
+				if($('#reply').val() !=""){
+                    sendDisputeReply();
+                }
+			}
+		});
     </script>
 
 @endsection
