@@ -99,12 +99,7 @@
             height: 38px;
           }
           #video-chat {
-                background-color: #38be70;
-        border: 0px;
-        padding: 5px;
-        border: 1px solid #38be70;
-        border-radius: 3px;
-        color: #fff !IMPORTANT;
+                cursor: pointer;
           }
         
           .parent {
@@ -549,7 +544,7 @@
 
                                            </div></div>
                                 <div class="pl-2">
-                                    <div>{{ ucwords($user->username) }} <button id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}">video call</button> </div>
+                                    <div>{{ ucwords($user->username) }} <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" class=" img-fluid h-40" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}"></div>
                                     <div class="d-flex">
                                         <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login >time()) active @else Last seen {{ Carbon\Carbon::parse(intval($user->last_login))->diffForHumans() }} @endif</div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
@@ -1418,9 +1413,30 @@
   <script src="{{ asset('assets/frontend/js/video-js/materialize.min.js') }}"></script>
   <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
 <script>
+$(document).ready(function(){
+     setInterval(function(){ 
+      var username = $('#video-chat').data('caller');
+    $.ajax({
+        type: 'get',
+        url: '{{ url("call-checker") }}',
+        data: { name: username },
+        success: function(data) {
 
+        }
+    })
+     }, 3000);
+})
   $('.end-call').on('click',function(){
     $('#leave').click();
+     var username = $('#video-chat').data('caller');
+    $.ajax({
+        type: 'post',
+        url: '{{ url("call-end") }}',
+        data: {_token:'{{ csrf_token() }}', name: username },
+        success: function(data) {
+
+        }
+    })
   })
   $('#video-chat').on('click', function() {
     var username = $(this).data('caller');
@@ -1436,6 +1452,10 @@
         }
     })
 })
+
+
+ 
+
 
 console.log("agora sdk version: " + AgoraRTC.VERSION + " compatible: " + AgoraRTC.checkSystemRequirements());
 var resolutions = [{

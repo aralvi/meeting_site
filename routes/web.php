@@ -96,6 +96,8 @@ Route::group(['middleware'=>['auth']],function(){
 Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::view('video', 'video');
     Route::view('test-token', 'php/sample/RtcTokenBuilderSample');
+    Route::get('call-checker', 'FirebaseController@callChecker');
+    Route::post('call-end', 'FirebaseController@callEnd');
     Route::resource('bids', 'Specialist\BidController');
     Route::post('bid-work-status', 'Specialist\BidController@changeWorkStatus')->name('bid_work_status');
     Route::resource('appointments', 'AppointmentController');
