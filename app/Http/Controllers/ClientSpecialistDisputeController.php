@@ -90,7 +90,7 @@ class ClientSpecialistDisputeController extends Controller
         {
             $user = User::find($dispute->reciever_id);
             Mail::to($user->email)->send(new ClientSpecialistDisputeMail());
-            Mail::from($user->email)->to(config('app.mail_from'))->send(new DisputeAdminMail());
+            Mail::to(config('app.mail_from'))->send(new DisputeAdminMail());
             return response()->json(['success' => true, 'message' =>"Your dispute has been added successfully"]);
         }
         
