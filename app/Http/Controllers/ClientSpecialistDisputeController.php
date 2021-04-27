@@ -6,6 +6,10 @@ use App\ClientSpecialistDispute;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DisputeAdminMail;
+use App\Mail\ClientSpecialistDisputeMail;
+
 class ClientSpecialistDisputeController extends Controller
 {
     /**
@@ -84,6 +88,9 @@ class ClientSpecialistDisputeController extends Controller
         $dispute->response_time = time() + (2*86400);
         if($dispute->save())
         {
+            $user = User::find($dispute->reciever_id);
+            Mail::to($user->email)->send(new ClientSpecialistDisputeMail());
+            Mail::from($user->email)->to(config('app.mail_from'))->send(new DisputeAdminMail());
             return response()->json(['success' => true, 'message' =>"Your dispute has been added successfully"]);
         }
         
