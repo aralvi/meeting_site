@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use Illuminate\Http\Request;
 
 use Kreait\Firebase;
@@ -12,6 +13,7 @@ use App\Chat;
 use App\User;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class FirebaseController extends Controller
 {
@@ -207,5 +209,34 @@ class FirebaseController extends Controller
             $arr[] = $a;
         }
         return response()->json($arr);
+    }
+
+
+    public function callChecker(Request $request)
+    {
+        if (Auth::user()->user_type == 'specialist')
+        $channel = Auth::user()->username . "_" . $request->name;
+        elseif (Auth::user()->user_type == 'client')
+        $channel = $request->name . "_" . Auth::user()->username;
+
+        if(Channel::where('channel',$channel)->exists()){
+            $channel = Channel::where('channel', $channel)->first();
+            if($channel->status == 2){
+                return 'success';
+            }
+        }
+    }
+    public function callEnd(Request $request)
+    {
+        if (Auth::user()->user_type == 'specialist')
+        $channel = Auth::user()->username . "_" . $request->name;
+        elseif (Auth::user()->user_type == 'client')
+        $channel = $request->name . "_" . Auth::user()->username;
+
+        if (Channel::where('channel', $channel)->exists()) {
+            $channel = DB::table('channels')->where('channel', $channel)->update(['status'=>'0']);
+            
+            return 'call ended';
+        }
     }
 }
