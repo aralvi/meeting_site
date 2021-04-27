@@ -15,4 +15,8 @@ class ClientSpecialistDispute extends Model
     {
         return $this->hasMany(DisputeReply::class,'dispute_id','id');	
     }
+
+    public function sender(){
+        return $this->belongsTo(User::class,'sender_id','id');
+    }
 }

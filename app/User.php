@@ -74,5 +74,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rating::class);
     }
+
+    public function dispute(){
+        return $this->hasOne(ClientSpecialistDispute::class,'sender_id','id');
+    }
      
 }

@@ -43,7 +43,8 @@
             @php $tz = Auth::user()->user_type=='specialist' ? $appointment->specialist->user->time_zone : $appointment->user->time_zone @endphp
             <tr class="border-0">
                 <td class=" border-0">
-                    <section class="p-100">
+                    {{-- <section class="p-100"> --}}
+                    <section>
                         <div class="row pt-3 pb-3  box_shadow1 ml-0 mr-0 borderRadius-10px justify-content-around">
                             <div class="text-center">
                                 <p class="robotoRegular cl-515151 f-13 m-0">
@@ -132,7 +133,7 @@
                                     @endif 
                                 @endif
 
-                                @if ($appointment->status != "Cancelled")
+                                @if ($appointment->status != "Cancelled" && $appointment->payment_status == "Paid")
                                     <div class="pt-3">
                                         @if(App\ClientSpecialistDispute::where('project_id',$appointment->id)->first() ==null)
                                             <a href="{{ route('dispute-araise',['project'=>encrypt($appointment->id),'id'=>Auth::user()->user_type=="client"? encrypt($appointment->specialist->user->id):encrypt($appointment->user->id)]) }}?project_type=appointments" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Raise Dispute</a>

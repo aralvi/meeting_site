@@ -47,6 +47,8 @@ Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
     Route::post('/client/postings/{id}', 'ServiceRequestController@adminClientPostingUpdate')->name('admin.client.posting.update');
     Route::resource('/subcategories', 'Admin\SubCategoryController');
     Route::get('/password', 'ProfileController@password');
+    Route::get('/disputes','ClientSpecialistDisputeController@index')->name('admin.disputes');
+    Route::get('admin/user/disputes/notifications','ClientSpecialistDisputeController@adminUserDisputeNotifications')->name('admin.user.dispute.notification');
     //    Route::get('users','AdminController@users');
     //    Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
 });
@@ -63,7 +65,6 @@ Route::group(['middleware'=>['auth','specialistcheck','checkuserstatus']],functi
 });
 
 Route::group(['middleware'=>['auth']],function(){
-    
     Route::get('search', 'HomeController@search')->name('search');
     Route::get('category_specialists/{id}', 'HomeController@category_specialists')->name('category_specialists');
     Route::get('user/appointment/notification','AppointmentController@userAppointmentNotification')->name('user.appointment.notification');
@@ -109,6 +110,7 @@ Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::resource('disputes-replies','DisputeReplyController');
     Route::get('dispute/replies','DisputeReplyController@replies')->name('get.all.dispute.replies');
     Route::get('user/disputes/notifications','ClientSpecialistDisputeController@userDisputeNotifications')->name('user.dispute.notification');
+    Route::get('update/dispute/seen/status','ClientSpecialistDisputeController@updateDisputeSeenStatus')->name('update.dispute.seen.status');
 });
 
 Route::middleware(['auth'])->group(function(){
