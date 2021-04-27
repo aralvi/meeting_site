@@ -222,7 +222,7 @@ class FirebaseController extends Controller
         if(Channel::where('channel',$channel)->exists()){
             $channel = Channel::where('channel', $channel)->first();
             if($channel->status == 2){
-                return 'success';
+                return response()->json(['status'=>'success','caller'=>$channel->caller]);
             }
         }
     }
