@@ -442,7 +442,7 @@
     </section>
 
     @include('includes.frontend.navigations')
-
+<div class="d-none calling-div" ><button class="end-call" onclick="endCall()">end call</button><button class="" onclick="makeCall()" data-toggle="modal" data-target="#video-call-modal">accept call </button></div>
 	<div class="wrapper">
         <input type="hidden" id="sender" value="{{ Auth::user()->id }}">
         <input type="hidden" id="reciever" value="{{ $id }}">
@@ -544,7 +544,7 @@
 
                                            </div></div>
                                 <div class="pl-2">
-                                    <div>{{ ucwords($user->username) }} <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" class=" img-fluid h-40" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}"></div>
+                                    <div>{{ ucwords($user->username) }} <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}"></div>
                                     <div class="d-flex">
                                         <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login >time()) active @else Last seen {{ Carbon\Carbon::parse(intval($user->last_login))->diffForHumans() }} @endif</div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
@@ -614,7 +614,7 @@
         <div class="modal-content">
             <div class="modal-header pl-5 pr-5 bg-3ac574 cl-ffffff p-3">
                 <h5 class="modal-title pl-4" id="exampleModalLabel">Waiting Room</h5>
-                <button type="button" class=" cl-ffffff opacity-1 border-0 bg-transparent end-call" data-dismiss="modal" aria-label="Close">
+                <button type="button" class=" cl-ffffff opacity-1 border-0 bg-transparent end-call" onclick="endCall()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="cl-ffffff f-35 mr-3">&times;</span>
                 </button>
             </div>
@@ -742,7 +742,7 @@
                 <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary bg-3ac574 end-call" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary bg-3ac574 end-call" data-dismiss="modal" onclick="endCall()">End Call</button>
             </div>
         </div>
     </div>
@@ -1415,18 +1415,23 @@
 <script>
 $(document).ready(function(){
      setInterval(function(){ 
+         
       var username = $('#video-chat').data('caller');
     $.ajax({
         type: 'get',
         url: '{{ url("call-checker") }}',
         data: { name: username },
         success: function(data) {
+            if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' )
+             $('.calling-div').removeClass('d-none');
 
         }
     })
      }, 3000);
 })
-  $('.end-call').on('click',function(){
+
+
+function endCall(){
     $('#leave').click();
      var username = $('#video-chat').data('caller');
     $.ajax({
@@ -1434,12 +1439,12 @@ $(document).ready(function(){
         url: '{{ url("call-end") }}',
         data: {_token:'{{ csrf_token() }}', name: username },
         success: function(data) {
-
+            $('.calling-div').addClass('d-none');
         }
     })
-  })
-  $('#video-chat').on('click', function() {
-    var username = $(this).data('caller');
+}
+  function makeCall(){
+    var username = $('#video-chat').data('caller');
     $.ajax({
         type: 'get',
         url: '{{ url("test-token") }}',
@@ -1449,9 +1454,10 @@ $(document).ready(function(){
             $('#token').val(JSON.parse(data).token);
             $('#channelName').val(JSON.parse(data).channel);
             $('#join').click();
+            $('.calling-div').addClass('d-none');
         }
     })
-})
+  }
 
 
  
