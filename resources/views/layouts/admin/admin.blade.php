@@ -40,6 +40,7 @@
 
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link {{ Request::is('dashboard/profile') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard') }}" >Profile</a>
+                <a class="nav-link {{ Request::is('dashboard/disputes') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/disputes') }}" >Disputes</a>
                 <a class="nav-link {{ Request::is('dashboard/categories') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/categories') }}" >Categories</a>
                 <a class="nav-link {{ Request::is('dashboard/subcategories') || Request::is('dashboard/subcategories/create') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/subcategories') }}" >Sub Categories</a>
                 <a class="nav-link {{ Request::is('dashboard/users') ? 'active' : ''  }} cl-000000"  href="{{ url('/dashboard/users') }}" >Users</a>
@@ -98,7 +99,7 @@
         <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
         <script src="{{ asset('assets/admin/dist/js/custome.js') }}"></script>
 <script>
-      function readURL(input) {
+    function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -109,6 +110,59 @@
         }
     }
     
+    @if(Auth::check())
+            setInterval(function(){
+                $.ajax({
+                    url:"{{ route('admin.user.dispute.notification') }}",
+                    type:"get",
+                    success:function(data){
+                        var html ='';
+                        // if(data.length>0){ $('.messageDropdown').children('span').addClass('green-dot'); }else{$('.messageDropdown').children('span').removeClass('green-dot');}
+                        data.map(v=>{
+                            var element = document.getElementById("dispute"+v.id);
+                            if(typeof(element) == 'object' && element == null){
+                                 html += '<a class="dropdown-item d-flex row m-0 pt-2"  id="dispute'+v.id+'" href="'+v.url+'">';
+                                    html+='<div class="col-md-2 p-0">';
+                                        html +='<img src="'+v.avatar+'" alt="miss" class="img-fluid">';
+                                    html+='</div>';
+                                    html+='<div class="col-md-9 pl-2 pt-1 p-0">';
+                                        html+='<div class="row m-0"><div class="dropdown-heading">'+v.username[0].toUpperCase() + v.username.slice(1)+'</div></div>';
+                                        html+='<div class="row m-0"><div class="dropdown-contnt">'+v.subject+'</div></div>';
+                                    html+='</div>';
+                                html+="</a>";
+                            } 
+                        });
+                        
+                        $('#nav-profile').append(html);
+                    }
+                });
+
+            },1000);
+
+            window.onload = function() {
+                $.ajax({
+                    url:"{{ route('chat.user.update',Auth::user()->id) }}",
+                    type:"get",
+                    success:function(data)
+                    {
+                        console.log(data);
+                    }
+                });
+            }
+
+            setInterval(function(){
+                $.ajax({
+                    url:"{{ route('chat.user.update',Auth::user()->id) }}",
+                    type:"get",
+                    success:function(data)
+                    {
+                        console.log(data);
+                    }
+                });
+            },10000);
+
+        @endif
+
 </script>
         <script>
             $(function () {

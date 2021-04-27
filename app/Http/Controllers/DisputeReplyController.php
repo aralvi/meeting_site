@@ -69,6 +69,13 @@ class DisputeReplyController extends Controller
         }
         (Auth::user()->user_type=='client')?$user_type='client':$user_type='specialist';
         $dispute = new DisputeReply();
+        if(Auth::user()->user_type!='admin')
+        {
+            $disp = ClientSpecialistDispute::find($request->dispute_id);
+            $disp->response_time = time() + (2*86400);
+            $disp->save();
+        }
+        
         $dispute->dispute_id = $request->dispute_id;
         $dispute->user_type = $user_type;
         $dispute->sender_id=Auth::user()->id;
@@ -129,7 +136,8 @@ class DisputeReplyController extends Controller
 
     public function replies(Request $request){
         $dispute=ClientSpecialistDispute::where('id',$request->dispute)->first();
-        $replies = $dispute->replies()->where('sender_id',$request->sender)->orWhere('reciever_id',$request->sender)->get();
+        // $replies = $dispute->replies()->where('sender_id',$request->sender)->orWhere('reciever_id',$request->sender)->get();
+        $replies = $dispute->replies;
         return response()->json(['html'=>view('partials.frontend.dispute_replies',compact('replies'))->render()]);
     }
 }

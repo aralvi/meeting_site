@@ -38,9 +38,9 @@
 @section('content')
 
 
-    <p class="border-bottom pl-3 f-21 cl-616161">Service Requests</p>
+    <p class="border-bottom pl-3 f-21 cl-616161">Edit Your Personal Settings</p>
 
-    {{-- <p class="pl-3 f-21 cl-000000">Service Requests</p> --}}
+    <p class="pl-3 f-21 cl-000000">Disputes</p>
     @include('common.messages')
     <div class="table-responsive UserTableData" id="UserTableData">
         {{-- <button title="Click to Add Service" data-toggle="modal" data-target="#addUserModal"
@@ -55,38 +55,47 @@
                 <tr class="text-uppercase">
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Sub Categories</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Budget</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Comment</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @if($postings->count()>0)
-                    @foreach($postings as $key => $request)
-                        <tr id="target_{{ $request->id }}">
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ ucwords($request->user->username) }}</td>
-                            <td>{{ ucwords($request->title) }}</td>
-                            <td>{{ ucwords($request->category->name) }}</td>
-                            @php
-                                $subcategories = App\SubCategory::whereIn('id',json_decode($request->subcategories))->get()->pluck('name')->toArray();
-                            @endphp 
-                            <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
-                            <td>{{ Str::limit($request->description,50,".....") }}</td>
-                            <td>$ {{ $request->budget }}</td>
-                            <td class="text-capitalize"> <span class="badge badge-sm {{ ($request->status == 'active')? 'badge-success':'badge-danger' }} badge-{{ $request->id }}">{{ $request->status}}</span></td>
-                            <td style="min-width: 135px !important;">
-                                <button class="btn {{ ($request->status== 'active')? 'btn-danger':'btn-success' }}  btn-sm change_status" data-status="{{ ($request->status == 'active')? 'inactive':'active' }}" data-msg="Do you want to {{ ($request->status== 'active')? 'in active ':'active' }} ?" data-user="{{ $request->id }}" data-status="{{ ($request->status == 'active')? 'inactive':'active' }}">{{ ($request->status == 'active')? 'Inactive':'Activate' }}</button>
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
+                @foreach($disputes as $key => $dispute)
+                    <tr >          
+                        <td>{{ $key+1 }}</td>
+                        <td class="text-capitalize">{{ $dispute->sender->username }}</td>
+                        <td>{{ $dispute->subject }}</td>
+                        <td>{{ Str::limit($dispute->comment,50,'...') }}</td>
+                        <td style="min-width: 135px !important;">
+                            <a class="btn btn-sm  btn-success" target="_blank" href="{{ route('disputes.show',encrypt($dispute->id)) }}">View</a>
+                            {{-- <button class="btn {{ ($dispute->status== 'active')? 'btn-danger':'btn-success' }}  btn-sm change_status" data-msg="Do you want to {{ ($user->status== 'active')? 'in active '.$user->username:'active '.$user->username }} ?" data-user="{{ $user->id }}" data-status="{{ ($user->status == 'active')? 'inactive':'active' }}">{{ ($user->status == 'active')? 'Inactive':'Activate' }}</button> --}}
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
+    </div>
+
+    <!-- Modal For Deleting User-->
+    <div class="modal fade deleteUserModal" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelUserdelete" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelUserdelete" style="font-size: 18px !important;">Delete Confirmation !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure, you want to delete this User?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">No, Cancel</button>
+                    <button type="button" class="btn btn-md bg-3AC574 text-white deleteUserBtn" id="deleteUserBtn">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection 
 
@@ -96,8 +105,28 @@
         var user = $(this);
         var user_id = $(this).data('user');
         var badge = $('.badge-'+user_id);
+        
         var msg = $(this).data('msg');
         var status = $(this).attr('data-status');
+        // swal({
+        //     title: "Are you sure?",
+        //     text: "But you will still be able to retrieve this file.",
+        //     type: "warning",
+        //     showCancelButton: true,
+        //     confirmButtonColor: "#DD6B55",
+        //     confirmButtonText: "Yes, archive it!",
+        //     cancelButtonText: "No, cancel please!",
+        //     closeOnConfirm: false,
+        //     closeOnCancel: false
+        //     },
+        //     function(isConfirm){
+        //         if (isConfirm) {
+        //             console.log("success");
+        //         } else {
+        //             console.log("error");
+        //         }
+        // });
+
         swal({
             title: "Are you sure?",
             text: msg,
@@ -111,8 +140,14 @@
                 {
                     $.ajax({
                         type: 'post',
-                        url: "{{ url('dashboard/client/postings') }}"+"/"+user_id,
-                        data: {_token: '{{ csrf_token() }}',status:status},
+                        url: "{{ url('dashboard/users/') }}"+"/"+user_id,
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            user_id: user_id,
+                            status:status,
+                           _method:" put"
+                        
+                        },
                         beforeSend:function(){
                             $(".user-loader").removeClass('d-none');
                         },
@@ -120,22 +155,26 @@
                             $(".user-loader").addClass('d-none');
                             if(data == 'active'){
                                 $('.badge-'+user_id).removeClass('badge-danger').addClass('badge-success').text('active');
-                                user.removeClass('btn-success').addClass('btn-danger').attr('data-msg',"Do you want to in active ?");
+                                // $('.badge-'+user_id).addClass('badge-success');
+                                // $('.badge-'+user_id).text('active');
+                                user.removeClass('btn-success').addClass('btn-danger');
                                 user.text('Inactive')
                                 user.attr('data-status','inactive')
                                 swal({
                                     icon: "success",
-                                    text: "{{ __('Service Request Activated Successfully') }}",
+                                    text: "{{ __('User Activated Successfully') }}",
                                     icon: 'success'
                                 });
                             }if(data == 'inactive'){
                                 $('.badge-'+user_id).removeClass('badge-success').addClass('badge-danger').text('inactive');
+                                // $('.badge-'+user_id).addClass('badge-danger');
+                                // $('.badge-'+user_id).text('inactive');
                                 user.attr('data-status','active')
-                                user.removeClass('btn-danger').addClass('btn-success').attr('data-msg',"Do you want to active ?");
+                                user.removeClass('btn-danger').addClass('btn-success');
                                 user.text('Activate')
                                 swal({
                                     icon: "success",
-                                    text: "{{ __('Service Request  In-Activated Successfully') }}",
+                                    text: "{{ __('User In-Activated Successfully') }}",
                                     icon: 'success'
                                 });
 

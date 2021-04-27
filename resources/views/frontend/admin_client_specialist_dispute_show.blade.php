@@ -133,13 +133,7 @@
 @endsection {{-- head end --}} {{-- content section start --}} 
 @section('navbar')
     
-<section class="px-5 pt-2 pb-2 nav-bg-img robotoRegular">
-    @if(Auth::user()->user_type!='admin')
-        @include('includes.frontend.navbar')
-    @else
-        @include('includes.frontend.admin_navbar')
-    @endif
-</section>
+<section class="px-5 pt-2 pb-2 nav-bg-img robotoRegular">@include('includes.frontend.navbar')</section>
 @include('includes.frontend.navigations')
 @endsection
 @section('content')
@@ -184,71 +178,32 @@
     <section class="p-20 mt-3" style="height: 400px; overflow-y:scroll;" id="disputeReplies">
         
     </section>
-    
-    @if($dispute->response_time>time() && Auth::user()->user_type!='admin')
-        <section class="p-20 mt-3 mb-2">
-            <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
-                @csrf
-            <input type="hidden" name="dispute_id" value="{{ $dispute->id }}">
-                <div class="px-5">
-                    <div class="form-group">
-                        <label for="reply">Reply*</label>
-                        <textarea id="reply" name="reply" class="form-control"
-                            placeholder="Enter reply">{{ old('reply') }}</textarea>
-                    </div>
-        
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <div style="form-group col-md-11 p-0">
-                            <label for="files">Upload Dispute Video/Image </label>
-                            <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
-                        </div>
-            
-                        <div class="col-md-1 p-0 justify-content-end">
-                            <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </section>
-    @elseif($dispute->response_time>time() || $dispute->response_time<=time() && Auth::user()->user_type=='admin')
-        <section class="p-20 mt-3">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                Dispute has been closed out.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </section>
 
-        <section class="p-20 mt-3 mb-2">
-            <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
-                @csrf
-            <input type="hidden" name="dispute_id" value="{{ $dispute->id }}">
-                <div class="px-5">
-                    <div class="form-group">
-                        <label for="reply">Reply*</label>
-                        <textarea id="reply" name="reply" class="form-control"
-                            placeholder="Enter reply">{{ old('reply') }}</textarea>
+    <section class="p-20 mt-3 mb-2">
+        <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
+            @csrf
+           <input type="hidden" name="dispute_id" value="{{ $dispute->id }}">
+            <div class="px-5">
+                <div class="form-group">
+                    <label for="reply">Reply*</label>
+                    <textarea id="reply" name="reply" class="form-control"
+                        placeholder="Enter reply">{{ old('reply') }}</textarea>
+                </div>
+    
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div style="form-group col-md-11 p-0">
+                        <label for="files">Upload Dispute Video/Image </label>
+                        <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
                     </div>
         
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <div style="form-group col-md-11 p-0">
-                            <label for="files">Upload Dispute Video/Image </label>
-                            <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
-                        </div>
-            
-                        <div class="col-md-1 p-0 justify-content-end">
-                            <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
-                        </div>
+                    <div class="col-md-1 p-0 justify-content-end">
+                        <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
                     </div>
                 </div>
-            </form>
-        </section>
-    @else
-        <section class="p-20 mt-3">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">Dispute has been closed out.</div>
-        </section>
-    @endif
+            </div>
+        </form>
+    </section>
+    
 
 @endsection {{-- content section end --}} 
 
@@ -257,6 +212,7 @@
     <script>
         var sender =  '{{ Auth::user()->id }}';
         var dispute =  '{{ $dispute->id }}';
+        console.log(sender+" : "+dispute);
         function getAllReplies(){
             $.ajax({
                 url:"{{ route('get.all.dispute.replies') }}",
@@ -268,6 +224,7 @@
                 }
             });
         }
+        getAllReplies();
 
         function updateDisputeSeenStatus(){
             $.ajax({
@@ -280,32 +237,7 @@
                 }
             });
         }
-
-        function updateDisputeStatus(){
-            var fd = new FormData();
-            fd.append("_token","{{ csrf_token() }}");
-            fd.append('_method',"PUT");
-            var c_url = '{{ route("disputes.update", ":id") }}';
-            c_url = c_url.replace(':id',dispute);
-            $.ajax({
-                url:c_url,
-                type:"post",
-    			processData: false, 
-    			contentType: false,
-                data:fd,
-                success:function(data){
-                    console.log(data);
-                }
-            });
-        }
-
-        updateDisputeStatus();
-        getAllReplies();
-        updateDisputeSeenStatus();
-        setInterval(function(){
-            getAllReplies();
-            updateDisputeStatus();
-        },5000);
+        // setInterval(getAllReplies,2000);
         var modal = document.getElementById("myModal");
         function imagePopUp(e){
             var modalImg = document.getElementById("img01");
