@@ -98,7 +98,7 @@
 
                                     </div></div>
                         <div class="pl-2">
-                            <div>{{ ucwords($user->username) }}</div>
+                            <div>{{ ucwords($user->username) }} <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40 video-chat" id="" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}"></div>
                             <div class="d-flex">
                                 <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login >time()) active @else Last seen {{ Carbon\Carbon::parse(intval($user->last_login))->diffForHumans() }} @endif</div>
                                 <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>

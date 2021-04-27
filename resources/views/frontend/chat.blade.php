@@ -432,6 +432,13 @@
         span.typing:nth-child(5){
         animation-delay: 0.5s;
         } */
+        .A_D_div{
+            width: fit-content;
+            position:absolute;
+            z-index: +1;
+            top:50%;
+            left:50%;
+        }
     </style>
 @endsection
 
@@ -442,7 +449,7 @@
     </section>
 
     @include('includes.frontend.navigations')
-<div class="d-none calling-div" ><button class="end-call" onclick="endCall()">end call</button><button class="" onclick="makeCall()" data-toggle="modal" data-target="#video-call-modal">accept call </button></div>
+<div class="d-none calling-div" ><div class="A_D_div text-center bg-dark p-5 rounded"><h6 class="incoming-call text-white mb-4"></h6><div class="d-flex justify-content-center   rounded "><div> <img class="end-call cursor-pointer" onclick="endCall()"  src="{{ asset('assets/frontend/images/decline.png') }}" alt="image" /></div> <div><img class="cursor-pointer" onclick="makeCall()" data-toggle="modal" data-target="#video-call-modal" src="{{ asset('assets/frontend/images/accept.png') }}" alt="image" /></div></div> </div></div>
 	<div class="wrapper">
         <input type="hidden" id="sender" value="{{ Auth::user()->id }}">
         <input type="hidden" id="reciever" value="{{ $id }}">
@@ -544,7 +551,7 @@
 
                                            </div></div>
                                 <div class="pl-2">
-                                    <div>{{ ucwords($user->username) }} <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}"></div>
+                                    <div>{{ ucwords($user->username) }} <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}"></div>
                                     <div class="d-flex">
                                         <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login >time()) active @else Last seen {{ Carbon\Carbon::parse(intval($user->last_login))->diffForHumans() }} @endif</div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
@@ -1416,7 +1423,7 @@
 $(document).ready(function(){
      setInterval(function(){ 
          
-      var username = $('#video-chat').data('caller');
+      var username = $('.video-chat').data('caller');
     $.ajax({
         type: 'get',
         url: '{{ url("call-checker") }}',
@@ -1424,6 +1431,7 @@ $(document).ready(function(){
         success: function(data) {
             if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' )
              $('.calling-div').removeClass('d-none');
+             $('.incoming-call').html('incomming call from '+data.caller);
 
         }
     })
@@ -1433,7 +1441,7 @@ $(document).ready(function(){
 
 function endCall(){
     $('#leave').click();
-     var username = $('#video-chat').data('caller');
+     var username = $('.video-chat').data('caller');
     $.ajax({
         type: 'post',
         url: '{{ url("call-end") }}',
@@ -1444,7 +1452,7 @@ function endCall(){
     })
 }
   function makeCall(){
-    var username = $('#video-chat').data('caller');
+    var username = $('.video-chat').data('caller');
     $.ajax({
         type: 'get',
         url: '{{ url("test-token") }}',
