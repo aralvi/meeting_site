@@ -1454,6 +1454,7 @@ function endCall(){
             $('#token').val(JSON.parse(data).token);
             $('#channelName').val(JSON.parse(data).channel);
             $('#join').click();
+            $('.calling-div').addClass('d-none');
         }
     })
   }
