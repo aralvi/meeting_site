@@ -9,7 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DisputeAdminMail;
 use App\Mail\ClientSpecialistDisputeMail;
-
+use App\User;
 class ClientSpecialistDisputeController extends Controller
 {
     /**
