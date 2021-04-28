@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\DisputeAdminMail;
 use App\Mail\ClientSpecialistDisputeMail;
 use App\User;
+use Carbon\Carbon;
+
 class ClientSpecialistDisputeController extends Controller
 {
     /**
@@ -75,7 +77,6 @@ class ClientSpecialistDisputeController extends Controller
             $file_type ='';
             $file_link = '';
         }
-
         $dispute = new ClientSpecialistDispute();
         $dispute->project_id = $request->project_id;
         $dispute->project_type = $request->project_type;
@@ -85,12 +86,19 @@ class ClientSpecialistDisputeController extends Controller
         $dispute->comment = $request->comment;
         $dispute->file_type = $file_type;
         $dispute->file_link = $file_link;
-        $dispute->response_time = time() + (2*86400);
+        if(Auth::user()->user_type=='client'){
+            $dispute->client_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
+        }else if(Auth::user()->user_type=='specialist'){
+            $dispute->specialist_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
+        }
+       
         if($dispute->save())
         {
-            $user = User::find($dispute->reciever_id);
-            Mail::to($user->email)->send(new ClientSpecialistDisputeMail());
-            Mail::to(config('app.mail_from'))->send(new DisputeAdminMail());
+            $sender = User::find($dispute->sender_id);
+            $reciever = User::find($dispute->reciever_id);
+            Mail::to($sender->email)->send(new ClientSpecialistDisputeMail(['file'=>$file_type,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
+            Mail::to($reciever->email)->send(new ClientSpecialistDisputeMail(['file'=>$file_type,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
+            Mail::to(config('app.mail_from'))->send(new DisputeAdminMail(['email'=>$sender->email]));
             return response()->json(['success' => true, 'message' =>"Your dispute has been added successfully"]);
         }
         
@@ -166,7 +174,7 @@ class ClientSpecialistDisputeController extends Controller
                 $arr[] = $a;
             }
         }
-        return response()->json($disputes);
+        return response()->json($arr);
         // return response()->json(['user'=])
     }
 

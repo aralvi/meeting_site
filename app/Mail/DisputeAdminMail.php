@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class DisputeAdminMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +28,6 @@ class DisputeAdminMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.frontend.disputes.admin_mail');
+        return $this->from($this->data['email'])->view('emails.frontend.disputes.admin_mail');
     }
 }

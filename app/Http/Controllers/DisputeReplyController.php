@@ -8,7 +8,7 @@ use Validator;
 use Auth;
 use App\User;
 use App\ClientSpecialistDispute;
-
+use Carbon\Carbon;
 class DisputeReplyController extends Controller
 {
     /**
@@ -69,12 +69,21 @@ class DisputeReplyController extends Controller
         }
         (Auth::user()->user_type=='client')?$user_type='client':$user_type='specialist';
         $dispute = new DisputeReply();
-        if(Auth::user()->user_type!='admin')
-        {
-            $disp = ClientSpecialistDispute::find($request->dispute_id);
-            $disp->response_time = time() + (2*86400);
-            $disp->save();
+        $disp = ClientSpecialistDispute::find($request->dispute_id);
+        if(Auth::user()->user_type=='client'){
+            $disp->client_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
+        }else if(Auth::user()->user_type=='specialist'){
+            $disp->specialist_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
+        }else{
+            $disp->admin_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
         }
+        $disp->save();
+        // if(Auth::user()->user_type!='admin')
+        // {
+        //     $disp = ClientSpecialistDispute::find($request->dispute_id);
+        //     $disp->response_time = time() + (2*86400);
+        //     $disp->save();
+        // }
         
         $dispute->dispute_id = $request->dispute_id;
         $dispute->user_type = $user_type;

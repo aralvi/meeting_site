@@ -54,9 +54,18 @@
             <thead>
                 <tr class="text-uppercase">
                     <th scope="col">#</th>
-                    <th scope="col">Username</th>
+                    <th scope="col">appointment id</th>
+                    <th scope="col">Service</th></th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Specialist</th>
                     <th scope="col">Subject</th>
                     <th scope="col">Comment</th>
+                    <th scope="col">Client Response</th>
+                    <th scope="col">Specialist Response</th>
+                    <th scope="col">Admin Response</th>
+                    <th scope="col">Submitted</th>
+                    <th scope="col">Appointment Status</th>
+                    <th scope="col">Appointment date/time</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -64,9 +73,22 @@
                 @foreach($disputes as $key => $dispute)
                     <tr >          
                         <td>{{ $key+1 }}</td>
-                        <td class="text-capitalize">{{ $dispute->sender->username }}</td>
+                        <td>{{ $dispute->project_type=='appointments'? $dispute->appointment->id: '' }}</td>
+                        <td>{{ $dispute->project_type=='appointments'? $dispute->appointment->service->title: '' }}</td>
+                        <td>{{ $dispute->project_type=='appointments'? $dispute->appointment->user->username: '' }}</td>
+                        <td>{{ $dispute->project_type=='appointments'? $dispute->appointment->specialist->user->username : '' }}</td>
                         <td>{{ $dispute->subject }}</td>
                         <td>{{ Str::limit($dispute->comment,50,'...') }}</td>
+                        <td>{{ $dispute->client_response!=null?Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dispute->client_response)->shiftTimezone(Auth::user()->time_zone)->format('Y-m-d h:i:s a'):'' }}</td>
+                        <td>{{ $dispute->specialist_response!=null?Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dispute->specialist_response)->shiftTimezone(Auth::user()->time_zone)->format('Y-m-d h:i:s a'):'' }}</td>
+                        <td>{{ $dispute->admin_response!=null?Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dispute->admin_response)->shiftTimezone(Auth::user()->time_zone)->format('Y-m-d h:i:s a'):'' }}</td>
+                        <td>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dispute->created_at)->shiftTimezone(Auth::user()->time_zone)->format('Y-m-d h:i:s a') }}</td>
+                        <td>
+                            @if($dispute->project_type=='appointments')
+                                <span class="badge badge-sm @if($dispute->appointment->status == "Approved" || $dispute->appointment->status == "Completed") badge-success @elseif($dispute->appointment->status == "Cancelled") badge-danger @else badge-warning @endif">{{ $dispute->appointment->status }}</span>
+                            @else
+                            @endif</td>
+                        <td>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dispute->appointment->created_at)->shiftTimezone(Auth::user()->time_zone)->format('Y-m-d h:i:s a') }}</td>
                         <td style="min-width: 135px !important;">
                             <a class="btn btn-sm  btn-success" target="_blank" href="{{ route('disputes.show',encrypt($dispute->id)) }}">View</a>
                             {{-- <button class="btn {{ ($dispute->status== 'active')? 'btn-danger':'btn-success' }}  btn-sm change_status" data-msg="Do you want to {{ ($user->status== 'active')? 'in active '.$user->username:'active '.$user->username }} ?" data-user="{{ $user->id }}" data-status="{{ ($user->status == 'active')? 'inactive':'active' }}">{{ ($user->status == 'active')? 'Inactive':'Activate' }}</button> --}}

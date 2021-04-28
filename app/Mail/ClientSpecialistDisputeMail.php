@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class ClientSpecialistDisputeMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +28,12 @@ class ClientSpecialistDisputeMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.frontend.disputes.client_specialist_mail');
+        $data = $this->data;
+        if($data['file']!=''){
+            return $this->from(config('app.mail_from'))->subject($data['subject'])->view('emails.frontend.disputes.client_specialist_mail',compact('data'))->attach($data['file']);
+        }
+        return $this->from(config('app.mail_from'))
+            ->subject($data['subject'])
+            ->view('emails.frontend.disputes.client_specialist_mail',compact('data'));
     }
 }

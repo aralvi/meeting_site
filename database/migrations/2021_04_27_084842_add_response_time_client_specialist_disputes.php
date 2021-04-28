@@ -14,8 +14,10 @@ class AddResponseTimeClientSpecialistDisputes extends Migration
     public function up()
     {
         Schema::table('client_specialist_disputes', function (Blueprint $table) {
-            $table->string('response_time')->after('admin_seen');
-            $table->string('status')->after('response_time')->default(0);
+            $table->string('client_response')->after('admin_seen')->nullable();
+            $table->string('specialist_response')->after('client_response')->nullable();
+            $table->string('admin_response')->after('specialist_response')->nullable();
+            $table->string('status')->after('admin_response')->default(0);
         });
     }
 

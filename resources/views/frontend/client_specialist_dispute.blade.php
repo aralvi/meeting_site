@@ -34,7 +34,13 @@
 @include('includes.frontend.navigations')
 @endsection
 @section('content')
-    <p class="border-bottom pl-3 f-21 cl-616161">Dispute Content</p>            
+    <p class="border-bottom pl-3 f-21 cl-616161">Dispute Content</p>
+    
+    <div class="d-flex justify-content-center mb-3" >
+        <div class="spinner-border  text-success user-loader" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
     <form id="add-dispute-form" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="project_id" value="{{ $project }}">
@@ -62,7 +68,7 @@
                     </div>
         
                     <div class="col-md-1 p-0 justify-content-end">
-                        <button type="button" onclick="sendDispute();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
+                        <button type="button" onclick="sendDispute(this);" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
                     </div>
                 </div>
         </div>
@@ -111,7 +117,7 @@
             // }
         }
 
-        function sendDispute()
+        function sendDispute(elem)
         {
             var myform = document.getElementById("add-dispute-form");
             var fd = new FormData(myform);
@@ -121,8 +127,13 @@
                 processData: false, 
     			contentType: false,
                 data:fd,
+                beforeSend:function(){
+                    $(".user-loader").removeClass('d-none');
+                    $(elem).attr('disabled','disabled');
+                },
                 success:function(data)
                 {
+                    $(".user-loader").addClass('d-none');
                     if (data.success == true) 
                     {
                         swal('success', data.message, 'success')

@@ -1,7 +1,7 @@
 <?php
     use App\Category;
-use App\Models\Appointment;
-use Illuminate\Support\Facades\Auth;
+    use App\Models\Appointment;
+    use Illuminate\Support\Facades\Auth;
     if(!function_exists('getTimeZoneTime'))
     {
         function getTimeZoneTime($ftz,$ttz,$time)

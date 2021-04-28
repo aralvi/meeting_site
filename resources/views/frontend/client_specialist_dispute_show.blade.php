@@ -185,7 +185,32 @@
         
     </section>
     
-    @if($dispute->response_time>time() && Auth::user()->user_type!='admin')
+    <section class="p-20 mt-3 mb-2">
+        <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
+            @csrf
+        <input type="hidden" name="dispute_id" value="{{ $dispute->id }}">
+            <div class="px-5">
+                <div class="form-group">
+                    <label for="reply">Reply*</label>
+                    <textarea id="reply" name="reply" class="form-control"
+                        placeholder="Enter reply">{{ old('reply') }}</textarea>
+                </div>
+    
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div style="form-group col-md-11 p-0">
+                        <label for="files">Upload Dispute Video/Image </label>
+                        <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
+                    </div>
+        
+                    <div class="col-md-1 p-0 justify-content-end">
+                        <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    {{-- @if($dispute->response_time>time() && Auth::user()->user_type!='admin')
         <section class="p-20 mt-3 mb-2">
             <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -273,7 +298,7 @@
         <section class="p-20 mt-3">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">Dispute has been closed out.</div>
         </section>
-    @endif
+    @endif --}}
 
 @endsection {{-- content section end --}} 
 
