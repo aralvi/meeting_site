@@ -72,7 +72,7 @@ class ClientSpecialistDisputeController extends Controller
             }
             $imgName = $request->project_id.'_'.time().'.'.$request->dispute_file->extension();
             $request->dispute_file->move(public_path('uploads/disputes'), $imgName);
-            $file_link = url('/uploads/disputes')."/".$imgName;
+            $file_link = public_path('uploads/disputes')."/".$imgName;
         }else{
             $file_type ='';
             $file_link = '';
@@ -91,7 +91,6 @@ class ClientSpecialistDisputeController extends Controller
         }else if(Auth::user()->user_type=='specialist'){
             $dispute->specialist_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
         }
-       
         if($dispute->save())
         {
             $sender = User::find($dispute->sender_id);
