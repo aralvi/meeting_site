@@ -32,8 +32,6 @@ class ClientSpecialistDisputeMail extends Mailable
         if($data['file']!=''){
             return $this->from(config('app.mail_from'))->subject($data['subject'])->view('emails.frontend.disputes.client_specialist_mail',compact('data'))->attach($data['file']);
         }
-        return $this->from(config('app.mail_from'))
-            ->subject($data['subject'])
-            ->view('emails.frontend.disputes.client_specialist_mail',compact('data'));
+        return $this->from(config('app.mail_from'))->subject($data['subject'])->view('emails.frontend.disputes.client_specialist_mail',compact('data'));
     }
 }

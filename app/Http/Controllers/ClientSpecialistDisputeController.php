@@ -96,8 +96,8 @@ class ClientSpecialistDisputeController extends Controller
         {
             $sender = User::find($dispute->sender_id);
             $reciever = User::find($dispute->reciever_id);
-            Mail::to($sender->email)->send(new ClientSpecialistDisputeMail(['file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
-            Mail::to($reciever->email)->send(new ClientSpecialistDisputeMail(['file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
+            Mail::to($sender->email)->send(new ClientSpecialistDisputeMail(['username'=>$sender->username,'file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
+            Mail::to($reciever->email)->send(new ClientSpecialistDisputeMail(['username'=>$reciever->username,'file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
             Mail::to(config('app.mail_from'))->send(new DisputeAdminMail(['email'=>$sender->email]));
             return response()->json(['success' => true, 'message' =>"Your dispute has been added successfully"]);
         }

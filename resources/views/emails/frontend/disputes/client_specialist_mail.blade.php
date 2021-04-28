@@ -1,1 +1,3 @@
-this is client specialist mail
+Hi ,{{ $data['username'] }} 
+
+{{ $data['comment'] }}
