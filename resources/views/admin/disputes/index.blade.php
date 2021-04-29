@@ -271,7 +271,7 @@
                             $(".user-loader").addClass('d-none');
                             swal({
                                 icon: "success",
-                                text: "{{ __('User Activated Successfully') }}",
+                                text: "{{ __('Dispute status has been updated successfully') }}",
                                 icon: 'success'
                             });
                             window.location = '';
