@@ -80,7 +80,7 @@
                             @foreach($disputes as $key => $dispute)
                                 <tr >          
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ ucfirst($dispute->sender->username) }}</td>
+                                    <td>{{ $dispute->sender->username }}</td>
                                     <td>{{ $dispute->project_type=='appointments'? $dispute->appointment->id: '' }}</td>
                                     <td>{{ $dispute->project_type=='appointments'? $dispute->appointment->service->title: '' }}</td>
                                     <td>{{ $dispute->project_type=='appointments'? $dispute->appointment->user->username: '' }}</td>
