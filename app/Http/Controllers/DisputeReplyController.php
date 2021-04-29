@@ -70,6 +70,7 @@ class DisputeReplyController extends Controller
         (Auth::user()->user_type=='client')?$user_type='client':$user_type='specialist';
         $dispute = new DisputeReply();
         $disp = ClientSpecialistDispute::find($request->dispute_id);
+        $disp->response_time = Carbon::now(new \DateTimeZone(config('app.timezone')))->addDays(2);
         if(Auth::user()->user_type=='client'){
             $disp->client_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
         }else if(Auth::user()->user_type=='specialist'){
@@ -89,7 +90,7 @@ class DisputeReplyController extends Controller
         $dispute->user_type = $user_type;
         $dispute->sender_id=Auth::user()->id;
         $dispute->reciever_id=User::where('user_type','admin')->first()->id;
-        $dispute->reply = $request->reply;
+        $dispute->reply = nl2br($request->reply);
         $dispute->file_type = $file_type;
         $dispute->file_link = $file_link;
         if($dispute->save())

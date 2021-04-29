@@ -148,11 +148,16 @@
         <div class="row pt-3 pb-3  box_shadow1 ml-0 mr-0 borderRadius-10px justify-content-around">
 
             <!-- 2 -->
+            <div class="col-md-12 col-lg-12 d-flex align-items-center">
+                <p class="pl-4 f-21 cl-575757 mb-1">{{ ucfirst($dispute->subject) }}</p>
+                <div class="ml-2 mt-2 mb-1 cl-575757">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dispute->created_at,config('app.timezone'))->timezone(Auth::user()->time_zone)->format('Y-m-d h:i a') }}</div>
+            </div>
+
             <div class="col-md-12 col-lg-12 d-flex justify-content-center align-items-start flex-column">
-                <p class="pl-4 f-21 cl-575757 mb-1">{{ $dispute->subject }}</p>
                 <div class="d-flex pl-4 cl-a8a8a8  ">
                     <div class=" d-flex align-items-center  robotoRegular">
-                        {{ $dispute->comment }}
+                        {{-- {{ trim($dispute->comment) }} --}}
+                        {!! html_entity_decode($dispute->comment) !!}
                     </div>
                 </div>
                 <div class="robotoRegular cl-616161 ml-4">
@@ -185,31 +190,42 @@
         
     </section>
     
-    <section class="p-20 mt-3 mb-2">
-        <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
-            @csrf
-        <input type="hidden" name="dispute_id" value="{{ $dispute->id }}">
-            <div class="px-5">
-                <div class="form-group">
-                    <label for="reply">Reply*</label>
-                    <textarea id="reply" name="reply" class="form-control"
-                        placeholder="Enter reply">{{ old('reply') }}</textarea>
-                </div>
     
-                <div class="d-flex w-100 align-items-center justify-content-between">
-                    <div style="form-group col-md-11 p-0">
-                        <label for="files">Upload Dispute Video/Image </label>
-                        <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
+    @if(Carbon\Carbon::now(new DateTimeZone(config('app.timezone'))) < $dispute->response_time && $dispute->status=='0')
+        <section class="p-20 mt-3 mb-2">
+            <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="dispute_id" value="{{ $dispute->id }}">
+                <div class="px-5">
+                    <div class="form-group">
+                        <label for="reply">Reply*</label>
+                        <textarea id="reply" name="reply" class="form-control"
+                            placeholder="Enter reply" style="white-space: pre-wrap;">{{ old('reply') }}</textarea>
                     </div>
         
-                    <div class="col-md-1 p-0 justify-content-end">
-                        <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <div style="form-group col-md-11 p-0">
+                            <label for="files">Upload Dispute Video/Image </label>
+                            <input id="files" type="file" name="dispute_file" onchange="fileValidation();" class="form-control border-0" >
+                        </div>
+            
+                        <div class="col-md-1 p-0 justify-content-end">
+                            <button type="button" onclick="sendDisputeReply();" class="ml-auto btn btn-sm pl-2 pr-2  bg-3AC574 text-white">Send</button>
+                        </div>
                     </div>
                 </div>
+            </form>
+        </section>
+    @else
+        <section class="p-20 mt-3">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Dispute has been closed out.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </form>
-    </section>
-
+        </section>
+    @endif
     {{-- @if($dispute->response_time>time() && Auth::user()->user_type!='admin')
         <section class="p-20 mt-3 mb-2">
             <form id="add-dispute-reply-form" method="POST" enctype="multipart/form-data">
@@ -349,7 +365,7 @@
             });
         }
 
-        updateDisputeStatus();
+        // updateDisputeStatus();
         getAllReplies();
         updateDisputeSeenStatus();
         setInterval(function(){

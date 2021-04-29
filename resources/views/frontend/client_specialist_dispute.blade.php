@@ -58,7 +58,7 @@
             <div class="form-group">
                 <label for="comment">Comment*</label>
                 <textarea id="comment" name="comment" class="form-control"
-                    placeholder="Enter Comment">{{ old('comment') }}</textarea>
+                    placeholder="Enter Comment" style="white-space: pre-wrap;">{{ old('comment') }}</textarea>
             </div>
 
             <div class="d-flex w-100 align-items-center justify-content-between">

@@ -11,6 +11,7 @@ use App\Mail\DisputeAdminMail;
 use App\Mail\ClientSpecialistDisputeMail;
 use App\User;
 use Carbon\Carbon;
+use App\DisputeReply;
 
 class ClientSpecialistDisputeController extends Controller
 {
@@ -83,9 +84,10 @@ class ClientSpecialistDisputeController extends Controller
         $dispute->sender_id=$request->sender_id;
         $dispute->reciever_id=$request->reciever_id;
         $dispute->subject = $request->subject;
-        $dispute->comment = $request->comment;
+        $dispute->comment = nl2br($request->comment);
         $dispute->file_type = $file_type;
         $dispute->file_link = $file_link;
+        $dispute->response_time = Carbon::now(new \DateTimeZone(config('app.timezone')))->addDays(2);
         if(Auth::user()->user_type=='client'){
             $dispute->client_response = Carbon::now(new \DateTimeZone(config('app.timezone')));
         }else if(Auth::user()->user_type=='specialist'){
@@ -96,6 +98,34 @@ class ClientSpecialistDisputeController extends Controller
         {
             $sender = User::find($dispute->sender_id);
             $reciever = User::find($dispute->reciever_id);
+            $auto="Hello, <br />
+            <br />
+            There has been a dispute filed for this appointment. <br />
+            <br />
+            Questions and problems are usually solved in two to three days when both parties directly together. <br />
+            <br />
+            Please provide a statement that details the reason for you filing the dispute, and asking for a refund. You can include any document or file that shows proof to your claim.<br />
+            <br />
+            Please keep in mind, that both parties will see each other’s responses.<br />
+             <br />
+            If you are defending a claim, please also provide a statement that details why you are not liable to provide a refund. <br />
+            <br />
+            From the first statement given, the other party will have exactly 48 hours to provide their first statement. If no response is provided, the case will either be closed or settled in the favor of the disputer.  <br />
+            <br />
+            We only need one statement from both parties. <br />
+            <br />
+            You can also choose to cancel the dispute as well, just mention to us in this session.  <br />
+            <br />
+            A learnme live arbitrator will view the responses and make a decision within 24 hours.<br />
+             <br />
+            Thank you.";
+            $dis = new DisputeReply();
+            $dis->dispute_id = $dispute->id;
+            $dis->user_type ='admin';
+            $dis->sender_id=User::where('user_type','admin')->first()->id;
+            $dis->reciever_id=User::where('user_type','admin')->first()->id;
+            $dis->reply = $auto;
+            $dis->save();
             Mail::to($sender->email)->send(new ClientSpecialistDisputeMail(['username'=>$sender->username,'file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
             Mail::to($reciever->email)->send(new ClientSpecialistDisputeMail(['username'=>$reciever->username,'file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
             Mail::to(config('app.mail_from'))->send(new DisputeAdminMail(['email'=>$sender->email]));
@@ -136,13 +166,18 @@ class ClientSpecialistDisputeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       if(Auth::user()->user_type!="admin"){
-           $clientSpecialistDispute = ClientSpecialistDispute::find($id);
-           if($clientSpecialistDispute->response_time<time()){
+        if(Auth::user()->user_type!="admin"){
+            $clientSpecialistDispute = ClientSpecialistDispute::find($id);
+            if($clientSpecialistDispute->response_time<Carbon::now(new \DateTimeZone(config('app.timezone')))){
                $clientSpecialistDispute->status = 1;
                $clientSpecialistDispute->save();
-           }
-       }
+            }
+        }
+        else if(Auth::user()->user_type=="admin" && $request->has('admin')){
+            $clientSpecialistDispute = ClientSpecialistDispute::find($id);
+            $clientSpecialistDispute->status = $request->status;
+            $clientSpecialistDispute->save();
+        }
     }
 
     /**

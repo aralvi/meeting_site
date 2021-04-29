@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\DisputeResponseTime::class,
     ];
 
     /**
@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('dispute:response')->everyMinute();
         // $schedule->command('inspire')
         //          ->hourly();
     }
