@@ -162,7 +162,7 @@
                             $("#nav-home").html(chat_html);
                         }
                     });
-
+                    
                     $.ajax({
                         url:"{{ route('user.appointment.notification') }}",
                         type:"get",
@@ -227,6 +227,32 @@
                                 html+="</a>";
                             } 
                         });
+                        
+                        $('#nav-profile').append(html);
+                    }
+                });
+
+                $.ajax({
+                    url:"{{ route('user.dispute.reply.notification') }}",
+                    type:"get",
+                    success:function(data){
+                        var html ='';
+                        if(data.length>0){
+                            data.map(v=>{
+                                var element = document.getElementById("dispute"+v.id);
+                                if(typeof(element) == 'object' && element == null){
+                                    html += '<a class="dropdown-item d-flex row m-0 pt-2"  id="dispute'+v.id+'" href="'+v.url+'">';
+                                        html+='<div class="col-md-2 p-0">';
+                                            html +='<img src="'+v.avatar+'" alt="miss" class="img-fluid">';
+                                        html+='</div>';
+                                        html+='<div class="col-md-9 pl-2 pt-1 p-0">';
+                                            html+='<div class="row m-0"><div class="dropdown-heading">'+v.username[0].toUpperCase() + v.username.slice(1)+'</div></div>';
+                                            html+='<div class="row m-0"><div class="dropdown-contnt">'+v.subject+'</div></div>';
+                                        html+='</div>';
+                                    html+="</a>";
+                                }
+                            });
+                        }
                         
                         $('#nav-profile').append(html);
                     }

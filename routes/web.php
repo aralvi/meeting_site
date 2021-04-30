@@ -112,6 +112,8 @@ Route::group(['middleware'=>['auth','checkuserstatus']],function(){
     Route::resource('disputes-replies','DisputeReplyController');
     Route::get('dispute/replies','DisputeReplyController@replies')->name('get.all.dispute.replies');
     Route::get('user/disputes/notifications','ClientSpecialistDisputeController@userDisputeNotifications')->name('user.dispute.notification');
+    Route::get('user/disputes/reply/notifications','ClientSpecialistDisputeController@userDisputeReplyNotifications')->name('user.dispute.reply.notification');
+    Route::get('user/disputes/reply/seen/status','ClientSpecialistDisputeController@userDisputeReplySeenStatus')->name('user.dispute.reply.seen.status');
     Route::get('update/dispute/seen/status','ClientSpecialistDisputeController@updateDisputeSeenStatus')->name('update.dispute.seen.status');
 });
 

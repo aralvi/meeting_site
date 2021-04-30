@@ -248,4 +248,44 @@ class ClientSpecialistDisputeController extends Controller
         }
         $dispute->save();
     }
+
+    public function userDisputeReplyNotifications(){
+        if(Auth::user()->user_type!='admin'){
+            $disputes = ClientSpecialistDispute::where('sender_id',Auth::user()->id)->orWhere('reciever_id',Auth::user()->id)->get();
+        }
+        $disputes = ClientSpecialistDispute::all();
+        $arr = [];
+        foreach($disputes as $dispute){
+            if(Auth::user()->user_type=='client'){
+                $reply = $dispute->replies()->where('sender_id','!=',Auth::user()->id)->where('client_seen',0)->latest()->first();
+            }else if(Auth::user()->user_type=='specialist'){
+                $reply = $dispute->replies()->where('sender_id','!=',Auth::user()->id)->where('specialist_seen',0)->latest()->first();
+            }else{
+                $reply = $dispute->replies()->where('sender_id','!=',Auth::user()->id)->where('admin_seen',0)->latest()->first();
+            }
+            if($reply !=null){
+                $reply->user->avatar!=''? $avatar=url('/').'/'.$reply->user->avatar: $avatar=url('/public/uploads/user/default.jpg');
+                $a = [];
+                $a['id'] = $dispute->id;
+                $a['url'] = url('/disputes').'/'.encrypt($dispute->id);
+                $a['subject']=str_replace('<br />',' ',$reply->reply);
+                $a['avatar']=$avatar;
+                $a['username'] = $reply->user->username;
+                $arr[] = $a;
+            }
+            
+        }
+        return response()->json($arr);
+    }
+
+    public function userDisputeReplySeenStatus(Request $request){
+        $reply = DisputeReply::where('dispute_id',$request->dispute);
+        if(Auth::user()->user_type=='client'){
+            $reply->update(['client_seen'=>1]);
+        }else if(Auth::user()->user_type=='specialist'){
+            $reply->update(['specialist_seen'=>1]);
+        }else{
+            $reply->update(['admin_seen'=>1]);
+        }
+    }
 }

@@ -26,6 +26,28 @@
 
     .swal-button--confirm {background-color: #3ac574; border:none;outline: none;}
     .swal-button:active {background-color: #3ac574; border:none;outline: none;}
+
+    .loader {
+        border: 10px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 10px solid #3AC574 ;
+        width: 70px;
+        height: 70px;
+        -webkit-animation: spin 1s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
 </style>
 @endsection {{-- head end --}} {{-- content section start --}} 
 @section('navbar')
@@ -37,9 +59,10 @@
     <p class="border-bottom pl-3 f-21 cl-616161">Dispute Content</p>
     
     <div class="d-flex justify-content-center mb-3" >
-        <div class="spinner-border  text-success user-loader" role="status">
+        {{-- <div class="spinner-border  text-success user-loader" role="status">
             <span class="sr-only">Loading...</span>
-        </div>
+        </div> --}}
+        <div class="loader user-loader d-none"></div>
     </div>
     <form id="add-dispute-form" method="POST" enctype="multipart/form-data">
         @csrf
@@ -89,32 +112,17 @@
                 });
                 fileInput.value = '';
                 return false;
-            } 
-            // else 
-            // {
-            //     if (fileInput.files && fileInput.files[0]) {
-            //         const name = fileInput.files[0].name;
-            //         const lastDot = name.lastIndexOf('.');
-            //         const fileName = name.substring(0, lastDot);
-            //         const ext = name.substring(lastDot + 1).toLowerCase();
-            //         var reader = new FileReader();
-            //         reader.onload = function(e) {
-            //             var html = '<span style="position: relative; cursor: pointer; right: -96px; height: 20px; top: 4px; width: 20px; border-radius: 50%; outline: none !important;" onclick="deleteImage();"><i class="fa fa-times" aria-hidden="true" style="position: absolute; color: red; right: 4px; top: 1px; height: 14px; font-size: 12px;"></i></span>';
-            //             if(ext=='pdf')
-            //             {
-            //                 html+='<div class="d-flex flex-column"><i class="fa fa-file-pdf-o" aria-hidden="true" style=" position: relative; top: 22px;"></i><div style=" position: relative; top: 25px;">'+name.substring(0,10) + "..."+'</div></div>';
-            //             }else if(ext=='docx' || ext=='doc'){
-            //                 html += '<div class="d-flex flex-column"><i class="fa fa-file-word-o" aria-hidden="true" style=" position: relative; top: 22px;"></i><div style=" position: relative; top: 25px;">'+name.substring(0, 10) + "..."+'</div></div>';
-            //             }else{
-            //                 html+='<img src="' + e.target.result+ '" style="height:100px;width:100px;cursor:pointer;" onclick="imagePopUp(this);"/>';
-            //             }
-            //             document.getElementById('imagePreview').innerHTML = html;
-                            
-            //         };
-                      
-            //         reader.readAsDataURL(fileInput.files[0]);
-            //     }
-            // }
+            } else{
+                const fsize = fileInput.files[0].size;
+                const file = Math.round((fsize / 1024));
+                if (file >= 10240) {
+                    swal({
+                        icon: "error",
+                        text: "{{ __('File too Big, please select a file less than or equal 10 MBs') }}",
+                    });
+                }
+                
+            }
         }
 
         function sendDispute(elem)

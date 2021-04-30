@@ -238,20 +238,47 @@
                                         html+='</div>';
                                     html+="</a>";
                                 });
-                                html+='<div class="dropdown-footer mt-5">';
-                                    html+='<div class="bg-3ac574 row m-0 pt-2 pb-3">';
-                                        html+='<div class="col-md-6 d-flex p-0 pl-4">';
-                                            html+='<div><i class="fa fa-cog text-white" aria-hidden="true"></i></div>';
-                                            html+='<div><i class="fa fa-volume-up text-white pl-2" aria-hidden="true"></i></div>';
-                                        html+='</div>';
-                                        html+='<div class="col-md-6 p-0 pr-3 text-white text-right">';
-                                            html+='<a href="{{ route("appointments.index") }}" style="color: #ffffff;"><h6>See all Notifications</h6></a>';
-                                        html+='</div>';
-                                    html+='</div>';
-                                html+='</div>';
+                                // html+='<div class="dropdown-footer mt-5">';
+                                //     html+='<div class="bg-3ac574 row m-0 pt-2 pb-3">';
+                                //         html+='<div class="col-md-6 d-flex p-0 pl-4">';
+                                //             html+='<div><i class="fa fa-cog text-white" aria-hidden="true"></i></div>';
+                                //             html+='<div><i class="fa fa-volume-up text-white pl-2" aria-hidden="true"></i></div>';
+                                //         html+='</div>';
+                                //         html+='<div class="col-md-6 p-0 pr-3 text-white text-right">';
+                                //             html+='<a href="{{ route("appointments.index") }}" style="color: #ffffff;"><h6>See all Notifications</h6></a>';
+                                //         html+='</div>';
+                                //     html+='</div>';
+                                // html+='</div>';
                                 $('#nav-profile').html(html);
                             }
                         });
+
+                        $.ajax({
+                            url:"{{ route('user.dispute.reply.notification') }}",
+                            type:"get",
+                            success:function(data){
+                                var html ='';
+                                if(data.length>0){
+                                    data.map(v=>{
+                                        var element = document.getElementById("dispute"+v.id);
+                                        if(typeof(element) == 'object' && element == null){
+                                            html += '<a class="dropdown-item d-flex row m-0 pt-2"  id="dispute'+v.id+'" href="'+v.url+'">';
+                                                html+='<div class="col-md-2 p-0">';
+                                                    html +='<img src="'+v.avatar+'" alt="miss" class="img-fluid">';
+                                                html+='</div>';
+                                                html+='<div class="col-md-9 pl-2 pt-1 p-0">';
+                                                    html+='<div class="row m-0"><div class="dropdown-heading">'+v.username[0].toUpperCase() + v.username.slice(1)+'</div></div>';
+                                                    html+='<div class="row m-0"><div class="dropdown-contnt">'+v.subject+'</div></div>';
+                                                html+='</div>';
+                                            html+="</a>";
+                                        }
+                                    });
+                                }
+                                
+                                $('#nav-profile').append(html);
+                            }
+                        });
+                        
                     @endif
                 },1000);
 

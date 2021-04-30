@@ -4,7 +4,7 @@
             <div class="col-md-12 col-lg-12 d-flex justify-content-center align-items-start flex-column">
                 <div class="d-flex justify-content-center align-items-center">
                     <img src="{{ asset($reply->user->avatar!=null?$reply->user->avatar:"uploads/user/default.jpg") }}" class="img-fluid rounded-circle w-40 h-40" alt="">
-                    <p class="ml-2 mt-2 cl-575757 f-21 mb-1">{{ ucfirst($reply->user->username) }}</p>
+                    <p class="ml-2 mt-2 cl-575757 f-21 mb-1">{{ $reply->user->username }}</p>
                     <div class="ml-2 mt-2 mb-1 cl-575757">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $reply->created_at,config('app.timezone'))->timezone(Auth::user()->time_zone)->format('Y-m-d h:i a') }}</div>
                 </div>
                 <div class="d-flex ml-5">
