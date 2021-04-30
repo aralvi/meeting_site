@@ -564,7 +564,17 @@
                 });
                 fileInput.value = '';
                 return false;
-            } 
+            } else{
+                const fsize = fileInput.files[0].size;
+                const file = Math.round((fsize / 1024));
+                if (file >= 10240) {
+                    swal({
+                        icon: "error",
+                        text: "{{ __('File too Big, please select a file less than or equal 10 MBs') }}",
+                    });
+                }
+                
+            }
         }
 
         var scroll_bottom = function() {

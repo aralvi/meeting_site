@@ -17,7 +17,7 @@
                     @if ($reply->file_type=='image')
                         <img src="{{ asset($reply->file_link) }}" style="cursor: pointer;width: 100px;height: 100px;" onclick="imagePopUp(this);"/>
                     @elseif($reply->file_type=='video')
-                        <video width="320" height="240" controls>
+                        <video width="100%" height="240" controls>
                             <source src="{{ asset($reply->file_link) }}">
                         </video>
                     @endif
