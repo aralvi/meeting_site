@@ -119,16 +119,17 @@ class ClientSpecialistDisputeController extends Controller
             A learnme live arbitrator will view the responses and make a decision within 24 hours.<br />
              <br />
             Thank you.";
+            $admin = User::where('user_type','admin')->first();
             $dis = new DisputeReply();
             $dis->dispute_id = $dispute->id;
             $dis->user_type ='admin';
-            $dis->sender_id=User::where('user_type','admin')->first()->id;
-            $dis->reciever_id=User::where('user_type','admin')->first()->id;
+            $dis->sender_id=$admin->id;
+            $dis->reciever_id=$admin->id;
             $dis->reply = $auto;
             $dis->save();
-            Mail::to($sender->email)->send(new ClientSpecialistDisputeMail(['username'=>$sender->username,'file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
-            Mail::to($reciever->email)->send(new ClientSpecialistDisputeMail(['username'=>$reciever->username,'file'=>$file_link,'subject'=>$dispute->subject,'comment'=>$dispute->comment]));
-            Mail::to(config('app.mail_from'))->send(new DisputeAdminMail(['email'=>$sender->email]));
+            Mail::to($sender->email)->send(new ClientSpecialistDisputeMail(['username'=>$sender->username,'file'=>$file_link,'type'=>$file_type,'subject'=>$dispute->subject,'comment'=>$dispute->comment,'url'=>url('/disputes').'/'.encrypt($dispute->id),'page'=>'create']));
+            Mail::to($reciever->email)->send(new ClientSpecialistDisputeMail(['username'=>$reciever->username,'file'=>$file_link,'type'=>$file_type,'subject'=>$dispute->subject,'comment'=>$dispute->comment,'url'=>url('/disputes').'/'.encrypt($dispute->id),'page'=>'create']));
+            Mail::to(config('app.mail_from'))->send(new DisputeAdminMail(['username'=>$admin->username,'email'=>$sender->email,'file'=>$file_link,'type'=>$file_type,'subject'=>$dispute->subject,'comment'=>$dispute->comment,'url'=>url('/disputes').'/'.encrypt($dispute->id),'page'=>'create']));
             return response()->json(['success' => true, 'message' =>"Your dispute has been added successfully"]);
         }
         

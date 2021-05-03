@@ -202,7 +202,9 @@
                             //         html+='</div>';
                             //     html+='</div>';
                             // html+='</div>';
-                            $('#nav-profile').append(html);
+                            let oldHtml = $('#nav-profile').html();
+                            oldHtml+=html;
+                            $('#nav-profile').html(oldHtml);
                         }
                     });
                 @endif
@@ -227,8 +229,9 @@
                                 html+="</a>";
                             } 
                         });
-                        
-                        $('#nav-profile').append(html);
+                        let oldHtml = $('#nav-profile').html();
+                        oldHtml+=html;
+                        $('#nav-profile').html(oldHtml);
                     }
                 });
 
@@ -253,8 +256,9 @@
                                 }
                             });
                         }
-                        
-                        $('#nav-profile').append(html);
+                        let oldHtml = $('#nav-profile').html();
+                        oldHtml+=html;
+                        $('#nav-profile').html(oldHtml);
                     }
                 });
 

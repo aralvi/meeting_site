@@ -6,6 +6,9 @@ use App\DisputeReply;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DisputeAdminMail;
+use App\Mail\ClientSpecialistDisputeMail;
 use App\User;
 use App\ClientSpecialistDispute;
 use Carbon\Carbon;
@@ -85,16 +88,21 @@ class DisputeReplyController extends Controller
         //     $disp->response_time = time() + (2*86400);
         //     $disp->save();
         // }
-        
+        $admin = User::where('user_type','admin')->first();
         $dispute->dispute_id = $request->dispute_id;
         $dispute->user_type = $user_type;
         $dispute->sender_id=Auth::user()->id;
-        $dispute->reciever_id=User::where('user_type','admin')->first()->id;
+        $dispute->reciever_id=$admin->id;
         $dispute->reply = nl2br($request->reply);
         $dispute->file_type = $file_type;
         $dispute->file_link = $file_link;
         if($dispute->save())
         {
+            $sender = $disp->sender;
+            $reciever = $disp->reciever;
+            Mail::to($sender->email)->send(new ClientSpecialistDisputeMail(['username'=>$sender->username,'file'=>$file_link,'type'=>$file_type,'subject'=>$disp->subject.' reply','comment'=>$dispute->reply,'url'=>url('/disputes').'/'.encrypt($disp->id),'page'=>'reply']));
+            Mail::to($reciever->email)->send(new ClientSpecialistDisputeMail(['username'=>$reciever->username,'file'=>$file_link,'type'=>$file_type,'subject'=>$disp->subject.' reply','comment'=>$dispute->reply,'url'=>url('/disputes').'/'.encrypt($disp->id),'page'=>'reply']));
+            Mail::to(config('app.mail_from'))->send(new DisputeAdminMail(['username'=>$admin->username,'email'=>$sender->email,'file'=>$file_link,'type'=>$file_type,'subject'=>$disp->subject.' reply','comment'=>$dispute->reply,'url'=>url('/disputes').'/'.encrypt($disp->id),'page'=>'reply']));
             return response()->json(['success' => true, 'message' =>"Your dispute reply has been added successfully"]);
         }
     }

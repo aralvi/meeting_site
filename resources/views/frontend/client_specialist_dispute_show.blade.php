@@ -470,7 +470,9 @@
                             });
                         }
                         
-                        $('#nav-profile').append(html);
+                        let oldHtml = $('#nav-profile').html();
+                        oldHtml+=html;
+                        $('#nav-profile').html(oldHtml);
                     }
                 });
 

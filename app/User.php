@@ -78,5 +78,9 @@ class User extends Authenticatable
     public function dispute(){
         return $this->hasOne(ClientSpecialistDispute::class,'sender_id','id');
     }
+
+    public function disputeReciever(){
+        return $this->hasOne(ClientSpecialistDispute::class,'reciever_id','id');
+    }
      
 }

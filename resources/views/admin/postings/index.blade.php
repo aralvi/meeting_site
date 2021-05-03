@@ -93,63 +93,140 @@
 @section('extra-script')
     <script>
         $('.change_status').on('click',function(){
-        var user = $(this);
-        var user_id = $(this).data('user');
-        var badge = $('.badge-'+user_id);
-        var msg = $(this).data('msg');
-        var status = $(this).attr('data-status');
-        swal({
-            title: "Are you sure?",
-            text: msg,
-            icon: "warning",
-            buttons: {
-                cancel: "No",
-                confirm: "Yes"
-                },
-           }).then((willDelete) => {
-                if (willDelete)
-                {
-                    $.ajax({
-                        type: 'post',
-                        url: "{{ url('dashboard/client/postings') }}"+"/"+user_id,
-                        data: {_token: '{{ csrf_token() }}',status:status},
-                        beforeSend:function(){
-                            $(".user-loader").removeClass('d-none');
-                        },
-                        success: function (data) {
-                            $(".user-loader").addClass('d-none');
-                            if(data == 'active'){
-                                $('.badge-'+user_id).removeClass('badge-danger').addClass('badge-success').text('active');
-                                user.removeClass('btn-success').addClass('btn-danger').attr('data-msg',"Do you want to in active ?");
-                                user.text('Inactive')
-                                user.attr('data-status','inactive')
-                                swal({
-                                    icon: "success",
-                                    text: "{{ __('Service Request Activated Successfully') }}",
-                                    icon: 'success'
-                                });
-                            }if(data == 'inactive'){
-                                $('.badge-'+user_id).removeClass('badge-success').addClass('badge-danger').text('inactive');
-                                user.attr('data-status','active')
-                                user.removeClass('btn-danger').addClass('btn-success').attr('data-msg',"Do you want to active ?");
-                                user.text('Activate')
-                                swal({
-                                    icon: "success",
-                                    text: "{{ __('Service Request  In-Activated Successfully') }}",
-                                    icon: 'success'
-                                });
+            var user = $(this);
+            var user_id = $(this).data('user');
+            var badge = $('.badge-'+user_id);
+            var msg = $(this).data('msg');
+            var status = $(this).attr('data-status');
+            swal({
+                title: "Are you sure?",
+                text: msg,
+                icon: "warning",
+                buttons: {
+                    cancel: "No",
+                    confirm: "Yes"
+                    },
+            }).then((willDelete) => {
+                    if (willDelete)
+                    {
+                        $.ajax({
+                            type: 'post',
+                            url: "{{ url('dashboard/client/postings') }}"+"/"+user_id,
+                            data: {_token: '{{ csrf_token() }}',status:status},
+                            beforeSend:function(){
+                                $(".user-loader").removeClass('d-none');
+                            },
+                            success: function (data) {
+                                $(".user-loader").addClass('d-none');
+                                if(data == 'active'){
+                                    $('.badge-'+user_id).removeClass('badge-danger').addClass('badge-success').text('active');
+                                    user.removeClass('btn-success').addClass('btn-danger').attr('data-msg',"Do you want to in active ?");
+                                    user.text('Inactive')
+                                    user.attr('data-status','inactive')
+                                    swal({
+                                        icon: "success",
+                                        text: "{{ __('Service Request Activated Successfully') }}",
+                                        icon: 'success'
+                                    });
+                                }if(data == 'inactive'){
+                                    $('.badge-'+user_id).removeClass('badge-success').addClass('badge-danger').text('inactive');
+                                    user.attr('data-status','active')
+                                    user.removeClass('btn-danger').addClass('btn-success').attr('data-msg',"Do you want to active ?");
+                                    user.text('Activate')
+                                    swal({
+                                        icon: "success",
+                                        text: "{{ __('Service Request  In-Activated Successfully') }}",
+                                        icon: 'success'
+                                    });
 
+                                }
+                                window.location = '';
                             }
-                            window.location = '';
-                        }
-                    });
-                } 
-        });
+                        });
+                    } 
+            });
         
-    });
+        });
 
+        @if(Auth::check())
+            setInterval(function(){
+                $.ajax({
+                    url:"{{ route('admin.user.dispute.notification') }}",
+                    type:"get",
+                    success:function(data){
+                        var html ='';
+                        // if(data.length>0){ $('.messageDropdown').children('span').addClass('green-dot'); }else{$('.messageDropdown').children('span').removeClass('green-dot');}
+                        data.map(v=>{
+                            var element = document.getElementById("dispute"+v.id);
+                            if(typeof(element) == 'object' && element == null){
+                                    html += '<a class="dropdown-item d-flex row m-0 pt-2"  id="dispute'+v.id+'" href="'+v.url+'">';
+                                    html+='<div class="col-md-2 p-0">';
+                                        html +='<img src="'+v.avatar+'" alt="miss" class="img-fluid">';
+                                    html+='</div>';
+                                    html+='<div class="col-md-9 pl-2 pt-1 p-0">';
+                                        html+='<div class="row m-0"><div class="dropdown-heading">'+v.username[0].toUpperCase() + v.username.slice(1)+'</div></div>';
+                                        html+='<div class="row m-0"><div class="dropdown-contnt">'+v.subject+'</div></div>';
+                                    html+='</div>';
+                                html+="</a>";
+                            } 
+                        });
+                        
+                        let oldHtml = $('#nav-profile').html();
+                        oldHtml+=html;
+                        $('#nav-profile').html(oldHtml);
+                    }
+                });
 
+                $.ajax({
+                    url:"{{ route('user.dispute.reply.notification') }}",
+                    type:"get",
+                    success:function(data){
+                        var html ='';
+                        data.map(v=>{
+                            var element = document.getElementById("dispute"+v.id);
+                            if(typeof(element) == 'object' && element == null){
+                                html += '<a class="dropdown-item d-flex row m-0 pt-2"  id="dispute'+v.id+'" href="'+v.url+'">';
+                                    html+='<div class="col-md-2 p-0">';
+                                        html +='<img src="'+v.avatar+'" alt="miss" class="img-fluid">';
+                                    html+='</div>';
+                                    html+='<div class="col-md-9 pl-2 pt-1 p-0">';
+                                        html+='<div class="row m-0"><div class="dropdown-heading">'+v.username[0].toUpperCase() + v.username.slice(1)+'</div></div>';
+                                        html+='<div class="row m-0"><div class="dropdown-contnt">'+v.subject+'</div></div>';
+                                    html+='</div>';
+                                html+="</a>";
+                            }
+                        });
+                        let oldHtml = $('#nav-profile').html();
+                        oldHtml+=html;
+                        $('#nav-profile').html(oldHtml);
+                    }
+                });
 
+            },1000);
+
+            window.onload = function() {
+                $.ajax({
+                    url:"{{ route('chat.user.update',Auth::user()->id) }}",
+                    type:"get",
+                    success:function(data)
+                    {
+                        console.log(data);
+                    }
+                });
+            }
+
+            setInterval(function(){
+                $.ajax({
+                    url:"{{ route('chat.user.update',Auth::user()->id) }}",
+                    type:"get",
+                    success:function(data)
+                    {
+                        console.log(data);
+                    }
+                });
+            },10000);
+
+        @endif
 
     </script>
 @endsection
