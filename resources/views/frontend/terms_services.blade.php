@@ -805,9 +805,10 @@
                         termination. In the event of any suspension, cancellation, or termination, the restrictions
                         imposed on you with respect to material downloaded from the Website, and the disclaimers and
                         limitations of liabilities set forth in the Agreement, shall survive.</p>
-                     <div class="pl-5">
-                     <p class="cl-6b6b6b f-16 robotoRegular"> <span class="pr-2">17.2.</span>Without limiting the
+                        <p class="cl-6b6b6b f-16 robotoRegular"> <span class="pr-2">17.2.</span>Without limiting the
                         foregoing, we may close, suspend or limit your access to your Account:</p>
+                     <div class="pl-5">
+                   
                     <p class="cl-6b6b6b f-16 robotoRegular"> <span class="pr-2">i.</span>if we determine that you have
                         breached, or are acting in breach of, this User Agreement; </p>
                     <p class="cl-6b6b6b f-16 robotoRegular"> <span class="pr-2">ii.</span>if we determine that you have
