@@ -594,6 +594,9 @@
                 processData: false, 
     			contentType: false,
                 data:fd,
+                beforeSend:function(){
+                    $('#reply').val('');
+                },
                 success:function(data)
                 {
                     if (data.success == true) 

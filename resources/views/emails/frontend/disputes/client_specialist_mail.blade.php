@@ -25,7 +25,8 @@
                         <img src="{{ asset('assets/frontend/images/Group-2378.png') }}"> &nbsp; Back 
                     </a>
                 </div>
-                <div style="color: #3AC574;font-size: 20px;padding-top: 15px;padding-bottom: 50px;"></div>
+                <div style="color: #646464;font-size: 18px;padding-top: 15px;">Thanks</div>
+                <div style="color: #3AC574;font-size: 20px;padding-top: 15px;padding-bottom: 50px;">Learnmelive Team</div>
             </section>
 
         </section>
