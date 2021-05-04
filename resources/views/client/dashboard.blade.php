@@ -136,7 +136,7 @@ span.prefix{
     </section>
 
    @include('includes.frontend.navigations')
-
+   <div class="d-none calling-div" ><div class="A_D_div text-center bg-dark p-5 rounded"><h6 class="incoming-call text-white mb-4"></h6><div class="d-flex justify-content-center   rounded "><div> <img class="end-call cursor-pointer" onclick="endCall()"  src="{{ asset('assets/frontend/images/decline.png') }}" alt="image" /></div> <div><img class="cursor-pointer" onclick="makeCall()" data-toggle="modal" data-target="#video-call-modal" src="{{ asset('assets/frontend/images/accept.png') }}" alt="image" /></div></div> </div></div>
     <section class="container-fluid">
         <div class="row mt-5 justify-content-around">
             <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
@@ -163,7 +163,7 @@ span.prefix{
                                         <span class="font-weight-bold ml-3">Rate</span>
                                         <span class="ml-2">${{ $appointment->rate }}</span>
                                     </div>    
-                                    <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button></div>
+                                    <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button><img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->specialist->user->username}}"></div>
                                 </div>
                                 @endforeach
                                 
@@ -716,6 +716,26 @@ span.prefix{
 {{-- footer section start --}}
 
 @section('extra-script') 
+<script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
+            <script>
+            $(document).ready(function(){
+                    setInterval(function(){ 
+                        
+                    var username = $('.video-chat').data('caller');
+                    $.ajax({
+                        type: 'get',
+                        url: '{{ url("call-checker") }}',
+                        data: { name: username },
+                        success: function(data) {
+                            if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' )
+                            $('.calling-div').removeClass('d-none');
+                            $('.incoming-call').html('incomming call from '+data.caller);
+
+                        }
+                    })
+                    }, 3000);
+                })
+            </script>
     <script>
 
 // $('.bid_accept').on('submit', function(e) {

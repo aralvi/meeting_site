@@ -7,7 +7,7 @@
 </head>
 
 <body id="body-content">
-    <div class="d-none calling-div" ><div class="A_D_div text-center bg-dark p-5 rounded"><h6 class="incoming-call text-white mb-4"></h6><div class="d-flex justify-content-center   rounded "><div> <img class="end-call cursor-pointer" onclick="endCall()"  src="{{ asset('assets/frontend/images/decline.png') }}" alt="image" /></div> <div><img class="cursor-pointer" onclick="makeCall()" data-toggle="modal" data-target="#video-call-modal" src="{{ asset('assets/frontend/images/accept.png') }}" alt="image" /></div></div> </div></div>
+    
     @yield('content')
     @yield('footer')
 
@@ -423,7 +423,7 @@
                     type:"get",
                     success:function(data)
                     {
-                        console.log(data);
+                        // console.log(data);
                     }
                 });
             },10000);
@@ -449,28 +449,12 @@
     @yield('extra-script')
 
 
-     <script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
+   
+    <script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/frontend/js/video-js/materialize.min.js') }}"></script>
   <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
 <script>
-    $(document).ready(function(){
-        setInterval(function(){ 
-            
-        var username = $('.video-chat').data('caller');
-        $.ajax({
-            type: 'get',
-            url: '{{ url("call-checker") }}',
-            data: { name: username },
-            success: function(data) {
-                if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' )
-                $('.calling-div').removeClass('d-none');
-                $('.incoming-call').html('incomming call from '+data.caller);
-
-            }
-        })
-        }, 3000);
-    })
-
+   
 
     function endCall(){
         $('#leave').click();
@@ -496,6 +480,7 @@
                 $('#channelName').val(JSON.parse(data).channel);
                 $('#join').click();
                 $('.calling-div').addClass('d-none');
+                
             }
         })
     }

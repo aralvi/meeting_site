@@ -16,6 +16,7 @@ class CreateChannelsTable extends Migration
         Schema::create('channels', function (Blueprint $table) {
             $table->string('channel')->unique();
             $table->string('caller');
+            $table->string('call_to');
             $table->enum('status',['0','1','2','3'])->default(1);
             
         });
