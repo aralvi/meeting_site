@@ -170,7 +170,7 @@ a:focus{
                                 
                             <div class="mt-3 row align-items-center bg-F2F5FA box_shadow2">
                                 <div class="col-md-7">
-                                    <p>{{ $appointment->specialist->user->username }}</p>
+                                    <p>{{ $appointment->user->username }}</p>
                                     <h3 class="fs-1-3">{{ ucwords($appointment->service->title) }}</h3>
                                 </div>
                                 <div class="col-md-5 p-0">
@@ -181,7 +181,7 @@ a:focus{
                                     <span class="font-weight-bold ml-3">Rate</span>
                                     <span class="ml-2">${{ $appointment->rate }}</span>
                                 </div>
-                                <div class="col-md-7 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm">Message</button></div>
+                                <div class="col-md-7 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm">Message</button><img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->user->username}}"></div>
                             </div>
                             @endforeach
                             

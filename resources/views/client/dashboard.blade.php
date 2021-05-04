@@ -152,7 +152,7 @@ span.prefix{
                                     
                                 <div class="mt-3 row align-items-center bg-F2F5FA box_shadow2">
                                     <div class="col-md-8">
-                                        <p>{{ ucwords($appointment->specialist->user->name) }}sadsadsaddsadsa</p>
+                                        <p>{{ ucwords($appointment->specialist->user->username) }}</p>
                                         <h3 class="fs-1-3">{{ ucwords($appointment->service->title) }}</h3>
                                     </div>
                                     <div class="col-md-4 p-0">
