@@ -7,7 +7,7 @@
 </head>
 
 <body id="body-content">
-    
+<div class="d-none calling-div" ><div class="A_D_div text-center bg-dark p-5 rounded"><h6 class="incoming-call text-white mb-4"></h6><div class="d-flex justify-content-center   rounded "><div> <img class="end-call cursor-pointer" onclick="endCall()"  src="{{ asset('assets/frontend/images/decline.png') }}" alt="image" /></div> <div><img class="cursor-pointer accpet_call" onclick="makeCall(this)" data-toggle="modal" data-target="#video-call-modal" src="{{ asset('assets/frontend/images/accept.png') }}" alt="image" /></div></div> </div></div>
     @yield('content')
     @yield('footer')
 
@@ -412,7 +412,7 @@
                     type:"get",
                     success:function(data)
                     {
-                        console.log(data);
+                        // console.log(data);
                     }
                 });
             }
@@ -423,7 +423,7 @@
                     type:"get",
                     success:function(data)
                     {
-                        // console.log(data);
+                        // // console.log(data);
                     }
                 });
             },10000);
@@ -468,14 +468,13 @@
             }
         })
     }
-    function makeCall(){
-        var username = $('.video-chat').data('caller');
+    function makeCall(e){
+        var username = $(e).data('caller');
         $.ajax({
             type: 'get',
             url: '{{ url("test-token") }}',
             data: { name: username },
             success: function(data) {
-
                 $('#token').val(JSON.parse(data).token);
                 $('#channelName').val(JSON.parse(data).channel);
                 $('#join').click();
@@ -485,11 +484,14 @@
         })
     }
 
-
+    function play() { 
+         var beepsound = new Audio('https://www.soundjay.com/button/sounds/beep-01a.mp3'); 
+            beepsound.play(); 
+     }
     
 
 
-    console.log("agora sdk version: " + AgoraRTC.VERSION + " compatible: " + AgoraRTC.checkSystemRequirements());
+    // // console.log("agora sdk version: " + AgoraRTC.VERSION + " compatible: " + AgoraRTC.checkSystemRequirements());
     var resolutions = [{
             name: 'default',
             value: 'default',
@@ -538,7 +540,7 @@
         for (let key of keys) {
             if (fields.indexOf(key) != -1) {
                 if (!formData[key]) {
-                    Toast.error("Please Enter " + key);
+                    // Toast.error("Please Enter " + key);
                     return false;
                 }
             }
@@ -644,34 +646,34 @@
     function handleEvents(rtc) {
         // Occurs when an error message is reported and requires error handling.
         rtc.client.on("error", (err) => {
-                console.log(err)
+                // console.log(err)
             })
             // Occurs when the peer user leaves the channel; for example, the peer user calls Client.leave.
         rtc.client.on("peer-leave", function(evt) {
                 var id = evt.uid;
-                console.log("id", evt);
+                // console.log("id", evt);
                 if (id != rtc.params.uid) {
                     removeView(id);
                 }
-                Toast.notice("peer leave")
-                console.log('peer-leave', id);
+                // Toast.notice("peer leave")
+                // console.log('peer-leave', id);
             })
             // Occurs when the local stream is published.
         rtc.client.on("stream-published", function(evt) {
-                Toast.notice("stream published success")
-                console.log("stream-published");
+                // Toast.notice("stream published success")
+                // console.log("stream-published");
             })
             // Occurs when the remote stream is added.
         rtc.client.on("stream-added", function(evt) {
             var remoteStream = evt.stream;
             var id = remoteStream.getId();
-            Toast.info("stream-added uid: " + id)
+            // Toast.info("stream-added uid: " + id)
             if (id !== rtc.params.uid) {
                 rtc.client.subscribe(remoteStream, function(err) {
-                    console.log("stream subscribe failed", err);
+                    // console.log("stream subscribe failed", err);
                 })
             }
-            console.log('stream-added remote-uid: ', id);
+            // console.log('stream-added remote-uid: ', id);
         });
         // Occurs when a user subscribes to a remote stream.
         rtc.client.on("stream-subscribed", function(evt) {
@@ -680,32 +682,32 @@
                 rtc.remoteStreams.push(remoteStream);
                 addView(id);
                 remoteStream.play("remote_video_" + id);
-                Toast.info('stream-subscribed remote-uid: ' + id);
-                console.log('stream-subscribed remote-uid: ', id);
+                // Toast.info('stream-subscribed remote-uid: ' + id);
+                // console.log('stream-subscribed remote-uid: ', id);
             })
             // Occurs when the remote stream is removed; for example, a peer user calls Client.unpublish.
         rtc.client.on("stream-removed", function(evt) {
             var remoteStream = evt.stream;
             var id = remoteStream.getId();
-            Toast.info("stream-removed uid: " + id)
+            // Toast.info("stream-removed uid: " + id)
             remoteStream.stop("remote_video_" + id);
             rtc.remoteStreams = rtc.remoteStreams.filter(function(stream) {
                 return stream.getId() !== id
             })
             removeView(id);
-            console.log('stream-removed remote-uid: ', id);
+            // console.log('stream-removed remote-uid: ', id);
         })
         rtc.client.on("onTokenPrivilegeWillExpire", function() {
             // After requesting a new token
             // rtc.client.renewToken(token);
-            Toast.info("onTokenPrivilegeWillExpire")
-            console.log("onTokenPrivilegeWillExpire")
+            // Toast.info("onTokenPrivilegeWillExpire")
+            // console.log("onTokenPrivilegeWillExpire")
         });
         rtc.client.on("onTokenPrivilegeDidExpire", function() {
             // After requesting a new token
             // client.renewToken(token);
-            Toast.info("onTokenPrivilegeDidExpire")
-            console.log("onTokenPrivilegeDidExpire")
+            // Toast.info("onTokenPrivilegeDidExpire")
+            // console.log("onTokenPrivilegeDidExpire")
         })
     }
 
@@ -722,7 +724,7 @@
     **/
     function join(rtc, option) {
         if (rtc.joined) {
-            Toast.error("Your already joined");
+            // Toast.error("Your already joined");
             return;
         }
 
@@ -742,7 +744,7 @@
 
         // init client
         rtc.client.init(option.appID, function() {
-            console.log("init success");
+            // console.log("init success");
 
             /**
             * Joins an AgoraRTC Channel
@@ -765,8 +767,8 @@
             *      If you use a number as the user ID, it should be a 32-bit unsigned integer with a value ranging from 0 to (232-1).
             **/
             rtc.client.join(option.token ? option.token : null, option.channel, option.uid ? +option.uid : null, function(uid) {
-                Toast.notice("join channel: " + option.channel + " success, uid: " + uid);
-                console.log("join channel: " + option.channel + " success, uid: " + uid);
+                // Toast.notice("join channel: " + option.channel + " success, uid: " + uid);
+                // console.log("join channel: " + option.channel + " success, uid: " + uid);
                 rtc.joined = true;
 
                 rtc.params.uid = uid;
@@ -783,33 +785,33 @@
 
                 // init local stream
                 rtc.localStream.init(function() {
-                    console.log("init local stream success");
+                    // console.log("init local stream success");
                     // play stream with html element id "local_stream"
                     rtc.localStream.play("local_stream")
 
                     // publish local stream
                     publish(rtc);
                 }, function(err) {
-                    Toast.error("stream init failed, please open console see more detail")
+                    // Toast.error("stream init failed, please open console see more detail")
                     console.error("init local stream failed ", err);
                 })
             }, function(err) {
-                Toast.error("client join failed, please open console see more detail")
+                // Toast.error("client join failed, please open console see more detail")
                 console.error("client join failed", err)
             })
         }, (err) => {
-            Toast.error("client init failed, please open console see more detail")
+            // Toast.error("client init failed, please open console see more detail")
             console.error(err);
         });
     }
 
     function publish(rtc) {
         if (!rtc.client) {
-            Toast.error("Please Join Room First");
+            // Toast.error("Please Join Room First");
             return;
         }
         if (rtc.published) {
-            Toast.error("Your already published");
+            // Toast.error("Your already published");
             return;
         }
         var oldState = rtc.published;
@@ -817,8 +819,8 @@
         // publish localStream
         rtc.client.publish(rtc.localStream, function(err) {
             rtc.published = oldState;
-            console.log("publish failed");
-            Toast.error("publish failed")
+            // console.log("publish failed");
+            // Toast.error("publish failed")
             console.error(err);
         })
         Toast.info("publish")
@@ -827,31 +829,31 @@
 
     function unpublish(rtc) {
         if (!rtc.client) {
-            Toast.error("Please Join Room First");
+            // Toast.error("Please Join Room First");
             return;
         }
         if (!rtc.published) {
-            Toast.error("Your didn't publish");
+            // Toast.error("Your didn't publish");
             return;
         }
         var oldState = rtc.published;
         rtc.client.unpublish(rtc.localStream, function(err) {
             rtc.published = oldState;
-            console.log("unpublish failed");
-            Toast.error("unpublish failed");
+            // console.log("unpublish failed");
+            // Toast.error("unpublish failed");
             console.error(err);
         })
-        Toast.info("unpublish")
+        // Toast.info("unpublish")
         rtc.published = false;
     }
 
     function leave(rtc) {
         if (!rtc.client) {
-            Toast.error("Please Join First!");
+            // Toast.error("Please Join First!");
             return;
         }
         if (!rtc.joined) {
-            Toast.error("You are not in channel");
+            // Toast.error("You are not in channel");
             return;
         }
         /**
@@ -872,13 +874,13 @@
             rtc.localStream = null;
             rtc.remoteStreams = [];
             rtc.client = null;
-            console.log("client leaves channel success");
+            // console.log("client leaves channel success");
             rtc.published = false;
             rtc.joined = false;
-            Toast.notice("leave success");
+            // Toast.notice("leave success");
         }, function(err) {
-            console.log("channel leave failed");
-            Toast.error("leave success");
+            // console.log("channel leave failed");
+            // Toast.error("leave success");
             console.error(err);
         })
     }
@@ -909,7 +911,7 @@
         var fields = ['appID', 'channel'];
 
         $("#join").on("click", function(e) {
-            console.log("join")
+            // console.log("join")
             e.preventDefault();
             var params = serializeformData();
             if (validator(params, fields)) {
@@ -918,7 +920,7 @@
         })
 
         $("#publish").on("click", function(e) {
-            console.log("publish")
+            // console.log("publish")
             e.preventDefault();
             var params = serializeformData();
             if (validator(params, fields)) {
@@ -927,7 +929,7 @@
         });
 
         $("#unpublish").on("click", function(e) {
-            console.log("unpublish")
+            // console.log("unpublish")
             e.preventDefault();
             var params = serializeformData();
             if (validator(params, fields)) {
@@ -936,7 +938,7 @@
         });
 
         $("#leave").on("click", function(e) {
-            console.log("leave")
+            // console.log("leave")
             e.preventDefault();
             var params = serializeformData();
             if (validator(params, fields)) {

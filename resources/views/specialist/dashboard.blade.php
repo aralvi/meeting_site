@@ -181,7 +181,7 @@ a:focus{
                                     <span class="font-weight-bold ml-3">Rate</span>
                                     <span class="ml-2">${{ $appointment->rate }}</span>
                                 </div>
-                                <div class="col-md-7 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm">Message</button><img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->user->username}}"></div>
+                                <div class="col-md-7 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm">Message</button><img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall(this)" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->user->username}}"></div>
                             </div>
                             @endforeach
                             
