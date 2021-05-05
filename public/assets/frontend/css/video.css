@@ -3801,20 +3801,7 @@ small {
     visibility: hidden;
 }
 
-.btn,
-.btn-large,
-.btn-small,
-.btn-flat {
-    border: none;
-    border-radius: 2px;
-    display: inline-block;
-    height: 36px;
-    line-height: 36px;
-    padding: 0 16px;
-    text-transform: uppercase;
-    vertical-align: middle;
-    -webkit-tap-highlight-color: transparent;
-}
+
 
 .btn.disabled,
 .disabled.btn-large,
@@ -3899,18 +3886,7 @@ small {
     background-color: #1d7d74;
 }
 
-.btn,
-.btn-large,
-.btn-small {
-    text-decoration: none;
-    color: #fff;
-    /* background-color: #26a69a; */
-    text-align: center;
-    letter-spacing: .5px;
-    -webkit-transition: background-color .2s ease-out;
-    transition: background-color .2s ease-out;
-    cursor: pointer;
-}
+
 
 .btn:hover,
 .btn-large:hover,
@@ -4151,7 +4127,7 @@ small {
     -webkit-box-shadow: none;
     box-shadow: none;
     background-color: transparent;
-    color: #343434;
+    /* color: #343434; */
     cursor: pointer;
     -webkit-transition: background-color .2s;
     transition: background-color .2s;
@@ -4175,21 +4151,19 @@ small {
 }
 
 .btn-large {
-    height: 54px;
+    /* height: 54px;
     line-height: 54px;
     font-size: 15px;
     padding: 0 28px;
+} */
+
 }
 
-.btn-large i {
-    font-size: 1.6rem;
-}
-
-.btn-small {
-    height: 32.4px;
+/* .btn-small { */
+    /* height: 32.4px;
     line-height: 32.4px;
     font-size: 13px;
-}
+} */
 
 .btn-small i {
     font-size: 1.2rem;
@@ -4247,8 +4221,8 @@ small {
     font-size: 16px;
     /* color: #26a69a; */
     display: block;
-    line-height: 22px;
-    padding: 14px 16px;
+    /* line-height: 22px;
+    padding: 14px 16px; */
 }
 
 .dropdown-content li>span>label {
@@ -5431,14 +5405,14 @@ select.browser-default {
     display: block;
 }
 
-select {
+/* select {
     background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
     padding: 5px;
     border: 1px solid #f2f2f2;
     border-radius: 2px;
     height: 3rem;
-}
+} */
 
 .select-label {
     position: absolute;
@@ -5454,7 +5428,7 @@ select {
     pointer-events: none;
 }
 
-.select-wrapper input.select-dropdown {
+/* .select-wrapper input.select-dropdown {
     position: relative;
     cursor: pointer;
     background-color: transparent;
@@ -5473,7 +5447,7 @@ select {
     -ms-user-select: none;
     user-select: none;
     z-index: 1;
-}
+} */
 
 .select-wrapper input.select-dropdown:focus {
     /* border-bottom: 1px solid #26a69a; */
