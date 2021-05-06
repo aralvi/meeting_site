@@ -2,12 +2,21 @@
 <html>
 
 <head>
-    @include('includes.frontend.head') 
+    @include('includes.frontend.head')
     @yield('extra-css')
+    <style>
+        .top-50 {
+            top: 40% !important;
+        }
+        .left-40{
+            left: 40% !important;
+        }
+
+    </style>
 </head>
 
 <body id="body-content">
-<div class="d-none calling-div" ><div class="A_D_div text-center bg-dark p-5 rounded"><h6 class="incoming-call text-white mb-4"></h6><div class="d-flex justify-content-center   rounded "><div> <img class="end-call cursor-pointer" onclick="endCall()"  src="{{ asset('assets/frontend/images/decline.png') }}" alt="image" /></div> <div><img class="cursor-pointer accpet_call" onclick="makeCall(this)" data-toggle="modal" data-target="#video-call-modal" src="{{ asset('assets/frontend/images/accept.png') }}" alt="image" /></div></div> </div></div>
+<div class="d-none calling-div position-absolute left-40 top-40" ><div class="A_D_div text-center bg-dark p-5 rounded"><h6 class="incoming-call text-white mb-4"></h6><div class="d-flex justify-content-center   rounded "><div> <img class="end-call cursor-pointer" onclick="endCall()"  src="{{ asset('assets/frontend/images/decline.png') }}" alt="image" /></div> <div><img class="cursor-pointer accpet_call" onclick="makeCall(this)" data-toggle="modal" data-target="#video-call-modal" src="{{ asset('assets/frontend/images/accept.png') }}" alt="image" /></div></div> </div></div>
     @yield('content')
     @yield('footer')
 
@@ -32,7 +41,7 @@
                 <div class="embed-responsive embed-responsive-21by9">
                         <!DOCTYPE html>
                         <html lang="en">
-      
+
                         <head>
                           <meta charset="UTF-8">
                           <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -41,7 +50,7 @@
                           <link rel="stylesheet" href="{{ asset('assets/frontend/css/video.css') }}" />
                         </head>
                         <body class="agora-theme">
-                          
+
                           <form id="form" class="row col l12 s12 " >
                             <div class="row container col l12 s12">
                               <div class="col  d-none" style="min-width: 433px; max-width: 443px;">
@@ -102,7 +111,7 @@
                                                 <input type="radio" class="with-gap" name="mode" value="live" checked />
                                                 <span>live</span>
                                               </label>
-      
+
                                               <label>
                                                 <input type="radio" class="with-gap" name="mode" value="rtc" />
                                                 <span>rtc</span>
@@ -118,7 +127,7 @@
                                                 <input type="radio" class="with-gap" name="codec" value="h264" checked />
                                                 <span>h264</span>
                                               </label>
-      
+
                                               <label>
                                                 <input type="radio" class="with-gap" name="codec" value="vp8" />
                                                 <span>vp8</span>
@@ -129,7 +138,7 @@
                                       </div>
                                   </li>
                                 </ul>
-                              </div> 
+                              </div>
                               <div class="col s7">
                                 <div class="video-grid" id="video">
                                   <div class="video-view">
@@ -143,9 +152,9 @@
                           </form>
                         </body>
                         </html>
-                    
+
                   </div>
-                  
+
                 <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
                 <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
             </div>
@@ -160,11 +169,11 @@
     <!-- E I G H T    S E C T I O N  E N D  -->
         @include('includes.frontend.footer')
     <!-- N I N E    S E C T I O N  S T A R T -->
-    
+
     <!-- N I N E    S E C T I O N  E N D  -->
 
     <!-- T E N    S E C T I O N  S T A R T  -->
-    
+
 
     <!-- T E N    S E C T I O N  E N D  -->
 
@@ -217,9 +226,9 @@
 
         @if(Auth::check())
             setInterval(function(){
-                
+
                 @if(Auth::user()->user_type!='admin')
-                
+
                     firebase.database().ref('/chats').orderByChild("reciever_id").equalTo("{{ Auth::user()->id }}").on("value", function(ysnapshot) {
                         var chat_html = "";
                         var msg_chk = false;
@@ -253,7 +262,7 @@
                                                                 $.ajax({
                                                                     url:s_url,
                                                                     type:"get",
-                                                                    async: false, 
+                                                                    async: false,
                                                                     success:function(data)
                                                                     {
                                                                         if(data.next>data.current)
@@ -265,7 +274,7 @@
                                                                     }
                                                                 });
                                                             chat_html+='</div>';
-                                                            
+
                                                             chat_html+='<div class="col-md-6 pl-2 pt-1 p-0">';
                                                                 chat_html+='<div class="row m-0"><div class="dropdown-heading">'+this.name[0].toUpperCase() + this.name.slice(1)+'</div></div>';
                                                                 chat_html+='<div class="row m-0"><div class="dropdown-contnt">'+cnt+'</div></div>';
@@ -280,11 +289,11 @@
                                                         chat_html+="</a>";
                                                     }
                                                 });
-                                                
+
                                             }
-                                            
+
                                         });
-                                        
+
                                     }
                                     chk.push(this.sender_id);
                                 }
@@ -304,7 +313,7 @@
                             $("#nav-home").html(chat_html);
                         }
                     });
-                    
+
                     $.ajax({
                         url:"{{ route('user.appointment.notification') }}",
                         type:"get",
@@ -331,7 +340,7 @@
                                     html+="</a>";
 
                                 }
-                                
+
                             });
                             // html+='<div class="dropdown-footer mt-5">';
                             //     html+='<div class="bg-3ac574 row m-0 pt-2 pb-3">';
@@ -350,7 +359,7 @@
                         }
                     });
                 @endif
-                
+
                 $.ajax({
                     url:"@if(Auth::user()->user_type=='admin'){{ route('admin.user.dispute.notification') }}@else{{ route('user.dispute.notification') }}@endif",
                     type:"get",
@@ -369,7 +378,7 @@
                                         html+='<div class="row m-0"><div class="dropdown-contnt">'+v.subject+'</div></div>';
                                     html+='</div>';
                                 html+="</a>";
-                            } 
+                            }
                         });
                         let oldHtml = $('#nav-profile').html();
                         oldHtml+=html;
@@ -449,12 +458,12 @@
     @yield('extra-script')
 
 
-   
+
     <script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/frontend/js/video-js/materialize.min.js') }}"></script>
   <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
 <script>
-   
+
 
     function endCall(){
         $('#leave').click();
@@ -479,16 +488,16 @@
                 $('#channelName').val(JSON.parse(data).channel);
                 $('#join').click();
                 $('.calling-div').addClass('d-none');
-                
+
             }
         })
     }
 
-    function play() { 
-         var beepsound = new Audio('https://www.soundjay.com/button/sounds/beep-01a.mp3'); 
-            beepsound.play(); 
+    function play() {
+         var beepsound = new Audio('https://www.soundjay.com/button/sounds/beep-01a.mp3');
+            beepsound.play();
      }
-    
+
 
 
     // // console.log("agora sdk version: " + AgoraRTC.VERSION + " compatible: " + AgoraRTC.checkSystemRequirements());
