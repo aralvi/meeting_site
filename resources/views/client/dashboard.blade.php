@@ -111,12 +111,12 @@
     }
 
 .lable {
- 
+
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
 .snehainput {
-      
+
     width: 93%;
   padding: 6px 5px;
   outline: none;
@@ -127,8 +127,8 @@ span.prefix{
 }
     .fs-1-3{ font-size:1.3rem !important; }
 </style>
-@endsection {{-- head end --}} 
-{{-- content section start --}} 
+@endsection {{-- head end --}}
+{{-- content section start --}}
 @section('content')
 
     <section class="px-5 pt-2 pb-2 nav-bg-img robotoRegular">
@@ -136,7 +136,7 @@ span.prefix{
     </section>
 
    @include('includes.frontend.navigations')
-   <div class="d-none calling-div" ><div class="A_D_div text-center bg-dark p-5 rounded"><h6 class="incoming-call text-white mb-4"></h6><div class="d-flex justify-content-center   rounded "><div> <img class="end-call cursor-pointer" onclick="endCall()"  src="{{ asset('assets/frontend/images/decline.png') }}" alt="image" /></div> <div><img class="cursor-pointer" onclick="makeCall()" data-toggle="modal" data-target="#video-call-modal" src="{{ asset('assets/frontend/images/accept.png') }}" alt="image" /></div></div> </div></div>
+
     <section class="container-fluid">
         <div class="row mt-5 justify-content-around">
             <div class="col-md-6 borderRadius-10px pl-0 pr-0 box_shadow1 border-top-green-10">
@@ -149,7 +149,7 @@ span.prefix{
                             </div>
                             <div class="col-md-10 p-0 cl-6A6A6A">
                                 @foreach ($appointments->take(3) as $appointment)
-                                    
+
                                 <div class="mt-3 row align-items-center bg-F2F5FA box_shadow2">
                                     <div class="col-md-8">
                                         <p>{{ ucwords($appointment->specialist->user->username) }}</p>
@@ -162,11 +162,11 @@ span.prefix{
                                     <div class="col-md-4 p-0">
                                         <span class="font-weight-bold ml-3">Rate</span>
                                         <span class="ml-2">${{ $appointment->rate }}</span>
-                                    </div>    
+                                    </div>
                                     <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button><img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->specialist->user->username}}"></div>
                                 </div>
                                 @endforeach
-                                
+
                             </div>
                         </div>
                     </div>
@@ -223,7 +223,7 @@ span.prefix{
                 </div>
             </div>
         </div>
-        
+
     </section>
 
 
@@ -435,7 +435,7 @@ span.prefix{
 
     <section class="main_padding pt-70">
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            
+
             <div class="carousel-inner h-413">
 
                 @foreach(App\Specialist::all()->chunk(4) as $specialistsCollections)
@@ -511,19 +511,19 @@ span.prefix{
                             </div>
                             <div class="form-group col-md-4">
                                 <div class="sub_categories">
-                                                    
+
                                 </div>
                             </div>
-                            <div class="form-group col-md-4"> 
+                            <div class="form-group col-md-4">
                                 <label for="rate_from">What is your budget for this service?</label>
                                 <div class="lable">
                                 <span class="prefix">$</span>
                                 <input class="snehainput border-0" type="number" name="budget" id="budget" class="form-control" placeholder="5 Minimum (USD)"/>
                                 </div>
                             </div>
-                            
+
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="description">Description*</label>
                             <textarea id="description" class="form-control summernote" name="description" required rows="5"> </textarea>
@@ -536,11 +536,11 @@ span.prefix{
                             <button type="submit" class="btn btn-outline-success my-2 d-flex justify-content-end my-sm-0 cl-ffffff bg-3ac574 pl-5 pr-5 login_button appointment-btn ml-auto" type="submit">Submit</button>
                         </div>
                     </form>
-                    
+
                 </div>
-                
+
             </div>
-        
+
         </section>
 
         <section class="main_padding pt-70  text-center">
@@ -576,7 +576,7 @@ span.prefix{
                                             <td class="border-0">{{ ucwords($request->category->name) }}</td>
                                             @php
                                                 $subcategories = App\SubCategory::whereIn('id',json_decode($request->subcategories))->get()->pluck('name')->toArray();
-                                            @endphp 
+                                            @endphp
                                             <td>{{ implode(',',array_map('ucwords',$subcategories)) }}</td>
                                             <td class="border-0">{{ ucfirst($request->description) }}</td>
                                             <td class="border-0">$ {{ $request->budget }}</td>
@@ -592,7 +592,7 @@ span.prefix{
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                             </div>
-                                                            
+
                                                             <div class="modal-body">
                                                                 @if($request->bids->count() > 0)
 
@@ -631,7 +631,7 @@ span.prefix{
                                                                                                 <div></div>
                                                                                             </div>
                                                                                             @if($service->attachment !=null)
-        
+
                                                                                                 <div class="d-flex pt-2">
                                                                                                     <div>
                                                                                                         <div class="d-flex">
@@ -646,7 +646,7 @@ span.prefix{
                                                                                                     </div>
                                                                                                     <div></div>
                                                                                                 </div>
-                                                                                            
+
                                                                                             @endif
                                                                                             </div>
                                                                                         </div>
@@ -662,20 +662,20 @@ span.prefix{
                                                                                         <input type="hidden" name="status" value="{{ ($service->status == 'Declined') ? 1 :0 }}" class="status">
                                                                                         <button type="button" class="btn btn-sm {{ ($service->status == 'Declined') ? 'btn-success' : 'btn-danger' }}  action_btn change_status_{{ $service->id }}">{{ ($service->status == 'Declined') ? 'Accept' : 'Ignore' }} </button>
                                                                                         {{-- </form> --}}
-                                                                                        
+
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="mt-3 border w-100"></div>
-                                                                                
+
                                                                             @endforeach
-                                                                            
+
                                                                         </div>
                                                                     </div>
 
                                                                 @endif
                                                             </div>
-                                                        
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -684,7 +684,7 @@ span.prefix{
                                         </tr>
                                     @endforeach
                                 @endif
-                                
+
 
                             </tbody>
                         </table>
@@ -701,26 +701,26 @@ span.prefix{
                 </button>
             </div>
         </div>
-        
-        
+
+
     @endif
 
-    
 
-   
-    
 
-@endsection 
-{{-- content section end --}} 
+
+
+
+@endsection
+{{-- content section end --}}
 
 {{-- footer section start --}}
 
-@section('extra-script') 
+@section('extra-script')
 <script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
             <script>
             $(document).ready(function(){
-                    setInterval(function(){ 
-                        
+                    setInterval(function(){
+
                     var username = $('.video-chat').data('caller');
                     $.ajax({
                         type: 'get',
@@ -740,7 +740,7 @@ span.prefix{
 
 // $('.bid_accept').on('submit', function(e) {
 //     alert($(this).serialize())
-//     e.preventDefault(); 
+//     e.preventDefault();
 //     $.ajax({
 //         type: "POST",
 //         url: $(this).attr('action'),
@@ -757,7 +757,7 @@ span.prefix{
 $('.action_btn').on('click', function(e) {
     var url = $(this).siblings('input.url').val()
     var status = $(this).siblings('input.status').val()
-    
+
     $.ajax({
         type: "POST",
         url: url,
@@ -768,7 +768,7 @@ $('.action_btn').on('click', function(e) {
                 $('.change_status_'+msg.id).siblings('input[name="status"]').val(1)
                 $('.change_status_'+msg.id).addClass('btn-success').removeClass('btn-danger');
                 $('.change_status_'+msg.id).text('Accept')
-                
+
             }else if(msg.status == 'Approved'){
                 $('.change_status_'+msg.id).removeClass('btn-success').addClass('btn-danger');
                 $('.change_status_'+msg.id).siblings('input[name="status"]').val(0)
