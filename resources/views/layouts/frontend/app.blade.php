@@ -5,7 +5,7 @@
     @include('includes.frontend.head')
     @yield('extra-css')
     <style>
-        .top-50 {
+        .top-40 {
             top: 40% !important;
         }
         .left-40{
