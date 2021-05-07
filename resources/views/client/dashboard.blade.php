@@ -159,11 +159,17 @@ span.prefix{
                                         <p>Date & Time</p>
                                         <p>{{ date('M d Y',strtotime(getTimeZoneDate('America/Chicago',$appointment->user->time_zone,$appointment->date))) }} {{ getTimeZoneTime('America/Chicago',$appointment->user->time_zone,$appointment->time) }}</p>
                                     </div>
+
                                     <div class="col-md-4 p-0">
                                         <span class="font-weight-bold ml-3">Rate</span>
                                         <span class="ml-2">${{ $appointment->rate }}</span>
                                     </div>
-                                    <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button><img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall()" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->specialist->user->username}}"></div>
+                                    <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button>
+
+                                       
+                                        <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall(this)" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->specialist->user->username}}">
+
+                                    </div>
                                 </div>
                                 @endforeach
 
