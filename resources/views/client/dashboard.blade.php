@@ -160,13 +160,26 @@ span.prefix{
                                         <p>{{ date('M d Y',strtotime(getTimeZoneDate('America/Chicago',$appointment->user->time_zone,$appointment->date))) }} {{ getTimeZoneTime('America/Chicago',$appointment->user->time_zone,$appointment->time) }}</p>
                                     </div>
 
+                                    @php
+                                    $currentDate = new DateTime("now", new DateTimeZone('America/Chicago') );
+                                    $currentDate = $currentDate->format('Y-m-d H:i:s');
+
+                                    $fromDate2 = new DateTime($appointment->date.' '.$appointment->time );
+                                    $fromDate2 = $fromDate2->format('Y-m-d H:i:s');
+                                    
+                                    $interval = $currentDate->diff($fromDate2);
+                                    $time =$interval->format('%i');
+                                    echo $time ;
+                                    die();
+                                 @endphp
+
                                     <div class="col-md-4 p-0">
                                         <span class="font-weight-bold ml-3">Rate</span>
                                         <span class="ml-2">${{ $appointment->rate }}</span>
                                     </div>
                                     <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button>
 
-                                       
+                                        @dd((\Carbon\Carbon::now()->timezone($appointment->user->time_zone)) )
                                         <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall(this)" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->specialist->user->username}}">
 
                                     </div>
