@@ -161,16 +161,15 @@ span.prefix{
                                     </div>
 
                                     @php
-                                    $currentDate = new DateTime("now", new DateTimeZone('America/Chicago') );
-                                    // $currentDate = $currentDate->format('Y-m-d H:i:s');
+                                     $currentDate = new DateTime("now", new DateTimeZone('America/Chicago') );
+                                   //echo $currentDate->format('Y-m-d H:i:s a');
 
                                     $fromDate2 = new DateTime($appointment->date.' '.$appointment->time );
-                                    // $fromDate2 = $fromDate2->format('Y-m-d H:i:s');
+                                    //echo $fromDate2->format('Y-m-d H:i:s a');
 
                                     $interval = $currentDate->diff($fromDate2);
-                                    $time =$interval->format('%i');
-                                    // echo $time ;
-                                    // die();
+                                    $time =$interval->format('%h:%i');
+                                    
                                  @endphp
 
                                     <div class="col-md-4 p-0">
@@ -178,9 +177,16 @@ span.prefix{
                                         <span class="ml-2">${{ $appointment->rate }}</span>
                                     </div>
                                     <div class="col-md-8 text-right"><button class="btn btn-success mb-2 mt-2 btn-sm ">Message</button>
-
-                                        @dd((\Carbon\Carbon::now()->timezone($appointment->user->time_zone)) )
+                                        <?php
+                                         $timeh =$interval->format('%h');
+                                         $timei =$interval->format('%i');
+                                         
+                                          
+                                        ?>
+                                        @if($timeh==0 and $timei<=10)
+                                              
                                         <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall(this)" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$appointment->specialist->user->username}}">
+                                          @endif
 
                                     </div>
                                 </div>
