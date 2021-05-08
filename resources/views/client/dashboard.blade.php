@@ -162,15 +162,15 @@ span.prefix{
 
                                     @php
                                     $currentDate = new DateTime("now", new DateTimeZone('America/Chicago') );
-                                    $currentDate = $currentDate->format('Y-m-d H:i:s');
+                                    // $currentDate = $currentDate->format('Y-m-d H:i:s');
 
                                     $fromDate2 = new DateTime($appointment->date.' '.$appointment->time );
-                                    $fromDate2 = $fromDate2->format('Y-m-d H:i:s');
-                                    
+                                    // $fromDate2 = $fromDate2->format('Y-m-d H:i:s');
+
                                     $interval = $currentDate->diff($fromDate2);
                                     $time =$interval->format('%i');
-                                    echo $time ;
-                                    die();
+                                    // echo $time ;
+                                    // die();
                                  @endphp
 
                                     <div class="col-md-4 p-0">
