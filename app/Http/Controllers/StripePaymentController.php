@@ -44,6 +44,7 @@ class StripePaymentController extends Controller
         ]);
         $payment = new Payment();
         $payment->user_id = Auth::user()->id;
+        $payment->received_amount = $request->amount;
         if($request->payment_for == 'appointment'){
             $appointment = Appointment::findOrFail($request->appointment_id);
             $appointment->payment_amount = $appointment->payment_amount + $request->amount;

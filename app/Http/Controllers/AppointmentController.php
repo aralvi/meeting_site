@@ -11,6 +11,8 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Rating;
+use App\User;
+
 class AppointmentController extends Controller
 {
     /**
@@ -217,12 +219,18 @@ class AppointmentController extends Controller
         return "fine";
     }
 
-    public function releasePayment($id)
+    public function releasePayment($id,Request $request)
     {
         $payment = Payment::findOrFail($id);
         $payment->release_status = 'released';
         $payment->p_status = 'released';
         $payment->save();
+        $user = User::where('id',$request->specialist_id)->first();
+        $payment = Payment::where('release_status','released')->where('specialist_id',$user->specialist->id)->sum('received_amount');
+        $deduction = ($payment/100)*20;
+        $user->total_balance = ($payment-$deduction);
+        $user->deduction = '20';
+        $user->save();
         return 'Payment released to specialist fromyour side it will be transfer in next 7 working days';
     }
 }

@@ -103,14 +103,18 @@
                                     @php
                                         $payment = App\Payment::where('appointment_id',$appointment->id)->first();
                                     @endphp
-                                    @if (Auth::user()->user_type=='client' && $appointment->payment_status == 'Paid' && $payment->release_status == 'pending')
-                                                <div class="pt-3">
-                                                    <p class="f-12 robotoRegular m-0">Request Admin  <br> To Release Payment</p>
-                                                    <button
-                                                        class="btn payment_release btn-outline-success my-2 my-sm-0 cl-ffffff bg-3AC574 border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4" data-id="{{ $payment->id }}">
-                                                        Realease Payment
-                                                    </button>
-                                                </div>
+                                    @if (Auth::user()->user_type=='client' && $appointment->payment_status == 'Paid')
+                                    @if ($payment != null && $payment->release_status == 'pending')
+
+                                    <div class="pt-3">
+                                        <p class="f-12 robotoRegular m-0">Request Admin  <br> To Release Payment</p>
+                                        <button
+                                            class="btn payment_release btn-outline-success my-2 my-sm-0 cl-ffffff bg-3AC574 border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4" data-id="{{ $payment->id }}"
+                                            data-specialist="{{$appointment->specialist->user->id}}">
+                                            Realease Payment
+                                        </button>
+                                    </div>
+                                    @endif
                                             @endif
                                         @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid" )
                                             @if ($appointment->status == 'Pending')
@@ -339,12 +343,13 @@
 // release payment
  $(".payment_release").on("click", function () {
         var payment_id = $(this).data("id");
+        var specialist = $(this).data("specialist");
         $.ajax({
             type: "posT",
             url: "{{ url('release_payment') }}"+"/"+payment_id,
             data: {
                 _token: "{{ csrf_token() }}",
-
+                specialist_id :specialist,
             },
             success: function (data) {
                 swal({

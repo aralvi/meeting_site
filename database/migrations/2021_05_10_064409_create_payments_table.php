@@ -19,6 +19,7 @@ class CreatePaymentsTable extends Migration
             $table->unsignedBigInteger('specialist_id');
             $table->unsignedBigInteger('appointment_id')->nullable();
             $table->unsignedBigInteger('bid_id')->nullable();
+            $table->string('received_amount');
             $table->enum('p_status',['pending','released','specialist_request','paid'])->default('pending');
             $table->enum('release_status',['pending','released'])->default('pending');
             $table->timestamps();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Specialist;
 use App\Http\Controllers\Controller;
 use App\Models\Bid;
 use App\Payment;
+use App\User;
 use Illuminate\Http\Request;
 
 class BidController extends Controller
@@ -126,6 +127,13 @@ class BidController extends Controller
         $payment->release_status = 'released';
         $payment->p_status = 'released';
         $payment->save();
+        $user = User::where('id',$bid->specialist->user->id)->first();
+        $payment = Payment::where('release_status','released')->where('specialist_id',$bid->specialist_id)->sum('received_amount');
+        $deduction = ($payment/100)*20;
+        $user->total_balance =  $payment-$deduction;
+        $user->deduction = '20';
+        $user->save();
+
         return $bid->work_status;
     }
 }
