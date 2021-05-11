@@ -149,7 +149,7 @@
              </div>
              <div class='col-md-6 form-group  required'>
                  <label class='control-label'>Amount</label> <input autocomplete='off'
-                     class='form-control border-bottom ' name="amount" type='number' value="{{ $amount }}"
+                     class='form-control border-bottom ' name="amount" type='text' value="{{ $amount }}"
                      placeholder="ex. $100 (USD)" min="0">
              </div>
          </div>
