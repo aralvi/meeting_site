@@ -52,6 +52,10 @@ Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
     Route::get('admin/user/disputes/notifications','ClientSpecialistDisputeController@adminUserDisputeNotifications')->name('admin.user.dispute.notification');
     //    Route::get('users','AdminController@users');
     //    Route::get('user-approve/{id}','UserController@userApproved')->name('user.approved');
+    //payments
+    Route::resource('admin/payments', 'Admin\PaymentsController');
+    Route::get('admin/stripe', 'Admin\PaymentsController@stripe');
+    Route::post('admin/stripe/pay', 'Admin\PaymentsController@stripePayment');
 });
 
 // usercheck

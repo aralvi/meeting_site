@@ -540,6 +540,7 @@ $('.withdraw_request').on('click',function(){
 
             },
             success: function (data) {
+                $('.withdraw_request').remove();
                 swal({
                             icon: "success",
                             text: data,
