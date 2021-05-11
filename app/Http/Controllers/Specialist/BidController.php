@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Specialist;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bid;
+use App\Payment;
 use Illuminate\Http\Request;
 
 class BidController extends Controller
@@ -100,8 +101,8 @@ class BidController extends Controller
         $bid->status = $request->status;
         $bid->save();
         $approval = Bid::where('service_request_id',$bid->service_request_id)->where('status','1')->exists();
-        
-    
+
+
         return response()->json(['id' => $id, 'status' => $bid->status,'approval'=>$approval]);
     }
 
@@ -121,6 +122,10 @@ class BidController extends Controller
         $bid = Bid::findOrFail($request->bid_id);
         $bid->work_status = $request->work_status;
         $bid->save();
+        $payment = Payment::where('bid_id',$request->bid_id)->first();
+        $payment->release_status = 'released';
+        $payment->p_status = 'released';
+        $payment->save();
         return $bid->work_status;
     }
 }

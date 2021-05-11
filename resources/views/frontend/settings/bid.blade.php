@@ -80,11 +80,19 @@
                     <span
                         class="badge badge-sm {{ ($bid->work_status == 'Completed')? 'badge-success':'badge-danger' }}">{{ $bid->work_status }}</span>
                     @else
-
-                    <button
+                    @if ($bid->work_status == 'Completed')
+                    <span
+                        class="badge badge-sm badge-success">{{ $bid->work_status }}</span>
+                        @else
+                        <button
+                        class="btn btn-success btn-sm work_status"
+                        data-bid="{{ $bid->id }}"
+                        data-work_status="1"> Mark Completed </button>
+                        @endif
+                    {{-- <button
                         class="btn {{ ($bid->work_status == 'Completed')? 'btn-danger':'btn-success' }}  btn-sm work_status"
                         data-bid="{{ $bid->id }}"
-                        data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button>
+                        data-work_status="{{ ($bid->work_status == 'Completed')? '0':'1' }}">{{ ($bid->work_status == 'Completed')? 'Mark Un-Completed':'Mark Completed' }}</button> --}}
                     @endif
                     @endif
                 </td>
@@ -171,10 +179,10 @@
                 }
             })
         }
-    
 
 
-    
+
+
     $('.work_status').on('click',function(){
         var bid = $(this);
         var bid_id = $(this).data('bid');
@@ -186,29 +194,31 @@
                 _token: '{{ csrf_token() }}',
                 bid_id: bid_id,
                 work_status:work_status,
-               
+
             },
             success: function (data) {
                 if(data == 'Completed'){
-                    bid.removeClass('btn-success').addClass('btn-danger');
-                    bid.text('Mark Un-Complete')
-                    bid.attr('data-work_status','0')
+                    // bid.removeClass('btn-success').addClass('btn-danger');
+                    // bid.text('Mark Un-Complete')
+                    // bid.attr('data-work_status','0')
+                    bid.addClass('disabled')
                     swal({
                             icon: "success",
-                            text: "{{ __('Work is marked as Completed') }}",
+                            text: "{{ __('Work is marked as Completed and payment released it will transfer to specialist in next 7 working days Thank you!') }}",
                             icon: 'success'
                         });
-                }if(data == 'Un-Complete'){
-                    bid.attr('data-work_status','1')
-                    bid.removeClass('btn-danger').addClass('btn-success');
-                    bid.text('Mark Completed')
-                    swal({
-                            icon: "success",
-                            text: "{{ __('Work is marked as Un-Complete') }}",
-                            icon: 'success'
-                        });
-
                 }
+                // if(data == 'Un-Complete'){
+                //     bid.attr('data-work_status','1')
+                //     bid.removeClass('btn-danger').addClass('btn-success');
+                //     bid.text('Mark Completed')
+                //     swal({
+                //             icon: "success",
+                //             text: "{{ __('Work is marked as Un-Complete') }}",
+                //             icon: 'success'
+                //         });
+
+                // }
             }
         })
     })
