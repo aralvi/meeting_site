@@ -17,6 +17,7 @@ class AddPaymentColumnToUser extends Migration
             $table->string('total_balance')->nullable();
             $table->string('total_withdrawl')->nullable();
             $table->string('deduction')->nullable();
+            $table->enum('withdraw_status',['request_made','do_request'])->default('do_request');
         });
     }
 

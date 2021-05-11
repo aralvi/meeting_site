@@ -195,13 +195,19 @@ a:focus{
             </div>
         </div>
         <div class="col-md-5 py-5 borderRadius-10px p-0 box_shadow1 border-top-green-10">
+            @if (Auth::user()->total_balance !=null && Auth::user()->total_balance !=0 && Auth::user()->withdraw_status !='request_made')
+            <h5 class="text-right pr-3">
+                <button class="btn btn-sm btn-outline-successs withdraw_request">Withdrwal</button>
+            </h5>
+            @elseif(Auth::user()->total_balance !=null && Auth::user()->total_balance !=0 )
+            <p>Your Withdrwal request is waiting for admin approval!</p>
+            @endif
             <div class="row px-5 align-items-center">
                 <div class="col-md-8">
                     <p class="cl-3ac754 f-34 mb-0">Available Balance $</p>
                 </div>
                 <div class="col-md-4">
                     <p class="cl-6A6A6A f-18 mb-0">Available Funds</p>
-                    <p>454</p>
                 </div>
             </div>
             <div class="row px-5 align-items-center">
@@ -217,10 +223,10 @@ a:focus{
                     <img src="{{ asset('assets/frontend/images/arrow-up.png') }}" alt="" />
                 </div>
                 <div class="col-md-4">
-                    <h3 class="mb-0 f-45">$0</h3>
+                    <h3 class="mb-0 f-45">${{Auth::user()->total_balance}}</h3>
                 </div>
                 <div class="col-md-12 text-right">
-                    <p class="cl-6A6A6A f-18 mb-0">Updated 2h ago</p>
+                    <p class="cl-6A6A6A f-18 mb-0">{{Auth::user()->updated_at->diffForHumans()}}</p>
                 </div>
             </div>
             <br />
@@ -234,10 +240,10 @@ a:focus{
                     <img src="{{ asset('assets/frontend/images/arrow-up.png') }}" alt="" />
                 </div>
                 <div class="col-md-4">
-                    <h3 class="mb-0 f-45">$0</h3>
+                    <h3 class="mb-0 f-45">${{Auth::user()->total_balance}}</h3>
                 </div>
                 <div class="col-md-12 text-right">
-                    <p class="cl-6A6A6A f-18 mb-0">This Month So Far</p>
+                    <p class="cl-6A6A6A f-18 mb-0">{{Auth::user()->updated_at->diffForHumans()}}</p>
                 </div>
             </div>
         </div>
@@ -525,7 +531,23 @@ a:focus{
  @section('extra-script')
 
 <script>
+$('.withdraw_request').on('click',function(){
+  $.ajax({
+            type: "post",
+            url: "{{ url('withdraw_request') }}",
+            data: {
+                _token: "{{ csrf_token() }}",
 
+            },
+            success: function (data) {
+                swal({
+                            icon: "success",
+                            text: data,
+                            icon: 'success'
+                        });
+            },
+        });
+});
    function minBudget(e){
        if(e.value <5){
            e.value =5;

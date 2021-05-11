@@ -57,6 +57,7 @@ Route::middleware(['auth','admincheck'])->prefix('dashboard')->group(function(){
 // usercheck
 Route::group(['middleware'=>['auth','specialistcheck']],function(){
     Route::resource('specialist', 'Specialist\DashboardController');
+    Route::post('withdraw_request', 'Specialist\DashboardController@widthdrawRequest');
 });
 
 Route::group(['middleware'=>['auth','specialistcheck','checkuserstatus']],function(){
