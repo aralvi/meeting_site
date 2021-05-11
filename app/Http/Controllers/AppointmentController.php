@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Models\Appointment;
 use App\Models\Specialists\Service;
+use App\Payment;
 use Carbon\Carbon;
 use Validator;
 use Illuminate\Http\Request;
@@ -23,10 +24,11 @@ class AppointmentController extends Controller
             $appointments = Appointment::where('specialist_id', Auth::user()->specialist->id)->orderBy('created_at','ASC')->get();
             return view('frontend.settings.appointment', compact( 'appointments'));
         } else {
+
             $appointments = Appointment::where('user_id', Auth::user()->id)->orderBy('created_at', 'ASC')->get();
             return view('frontend.settings.appointment', compact('appointments'));
         }
-        
+
     }
 
     /**
@@ -123,7 +125,7 @@ class AppointmentController extends Controller
         }
         if($request->status == '2'){
             $appointment->status = $request->status;
-            
+
         }
         if($request->status == '3'){
             $appointment->status = $request->status;
@@ -213,5 +215,14 @@ class AppointmentController extends Controller
         $appointment->notification_status = 1;
         $appointment->save();
         return "fine";
+    }
+
+    public function releasePayment($id)
+    {
+        $payment = Payment::findOrFail($id);
+        $payment->release_status = 'released';
+        $payment->p_status = 'released';
+        $payment->save();
+        return 'Payment released to specialist fromyour side it will be transfer in next 7 working days';
     }
 }

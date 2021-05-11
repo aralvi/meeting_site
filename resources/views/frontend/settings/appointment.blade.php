@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($appointments as $key => $appointment) 
+            @foreach ($appointments as $key => $appointment)
             @php $tz = Auth::user()->user_type=='specialist' ? $appointment->specialist->user->time_zone : $appointment->user->time_zone @endphp
             <tr class="border-0">
                 <td class=" border-0">
@@ -81,7 +81,7 @@
                             <!-- end -->
                             <!-- 3 -->
                             <div class="text-center d-flex justify-content-center flex-column align-items-center">
-                                @if ($appointment->status != "Completed") 
+                                @if ($appointment->status != "Completed")
                                     @if (Auth::user()->user_type=='specialist')
                                         @if ($appointment->status == "Approved" && $appointment->payment_status != "Paid")
                                             <div class="pt-3"><button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Pending Client Payment</button></div>
@@ -89,7 +89,7 @@
                                             <div class="pt-3">
                                                 <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
                                                     @csrf @method('put')
-        
+
                                                     <input type="hidden" name="status" value="{{ ($appointment->status == 'Cancelled')? '1': (($appointment->status == 'Pending')? '1':'3') }}" />
                                                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-3AC574 border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">
                                                         {{ ($appointment->status == 'Cancelled')? 'Accept': ($appointment->status == 'Pending')? 'Accept':'Completed' }}
@@ -97,14 +97,26 @@
                                                 </form>
                                             </div>
                                         @endif
-                                    @endif 
+                                    @endif
 
-                                    @if ($appointment->status != "Cancelled") 
+                                    @if ($appointment->status != "Cancelled")
+                                    @php
+                                        $payment = App\Payment::where('appointment_id',$appointment->id)->first();
+                                    @endphp
+                                    @if (Auth::user()->user_type=='client' && $appointment->payment_status == 'Paid' && $payment->release_status == 'pending')
+                                                <div class="pt-3">
+                                                    <p class="f-12 robotoRegular m-0">Request Admin  <br> To Release Payment</p>
+                                                    <button
+                                                        class="btn payment_release btn-outline-success my-2 my-sm-0 cl-ffffff bg-3AC574 border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4" data-id="{{ $payment->id }}">
+                                                        Realease Payment
+                                                    </button>
+                                                </div>
+                                            @endif
                                         @if (Auth::user()->user_type=='client' && $appointment->payment_status != "Paid" )
                                             @if ($appointment->status == 'Pending')
                                                 <div class="pt-3">
                                                     <button class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Pending Specialist Approval</button>
-                                                
+
                                                 </div>
                                             @else
                                                 <div class="pt-3">
@@ -122,6 +134,8 @@
                                                 </div>
                                             @endif
 
+
+
                                         @endif
                                         <div class="pt-3">
                                             <form action="{{ route('appointments.update',$appointment->id) }}" method="post">
@@ -130,7 +144,7 @@
                                                 <button type="submit" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Decline</button>
                                             </form>
                                         </div>
-                                    @endif 
+                                    @endif
                                 @endif
 
                                 @if ($appointment->status != "Cancelled" && $appointment->payment_status == "Paid")
@@ -138,7 +152,7 @@
                                         @if(App\ClientSpecialistDispute::where('project_id',$appointment->id)->first() ==null)
                                             <a href="{{ route('dispute-araise',['project'=>encrypt($appointment->id),'id'=>Auth::user()->user_type=="client"? encrypt($appointment->specialist->user->id):encrypt($appointment->user->id)]) }}?project_type=appointments" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">Raise Dispute</a>
                                         @else
-                                            <a href="{{ route('disputes.show',encrypt(App\ClientSpecialistDispute::where('project_id',$appointment->id)->first()->id)) }}" target="_blank" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">View Dispute</a>    
+                                            <a href="{{ route('disputes.show',encrypt(App\ClientSpecialistDispute::where('project_id',$appointment->id)->first()->id)) }}" target="_blank" class="btn btn-outline-success my-2 my-sm-0 cl-ffffff bg-bbbbbb border-0 buttonBoxShadow pt-2 pb-2 robotoRegular pl-4 pr-4">View Dispute</a>
                                         @endif
                                     </div>
                                 @endif
@@ -322,6 +336,26 @@
 
 @endsection {{-- footer section start --}} @section('extra-script')
 <script>
+// release payment
+ $(".payment_release").on("click", function () {
+        var payment_id = $(this).data("id");
+        $.ajax({
+            type: "posT",
+            url: "{{ url('release_payment') }}"+"/"+payment_id,
+            data: {
+                _token: "{{ csrf_token() }}",
+
+            },
+            success: function (data) {
+                swal({
+                            icon: "success",
+                            text: data,
+                            icon: 'success'
+                        });
+            },
+        });
+    });
+
     function addReview(e) {
         let id = $(e).data("id");
         var myform = document.getElementById("add-review-form-" + id);
@@ -413,31 +447,6 @@
             $("#avatar_form").submit();
         }
     }
-    $(".work_status").on("click", function () {
-        var bid = $(this);
-        var bid_id = $(this).data("bid");
-        var work_status = $(this).attr("data-work_status");
-        $.ajax({
-            type: "post",
-            url: "{{ route('bid_work_status') }}",
-            data: {
-                _token: "{{ csrf_token() }}",
-                bid_id: bid_id,
-                work_status: work_status,
-            },
-            success: function (data) {
-                if (data == "Completed") {
-                    bid.removeClass("btn-success").addClass("btn-danger");
-                    bid.text("Mark Un-Complete");
-                    bid.attr("data-work_status", "0");
-                }
-                if (data == "Un-Complete") {
-                    bid.attr("data-work_status", "1");
-                    bid.removeClass("btn-danger").addClass("btn-success");
-                    bid.text("Mark Completed");
-                }
-            },
-        });
-    });
+
 </script>
 @endsection {{-- footer section end --}}

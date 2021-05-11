@@ -129,9 +129,9 @@
          </div>
      </div>
      <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
-         data-cc-on-file="false" data-stripe-publishable-key="{{ $specialist->stripe_public_key }}" id="payment-form">
+         data-cc-on-file="false" data-stripe-publishable-key="pk_test_51IT0PtHC3FThVtcPyQiQlapXnSW2rLNhD5qbGmBNX31ojKyXm82lAsiYPjLVOKIiWzpdS4ijCOBoiQ8vTlb4kU2p00N9rDSTsp" id="payment-form">
          @csrf
-         <input type="hidden" name="stripe_public_key" value="{{ $specialist->stripe_public_key }}">
+         <input type="hidden" name="stripe_public_key" value="pk_test_51IT0PtHC3FThVtcPyQiQlapXnSW2rLNhD5qbGmBNX31ojKyXm82lAsiYPjLVOKIiWzpdS4ijCOBoiQ8vTlb4kU2p00N9rDSTsp">
          <input type="hidden" name="appointment_id" value="{{ $appointment_id }}">
          <input type="hidden" name="payment_for" value="{{ $payment_for }}">
          <input type="hidden" id="payable_amount" value="{{ $amount }}">
@@ -204,14 +204,14 @@
                  $('.text-danger').removeClass('text-danger');
                  $inputs.each(function (i, el) {
                      var $input = $(el);
-                     
+
                      if ($input.val() === '') {
                          $input.addClass('border border-danger');
                          $input.parent().addClass('text-danger');
                          $errorMessage.removeClass('d-none');
                          e.preventDefault();
                      }
-                     
+
                  });
 
                  if (!$form.data('cc-on-file')) {
@@ -263,9 +263,9 @@
                                  });
                                  $('.afterRegisterLoader').hide();
                                  $("#payment_modal .close").click();
-    
+
                              },
-    
+
                          })
                      }
                      // $form.get(0).submit();

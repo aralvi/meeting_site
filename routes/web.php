@@ -71,8 +71,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('user/appointment/notification','AppointmentController@userAppointmentNotification')->name('user.appointment.notification');
     Route::get('appointment/notification/status/update/{id}','AppointmentController@notificationStatusUpdate')->name('appointment.notification.status.update');
     Route::get('portfolio_setting', 'ProfileController@portfolio')->name('portfolio_setting');
-    Route::post('portfolio_images', 'ProfileController@portfolioImages')->name('portfolio_images');    
-    Route::post('portfolio_image_delete/{id}', 'ProfileController@deleteImage')->name('portfolio_image_delete');    
+    Route::post('portfolio_images', 'ProfileController@portfolioImages')->name('portfolio_images');
+    Route::post('portfolio_image_delete/{id}', 'ProfileController@deleteImage')->name('portfolio_image_delete');
     Route::get('sub_categories', 'Specialist\ServiceController@getSubCategories')->name('service.get_subcategories');
     Route::resource('profile', 'ProfileController');
     Route::post('/profile/change_avatar', 'ProfileController@update_avatar');
@@ -89,9 +89,10 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('sub_categories', 'Client\ClientController@getSubCategories')->name('request.get_subcategories');
     Route::view('client/dashboard','client.index');
     Route::post('add/client/review','AppointmentController@addReview')->name('add.client.review');
-    // payemnts 
+    // payemnts
     Route::get('stripe', 'StripePaymentController@stripe');
     Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+    Route::post('release_payment/{id}','AppointmentController@releasePayment');
 });
 
 Route::group(['middleware'=>['auth','checkuserstatus']],function(){
