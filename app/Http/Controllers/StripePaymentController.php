@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Bid;
 use App\Payment;
 use App\Specialist;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -24,7 +25,9 @@ class StripePaymentController extends Controller
         $amount = $request->amount;
         $appointment_id = $request->appointment;
         $payment_for = $request->payment_for;
-        return view('stripe',compact('specialist', 'amount', 'appointment_id', 'payment_for'));
+        $admin = User::where('user_type','admin')->first();
+        $admin_stripe_publick_key = $admin->stripe_public_key;
+        return view('stripe',compact('specialist', 'amount', 'appointment_id', 'payment_for','admin_stripe_publick_key'));
     }
 
     /**
@@ -34,8 +37,8 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
-        $specialist = Specialist::where('stripe_public_key',$request->stripe_public_key)->first();
-        Stripe\Stripe::setApiKey('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');
+        $admin = User::where('user_type','admin')->first();
+        Stripe\Stripe::setApiKey($admin->stripe_secret_key);
         Stripe\Charge::create([
             "amount" => 100 * $request->amount,
             "currency" => "usd",

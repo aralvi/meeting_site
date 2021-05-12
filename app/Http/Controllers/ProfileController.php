@@ -169,7 +169,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        
+
         $profile = User::find(Auth::id());
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
@@ -183,6 +183,8 @@ class ProfileController extends Controller
         $profile->email = $request->email;
         $profile->country = $request->country;
         $profile->time_zone = $request->timezone;
+        $profile->stripe_public_key = $request->stripe_public_key;
+        $profile->stripe_secret_key = $request->stripe_secrete_key;
         $profile->status = 'active';
         $profile->save();
 
@@ -202,10 +204,10 @@ class ProfileController extends Controller
                         // {
                         //     $hours_arr[$value] = [$data[$value.'_from'],$data[$value.'_to']];
                         // }
-            
+
                     }
                 }
-            
+
                 $specialist = Specialist::findOrFail(Auth::user()->specialist->id);
                 $specialist->user_id = $profile->id;
                 $specialist->category_id = $request->category_id;
@@ -226,13 +228,13 @@ class ProfileController extends Controller
                     $specialist->payment_email = $request->payment_email;
                 }
                 $specialist->opening_hours = json_encode($hours_arr);
-            
+
                 $specialist->save();
             } else if ($profile->user_type == 'client') {
                 $client = Client::findOrFail(Auth::user()->client->id);
                 $client->user_id = $profile->id;
                 $client->business_phone = $request->business_phone;
-            
+
                 $client->save();
             }
         }
@@ -258,7 +260,7 @@ class ProfileController extends Controller
     }
     public function portfolioImages(Request $request)
     {
-       
+
         foreach ($request->images as $key => $image) {
             $portfolio = new Portfolio();
             $profile_image_original_name = $image->getClientOriginalName();
