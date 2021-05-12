@@ -35,7 +35,7 @@ class StripePaymentController extends Controller
     public function stripePost(Request $request)
     {
         $specialist = Specialist::where('stripe_public_key',$request->stripe_public_key)->first();
-        Stripe\Stripe::setApiKey('sk_test_51IT0PtHC3FThVtcP6W41HQ1556eg9yEmxMclsw3Zh0R03tCpWU0hEbscD03X3eBUsA8rzMr3wsfcp5KtuEsHmUZj00quvnd6yG');
+        Stripe\Stripe::setApiKey('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');
         Stripe\Charge::create([
             "amount" => 100 * $request->amount,
             "currency" => "usd",

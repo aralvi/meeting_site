@@ -129,9 +129,9 @@
          </div>
      </div>
      <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
-         data-cc-on-file="false" data-stripe-publishable-key="pk_test_51IT0PtHC3FThVtcPyQiQlapXnSW2rLNhD5qbGmBNX31ojKyXm82lAsiYPjLVOKIiWzpdS4ijCOBoiQ8vTlb4kU2p00N9rDSTsp" id="payment-form">
+         data-cc-on-file="false" data-stripe-publishable-key="pk_live_2496qoWZWxHRaJ3RenIFZryE00R4RVyc0B" id="payment-form">
          @csrf
-         <input type="hidden" name="stripe_public_key" value="pk_test_51IT0PtHC3FThVtcPyQiQlapXnSW2rLNhD5qbGmBNX31ojKyXm82lAsiYPjLVOKIiWzpdS4ijCOBoiQ8vTlb4kU2p00N9rDSTsp">
+         <input type="hidden" name="stripe_public_key" value="pk_live_2496qoWZWxHRaJ3RenIFZryE00R4RVyc0B">
          <input type="hidden" name="appointment_id" value="{{ $appointment_id }}">
          <input type="hidden" name="payment_for" value="{{ $payment_for }}">
          <input type="hidden" id="payable_amount" value="{{ $amount }}">
