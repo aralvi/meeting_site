@@ -10,7 +10,7 @@ use App\withdraw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
-use Stripe;
+use  Stripe\Stripe;
 class PaymentsController extends Controller
 {
     /**
