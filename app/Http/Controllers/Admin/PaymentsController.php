@@ -10,7 +10,7 @@ use App\withdraw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
-use  Stripe\Stripe;
+use Stripe;
 class PaymentsController extends Controller
 {
     /**
@@ -45,8 +45,8 @@ class PaymentsController extends Controller
     public function stripePayment(Request $request)
     {
         $specialist = Specialist::where('stripe_public_key',$request->stripe_public_key)->first();
-        Stripe\stripe::setApiKey($specialist->stripe_secrete_key);
-        Stripe\Charge::create([
+        stripe::setApiKey($specialist->stripe_secrete_key);
+        Charge::create([
             "amount" => 100 * $request->amount,
             "currency" => "usd",
             "source" => $request->stripeToken,
