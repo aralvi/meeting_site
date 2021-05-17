@@ -11,7 +11,7 @@ $appCertificate = "b7bd112462e7458287d315899abcea91";
 $data = DB::table('channels')->where('channel',$channel)->first();
 // $data == null ?  DB::table('channels')->insert(['channel' => $channel,'status' => '1']): ($data->status == 1)?DB::table('channels')->where('channel', $channel)->update(['status' => '2']):DB::table('channels')->where('channel', $channel)->update(['status' => '1']);
 if($data == null)
-    DB::table('channels')->insert(['channel' => $channel,'status' => '2','caller'=>Auth::user()->username,'call_to'=>$_GET['name']]);
+    DB::table('channels')->insert(['channel' => $channel,'status' => '2','caller'=>Auth::user()->username,'call_to'=>$_GET['name'],'created_at'=>date("Y-m-d H:i:s")]);
 else if($data->status == 0 )
     DB::table('channels')->where('channel', $channel)->update(['status' => '2','caller'=>Auth::user()->username,'call_to'=>$_GET['name']]);
 else if($data->status == 2 )

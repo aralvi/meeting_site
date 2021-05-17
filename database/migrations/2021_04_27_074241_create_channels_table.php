@@ -18,6 +18,7 @@ class CreateChannelsTable extends Migration
             $table->string('caller');
             $table->string('call_to');
             $table->enum('status',['0','1','2','3'])->default(1);
+            $table->timestamps();
             
         });
     }

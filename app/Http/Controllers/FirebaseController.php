@@ -222,7 +222,11 @@ class FirebaseController extends Controller
         if(Channel::where('caller', Auth::user()->username)->orWhere('call_to',Auth::user()->username)->exists()){
             $channel = Channel::where('caller', Auth::user()->username)->orWhere('call_to',Auth::user()->username)->first();
             if($channel->status == 2){
-                return response()->json(['status'=>'success','caller'=>$channel->caller,'call_to'=>$channel->call_to]);
+                $currentTime = Carbon::now();
+                $time = (strtotime($channel->created_at)+30 >=time())? 'true':'false';
+                
+                // $differ = time()-$time;
+                return response()->json(['status'=>'success','caller'=>$channel->caller,'call_to'=>$channel->call_to,'check'=>(strtotime($channel->created_at)+30 >=time())? 'true':'false']);
             }
         }
         // if(Channel::where('channel',$channel)->exists()){
