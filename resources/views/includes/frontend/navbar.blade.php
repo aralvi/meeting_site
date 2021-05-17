@@ -213,7 +213,7 @@
                                
                                 if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' && data.call_to == '{{Auth::user()->username}}'  ){
                                     $('.calling-div').removeClass('d-none');
-                                    $('.incoming-call').html('incomming call from '+data.caller);
+                                    $('.incoming-call').html('Incoming call from '+data.caller[0].toUpperCase()+data.caller.slice(1));
                                     $('.accpet_call').attr('data-caller',data.caller);
                                     play();
                                    
