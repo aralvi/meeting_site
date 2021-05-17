@@ -7086,8 +7086,8 @@ body {
 .agora-theme .video-placeholder,
 .agora-theme #local_stream,
 .agora-theme #local_video_info {
-    width: 480px;
-    height: 320px;
+    width: 100%;
+    height: 480px;
 }
 
 .agora-theme .video-profile {
@@ -7104,11 +7104,11 @@ body {
 }
 
 .agora-theme .video-grid {
-    display: grid;
+    /* display: grid;
     grid-gap: 20px;
     justify-content: center;
     grid-template-columns: repeat(2, auto);
-    grid-template-rows: auto;
+    grid-template-rows: auto; */
 }
 
 .agora-theme .autoplay-fallback {

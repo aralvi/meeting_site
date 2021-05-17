@@ -14,6 +14,7 @@
         .z-index {
             z-index: 2 !important;
         }
+        
     </style>
 </head>
 
@@ -31,12 +32,12 @@
 <div class="modal fade" id="video-call-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header pl-5 pr-5 bg-3ac574 cl-ffffff p-3">
+            <!-- <div class="modal-header pl-5 pr-5 bg-3ac574 cl-ffffff p-3">
                 <h5 class="modal-title pl-4" id="exampleModalLabel">Waiting Room</h5>
                 <button type="button" class=" cl-ffffff opacity-1 border-0 bg-transparent end-call" onclick="endCall()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="cl-ffffff f-35 mr-3">&times;</span>
                 </button>
-            </div>
+            </div> -->
             <div class="modal-body d-flex align-items-center flex-column justify-content-center pt-5">
                 <div class="f-45 robotoMedium cl-3ac754">Thank you for joining.</div>
                 <div class="f-24 cl-616161">Meeting ID : 121545456484</div>
@@ -141,9 +142,10 @@
                                   </li>
                                 </ul>
                               </div>
+                           
                               <div class="col s7">
-                                <div class="video-grid" id="video">
-                                  <div class="video-view">
+                                <div class="video-grid" id="video" style="width:100% !important">
+                                  <div class="video-view" style="position:absolute;z-index:+1;width:100% !important;">
                                     <div id="local_stream" class="video-placeholder"></div>
                                     <div id="local_video_info" class="video-profile hide"></div>
                                     <div id="video_autoplay_local" class="autoplay-fallback hide"></div>
@@ -152,13 +154,22 @@
                               </div>
                             </div>
                           </form>
+                          <style>
+                            #local_stream > :first-child{
+                                            height:30% !important;
+                                            width:30% !important;
+                                            left:67% !important;
+                                            top:70% !important;
+                                            
+                                        }
+                          </style>
                         </body>
                         </html>
 
                   </div>
 
-                <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
-                <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div>
+                <!-- <div class="f-21 robotoRegular cl-3ac754 w-50 text-center">The host is currently meeting with other client and will let you into the meeting shortly.</div>
+                <div class="f-21 robotoRegular pt-4">Average Wait:<span class="cl-3ac754 pl-3">Approx 5-10 Minutes</span></div> -->
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-secondary bg-3ac574 end-call" data-dismiss="modal" onclick="endCall()">End Call</button>
@@ -496,7 +507,7 @@
     }
 
     function play() {
-         var beepsound = new Audio('https://www.soundjay.com/button/sounds/beep-01a.mp3');
+         var beepsound = new Audio('{{asset("assets/audio/fb_messenger_tone.mp3")}}');
             beepsound.play();
      }
 
