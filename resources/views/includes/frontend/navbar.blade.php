@@ -210,13 +210,12 @@
                             url: '{{ url("call-checker") }}',
                             data: { name: username },
                             success: function(data) {
-                                alert(data.check)
                                 if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' && data.call_to == '{{Auth::user()->username}}'  ){
                                     $('.calling-div').removeClass('d-none');
                                     $('.incoming-call').html('Incoming call from '+data.caller[0].toUpperCase()+data.caller.slice(1));
                                     $('.accpet_call').attr('data-caller',data.caller);
                                     play();
-                                    if(data.check != 'true'){
+                                    if(data.check == 'false'){
                                         endCall();
                                     }
                                    
