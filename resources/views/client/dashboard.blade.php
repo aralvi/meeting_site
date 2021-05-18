@@ -741,27 +741,7 @@ span.prefix{
 {{-- footer section start --}}
 
 @section('extra-script')
-<script src="{{ asset('assets/frontend/js/video-js/jquery.min.js') }}"></script>
-            <script>
-            $(document).ready(function(){
-                    setInterval(function(){
 
-                    var username = $('.video-chat').data('caller');
-                    $.ajax({
-                        type: 'get',
-                        url: '{{ url("call-checker") }}',
-                        data: { name: username },
-                        success: function(data) {
-                            if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' )
-                            $('.calling-div').removeClass('d-none');
-                            $('.incoming-call').html('incomming call from '+data.caller);
-
-                        }
-                    })
-                    }, 3000);
-                })
-            </script>
-    <script>
 
 // $('.bid_accept').on('submit', function(e) {
 //     alert($(this).serialize())
