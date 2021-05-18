@@ -845,7 +845,7 @@
             // Toast.error("publish failed")
             console.error(err);
         })
-        Toast.info("publish")
+        // Toast.info("publish")
         rtc.published = true
     }
 
