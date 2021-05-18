@@ -1,5 +1,5 @@
 @extends('layouts.frontend.app')
-
+@section('title','Messenger')
 @section('extra-css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/all.min.css"  />
     <link href="{{ asset('assets/frontend/css/custom.css') }}" />
