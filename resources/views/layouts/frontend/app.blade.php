@@ -29,6 +29,25 @@
     </section>
 
        <!-- video call Modal -->
+<div class="modal fade" id="client-video-call-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+             <div class="modal-header pl-5 pr-5 bg-3ac574 cl-ffffff p-3">
+                <button type="button" class=" cl-ffffff opacity-1 border-0 bg-transparent end-call"  data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="cl-ffffff f-35 mr-3">&times;</span>
+                </button>
+            </div> 
+            <div class="modal-body d-flex align-items-center flex-column justify-content-center pt-5">
+                <div class="f-45 robotoMedium cl-3ac754">Unable to make call.</div>
+                <div class="f-24 cl-616161">Specialists can only initiate video calls in messaging.  If you would like to have a call with this specialist, you will need to ask them to initiate the call, or book an appointment.</div>
+                
+
+               
+            </div>
+           
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="video-call-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

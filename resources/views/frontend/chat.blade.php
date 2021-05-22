@@ -551,7 +551,15 @@
 
                                            </div></div>
                                 <div class="pl-2">
-                                    <div>{{ ucwords($user->username) }} <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall(this)" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}"></div>
+                                    <div>{{ ucwords($user->username) }} 
+                                        @if (Auth::user()->user_type == 'specialist')
+                                            
+                                        <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall(this)" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}">
+                                        @else
+                                        <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#client-video-call-modal" data-caller="{{$user->username}}">
+                                            
+                                        @endif
+                                    </div>
                                     <div class="d-flex">
                                         <div class="cl-a8a8a8 f-11 user-status">@if($user->last_login >time()) active @else Last seen {{ Carbon\Carbon::parse(intval($user->last_login))->diffForHumans() }} @endif</div>
                                         <div class="border-right pl-1 pr-1"></div> <div class="cl-a8a8a8 f-11 ml-1" id="local_time"></div>
