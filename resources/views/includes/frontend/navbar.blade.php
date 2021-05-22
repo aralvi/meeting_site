@@ -219,6 +219,8 @@
                                         endCall();
                                     }
                                    
+                                }else{
+                                    $('.title').text('Call Has Ended');
                                 }
                             }
                         })

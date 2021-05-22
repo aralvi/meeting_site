@@ -58,7 +58,7 @@
                 </button>
             </div> -->
             <div class="modal-body d-flex align-items-center flex-column justify-content-center pt-5">
-                <div class="f-45 robotoMedium cl-3ac754">Thank you for joining.</div>
+                <div class="f-45 robotoMedium cl-3ac754 title">Thank you for joining.</div>
                 <div class="f-24 cl-616161">Meeting ID : 121545456484</div>
                 <div class="embed-responsive embed-responsive-21by9">
                         <!DOCTYPE html>
