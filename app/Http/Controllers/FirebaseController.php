@@ -228,7 +228,9 @@ class FirebaseController extends Controller
                 // $differ = time()-$time;
                 return response()->json(['status'=>'success','caller'=>$channel->caller,'call_to'=>$channel->call_to,'check'=>(strtotime($channel->created_at)+30 >=time())? 'true':'false']);
             }
-        }
+        }else{
+            return response()->json(['status'=>'fail']);
+         }
         // if(Channel::where('channel',$channel)->exists()){
         //     $channel = Channel::where('channel', $channel)->first();
         //     if($channel->status == 2){

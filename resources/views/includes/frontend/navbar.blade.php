@@ -210,6 +210,7 @@
                             url: '{{ url("call-checker") }}',
                             data: { name: username },
                             success: function(data) {
+                                    $('.title').text('Thank You For Joining');
                                 if(data.status == 'success' && data.caller !='{{Auth::user()->username}}' && data.call_to == '{{Auth::user()->username}}'  ){
                                     $('.calling-div').removeClass('d-none');
                                     $('.incoming-call').html('Incoming call from '+data.caller[0].toUpperCase()+data.caller.slice(1));
@@ -217,11 +218,13 @@
                                     play();
                                     if(data.check == 'false'){
                                         endCall();
+                                    
                                     }
-                                   
-                                }else{
-                                    $('.title').text('Call Has Ended');
                                 }
+                                   if(data.status == 'fail'){
+                                    $('.title').text('Call Has Ended');
+                                    endCall();
+                                   }
                             }
                         })
                     }, 5000);

@@ -556,7 +556,7 @@
                                             
                                         <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="makeCall(this)" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#video-call-modal" data-caller="{{$user->username}}">
                                         @else
-                                        <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" class=" img-fluid h-40 video-chat" id="video-chat" data-toggle="modal" data-target="#client-video-call-modal" data-caller="{{$user->username}}">
+                                        <img src="{{ asset('assets/frontend/images/video-call-icon.png') }}" onclick="ClientMakeCall();" class=" img-fluid h-40 video-chat" id="client-video-chat" data-toggle="modal" data-target="#client-video-call-modal" data-caller="{{$user->username}}">
                                             
                                         @endif
                                     </div>

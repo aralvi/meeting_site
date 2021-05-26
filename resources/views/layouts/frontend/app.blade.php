@@ -48,6 +48,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="modal fade" id="video-call-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -496,6 +498,9 @@
   <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.4.0.js"></script>
 <script>
 
+function ClientMakeCall(){
+    $('#client-video-call-modal').toggle();
+}
 
     function endCall(){
         $('#leave').click();
@@ -506,6 +511,7 @@
             data: {_token:'{{ csrf_token() }}', name: username },
             success: function(data) {
                 $('.calling-div').addClass('d-none');
+                
             }
         })
     }
